@@ -55,7 +55,7 @@
     font-weight: 600;
     letter-spacing: .28em;
     text-transform: uppercase;
-    color: #1e1e1e;
+    color: #555;
     white-space: nowrap;
     z-index: 10;
   }
@@ -108,7 +108,7 @@
   /* ─── Echo: muted repeat of user's last message ─── */
   .echo {
     font-size: .72rem;
-    color: #242424;
+    color: #555;
     margin-bottom: 20px;
     font-style: italic;
   }
@@ -148,7 +148,7 @@
     font-weight: 500;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: #2a2a2a;
+    color: #666;
     transition: color .18s;
   }
 
@@ -157,7 +157,7 @@
     filter: grayscale(0%);
   }
 
-  .emoji-btn:hover .label { color: #555; }
+  .emoji-btn:hover .label { color: #ccc; }
 
   .emoji-btn:active .face { transform: scale(.92); }
 
@@ -166,7 +166,7 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #181818;
+    border-bottom: 1px solid #2a2a2a;
     color: var(--text);
     font-family: inherit;
     font-size: 1rem;
@@ -177,19 +177,19 @@
     transition: border-color .2s;
   }
 
-  .page-input:focus { border-color: #2c2c2c; }
-  .page-input::placeholder { color: #1c1c1c; }
+  .page-input:focus { border-color: #555; }
+  .page-input::placeholder { color: #444; }
 
   .input-hint {
     font-size: .6rem;
-    color: #181818;
+    color: #333;
     letter-spacing: .1em;
     text-transform: uppercase;
     margin-top: 10px;
     transition: color .25s;
   }
 
-  .input-hint.ready { color: #2d2d2d; }
+  .input-hint.ready { color: #777; }
 
   /* ─── Thinking dots ─── */
   .thinking {
@@ -203,7 +203,7 @@
   .thinking-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: #222;
+    background: #444;
     animation: dotBounce .9s ease-in-out infinite;
   }
 
@@ -216,7 +216,7 @@
     font-weight: 700;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: #252525;
+    color: #777;
     margin-bottom: 14px;
   }
 
@@ -245,7 +245,7 @@
   .rec-icon { font-size: 1.1rem; flex-shrink:0; width:22px; text-align:center; }
   .rec-content { flex: 1; }
   .rec-title { font-size: .85rem; font-weight: 500; color: #ccc9c2; line-height: 1.3; }
-  .rec-desc  { font-size: .7rem; color: #2c2c2c; margin-top: 2px; line-height: 1.4; }
+  .rec-desc  { font-size: .7rem; color: #777; margin-top: 2px; line-height: 1.4; }
 
   .rec-item.crisis  { border-color: #280d0d; background: #080404; }
   .rec-item.crisis:hover { border-color: #3a1212; }
@@ -266,15 +266,16 @@
   /* ─── Restart link ─── */
   .restart-link {
     font-size: .68rem;
-    color: #1c1c1c;
+    color: #444;
     text-decoration: none;
     letter-spacing: .06em;
     margin-top: 6px;
     cursor: pointer;
     transition: color .2s;
+    display: inline-block;
   }
 
-  .restart-link:hover { color: #363636; }
+  .restart-link:hover { color: #aaa; }
 
   /* ─── CCE Choice buttons ─── */
   .choice-row {
@@ -321,12 +322,190 @@
     line-height: 1.5;
   }
 
+  /* ─── Tagline / safe-space note ─── */
+  .tagline {
+    font-size: .72rem;
+    color: #555;
+    letter-spacing: .04em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .tagline strong { color: #888; font-weight: 600; }
+
+  /* ─── Free badge ─── */
+  .free-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #22c55e;
+    border: 1px solid #22c55e44;
+    background: #22c55e0d;
+    border-radius: 99px;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+  }
+
+  /* ─── Progress dots ─── */
+  .progress-row {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .pd {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #222;
+    transition: background .35s, transform .35s;
+  }
+  .pd.active  { background: #f0ece4; transform: scale(1.25); }
+  .pd.done    { background: #444; }
+
+  /* ─── Stay talking prompt ─── */
+  .reply-prompt {
+    font-size: .72rem;
+    color: #555;
+    letter-spacing: .04em;
+    margin-top: 18px;
+    font-style: italic;
+  }
+
+  /* ─── Beta feedback ─── */
+  .beta-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid #181818;
+  }
+  .beta-label {
+    font-size: .6rem;
+    color: #444;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+  .beta-btn {
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #888;
+    font-family: inherit;
+    font-size: .7rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: border-color .18s, color .18s;
+    white-space: nowrap;
+  }
+  .beta-btn:hover { border-color: #555; color: #ccc; }
+
+  /* ─── Beta feedback modal ─── */
+  #beta-modal {
+    display: none;
+    position: fixed; inset: 0;
+    background: #000000cc;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  #beta-modal.open { display: flex; }
+  .beta-modal-box {
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn .3s ease both;
+  }
+  .beta-modal-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .beta-modal-sub {
+    font-size: .75rem;
+    color: #555;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .beta-stars {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .star-btn {
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: .3;
+    transition: opacity .15s, transform .15s;
+  }
+  .star-btn.lit, .star-btn:hover { opacity: 1; transform: scale(1.15); }
+  .beta-textarea {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 8px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: .85rem;
+    padding: 10px 12px;
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+    transition: border-color .2s;
+    margin-bottom: 14px;
+  }
+  .beta-textarea:focus { border-color: #444; }
+  .beta-textarea::placeholder { color: #333; }
+  .beta-submit-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .beta-cancel {
+    background: none;
+    border: none;
+    color: #444;
+    font-family: inherit;
+    font-size: .78rem;
+    cursor: pointer;
+    padding: 8px 14px;
+    transition: color .18s;
+  }
+  .beta-cancel:hover { color: #888; }
+  .beta-send {
+    background: #f0ece4;
+    color: #000;
+    border: none;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background .18s;
+  }
+  .beta-send:hover { background: #fff; }
+
   /* ─── Responsive ─── */
   @media (max-width: 500px) {
-    .ai-prompt { font-size: 1.7rem; margin-bottom: 32px; letter-spacing: -.02em; }
+    .ai-prompt { font-size: 1.7rem; margin-bottom: 28px; letter-spacing: -.02em; }
     .emoji-btn .face { font-size: 2.8rem; }
-    .emoji-row { gap: 28px; }
-    #page { padding: 0 20px 48px; }
+    .emoji-row { gap: 24px; }
+    #page { padding: 0 20px 40px; }
+    .tagline { font-size: .68rem; }
+    .choice-btn { font-size: .9rem; padding: 13px 16px; }
   }
 </style>
 </head>
@@ -334,9 +513,29 @@
 
 <!-- ═══ SINGLE PAGE CONTAINER ═══ -->
 <div id="page">
-  <div class="brand">Ask Anyway</div>
+  <div class="brand">Ask Anyway <span style="color:#444;font-size:.5rem;letter-spacing:.16em;border:1px solid #333;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle">BETA</span></div>
   <div id="content" class="page-content">
     <!-- rendered by JS -->
+  </div>
+</div>
+
+<!-- Beta Feedback Modal -->
+<div id="beta-modal">
+  <div class="beta-modal-box">
+    <div class="beta-modal-title">How was this?</div>
+    <div class="beta-modal-sub">You're helping us shape something real. Takes 20 seconds.</div>
+    <div class="beta-stars" id="star-row">
+      <button class="star-btn" data-val="1" onclick="starClick(1)">⭐</button>
+      <button class="star-btn" data-val="2" onclick="starClick(2)">⭐</button>
+      <button class="star-btn" data-val="3" onclick="starClick(3)">⭐</button>
+      <button class="star-btn" data-val="4" onclick="starClick(4)">⭐</button>
+      <button class="star-btn" data-val="5" onclick="starClick(5)">⭐</button>
+    </div>
+    <textarea class="beta-textarea" id="beta-text" placeholder="What worked? What felt off? (optional)"></textarea>
+    <div class="beta-submit-row">
+      <button class="beta-cancel" onclick="closeBetaModal()">cancel</button>
+      <button class="beta-send" onclick="submitBetaFeedback()">Send feedback</button>
+    </div>
   </div>
 </div>
 
@@ -466,7 +665,8 @@ function cceOutcomeHTML(outcome) {
       </a>
     </div>
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
-    <a class="restart-link" onclick="restart()">start over</a>`;
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
 }
 
 function cceChoiceHTML(options) {
@@ -498,9 +698,10 @@ const Stage = {
   GOOD_S2: 'good_s2',          // Stage 2 — what's your secret
   GOOD_S3: 'good_s3',          // Stage 3 — light soft check
   GOOD_S4: 'good_s4',          // Stage 4 — warm close
-  // Not-good track — 2 turns
+  // Not-good track — 3 turns before recs
   NG_S2: 'ng_s2',              // Stage 2 — one probe question
-  NG_S4: 'ng_s4',              // Stage 3 — recommendations (immediate)
+  NG_S3: 'ng_s3',              // Stage 3 — one more grounding question
+  NG_S4: 'ng_s4',              // Stage 4 — recommendations (earned)
   // Risky behavior track
   RISKY_PROBE: 'risky_probe',  // Probe further before routing
   RISKY_END: 'risky_end',      // Route to recs after probing
@@ -518,6 +719,42 @@ let ctx = {
   audience: null,
   askedAboutOthers: false,
 };
+let stepCount = 0;    // tracks which turn we're on (for progress dots)
+let betaRating = 0;   // star rating for feedback
+
+// ─── Progress dots ───
+function progressDotsHTML(current, total) {
+  let dots = '';
+  for (let i = 0; i < total; i++) {
+    if (i < current)  dots += '<div class="pd done"></div>';
+    else if (i === current) dots += '<div class="pd active"></div>';
+    else               dots += '<div class="pd"></div>';
+  }
+  return `<div class="progress-row">${dots}</div>`;
+}
+
+// ─── Beta feedback modal ───
+function openBetaModal() {
+  document.getElementById('beta-modal').classList.add('open');
+}
+function closeBetaModal() {
+  document.getElementById('beta-modal').classList.remove('open');
+}
+function starClick(val) {
+  betaRating = val;
+  document.querySelectorAll('.star-btn').forEach(b => {
+    b.classList.toggle('lit', parseInt(b.dataset.val) <= val);
+  });
+}
+function submitBetaFeedback() {
+  const txt = document.getElementById('beta-text').value.trim();
+  const payload = { rating: betaRating, comment: txt, path: track, turns: stepCount, ts: Date.now() };
+  console.log('[Ask Anyway Beta Feedback]', payload);
+  // TODO: POST to /api/feedback when backend ready
+  closeBetaModal();
+  const bar = document.getElementById('beta-bar');
+  if (bar) bar.innerHTML = '<span style="color:#555;font-size:.7rem">Thanks — you\'re helping build this. ✓</span>';
+}
 
 // ─────────────────────────────────────────────────────────────
 //  SENTIMENT ENGINE
@@ -787,9 +1024,32 @@ function ngS1(userText) {
 }
 
 function ngS2(userText) {
-  // Any reply → straight to recommendations (crisis already caught by router)
+  // Turn 2 — follow-up: go one level deeper
   const t = userText.toLowerCase();
   if (/alone|no one|nobody|no support/.test(t)) {
+    ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
+  }
+  stage = Stage.NG_S3;
+
+  // Topic-aware follow-up
+  const probes = {
+    relationship: `Has this hit your sleep or your eating at all — or have you been able to hold that together?`,
+    work:         `Is there anyone around you who knows how bad it's gotten, or are you carrying this mostly on your own?`,
+    loss:         `Grief isn't linear — are there moments in the day when it's heavier than others?`,
+    anxiety:      `When the anxiety spikes, what does that look like for you — is it more physical, or more in your head?`,
+    loneliness:   `Is this something that just crept up, or has it been there for longer than you can remember?`,
+    recovery:     `When you picture getting through today — what does that look like?`,
+    family:       `Is there one person in your corner right now, or does it feel like you're navigating this alone?`,
+    general:      `Have you been able to talk to anyone about this, or has most of it stayed inside?`,
+  };
+  const q = probes[ctx.topic] || probes.general;
+  return audienceLayer(q);
+}
+
+function ngS3(userText) {
+  // Turn 3 — route to recs
+  const t = userText.toLowerCase();
+  if (/alone|no one|nobody|no support|can.?t tell|can.?t talk|no body knows/.test(t)) {
     ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
   }
   stage = Stage.NG_S4;
@@ -860,6 +1120,7 @@ async function getResponse(userText, cceOptionId) {
 
   // OPENING — Stage 1 — determine track
   if (stage === Stage.OPENING) {
+    stepCount = 1;
     ctx.audience = detectAudience(t) || ctx.audience;
     if (isGood(t)) return goodS1(userText);
     if (isNotGood(t)) return ngS1(userText);
@@ -877,6 +1138,8 @@ async function getResponse(userText, cceOptionId) {
     return `I want to make sure I'm with you.\n\nAre things feeling okay right now, or is there something underneath that you're carrying?`;
   }
 
+  stepCount++;
+
   // GOOD TRACK
   if (stage === Stage.GOOD_S2) return goodS2(userText);
   if (stage === Stage.GOOD_S3) return goodS3(userText);
@@ -884,8 +1147,9 @@ async function getResponse(userText, cceOptionId) {
     return `I'm here if anything changes.\n\nTake care.`;
   }
 
-  // NOT GOOD TRACK — 2 turns max
+  // NOT GOOD TRACK — 3 turns before recs
   if (stage === Stage.NG_S2) return ngS2(userText);
+  if (stage === Stage.NG_S3) return ngS3(userText);
   if (stage === Stage.NG_S4) return buildRecommendations();
 
   // RISKY TRACK
@@ -939,6 +1203,10 @@ let lastUserDisplay = ''; // echo shown above next AI prompt
 
 function escHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+function escAttr(str) {
+  return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'&#10;');
 }
 
 function downloadGuide(e) {
@@ -996,7 +1264,15 @@ function recCardsHTML(crisisLevel) {
       </a>
       ${crisisRow}
     </div>
-    <a class="restart-link" onclick="restart()">start over</a>`;
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
+}
+
+function betaBarHTML() {
+  return `<div class="beta-bar" id="beta-bar">
+    <span class="beta-label">Beta — help us improve</span>
+    <button class="beta-btn" onclick="openBetaModal()">Give feedback</button>
+  </div>`;
 }
 
 function crisisCardsHTML() {
@@ -1025,7 +1301,8 @@ function crisisCardsHTML() {
         </div>
       </a>
     </div>
-    <a class="restart-link" onclick="restart()">start over</a>`;
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
 }
 
 // ─── Show the "thinking" transition screen ───
@@ -1058,7 +1335,14 @@ function showResponse(response, echoText) {
   const inner = document.createElement('div');
   inner.className = 'page-content entering';
 
-  let html = echoText ? `<div class="echo">"${escHtml(echoText)}"</div>` : '';
+  // Progress dots — show on turns 1-3 (not on opening or final screens)
+  const showDots = stepCount > 0 && stage !== Stage.DONE && stage !== Stage.GOOD_S4
+    && stage !== Stage.NG_S4 && stage !== Stage.RISKY_END && stage !== Stage.CRISIS;
+  const totalDots = (track === TRACK.GOOD) ? 3 : 4;
+  const dotsHTML = showDots ? progressDotsHTML(Math.min(stepCount - 1, totalDots - 1), totalDots) : '';
+
+  let html = dotsHTML;
+  html += echoText ? `<div class="echo">"${escHtml(echoText)}"</div>` : '';
 
   // ── CCE: complete outcome ──
   if (response && response.cceOutcome) {
@@ -1071,7 +1355,7 @@ function showResponse(response, echoText) {
   // ── CCE: next prompt ──
   if (response && response.ccePrompt) {
     const p = response.ccePrompt;
-    html += `<div class="ai-prompt">${escHtml(p.question)}</div>`;
+    html += `<div class="ai-prompt" data-tw="${escAttr(p.question)}"></div>`;
     if (p.type === 'choice' && p.options && p.options.length) {
       html += cceChoiceHTML(p.options);
     } else {
@@ -1079,6 +1363,7 @@ function showResponse(response, echoText) {
     }
     inner.innerHTML = html;
     content.appendChild(inner);
+    animateTW(inner);
     const inp = content.querySelector('.page-input');
     if (inp) { inp.focus(); wireInput(inp); }
     return;
@@ -1086,15 +1371,15 @@ function showResponse(response, echoText) {
 
   // ── Local / Chatbase engine ──
   if (typeof response === 'string') {
-    html += `<div class="ai-prompt">${escHtml(response)}</div>`;
+    html += `<div class="ai-prompt" data-tw="${escAttr(response)}"></div>`;
     if (stage === Stage.DONE || stage === Stage.GOOD_S4) {
-      html += `<a class="restart-link" onclick="restart()">start over</a>`;
+      html += `<a class="restart-link" onclick="restart()">start over</a>${betaBarHTML()}`;
     } else {
       html += inputHTML();
     }
   } else {
     if (response.text) {
-      html += `<div class="ai-prompt">${escHtml(response.text)}</div>`;
+      html += `<div class="ai-prompt" data-tw="${escAttr(response.text)}"></div>`;
     }
     if (response.card) {
       if (response.card.type === 'crisis') {
@@ -1109,8 +1394,19 @@ function showResponse(response, echoText) {
 
   inner.innerHTML = html;
   content.appendChild(inner);
+  animateTW(inner);
   const inp = content.querySelector('.page-input');
   if (inp) { inp.focus(); wireInput(inp); }
+}
+
+// ─── Animate all [data-tw] elements inside a container ───
+function animateTW(container) {
+  const els = container.querySelectorAll('[data-tw]');
+  els.forEach(el => {
+    const text = el.dataset.tw;
+    el.removeAttribute('data-tw');
+    typeWriterInto(text, el, null, 85);
+  });
 }
 
 function inputHTML() {
@@ -1224,6 +1520,8 @@ function restart() {
   history.length = 0;
   lastUserDisplay = '';
   locked = false;
+  stepCount = 0;
+  betaRating = 0;
   // Reset CCE session
   cceSessionId = null;
   cceActive = false;
@@ -1273,7 +1571,11 @@ function bootOpening() {
   const inner = document.createElement('div');
   inner.className = 'page-content entering';
   inner.innerHTML = `
+    <div class="free-badge">✦ free &nbsp;·&nbsp; private &nbsp;·&nbsp; no judgment</div>
     <div class="ai-prompt" id="opening-prompt"></div>
+    <div class="tagline" id="tagline" style="opacity:0;transition:opacity .5s ease">
+      Pick one — or just type below.
+    </div>
     <div class="emoji-row" id="emoji-row" style="opacity:0;transition:opacity .6s ease">
       <button class="emoji-btn" onclick="emojiSelect('good')" title="doing good">
         <span class="face">😊</span>
@@ -1287,6 +1589,10 @@ function bootOpening() {
         <span class="face">😞</span>
         <span class="label">Rough</span>
       </button>
+    </div>
+    <div id="open-input-wrap" style="opacity:0;transition:opacity .6s ease;margin-top:24px;width:100%;max-width:520px">
+      <input class="page-input" id="open-input" type="text" placeholder="or tell me in your own words..." autocomplete="off" spellcheck="false"/>
+      <div class="input-hint" id="open-hint">press enter to continue</div>
     </div>`;
   content.appendChild(inner);
 
@@ -1295,9 +1601,28 @@ function bootOpening() {
     if (!promptEl) return;
     typeWriterInto(OPENING_TEXT, promptEl, () => {
       setTimeout(() => {
-        const row = document.getElementById('emoji-row');
-        if (row) row.style.opacity = '1';
-      }, 300);
+        const tagline = document.getElementById('tagline');
+        const row     = document.getElementById('emoji-row');
+        const wrap    = document.getElementById('open-input-wrap');
+        if (tagline) tagline.style.opacity = '1';
+        if (row)     row.style.opacity     = '1';
+        setTimeout(() => { if (wrap) wrap.style.opacity = '1'; }, 200);
+        // Wire open text input
+        const inp  = document.getElementById('open-input');
+        const hint = document.getElementById('open-hint');
+        if (inp) {
+          inp.addEventListener('input', () => {
+            if (hint) hint.classList.toggle('ready', inp.value.trim().length > 0);
+          });
+          inp.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const val = inp.value.trim();
+              if (val && !locked) submitText(val);
+            }
+          });
+        }
+      }, 200);
     });
   }, 500);
 }
