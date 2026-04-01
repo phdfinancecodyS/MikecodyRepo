@@ -263,6 +263,23 @@
   .rec-item.local:hover { border-color: #2e2010; }
   .rec-item.local .rec-title { color: #906828; }
 
+  /* ─── Free tag inline badge ─── */
+  .free-tag {
+    display: inline-block;
+    font-size: .5rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #22c55e;
+    border: 1px solid #22c55e44;
+    background: #22c55e0d;
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin-left: 7px;
+    vertical-align: middle;
+    line-height: 1.6;
+  }
+
   /* ─── Restart link ─── */
   .restart-link {
     font-size: .68rem;
@@ -619,47 +636,41 @@ function cceOutcomeHTML(outcome) {
         <div class="rec-icon">📞</div>
         <div class="rec-content">
           <div class="rec-title">${escHtml(r.name || '988 Lifeline')}</div>
-          <div class="rec-desc">${escHtml(r.description || 'Free 24/7 crisis support')}</div>
+          <div class="rec-desc">${escHtml(r.description || '24/7 crisis support — free')}</div>
         </div>
       </a>`).join('');
   }
 
-  const freeRow = outcome.free_resource ? `
-    <a class="rec-item pdf" href="#" onclick="downloadGuide(event)">
-      <div class="rec-icon">📄</div>
-      <div class="rec-content">
-        <div class="rec-title">${escHtml(outcome.free_resource.title)}</div>
-        <div class="rec-desc">${escHtml(outcome.free_resource.description || 'Free guide matched to your situation')}</div>
-      </div>
-    </a>` : '';
-
-  const upsellRows = (outcome.upsell || []).slice(0, 2).map(g =>
-    `<a class="rec-item local" href="#">
-      <div class="rec-icon">📚</div>
-      <div class="rec-content">
-        <div class="rec-title">${escHtml(g.title)}${g.price ? ` — $${Number(g.price).toFixed(0)}` : ''}</div>
-        <div class="rec-desc">In-depth workbook matched to what you shared</div>
-      </div>
-    </a>`).join('');
+  // Use topic-matched guide (or CCE-provided free_resource title if available)
+  const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
+  const guideTitle  = outcome.free_resource ? outcome.free_resource.title  : guide.title;
+  const guideUrl    = outcome.free_resource ? '#'                           : guide.url;
+  const guideOnClick = outcome.free_resource ? 'onclick="downloadGuide(event)"' : '';
 
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
     <div class="ai-prompt" style="font-size:1.05rem;margin-bottom:18px;opacity:.9">${escHtml(outcome.summary)}</div>
+    <div class="rec-label">All free — open right now</div>
     <div class="rec-list">
       ${crisisRows}
-      ${freeRow}
-      ${upsellRows}
-      <a class="rec-item sms" href="sms:+1?body=START">
-        <div class="rec-icon">📱</div>
+      <a class="rec-item pdf" href="${guideUrl}" ${guideOnClick} target="_blank" rel="noopener">
+        <div class="rec-icon">📖</div>
         <div class="rec-content">
-          <div class="rec-title">Daily Check-In Texts</div>
-          <div class="rec-desc">Free daily SMS check-in — no app needed</div>
+          <div class="rec-title">${escHtml(guideTitle)} <span class="free-tag">FREE</span></div>
+          <div class="rec-desc">Open right now — no sign-up, no cost</div>
+        </div>
+      </a>
+      <a class="rec-item pdf" href="/guides/daily-checklist.pdf" target="_blank" rel="noopener">
+        <div class="rec-icon">✅</div>
+        <div class="rec-content">
+          <div class="rec-title">Daily Wellbeing Checklist <span class="free-tag">FREE</span></div>
+          <div class="rec-desc">A short daily check-in you can do in 2 minutes</div>
         </div>
       </a>
       <a class="rec-item local" href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">
         <div class="rec-icon">🧠</div>
         <div class="rec-content">
-          <div class="rec-title">Find a Local Therapist</div>
+          <div class="rec-title">Find a Local Therapist <span class="free-tag">FREE TO SEARCH</span></div>
           <div class="rec-desc">Filter by insurance, specialty, and distance</div>
         </div>
       </a>
@@ -1222,43 +1233,51 @@ function humanDelay(content) {
 
 // ─── Card HTML builders ───
 
+// Topic-specific guide mapping
+const TOPIC_GUIDES = {
+  relationship: { title: 'Connection 101 — Relationships', url: '/guides/connection-101.pdf' },
+  loneliness:   { title: 'Connection 101 — Feeling Alone', url: '/guides/connection-101.pdf' },
+  anxiety:      { title: 'Connection 101 — Anxiety', url: '/guides/connection-101.pdf' },
+  work:         { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.pdf' },
+  loss:         { title: 'Connection 101 — Grief', url: '/guides/connection-101.pdf' },
+  family:       { title: 'Connection 101 — Family Stress', url: '/guides/connection-101.pdf' },
+  recovery:     { title: 'Connection 101 — Recovery', url: '/guides/connection-101.pdf' },
+  general:      { title: 'Connection 101 — Getting Started', url: '/guides/connection-101.pdf' },
+};
+
 function recCardsHTML(crisisLevel) {
   const crisisRow = crisisLevel > 0 ? `
       <a class="rec-item crisis" href="tel:988">
         <div class="rec-icon">📞</div>
         <div class="rec-content">
           <div class="rec-title">Call or Text 988</div>
-          <div class="rec-desc">Suicide &amp; Crisis Lifeline — free, 24/7</div>
+          <div class="rec-desc">Suicide &amp; Crisis Lifeline — 24/7, real people</div>
         </div>
       </a>` : '';
+
+  const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
+
   return `
-    <div class="rec-label">Here's what can actually help</div>
+    <div class="rec-label">Here's what can actually help — all free</div>
     <div class="rec-list">
-      <a class="rec-item sms" href="sms:+1?body=START">
-        <div class="rec-icon">📱</div>
+      <a class="rec-item pdf" href="${guide.url}" target="_blank" rel="noopener">
+        <div class="rec-icon">📖</div>
         <div class="rec-content">
-          <div class="rec-title">Daily Check-In Texts</div>
-          <div class="rec-desc">Get a short SMS check-in each morning — free, no app needed</div>
+          <div class="rec-title">${guide.title} <span class="free-tag">FREE</span></div>
+          <div class="rec-desc">Open right now — no sign-up, no cost</div>
         </div>
       </a>
-      <a class="rec-item pdf" href="#" onclick="downloadGuide(event)">
-        <div class="rec-icon">📄</div>
+      <a class="rec-item pdf" href="/guides/daily-checklist.pdf" target="_blank" rel="noopener">
+        <div class="rec-icon">✅</div>
         <div class="rec-content">
-          <div class="rec-title">Self-Help Guide (PDF)</div>
-          <div class="rec-desc">A free downloadable guide matched to what you're going through</div>
-        </div>
-      </a>
-      <a class="rec-item local" href="https://www.yelp.com/search?find_desc=therapist+mental+health&find_loc=near+me" target="_blank" rel="noopener">
-        <div class="rec-icon">📍</div>
-        <div class="rec-content">
-          <div class="rec-title">Find a Local Therapist</div>
-          <div class="rec-desc">Search clinics and counselors near you on Yelp</div>
+          <div class="rec-title">Daily Wellbeing Checklist <span class="free-tag">FREE</span></div>
+          <div class="rec-desc">A short daily check-in you can do in 2 minutes</div>
         </div>
       </a>
       <a class="rec-item local" href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">
         <div class="rec-icon">🧠</div>
         <div class="rec-content">
-          <div class="rec-title">Psychology Today Directory</div>
+          <div class="rec-title">Find a Local Therapist <span class="free-tag">FREE TO SEARCH</span></div>
           <div class="rec-desc">Filter by insurance, specialty, and distance</div>
         </div>
       </a>
