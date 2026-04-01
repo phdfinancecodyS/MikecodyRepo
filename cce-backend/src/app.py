@@ -122,7 +122,7 @@ async def session_respond(request: Request, session_id: str, body: RespondReques
 # Map chatbot topic → Psychology Today category slug
 TOPIC_TO_PT_CATEGORY = {
     "relationship": "relationship-issues",
-    "loneliness":   "loneliness",
+    "loneliness":   "depression",      # "loneliness" is sparse on PT; depression has broad coverage
     "anxiety":      "anxiety",
     "work":         "stress",
     "loss":         "grief",
