@@ -263,6 +263,75 @@
   .rec-item.local:hover { border-color: #2e2010; }
   .rec-item.local .rec-title { color: #906828; }
 
+  /* ─── Therapist finder widget ─── */
+  .therapist-widget {
+    border: 1px solid #1e160a; background: #080603;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 8px;
+  }
+  .therapist-widget-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .therapist-widget-icon { font-size: 1.3rem; }
+  .therapist-widget-title {
+    font-size: .88rem; font-weight: 600; color: #906828; flex: 1;
+  }
+  .therapist-find-btn {
+    width: 100%; padding: 10px 0; border: 1px solid #2e2010;
+    border-radius: 8px; background: #0e0a04; color: #c08030;
+    font-size: .82rem; font-weight: 600; cursor: pointer;
+    transition: border-color .2s, background .2s; font-family: inherit;
+  }
+  .therapist-find-btn:hover { background: #14100a; border-color: #4a3010; }
+  .therapist-loading {
+    text-align: center; padding: 12px; color: #555; font-size: .8rem;
+  }
+  .therapist-zip-form { display: flex; gap: 8px; margin-top: 8px; }
+  .therapist-zip-input {
+    flex: 1; padding: 8px 12px; background: #080603; border: 1px solid #2e2010;
+    border-radius: 7px; color: #c08030; font-size: .85rem; outline: none;
+    font-family: inherit;
+  }
+  .therapist-zip-input::placeholder { color: #444; }
+  .therapist-zip-submit {
+    padding: 8px 14px; background: #1a1002; border: 1px solid #3a2010;
+    border-radius: 7px; color: #906828; font-size: .82rem; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .therapist-results { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .therapist-card {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: #04030a; border: 1px solid #1a1a2e; border-radius: 8px;
+    padding: 10px 12px; text-decoration: none; transition: border-color .2s;
+  }
+  .therapist-card:hover { border-color: #2a2a4e; }
+  .therapist-avatar {
+    width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+    background: #1a1a2e; flex-shrink: 0;
+  }
+  .therapist-avatar-placeholder {
+    width: 44px; height: 44px; border-radius: 50%; background: #1a1a2e;
+    display: flex; align-items: center; justify-content: center;
+    color: #444; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .therapist-info { flex: 1; min-width: 0; }
+  .therapist-name { font-size: .85rem; font-weight: 600; color: #ccc; }
+  .therapist-cred { font-size: .75rem; color: #555; margin-top: 1px; }
+  .therapist-bio {
+    font-size: .75rem; color: #555; margin-top: 4px; line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .therapist-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+  .therapist-tag {
+    font-size: .6rem; color: #3a7060; border: 1px solid #1a3028;
+    border-radius: 4px; padding: 1px 5px;
+  }
+  .therapist-more-link {
+    display: block; text-align: center; margin-top: 10px;
+    font-size: .75rem; color: #555; text-decoration: none;
+  }
+  .therapist-more-link:hover { color: #906828; }
+  .therapist-error { font-size: .78rem; color: #555; padding: 4px 0 6px; }
+
   /* ─── Free tag inline badge ─── */
   .free-tag {
     display: inline-block;
@@ -667,13 +736,7 @@ function cceOutcomeHTML(outcome) {
           <div class="rec-desc">A short daily check-in you can do in 2 minutes</div>
         </div>
       </a>
-      <a class="rec-item local" href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">
-        <div class="rec-icon">🧠</div>
-        <div class="rec-content">
-          <div class="rec-title">Find a Local Therapist <span class="free-tag">FREE TO SEARCH</span></div>
-          <div class="rec-desc">Filter by insurance, specialty, and distance</div>
-        </div>
-      </a>
+      ${therapistWidgetHTML(ctx.topic || 'general')}
     </div>
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
     <a class="restart-link" onclick="restart()">start over</a>
@@ -1274,17 +1337,151 @@ function recCardsHTML(crisisLevel) {
           <div class="rec-desc">A short daily check-in you can do in 2 minutes</div>
         </div>
       </a>
-      <a class="rec-item local" href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">
-        <div class="rec-icon">🧠</div>
-        <div class="rec-content">
-          <div class="rec-title">Find a Local Therapist <span class="free-tag">FREE TO SEARCH</span></div>
-          <div class="rec-desc">Filter by insurance, specialty, and distance</div>
-        </div>
-      </a>
+      ${therapistWidgetHTML(ctx.topic || 'general')}
       ${crisisRow}
     </div>
     <a class="restart-link" onclick="restart()">start over</a>
     ${betaBarHTML()}`;
+}
+
+// ─── Therapist Finder Widget ────────────────────────────────
+
+let _twSeq = 0;
+
+function therapistWidgetHTML(topic) {
+  const wid = `tw-${++_twSeq}`;
+  const topicSafe = (topic || 'general').replace(/[^a-z_-]/g, '');
+  return `
+  <div class="therapist-widget" id="${wid}">
+    <div class="therapist-widget-header">
+      <span class="therapist-widget-icon">🧠</span>
+      <span class="therapist-widget-title">Find a Local Therapist</span>
+      <span class="free-tag">FREE TO SEARCH</span>
+    </div>
+    <div id="${wid}-body">
+      <button class="therapist-find-btn" onclick="loadTherapists('${wid}','${topicSafe}')">
+        Find Therapists Near Me
+      </button>
+    </div>
+  </div>`;
+}
+
+async function loadTherapists(wid, topic) {
+  const body = document.getElementById(`${wid}-body`);
+  if (!body) return;
+  body.innerHTML = `<div class="therapist-loading">📍 Detecting your location…</div>`;
+
+  let zip = null;
+  try {
+    const pos = await new Promise((res, rej) =>
+      navigator.geolocation.getCurrentPosition(res, rej, { timeout: 7000 })
+    );
+    body.innerHTML = `<div class="therapist-loading">🗺 Looking up your area…</div>`;
+    const geo = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&localityLanguage=en`
+    ).then(r => r.json());
+    zip = (geo.postcode || '').replace(/\s/g, '').slice(0, 5);
+  } catch (_) {
+    _showZipInput(wid, topic, "We couldn't auto-detect your location. Enter your zip:");
+    return;
+  }
+
+  if (!zip || !/^\d{5}$/.test(zip)) {
+    _showZipInput(wid, topic, 'Could not resolve a US zip code. Enter it manually:');
+    return;
+  }
+
+  await _fetchAndRender(wid, topic, zip);
+}
+
+function _showZipInput(wid, topic, msg) {
+  const body = document.getElementById(`${wid}-body`);
+  if (!body) return;
+  body.innerHTML = `
+    <p class="therapist-error">${msg}</p>
+    <div class="therapist-zip-form">
+      <input class="therapist-zip-input" id="${wid}-zip" type="text"
+             inputmode="numeric" maxlength="5" placeholder="e.g. 90210" />
+      <button class="therapist-zip-submit" onclick="_submitZip('${wid}','${topic}')">Search</button>
+    </div>`;
+}
+
+function _submitZip(wid, topic) {
+  const inp = document.getElementById(`${wid}-zip`);
+  if (!inp) return;
+  const zip = inp.value.trim();
+  if (!/^\d{5}$/.test(zip)) { inp.style.borderColor = '#c06060'; return; }
+  _fetchAndRender(wid, topic, zip);
+}
+
+async function _fetchAndRender(wid, topic, zip) {
+  const body = document.getElementById(`${wid}-body`);
+  if (!body) return;
+  body.innerHTML = `<div class="therapist-loading">🔍 Finding therapists near ${zip}…</div>`;
+
+  const ptBase = `https://www.psychologytoday.com/us/therapists/${zip}`;
+  try {
+    const resp = await fetch(
+      `${CCE_BASE}/therapists?zip=${zip}&topic=${encodeURIComponent(topic)}`,
+      { signal: AbortSignal.timeout(16000) }
+    );
+    if (!resp.ok) throw new Error('non-200');
+    const data = await resp.json();
+    _renderResults(wid, data, ptBase);
+  } catch (_) {
+    body.innerHTML = `
+      <p class="therapist-error">Couldn't load results right now.</p>
+      <a class="therapist-more-link" href="${ptBase}" target="_blank" rel="noopener"
+         style="color:#906828;font-size:.85rem">
+        View therapists near ${zip} on Psychology Today →
+      </a>`;
+  }
+}
+
+function _renderResults(wid, data, fallbackUrl) {
+  const body = document.getElementById(`${wid}-body`);
+  if (!body) return;
+  const { therapists = [], pt_search_url, zip } = data;
+
+  if (!therapists.length) {
+    body.innerHTML = `
+      <p class="therapist-error">No results found — view directly:</p>
+      <a class="therapist-more-link" href="${escHtml(pt_search_url || fallbackUrl)}"
+         target="_blank" rel="noopener" style="color:#906828;font-size:.85rem">
+        Browse therapists near ${escHtml(zip)} on Psychology Today →
+      </a>`;
+    return;
+  }
+
+  const cards = therapists.slice(0, 4).map(t => {
+    const av = t.photo
+      ? `<img class="therapist-avatar" src="${escHtml(t.photo)}" alt=""
+             loading="lazy" onerror="this.style.display='none'"/>`
+      : `<div class="therapist-avatar-placeholder">🧠</div>`;
+    const tags = (t.specialties || []).map(s =>
+      `<span class="therapist-tag">${escHtml(s)}</span>`
+    ).join('');
+    const bio = t.bio ? `<div class="therapist-bio">${escHtml(t.bio)}</div>` : '';
+    const credParts = [t.credentials, t.location].filter(Boolean).map(escHtml);
+    const phone = t.phone ? `<span style="color:#3a7060"> · 📞 ${escHtml(t.phone)}</span>` : '';
+    return `
+      <a class="therapist-card" href="${escHtml(t.profile_url)}" target="_blank" rel="noopener">
+        ${av}
+        <div class="therapist-info">
+          <div class="therapist-name">${escHtml(t.name)}</div>
+          <div class="therapist-cred">${credParts.join(' · ')}${phone}</div>
+          ${bio}
+          ${tags ? `<div class="therapist-tags">${tags}</div>` : ''}
+        </div>
+      </a>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div class="therapist-results">${cards}</div>
+    <a class="therapist-more-link" href="${escHtml(pt_search_url || fallbackUrl)}"
+       target="_blank" rel="noopener">
+      View all therapists near ${escHtml(zip)} on Psychology Today →
+    </a>`;
 }
 
 function betaBarHTML() {
