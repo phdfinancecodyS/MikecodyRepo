@@ -1595,19 +1595,19 @@ function therapistWidgetHTML(topic) {
       <div class="therapist-zip-form">
         <input class="therapist-zip-input" id="${wid}-zip" type="text"
                inputmode="numeric" maxlength="5" placeholder="Enter zip code" />
-        <button class="therapist-zip-submit" onclick="_openYelp('${wid}')">Search</button>
+        <button class="therapist-zip-submit" onclick="_openPT('${wid}')">Search</button>
       </div>
     </div>
   </div>`;
 }
 
-function _openYelp(wid) {
+function _openPT(wid) {
   const inp = document.getElementById(`${wid}-zip`);
   if (!inp) return;
   const zip = inp.value.trim();
   if (!/^\d{5}$/.test(zip)) { inp.style.borderColor = '#c06060'; inp.focus(); return; }
   inp.style.borderColor = '';
-  const url = `https://www.yelp.com/search?find_desc=therapists+counselors&find_loc=${zip}`;
+  const url = `https://www.psychologytoday.com/us/therapists?zip=${zip}`;
   window.open(url, '_blank', 'noopener');
 }
 
