@@ -332,21 +332,39 @@
   .therapist-more-link:hover { color: #906828; }
   .therapist-error { font-size: .78rem; color: #555; padding: 4px 0 6px; }
 
-  /* ─── Free tag inline badge ─── */
-  .free-tag {
-    display: inline-block;
-    font-size: .5rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #22c55e;
-    border: 1px solid #22c55e44;
-    background: #22c55e0d;
-    border-radius: 4px;
-    padding: 1px 5px;
-    margin-left: 7px;
-    vertical-align: middle;
-    line-height: 1.6;
+  /* ─── Guide reader drawer ─── */
+  #guide-drawer {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 200;
+    flex-direction: column;
+    background: #000;
+  }
+  #guide-drawer.open { display: flex; animation: guideSlideUp .32s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes guideSlideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  #guide-drawer-bar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px;
+    background: #000;
+    border-bottom: 1px solid #181818;
+    flex-shrink: 0;
+  }
+  #guide-drawer-back {
+    background: none; border: none; color: #888;
+    font-family: inherit; font-size: .82rem;
+    cursor: pointer; display: flex; align-items: center; gap: 5px;
+    padding: 4px 0; transition: color .18s;
+  }
+  #guide-drawer-back:hover { color: #f0ece4; }
+  #guide-drawer-title {
+    flex: 1; font-size: .78rem; font-weight: 600;
+    color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #guide-drawer-frame {
+    flex: 1; border: none; width: 100%; background: #000;
   }
 
   /* ─── Restart link ─── */
@@ -605,6 +623,15 @@
   </div>
 </div>
 
+<!-- Guide Reader Drawer -->
+<div id="guide-drawer">
+  <div id="guide-drawer-bar">
+    <button id="guide-drawer-back" onclick="closeGuide()">← Back</button>
+    <div id="guide-drawer-title"></div>
+  </div>
+  <iframe id="guide-drawer-frame" src="" title="Guide"></iframe>
+</div>
+
 <!-- Beta Feedback Modal -->
 <div id="beta-modal">
   <div class="beta-modal-box">
@@ -712,9 +739,8 @@ function cceOutcomeHTML(outcome) {
 
   // Use topic-matched guide (or CCE-provided free_resource title if available)
   const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
-  const guideTitle  = outcome.free_resource ? outcome.free_resource.title  : guide.title;
-  const guideUrl    = outcome.free_resource ? '#'                           : guide.url;
-  const guideOnClick = outcome.free_resource ? 'onclick="downloadGuide(event)"' : '';
+  const guideTitle = outcome.free_resource ? outcome.free_resource.title : guide.title;
+  const guideUrl   = guide.url; // always open inline reader
 
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
@@ -722,20 +748,20 @@ function cceOutcomeHTML(outcome) {
     <div class="rec-label">All free — open right now</div>
     <div class="rec-list">
       ${crisisRows}
-      <a class="rec-item pdf" href="${guideUrl}" ${guideOnClick} target="_blank" rel="noopener">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guideUrl}', '${escAttr(guideTitle)}')">
         <div class="rec-icon">📖</div>
         <div class="rec-content">
-          <div class="rec-title">${escHtml(guideTitle)} <span class="free-tag">FREE</span></div>
-          <div class="rec-desc">Open right now — no sign-up, no cost</div>
+          <div class="rec-title">${escHtml(guideTitle)}</div>
+          <div class="rec-desc">Read it now — tap to open</div>
         </div>
-      </a>
-      <a class="rec-item pdf" href="/guides/daily-checklist.pdf" target="_blank" rel="noopener">
+      </div>
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('/guides/daily-checklist.html', 'Daily Wellbeing Checklist')">
         <div class="rec-icon">✅</div>
         <div class="rec-content">
-          <div class="rec-title">Daily Wellbeing Checklist <span class="free-tag">FREE</span></div>
-          <div class="rec-desc">A short daily check-in you can do in 2 minutes</div>
+          <div class="rec-title">Daily Wellbeing Checklist</div>
+          <div class="rec-desc">A short daily check-in — tap to open</div>
         </div>
-      </a>
+      </div>
       ${therapistWidgetHTML(ctx.topic || 'general')}
     </div>
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
@@ -812,6 +838,20 @@ function progressDotsHTML(current, total) {
 }
 
 // ─── Beta feedback modal ───
+function openGuide(url, title) {
+  const drawer = document.getElementById('guide-drawer');
+  document.getElementById('guide-drawer-frame').src = url;
+  document.getElementById('guide-drawer-title').textContent = title || '';
+  drawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGuide() {
+  const drawer = document.getElementById('guide-drawer');
+  drawer.classList.remove('open');
+  document.getElementById('guide-drawer-frame').src = '';
+  document.body.style.overflow = '';
+}
+
 function openBetaModal() {
   document.getElementById('beta-modal').classList.add('open');
 }
@@ -1467,19 +1507,19 @@ function humanDelay(content) {
 
 // Topic-specific guide mapping
 const TOPIC_GUIDES = {
-  relationship:   { title: 'Connection 101 — Relationships', url: '/guides/connection-101.pdf' },
-  loneliness:     { title: 'Connection 101 — Feeling Alone', url: '/guides/connection-101.pdf' },
-  anxiety:        { title: 'Connection 101 — Anxiety', url: '/guides/connection-101.pdf' },
-  work:           { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.pdf' },
-  loss:           { title: 'Connection 101 — Grief', url: '/guides/connection-101.pdf' },
-  family:         { title: 'Connection 101 — Family Stress', url: '/guides/connection-101.pdf' },
-  recovery:       { title: 'Connection 101 — Recovery', url: '/guides/connection-101.pdf' },
-  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds', url: '/guides/connection-101.pdf' },
-  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain', url: '/guides/connection-101.pdf' },
-  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: '/guides/connection-101.pdf' },
-  burnout:        { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.pdf' },
-  eating:         { title: 'Connection 101 — Body & Food Stress', url: '/guides/connection-101.pdf' },
-  general:        { title: 'Connection 101 — Getting Started', url: '/guides/connection-101.pdf' },
+  relationship:   { title: 'Connection 101 — Relationships', url: '/guides/connection-101.html' },
+  loneliness:     { title: 'Connection 101 — Feeling Alone', url: '/guides/connection-101.html' },
+  anxiety:        { title: 'Connection 101 — Anxiety', url: '/guides/connection-101.html' },
+  work:           { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.html' },
+  loss:           { title: 'Connection 101 — Grief', url: '/guides/connection-101.html' },
+  family:         { title: 'Connection 101 — Family Stress', url: '/guides/connection-101.html' },
+  recovery:       { title: 'Connection 101 — Recovery', url: '/guides/connection-101.html' },
+  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds', url: '/guides/connection-101.html' },
+  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain', url: '/guides/connection-101.html' },
+  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: '/guides/connection-101.html' },
+  burnout:        { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.html' },
+  eating:         { title: 'Connection 101 — Body & Food Stress', url: '/guides/connection-101.html' },
+  general:        { title: 'Connection 101 — Getting Started', url: '/guides/connection-101.html' },
 };
 
 function recCardsHTML(crisisLevel) {
@@ -1495,22 +1535,22 @@ function recCardsHTML(crisisLevel) {
   const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
 
   return `
-    <div class="rec-label">Here's what can actually help — all free</div>
+    <div class="rec-label">Here's what can actually help</div>
     <div class="rec-list">
-      <a class="rec-item pdf" href="${guide.url}" target="_blank" rel="noopener">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guide.url}', '${guide.title.replace(/'/g, "\\'")}')"> 
         <div class="rec-icon">📖</div>
         <div class="rec-content">
-          <div class="rec-title">${guide.title} <span class="free-tag">FREE</span></div>
-          <div class="rec-desc">Open right now — no sign-up, no cost</div>
+          <div class="rec-title">${guide.title}</div>
+          <div class="rec-desc">Read it now — tap to open</div>
         </div>
-      </a>
-      <a class="rec-item pdf" href="/guides/daily-checklist.pdf" target="_blank" rel="noopener">
+      </div>
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('/guides/daily-checklist.html', 'Daily Wellbeing Checklist')">
         <div class="rec-icon">✅</div>
         <div class="rec-content">
-          <div class="rec-title">Daily Wellbeing Checklist <span class="free-tag">FREE</span></div>
-          <div class="rec-desc">A short daily check-in you can do in 2 minutes</div>
+          <div class="rec-title">Daily Wellbeing Checklist</div>
+          <div class="rec-desc">A short daily check-in — tap to open</div>
         </div>
-      </a>
+      </div>
       ${therapistWidgetHTML(ctx.topic || 'general')}
       ${crisisRow}
     </div>
@@ -1539,7 +1579,7 @@ function therapistWidgetHTML(topic) {
     <div class="therapist-widget-header">
       <span class="therapist-widget-icon">🧠</span>
       <span class="therapist-widget-title">Find a Local Therapist</span>
-      <span class="free-tag">FREE TO SEARCH</span>
+
     </div>
     <div id="${wid}-body">
       <button class="therapist-find-btn" onclick="loadTherapists('${wid}','${topicSafe}')">
