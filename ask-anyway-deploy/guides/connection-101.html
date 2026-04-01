@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Connection 101 — Ask Anyway</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg: #000;
+    --surface: #080808;
+    --border: #181818;
+    --text: #f0ece4;
+    --muted: #888;
+    --dim: #555;
+    --accent: #f0ece4;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ─── Header ─── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #000000ee;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .header-brand {
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--dim);
+    white-space: nowrap;
+  }
+
+  .header-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .free-pill {
+    font-size: .52rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #22c55e;
+    border: 1px solid #22c55e44;
+    background: #22c55e0d;
+    border-radius: 99px;
+    padding: 3px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ─── Main layout ─── */
+  .wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    margin-bottom: 56px;
+  }
+
+  .hero-eyebrow {
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    margin-bottom: 20px;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .author-note {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 28px;
+  }
+
+  .author-icon { font-size: 1.4rem; flex-shrink:0; margin-top:2px; }
+  .author-text { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+  .author-text strong { color: #bbb; font-weight: 600; }
+
+  /* ─── Section ─── */
+  .section {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    margin-bottom: 48px;
+  }
+
+  .section-num {
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -.02em;
+    margin-bottom: 18px;
+  }
+
+  p {
+    color: #b0aca5;
+    margin-bottom: 16px;
+    font-size: .95rem;
+  }
+
+  p strong { color: var(--text); font-weight: 600; }
+
+  /* ─── Script blocks ─── */
+  .script-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid #444;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: .92rem;
+    color: #d4d0c8;
+    line-height: 1.65;
+  }
+
+  .script-block em { font-style: normal; color: var(--dim); font-size: .8rem; display:block; margin-bottom:6px; }
+
+  /* ─── Do / Don't table ─── */
+  .dd-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: .85rem;
+  }
+
+  .dd-table th {
+    text-align: left;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dd-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #101010;
+    color: #999;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .dd-table td:first-child { color: #c0786e; }
+  .dd-table td:last-child  { color: #8eb898; }
+
+  /* ─── Steps ─── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .step-num {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+    margin-top: 1px;
+  }
+
+  .step-body { flex: 1; }
+  .step-title { font-weight: 600; color: var(--text); margin-bottom: 4px; font-size: .9rem; }
+  .step-desc  { font-size: .83rem; color: var(--muted); line-height: 1.55; }
+
+  /* ─── Callout ─── */
+  .callout {
+    background: #0a0e0a;
+    border: 1px solid #1a2e1a;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: .88rem;
+    color: #8eb898;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: #aed8b8; }
+
+  /* ─── Crisis pill ─── */
+  .crisis-block {
+    background: #0a0000;
+    border: 1px solid #2a0a0a;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin: 24px 0;
+  }
+
+  .crisis-block h3 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    color: #c06060;
+    margin-bottom: 12px;
+    letter-spacing: -.01em;
+  }
+
+  .crisis-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a0808;
+    font-size: .85rem;
+    color: #a08080;
+  }
+
+  .crisis-row:last-child { border-bottom: none; }
+  .crisis-row a { color: #c06060; text-decoration: none; }
+  .crisis-row a:hover { text-decoration: underline; }
+
+  /* ─── Resource list ─── */
+  .res-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .res-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: border-color .18s, background .18s;
+  }
+
+  .res-item:hover { background: #0d0d0d; border-color: #282828; }
+  .res-icon { font-size: 1.1rem; width: 22px; text-align:center; flex-shrink:0; }
+  .res-content { flex: 1; }
+  .res-title { font-size: .88rem; font-weight: 600; color: #ccc; }
+  .res-url   { font-size: .72rem; color: var(--dim); margin-top: 1px; }
+
+  /* ─── Bottom nav ─── */
+  .bottom-nav {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .78rem;
+    color: var(--dim);
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: color .18s;
+  }
+
+  .back-link:hover { color: var(--muted); }
+
+  .checklist-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-decoration: none;
+    transition: border-color .18s, background .18s;
+    width: 100%;
+  }
+
+  .checklist-cta:hover { background: #0d0d0d; border-color: #333; }
+  .checklist-cta-text { flex: 1; }
+  .checklist-cta-title { font-size: .9rem; font-weight: 600; color: #ccc; }
+  .checklist-cta-sub   { font-size: .72rem; color: var(--dim); margin-top: 2px; }
+
+  /* ─── Footer ─── */
+  footer {
+    margin-top: 48px;
+    border-top: 1px solid var(--border);
+    padding: 24px 0 0;
+    font-size: .7rem;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  footer strong { color: #444; }
+  footer a { color: #444; text-decoration: none; }
+
+  @media (max-width: 500px) {
+    .wrapper { padding: 32px 20px 64px; }
+    .hero-title { font-size: 1.8rem; }
+    header { padding: 12px 16px; }
+    .dd-table { font-size: .78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-brand">Ask Anyway</div>
+    <div class="header-title">Connection 101</div>
+  </div>
+  <div class="free-pill">✦ Free</div>
+</header>
+
+<div class="wrapper">
+
+  <!-- ─── Hero ─── -->
+  <div class="hero">
+    <div class="hero-eyebrow">Connection 101</div>
+    <h1 class="hero-title">What to Say When You're Worried About Someone</h1>
+    <p class="hero-sub">You've noticed something's off. Maybe they've been quieter, canceling plans, or said something that didn't quite sit right. This guide walks you through exactly what to say — and what not to say.</p>
+
+    <div class="author-note">
+      <div class="author-icon">✍️</div>
+      <div class="author-text">
+        <strong>Written by a Licensed Clinical Social Worker and someone who lost a best friend to suicide</strong> — because the world is full of people who care deeply but feel completely frozen around this one conversation. That's not a character flaw. It's a skill gap. Skills can be learned.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Section 1 ─── -->
+  <div class="section">
+    <div class="section-num">Step 1</div>
+    <h2 class="section-title">The Problem (You Already Know This One)</h2>
+    <p>Your gut says something's wrong. And then your brain says: <strong>What if I ask and make it worse? What if I say the wrong thing? What if I'm overreacting?</strong></p>
+    <p>So you don't ask. You tell yourself you'll bring it up later. Or you drop a vague text. Or you mention it to someone else instead.</p>
+    <div class="callout">
+      <strong>Here's what we know:</strong> In almost every case where someone dies by suicide, people around them saw warning signs they didn't know how to approach. Not because they didn't care. Because they didn't know <em>how</em>.
+    </div>
+  </div>
+
+  <!-- ─── Section 2 ─── -->
+  <div class="section">
+    <div class="section-num">Step 2</div>
+    <h2 class="section-title">Why Being Indirect Doesn't Work</h2>
+    <p>When we're scared, we soften the conversation. We hope they'll pick up what we're putting down. We ask <em>"Are you okay?"</em> and hope they'll volunteer the truth.</p>
+    <p>That's not how this works. People who are struggling are expert at saying <strong>"I'm fine."</strong> They've practiced it. It's the default away-message for pain.</p>
+    <p>The indirect approach gives people an out. You need a different strategy. <strong>You need to ask directly.</strong></p>
+  </div>
+
+  <!-- ─── Section 3 ─── -->
+  <div class="section">
+    <div class="section-num">Step 3</div>
+    <h2 class="section-title">The Words — Ready to Use</h2>
+    <p>You'll use three sets of words. Here they are.</p>
+
+    <p style="color:#888;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;margin-top:24px">Opening the door</p>
+    <div class="script-block">
+      <em>Find a private moment. Sit. Look at them.</em>
+      "I've noticed you seem [different / withdrawn / not yourself] lately, and I care about you. I want to ask you something, and I need you to know I'm asking because I care, not because I'm judging. Can I ask you something real?"
+      <br><br><em>Wait for them to nod or say yes.</em>
+    </div>
+
+    <p style="color:#888;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;margin-top:24px">The direct ask</p>
+    <div class="script-block">
+      "Are you thinking about suicide?"
+      <br><br><em>Or if that feels impossible:</em><br>
+      "Are you thinking about hurting yourself?"<br>
+      "Have you thought about ending your life?"
+    </div>
+
+    <p style="color:#888;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;margin-top:24px">If they say yes</p>
+    <div class="script-block">
+      <em>Your only job is to not end the conversation. Stay.</em><br><br>
+      "Thank you for telling me. I'm really glad you did. I'm not going anywhere. Can you tell me more about what's been going on?"
+      <br><br><em>Then listen. Don't try to fix. Don't argue. Just listen and stay present.</em>
+    </div>
+  </div>
+
+  <!-- ─── Section 4 ─── -->
+  <div class="section">
+    <div class="section-num">Step 4</div>
+    <h2 class="section-title">What Kills the Conversation</h2>
+    <p>Here's what NOT to say — and why it backfires.</p>
+
+    <table class="dd-table">
+      <thead>
+        <tr>
+          <th>What you might say</th>
+          <th>What actually works</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"You have so much to live for"</td>
+          <td>"Tell me what's been making you feel like this"</td>
+        </tr>
+        <tr>
+          <td>"You should just talk to someone"</td>
+          <td>"I'm here. Can we figure out professional support together?"</td>
+        </tr>
+        <tr>
+          <td>"Other people have it worse"</td>
+          <td>Say nothing. Just listen.</td>
+        </tr>
+        <tr>
+          <td>"I had no idea you felt this way"</td>
+          <td>"I'm really glad you told me."</td>
+        </tr>
+        <tr>
+          <td>"Promise me you won't do anything"</td>
+          <td>"I want to help you stay safe. Can we talk about that?"</td>
+        </tr>
+        <tr>
+          <td>"Maybe you just need to think positive"</td>
+          <td>Stay silent and listen.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>The pattern:</strong> The things that feel helpful are often the things that stop the conversation. The things that actually help are: staying present, validating their experience, and listening without trying to solve it immediately.
+    </div>
+  </div>
+
+  <!-- ─── Section 5 ─── -->
+  <div class="section">
+    <div class="section-num">Step 5</div>
+    <h2 class="section-title">If They Confirm — Your Next 3 Steps</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Stay and listen — don't transfer responsibility</div>
+          <div class="step-desc">Your job is NOT to be their therapist. Your job is to not end the conversation and help them connect to professional support. Ask: "How long have you been feeling this way? What's been happening?" Let them talk.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Understand how serious it is</div>
+          <div class="step-desc">You don't need to diagnose anything. Ask: "Do you have a plan for how you would do it?" and "Are you planning to act on this soon?" Their answers tell you whether this is today-level or this-week-level urgency.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Connect them to help — together</div>
+          <div class="step-desc">Don't just say "call this number." If it's active crisis, call 988 together from your phone, or go to the nearest ER together. Don't leave them alone. If it's ongoing struggle, help them make the call or appointment. Check in tomorrow. Check in next week.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="crisis-block">
+      <h3>🚨 Immediate support — always free</h3>
+      <div class="crisis-row">
+        <span>📞</span>
+        <span>Call or text <a href="tel:988">988</a> — Suicide &amp; Crisis Lifeline, 24/7, real people</span>
+      </div>
+      <div class="crisis-row">
+        <span>💬</span>
+        <span>Text HOME to <a href="sms:741741&body=HOME">741741</a> — Crisis Text Line, from anywhere</span>
+      </div>
+      <div class="crisis-row">
+        <span>🚑</span>
+        <span>Call <a href="tel:911">911</a> if someone is in immediate danger</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Section 6 ─── -->
+  <div class="section">
+    <div class="section-num">Closing</div>
+    <h2 class="section-title">You're Not Responsible for Saving Them</h2>
+    <p>You asked. You stayed. You listened. You helped them connect to help. <strong>That took courage.</strong></p>
+    <p>You are not responsible for making them better. Your job was to have a real conversation and help them connect to professional support.</p>
+    <p>But your conversation mattered. From here, the actual healing work can begin.</p>
+  </div>
+
+  <!-- ─── Resources ─── -->
+  <div class="section">
+    <div class="section-num">Resources</div>
+    <h2 class="section-title">Free Support — Always Available</h2>
+
+    <div class="res-list">
+      <a class="res-item" href="tel:988">
+        <div class="res-icon">📞</div>
+        <div class="res-content">
+          <div class="res-title">988 Suicide &amp; Crisis Lifeline</div>
+          <div class="res-url">Call or text 988 — 24/7, English and Spanish</div>
+        </div>
+      </a>
+      <a class="res-item" href="sms:741741&body=HOME">
+        <div class="res-icon">💬</div>
+        <div class="res-content">
+          <div class="res-title">Crisis Text Line</div>
+          <div class="res-url">Text HOME to 741741 — 24/7, text from anywhere</div>
+        </div>
+      </a>
+      <a class="res-item" href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener">
+        <div class="res-icon">🧠</div>
+        <div class="res-content">
+          <div class="res-title">Find a Therapist — Psychology Today</div>
+          <div class="res-url">psychologytoday.com — filter by insurance, specialty, distance</div>
+        </div>
+      </a>
+      <a class="res-item" href="https://openpathcollective.org" target="_blank" rel="noopener">
+        <div class="res-icon">💛</div>
+        <div class="res-content">
+          <div class="res-title">Open Path Collective</div>
+          <div class="res-url">openpathcollective.org — low-cost therapy sessions</div>
+        </div>
+      </a>
+      <a class="res-item" href="https://www.nami.org/help" target="_blank" rel="noopener">
+        <div class="res-icon">🤝</div>
+        <div class="res-content">
+          <div class="res-title">NAMI Helpline</div>
+          <div class="res-url">1-800-950-6264 — free support &amp; referrals</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ─── Bottom nav ─── -->
+  <div class="bottom-nav">
+    <a class="checklist-cta" href="./daily-checklist.html">
+      <span style="font-size:1.3rem">✅</span>
+      <div class="checklist-cta-text">
+        <div class="checklist-cta-title">Daily Wellbeing Checklist</div>
+        <div class="checklist-cta-sub">A 2-minute check-in for yourself — free</div>
+      </div>
+      <span style="color:#444;font-size:.9rem">→</span>
+    </a>
+    <a class="back-link" href="../index.html">← Back to Ask Anyway</a>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <p><strong>988 Suicide &amp; Crisis Lifeline</strong> — Available 24/7 — Call or Text <a href="tel:988">988</a></p>
+    <p style="margin-top:8px">This guide is educational — not therapy, not a diagnosis. If you're in crisis, contact 988 or text HOME to 741741. <a href="https://www.988lifeline.org" target="_blank">988lifeline.org</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
