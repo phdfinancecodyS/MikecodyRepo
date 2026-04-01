@@ -668,6 +668,15 @@ const CHATBASE_API_URL = 'https://www.chatbase.co/api/v1/chat';
 // ─────────────────────────────────────────────────────────────
 const CCE_BASE  = 'http://localhost:8000';
 const CCE_TREE  = 'main-flow';
+
+// Guide base path — auto-detects local dev vs deployed
+const GUIDES_BASE = (() => {
+  const p = window.location.pathname;
+  // Local dev: served as /ask-anyway-chat.html from Documents root
+  if (p === '/ask-anyway-chat.html' || p.endsWith('/ask-anyway-chat.html')) return 'ask-anyway-deploy/guides';
+  // Deployed: index.html lives inside ask-anyway-deploy/ so guides are at /guides/
+  return '/guides';
+})();
 let cceSessionId = null;
 let cceActive    = false;
 
@@ -740,7 +749,7 @@ function cceOutcomeHTML(outcome) {
   // Use topic-matched guide (or CCE-provided free_resource title if available)
   const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
   const guideTitle = outcome.free_resource ? outcome.free_resource.title : guide.title;
-  const guideUrl   = guide.url; // always open inline reader
+  const guideUrl   = guide.url(); // always open inline reader
 
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
@@ -755,7 +764,7 @@ function cceOutcomeHTML(outcome) {
           <div class="rec-desc">Read it now — tap to open</div>
         </div>
       </div>
-      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('/guides/daily-checklist.html', 'Daily Wellbeing Checklist')">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide(`${GUIDES_BASE}/daily-checklist.html`, 'Daily Wellbeing Checklist')">
         <div class="rec-icon">✅</div>
         <div class="rec-content">
           <div class="rec-title">Daily Wellbeing Checklist</div>
@@ -1507,19 +1516,19 @@ function humanDelay(content) {
 
 // Topic-specific guide mapping
 const TOPIC_GUIDES = {
-  relationship:   { title: 'Connection 101 — Relationships', url: '/guides/connection-101.html' },
-  loneliness:     { title: 'Connection 101 — Feeling Alone', url: '/guides/connection-101.html' },
-  anxiety:        { title: 'Connection 101 — Anxiety', url: '/guides/connection-101.html' },
-  work:           { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.html' },
-  loss:           { title: 'Connection 101 — Grief', url: '/guides/connection-101.html' },
-  family:         { title: 'Connection 101 — Family Stress', url: '/guides/connection-101.html' },
-  recovery:       { title: 'Connection 101 — Recovery', url: '/guides/connection-101.html' },
-  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds', url: '/guides/connection-101.html' },
-  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain', url: '/guides/connection-101.html' },
-  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: '/guides/connection-101.html' },
-  burnout:        { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.html' },
-  eating:         { title: 'Connection 101 — Body & Food Stress', url: '/guides/connection-101.html' },
-  general:        { title: 'Connection 101 — Getting Started', url: '/guides/connection-101.html' },
+  relationship:   { title: 'Connection 101 — Relationships',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  loneliness:     { title: 'Connection 101 — Feeling Alone',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  anxiety:        { title: 'Connection 101 — Anxiety',                    url: () => `${GUIDES_BASE}/connection-101.html` },
+  work:           { title: 'Connection 101 — Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
+  loss:           { title: 'Connection 101 — Grief',                      url: () => `${GUIDES_BASE}/connection-101.html` },
+  family:         { title: 'Connection 101 — Family Stress',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  recovery:       { title: 'Connection 101 — Recovery',                   url: () => `${GUIDES_BASE}/connection-101.html` },
+  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds',       url: () => `${GUIDES_BASE}/connection-101.html` },
+  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain',     url: () => `${GUIDES_BASE}/connection-101.html` },
+  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: () => `${GUIDES_BASE}/connection-101.html` },
+  burnout:        { title: 'Connection 101 — Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
+  eating:         { title: 'Connection 101 — Body & Food Stress',         url: () => `${GUIDES_BASE}/connection-101.html` },
+  general:        { title: 'Connection 101 — Getting Started',            url: () => `${GUIDES_BASE}/connection-101.html` },
 };
 
 function recCardsHTML(crisisLevel) {
@@ -1537,14 +1546,14 @@ function recCardsHTML(crisisLevel) {
   return `
     <div class="rec-label">Here's what can actually help</div>
     <div class="rec-list">
-      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guide.url}', '${guide.title.replace(/'/g, "\\'")}')"> 
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guide.url()}', '${guide.title.replace(/'/g, "\\'")}')">
         <div class="rec-icon">📖</div>
         <div class="rec-content">
           <div class="rec-title">${guide.title}</div>
           <div class="rec-desc">Read it now — tap to open</div>
         </div>
       </div>
-      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('/guides/daily-checklist.html', 'Daily Wellbeing Checklist')">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide(`${GUIDES_BASE}/daily-checklist.html`, 'Daily Wellbeing Checklist')">
         <div class="rec-icon">✅</div>
         <div class="rec-content">
           <div class="rec-title">Daily Wellbeing Checklist</div>
@@ -1573,138 +1582,30 @@ let _twSeq = 0;
 
 function therapistWidgetHTML(topic) {
   const wid = `tw-${++_twSeq}`;
-  const topicSafe = (topic || 'general').replace(/[^a-z_-]/g, '');
   return `
   <div class="therapist-widget" id="${wid}">
     <div class="therapist-widget-header">
       <span class="therapist-widget-icon">🧠</span>
       <span class="therapist-widget-title">Find a Local Therapist</span>
-
     </div>
     <div id="${wid}-body">
-      <button class="therapist-find-btn" onclick="loadTherapists('${wid}','${topicSafe}')">
-        Find Therapists Near Me
-      </button>
+      <div class="therapist-zip-form">
+        <input class="therapist-zip-input" id="${wid}-zip" type="text"
+               inputmode="numeric" maxlength="5" placeholder="Enter zip code" />
+        <button class="therapist-zip-submit" onclick="_openYelp('${wid}')">Search</button>
+      </div>
     </div>
   </div>`;
 }
 
-async function loadTherapists(wid, topic) {
-  const body = document.getElementById(`${wid}-body`);
-  if (!body) return;
-  body.innerHTML = `<div class="therapist-loading">📍 Detecting your location…</div>`;
-
-  let zip = null;
-  try {
-    const pos = await new Promise((res, rej) =>
-      navigator.geolocation.getCurrentPosition(res, rej, { timeout: 7000 })
-    );
-    body.innerHTML = `<div class="therapist-loading">🗺 Looking up your area…</div>`;
-    const geo = await fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&localityLanguage=en`
-    ).then(r => r.json());
-    zip = (geo.postcode || '').replace(/\s/g, '').slice(0, 5);
-  } catch (_) {
-    _showZipInput(wid, topic, "We couldn't auto-detect your location. Enter your zip:");
-    return;
-  }
-
-  if (!zip || !/^\d{5}$/.test(zip)) {
-    _showZipInput(wid, topic, 'Could not resolve a US zip code. Enter it manually:');
-    return;
-  }
-
-  await _fetchAndRender(wid, topic, zip);
-}
-
-function _showZipInput(wid, topic, msg) {
-  const body = document.getElementById(`${wid}-body`);
-  if (!body) return;
-  body.innerHTML = `
-    <p class="therapist-error">${msg}</p>
-    <div class="therapist-zip-form">
-      <input class="therapist-zip-input" id="${wid}-zip" type="text"
-             inputmode="numeric" maxlength="5" placeholder="e.g. 90210" />
-      <button class="therapist-zip-submit" onclick="_submitZip('${wid}','${topic}')">Search</button>
-    </div>`;
-}
-
-function _submitZip(wid, topic) {
+function _openYelp(wid) {
   const inp = document.getElementById(`${wid}-zip`);
   if (!inp) return;
   const zip = inp.value.trim();
-  if (!/^\d{5}$/.test(zip)) { inp.style.borderColor = '#c06060'; return; }
-  _fetchAndRender(wid, topic, zip);
-}
-
-async function _fetchAndRender(wid, topic, zip) {
-  const body = document.getElementById(`${wid}-body`);
-  if (!body) return;
-  body.innerHTML = `<div class="therapist-loading">🔍 Finding therapists near ${zip}…</div>`;
-
-  const ptBase = `https://www.psychologytoday.com/us/therapists/${zip}`;
-  try {
-    const resp = await fetch(
-      `${CCE_BASE}/therapists?zip=${zip}&topic=${encodeURIComponent(topic)}`,
-      { signal: AbortSignal.timeout(16000) }
-    );
-    if (!resp.ok) throw new Error('non-200');
-    const data = await resp.json();
-    _renderResults(wid, data, ptBase);
-  } catch (_) {
-    body.innerHTML = `
-      <p class="therapist-error">Couldn't load results right now.</p>
-      <a class="therapist-more-link" href="${ptBase}" target="_blank" rel="noopener"
-         style="color:#906828;font-size:.85rem">
-        View therapists near ${zip} on Psychology Today →
-      </a>`;
-  }
-}
-
-function _renderResults(wid, data, fallbackUrl) {
-  const body = document.getElementById(`${wid}-body`);
-  if (!body) return;
-  const { therapists = [], pt_search_url, zip } = data;
-
-  if (!therapists.length) {
-    body.innerHTML = `
-      <p class="therapist-error">No results found — view directly:</p>
-      <a class="therapist-more-link" href="${escHtml(pt_search_url || fallbackUrl)}"
-         target="_blank" rel="noopener" style="color:#906828;font-size:.85rem">
-        Browse therapists near ${escHtml(zip)} on Psychology Today →
-      </a>`;
-    return;
-  }
-
-  const cards = therapists.slice(0, 4).map(t => {
-    const av = t.photo
-      ? `<img class="therapist-avatar" src="${escHtml(t.photo)}" alt=""
-             loading="lazy" onerror="this.style.display='none'"/>`
-      : `<div class="therapist-avatar-placeholder">🧠</div>`;
-    const tags = (t.specialties || []).map(s =>
-      `<span class="therapist-tag">${escHtml(s)}</span>`
-    ).join('');
-    const bio = t.bio ? `<div class="therapist-bio">${escHtml(t.bio)}</div>` : '';
-    const credParts = [t.credentials, t.location].filter(Boolean).map(escHtml);
-    const phone = t.phone ? `<span style="color:#3a7060"> · 📞 ${escHtml(t.phone)}</span>` : '';
-    return `
-      <a class="therapist-card" href="${escHtml(t.profile_url)}" target="_blank" rel="noopener">
-        ${av}
-        <div class="therapist-info">
-          <div class="therapist-name">${escHtml(t.name)}</div>
-          <div class="therapist-cred">${credParts.join(' · ')}${phone}</div>
-          ${bio}
-          ${tags ? `<div class="therapist-tags">${tags}</div>` : ''}
-        </div>
-      </a>`;
-  }).join('');
-
-  body.innerHTML = `
-    <div class="therapist-results">${cards}</div>
-    <a class="therapist-more-link" href="${escHtml(pt_search_url || fallbackUrl)}"
-       target="_blank" rel="noopener">
-      View all therapists near ${escHtml(zip)} on Psychology Today →
-    </a>`;
+  if (!/^\d{5}$/.test(zip)) { inp.style.borderColor = '#c06060'; inp.focus(); return; }
+  inp.style.borderColor = '';
+  const url = `https://www.yelp.com/search?find_desc=therapists+counselors&find_loc=${zip}`;
+  window.open(url, '_blank', 'noopener');
 }
 
 function betaBarHTML() {
