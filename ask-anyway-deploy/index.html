@@ -749,7 +749,8 @@ function cceOutcomeHTML(outcome) {
   // Use topic-matched guide (or CCE-provided free_resource title if available)
   const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
   const guideTitle = outcome.free_resource ? outcome.free_resource.title : guide.title;
-  const guideUrl   = guide.url(); // always open inline reader
+  const guideUrl   = guide.url();
+  const dailyUrl   = GUIDES_BASE + '/daily-checklist.html';
 
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
@@ -764,7 +765,7 @@ function cceOutcomeHTML(outcome) {
           <div class="rec-desc">Read it now — tap to open</div>
         </div>
       </div>
-      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide(`${GUIDES_BASE}/daily-checklist.html`, 'Daily Wellbeing Checklist')">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
         <div class="rec-icon">✅</div>
         <div class="rec-content">
           <div class="rec-title">Daily Wellbeing Checklist</div>
@@ -1542,18 +1543,20 @@ function recCardsHTML(crisisLevel) {
       </a>` : '';
 
   const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
+  const guideUrl  = guide.url();
+  const dailyUrl  = GUIDES_BASE + '/daily-checklist.html';
 
   return `
     <div class="rec-label">Here's what can actually help</div>
     <div class="rec-list">
-      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guide.url()}', '${guide.title.replace(/'/g, "\\'")}')">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guideUrl}', '${guide.title.replace(/'/g, "\\'")}')">
         <div class="rec-icon">📖</div>
         <div class="rec-content">
           <div class="rec-title">${guide.title}</div>
           <div class="rec-desc">Read it now — tap to open</div>
         </div>
       </div>
-      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide(`${GUIDES_BASE}/daily-checklist.html`, 'Daily Wellbeing Checklist')">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
         <div class="rec-icon">✅</div>
         <div class="rec-content">
           <div class="rec-title">Daily Wellbeing Checklist</div>
