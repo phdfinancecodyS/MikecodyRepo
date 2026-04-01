@@ -917,21 +917,31 @@ function analyze(t) {
 //  DETECTION HELPERS  (keyword-first, sentiment fallback)
 // ─────────────────────────────────────────────────────────────
 
+function isHedging(t) {
+  // "Fine", "okay", "meh", "alright", "not bad", "surviving" etc.
+  // People use these to downplay. Treat as not-good with a gentle callout.
+  return /^(meh|okay|ok|fine|alright|not bad|i guess|surviving|managing|hanging in there|could be better|same old|same as always|i don't know|idk|not sure|so-so|just okay|just ok|just fine|just alright|kind of|kinda)([.!?,\s]|$)/.test(t)
+    || /\bi.?m (okay|ok|fine|alright|meh|surviving|managing|hanging in there|not bad|just|i guess)/.test(t)
+    || /things are (okay|fine|alright|the same|not great)/.test(t);
+}
+
 function isGood(t) {
-  // Keyword fast-path
-  if (/^(good|great|fine|okay|ok|not bad|alright|pretty good|doing well|doing great|blessed|fantastic|amazing|wonderful|solid|well)([.!,\s]|$)/.test(t)
-    || /\bi.?m (good|great|fine|okay|doing well|doing great|alright|blessed|fantastic)/.test(t)
-    || /things are (good|great|okay|fine|well|going well)/.test(t)) return true;
-  // Sentiment fallback — clearly positive
-  return analyze(t).score > 0.25;
+  // Only fire on clearly enthusiastic positivity — NOT hedging words like okay/fine/meh
+  if (/^(great|doing great|doing well|pretty good|doing really well|blessed|fantastic|amazing|wonderful|thriving|excellent|really good)([.!,\s]|$)/.test(t)
+    || /\bi.?m (great|doing great|doing well|doing really well|blessed|fantastic|amazing|wonderful|thriving|really good|feeling great|feeling good|feeling amazing)/.test(t)
+    || /things are (great|going well|really good|amazing|wonderful|fantastic)/.test(t)) return true;
+  // Sentiment fallback — must be strongly positive, not just neutral
+  return analyze(t).score > 0.4;
 }
 
 function isNotGood(t) {
-  // Keyword fast-path
+  // Keyword fast-path — explicit negative signals
   if (/(not (okay|ok|doing well|good|great|feeling well)|struggling|overwhelmed|exhausted|burnt out|can.?t cope|falling apart|going through|dark place|depressed|anxious|panic|numb|lost|empty|alone|hopeless|worthless|tired of|can.?t sleep|can.?t eat|rough|hard time|difficult|bad day|bad week|stressed|broke up|breakup|lost my|fired|laid off|grief|grieving|mourning|worried|scared|not sure)/.test(t)
     || /(my (girlfriend|boyfriend|partner|wife|husband|gf|bf|mom|dad|friend|job|dog|cat)|i got|i lost|we broke|she left|he left|they left)/.test(t)) return true;
-  // Sentiment fallback — clearly negative
-  return analyze(t).score < -0.15;
+  // Hedging = assumed struggling — people downplay
+  if (isHedging(t)) return true;
+  // Sentiment fallback — anything not clearly positive gets treated as not-good
+  return analyze(t).score < 0;
 }
 
 function isCrisis(t) {
@@ -1082,6 +1092,16 @@ function ngS1(userText) {
   stage = Stage.NG_S2;
   ctx.topic = detectTopic(userText.toLowerCase());
   ctx.audience = detectAudience(userText.toLowerCase()) || ctx.audience;
+
+  // If they hedged ("fine", "okay", "meh") — gently name it before opening up
+  const hedged = isHedging(userText.toLowerCase());
+  if (hedged) {
+    const hedgeWord = userText.trim().split(/[\s,.!?]/)[0].toLowerCase();
+    const callout = hedgeWord === 'meh'
+      ? `"Meh" is doing a lot of work right now.`
+      : `You said "${hedgeWord}" — and I'm going to sit with that for a second.`;
+    return audienceLayer(`${callout}\n\nThat word means a lot of different things to different people. What's actually going on underneath it?`);
+  }
 
   // One empathetic line + one short question
   const openers = {
