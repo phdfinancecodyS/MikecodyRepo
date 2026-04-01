@@ -126,7 +126,7 @@ TOPIC_TO_PT_CATEGORY = {
     "anxiety":      "anxiety",
     "work":         "stress",
     "loss":         "grief",
-    "family":       "family-conflicts",
+    "family":       "depression",          # family-conflicts slug has no JSON-LD on PT
     "recovery":     "addiction",
     "general":      "depression",
 }

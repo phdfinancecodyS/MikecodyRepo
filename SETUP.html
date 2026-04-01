@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ask Anyway — Setup Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #1a1a1a; line-height: 1.6; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+  h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+  .subtitle { color: #666; margin-bottom: 40px; font-size: 1rem; }
+  h2 { font-size: 1.15rem; font-weight: 700; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e0e0e0; }
+  h3 { font-size: .95rem; font-weight: 600; color: #444; margin: 20px 0 6px; }
+  p { margin-bottom: 10px; color: #333; }
+  a { color: #2563eb; }
+  ul, ol { padding-left: 22px; margin-bottom: 10px; }
+  li { margin-bottom: 6px; }
+  .step { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 22px 24px; margin-bottom: 16px; }
+  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #1a1a1a; color: #fff; border-radius: 50%; font-size: .82rem; font-weight: 700; float: left; margin-right: 12px; margin-top: 2px; flex-shrink: 0; }
+  .step-body { overflow: hidden; }
+  .step-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+  pre { background: #1a1a1a; color: #e8e8e8; border-radius: 8px; padding: 14px 16px; font-size: .84rem; overflow-x: auto; margin: 10px 0; line-height: 1.5; }
+  code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: .85rem; font-family: "SF Mono", Menlo, monospace; }
+  .badge { display: inline-block; background: #dcfce7; color: #166534; font-size: .75rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle; }
+  .badge.warn { background: #fef9c3; color: #854d0e; }
+  .badge.info { background: #dbeafe; color: #1e40af; }
+  .note { background: #fef9c3; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: .88rem; color: #78350f; }
+  .check { background: #dcfce7; border-left: 4px solid #16a34a; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: .88rem; color: #14532d; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .88rem; }
+  th { background: #f0f0f0; text-align: left; padding: 8px 12px; font-weight: 600; }
+  td { padding: 8px 12px; border-top: 1px solid #e0e0e0; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 40px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Ask Anyway <span class="badge info">Setup Guide</span></h1>
+  <p class="subtitle">Get the chatbot + backend running from scratch on any Mac. Estimated time: ~10 minutes.</p>
+
+  <!-- ─── Requirements ─────────────────────────────────────── -->
+  <h2>What You Need</h2>
+  <ul>
+    <li><strong>macOS</strong> (Monterey or later)</li>
+    <li><strong>Python 3.11+</strong> — check with <code>python3 --version</code><br>
+      Install from <a href="https://www.python.org/downloads/" target="_blank">python.org</a> if missing</li>
+    <li><strong>Git</strong> — check with <code>git --version</code></li>
+    <li>Internet access (for therapist lookups)</li>
+  </ul>
+
+  <hr class="divider" />
+
+  <!-- ─── Step 1: Clone ─────────────────────────────────────── -->
+  <h2>Step 1 — Get the Code</h2>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-body">
+      <div class="step-title">Clone the repo</div>
+      <p>Open Terminal and run:</p>
+      <pre>cd ~/Desktop
+git clone https://github.com/phdfinancecodyS/MikecodyRepo.git ask-anyway
+cd ask-anyway</pre>
+      <p>You should now have a folder called <code>ask-anyway</code> on your Desktop.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─── Step 2: Backend ─────────────────────────────────── -->
+  <h2>Step 2 — Set Up the Backend</h2>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-body">
+      <div class="step-title">Create a Python virtual environment</div>
+      <pre>cd ~/Desktop/ask-anyway/cce-backend
+python3 -m venv .venv</pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-body">
+      <div class="step-title">Activate it and install dependencies</div>
+      <pre>source .venv/bin/activate
+pip install -r requirements.txt</pre>
+      <p>This installs FastAPI, the conversation engine, and the therapist-finder scraper. Takes about 1–2 minutes.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-body">
+      <div class="step-title">Start the backend server</div>
+      <pre>CCE_CORS_ORIGINS="http://localhost:3131" python3 launcher.py</pre>
+      <p>You should see:</p>
+      <pre style="background:#0f172a">INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Application startup complete.</pre>
+      <div class="check">✓ Backend is running on port 8000. <strong>Leave this terminal open.</strong></div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─── Step 3: File Server ─────────────────────────────── -->
+  <h2>Step 3 — Serve the Chatbot</h2>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-body">
+      <div class="step-title">Open a second Terminal tab</div>
+      <p>Press <code>⌘ T</code> in Terminal to open a new tab, then:</p>
+      <pre>cd ~/Desktop/ask-anyway
+python3 -m http.server 3131</pre>
+      <div class="check">✓ File server running on port 3131. Leave this open too.</div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─── Step 4: Open ─────────────────────────────────────── -->
+  <h2>Step 4 — Open the App</h2>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-body">
+      <div class="step-title">Open in your browser</div>
+      <p>Go to: <a href="http://localhost:3131/ask-anyway-chat.html" target="_blank">http://localhost:3131/ask-anyway-chat.html</a></p>
+      <p>You should see the Ask Anyway chatbot. Type anything to start.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─── What It Does ─────────────────────────────────────── -->
+  <h2>What to Expect</h2>
+
+  <table>
+    <tr><th>Input</th><th>What Happens</th></tr>
+    <tr><td>"I'm doing great"</td><td>GOOD track — 2 warm turns, then closes</td></tr>
+    <tr><td>"I'm not okay / anxious / going through a breakup"</td><td>NOT-GOOD track — 3 empathetic turns, then resource cards + guide PDFs</td></tr>
+    <tr><td>"I've been drinking every night to cope"</td><td>RISKY track — non-judgmental probe, then resources</td></tr>
+    <tr><td>"I don't want to be here anymore"</td><td>CRISIS — immediate crisis card with 988 hotline</td></tr>
+  </table>
+
+  <h3>Therapist Finder</h3>
+  <p>On any resource card screen, tap <strong>"Find Therapists Near Me"</strong>. Allow location or enter a ZIP code — it will pull real therapists from Psychology Today matched to the conversation topic.</p>
+
+  <h3>Guide PDFs</h3>
+  <p>Two free PDF guides are linked from resource cards:</p>
+  <ul>
+    <li><a href="http://localhost:3131/ask-anyway-deploy/guides/connection-101.pdf" target="_blank">Connection 101</a></li>
+    <li><a href="http://localhost:3131/ask-anyway-deploy/guides/daily-checklist.pdf" target="_blank">Daily Mental Health Checklist</a></li>
+  </ul>
+
+  <hr class="divider" />
+
+  <!-- ─── Verify ─────────────────────────────────────────────── -->
+  <h2>Verify Everything is Working</h2>
+
+  <p>Open a third Terminal tab and run the beta test suite:</p>
+  <pre>cd ~/Desktop/ask-anyway
+.venv/bin/python3 beta_test.py 2>/dev/null</pre>
+  <p>Wait ~60 seconds (it scrapes Psychology Today for each topic). You should see <strong>46/46 PASS</strong>.</p>
+
+  <div class="note">⚠ The therapist scraper makes live web requests — results depend on internet access and Psychology Today availability.</div>
+
+  <hr class="divider" />
+
+  <!-- ─── Quick Reference ───────────────────────────────────── -->
+  <h2>Quick Reference</h2>
+
+  <table>
+    <tr><th>Service</th><th>URL</th><th>Start Command</th></tr>
+    <tr>
+      <td>Chatbot UI</td>
+      <td><a href="http://localhost:3131/ask-anyway-chat.html" target="_blank">localhost:3131/ask-anyway-chat.html</a></td>
+      <td><code>python3 -m http.server 3131</code> (run from repo root)</td>
+    </tr>
+    <tr>
+      <td>CCE Backend API</td>
+      <td><a href="http://localhost:8000/health" target="_blank">localhost:8000/health</a></td>
+      <td><code>CCE_CORS_ORIGINS="http://localhost:3131" python3 launcher.py</code> (run from <code>cce-backend/</code>)</td>
+    </tr>
+    <tr>
+      <td>API Docs</td>
+      <td><a href="http://localhost:8000/docs" target="_blank">localhost:8000/docs</a></td>
+      <td>Auto-generated by FastAPI — no extra steps</td>
+    </tr>
+  </table>
+
+  <hr class="divider" />
+
+  <!-- ─── Troubleshooting ───────────────────────────────────── -->
+  <h2>Troubleshooting</h2>
+
+  <h3>Port already in use</h3>
+  <pre># Kill whatever is on port 8000
+lsof -ti:8000 | xargs kill -9
+
+# Kill whatever is on port 3131
+lsof -ti:3131 | xargs kill -9</pre>
+
+  <h3>Therapist cards show 0 results</h3>
+  <p>Psychology Today blocks scrapers occasionally. Wait a minute and try again, or try a different ZIP code.</p>
+
+  <h3>Backend won't start</h3>
+  <pre>cd ~/Desktop/ask-anyway/cce-backend
+source .venv/bin/activate
+pip install -r requirements.txt   # re-run install
+python3 launcher.py</pre>
+
+  <h3>Page shows but chatbot doesn't respond</h3>
+  <p>The backend (port 8000) must be running. Check <a href="http://localhost:8000/health" target="_blank">localhost:8000/health</a> — it should return <code>{"status":"ok"}</code>.</p>
+
+  <hr class="divider" />
+
+  <p style="color:#999; font-size:.82rem; text-align:center;">Ask Anyway · Built April 2026 · <a href="https://github.com/phdfinancecodyS/MikecodyRepo" target="_blank">github.com/phdfinancecodyS/MikecodyRepo</a></p>
+
+</div>
+</body>
+</html>
