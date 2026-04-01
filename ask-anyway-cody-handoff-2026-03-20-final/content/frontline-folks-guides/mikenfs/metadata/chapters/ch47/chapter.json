@@ -1,0 +1,281 @@
+{
+  "number": 47,
+  "title": "Dopamine Hijack: When Your Reward System Gets Captured",
+  "domain": "Dopamine, habits, and modern addictions",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Field notes for when your brain's reward system gets hijacked by screens, gambling, gaming, and compulsive loops.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening",
+      "content": [
+        {
+          "type": "para",
+          "text": "Your phone is in your hand before you're fully awake. You check it again 10 minutes later. You meant to watch one video and lost two hours. You're gambling more than you planned. You can't finish a task without checking something. The gaming session that was supposed to be an hour ends at 2am. Your brain has been reprogrammed: the reward system that used to get dopamine from mission accomplishment and team connection is now getting fast, cheap dopamine from screens, games, feeds, and novelty. The problem isn't that these things exist—it's that your nervous system learned to depend on them for regulation, and you've lost control of the loop."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Compulsive checking: Phone checks dozens of times daily. Checking email or social media before anything else.",
+            "Time distortion: You meant to do X for 20 minutes and it's been 2 hours.",
+            "Tolerance building: More time, more intensity, more frequency needed to get the same effect.",
+            "Loss of control: You've told yourself you'll stop and you haven't. Multiple times.",
+            "Real-world disengagement: Key relationships, work tasks, or responsibilities are being neglected for the compulsive behavior.",
+            "Mood dependency: You need the behavior to manage mood. Without it you're irritable, restless, or anxious.",
+            "Novelty chasing: You're not even enjoying the content, you're looking for the next thing.",
+            "Sleep disruption: The loop is cutting into sleep onset or your're using it to avoid lying awake."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is a hijacked reward system, not bad character:",
+            "These products are engineered to exploit dopamine loops. Your nervous system, already primed for stimulation, is especially vulnerable."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "Your nervous system was calibrated for high-stimulation work—fast decisions, immediate feedback, high stakes, and a clear hit of reward when you succeeded. Then the role ended, or the shifts got longer, or you started the transition, and suddenly there's no mission-level dopamine. Your reward system started looking for substitutes. Screens, social media, gaming, gambling, and pornography all provide fast, predictable, low-effort dopamine spikes. They're engineered for exactly this: variable reward schedules designed to prevent you from stopping. Your nervous system—dysregulated and under-stimulated—is especially vulnerable to capture."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Tolerance escalating: More time, more intensity, more explicit content, higher stakes to get the same response.",
+            "Real-world reward dimming: Normal activities feel flat by comparison. Partner time, exercise, meals—all less compelling.",
+            "Control loss accelerating: More failed attempts to stop = deeper shame = more use to manage the shame.",
+            "Sleep debt compounding: Late-night loops cut into sleep, which increases dysregulation, which increases loop dependency.",
+            "Relationship impact: Time and attention diverted from partner, children, or obligations creates real-world damage.",
+            "Work impact: Productivity drops from brain trained to jump to reward loops when bored or blocked.",
+            "Mood dysregulation without the loop: Without access, you're irritable, anxious, or depressed. That's dependence."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and increasing predictability lowers baseline arousal and improves regulation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can reclaim your reward system, but it requires reducing access, adding friction, and rebuilding real-world dopamine sources."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Name the loop specifically: Social media, gaming, gambling, pornography, news—which specific behavior is the hook? Name it clearly.",
+            "Add friction to access: Phone in another room, delete apps, use parental controls, unplug consoles during work hours. Make the behavior require effort.",
+            "Create a dopamine budget: '1 hour of gaming after dinner, not before. 20 minutes of social media, not unlimited.' Constraints work better than elimination.",
+            "Build real-world dopamine sources: Exercise, meaningful conversation, learning, building something—these provide slower, more durable dopamine than screen loops.",
+            "Identify your high-risk windows: When do the loops take over? (After shifts, late night, during transitions, bored lunches.) Build specific interventions for those windows.",
+            "Use a 10-minute pause rule: Before opening apps or starting a session, wait 10 minutes. This breaks the automatic reflex and engages choice.",
+            "Tell your partner or a trusted person: Accountability from someone who knows reduces secrecy, which reduces shame-driven escalation.",
+            "Replace one loop daily for 7 days: Each day, one time the loop would start, run a different behavior instead. Track what actually happened.",
+            "Get clinical help if it's gambling or financial consequences are occurring: Gambling disorder responds to specific clinical intervention. Self-management alone is often insufficient."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: set the bar low enough to do it even on your worst day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Stress communication should be clear, brief, and repeatable. Predictable routines protect relationships."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use concrete language: 'I've lost control of my screen/gaming/gambling time. It's affecting our relationship and I'm working on it.'",
+            "Be specific about the impact: 'I've been present in body but absent in attention. I want to change that.'",
+            "Name what you need: 'I need accountability. Can we set some shared boundaries around screen time together?'",
+            "Keep them informed: 'Shared boundaries and transparency reduce the secrecy loops that make this worse.'"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-guided tools are a start. Escalate care when symptoms persist, spread, or begin harming safety and function."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "You've tried multiple times to reduce or stop and cannot maintain it.",
+            "Gambling or financial consequences are occurring.",
+            "Relationships, work performance, or sleep are significantly impacted.",
+            "You need the behavior to manage mood and you're irritable or anxious without access.",
+            "Behavioral health treatment for process addiction (screens, gambling, gaming) uses evidence-based approaches including CBT, motivational interviewing, and structured access management."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet every day for one week. Track trigger, body signal, and reset action. Keep what works and remove what does not."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the trigger.",
+            "2) Name the first body signal.",
+            "3) Run one reset action.",
+            "4) Log response quality."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Dopamine Hijack: When Your Reward System Gets Captured",
+      "intro": "Use this to track reward-system hijack and compulsive habits and build a practical response you can repeat under load.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, and in transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you when it took over?",
+          "hint": "Name impact on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose actions small enough to use on hard days.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then tighten the plan around what actually worked."
+    },
+    {
+      "title": "Worksheet: Dopamine Hijack: When Your Reward System Gets Captured - Partner/Team Check-In",
+      "intro": "Use this page for one short practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Capture observable behavior, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most and least?",
+          "hint": "List what helps and what escalates the issue.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will you both practice this week?",
+          "hint": "One clear action from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

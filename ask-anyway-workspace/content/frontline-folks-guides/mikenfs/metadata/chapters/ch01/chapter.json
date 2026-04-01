@@ -1,0 +1,291 @@
+{
+  "_readme": "Copy this entire folder, rename it (e.g. ch02), then edit this file. Delete any _readme fields before building.",
+  "number": 1,
+  "title": "Always On: Your High-Alert Brain",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Hypervigilance kept you alive. Now it is exhausting your life.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "The Brain That Never Clocks Out",
+      "content": [
+        {
+          "type": "para",
+          "text": "High-alert mode is not a personality flaw. It is a trained survival state. After repeated exposure to danger, your threat system learns to scan first and relax never."
+        },
+        {
+          "type": "para",
+          "text": "The problem is that the same system that protects you on scene can start running your home life, sleep, and relationships."
+        },
+        {
+          "type": "h3",
+          "text": "What it looks like day to day"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "You sit with your back to walls and track exits automatically.",
+            "Small noises trigger a full body jolt.",
+            "You feel exhausted but cannot power down.",
+            "People read you as angry when you are actually on guard."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Key point:",
+            "Hypervigilance is an over-trained alarm, not a character defect."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why Home Still Feels Unsafe",
+      "content": [
+        {
+          "type": "para",
+          "text": "Your nervous system does not care about your address. It cares about signals. If your body still reads noise, surprise, and uncertainty as threat, home can feel like another mission."
+        },
+        {
+          "type": "h3",
+          "text": "Common intensifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Sleep debt and stimulant overuse",
+            "No transition ritual between shift and home",
+            "High household noise and unpredictable demands",
+            "Unprocessed calls, scenes, or losses"
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: repeated orienting and grounding drills increase parasympathetic recovery and lower threat-bias in neutral environments."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Field Tools to Turn the Dial Down",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use tools that work in under two minutes. Do not wait until you are fully flooded."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            {
+              "lead": "Name it fast:",
+              "text": "say, 'I am in high alert,' to move from autopilot into choice."
+            },
+            {
+              "lead": "Drop your shoulders and lengthen exhale:",
+              "text": "inhale 4, exhale 6 for five cycles."
+            },
+            {
+              "lead": "Re-orient visually:",
+              "text": "scan the room for five neutral objects to signal present-time safety."
+            },
+            {
+              "lead": "Move your body:",
+              "text": "20-60 seconds of movement burns off activation chemistry."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Rule: the best reset is the one you will actually use during a rough day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "Partner and Family Playbook",
+      "content": [
+        {
+          "type": "para",
+          "text": "Families do better when high-alert has a shared language. Without a plan, everyone personalizes your stress response."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Agree on a signal phrase: 'I am yellow, I need 20 minutes.'",
+            "Use approach warnings instead of surprise contact from behind.",
+            "Set a predictable re-entry routine after shifts.",
+            "Repair quickly after sharp tone or withdrawal."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When Hypervigilance Becomes a Safety Risk",
+      "content": [
+        {
+          "type": "para",
+          "text": "Escalate support when the alarm is running your life more than you are."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "You cannot sleep without substances.",
+            "Reactivity is affecting parenting or partner safety.",
+            "You avoid routine places because your body treats them as threat zones.",
+            "You are stuck in constant irritability, shutdown, or anger spikes."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Hypervigilance Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "For one week, track one trigger, one body cue, and one reset action each day. Improvement is faster recovery, not zero activation."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily target:",
+            "Notice high-alert earlier than yesterday.",
+            "Run one reset before you hit red.",
+            "Complete one repair if your stress leaked onto others."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Always On - High-Alert Pattern Map",
+      "intro": "Use this to identify where high-alert helps and where it costs you.",
+      "question_groups": [
+        {
+          "label": "Where did hypervigilance activate this week?",
+          "hint": "List scenes at work, transitions, and home moments where your body stayed on guard.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost in that moment?",
+          "hint": "Body strain, sleep disruption, conflict, emotional distance, or decision errors.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What reset tool will you rehearse daily?",
+          "hint": "Choose one: long exhale, orienting scan, movement burst, cold-water reset.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What cue flipped you into scan-and-defend mode?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. First body cue:",
+          "hint": "Where did you feel it first: jaw, chest, gut, shoulders, breath?",
+          "field_height": 30,
+          "multiline": false
+        },
+        {
+          "step": "3. Recovery time:",
+          "hint": "How long until your body returned to baseline?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "Write exact words or actions you will use next time.",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Your win is catching activation earlier and recovering faster."
+    },
+    {
+      "title": "Worksheet: Always On - Partner/Family Check-In",
+      "intro": "Use this with a partner or trusted person to build a shared plan around high-alert days.",
+      "question_groups": [
+        {
+          "label": "What does my high-alert look like from the outside?",
+          "hint": "Ask for observable behavior only: tone, scanning, withdrawal, restlessness.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What helps me come down, and what makes it worse?",
+          "hint": "List support actions and escalation triggers clearly.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What is our agreement for the next high-alert moment?",
+          "hint": "Define signal phrase, time-to-return, and repair step.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset right now?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Reconnect time:",
+          "hint": "How long until we re-engage after the pause?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair sentence:",
+          "hint": "Write the exact sentence to use if activation caused damage.",
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "closing_note": "High-alert is manageable when everyone follows the same playbook."
+    }
+  ],
+  "closing": {
+    "paragraphs": [
+      "If your brain has been in guard mode for years, you are not broken. You are conditioned.",
+      "Conditioning can be retrained. Start with one reset tool and one relationship repair this week."
+    ],
+    "highlight": "You do not have to feel calm to act skillfully. You only need to catch the pattern sooner."
+  },
+  "domain": "Nervous system, mood, and cognition"
+}

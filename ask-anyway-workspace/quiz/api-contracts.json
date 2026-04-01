@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "name": "quiz_platform_api_contracts",
+  "routes": [
+    {
+      "path": "/api/quiz/score",
+      "method": "POST",
+      "purpose": "Score quiz, assign risk level, persist quiz session",
+      "request": {
+        "lead": {
+          "id": "uuid?",
+          "email": "string?",
+          "phone": "string?",
+          "firstName": "string?"
+        },
+        "answersByQuestion": {
+          "q1": "integer_0_3",
+          "q2": "integer_0_3",
+          "q3": "integer_0_3",
+          "q4": "integer_0_3",
+          "q5": "integer_0_3",
+          "q6": "integer_0_3",
+          "q7": "integer_0_3",
+          "q8": "integer_0_3",
+          "q9": "integer_0_3",
+          "q10": "integer_0_3"
+        },
+        "quizVersion": "string",
+        "landingPath": "string",
+        "utm": {
+          "source": "string?",
+          "medium": "string?",
+          "campaign": "string?",
+          "content": "string?",
+          "term": "string?"
+        }
+      },
+      "response": {
+        "leadId": "uuid",
+        "quizSessionId": "uuid",
+        "totalScore": "integer",
+        "riskLevel": "low_risk|moderate_risk|high_risk|critical",
+        "overrideTriggered": "boolean",
+        "resultScreenId": "string",
+        "allowTopicMatcher": "boolean",
+        "allowAudienceMatcher": "boolean",
+        "showCrisisResources": "boolean"
+      }
+    },
+    {
+      "path": "/api/quiz/topic-match",
+      "method": "POST",
+      "purpose": "Run topic matcher and persist match session",
+      "request": {
+        "quizSessionId": "uuid",
+        "matcherVersion": "string",
+        "answers": {
+          "tm_q1": "string",
+          "tm_q2": "string",
+          "tm_q3": ["string", "string?"]
+        }
+      },
+      "response": {
+        "topicMatchSessionId": "uuid",
+        "matchedDomain": "string",
+        "recommendedGuideIds": ["string"],
+        "recommendedOfferType": "guide|kit|sms|bundle|free_crisis_resources",
+        "whyMatched": ["string"]
+      }
+    },
+    {
+      "path": "/api/quiz/audience-match",
+      "method": "POST",
+      "purpose": "Resolve primary and overlay audience buckets",
+      "request": {
+        "quizSessionId": "uuid",
+        "matcherVersion": "string",
+        "identityBucketIds": ["string"],
+        "contextBucketIds": ["string"],
+        "primaryBucketId": "string?"
+      },
+      "response": {
+        "audienceMatchSessionId": "uuid",
+        "selectedBucketIds": ["string"],
+        "primaryBucketId": "string",
+        "overlayBucketIds": ["string"],
+        "fallbackUsed": "boolean"
+      }
+    },
+    {
+      "path": "/api/quiz/recommendation",
+      "method": "POST",
+      "purpose": "Resolve final guide, audience asset, and offers",
+      "request": {
+        "quizSessionId": "uuid",
+        "topicMatchSessionId": "uuid?",
+        "audienceMatchSessionId": "uuid?"
+      },
+      "response": {
+        "guideRecommendationId": "uuid",
+        "baseGuideId": "string",
+        "baseGuideTitle": "string",
+        "audienceBucketId": "string",
+        "audienceVariantPath": "string",
+        "primaryOfferId": "guide|kit|sms|bundle|free_crisis_resources",
+        "secondaryOfferId": "guide|kit|sms|bundle|free_crisis_resources|null",
+        "bundleRole": "string|null",
+        "showCrisisResources": "boolean",
+        "whyMatched": {}
+      }
+    },
+    {
+      "path": "/api/checkout/session",
+      "method": "POST",
+      "purpose": "Create Stripe checkout session for paid offers",
+      "request": {
+        "leadId": "uuid",
+        "quizSessionId": "uuid",
+        "guideRecommendationId": "uuid",
+        "productId": "guide|kit|sms|bundle",
+        "guideId": "string",
+        "audienceBucketId": "string",
+        "successUrl": "string",
+        "cancelUrl": "string"
+      },
+      "response": {
+        "purchaseIntentId": "uuid",
+        "stripeCheckoutUrl": "string"
+      }
+    },
+    {
+      "path": "/api/webhooks/stripe",
+      "method": "POST",
+      "purpose": "Mark purchases paid and trigger fulfillment",
+      "request": {
+        "signatureHeader": "string",
+        "rawBody": "stripe_webhook_payload"
+      },
+      "response": {
+        "received": true
+      }
+    },
+    {
+      "path": "/api/analytics/event",
+      "method": "POST",
+      "purpose": "Persist supporting analytics events",
+      "request": {
+        "sessionId": "uuid",
+        "eventName": "string",
+        "payload": {},
+        "timestamp": "iso_8601"
+      },
+      "response": {
+        "accepted": true
+      }
+    }
+  ]
+}

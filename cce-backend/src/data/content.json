@@ -1,0 +1,173 @@
+{
+  "topics": {
+    "anxiety": {
+      "label": "Anxiety & Worry",
+      "summary": "What you\u2019re describing sounds like anxiety \u2014 that persistent hum of worry that\u2019s hard to turn off. It\u2019s one of the most common mental health experiences and it\u2019s very treatable.",
+      "keywords": ["anxious","anxiety","worry","worried","panic","overthink","overthinking","nervous","on edge","fear","scared","racing thoughts","catastrophize","tense","stress","stressed"],
+      "free_resource": {
+        "title": "Understanding Anxiety: A Plain-Language Guide",
+        "description": "Learn what anxiety actually is, why it happens, and 5 research-backed ways to reduce it this week.",
+        "url": "/guides/understanding-anxiety"
+      },
+      "upsell": [
+        {"title": "The Anxiety Reset Workbook", "price": 12, "url": "/guides/anxiety-reset"},
+        {"title": "Calm Your Nervous System in 7 Days", "price": 19, "url": "/guides/nervous-system"}
+      ]
+    },
+    "depression": {
+      "label": "Low Mood & Depression",
+      "summary": "It sounds like you\u2019ve been dealing with low mood \u2014 that heavy, flat feeling that makes everything harder. This is a very real experience and there are things that genuinely help.",
+      "keywords": ["depressed","depression","sad","empty","numb","hopeless","worthless","no motivation","can\u2019t enjoy","don\u2019t care","flat","tired all the time","can\u2019t get out of bed"],
+      "free_resource": {
+        "title": "When Everything Feels Heavy: Understanding Low Mood",
+        "description": "A compassionate guide to understanding depression and the small steps that actually make a difference.",
+        "url": "/guides/understanding-depression"
+      },
+      "upsell": [
+        {"title": "Lifting the Weight: A Depression Workbook", "price": 15, "url": "/guides/depression-workbook"},
+        {"title": "Building a Life Worth Living", "price": 19, "url": "/guides/behavioral-activation"}
+      ]
+    },
+    "relationships": {
+      "label": "Relationships & Loneliness",
+      "summary": "Relationship struggles and loneliness hit deep \u2014 we\u2019re wired for connection. What you\u2019re feeling makes complete sense.",
+      "keywords": ["relationship","partner","marriage","divorce","breakup","lonely","alone","isolated","no friends","conflict","fight","communication","trust","cheating","separated"],
+      "free_resource": {
+        "title": "Connection 101: Understanding Why Relationships Are Hard",
+        "description": "Why relationships take work and what the research says about keeping them healthy.",
+        "url": "/guides/relationships-101"
+      },
+      "upsell": [
+        {"title": "How to Communicate Without Fighting", "price": 12, "url": "/guides/communication"},
+        {"title": "Overcoming Loneliness", "price": 15, "url": "/guides/loneliness"}
+      ]
+    },
+    "grief": {
+      "label": "Grief & Loss",
+      "summary": "Grief is one of the most disorienting experiences a person can go through. There\u2019s no timeline and no right way to do it.",
+      "keywords": ["grief","grieving","loss","lost","died","death","passed away","bereavement","mourning","missing","gone","widow","widower"],
+      "free_resource": {
+        "title": "Understanding Grief: You\u2019re Not Going Crazy",
+        "description": "A compassionate guide to grief, its stages, and what tends to actually help.",
+        "url": "/guides/understanding-grief"
+      },
+      "upsell": [
+        {"title": "The Grief Journal", "price": 12, "url": "/guides/grief-journal"}
+      ]
+    },
+    "work": {
+      "label": "Work & Life Stress",
+      "summary": "Work stress and burnout are real and serious. What you\u2019re carrying is heavy \u2014 and often invisible to the people around you.",
+      "keywords": ["work","job","burnout","career","boss","overwhelmed","overworked","deadline","fired","unemployed","school","college","pressure","performance","exhausted","hustle"],
+      "free_resource": {
+        "title": "Burnout vs. Stress: What\u2019s Actually Happening to You",
+        "description": "Understanding burnout and the evidence-based steps that help you recover.",
+        "url": "/guides/burnout"
+      },
+      "upsell": [
+        {"title": "The Burnout Recovery Plan", "price": 15, "url": "/guides/burnout-recovery"},
+        {"title": "Setting Boundaries That Actually Work", "price": 12, "url": "/guides/boundaries"}
+      ]
+    },
+    "trauma": {
+      "label": "Trauma & Difficult Memories",
+      "summary": "Trauma leaves a mark \u2014 in your body, your thoughts, and your reactions. It\u2019s not weakness. It\u2019s a normal response to abnormal experiences.",
+      "keywords": ["trauma","traumatic","ptsd","flashback","abuse","violence","assault","accident","nightmare","triggered","trigger","can\u2019t forget","intrusive","hypervigilant"],
+      "free_resource": {
+        "title": "Understanding Trauma: Why Your Brain Is Protecting You",
+        "description": "A plain-language guide to trauma responses, triggers, and what evidence says actually helps.",
+        "url": "/guides/understanding-trauma"
+      },
+      "upsell": [
+        {"title": "Trauma Recovery Toolkit", "price": 19, "url": "/guides/trauma-recovery"}
+      ]
+    },
+    "recovery": {
+      "label": "Substance Use & Recovery",
+      "summary": "Reaching this point \u2014 even just reflecting on it \u2014 takes courage. Substance use is complex, and so is recovery. You don\u2019t have to figure it out alone.",
+      "keywords": ["alcohol","drinking","drunk","sober","sobriety","drugs","using","relapse","addiction","dependent","recovery","aa","na","marijuana","pills","opioid"],
+      "free_resource": {
+        "title": "Understanding Substance Use: It\u2019s Not a Moral Failure",
+        "description": "How addiction works in the brain and what recovery actually looks like.",
+        "url": "/guides/substance-use-101"
+      },
+      "upsell": [
+        {"title": "Your First 30 Days Sober", "price": 15, "url": "/guides/first-30-days"}
+      ]
+    },
+    "family": {
+      "label": "Family Stress",
+      "summary": "Family stress can be all-consuming, especially because you can\u2019t always just walk away. What you\u2019re feeling is valid.",
+      "keywords": ["family","parents","parent","mom","dad","sibling","brother","sister","kids","children","toxic","boundary","controlling","estranged","caregiver","caregiving"],
+      "free_resource": {
+        "title": "Navigating Difficult Family Relationships",
+        "description": "Understanding family dynamics and protecting your own wellbeing.",
+        "url": "/guides/family-dynamics"
+      },
+      "upsell": [
+        {"title": "Setting Healthy Family Boundaries", "price": 12, "url": "/guides/family-boundaries"}
+      ]
+    },
+    "loneliness": {
+      "label": "Loneliness & Isolation",
+      "summary": "Loneliness is one of the most painful human experiences \u2014 and one of the most common. You\u2019re far from alone in feeling this way.",
+      "keywords": ["lonely","alone","isolated","no one","nobody","no friends","disconnected","left out","invisible","social anxiety","introvert","outsider"],
+      "free_resource": {
+        "title": "The Loneliness Trap: Understanding and Escaping It",
+        "description": "Why loneliness is so hard to shake and what actually helps build real connection.",
+        "url": "/guides/loneliness"
+      },
+      "upsell": [
+        {"title": "Building Connection From Scratch", "price": 15, "url": "/guides/building-connection"}
+      ]
+    },
+    "general": {
+      "label": "General Wellbeing",
+      "summary": "It sounds like you\u2019ve got a lot going on. It can be hard to name one thing \u2014 sometimes it all builds up at once.",
+      "keywords": [],
+      "free_resource": {
+        "title": "Mental Health 101: Understanding What You\u2019re Going Through",
+        "description": "A foundational guide to mental health, common struggles, and where to start.",
+        "url": "/guides/mental-health-101"
+      },
+      "upsell": [
+        {"title": "The Wellbeing Starter Pack", "price": 19, "url": "/guides/wellbeing-starter"}
+      ]
+    }
+  },
+  "triage_bands": {
+    "low_risk": {
+      "label": "Low Risk",
+      "threshold": [0, 7],
+      "summary": "Your responses suggest you\u2019re managing reasonably well overall. There are some areas to keep an eye on, but nothing that seems urgent right now.",
+      "next_step": "Continue the habits that are working. If anything shifts, come back and check in.",
+      "disclaimer": "This is a psychoeducational tool, not a clinical assessment. It cannot diagnose any condition. Please speak with a licensed mental health professional if you have concerns about your mental health."
+    },
+    "moderate_risk": {
+      "label": "Moderate Concern",
+      "threshold": [8, 15],
+      "summary": "Your responses suggest you\u2019re carrying a meaningful amount of stress or difficulty. It's affecting you, and it\u2019s worth taking seriously.",
+      "next_step": "Consider talking to a therapist or counselor \u2014 even a few sessions can make a significant difference. In the meantime, the resources below are a good starting point.",
+      "disclaimer": "This is a psychoeducational tool, not a clinical assessment. It cannot diagnose any condition. Please speak with a licensed mental health professional if you have concerns about your mental health."
+    },
+    "high_risk": {
+      "label": "High Concern",
+      "threshold": [16, 23],
+      "summary": "Your responses suggest you\u2019re really struggling right now. This level of difficulty warrants real support, not just self-help resources.",
+      "next_step": "Please reach out to a mental health professional as soon as possible. If cost or access is a barrier, Psychology Today\u2019s directory (psychologytoday.com/therapists) has filters for sliding-scale therapists.",
+      "disclaimer": "This is a psychoeducational tool, not a clinical assessment. It cannot diagnose any condition. Please speak with a licensed mental health professional if you have concerns about your mental health."
+    },
+    "critical": {
+      "label": "Critical \u2014 Please Reach Out",
+      "threshold": [24, 999],
+      "summary": "Some of your responses indicate you may be in crisis or very close to it. Please reach out to someone right now.",
+      "next_step": "Call or text 988 (Suicide & Crisis Lifeline) \u2014 available 24/7. You can also text HOME to 741741 to reach the Crisis Text Line. If you\u2019re in immediate danger, call 911.",
+      "disclaimer": "This is a psychoeducational tool, not a clinical assessment. It cannot diagnose any condition. Please speak with a licensed mental health professional if you have concerns about your mental health.",
+      "crisis_resources": [
+        {"name": "988 Suicide & Crisis Lifeline", "contact": "Call or text 988", "available": "24/7"},
+        {"name": "Crisis Text Line", "contact": "Text HOME to 741741", "available": "24/7"},
+        {"name": "Emergency Services", "contact": "911", "available": "24/7"}
+      ]
+    }
+  }
+}

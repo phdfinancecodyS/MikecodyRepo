@@ -1,0 +1,281 @@
+{
+  "number": 36,
+  "title": "The Weight You Don't Talk About: Moral Injury 101",
+  "domain": "Moral injury, guilt, shame, and spirituality",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Field notes for when you've violated your own conscience, and what happens next.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening",
+      "content": [
+        {
+          "type": "para",
+          "text": "You did something, or failed to stop something, that violates who you thought you were. Maybe you froze when someone needed help. Maybe you were ordered to do something that betrayed your values. Maybe you hurt someone. Maybe you were complicit in harm. Now you can't unknow it. Your brain knows you acted against your conscience. This isn't just guilt (feeling bad about what you did). This is moral injury: the wound that happens when you violate your own moral core. You feel broken, irredeemable, and isolated because you can't tell anyone what happened without judgment."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Self-condemnation and shame: You feel permanently tainted or evil, not just regretful.",
+            "Behavioral withdrawal: You isolate, stop participating, or shut down emotionally.",
+            "Loss of meaning: The worldview that made sense before now feels fractured. You don't see a path forward.",
+            "Spiritual collision: If faith is part of your identity, moral injury creates spiritual disorientation.",
+            "Identity fracture: The person you thought you were (honorable, moral, reliable) no longer matches what you did or didn't do.",
+            "Persistent shame activation: Small triggers remind you of the moral violation and send you into shame spirals.",
+            "Hypervigilance to unfairness: You're acutely aware of injustice or hypocrisy, which intensifies your sense that the system failed you.",
+            "Difficulty with authority or trust: You can't trust institutions or leaders anymore because you experienced or witnessed betrayal."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is a wound, not a character diagnosis:",
+            "Moral injury is the impact of violating your conscience, not proof that you are fundamentally evil."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "Moral injury creates a rift between who you thought you were and what you actually did (or failed to do). Your nervous system learned 'you are unsafe—you violated your own values.' Add hypervigilance (you're watching for more unfairness or hypocrisy), isolation (you can't tell anyone without judgment), and unresolved guilt (the act or omission lives in your body), and you get identity fragmentation. If the betrayal was systematic (orders, institutional failure, protected wrongdoing), the injury is deeper."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Shame compounding: Act of commission or omission → guilt → hiding it → shame spirals → isolation.",
+            "Self-punishment spirals: Inability to forgive yourself leads to self-harm, risky behavior, or self-sabotage.",
+            "Belief system fracture: Faith, institutional loyalty, or core values collapse, leaving you unmoored.",
+            "Relationship rupture: You can't be vulnerable with partner because they might discover what you did, so you isolate.",
+            "Behavioral change: Depression, self-recklessness, or numbness replaces the person you were before.",
+            "Spiritual disorientation: If religion was part of your identity, moral injury often includes existential questions about forgiveness, purpose, and redemption.",
+            "Hypervigilance to hypocrisy: You see moral failures in others and it reinforces your belief that everyone is corrupt."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and increasing predictability lowers baseline arousal and improves regulation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "Moral injury heals through witnessing, accountability, meaning-making, and values-based repair."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Name the wound specifically: What did you do or fail to do? What value did it violate? Not to punish yourself, but to name what happened clearly.",
+            "Separate the act from your worth: You did something inconsistent with your values. That doesn't mean you are fundamentally evil—it means you're human and you're grieving a gap between your values and your actions.",
+            "Find a trusted witness: One person who knows what happened and doesn't condemn you. Shame thrives in secrecy. Witnessing (not judgment) begins healing.",
+            "Understand the context without excusing the act: If you were ordered to do something, or faced impossible choices, understanding context does NOT mean the act didn't matter—it just means you weren't acting in a vacuum.",
+            "Make specific amends if possible AND safe: If you can repair the harm directly (apologize, restore, acknowledge), do it. If direct repair isn't possible or would cause more harm, find an indirect repair (help similar people, volunteer, speak truth about the system).",
+            "Rebuild your values framework: What do you believe in now? What does integrity look like post-injury? You can't unknow what happened, but you can build a values-based life going forward.",
+            "Address systemic betrayal: If the institution/system failed you or enabled wrongdoing, name that. Moral injury often requires acknowledging that systems are also broken, not just you.",
+            "Spiritual work if faith is part of your identity: Whether through clergy, spiritual direction, or faith-based therapy, reconnecting with meaning-making that matches your current understanding."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: set the bar low enough to do it even on your worst day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Stress communication should be clear, brief, and repeatable. Predictable routines protect relationships."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use concrete language: 'I did something that violated my conscience. I'm grieving that gap. I need help rebuilding my sense of who I am.'",
+            "Name what you need: 'I need you to hear what happened without judgment' OR 'I need your help figuring out how to make this right' OR 'I need to know I'm not alone in this.'",
+            "Avoid justifying or minimizing: Don't make excuses for the act. Own it. The fact that you're grieving it proves you still have a conscience.",
+            "Include them in values rebuilding: 'Here's what I stand for now. Here's how I'm going to live differently. I need you with me in this.'"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-guided tools are a start. Escalate care when symptoms persist, spread, or begin harming safety and function."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Shame and self-condemnation are persistent (6+ months) and getting worse.",
+            "You're having thoughts of self-harm or recklessness as punishment.",
+            "Moral injury is spreading: You're losing faith, disconnecting from relationships, questioning everything.",
+            "You're unable to reconnect with meaning or purpose.",
+            "Relationships are fracturing because of isolation and shame.",
+            "Moral injury responds well to trauma-informed therapy (especially modalities that address shame and identity), existential therapy, faith-informed counseling, and peer support groups with others who've experienced moral injury."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet every day for one week. Track trigger, body signal, and reset action. Keep what works and remove what does not."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the trigger.",
+            "2) Name the first body signal.",
+            "3) Run one reset action.",
+            "4) Log response quality."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: The Weight You Don't Talk About: Moral Injury 101",
+      "intro": "Use this to track moral injury and unresolved guilt and build a practical response you can repeat under load.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, and in transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you when it took over?",
+          "hint": "Name impact on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose actions small enough to use on hard days.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then tighten the plan around what actually worked."
+    },
+    {
+      "title": "Worksheet: The Weight You Don't Talk About: Moral Injury 101 - Partner/Team Check-In",
+      "intro": "Use this page for one short practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Capture observable behavior, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most and least?",
+          "hint": "List what helps and what escalates the issue.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will you both practice this week?",
+          "hint": "One clear action from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

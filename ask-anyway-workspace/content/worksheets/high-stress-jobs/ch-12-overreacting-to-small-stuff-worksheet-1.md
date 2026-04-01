@@ -1,0 +1,24 @@
+# Overreacting to Small Stuff — Pattern Finder
+
+**Audience:** High Stress Jobs
+
+**From guide:** Overreacting to Small Stuff
+
+---
+
+Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+
+Prompts:
+- What was the last small thing that triggered a big reaction?
+- What were you actually upset about underneath it?
+- What stressors have you been ignoring or pushing aside?
+- How does the other person react when you blow up over something small?
+- What does it feel like right before the overreaction — physically?
+
+---
+
+**A quick note:** This worksheet is educational — it's not therapy, it's not a diagnosis, and using it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+
+---
+
+> **Disclaimer:** This content is for educational purposes only and is not a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the **988 Suicide & Crisis Lifeline** by calling or texting **988**, or text **HOME** to **741741** to reach the Crisis Text Line.

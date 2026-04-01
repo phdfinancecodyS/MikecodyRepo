@@ -1,0 +1,277 @@
+{
+  "number": 3,
+  "title": "Hypervigilance at Home: Turning the Threat Dial Down",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Your house is not a scene. Teach your body the difference.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "Why Home Can Feel Like a Threat Zone",
+      "content": [
+        {
+          "type": "para",
+          "text": "For many frontline folks, hypervigilance does not switch off at the front door. Your body keeps scanning for danger even when your mind knows you are home."
+        },
+        {
+          "type": "para",
+          "text": "That mismatch creates irritability, overreactions, and emotional distance. Family members often read it as rejection when it is actually an activated nervous system."
+        },
+        {
+          "type": "h3",
+          "text": "Common home triggers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Unexpected noise and movement",
+            "Approach from behind or surprise touch",
+            "Multiple people talking at once",
+            "No transition buffer after shift"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "The Home Threat Dial",
+      "content": [
+        {
+          "type": "para",
+          "text": "Think of activation like a dial, not an on/off switch. Your goal is not zero activation. Your goal is to turn the dial down sooner and more often."
+        },
+        {
+          "type": "callout",
+          "style": "green",
+          "lines": [
+            "GREEN - Home mode",
+            "Breathing is easier, tone is steady, attention is flexible."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "yellow",
+          "lines": [
+            "YELLOW - Guarded mode",
+            "Scanning rises, patience drops, body tension climbs."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "red",
+          "lines": [
+            "RED - Threat mode",
+            "Conversation becomes unsafe and connection drops fast."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: labeling state and orienting to safety cues reduces autonomic arousal and improves prefrontal control."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Re-Entry Protocol After Shift",
+      "content": [
+        {
+          "type": "para",
+          "text": "A predictable re-entry routine lowers conflict and protects connection. Build one protocol and run it daily."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            {
+              "lead": "Signal arrival:",
+              "text": "tell your household when you are in decompression mode."
+            },
+            {
+              "lead": "Take 10-20 minutes:",
+              "text": "hydrate, breathe, shower, or move before full engagement."
+            },
+            {
+              "lead": "Do one intentional reconnect:",
+              "text": "eye contact, hug, and one direct check-in question."
+            },
+            {
+              "lead": "Name yellow early:",
+              "text": "call your state before your tone leaks onto others."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "Family Agreements That Actually Work",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Use names before touching or approaching from behind.",
+            "Agree on one phrase that means 'I need to reset.'",
+            "Do not process major conflict in red zone.",
+            "Set a same-day repair rule after hard moments."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When Hypervigilance at Home Needs More Support",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Family members feel afraid or constantly on eggshells.",
+            "You avoid home spaces to avoid activation.",
+            "Activation leads to frequent shouting, shutdown, or substance use.",
+            "Relationship repair attempts are not reducing recurrence."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Home Dial-Down Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Track one home trigger and one successful reset each day. Your weekly metric is fewer red moments and quicker re-engagement."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily target:",
+            "Run your re-entry protocol.",
+            "Call yellow before red.",
+            "Complete one repair if needed."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Hypervigilance at Home - Trigger Map",
+      "intro": "Use this to identify specific home triggers and your fastest dial-down actions.",
+      "question_groups": [
+        {
+          "label": "What home situations activated your threat response?",
+          "hint": "Include noise, transitions, family dynamics, and environmental factors.",
+          "field_count": 3,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What did activation cost in the moment?",
+          "hint": "Connection, patience, sleep, tone, parenting consistency, or conflict fallout.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What one reset action worked best?",
+          "hint": "Choose one action to repeat every day this week.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger context:",
+          "hint": "What happened right before activation?",
+          "field_height": 30,
+          "multiline": false
+        },
+        {
+          "step": "2. First yellow cue:",
+          "hint": "What did you notice first in your body or tone?",
+          "field_height": 30,
+          "multiline": false
+        },
+        {
+          "step": "3. Dial-down action:",
+          "hint": "What lowered your arousal in under two minutes?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Repair step:",
+          "hint": "If stress leaked onto others, what exact repair did you do?",
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "closing_note": "A calmer home starts with predictable resets, not perfect days."
+    },
+    {
+      "title": "Worksheet: Hypervigilance at Home - Family Re-Entry Plan",
+      "intro": "Use this with family to define your post-shift transition and reduce avoidable conflict.",
+      "question_groups": [
+        {
+          "label": "What is your decompression window?",
+          "hint": "Set exact duration and what you will do during it.",
+          "field_count": 1,
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "label": "What are the do/don'ts during that window?",
+          "hint": "Clarify approach, noise, requests, and communication boundaries.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "How will you reconnect after decompression?",
+          "hint": "Define one predictable connection ritual.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means decompression window is active?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Reconnect commitment:",
+          "hint": "What exact time/action marks re-entry to family mode?",
+          "field_height": 30,
+          "multiline": true
+        },
+        {
+          "step": "3. Weekly adjustment:",
+          "hint": "What one change will improve this protocol next week?",
+          "field_height": 30,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Shared structure lowers stress for everyone in the house."
+    }
+  ],
+  "closing": {
+    "paragraphs": [
+      "You are not failing at home because you do not care. You are carrying a threat system that stayed on too long.",
+      "With practice and shared agreements, your home can become a recovery space again."
+    ],
+    "highlight": "Your family does not need perfection. They need predictability and repair."
+  }
+}

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+*.log
+logs/
+
+# Environment files (secrets)
+.env
+.env.*
+*.secret
+
+# Zoom recordings (large)
+Zoom/
+
+# Build artifacts
+*.spec
+dist/
+*.zip

@@ -1,0 +1,255 @@
+{
+  "_readme": "Copy this entire folder, rename it (e.g. ch02), then edit this file. Delete any _readme fields before building.",
+  "number": 13,
+  "title": "Running on Empty: Chronic Sleep Debt",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Chronic sleep debt erodes judgment long before you notice it.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "Sleep Debt Is a Performance Injury",
+      "content": [
+        {
+          "type": "para",
+          "text": "Chronic sleep debt is not just feeling tired. It is cumulative neurological load that reduces reaction time, emotional control, and decision quality."
+        },
+        {
+          "type": "h3",
+          "text": "Operational costs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "More preventable mistakes",
+            "Faster irritability and conflict",
+            "Lower pain tolerance and higher inflammation",
+            "Stronger cravings for sugar, caffeine, and alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why Frontline Schedules Break Recovery",
+      "content": [
+        {
+          "type": "para",
+          "text": "The issue is not only hours slept. It is rhythm disruption. Rotating shifts, adrenaline carryover, and inconsistent wake times fragment the recovery cycle."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Shift rotation misaligns circadian timing",
+            "Late caffeine delays sleep pressure",
+            "Alcohol helps sleep onset but worsens sleep quality",
+            "Phone and TV light suppresses melatonin"
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: fixed wake anchors and evening light control stabilize circadian signals and improve sleep efficiency over 1-3 weeks."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "A Realistic Sleep Recovery Protocol",
+      "content": [
+        {
+          "type": "numbered",
+          "items": [
+            {
+              "lead": "Anchor wake time:",
+              "text": "keep it consistent within a practical range, even after rough nights."
+            },
+            {
+              "lead": "Build a short wind-down:",
+              "text": "20 minutes of low light, low input, and no work decisions."
+            },
+            {
+              "lead": "Time caffeine aggressively:",
+              "text": "cut intake at least 8 hours before intended sleep."
+            },
+            {
+              "lead": "Use tactical naps:",
+              "text": "10-30 minutes when needed, but avoid late naps that steal nighttime sleep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "Family Agreements That Protect Sleep",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Define one protected sleep block as non-negotiable.",
+            "Set household noise and interruption rules during recovery windows.",
+            "Use a simple sign or message for do-not-disturb periods.",
+            "Schedule connection time after recovery to prevent resentment."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When to Evaluate Apnea, Insomnia, or Burnout",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Loud snoring, witnessed pauses, or morning headaches",
+            "Regular 3 a.m. wakeups with inability to return to sleep",
+            "Dependence on alcohol or sedatives to initiate sleep",
+            "Persistent daytime impairment despite sleep effort"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Sleep Debt Reset",
+      "content": [
+        {
+          "type": "para",
+          "text": "Track wake time, caffeine cutoff, pre-sleep routine, and next-day function for one week. Focus on consistency, not perfection."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily target:",
+            "One fixed wake anchor.",
+            "One wind-down block.",
+            "One behavior that protects tomorrow's energy."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Running on Empty - Sleep Debt Recovery Plan",
+      "intro": "Use this to connect sleep behaviors with next-day performance and mood.",
+      "question_groups": [
+        {
+          "label": "What sleep disruptors showed up this week?",
+          "hint": "Late caffeine, shift changes, alcohol, rumination, screens, pain, nightmares.",
+          "field_count": 3,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What did poor sleep cost you the next day?",
+          "hint": "Reaction time, patience, pain, attention, errors, conflict.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two sleep-protection actions are non-negotiable this week?",
+          "hint": "Pick realistic actions you can repeat even on hard shifts.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Wake anchor used:",
+          "hint": "What time did you wake and how consistent was it?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Caffeine cutoff:",
+          "hint": "What time was your last caffeine intake?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Wind-down quality:",
+          "hint": "What did you do in the last 20-30 minutes before bed?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Next-day function score (1-10):",
+          "hint": "Rate energy, focus, and emotional control.",
+          "field_height": 28,
+          "multiline": false
+        }
+      ],
+      "closing_note": "Treat sleep as mission-critical maintenance, not optional recovery."
+    },
+    {
+      "title": "Worksheet: Running on Empty - Household Sleep Agreement",
+      "intro": "Use this with your household to protect one daily recovery block without creating resentment.",
+      "question_groups": [
+        {
+          "label": "Protected sleep block",
+          "hint": "What specific time window is protected this week?",
+          "field_count": 1,
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "label": "Do-not-disturb rules",
+          "hint": "List noise, phone, and interruption boundaries during the block.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "Post-recovery reconnection plan",
+          "hint": "How and when will you reconnect so family does not feel shut out?",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Sleep-protection signal:",
+          "hint": "What phrase or sign means recovery block is active?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Backup plan if schedule changes:",
+          "hint": "What alternate recovery window will you use?",
+          "field_height": 30,
+          "multiline": true
+        },
+        {
+          "step": "3. Weekly review question:",
+          "hint": "Did this plan improve mood, patience, and function?",
+          "field_height": 28,
+          "multiline": false
+        }
+      ],
+      "closing_note": "Sleep plans work when they are visible, specific, and shared."
+    }
+  ],
+  "closing": {
+    "paragraphs": [
+      "You cannot out-tough chronic sleep debt. It will eventually tax your health, your patience, and your judgment.",
+      "Protecting sleep is not selfish. It is how you stay effective for the people who depend on you."
+    ],
+    "highlight": "Consistency beats heroics. One protected sleep habit repeated daily changes everything."
+  },
+  "domain": "Sleep, body, pain, and substances"
+}

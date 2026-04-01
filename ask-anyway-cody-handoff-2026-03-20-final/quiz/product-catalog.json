@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "name": "product_catalog",
+  "products": [
+    {
+      "product_id": "guide",
+      "label": "Guide",
+      "description": "One focused, fast-win topic guide",
+      "pricingProfileKey": "guide",
+      "delivery": "digital_download"
+    },
+    {
+      "product_id": "kit",
+      "label": "Kit",
+      "description": "Guide plus scripts, worksheets, and action tools for harder moments",
+      "pricingProfileKey": "kit",
+      "delivery": "digital_download"
+    },
+    {
+      "product_id": "sms",
+      "label": "Check On Me",
+      "description": "Ongoing accountability and reminder texts",
+      "pricingProfileKey": "sms",
+      "delivery": "subscription_sms"
+    },
+    {
+      "product_id": "bundle",
+      "label": "Bundle",
+      "description": "Top-matched guides and tools bundled into one easier decision",
+      "pricingProfileKey": "bundle",
+      "delivery": "digital_bundle_optional_sms"
+    },
+    {
+      "product_id": "free_crisis_resources",
+      "label": "Free Crisis Resources",
+      "description": "Immediate crisis and therapist support resources",
+      "pricingProfileKey": null,
+      "delivery": "free_resource"
+    }
+  ]
+}

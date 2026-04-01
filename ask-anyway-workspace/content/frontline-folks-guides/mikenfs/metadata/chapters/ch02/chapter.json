@@ -1,0 +1,272 @@
+{
+  "number": 2,
+  "title": "Blow Up or Shut Down: Two Sides of the Same Stress Response",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Fight and freeze are both stress responses. Learn to catch yellow before red.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "Two Stress Modes, One Nervous System",
+      "content": [
+        {
+          "type": "para",
+          "text": "Some days your stress response comes out as intensity, volume, and anger. Other days it comes out as numbness, silence, and emotional disappearance. Both are protective states, not moral failures."
+        },
+        {
+          "type": "h3",
+          "text": "Blow up mode"
+        },
+        {
+          "type": "bullets",
+          "style": "blue_box",
+          "items": [
+            "voice gets sharp or loud",
+            "body moves fast and hard",
+            "you push to control the environment"
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Shut down mode"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "you go flat, quiet, and hard to reach",
+            "you avoid eye contact and conversation",
+            "you disconnect to avoid making it worse"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Your Yellow Zone Is the Intervention Window",
+      "content": [
+        {
+          "type": "para",
+          "text": "Red is expensive. Yellow is workable. If you can detect yellow, you can prevent both blowups and shutdowns."
+        },
+        {
+          "type": "callout",
+          "style": "green",
+          "lines": [
+            "GREEN - Connected and flexible",
+            "You can listen, think, and respond."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "yellow",
+          "lines": [
+            "YELLOW - Loaded and narrowing",
+            "Body tension rises, thinking gets rigid, tone shifts."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "red",
+          "lines": [
+            "RED - Unsafe for useful conversation",
+            "You are likely to damage trust if you continue."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Practical Interrupts for Blow Up and Shut Down",
+      "content": [
+        {
+          "type": "numbered",
+          "items": [
+            {
+              "lead": "Name yellow:",
+              "text": "say, 'I am getting loaded,' before your body chooses for you."
+            },
+            {
+              "lead": "Use a movement reset:",
+              "text": "walk, breathe, cold water, or wall push for 60-120 seconds."
+            },
+            {
+              "lead": "Set return time:",
+              "text": "never pause without saying when you will re-engage."
+            },
+            {
+              "lead": "Repair quickly:",
+              "text": "apology plus behavior change restores safety faster than silence."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "Partner Scripts That Reduce Damage",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Use short phrases: 'You are yellow. Want 20 minutes?'",
+            "Avoid character attacks during activation.",
+            "Do not chase someone in shutdown with rapid-fire questions.",
+            "After red, schedule a repair conversation with one clear objective."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When This Pattern Needs Clinical Support",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Frequent verbal aggression, intimidation, or emotional disappearance.",
+            "Family members are modifying life to avoid your reactions.",
+            "Shame cycles are increasing substance use or hopelessness.",
+            "Repair attempts are not changing outcomes over several weeks."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Red/Yellow/Green Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "At end of each day, mark your highest zone, what moved you there, and whether you used a yellow intervention in time."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily target:",
+            "One yellow call-out before red.",
+            "One agreed pause-and-return.",
+            "One repair if rupture occurred."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Blow Up or Shut Down - Pattern Tracker",
+      "intro": "Map whether your stress response went explosive, avoidant, or both, and what worked to interrupt it.",
+      "question_groups": [
+        {
+          "label": "When did you move toward blow up this week?",
+          "hint": "List the setting, trigger, and first warning cue.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "When did you move toward shut down this week?",
+          "hint": "List where you disconnected, went silent, or emotionally disappeared.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What yellow intervention will you use next time?",
+          "hint": "Choose one action and one phrase to deploy before red.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. State transition:",
+          "hint": "What shifted you from green to yellow?",
+          "field_height": 30,
+          "multiline": false
+        },
+        {
+          "step": "2. First body cue:",
+          "hint": "Heat, tight jaw, shallow breath, numbness, tunnel hearing, etc.",
+          "field_height": 30,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What interrupted escalation in under two minutes?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Repair needed:",
+          "hint": "If damage occurred, what exact repair will you do?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Success is not never going yellow. Success is fewer reds and faster repairs."
+    },
+    {
+      "title": "Worksheet: Blow Up or Shut Down - Shared Safety Plan",
+      "intro": "Use this with partner or family to define what yellow and red look like and what each person will do.",
+      "question_groups": [
+        {
+          "label": "Observable yellow signs",
+          "hint": "List behaviors each person can reliably identify.",
+          "field_count": 3,
+          "field_height": 30,
+          "multiline": true
+        },
+        {
+          "label": "Red protocol",
+          "hint": "What happens immediately when either person calls red?",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "Repair protocol",
+          "hint": "How and when will you complete repair after red?",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "Short phrase both people agree to honor.",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Return-time commitment:",
+          "hint": "Exact time to reconnect after pause.",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. First repair sentence:",
+          "hint": "Write the first line you will use in repair conversation.",
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "closing_note": "A shared protocol turns chaos into a plan."
+    }
+  ],
+  "closing": {
+    "paragraphs": [
+      "Blow up and shut down are not opposite personalities. They are different exits from the same overloaded nervous system.",
+      "The skill is not perfection. The skill is naming yellow, pausing early, and repairing fast."
+    ],
+    "highlight": "Call yellow early enough and you can protect the people you love from your red."
+  }
+}

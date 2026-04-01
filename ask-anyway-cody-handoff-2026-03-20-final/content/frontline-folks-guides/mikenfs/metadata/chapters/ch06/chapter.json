@@ -1,0 +1,297 @@
+{
+  "number": 6,
+  "title": "Depression in Frontline Folks: When Numbness Replaces Joy",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "When nothing matters and the gray won't lift.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Depression Looks Like in the Field",
+      "content": [
+        {
+          "type": "para",
+          "text": "Depression in frontline work doesn't always look sad. Most folks describe it as flat, numb, or hollow—like someone turned the color and volume down on life. What used to light you up now feels like work. The hobbies, the people, even rest—it all feels equally pointless."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs in frontline folks"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Nothing sounds good—food, activities, time with people.",
+            "Going through motions at work, but no satisfaction when shifts end.",
+            "Sleeping too much or too little; tired either way.",
+            "Irritability and short fuse replacing motivation.",
+            "\"Why bother?\" thinking about small tasks and big goals."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Depression is not laziness:",
+            "It's a stress-injury to your motivation and reward systems. Your brain is protecting you by shutting down non-essential functions."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why Frontline Depression Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "High-stress work burns through neurochemicals faster than you can replenish them. When dopamine, serotonin, and norepinephrine run low, your brain stops registering reward, safety, and motivation. Add chronic sleep debt, poor nutrition under stress, and social isolation, and you get a brain that no longer responds to the things that used to help."
+        },
+        {
+          "type": "h3",
+          "text": "Frontline-specific amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Moral injury: \"Nothing I do is enough.\"",
+            "Invisible effort: Hard shifts with no recognition or measurable win.",
+            "Compassion fatigue: Caring costs too much.",
+            "Shift work and irregular sleep wrecking regulation.",
+            "Losing connections outside work due to schedule and emotional drain."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: Small, structured behavioral activation restores dopamine signaling. Consistent sleep and nutrition stabilize neurotransmitter production. Social reconnection counteracts isolation-driven rumination."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Field Tools: Starting Small When Everything Feels Pointless",
+      "content": [
+        {
+          "type": "para",
+          "text": "When depressed, your brain lies to you about what will help. It tells you rest will fix it, but lying in bed makes it worse. It tells you nothing matters, but small action breaks the cycle. Set the bar low and do it anyway."
+        },
+        {
+          "type": "h3",
+          "text": "Micro-actions for this week"
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Move your body for 10 minutes outside. Walk, not run. Sunlight + movement = neurochemical reset.",
+            "Do one small thing that used to matter—make coffee the real way, text one friend, put on real clothes.",
+            "Schedule one thing to look forward to, even if it's small. Mark it on the calendar.",
+            "Eat one actual meal sitting down. Nutrition fuels neurotransmitter production.",
+            "Talk to one safe person this week and say, \"I'm low. Not asking for solutions, just saying it out loud.\""
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: You don't have to feel motivated to act. Action creates motivation, not the other way around."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Family",
+      "content": [
+        {
+          "type": "para",
+          "text": "Depression doesn't look like sadness in frontline folks. It looks like withdrawal, irritability, and emotional flatness. Your person may deny anything is wrong or say they're just tired. Don't wait for them to ask for help."
+        },
+        {
+          "type": "h3",
+          "text": "What helps"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Name what you see: \"You've been quieter than usual. I'm noticing.\"",
+            "Invite, don't demand: \"Want to take a walk with me?\" not \"You need to get out.\"",
+            "Keep showing up. Depression lies and says you're a burden. Consistent presence breaks that.",
+            "Encourage small actions, not big fixes. \"Let's make breakfast\" beats \"You should see someone.\""
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "What makes it worse"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "\"Just cheer up\" or \"You have so much to be grateful for.\"",
+            "Trying to logic them out of it.",
+            "Taking their withdrawal personally.",
+            "Waiting for them to get help on their own."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Depression is treatable. If self-guided tools don't improve things after 2-3 weeks, it's time to escalate care. Therapy, medication, or both can restore function faster than willpower alone."
+        },
+        {
+          "type": "h3",
+          "text": "Escalate if:"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Symptoms persist despite consistent effort.",
+            "Work performance or home function is deteriorating.",
+            "Thoughts of self-harm or \"everyone's better off without me\" show up.",
+            "You're using substances more to cope.",
+            "Sleep, appetite, or energy has been off for more than two weeks."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Behavioral Activation Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet to log one small action every day for one week. Track what you did and how your mood responded. Depression lies and says nothing will help—data shows you the truth."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Pick one small action (walk, meal, text someone).",
+            "2) Do it even if you don't feel like it.",
+            "3) Log mood before and after (scale 1-10).",
+            "4) Repeat daily. Notice patterns."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Depression in Frontline Folks: When Numbness Replaces Joy",
+      "intro": "Use this to track small actions and break the depression loop. Action creates motivation—data proves it.",
+      "question_groups": [
+        {
+          "label": "What does your depression look like right now?",
+          "hint": "List specific behaviors: sleep changes, withdrawal, irritability, loss of interest.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What small things used to bring you satisfaction or calm?",
+          "hint": "Even tiny things: coffee made right, a good song, a walk, time with a pet.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two micro-actions will you commit to this week?",
+          "hint": "Set the bar low: 10-minute walk, one real meal, one text to a friend.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track daily for one week. Depression lies. Let the data show you what helps."
+    },
+    {
+      "title": "Worksheet: Depression in Frontline Folks: When Numbness Replaces Joy - Partner/Team Check-In",
+      "intro": "Use this with a partner or close friend to build a shared plan for when you're low.",
+      "question_groups": [
+        {
+          "label": "What do others notice when you're depressed?",
+          "hint": "Observable signs: withdrawal, irritability, silence, skipping meals, sleeping more.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What kind of support actually helps when you're low?",
+          "hint": "Examples: quiet company, invitation to move, help with small tasks, no pressure to talk.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What's one agreement you'll both try this week?",
+          "hint": "Example: \"I'll say when I'm low. You'll check in once daily without demanding I talk.\"",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

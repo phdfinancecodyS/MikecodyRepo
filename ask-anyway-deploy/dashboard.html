@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Anyway — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8F7FF;--accent:#7C3AED;--text:#1C1917;--muted:#78716C;--border:#E7E5E4;--red:#DC2626;--green:#059669;--yellow:#D97706;--orange:#EA580C;--shadow:0 4px 24px rgba(124,58,237,.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Inter,sans-serif;background:var(--bg);background-image:radial-gradient(circle,#E9D5FF 1px,transparent 1px);background-size:28px 28px;color:var(--text);min-height:100vh;}
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.lcard{background:#fff;border-radius:16px;padding:48px 40px;width:100%;max-width:400px;box-shadow:var(--shadow);text-align:center;}
+.lcard h1{font-size:1.4rem;font-weight:800;margin-bottom:6px;}
+.lcard p{color:var(--muted);font-size:.9rem;margin-bottom:28px;}
+.pw{width:100%;padding:14px 18px;margin-bottom:12px;border:2px solid var(--border);border-radius:100px;font-size:1rem;font-family:inherit;outline:none;}
+.pw:focus{border-color:var(--accent);}
+.lbtn{width:100%;padding:14px;border:none;border-radius:100px;background:linear-gradient(135deg,#7C3AED,#F97316);color:#fff;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;}
+.err{color:var(--red);font-size:.85rem;margin-top:10px;display:none;}
+#dash{display:none;}
+.topbar{background:#fff;border-bottom:1.5px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;}
+.topbar h1{font-size:1rem;font-weight:800;}
+.tright{display:flex;gap:10px;align-items:center;}
+.btn{padding:9px 20px;border-radius:100px;border:none;font-size:.88rem;font-weight:700;font-family:inherit;cursor:pointer;}
+.btn-p{background:var(--accent);color:#fff;}
+.btn-s{background:#F5F3FF;color:var(--accent);}
+.btn-g{background:transparent;color:var(--muted);}
+.btn:hover{opacity:.85;}
+.main{max-width:1200px;margin:0 auto;padding:32px 24px 64px;}
+.sbar{background:#F5F3FF;border:1.5px solid #EDE9FE;border-radius:12px;padding:14px 20px;margin-bottom:20px;font-size:.88rem;color:var(--accent);font-weight:600;}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:28px;}
+.sc{background:#fff;border-radius:14px;padding:20px 16px;box-shadow:var(--shadow);text-align:center;}
+.sl{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;}
+.sv{font-size:2rem;font-weight:800;}
+.pv{color:var(--accent);}.gv{color:var(--green);}.yv{color:var(--yellow);}.ov{color:var(--orange);}.rv{color:var(--red);}
+.tcard{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px;}
+.thead{padding:20px 24px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.fg{display:flex;gap:10px;flex-wrap:wrap;}
+.fi{padding:8px 14px;border:1.5px solid var(--border);border-radius:100px;font-size:.85rem;font-family:inherit;outline:none;}
+.fi:focus{border-color:var(--accent);}
+table{width:100%;border-collapse:collapse;}
+thead th{padding:12px 16px;text-align:left;font-size:.75rem;font-weight:700;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--border);cursor:pointer;white-space:nowrap;}
+thead th:hover{color:var(--accent);}
+tbody td{padding:14px 16px;border-bottom:1px solid var(--border);font-size:.88rem;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#FAFAF9;}
+.rp{padding:3px 10px;border-radius:100px;font-size:.75rem;font-weight:700;}
+.rl{background:#ECFDF5;color:var(--green);}
+.rm{background:#FFFBEB;color:var(--yellow);}
+.rh{background:#FFF7ED;color:var(--orange);}
+.rc{background:#FEF2F2;color:var(--red);}
+.ru{background:#F5F3FF;color:var(--accent);}
+.sp{padding:3px 10px;border-radius:100px;font-size:.75rem;font-weight:700;background:#F5F3FF;color:var(--accent);}
+.tfoot{padding:14px 24px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--muted);}
+.empty{text-align:center;padding:60px 24px;}
+.empty h3{font-size:1.1rem;font-weight:700;margin-bottom:10px;}
+.empty p{color:var(--muted);font-size:.88rem;margin-bottom:16px;}
+#toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#1C1917;color:#fff;padding:12px 24px;border-radius:100px;font-size:.9rem;font-weight:600;opacity:0;transition:all .3s;pointer-events:none;z-index:999;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+@media(max-width:768px){.stats{grid-template-columns:repeat(3,1fr);}.topbar{padding:14px 16px;}.main{padding:20px 14px;}}
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="lcard">
+    <div style="font-size:2.5rem;margin-bottom:16px;">🧠</div>
+    <h1>Ask Anyway Admin</h1>
+    <p>Enter your admin password to view submissions.</p>
+    <input type="password" class="pw" id="pw-input" placeholder="Password">
+    <button class="lbtn" onclick="tryLogin()">Sign In</button>
+    <div class="err" id="err-msg">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<div id="dash">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:1.2rem;">🧠</span>
+      <h1>Ask Anyway — Submissions</h1>
+    </div>
+    <div class="tright">
+      <span id="refreshed" style="font-size:.78rem;color:var(--muted);"></span>
+      <button class="btn btn-s" onclick="loadData()">↻ Refresh</button>
+      <button class="btn btn-s" onclick="loadSamples()">🧪 Test data</button>
+      <button class="btn btn-p" onclick="exportCSV()">↓ Export CSV</button>
+      <button class="btn btn-g" onclick="doLogout()">Sign out</button>
+    </div>
+  </div>
+  <div class="main">
+    <div class="sbar" id="sbar">Loading…</div>
+    <div class="stats">
+      <div class="sc"><div class="sl">Total Leads</div><div class="sv pv" id="s0">0</div></div>
+      <div class="sc"><div class="sl">Low Risk</div><div class="sv gv" id="s1">0</div></div>
+      <div class="sc"><div class="sl">Moderate</div><div class="sv yv" id="s2">0</div></div>
+      <div class="sc"><div class="sl">High Risk</div><div class="sv ov" id="s3">0</div></div>
+      <div class="sc"><div class="sl">Crisis</div><div class="sv rv" id="s4">0</div></div>
+      <div class="sc"><div class="sl">Guide Opens</div><div class="sv pv" id="s5">0</div></div>
+    </div>
+    <div class="tcard">
+      <div class="thead">
+        <div class="fg">
+          <input class="fi" id="sf" placeholder="🔍 Search…" oninput="doFilter()">
+          <select class="fi" id="rf" onchange="doFilter()">
+            <option value="">All risk levels</option>
+            <option value="low">Low Risk</option>
+            <option value="moderate">Moderate</option>
+            <option value="high">High Risk</option>
+            <option value="critical">Crisis</option>
+          </select>
+          <select class="fi" id="srcf" onchange="doFilter()">
+            <option value="">All sources</option>
+            <option value="guide_modal">Guide Modal</option>
+            <option value="result_capture">Result Page</option>
+          </select>
+        </div>
+        <span id="rc" style="font-size:.85rem;color:var(--muted);font-weight:600;">0 submissions</span>
+      </div>
+      <table>
+        <thead><tr>
+          <th onclick="doSort('ts')">Date &amp; Time <span id="a-ts">↕</span></th>
+          <th onclick="doSort('contact')">Email / Phone <span id="a-contact">↕</span></th>
+          <th onclick="doSort('risk')">Risk Level <span id="a-risk">↕</span></th>
+          <th onclick="doSort('guide')">Matched Guide <span id="a-guide">↕</span></th>
+          <th onclick="doSort('source')">Source <span id="a-source">↕</span></th>
+          <th onclick="doSort('price')">Value <span id="a-price">↕</span></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="empty" class="empty" style="display:none;">
+        <h3>📭 No submissions yet</h3>
+        <p>Take the quiz, submit an email, then hit Refresh.<br>Or click "Test data" to preview the layout.</p>
+        <button class="btn btn-s" onclick="loadSamples()">🧪 Load sample data</button>
+      </div>
+      <div class="tfoot">
+        <span id="src-label">—</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+var PW = 'AskAnyway2026!';
+var DB = 'https://firestore.googleapis.com/v1/projects/ask-anyway-quiz/databases/(default)/documents/submissions';
+var allRows = [];
+var sortKey = 'ts';
+var sortAsc = false;
+
+// ── Auth ──────────────────────────────────────────────
+function tryLogin() {
+  var val = document.getElementById('pw-input').value;
+  if (val === PW) {
+    sessionStorage.setItem('aa_admin', '1');
+    showDash();
+  } else {
+    document.getElementById('err-msg').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+  }
+}
+
+function showDash() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dash').style.display = 'block';
+  loadData();
+}
+
+function doLogout() {
+  sessionStorage.removeItem('aa_admin');
+  location.reload();
+}
+
+document.getElementById('pw-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryLogin();
+});
+
+// ── Data loading ──────────────────────────────────────
+function setSbar(t) { document.getElementById('sbar').textContent = t; }
+function setSrc(t)  { document.getElementById('src-label').textContent = t; }
+
+function loadData() {
+  document.getElementById('refreshed').textContent = 'Refreshed ' + new Date().toLocaleTimeString();
+  setSbar('Loading from Firebase…');
+  setSrc('Fetching…');
+
+  fetch(DB + '?pageSize=500')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.documents || !d.documents.length) {
+        allRows = [];
+        setSbar('Firebase connected ✓ — no submissions yet. Go take the quiz!');
+        setSrc('Firebase ✓ — 0 submissions');
+      } else {
+        allRows = d.documents.map(function(doc) {
+          var f = doc.fields || {};
+          function g(k) {
+            if (!f[k]) return '';
+            return f[k].stringValue || String(f[k].doubleValue || f[k].integerValue || '');
+          }
+          var rawGuide = g('guide');
+          var parts = rawGuide.split(' / ');
+          var risk  = g('risk') || (parts.length > 1 ? parts[0] : '') || 'Unknown';
+          var guide = g('risk') ? rawGuide : (parts.length > 1 ? parts.slice(1).join(' / ') : rawGuide);
+          return {
+            ts:      g('ts') || doc.createTime || '',
+            contact: g('contact') || g('email') || '',
+            type:    g('type') || 'email',
+            risk:    risk,
+            guide:   guide,
+            source:  g('source') || '',
+            price:   parseFloat(g('price')) || 0
+          };
+        });
+        allRows.sort(function(a, b) { return a.ts < b.ts ? 1 : -1; });
+        setSbar('Firebase connected ✓ — ' + allRows.length + ' submission' + (allRows.length !== 1 ? 's' : '') + ' live');
+        setSrc('📡 Firebase (' + allRows.length + ' records)');
+      }
+      render();
+    })
+    .catch(function(err) {
+      setSbar('⚠️ Firebase error: ' + err.message + ' — showing local data');
+      setSrc('Local storage (fallback)');
+      loadLocal();
+    });
+}
+
+function loadLocal() {
+  var raw = JSON.parse(localStorage.getItem('aa_subs') || '[]');
+  allRows = raw.map(function(s) {
+    var p = (s.guide || '').split(' / ');
+    return {
+      ts:      s.ts || '',
+      contact: s.contact || '',
+      type:    s.type || 'email',
+      risk:    s.risk || (p.length > 1 ? p[0] : 'Unknown'),
+      guide:   s.risk ? s.guide : (p.length > 1 ? p.slice(1).join(' / ') : s.guide) || '',
+      source:  s.source || 'result_capture',
+      price:   s.price || 0
+    };
+  });
+  render();
+}
+
+// ── Render ────────────────────────────────────────────
+function render() {
+  var t = allRows.length;
+  document.getElementById('s0').textContent = t;
+  document.getElementById('s1').textContent = allRows.filter(function(d) { return (d.risk || '').toLowerCase().includes('low'); }).length;
+  document.getElementById('s2').textContent = allRows.filter(function(d) { return (d.risk || '').toLowerCase().includes('moderate'); }).length;
+  document.getElementById('s3').textContent = allRows.filter(function(d) { var r = (d.risk || '').toLowerCase(); return r.includes('high') && !r.includes('moderate'); }).length;
+  document.getElementById('s4').textContent = allRows.filter(function(d) { return /critical|crisis/.test((d.risk || '').toLowerCase()); }).length;
+  document.getElementById('s5').textContent = allRows.filter(function(d) { return d.source === 'guide_modal'; }).length;
+  doFilter();
+}
+
+function doFilter() {
+  var s   = (document.getElementById('sf').value || '').toLowerCase();
+  var rf  = (document.getElementById('rf').value || '').toLowerCase();
+  var src = document.getElementById('srcf').value;
+
+  var out = allRows.filter(function(d) {
+    if (s && !(d.contact || '').toLowerCase().includes(s) && !(d.guide || '').toLowerCase().includes(s)) return false;
+    if (rf && !(d.risk || '').toLowerCase().includes(rf)) return false;
+    if (src && d.source !== src) return false;
+    return true;
+  });
+
+  out.sort(function(a, b) {
+    var va = a[sortKey] || '';
+    var vb = b[sortKey] || '';
+    if (sortKey === 'price') { va = parseFloat(va) || 0; vb = parseFloat(vb) || 0; }
+    return va < vb ? (sortAsc ? -1 : 1) : va > vb ? (sortAsc ? 1 : -1) : 0;
+  });
+
+  ['ts','contact','risk','guide','source','price'].forEach(function(k) {
+    var el = document.getElementById('a-' + k);
+    if (el) el.textContent = k === sortKey ? (sortAsc ? '↑' : '↓') : '↕';
+  });
+
+  var empty = document.getElementById('empty');
+  var tbody = document.getElementById('tbody');
+  document.getElementById('rc').textContent = out.length + ' submission' + (out.length !== 1 ? 's' : '');
+
+  if (!out.length) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = out.map(function(d) {
+    var rl = (d.risk || '').toLowerCase();
+    var rc = rl.includes('low') ? 'rl' : rl.includes('moderate') ? 'rm' : rl.includes('high') ? 'rh' : /critical|crisis/.test(rl) ? 'rc' : 'ru';
+    var srcLabel = d.source === 'guide_modal' ? '📖 Guide' : '📋 Result';
+    var priceStr = d.price ? '$' + d.price : '—';
+    return '<tr>' +
+      '<td>' + esc(d.ts) + '</td>' +
+      '<td><strong>' + esc(d.contact) + '</strong></td>' +
+      '<td><span class="rp ' + rc + '">' + esc(d.risk || 'Unknown') + '</span></td>' +
+      '<td>' + esc(d.guide || '—') + '</td>' +
+      '<td><span class="sp">' + srcLabel + '</span></td>' +
+      '<td style="font-weight:700;color:var(--accent);">' + priceStr + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function doSort(k) {
+  sortAsc = (sortKey === k) ? !sortAsc : false;
+  sortKey = k;
+  doFilter();
+}
+
+// ── Export ────────────────────────────────────────────
+function exportCSV() {
+  if (!allRows.length) { showToast('No data to export'); return; }
+  var header = 'Timestamp,Contact,Type,Risk,Guide,Source,Value';
+  var lines = allRows.map(function(d) {
+    return [d.ts, d.contact, d.type, d.risk, d.guide, d.source, d.price].map(function(v) {
+      return '"' + String(v || '').replace(/"/g, '""') + '"';
+    }).join(',');
+  });
+  var csv = [header].concat(lines).join('\n');
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+  a.download = 'ask-anyway-' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+  showToast('Exported ✓');
+}
+
+// ── Samples ───────────────────────────────────────────
+function loadSamples() {
+  var samples = [
+    { contact: 'sarah@gmail.com',    risk: 'High Risk',     guide: 'The Always-On Brain',  type: 'email', price: 24, ts: new Date(Date.now()-3600000).toLocaleString(),   source: 'result_capture' },
+    { contact: 'jenna@hotmail.com',  risk: 'Moderate Risk', guide: 'Burnout Recovery',      type: 'email', price: 9,  ts: new Date(Date.now()-7200000).toLocaleString(),   source: 'guide_modal' },
+    { contact: '+15551234567',        risk: 'Low Risk',      guide: 'Boundaries 101',        type: 'sms',   price: 9,  ts: new Date(Date.now()-86400000).toLocaleString(),  source: 'result_capture' },
+    { contact: 'mark@icloud.com',    risk: 'Critical',      guide: 'Moral Injury 101',      type: 'email', price: 34, ts: new Date(Date.now()-172800000).toLocaleString(), source: 'guide_modal' },
+    { contact: 'alex@yahoo.com',     risk: 'Moderate Risk', guide: 'The Pleaser Pattern',   type: 'email', price: 9,  ts: new Date(Date.now()-259200000).toLocaleString(), source: 'result_capture' }
+  ];
+  var existing = JSON.parse(localStorage.getItem('aa_subs') || '[]');
+  localStorage.setItem('aa_subs', JSON.stringify(samples.concat(existing)));
+  setSbar('Showing 5 sample entries (local only)');
+  setSrc('Local sample data');
+  loadLocal();
+  showToast('5 samples loaded ✓');
+}
+
+// ── Utils ─────────────────────────────────────────────
+function esc(s) {
+  var d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show';
+  setTimeout(function() { t.className = ''; }, 2800);
+}
+
+// ── Auto-login ────────────────────────────────────────
+if (sessionStorage.getItem('aa_admin') === '1') {
+  showDash();
+}
+</script>
+</body>
+</html>

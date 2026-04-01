@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "name": "recommendation_routing_config",
+  "steps": [
+    "score_quiz",
+    "assign_risk_level",
+    "run_topic_matcher_if_allowed",
+    "run_audience_matcher_if_allowed",
+    "select_primary_guide",
+    "select_primary_offer_lane",
+    "attach_overlay_buckets_if_present",
+    "render_results_cta_stack",
+    "persist_recommendation_event"
+  ],
+  "riskRules": {
+    "low_risk": {
+      "allowTopicMatcher": true,
+      "allowAudienceMatcher": true,
+      "defaultPrimaryOffer": "guide",
+      "prependFreeCrisisResources": true
+    },
+    "moderate_risk": {
+      "allowTopicMatcher": true,
+      "allowAudienceMatcher": true,
+      "defaultPrimaryOffer": "kit",
+      "prependFreeCrisisResources": true
+    },
+    "high_risk": {
+      "allowTopicMatcher": true,
+      "allowAudienceMatcher": true,
+      "defaultPrimaryOffer": "kit",
+      "prependFreeCrisisResources": true,
+      "forceSafetyFirstLayout": true
+    },
+    "critical": {
+      "allowTopicMatcher": false,
+      "allowAudienceMatcher": false,
+      "defaultPrimaryOffer": "free_crisis_resources",
+      "prependFreeCrisisResources": true,
+      "hidePaidOffersAboveFold": true
+    }
+  },
+  "bucketRules": {
+    "maxIdentitySelections": 2,
+    "maxContextSelections": 2,
+    "maxOverlayBuckets": 2,
+    "fallbackBucket": "general-mental-health",
+    "preferSpecificOccupationOverBroad": true
+  },
+  "outputContracts": {
+    "recommendationRecord": [
+      "session_id",
+      "lead_id",
+      "risk_level",
+      "matched_guide_id",
+      "matched_offer_id",
+      "primary_audience_bucket_id",
+      "overlay_bucket_ids",
+      "why_matched",
+      "timestamp"
+    ]
+  }
+}

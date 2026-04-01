@@ -1,0 +1,297 @@
+{
+  "number": 7,
+  "title": "'Everyone's Better Off Without Me': Suicidal Thoughts and Hopelessness",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "When the weight won't lift and the exit looks easier.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What's Happening When Suicidal Thoughts Show Up",
+      "content": [
+        {
+          "type": "para",
+          "text": "Suicidal thoughts in frontline work are more common than people talk about. They range from passive wishes (\"I wish I could just disappear\") to active planning (\"I've thought through how I'd do it\"). Both need attention. Both are treatable. And both mean your nervous system is overwhelmed and your brain is looking for an escape from pain it no longer believes will end."
+        },
+        {
+          "type": "h3",
+          "text": "What it looks like"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Passive thoughts: \"Everyone would be better off without me.\" \"I don't want to die, I just want the pain to stop.\"",
+            "Active ideation: Thinking through methods, timing, or making plans.",
+            "Hopelessness: \"Nothing will ever get better. This is permanent.\"",
+            "Withdrawal from people and activities.",
+            "Giving things away, tying up loose ends, saying goodbye without context."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Critical truth:",
+            "Suicidal thoughts are symptoms of overload, not character flaws. They mean your brain needs help regulating unbearable emotion. Treatment works."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why Frontline Folks Are at Higher Risk",
+      "content": [
+        {
+          "type": "para",
+          "text": "Frontline work stacks risk factors: repeated trauma exposure, moral injury, job-related stress you can't control, access to lethal means, stigma around asking for help, and social isolation due to shift work and the belief that \"no one outside this job gets it.\" When those stack with personal stressors—relationship rupture, financial crisis, sleep debt—the risk escalates fast."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Recent critical incident or perceived failure at work.",
+            "Relationship loss or rupture.",
+            "Substance use escalating as a coping strategy.",
+            "Isolation: 'No one would understand.'",
+            "Access to firearms or other lethal means.",
+            "Shame about struggling: 'I should be tougher than this.'"
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: Safety planning reduces impulsive action during crisis. Means restriction interrupts access during high-risk windows. Connection and follow-up interrupt isolation and hopelessness."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do Right Now If You're Having These Thoughts",
+      "content": [
+        {
+          "type": "para",
+          "text": "If you're reading this and thinking about suicide, do these four things in the next 30 minutes. Do not wait until you feel worse. Act now."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Call or text 988 (Suicide & Crisis Lifeline). You can also text. They will not judge you or lock you up. They will help you get through this moment.",
+            "Contact one safe person right now—call, text, or show up. Say: \"I'm not safe. I need you to stay with me.\"",
+            "Remove or secure means: Give firearms, medications, or other means to someone you trust. Now.",
+            "Use your written safety plan if you have one. If not, make one this week using the worksheet below."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Critical field rule: Suicidal thoughts are temporary. The decision is permanent. Your job is to survive this moment. Help exists."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners, Family, and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "If someone tells you they're thinking about suicide—directly or indirectly—take it seriously. Do not wait. Do not minimize. Do not assume they're just venting."
+        },
+        {
+          "type": "h3",
+          "text": "What to do immediately"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Ask directly: \"Are you thinking about killing yourself?\" Clear language saves lives.",
+            "Do not leave them alone if risk is active. Stay with them or get someone who can.",
+            "Help them contact 988 or drive them to an ER if safety is unclear.",
+            "Remove access to means: secure firearms, medications, and other lethal items.",
+            "Follow up daily. Suicidal crises can last days or weeks. Consistent contact reduces risk."
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "What NOT to do"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Do not say: \"You have so much to live for\" or \"Think about your family.\"",
+            "Do not argue them out of it. Listen. Validate. Connect.",
+            "Do not promise to keep it secret. Safety overrides confidentiality.",
+            "Do not assume they'll reach out if it gets worse. Check in actively."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Suicidal thoughts require professional care. Do not manage this alone. Therapy, medication, peer support, and hospitalization all save lives."
+        },
+        {
+          "type": "h3",
+          "text": "Escalate care immediately if:"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "You have a plan or have started preparing.",
+            "Thoughts are increasing in frequency or intensity.",
+            "You're using substances to cope or numb.",
+            "You feel disconnected from reasons to stay alive.",
+            "You're isolating or giving things away.",
+            "Call 988 or go to an ER. Treatment works. You are worth the effort."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "Crisis Safety Plan: Build It Now",
+      "content": [
+        {
+          "type": "para",
+          "text": "A safety plan is a written, step-by-step guide for what to do when suicidal thoughts show up. Make it when you're calm. Use it when you're in crisis. Share it with at least one safe person."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Safety Plan Steps:",
+            "1) Warning signs I notice first.",
+            "2) Internal coping: What I can do on my own (walk, breathe, distract).",
+            "3) People/places that distract me (coffee shop, friend's house, gym).",
+            "4) People I can call for support (list 3 with phone numbers).",
+            "5) Professionals to contact (therapist, crisis line: 988).",
+            "6) Means restriction: Firearms/medications secured by [name of person]."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: 'Everyone's Better Off Without Me': Suicidal Thoughts and Hopelessness",
+      "intro": "Use this to build a written safety plan before crisis hits. Share it with one safe person.",
+      "question_groups": [
+        {
+          "label": "What warning signs show up before suicidal thoughts get intense?",
+          "hint": "Examples: withdrawing, using more substances, feeling hopeless, sleep changes.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What internal coping strategies have helped in the past?",
+          "hint": "Examples: breathing, walking, cold water on face, distraction, calling someone.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "List 3 people you can contact when thoughts get bad (include phone numbers).",
+          "hint": "Safe people who will listen, stay with you, or help you get care.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "If risk is active right now, call or text 988 immediately. Do not wait."
+    },
+    {
+      "title": "Worksheet: 'Everyone's Better Off Without Me': Suicidal Thoughts and Hopelessness - Partner/Team Check-In",
+      "intro": "Use this with a trusted person to build shared awareness and a plan for when risk is high.",
+      "question_groups": [
+        {
+          "label": "What do I look like or sound like when I'm at risk?",
+          "hint": "Observable signs: withdrawal, giving things away, talking about being a burden, increased substance use.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What should you do if you're worried about my safety?",
+          "hint": "Examples: Ask me directly. Don't leave me alone. Call 988 with me. Take me to ER if needed.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "Who else should you contact if I'm in crisis?",
+          "hint": "Therapist, trusted friend, family member, or supervisor (list names and phone numbers).",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "Immediate check-in required if safety is at risk.",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

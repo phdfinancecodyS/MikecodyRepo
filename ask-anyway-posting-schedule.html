@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Anyway — 10-Week TikTok Posting Schedule</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1a6b6a;
+    --teal-light: #e8f4f4;
+    --teal-mid: #2d8b89;
+    --amber: #d49228;
+    --amber-light: #fdf3e0;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --purple: #6b4fa0;
+    --purple-light: #f0ebfa;
+    --blue: #2563aa;
+    --blue-light: #e8f0fb;
+    --green: #277a45;
+    --green-light: #e8f5ed;
+    --slate: #1e2a3a;
+    --mid: #4a5568;
+    --soft: #718096;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --radius: 10px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--slate);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--teal);
+    color: white;
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+  header h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.02em; }
+  header p { margin-top: 6px; opacity: .8; font-size: .95rem; }
+
+  .stats-bar {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .stat {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: 10px 18px; text-align: center;
+  }
+  .stat-n { font-size: 1.4rem; font-weight: 700; }
+  .stat-l { font-size: .78rem; opacity: .8; margin-top: 2px; }
+
+  /* ── Controls ── */
+  .controls {
+    background: white; border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .controls label { font-size: .85rem; color: var(--soft); }
+  select, button {
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 12px; font-size: .88rem; cursor: pointer;
+    background: white; color: var(--slate);
+    transition: border-color .15s;
+  }
+  select:focus, button:focus { outline: 2px solid var(--teal); outline-offset: 2px; }
+  button.primary {
+    background: var(--teal); color: white; border-color: var(--teal);
+    font-weight: 600; padding: 7px 16px;
+  }
+  button.primary:hover { background: var(--teal-mid); }
+  .spacer { flex: 1; }
+  #export-btn { font-size: .85rem; }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    padding: 10px 24px; background: white; border-bottom: 1px solid var(--border);
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 5px; font-size: .79rem; color: var(--mid);
+  }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── Calendar grid ── */
+  .calendar { padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
+
+  .week-block {
+    background: white; border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 16px;
+    overflow: hidden;
+    transition: box-shadow .15s;
+  }
+  .week-block:hover { box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+
+  .week-header {
+    background: var(--teal); color: white;
+    padding: 10px 18px;
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer; user-select: none;
+  }
+  .week-header h2 { font-size: .95rem; font-weight: 700; flex: 1; }
+  .week-meta { font-size: .8rem; opacity: .8; }
+  .week-toggle { font-size: 1rem; transition: transform .2s; }
+  .week-block.collapsed .week-toggle { transform: rotate(-90deg); }
+
+  .week-content { display: grid; grid-template-columns: repeat(5, 1fr); }
+  .week-block.collapsed .week-content { display: none; }
+
+  /* ── Day card ── */
+  .day-card {
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    padding: 14px;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: background .1s;
+  }
+  .day-card:last-child { border-right: none; }
+  .day-card:hover { background: #fafbff; }
+
+  .day-label {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--soft);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .day-date { color: var(--teal); font-weight: 700; }
+
+  .script-card {
+    border-radius: 7px; padding: 10px 12px;
+    border-left: 3px solid;
+    font-size: .82rem; line-height: 1.4;
+    flex: 1;
+  }
+  .script-num {
+    font-size: .7rem; font-weight: 700; opacity: .6; margin-bottom: 3px;
+  }
+  .script-title { font-weight: 600; margin-bottom: 4px; }
+  .script-hook { font-size: .77rem; opacity: .75; font-style: italic; }
+  .script-cat {
+    display: inline-block; margin-top: 6px;
+    font-size: .67rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; padding: 2px 7px;
+    border-radius: 20px; opacity: .85;
+  }
+
+  .post-time {
+    font-size: .72rem; color: var(--soft);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .post-time::before { content: '🕐'; font-size: .8rem; }
+
+  /* ── Category color themes ── */
+  .cat-myth-busting       { border-color: var(--red);    background: var(--red-light); }
+  .cat-myth-busting .script-cat { background: var(--red); color: white; }
+
+  .cat-wrong-vs-right     { border-color: var(--amber);  background: var(--amber-light); }
+  .cat-wrong-vs-right .script-cat { background: var(--amber); color: white; }
+
+  .cat-statistics         { border-color: var(--blue);   background: var(--blue-light); }
+  .cat-statistics .script-cat { background: var(--blue); color: white; }
+
+  .cat-emotional          { border-color: var(--purple);  background: var(--purple-light); }
+  .cat-emotional .script-cat { background: var(--purple); color: white; }
+
+  .cat-warning-signs      { border-color: #e67e22;       background: #fef4e8; }
+  .cat-warning-signs .script-cat { background: #e67e22; color: white; }
+
+  .cat-educational        { border-color: var(--teal);   background: var(--teal-light); }
+  .cat-educational .script-cat { background: var(--teal); color: white; }
+
+  .cat-qa                 { border-color: var(--green);  background: var(--green-light); }
+  .cat-qa .script-cat { background: var(--green); color: white; }
+
+  .cat-relationship-specific { border-color: #8e44ad; background: #f5edfb; }
+  .cat-relationship-specific .script-cat { background: #8e44ad; color: white; }
+
+  /* ── Sidebar / detail panel ── */
+  .detail-panel {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 380px;
+    background: white; border-left: 1px solid var(--border);
+    box-shadow: -4px 0 24px rgba(0,0,0,.08);
+    transform: translateX(100%); transition: transform .25s ease;
+    z-index: 100; overflow-y: auto; padding: 24px;
+  }
+  .detail-panel.open { transform: translateX(0); }
+  .detail-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--bg); border: 1px solid var(--border);
+    cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  }
+  .detail-panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; padding-right: 40px; }
+  .detail-panel .cat-badge {
+    display: inline-block; font-size: .7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
+    padding: 3px 9px; border-radius: 20px; margin-bottom: 14px;
+    background: var(--teal); color: white;
+  }
+  .detail-section { margin-bottom: 16px; }
+  .detail-section h4 {
+    font-size: .72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--soft); margin-bottom: 6px;
+  }
+  .detail-section p, .detail-section li {
+    font-size: .85rem; line-height: 1.55; color: var(--mid);
+  }
+  .detail-section ol { padding-left: 18px; }
+  .detail-section li { margin-bottom: 6px; }
+  .detail-section .caption-box {
+    background: var(--bg); border-radius: 7px; padding: 10px 12px;
+    font-size: .82rem; line-height: 1.5; color: var(--mid);
+    border: 1px solid var(--border);
+  }
+  .hashtag-list {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px;
+  }
+  .hashtag {
+    background: var(--teal-light); color: var(--teal);
+    font-size: .73rem; padding: 3px 8px; border-radius: 20px; font-weight: 600;
+  }
+  .copy-btn {
+    display: block; width: 100%; margin-top: 8px;
+    background: var(--teal); color: white;
+    border: none; border-radius: 6px; padding: 9px;
+    font-size: .85rem; font-weight: 600; cursor: pointer;
+    transition: background .15s;
+  }
+  .copy-btn:hover { background: var(--teal-mid); }
+  .copy-btn.copied { background: var(--green); }
+
+  /* ── Progress tracker ── */
+  .progress-bar-wrap {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 14px;
+    position: sticky; bottom: 0; z-index: 10;
+  }
+  .progress-bar-bg {
+    flex: 1; height: 8px; background: var(--border);
+    border-radius: 4px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%; background: var(--teal);
+    border-radius: 4px; transition: width .3s;
+  }
+  .progress-label { font-size: .8rem; color: var(--soft); white-space: nowrap; }
+  .check-label { font-size: .8rem; color: var(--soft); }
+  input[type=checkbox] { accent-color: var(--teal); }
+
+  @media (max-width: 900px) {
+    .week-content { grid-template-columns: 1fr 1fr; }
+    .day-card:nth-child(2) { border-right: none; }
+    .day-card:nth-child(n+3) { border-top: 1px solid var(--border); }
+    .detail-panel { width: 100%; }
+  }
+  @media (max-width: 560px) {
+    .week-content { grid-template-columns: 1fr; }
+    .day-card { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Ask Anyway — 10-Week TikTok Schedule</h1>
+  <p>5 posts per week · 50 scripts · Starts March 25, 2026</p>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">50</div><div class="stat-l">Total Videos</div></div>
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Weeks</div></div>
+    <div class="stat"><div class="stat-n" id="posted-count">0</div><div class="stat-l">Posted ✓</div></div>
+    <div class="stat"><div class="stat-n" id="remaining-count">50</div><div class="stat-l">Remaining</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <label>Filter by category:</label>
+  <select id="filter-cat">
+    <option value="all">All categories</option>
+    <option value="myth-busting">Myth-Busting</option>
+    <option value="wrong-vs-right">Wrong vs Right</option>
+    <option value="statistics">Statistics</option>
+    <option value="emotional">Emotional</option>
+    <option value="warning-signs">Warning Signs</option>
+    <option value="educational">Educational</option>
+    <option value="qa">Q&amp;A</option>
+    <option value="relationship-specific">Relationship-Specific</option>
+  </select>
+  <label>Best time:</label>
+  <select id="time-zone">
+    <option value="ET">Eastern (7pm ET)</option>
+    <option value="CT">Central (6pm CT)</option>
+    <option value="PT">Pacific (4pm PT)</option>
+  </select>
+  <div class="spacer"></div>
+  <button id="expand-all">Expand All</button>
+  <button id="collapse-all">Collapse All</button>
+  <button class="primary" id="export-btn">⬇ Export CSV</button>
+</div>
+
+<div class="legend">
+  <span style="font-size:.78rem;font-weight:700;color:var(--mid);margin-right:4px">Categories:</span>
+  <div class="legend-item"><div class="dot" style="background:var(--red)"></div> Myth-Busting</div>
+  <div class="legend-item"><div class="dot" style="background:var(--amber)"></div> Wrong vs Right</div>
+  <div class="legend-item"><div class="dot" style="background:var(--blue)"></div> Statistics</div>
+  <div class="legend-item"><div class="dot" style="background:var(--purple)"></div> Emotional</div>
+  <div class="legend-item"><div class="dot" style="background:var(--orange,#e67e22)"></div> Warning Signs</div>
+  <div class="legend-item"><div class="dot" style="background:var(--teal)"></div> Educational</div>
+  <div class="legend-item"><div class="dot" style="background:var(--green)"></div> Q&amp;A</div>
+  <div class="legend-item"><div class="dot" style="background:#8e44ad"></div> Relationship</div>
+</div>
+
+<div class="calendar" id="calendar"></div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-label">Progress:</div>
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="progress-label"><span id="progress-pct">0%</span> complete</div>
+</div>
+
+<!-- Detail Side Panel -->
+<div class="detail-panel" id="detail-panel">
+  <button class="detail-close" id="detail-close" aria-label="Close">✕</button>
+  <h3 id="dp-title"></h3>
+  <div class="cat-badge" id="dp-cat"></div>
+  <div class="detail-section">
+    <h4>Hook (on-screen text)</h4>
+    <p id="dp-hook" style="font-style:italic"></p>
+  </div>
+  <div class="detail-section">
+    <h4>VO Script (3 slides)</h4>
+    <ol id="dp-vo"></ol>
+  </div>
+  <div class="detail-section">
+    <h4>Branded Card Text</h4>
+    <ol id="dp-text"></ol>
+  </div>
+  <div class="detail-section">
+    <h4>CTA</h4>
+    <p id="dp-cta" style="font-weight:600;color:var(--teal)"></p>
+  </div>
+  <div class="detail-section">
+    <h4>TikTok Caption</h4>
+    <div class="caption-box" id="dp-caption"></div>
+    <button class="copy-btn" id="copy-caption">Copy Caption</button>
+  </div>
+  <div class="detail-section">
+    <h4>Hashtags</h4>
+    <div class="hashtag-list" id="dp-hashtags"></div>
+    <button class="copy-btn" id="copy-hashtags" style="margin-top:10px">Copy Hashtags</button>
+  </div>
+  <div class="detail-section">
+    <h4>Video File</h4>
+    <p id="dp-file" style="font-family:monospace;font-size:.8rem;color:var(--teal)"></p>
+  </div>
+</div>
+
+<script>
+// ────────────────────────────────────────────────
+// FULL 50-SCRIPT DATA
+// ────────────────────────────────────────────────
+const SCRIPTS = [
+  // ── MYTH-BUSTING (1-8) ─────────────────────────
+  { id:1, category:"myth-busting", title:"The Myth: Asking Plants the Idea",
+    hook:"Most people believe asking about suicide plants the idea.",
+    vo_slides:["Most people believe that asking about suicide plants the idea in someone's head.","But the research is really clear — asking does NOT increase the risk. It almost always decreases it.","People who survive attempts consistently say: being asked made them feel less alone, not more at risk."],
+    text_slides:["The fear of asking is costing lives.","Asking directly opens the door.","Your words can be the turning point."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You've probably hesitated to ask because you were afraid of planting the idea. Science says you won't. But silence can do real damage.",
+    hashtags:"#suicideprevention #mentalhealthawareness #askawaymission #breakthestigma #mentalhealth" },
+  { id:2, category:"myth-busting", title:"The Myth: Not Trained, Not Qualified",
+    hook:"You think only professionals can ask the question.",
+    vo_slides:["A lot of people tell me they don't ask because they're not trained. They're not a therapist. They're not a counselor.","But research shows that the single most protective thing is a caring human asking directly — not a credential.","You don't need training to say: 'I've been worried about you. Are you thinking about suicide?'"],
+    text_slides:["You don't need a degree to save a life.","The question is the intervention.","Connection is the credential."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Nobody waited for a license before they cared. Don't let 'I'm not qualified' stop you from asking.",
+    hashtags:"#mentalhealthmatters #suicideawareness #QPR #askawaymission #mentalhealth" },
+  { id:3, category:"myth-busting", title:"The Myth: They'll Tell Me If Something's Wrong",
+    hook:"\"If they needed help, they'd ask for it.\" Right?",
+    vo_slides:["One of the most dangerous myths: 'If they needed help, they'd tell me.'","But most people who are struggling are waiting to be asked. Shame, fear, and the belief that they're a burden often stop them from speaking first.","Your question gives them permission to answer honestly."],
+    text_slides:["Silence isn't peace. It's waiting.","They may be hoping you'll ask.","You asking could be what saves them."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"They're probably not going to bring it up. But they might be waiting for you to.",
+    hashtags:"#mentalhealthtips #suicideprevention #askawaymission #selfcare #mentalwellness" },
+  { id:4, category:"myth-busting", title:"The Myth: It's Too Private to Ask About",
+    hook:"\"It's none of my business\" might be the most dangerous phrase.",
+    vo_slides:["We treat suicide like it's too intimate to address — too personal, too private, too heavy.","But research on survivors shows that the people who felt most alone were the ones nobody asked.","Their pain was private because we made it that way."],
+    text_slides:["Your care is not an intrusion.","Silence says 'this is too much.'","Asking says 'you matter to me.'"],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You're not being nosy. You're being brave. There's a difference.",
+    hashtags:"#suicideprevention #mentalhealthawareness #askawaymission #youmatter #mentalhealth" },
+  { id:5, category:"myth-busting", title:"The Myth: Suicidal People Want to Die",
+    hook:"Most people thinking about suicide don't actually want to die.",
+    vo_slides:["Here's what the research actually shows: most people who are suicidal are deeply ambivalent. They want the pain to stop — not their life.","That ambivalence is the opening. That's the window where a conversation can make all the difference.","Your question — asked with care — can reach the part of them that wants to live."],
+    text_slides:["They want the pain to stop.","The ambivalence is the opening.","You can speak to the part that wants to live."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Suicidal people don't want to die — they want relief. Your question could be the bridge to finding another way.",
+    hashtags:"#suicideawareness #mentalhealth #crisisintervention #askawaymission #hope" },
+  { id:6, category:"myth-busting", title:"The Myth: Only Professionals Should Help",
+    hook:"Waiting for a professional can cost someone their life.",
+    vo_slides:["We've been taught that mental health crises are for professionals only. Don't interfere. Call a hotline. Leave it to the experts.","But in a moment of crisis, the most important person is whoever is there — not whoever has a license.","Your presence and your question are the first intervention. Professionals come after."],
+    text_slides:["First responders aren't always therapists.","Being there IS the intervention.","Ask first. Resources come next."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You're not expected to be the therapist. You're expected to be a human who cares enough to ask.",
+    hashtags:"#suicideprevention #mentalhealthmatters #askawaymission #QPR #crisisintervention" },
+  { id:7, category:"myth-busting", title:"The Myth: If They Had a Serious Plan They'd Hide It",
+    hook:"Most people give at least one warning sign before an attempt.",
+    vo_slides:["People often assume if someone has a real plan, they'd hide it. They wouldn't give clues.","But studies show the opposite — more than 80% of people who die by suicide communicated some kind of warning sign beforehand.","The signals were there. We just didn't know what to listen for."],
+    text_slides:["80%+ gave a warning sign.","The clues were already there.","Learn to hear what they're saying."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"They probably gave signs. This is how you learn to see them.",
+    hashtags:"#suicidewarningsigns #mentalhealth #suicideprevention #askawaymission #awareness" },
+  { id:8, category:"myth-busting", title:"The Myth: Talking About It Glorifies Suicide",
+    hook:"Avoiding the word \"suicide\" makes things worse, not safer.",
+    vo_slides:["Many people avoid the word 'suicide' because they've heard it can glorify it or inspire copycat behavior.","That concern applies to irresponsible media coverage — not to a private, caring conversation between two people.","Using the word directly is part of what makes the conversation work."],
+    text_slides:["Euphemisms create distance.","Using the word is not glorifying.","Direct language saves lives."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You're not going to 'romanticize' it by asking. You'll humanize it. That's the point.",
+    hashtags:"#mentalhealthawareness #suicideprevention #askawaymission #safemessaging #breakthestigma" },
+
+  // ── WRONG VS RIGHT (9-15) ──────────────────────
+  { id:9, category:"wrong-vs-right", title:"Don't Say: Are You Okay?",
+    hook:"\"Are you okay?\" almost never gets an honest answer.",
+    vo_slides:["When we're worried about someone, the most common thing we say is 'are you okay?'","The problem: it almost always gets a 'yeah, I'm fine.' It's too easy to deflect.","Instead try: 'Hey — I've noticed you seem like you've had a lot on your plate lately. Are you doing okay, really?'"],
+    text_slides:["'Fine' is a wall, not a window.","Add 'really' and mean it.","Specificity opens the door."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"'Are you okay?' rarely works. Here's what does.",
+    hashtags:"#mentalhealthtips #suicideprevention #askawaymission #howtohelp #mentalhealth" },
+  { id:10, category:"wrong-vs-right", title:"Don't Say: You Have So Much to Live For",
+    hook:"\"You have so much to live for\" can backfire badly.",
+    vo_slides:["When someone is struggling, telling them they have so much to live for feels logical to you — but to them, it can feel dismissive.","It can communicate: 'I don't understand your pain' or worse, 'you're being ungrateful.'","Instead try: 'I can't fully understand what you're going through, but I'm here. And I want to understand.'"],
+    text_slides:["Logic doesn't land in crisis.","Presence beats persuasion.","'I'm here' is the message."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Telling someone they 'have so much to live for' often makes them feel more alone. Say this instead.",
+    hashtags:"#mentalhealthtips #suicideprevention #askawaymission #supportingafriend #mentalhealth" },
+  { id:11, category:"wrong-vs-right", title:"Don't Say: It Could Be Worse",
+    hook:"Comparing their pain to others' pain never helps.",
+    vo_slides:["'It could be worse — there are people dying in wars.' We mean well. We're trying to offer perspective.","But for someone in crisis, it lands like: 'your suffering doesn't count.'","Instead say: 'Your pain is real. I believe you. What's been hardest?'"],
+    text_slides:["Pain doesn't compare itself.","Validation first, always.","'I believe you' is powerful."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Never rank someone's pain. Validate it instead.",
+    hashtags:"#mentalhealthawareness #suicideprevention #askawaymission #emotionalsupport #mentalhealth" },
+  { id:12, category:"wrong-vs-right", title:"Don't Say: Just Think Positive",
+    hook:"\"Just think positive\" can feel like a slap.",
+    vo_slides:["Positivity culture has convinced us that mindset fixes everything. So when someone we love is struggling, we tell them to focus on the good.","But for someone in a mental health crisis, that advice implies their pain is a thinking error — not a real experience.","Try instead: 'You don't have to fix how you feel right now. Just talk to me.'"],
+    text_slides:["Toxic positivity dismisses real pain.","You don't need to fix them.","Just be present."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"'Think positive' is not a mental health strategy. Here's what actually helps.",
+    hashtags:"#mentalhealthtips #toxicpositivity #suicideprevention #askawaymission #mentalwellness" },
+  { id:13, category:"wrong-vs-right", title:"Don't Say: Have You Tried Therapy?",
+    hook:"Sending someone to therapy is not the same as supporting them.",
+    vo_slides:["Recommending therapy is well-intentioned — and therapy is often a great idea. But saying it as a first response can communicate: 'Go talk to someone else. Not me.'","Access, cost, and stigma make therapy a complicated referral for a lot of people.","Be present first. Then explore resources together."],
+    text_slides:["Referrals aren't presence.","Sit with them first.","Resources come after connection."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Therapy is great. But 'you should see a therapist' is not support — it can feel like dismissal.",
+    hashtags:"#mentalhealthmatters #therapy #suicideprevention #askawaymission #supportingafriend" },
+  { id:14, category:"wrong-vs-right", title:"Don't Say: I Know How You Feel",
+    hook:"\"I know how you feel\" shuts down the conversation.",
+    vo_slides:["When someone shares something painful, we reach for 'I know how you feel' to connect. But it often does the opposite.","It shifts the focus to you — and it can feel like their experience isn't unique enough to need your full attention.","Try: 'I can't imagine. Tell me more about what that's been like for you.'"],
+    text_slides:["Your story is not their story.","Stay curious, not parallel.","'Tell me more' opens more than 'I know.'"],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You probably don't know how they feel. And that's okay. Here's what to say instead.",
+    hashtags:"#mentalhealthtips #activelistening #suicideprevention #askawaymission #support" },
+  { id:15, category:"wrong-vs-right", title:"Don't Say: Everything Happens for a Reason",
+    hook:"This phrase can make suffering feel like punishment.",
+    vo_slides:["'Everything happens for a reason.' We say it to offer comfort and meaning.","But for someone in a mental health crisis, it can imply their pain is somehow deserved — part of a plan.","Instead, sit with the uncertainty with them: 'This is really hard, and it doesn't have to make sense right now.'"],
+    text_slides:["Meaning can't be forced.","'I don't understand it either' is honest.","You can grieve it together."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"'Everything happens for a reason' is a phrase that feels helpful but often isn't. Here's what does.",
+    hashtags:"#mentalhealthawareness #grief #suicideprevention #askawaymission #mentalwellness" },
+
+  // ── STATISTICS (16-21) ─────────────────────────
+  { id:16, category:"statistics", title:"80%+ Gave a Warning Sign",
+    hook:"Over 80% of people who die by suicide gave at least one warning sign.",
+    vo_slides:["Research consistently shows that more than 80% of people who die by suicide communicated some kind of warning sign beforehand.","That means in most cases, there was an opening — a moment when the right question could have changed everything.","This isn't about blame. It's about knowing what to look for — and how to respond."],
+    text_slides:["The signals are usually there.","Knowing what to look for matters.","Ask Anyway teaches you how."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Over 80% gave a sign. The question is whether we knew how to see it — and what to say next.",
+    hashtags:"#suicidestatistics #suicideprevention #mentalhealth #askawaymission #awareness" },
+  { id:17, category:"statistics", title:"Asking Reduces Risk",
+    hook:"Asking directly about suicide reduces the risk. Full stop.",
+    vo_slides:["Multiple peer-reviewed studies show that asking someone directly if they are thinking about suicide does not increase the risk — it reduces it.","In one study, at-risk individuals who were asked directly reported lower suicidal ideation afterwards — not higher.","The question is protective, not dangerous."],
+    text_slides:["The data is clear.","Asking reduces ideation.","Your question is protective."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Here's the research that changes everything: asking directly about suicide actually reduces the risk.",
+    hashtags:"#suicideresearch #suicideprevention #askawaymission #mentalhealth #QPR" },
+  { id:18, category:"statistics", title:"2nd Leading Cause Ages 10–34",
+    hook:"Suicide is the 2nd leading cause of death for ages 10 to 34.",
+    vo_slides:["Suicide is the second leading cause of death among people aged 10 to 34 in the United States.","That's not a mental health statistic filed away in a journal. That's our kids, siblings, students, and friends.","The crisis is this generation. And the response has to be all of us — not just clinicians."],
+    text_slides:["This is a generation in crisis.","Waiting for professionals isn't enough.","Every caring adult matters."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"The 2nd leading cause of death for people 10–34 is suicide. We all have a role to play in changing that.",
+    hashtags:"#suicidestatistics #youthmentalhealth #suicideprevention #askawaymission #mentalhealth" },
+  { id:19, category:"statistics", title:"54% Know Someone Who Died by Suicide",
+    hook:"More than half of American adults have lost someone to suicide.",
+    vo_slides:["According to the CDC, more than 54% of American adults report knowing someone who died by suicide.","This is not a rare, distant issue. It's a loss that most of us have already experienced.","Which means most of us have already wished we'd asked."],
+    text_slides:["Most of us have lost someone.","We know this grief personally.","That's why asking matters so much."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Most of us already know this loss. That's exactly why the conversation can't wait.",
+    hashtags:"#suicideloss #suicideprevention #askawaymission #grief #mentalhealthawareness" },
+  { id:20, category:"statistics", title:"Men Are 4x More Likely to Die",
+    hook:"Men die by suicide 4x more often than women.",
+    vo_slides:["Men die by suicide at nearly four times the rate of women — yet they're far less likely to seek help or even be asked.","The silence around male mental health is literally deadly.","Checking in on the men in your life isn't soft. It's urgent."],
+    text_slides:["4x higher rate. 4x the silence.","Men are not asking for help.","You asking them could save a life."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Men die by suicide 4x more than women. They're not asking for help. You asking them might be everything.",
+    hashtags:"#mentalhealth #maskulinity #maledepression #suicideprevention #askawaymission" },
+  { id:21, category:"statistics", title:"Veterans Are 1.5x More at Risk",
+    hook:"Veterans are 1.5x more likely to die by suicide than civilians.",
+    vo_slides:["Veterans die by suicide at one-and-a-half times the rate of the general population — and a significant portion of veteran suicides occur among those who never accessed VA services.","Many carry wounds that civilian life doesn't recognize or respond to.","If you know a veteran, asking directly is one of the most meaningful things you can do."],
+    text_slides:["The battle doesn't end at home.","Most never access VA services.","Every veteran deserves to be asked."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Veterans die by suicide at 1.5x the civilian rate — and most never sought help. Asking could change that.",
+    hashtags:"#veteranmentalhealth #veteransuicide #suicideprevention #askawaymission #22aday" },
+
+  // ── EMOTIONAL (22-27) ──────────────────────────
+  { id:22, category:"emotional", title:"You Have Permission to Ask",
+    hook:"You already have permission to ask. You don't need to wait.",
+    vo_slides:["Here's what I want you to hear: you have permission to ask. You don't need to be a professional. You don't need to be certain something is wrong.","If you're worried, that instinct is enough. Trust it.","The question you're afraid to ask might be the one that changes everything."],
+    text_slides:["Your instinct is enough.","Worry is permission.","Ask anyway."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You've been waiting for a sign that it's okay to ask. This is it.",
+    hashtags:"#mentalhealthmatters #suicideprevention #askawaymission #youmatter #courage" },
+  { id:23, category:"emotional", title:"To the Person Who Lost Someone",
+    hook:"If you've lost someone to suicide, this is for you.",
+    vo_slides:["If you've lost someone to suicide — this video is for you.","You've probably replayed every conversation, looking for what you missed. Wondering if a question would have changed things.","I need you to hear: it is not your fault. But if you want to make sure you ask next time — take the quiz. Learn how."],
+    text_slides:["The loss lives in you.","You couldn't have known then.","You can know now."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"To everyone who's already lost someone: this one's for you. You didn't fail them. And you can help someone else.",
+    hashtags:"#suicidesurvivor #suicideloss #grief #askawaymission #suicideprevention" },
+  { id:24, category:"emotional", title:"To the Person Who Is Struggling",
+    hook:"If you're the one struggling right now, stay with me.",
+    vo_slides:["If you're the one struggling right now — I want to talk to you, not about you.","You deserve someone who asks. If that person hasn't shown up yet, please reach out. You don't have to earn the right to talk about this.","988. Text or call. Right now. Please."],
+    text_slides:["You don't have to earn the right to be heard.","You deserve someone who asks.","988 — text or call."],
+    cta:"If you're struggling, call or text 988.",
+    caption:"This one's for you if you're hurting. You don't have to wait for someone to notice. Reach out.",
+    hashtags:"#mentalhealthmatters #youmatter #988 #crisisline #suicideprevention" },
+  { id:25, category:"emotional", title:"The Weight of Not Asking",
+    hook:"Not asking carries its own kind of weight.",
+    vo_slides:["There's a weight that comes with not asking. The quiet dread of noticing something's wrong — and saying nothing.","We tell ourselves we're protecting them. But we're often protecting ourselves from an uncomfortable conversation.","That discomfort you're feeling is a signal. Follow it."],
+    text_slides:["Silence has a weight too.","Discomfort is a signal.","Following it is courage."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Not asking takes something out of you too. Here's why it's worth the discomfort.",
+    hashtags:"#mentalhealth #courage #suicideprevention #askawaymission #emotionalintelligence" },
+  { id:26, category:"emotional", title:"You Are Not Responsible For the Outcome",
+    hook:"Asking doesn't mean you're responsible for everything that follows.",
+    vo_slides:["One of the biggest fears around asking is this: what if I ask and something happens anyway?","You are not responsible for someone else's crisis. You are responsible for your presence and your care.","Asking is an act of love. And love doesn't guarantee outcomes — it guarantees you showed up."],
+    text_slides:["You can't control outcomes.","You can control showing up.","That is enough."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You're not responsible for saving them. You're responsible for showing up. That's different.",
+    hashtags:"#mentalhealth #boundaries #suicideprevention #askawaymission #selfcompassion" },
+  { id:27, category:"emotional", title:"The Regret of Silence",
+    hook:"The regret of silence is heavier than the discomfort of asking.",
+    vo_slides:["Ask anyone who has lost someone to suicide what they wish they'd done differently.","Almost universally, they say: I wish I'd asked. I wish I'd said the words out loud.","The fear of the conversation is temporary. The regret of not having it can last a lifetime."],
+    text_slides:["The discomfort passes.","The regret doesn't.","Ask anyway."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"The conversation you're avoiding might be the one you'll wish you had. Don't wait.",
+    hashtags:"#suicideprevention #askawaymission #regret #mentalhealth #grief" },
+
+  // ── WARNING SIGNS (28-33) ──────────────────────
+  { id:28, category:"warning-signs", title:"Behavioral Changes to Watch For",
+    hook:"Sudden changes in behavior can be a warning sign.",
+    vo_slides:["One of the most important things to watch for is a change in patterns — not dramatic statements, but quiet shifts.","Sleeping too much or too little. Withdrawing from people they used to connect with. Neglecting things they used to care about.","When behavior changes suddenly, it's worth asking why."],
+    text_slides:["It's the changes that matter.","Not drama — quiet withdrawal.","A behavior shift is a signal."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"It's usually not the dramatic statements. It's the quiet changes. Here's what to watch for.",
+    hashtags:"#suicidewarningsigns #mentalhealthawareness #askawaymission #mentalhealth #prevention" },
+  { id:29, category:"warning-signs", title:"Things They Say (Listen for These)",
+    hook:"Certain phrases can signal someone is at risk.",
+    vo_slides:["Some of the clearest warning signs are verbal — things people say that we often let slide.","'I'm a burden to everyone.' 'Everyone would be better off without me.' 'I just want it all to stop.'","These aren't venting. These are signals. And they deserve a direct question."],
+    text_slides:["'I'm a burden' — take it seriously.","'It all to stop' — ask directly.","Words are the warning."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Here are the phrases that should make you stop and ask. Don't let them slide.",
+    hashtags:"#suicidewarningsigns #mentalhealth #askawaymission #suicideprevention #warningsigns" },
+  { id:30, category:"warning-signs", title:"The Sudden Calm Warning Sign",
+    hook:"A sudden calm after a period of crisis can be dangerous.",
+    vo_slides:["This one catches people off guard: a sudden, unexpected calm after a period of intense distress.","Sometimes this happens because someone has made a decision. The ambivalence is resolved. And that can feel, from the outside, like things are finally getting better.","If the calm feels wrong, trust that instinct. Ask directly."],
+    text_slides:["Sudden calm can be a decision.","It can look like relief.","If it feels wrong, ask."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"A sudden calm isn't always good news. Here's why this sign can be the most dangerous.",
+    hashtags:"#suicidewarningsigns #mentalhealth #askawaymission #suicideprevention #crisisintervention" },
+  { id:31, category:"warning-signs", title:"Social Withdrawal",
+    hook:"Pulling away from friends and family is one of the key warnings.",
+    vo_slides:["Social withdrawal is one of the most consistent warning signs across research — pulling away from friends, family, activities, things they used to love.","It's easy to interpret as 'they just need space.' But sustained withdrawal, especially when combined with other signs, is worth addressing.","Reach out. Say you noticed. Then ask."],
+    text_slides:["Withdrawal isn't always preference.","Distance can be a cry.","Reaching out matters more than ever."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"When someone goes quiet and disappears — that's often when they need you most.",
+    hashtags:"#suicidewarningsigns #isolation #askawaymission #suicideprevention #mentalhealth" },
+  { id:32, category:"warning-signs", title:"Giving Things Away",
+    hook:"Giving away prized possessions is a serious warning sign.",
+    vo_slides:["One of the more serious warning signs is when someone starts giving away things that have meant a lot to them — especially meaningful, personal items.","It can look generous. It's often a form of saying goodbye.","If you notice this, ask directly and immediately."],
+    text_slides:["Generosity can be a goodbye.","Prized items = serious signal.","Ask directly. Right now."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"When someone starts giving their things away, they may be saying goodbye. Know what to do next.",
+    hashtags:"#suicidewarningsigns #mentalhealth #askawaymission #suicideprevention #crisisintervention" },
+  { id:33, category:"warning-signs", title:"Increased Substance Use",
+    hook:"A sudden spike in drinking or drug use can be a warning sign.",
+    vo_slides:["Increased use of alcohol or drugs — especially a sudden change — is a significant risk factor and warning sign.","Substances can lower the threshold for acting on suicidal thoughts and remove the hesitation that might otherwise hold someone back.","If you notice this change, ask about it. Not about the substances — about what's underneath them."],
+    text_slides:["Substances lower the threshold.","Ask what's underneath the use.","The substance isn't the whole story."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"A spike in drinking or drug use is often covering something deeper. Here's how to get to it.",
+    hashtags:"#suicidewarningsigns #substanceuse #mentalhealth #askawaymission #suicideprevention" },
+
+  // ── EDUCATIONAL (34-39) ────────────────────────
+  { id:34, category:"educational", title:"The 3 Questions That Provide Urgency",
+    hook:"Three questions can tell you how much danger someone is in.",
+    vo_slides:["When you've asked 'are you thinking about suicide?' and the answer is yes — there are three follow-up questions that help you understand the level of risk.","One: Do you have a plan? Two: Do you have access to what you'd need? Three: Have you made any preparations?","Each 'yes' increases urgency. Each is a reason to stay and get support."],
+    text_slides:["Plan. Access. Preparations.","Each yes = more urgency.","Stay with them. Call for help."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"After the first question, here are the three follow-ups that tell you how urgent the situation is.",
+    hashtags:"#suicideprevention #crisisintervention #QPR #askawaymission #mentalhealth" },
+  { id:35, category:"educational", title:"Ideation vs. Active Plan",
+    hook:"There's a big difference between suicidal thoughts and an active plan.",
+    vo_slides:["Not all suicidal thinking is the same. There's a spectrum — from passive thoughts like 'I wish I weren't here' all the way to an active plan with a specific method and timeline.","Passive ideation is serious and deserves attention. A specific plan with access is a crisis requiring immediate intervention.","Knowing the difference changes how you respond."],
+    text_slides:["Passive ideation → support.","Active plan → immediate help.","Know the difference."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Not all suicidal thinking is the same. Here's how to tell the difference — and what to do.",
+    hashtags:"#suicideprevention #crisisintervention #mentalhealth #askawaymission #QPR" },
+  { id:36, category:"educational", title:"What QPR Actually Is",
+    hook:"QPR is the most widely taught suicide intervention model.",
+    vo_slides:["QPR stands for Question, Persuade, Refer — developed by Dr. Paul Quinnett and based on decades of crisis intervention research.","Question: ask directly about suicide. Persuade: help them see another path. Refer: connect them to professional resources.","It's designed for everyday people, not just clinicians. It works."],
+    text_slides:["Question. Persuade. Refer.","Designed for everyday people.","It's proven to work."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"QPR is what most crisis centers train. Here's what it actually means — and how to use it.",
+    hashtags:"#QPR #suicideprevention #crisisintervention #askawaymission #mentalhealth" },
+  { id:37, category:"educational", title:"What the SAFE-T Protocol Is",
+    hook:"SAFE-T is what many ER clinicians use to assess suicide risk.",
+    vo_slides:["SAFE-T — Suicide Assessment Five-step Evaluation and Triage — is a protocol developed for clinical settings to assess risk quickly and consistently.","It covers risk factors, protective factors, level of care, and a safety plan.","You don't need to run a full SAFE-T assessment — but understanding that professional tools do exist can help you take a person's crisis seriously and get them connected to care."],
+    text_slides:["Professional tools exist.","They're built on asking.","Your job is to bridge to them."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"SAFE-T is what ER providers use to assess risk. You don't need it — but knowing about it matters.",
+    hashtags:"#suicideprevention #crisisintervention #mentalhealth #askawaymission #safetprotocol" },
+  { id:38, category:"educational", title:"What Are Protective Factors?",
+    hook:"Protective factors can reduce suicide risk — and you can strengthen them.",
+    vo_slides:["Protective factors are characteristics or conditions that reduce the likelihood of a suicide attempt — things like strong social connections, reason for living, access to care, and religious or cultural beliefs.","Research shows that building these is as important as reducing risk factors.","Your relationship with someone can literally be a protective factor. Checking in regularly has a measurable impact."],
+    text_slides:["Connection is protective.","Your relationship has an impact.","Regular check-ins save lives."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"A protective factor can be as simple as a text. Here's how you're already part of the solution.",
+    hashtags:"#suicideprevention #protectivefactors #mentalhealth #askawaymission #connection" },
+  { id:39, category:"educational", title:"After the Conversation: What Comes Next",
+    hook:"What you do AFTER asking matters as much as the question.",
+    vo_slides:["You asked. They opened up. Now what?","Don't disappear. The follow-up matters as much as the initial conversation. Check in within 24 hours. Help them connect to resources if they're willing. Stay in the story.","You were there for the question. Stay there for what comes after."],
+    text_slides:["The conversation isn't over.","Follow up within 24 hours.","Stay in the story."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"The conversation doesn't end when they say they're okay. Here's what to do after.",
+    hashtags:"#suicideprevention #mentalhealth #askawaymission #followup #support" },
+
+  // ── Q&A (40-44) ────────────────────────────────
+  { id:40, category:"qa", title:"What If They Get Angry When I Ask?",
+    hook:"What if they get angry? Here's how to handle it.",
+    vo_slides:["One of the most common fears: 'What if I ask and they get angry at me?'","That can happen. But anger is not a crisis — it's often a defense. Hold your ground gently: 'I hear that. I asked because I care. You can be angry and I'm still not going anywhere.'","Anger doesn't mean you were wrong to ask."],
+    text_slides:["Anger is a defense, not rejection.","Hold your ground with care.","You were right to ask."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"They might get mad. Ask anyway. Here's how to stay steady when they do.",
+    hashtags:"#suicideprevention #howtoask #askawaymission #mentalhealth #difficultconversations" },
+  { id:41, category:"qa", title:"What If They Say Yes?",
+    hook:"What do you actually do if they say yes?",
+    vo_slides:["You ask. They say yes. You freeze. What do you say next?","First: stay. Don't rush to fix or refer. 'Thank you for telling me. I want to hear more. Are you safe right now?'","Then: don't leave them alone if there's immediate risk. Call 988 together. Or help connect them to a professional."],
+    text_slides:["Stay. Don't rush.","'Are you safe right now?'","Call 988 together if needed."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"They said yes. Here's exactly what to do next — without panicking.",
+    hashtags:"#suicideprevention #crisisintervention #askawaymission #988 #howtohelp" },
+  { id:42, category:"qa", title:"What If They Make Me Promise Not to Tell?",
+    hook:"\"Promise you won't tell anyone.\" Here's how to handle it.",
+    vo_slides:["It happens: they share something serious and then ask you to promise not to tell.","You can be honest: 'I'm not able to promise that. If I'm scared you're in danger, I'm going to get help — because I care about you, not because I'm breaking your trust.'","Your first duty is their safety. Confidentiality is not a suicide prevention strategy."],
+    text_slides:["You can't promise silence.","Safety comes first.","Honesty here is love."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"'Promise you won't tell anyone.' Here's what to say — and why you can't keep that promise.",
+    hashtags:"#suicideprevention #mentalhealth #askawaymission #crisisintervention #howtohelp" },
+  { id:43, category:"qa", title:"What If They're Far Away?",
+    hook:"Distance doesn't make checking in less important.",
+    vo_slides:["You're worried about someone who lives in another city. Another state. Another country. Does asking still matter?","Yes. A phone call, FaceTime, a voice note — the medium doesn't have to be in person.","In fact, finding 988 local resources for their area and being ready to share them is something you can do from anywhere."],
+    text_slides:["Distance doesn't excuse silence.","A voice note can save a life.","Find their local 988 resources."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"They live far away. You can still ask. Here's how to check in and what to do if the answer is yes.",
+    hashtags:"#suicideprevention #mentalhealth #askawaymission #longtail #988" },
+  { id:44, category:"qa", title:"What If They've Already Refused Help?",
+    hook:"They've already said they don't want help. Now what?",
+    vo_slides:["Someone you love has refused therapy, won't call a hotline, pushes away every resource you offer. Does that mean you stop?","No. It means you change the approach. You stop offering resources and start being present.","Show up in the relationship. Ask again. People change their minds when they feel seen."],
+    text_slides:["Refused help ≠ rejected care.","Presence outlasts resistance.","Ask again. And again."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"They've said no to help. That doesn't mean you stop. Here's what to do instead.",
+    hashtags:"#suicideprevention #mentalhealth #askawaymission #support #crisisintervention" },
+
+  // ── RELATIONSHIP-SPECIFIC (45-50) ──────────────
+  { id:45, category:"relationship-specific", title:"How to Ask Your Parent",
+    hook:"Asking a parent about suicide feels impossible. It doesn't have to.",
+    vo_slides:["Asking a parent feels deeply wrong — like you're violating a sacred role. They're supposed to be the one who worries about you.","But parents struggle too. And adult children are often the first line of support.","Try: 'I've been worried about you, Mom/Dad. Are you ever thinking about hurting yourself?'"],
+    text_slides:["Parents struggle too.","You can reverse the role.","They may be waiting for you to ask."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Asking a parent is one of the hardest things. Here's how to do it without it feeling wrong.",
+    hashtags:"#mentalhealth #parentingadults #suicideprevention #askawaymission #familymentalhealth" },
+  { id:46, category:"relationship-specific", title:"How to Ask Your Partner",
+    hook:"\"Are you thinking about suicide?\" is an act of love between partners.",
+    vo_slides:["Asking a partner about suicide can feel like you're breaking something — introducing a dark possibility into your relationship.","But partners often notice before anyone else. And sitting on that worry alone is its own kind of harm.","Lead with love: 'I love you and I've been scared. Are you thinking about hurting yourself?'"],
+    text_slides:["Partners notice first.","Asking is not introducing the idea.","'I love you' first is always right."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Asking your partner about suicide isn't breaking something. It's protecting something. Here's how.",
+    hashtags:"#relationships #partnermentalhealth #suicideprevention #askawaymission #love" },
+  { id:47, category:"relationship-specific", title:"When Your Best Friend Goes Dark",
+    hook:"When your best friend disappears — don't let that slide.",
+    vo_slides:["Your best friend used to respond to every text within minutes. Now it's been days. They've gone quiet, withdrawn, and when they do show up they seem like a different person.","That 'going dark' is a pattern worth addressing. Not with 'are you okay?' — but directly.","'Hey. I'm worried about you. Like really worried. Are you thinking about suicide?'"],
+    text_slides:["'Going dark' is a signal.","Don't let it slide.","Ask directly. That's what friends do."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"When your friend disappears, go after them. Here's what to say when you do.",
+    hashtags:"#friendship #mentalhealth #suicideprevention #askawaymission #howtoask" },
+  { id:48, category:"relationship-specific", title:"How Managers Can Check In",
+    hook:"Managers are often the first to notice when something is wrong.",
+    vo_slides:["Managers often see shifts in performance, engagement, or behavior before friends or family do.","You don't need to be a therapist to have a human conversation: 'Hey, I've noticed you've seemed off lately. I care about you as a person. Is everything okay — and I mean really okay?'","If they share something serious, Employee Assistance Programs exist for this. You don't handle it alone."],
+    text_slides:["Managers see changes early.","A human question is enough.","EAPs exist for exactly this."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Managers are often the first to notice. Here's how to handle a check-in that matters.",
+    hashtags:"#workplacementalhealth #leadership #suicideprevention #askawaymission #managerlife" },
+  { id:49, category:"relationship-specific", title:"How to Ask a Sibling",
+    hook:"Sibling dynamics can make this harder than any other conversation.",
+    vo_slides:["Siblings have a complicated mix of history, rivalry, loyalty, and love — and that can make this conversation feel impossible.","'We've never talked like that' is the story you're writing for them. But you don't actually know how they'd respond.","Try: 'I know we don't always talk about heavy stuff. But I care about you. Are you doing okay — really?'"],
+    text_slides:["History doesn't have to decide this.","You don't know until you ask.","Start with 'I care about you.'"],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"Siblings make it complicated. Here's how to get past the dynamic and just ask.",
+    hashtags:"#siblings #familymentalhealth #suicideprevention #askawaymission #mentalhealth" },
+  { id:50, category:"relationship-specific", title:"Checking In on a Coworker",
+    hook:"You've noticed your coworker isn't okay. Here's what to do.",
+    vo_slides:["You see this person every day. You've noticed the changes — the quietness, the absence, the way they seem like they're just going through the motions.","You're not their therapist and this isn't a formal conversation. But it is a human one.","'Hey — I don't know if this is overstepping, but I've noticed you've seemed really down. Are you doing okay?'"],
+    text_slides:["You don't need to be close.","'I noticed' is a powerful opening.","A coworker can save a life."],
+    cta:"Take the free quiz. Link in bio.",
+    caption:"You noticed. That matters. Here's how to turn that into a check-in that could matter even more.",
+    hashtags:"#workplacementalhealth #coworker #suicideprevention #askawaymission #mentalhealth" },
+];
+
+// ─────────────────────────────────────────────────────────
+// POSTING SCHEDULE
+// 10 weeks × 5 days, starting March 25 2026
+// Sequence designed to mix categories across the week
+// ─────────────────────────────────────────────────────────
+// Order script IDs across weeks so each week has category variety:
+const WEEK_SEQUENCE = [
+  // Week 1
+  [1, 9, 16, 22, 28],
+  // Week 2
+  [2, 10, 17, 23, 29],
+  // Week 3
+  [3, 11, 18, 24, 30],
+  // Week 4
+  [4, 12, 19, 25, 31],
+  // Week 5
+  [5, 13, 20, 26, 32],
+  // Week 6
+  [6, 14, 21, 27, 33],
+  // Week 7
+  [7, 15, 34, 40, 45],
+  // Week 8
+  [8, 35, 36, 41, 46],
+  // Week 9
+  [37, 38, 42, 47, 49],
+  // Week 10
+  [39, 43, 44, 48, 50],
+];
+
+const DAYS = ['Mon','Tue','Wed','Thu','Fri'];
+const POST_TIMES = { ET: '7:00 PM ET', CT: '6:00 PM CT', PT: '4:00 PM PT' };
+
+// Build calendar data
+function buildCalendar() {
+  const START = new Date('2026-03-25');
+  const calendar = [];
+  for (let w = 0; w < 10; w++) {
+    const weekStart = new Date(START);
+    weekStart.setDate(START.getDate() + w * 7);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 4);
+    const days = [];
+    for (let d = 0; d < 5; d++) {
+      const date = new Date(weekStart);
+      date.setDate(weekStart.getDate() + d);
+      const sid = WEEK_SEQUENCE[w][d];
+      const script = SCRIPTS.find(s => s.id === sid);
+      days.push({ date, script });
+    }
+    calendar.push({ week: w + 1, weekStart, weekEnd, days });
+  }
+  return calendar;
+}
+
+const CALENDAR = buildCalendar();
+const SCRIPT_MAP = Object.fromEntries(SCRIPTS.map(s => [s.id, s]));
+
+// Posted state
+const POSTED_KEY = 'ask_anyway_posted';
+function getPosted() {
+  try { return new Set(JSON.parse(localStorage.getItem(POSTED_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+function setPosted(set) {
+  localStorage.setItem(POSTED_KEY, JSON.stringify([...set]));
+}
+let POSTED = getPosted();
+
+function fmtDate(d) {
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+function slugify(cat) { return cat.replace(/ /g, '-').toLowerCase(); }
+
+function renderCalendar() {
+  const cal = document.getElementById('calendar');
+  const filter = document.getElementById('filter-cat').value;
+  const tz = document.getElementById('time-zone').value;
+  const postTime = POST_TIMES[tz];
+  cal.innerHTML = '';
+
+  CALENDAR.forEach(({ week, weekStart, weekEnd, days }) => {
+    const block = document.createElement('div');
+    block.className = 'week-block';
+    block.dataset.week = week;
+
+    const allPosted = days.every(d => POSTED.has(d.script.id));
+    const somePosted = days.some(d => POSTED.has(d.script.id));
+
+    block.innerHTML = `
+      <div class="week-header" onclick="toggleWeek(${week})">
+        <h2>Week ${week} &nbsp;·&nbsp; ${fmtDate(weekStart)} – ${fmtDate(weekEnd)}</h2>
+        <span class="week-meta">${allPosted ? '✓ All posted' : somePosted ? `${days.filter(d=>POSTED.has(d.script.id)).length}/5 posted` : '5 videos'}</span>
+        <span class="week-toggle">▼</span>
+      </div>
+      <div class="week-content">
+        ${days.map(({ date, script }) => {
+          const catSlug = slugify(script.category);
+          const hidden = filter !== 'all' && catSlug !== filter;
+          const posted = POSTED.has(script.id);
+          const fileName = `script-${String(script.id).padStart(2,'0')}-${script.category}.mp4`;
+          return `
+            <div class="day-card${hidden ? ' hidden-day' : ''}" style="${hidden ? 'display:none' : ''}">
+              <div class="day-label">
+                <span>${DAYS[date.getDay()-1]} ${fmtDate(date)}</span>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer">
+                  <input type="checkbox" ${posted ? 'checked' : ''} onchange="togglePosted(${script.id},this.checked)">
+                  <span class="check-label">${posted ? 'Posted' : 'Post'}</span>
+                </label>
+              </div>
+              <div class="script-card cat-${catSlug}" onclick="openDetail(${script.id})" style="cursor:pointer;${posted ? 'opacity:.55' : ''}">
+                <div class="script-num">#${script.id}</div>
+                <div class="script-title">${script.title}</div>
+                <div class="script-hook">${script.hook}</div>
+                <div class="script-cat">${script.category.replace(/-/g,' ')}</div>
+              </div>
+              <div class="post-time">${postTime}</div>
+            </div>`;
+        }).join('')}
+      </div>`;
+    cal.appendChild(block);
+  });
+
+  updateProgress();
+}
+
+function toggleWeek(weekNum) {
+  const block = document.querySelector(`[data-week="${weekNum}"]`);
+  block.classList.toggle('collapsed');
+}
+
+function togglePosted(scriptId, checked) {
+  if (checked) POSTED.add(scriptId); else POSTED.delete(scriptId);
+  setPosted(POSTED);
+  updateProgress();
+  // Update header counts
+  renderCalendar();
+}
+
+function updateProgress() {
+  const n = POSTED.size;
+  const total = 50;
+  document.getElementById('posted-count').textContent = n;
+  document.getElementById('remaining-count').textContent = total - n;
+  const pct = Math.round(n / total * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+function openDetail(scriptId) {
+  const s = SCRIPT_MAP[scriptId];
+  document.getElementById('dp-title').textContent = `#${s.id} — ${s.title}`;
+  document.getElementById('dp-cat').textContent = s.category.replace(/-/g,' ');
+  document.getElementById('dp-hook').textContent = s.hook;
+  document.getElementById('dp-vo').innerHTML = s.vo_slides.map(t => `<li>${t}</li>`).join('');
+  document.getElementById('dp-text').innerHTML = s.text_slides.map(t => `<li>${t}</li>`).join('');
+  document.getElementById('dp-cta').textContent = s.cta;
+  document.getElementById('dp-caption').textContent = s.caption;
+  document.getElementById('dp-hashtags').innerHTML = s.hashtags.split(' ').map(h => `<span class="hashtag">${h}</span>`).join('');
+  const fileName = `script-${String(s.id).padStart(2,'0')}-${s.category}.mp4`;
+  document.getElementById('dp-file').textContent = `output/videos/batch/${fileName}`;
+  document.getElementById('detail-panel').classList.add('open');
+  // reset copy buttons
+  document.getElementById('copy-caption').textContent = 'Copy Caption';
+  document.getElementById('copy-hashtags').textContent = 'Copy Hashtags';
+}
+
+document.getElementById('detail-close').addEventListener('click', () => {
+  document.getElementById('detail-panel').classList.remove('open');
+});
+
+document.getElementById('copy-caption').addEventListener('click', function() {
+  const text = document.getElementById('dp-caption').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    this.textContent = '✓ Copied!';
+    this.classList.add('copied');
+    setTimeout(() => { this.textContent = 'Copy Caption'; this.classList.remove('copied'); }, 2000);
+  });
+});
+
+document.getElementById('copy-hashtags').addEventListener('click', function() {
+  const tags = [...document.querySelectorAll('#dp-hashtags .hashtag')].map(el=>el.textContent).join(' ');
+  navigator.clipboard.writeText(tags).then(() => {
+    this.textContent = '✓ Copied!';
+    this.classList.add('copied');
+    setTimeout(() => { this.textContent = 'Copy Hashtags'; this.classList.remove('copied'); }, 2000);
+  });
+});
+
+document.getElementById('expand-all').addEventListener('click', () => {
+  document.querySelectorAll('.week-block').forEach(b => b.classList.remove('collapsed'));
+});
+document.getElementById('collapse-all').addEventListener('click', () => {
+  document.querySelectorAll('.week-block').forEach(b => b.classList.add('collapsed'));
+});
+
+document.getElementById('filter-cat').addEventListener('change', renderCalendar);
+document.getElementById('time-zone').addEventListener('change', renderCalendar);
+
+document.getElementById('export-btn').addEventListener('click', exportCSV);
+
+function exportCSV() {
+  const rows = [['Week','Date','Day','Script #','Title','Category','Hook','Caption','Hashtags','File']];
+  CALENDAR.forEach(({ week, days }) => {
+    days.forEach(({ date, script }) => {
+      const day = DAYS[date.getDay()-1];
+      const dateStr = fmtDate(date);
+      const fileName = `script-${String(script.id).padStart(2,'0')}-${script.category}.mp4`;
+      rows.push([
+        week, dateStr, day, script.id, script.title, script.category,
+        `"${script.hook.replace(/"/g,'""')}"`,
+        `"${script.caption.replace(/"/g,'""')}"`,
+        `"${script.hashtags.replace(/"/g,'""')}"`,
+        fileName,
+      ]);
+    });
+  });
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'ask-anyway-posting-schedule.csv';
+  a.click();
+}
+
+// Initial render
+renderCalendar();
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "title": "Mental Health Quiz",
+  "description": "A non-diagnostic screening quiz that routes users to support resources.",
+  "scoring": {
+    "ranges": [
+      { "min": 0, "max": 10, "riskLevel": "low_risk", "label": "Low Risk" },
+      { "min": 11, "max": 20, "riskLevel": "moderate_risk", "label": "Moderate Risk" },
+      { "min": 21, "max": 25, "riskLevel": "high_risk", "label": "High Risk" },
+      { "min": 26, "max": 30, "riskLevel": "critical", "label": "Critical" }
+    ],
+    "overrides": [
+      {
+        "questionId": "q5",
+        "score": 3,
+        "riskLevel": "critical",
+        "reason": "Suicidal ideation with plan requires immediate crisis routing."
+      },
+      {
+        "questionId": "q5",
+        "score": 2,
+        "minimumRiskLevel": "high_risk",
+        "reason": "Recurring suicidal ideation triggers high-risk routing at minimum."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "category": "mood",
+      "prompt": "Over the past two weeks, how would you describe your overall mood?",
+      "options": [
+        { "label": "I feel good more days than not", "score": 0 },
+        { "label": "I feel okay, but flat or numb some days", "score": 1 },
+        { "label": "I feel down or empty most days", "score": 2 },
+        { "label": "I feel hopeless or dark almost all the time", "score": 3 }
+      ]
+    },
+    {
+      "id": "q2",
+      "category": "sleep",
+      "prompt": "How have your sleep patterns been lately?",
+      "options": [
+        { "label": "I sleep pretty well and wake up rested", "score": 0 },
+        { "label": "I have some nights of bad sleep, but it evens out", "score": 1 },
+        { "label": "I'm sleeping way less than usual or oversleeping most days", "score": 2 },
+        { "label": "My sleep is completely disrupted", "score": 3 }
+      ]
+    },
+    {
+      "id": "q3",
+      "category": "stress",
+      "prompt": "How stressed or overwhelmed do you feel about your daily life right now?",
+      "options": [
+        { "label": "I'm managing my stress okay", "score": 0 },
+        { "label": "I feel stressed, but I can usually handle it", "score": 1 },
+        { "label": "I feel overwhelmed a lot and struggling to cope", "score": 2 },
+        { "label": "I feel completely overwhelmed and can barely function", "score": 3 }
+      ]
+    },
+    {
+      "id": "q4",
+      "category": "connection",
+      "prompt": "How connected do you feel to the people in your life?",
+      "options": [
+        { "label": "I have people I can talk to and I feel supported", "score": 0 },
+        { "label": "I have some close people, but sometimes feel lonely", "score": 1 },
+        { "label": "I feel pretty isolated and disconnected from others", "score": 2 },
+        { "label": "I feel completely alone", "score": 3 }
+      ]
+    },
+    {
+      "id": "q5",
+      "category": "self_harm",
+      "prompt": "In the past two weeks, have you had thoughts about hurting yourself or that you'd be better off dead?",
+      "options": [
+        { "label": "No, not at all", "score": 0 },
+        { "label": "I've had a fleeting thought, but it didn't stick", "score": 1 },
+        { "label": "I've had these thoughts regularly and they're hard to shake", "score": 2 },
+        { "label": "I think about it constantly and have a plan", "score": 3 }
+      ]
+    },
+    {
+      "id": "q6",
+      "category": "substance_use",
+      "prompt": "How have you been using alcohol, drugs, or other substances to cope?",
+      "options": [
+        { "label": "I don't use them, or I use them rarely and socially", "score": 0 },
+        { "label": "I use them occasionally to unwind", "score": 1 },
+        { "label": "I'm using more than usual to numb or escape", "score": 2 },
+        { "label": "I'm dependent on substances to get through the day", "score": 3 }
+      ]
+    },
+    {
+      "id": "q7",
+      "category": "functioning",
+      "prompt": "How are you functioning at work, school, or with daily responsibilities?",
+      "options": [
+        { "label": "I'm managing well and keeping up", "score": 0 },
+        { "label": "I'm keeping up, but it takes more effort than usual", "score": 1 },
+        { "label": "I'm falling behind or avoiding responsibilities", "score": 2 },
+        { "label": "I've basically stopped doing what I need to do", "score": 3 }
+      ]
+    },
+    {
+      "id": "q8",
+      "category": "withdrawal",
+      "prompt": "Have you been withdrawing from activities or people you normally enjoy?",
+      "options": [
+        { "label": "I'm doing things I enjoy and seeing people", "score": 0 },
+        { "label": "I'm doing less than usual, but still getting out sometimes", "score": 1 },
+        { "label": "I've withdrawn quite a bit from activities and people", "score": 2 },
+        { "label": "I don't want to see anyone or do anything", "score": 3 }
+      ]
+    },
+    {
+      "id": "q9",
+      "category": "energy",
+      "prompt": "How's your energy and motivation been?",
+      "options": [
+        { "label": "I have decent energy and feel motivated most days", "score": 0 },
+        { "label": "Some days I'm tired, but I push through okay", "score": 1 },
+        { "label": "I feel exhausted a lot, even after rest", "score": 2 },
+        { "label": "I have no energy or motivation", "score": 3 }
+      ]
+    },
+    {
+      "id": "q10",
+      "category": "hopelessness",
+      "prompt": "When you think about the future, how do you feel?",
+      "options": [
+        { "label": "I feel hopeful or at least accepting about what's ahead", "score": 0 },
+        { "label": "I have some worry about the future, but mostly feel okay", "score": 1 },
+        { "label": "I feel uncertain or pessimistic about the future", "score": 2 },
+        { "label": "I feel hopeless and don't believe things will get better", "score": 3 }
+      ]
+    }
+  ]
+}

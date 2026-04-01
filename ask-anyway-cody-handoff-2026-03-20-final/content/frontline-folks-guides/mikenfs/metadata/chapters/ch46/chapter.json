@@ -1,0 +1,281 @@
+{
+  "number": 46,
+  "title": "From Lone Wolf to Healthy Team Member",
+  "domain": "Work, mission, identity, and transition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Field notes for hyperindependence, control, and learning to trust a team again.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening",
+      "content": [
+        {
+          "type": "para",
+          "text": "You work alone. You make decisions without consulting anyone. You don't delegate because nobody will do it right. You carry everything yourself because asking for help feels like weakness. You're the one who stays late, handles the detail nobody else noticed, and never admits you're struggling. In the former role this made sense—mistakes cost lives, your standards were non-negotiable, and trust was something earned over years of shared risk. Now everyone else is moving slower, caring less, and making mistakes that drive you up the wall. You haven't updated your operating system: high-trust operational team is gone, but hyperindependence stayed."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Refusing to delegate: 'If I want it done right, I'll do it myself.'",
+            "Control over team process: You monitor, correct, and redirect constantly. Team feels micromanaged.",
+            "Difficulty asking for help: Asking feels like admitting incompetence or weakness.",
+            "Impatience with slower pace: Civilian teams don't operate with urgency. This is disorienting.",
+            "Isolation through self-sufficiency: You handle everything yourself, which keeps everyone at arm's length.",
+            "Resentment at carrying the load: You're doing everything, which is exhausting, and you resent it.",
+            "Trust threshold too high: Civilian colleagues will never meet the trust-bar built in operational contexts.",
+            "Conflict through high standards: Your standards conflict with the team's norms and create friction."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is an adaptive skill in the wrong context:",
+            "Hyperindependence kept you effective and alive in operational environments. Civilian team dynamics require a different calibration."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "In operational roles, trusting wrong got people hurt. Your nervous system learned 'maintain control, don't rely on others, standards must be non-negotiable.' It was a survival adaptation. Now you're in a civilian team where stakes are lower, trust is built differently, and 'good enough' is sometimes appropriate. Your nervous system hasn't recalibrated. You're running high-intensity protocols in a low-intensity environment, which burns you out and alienates your team. Add the grief of the former team (where trust was real and hard-won) and you have a standard for collegiality that civilian coworkers can't meet."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Control escalating: Team feels micromanaged, stops taking initiative, which gives you more to control.",
+            "Resentment building: You're doing everything, you're exhausted, and you resent the team that 'doesn't care as much.'",
+            "Isolation deepening: You don't ask for help, team stops offering. You're doing it all alone.",
+            "Standards conflict: Your expectations don't match the context. You're seen as difficult or unreasonable.",
+            "Burnout accelerating: Carrying everything yourself is unsustainable. Something eventually breaks.",
+            "Team disengagement: Teams that feel micromanaged disengage. You get a less capable team, which confirms your belief they need monitoring.",
+            "Leadership friction: Supervisors notice the control behaviors and your inability to develop or trust your team."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and increasing predictability lowers baseline arousal and improves regulation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can adapt hyperindependence into effective leadership without abandoning your standards—but it requires calibrating trust and control to the actual stakes."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Audit the stakes: Identify which tasks genuinely need your standards (high stakes) and which don't (low stakes). Not everything is life-or-death.",
+            "Define 'good enough' for low-stakes tasks: This is a skill. Not everything needs to be done to your former standard. Practice releasing tasks that don't require it.",
+            "Delegate one task this week with explicit instructions: Tell them what success looks like, give them space to do it, and don't re-do it unless it's catastrophically wrong.",
+            "Practice asking for help once: Identify something you're struggling with and ask a colleague. Notice the result.",
+            "Recalibrate trust threshold: In civilian contexts, 'trustworthy enough' is a lower bar than 'I'd take a bullet for them.' Both are valid, differently.",
+            "Name your control behavior: 'I have high standards and I'm learning to let others operate within them.' This gives your team context without apologizing for who you are.",
+            "Build trust incrementally: Give colleagues small responsibilities. When they succeed, increase scope. This is how trust is built, not tested from the start.",
+            "Separate 'I could do this better' from 'I should do this': Sometimes you can do it better, but having them do it develops the team and frees your capacity.",
+            "Find one peer who has navigated this transition: They've done what you're trying to do. Their experience is more useful than advice from someone who's never been in your context."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: set the bar low enough to do it even on your worst day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Stress communication should be clear, brief, and repeatable. Predictable routines protect relationships."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use concrete language: 'I'm calibrated for high-stakes operations. I'm working on trusting civilians with things the stakes allow.'",
+            "Name what you need: 'I work better with clear expectations and predictable outcomes. Can we set those together?'",
+            "Be transparent about your pattern: 'I have a tendency to over-control. Let me know if I'm doing it. I'm working on it.'",
+            "Acknowledge the adjustment: 'I used to work in a context where mistakes cost a lot. I'm still recalibrating what good enough looks like here.'"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-guided tools are a start. Escalate care when symptoms persist, spread, or begin harming safety and function."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "You're being flagged by leadership for control or micromanagement behaviors.",
+            "Multiple teams have experienced conflict with you over standards or delegation.",
+            "You're chronically burning out from carrying everything yourself.",
+            "You genuinely cannot identify any task that's safe to delegate.",
+            "Leadership coaching combined with therapy addressing hypervigilance and control can help translate operational excellence into civilian team effectiveness."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet every day for one week. Track trigger, body signal, and reset action. Keep what works and remove what does not."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the trigger.",
+            "2) Name the first body signal.",
+            "3) Run one reset action.",
+            "4) Log response quality."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: From Lone Wolf to Healthy Team Member",
+      "intro": "Use this to track the pattern in this chapter and build a practical response you can repeat under load.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, and in transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you when it took over?",
+          "hint": "Name impact on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose actions small enough to use on hard days.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then tighten the plan around what actually worked."
+    },
+    {
+      "title": "Worksheet: From Lone Wolf to Healthy Team Member - Partner/Team Check-In",
+      "intro": "Use this page for one short practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Capture observable behavior, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most and least?",
+          "hint": "List what helps and what escalates the issue.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will you both practice this week?",
+          "hint": "One clear action from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

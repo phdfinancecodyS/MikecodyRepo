@@ -1,0 +1,297 @@
+{
+  "number": 8,
+  "title": "Shame Spirals and Self‑Loathing",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "When the voice in your head says you're the problem.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Shame Looks Like in Frontline Work",
+      "content": [
+        {
+          "type": "para",
+          "text": "Shame isn't guilt. Guilt says, \"I made a mistake.\" Shame says, \"I am the mistake.\" In frontline work, shame shows up after critical incidents, perceived failures, or moments when you couldn't do enough. It sounds like: \"I should have known better,\" \"I'm weak for struggling,\" or \"Everyone else handles this fine—what's wrong with me?\""
+        },
+        {
+          "type": "h3",
+          "text": "Common shame triggers in frontline folks"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Moral injury: \"I couldn't save them. I should have done more.\"",
+            "Asking for help: \"Real [cops/medics/nurses] don't need therapy.\"",
+            "Emotional reactions: \"I'm supposed to be tougher than this.\"",
+            "Mistakes under pressure: \"I should have seen it coming.\"",
+            "Comparing yourself to others: \"Everyone else is fine. I'm the weak link.\""
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Shame vs. Guilt:",
+            "Guilt = \"I did something bad.\" (Fixable.) Shame = \"I am bad.\" (Toxic loop.) Shame isolates. Guilt motivates repair."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why Shame Spirals Escalate",
+      "content": [
+        {
+          "type": "para",
+          "text": "Shame thrives in isolation and silence. When you believe you're uniquely broken, you hide. Hiding prevents feedback that challenges the shame story. The loop tightens: shame → hide → ruminate → more shame. Frontline culture amplifies this with \"suck it up\" messaging, stigma around mental health, and fear of being seen as weak."
+        },
+        {
+          "type": "h3",
+          "text": "What feeds the shame spiral"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Rumination: replaying the moment over and over.",
+            "Isolation: avoiding people who care.",
+            "Comparison: \"Everyone else is handling it.\"",
+            "Perfectionism: \"I should never make mistakes.\"",
+            "Silence: not naming the shame out loud."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: Shame loses power when named aloud to a safe person. Shared humanity interrupts the \"I'm uniquely broken\" narrative. Self-compassion reduces rumination and restores self-worth."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Field Tools: Breaking the Shame Spiral",
+      "content": [
+        {
+          "type": "para",
+          "text": "Shame dissolves in connection and honesty. The antidote isn't pretending it's not there—it's naming it, sharing it with someone safe, and challenging the story it tells."
+        },
+        {
+          "type": "h3",
+          "text": "Immediate actions when shame shows up"
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Name it: Out loud or in writing. \"I'm feeling shame about [specific event].\"",
+            "Challenge the story: Write down the shame thought. Then ask: \"Would I say this to a friend in my situation?\"",
+            "Tell one safe person: \"I'm stuck in shame about something. Can I tell you what happened?\" Shame hates witnesses.",
+            "Separate behavior from identity: \"I made a mistake\" vs. \"I am a mistake.\" One is fixable. One is a lie.",
+            "Practice self-compassion script: \"I'm human. I was doing my best under impossible conditions. I deserve care, not cruelty.\""
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: Shame grows in secrecy. Speaking it out loud to someone who listens without judgment breaks the loop."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Shame makes people hide. If your person is withdrawing, self-critical, or replaying a situation over and over, shame is likely running the show. Your job isn't to fix it—it's to show up and listen without judgment."
+        },
+        {
+          "type": "h3",
+          "text": "What helps"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Listen without trying to fix or argue them out of it.",
+            "Normalize struggle: \"A lot of people feel this way after something like that.\"",
+            "Remind them they're not alone: \"You're not the first person to struggle with this. You're human.\"",
+            "Gently challenge shame logic: \"Would you say that to someone you care about in your situation?\""
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "What makes it worse"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "\"You're being too hard on yourself.\" (Dismisses the feeling.)",
+            "\"Just let it go.\" (Shame doesn't work that way.)",
+            "Comparisons: \"Other people have been through worse.\"",
+            "Silence or avoidance. Shame gets louder in isolation."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Shame spirals can become chronic and corrosive. If self-loathing is constant, driving isolation, or fueling suicidal thoughts, professional help is essential."
+        },
+        {
+          "type": "h3",
+          "text": "Escalate if:"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Shame is constant and doesn't ease after talking to safe people.",
+            "You're avoiding all social connection.",
+            "Self-harm thoughts or suicidal ideation show up.",
+            "Work performance is suffering due to rumination.",
+            "Shame is connected to moral injury or trauma that won't resolve on its own."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Shame Interrupt Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet daily to catch shame early, name it, and challenge the story it tells. Shame loses power when exposed to light and shared humanity."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the shame thought (write it down).",
+            "2) Ask: \"Would I say this to a friend?\"",
+            "3) Rewrite it with self-compassion.",
+            "4) Share it with one safe person this week."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Shame Spirals and Self‑Loathing",
+      "intro": "Use this to catch shame early, name it, and challenge the toxic story it tells.",
+      "question_groups": [
+        {
+          "label": "What shame thoughts showed up this week?",
+          "hint": "Examples: \"I'm weak,\" \"I should have known better,\" \"Everyone else is fine—I'm the problem.\"",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What triggered the shame? (Specific event or moment.)",
+          "hint": "Critical incident, mistake, asking for help, showing emotion, comparing to others.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "Challenge the shame: What would you say to a friend in your situation?",
+          "hint": "Rewrite the shame thought with compassion: \"You're human. You did your best.\"",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Shame dissolves when shared. Tell one safe person this week what you wrote here."
+    },
+    {
+      "title": "Worksheet: Shame Spirals and Self‑Loathing - Partner/Team Check-In",
+      "intro": "Use this with a partner or close friend to build shared awareness around shame triggers.",
+      "question_groups": [
+        {
+          "label": "What do I look like when I'm stuck in shame?",
+          "hint": "Observable signs: withdrawal, self-criticism, replaying events, avoiding eye contact, silence.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What helps most when I'm in a shame spiral?",
+          "hint": "Examples: being listened to without judgment, normalization, gentle reality checks, quiet company.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will we try this week?",
+          "hint": "Example: \"I'll name the shame out loud. You'll listen without trying to fix it.\"",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

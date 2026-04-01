@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tax Prep Strategy 2025</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --card: #21253a;
+      --border: #2e334d;
+      --accent: #5b8af5;
+      --accent2: #7c5bf5;
+      --green: #3dd68c;
+      --yellow: #f5c842;
+      --red: #f55b5b;
+      --text: #e4e8f7;
+      --muted: #7b82a0;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 24px 16px 60px;
+    }
+
+    header {
+      max-width: 860px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Progress Bar */
+    .progress-wrap {
+      max-width: 860px;
+      margin: 0 auto 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .progress-header span {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .progress-header strong {
+      font-size: 1.1rem;
+      color: var(--green);
+    }
+
+    .bar-track {
+      background: var(--border);
+      border-radius: 99px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--green));
+      border-radius: 99px;
+      transition: width .4s ease;
+      width: 0%;
+    }
+
+    /* Tabs */
+    .tabs {
+      max-width: 860px;
+      margin: 0 auto 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: .85rem;
+      transition: all .2s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Sections */
+    .section {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      display: none;
+    }
+
+    .section.active { display: block; }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Checklist Card */
+    .checklist-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .checklist-card-header {
+      padding: 14px 20px;
+      background: var(--card);
+      font-weight: 600;
+      font-size: .9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+      cursor: pointer;
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+
+    .checklist-item:hover { background: rgba(91,138,245,.06); }
+
+    .checklist-item.done { opacity: .5; }
+    .checklist-item.done .item-label { text-decoration: line-through; }
+
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: all .2s;
+    }
+
+    .checklist-item.done .check-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .check-box svg { display: none; }
+    .checklist-item.done .check-box svg { display: block; }
+
+    .item-label { font-size: .88rem; line-height: 1.4; }
+    .item-note { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-item.urgent::before { background: var(--red); }
+    .timeline-item.warning::before { background: var(--yellow); }
+    .timeline-item.done-tl::before { background: var(--green); }
+
+    .tl-date {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+
+    .tl-title { font-weight: 600; font-size: .9rem; }
+    .tl-desc { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .badge.urgent { background: rgba(245,91,91,.15); color: var(--red); }
+    .badge.warning { background: rgba(245,200,66,.15); color: var(--yellow); }
+    .badge.ok { background: rgba(61,214,140,.15); color: var(--green); }
+
+    /* Income Tracker */
+    .income-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .income-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+
+    .income-card label {
+      font-size: .78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .income-card input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 8px 12px;
+      font-size: .95rem;
+      outline: none;
+      transition: border .2s;
+    }
+
+    .income-card input:focus { border-color: var(--accent); }
+
+    .totals-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .totals-row .tot-item { text-align: center; }
+    .totals-row .tot-label { font-size: .75rem; color: var(--muted); margin-bottom: 4px; }
+    .totals-row .tot-val { font-size: 1.3rem; font-weight: 700; color: var(--green); }
+    .totals-row .tot-val.neg { color: var(--red); }
+    .totals-row .tot-val.neutral { color: var(--accent); }
+
+    /* Deductions */
+    .deduction-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      margin-bottom: 10px;
+    }
+
+    .deduction-row input[type="text"] {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 7px 12px;
+      font-size: .88rem;
+      outline: none;
+    }
+
+    .deduction-row input[type="text"]:focus { border-color: var(--accent); }
+
+    .deduction-row input[type="number"] {
+      width: 120px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 7px 12px;
+      font-size: .88rem;
+      outline: none;
+    }
+
+    .deduction-row input[type="number"]:focus { border-color: var(--accent); }
+
+    .del-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: .8rem;
+      transition: all .2s;
+    }
+
+    .del-btn:hover { border-color: var(--red); color: var(--red); }
+
+    .add-btn {
+      background: transparent;
+      border: 1px dashed var(--accent);
+      color: var(--accent);
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: .85rem;
+      width: 100%;
+      margin-top: 8px;
+      transition: all .2s;
+    }
+
+    .add-btn:hover { background: rgba(91,138,245,.08); }
+
+    /* Tips */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .tip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+
+    .tip-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .tip-title { font-weight: 600; font-size: .88rem; margin-bottom: 6px; }
+    .tip-text { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+    /* Action button */
+    .action-bar {
+      max-width: 860px;
+      margin: 28px auto 0;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border: none;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: var(--radius);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+
+    .btn-primary:hover { opacity: .85; }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      font-size: .9rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .tax-estimate-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .tax-estimate-box h3 { color: var(--muted); font-size: .85rem; margin-bottom: 10px; }
+    .tax-estimate-big { font-size: 2.4rem; font-weight: 700; color: var(--accent); }
+    .tax-estimate-note { font-size: .78rem; color: var(--muted); margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Tax Prep Strategy 2025</h1>
+  <p>Personal / Individual — Tax Year 2025 &nbsp;·&nbsp; Filed by April 15, 2026</p>
+</header>
+
+<!-- Progress -->
+<div class="progress-wrap">
+  <div class="progress-header">
+    <span>Overall Readiness</span>
+    <strong id="progress-label">0%</strong>
+  </div>
+  <div class="bar-track"><div class="bar-fill" id="progress-bar"></div></div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('checklist')">📋 Checklist</button>
+  <button class="tab-btn" onclick="showTab('timeline')">📅 Timeline</button>
+  <button class="tab-btn" onclick="showTab('income')">💰 Income</button>
+  <button class="tab-btn" onclick="showTab('deductions')">🧾 Deductions</button>
+  <button class="tab-btn" onclick="showTab('tips')">💡 Tax Tips</button>
+</div>
+
+<!-- CHECKLIST TAB -->
+<div class="section active" id="tab-checklist">
+
+  <div class="checklist-card">
+    <div class="checklist-card-header">🪪 Personal Information</div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Social Security Numbers (yourself, spouse, dependents)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Current mailing address</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Bank account + routing number (for direct deposit refund)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Last year's tax return (AGI for e-file PIN)</div><div class="item-note">Needed to verify identity when e-filing</div></div>
+    </div>
+  </div>
+
+  <div class="checklist-card">
+    <div class="checklist-card-header">💼 Income Documents</div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">W-2 from each employer</div><div class="item-note">Due from employers by Jan 31</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">1099-NEC / 1099-MISC (freelance, contract, gig income)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">1099-INT / 1099-DIV (bank interest, dividends)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">1099-B (investment / brokerage sales — capital gains)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">1099-G (unemployment benefits, state tax refund)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">SSA-1099 (Social Security benefits, if applicable)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Crypto transaction records (exchanges, wallets)</div><div class="item-note">IRS requires reporting all crypto sales/exchanges</div></div>
+    </div>
+  </div>
+
+  <div class="checklist-card">
+    <div class="checklist-card-header">🏠 Deduction Documents</div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Mortgage interest statement (Form 1098)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Property tax records</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Charitable donation receipts</div><div class="item-note">Cash and non-cash; non-cash over $500 needs Form 8283</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Student loan interest (Form 1098-E)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Tuition / education expenses (Form 1098-T)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Medical expenses (if exceeding 7.5% of AGI)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">IRA / HSA contribution records</div></div>
+    </div>
+  </div>
+
+  <div class="checklist-card">
+    <div class="checklist-card-header">⚡ Credits & Special Situations</div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Child care expenses + provider EIN/SSN</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Advance Child Tax Credit letters (Letter 6419)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Health insurance marketplace Form 1095-A (ACA coverage)</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">EV / electric vehicle tax credit records</div></div>
+    </div>
+    <div class="checklist-item" onclick="toggle(this)">
+      <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div><div class="item-label">Energy-efficient home improvement receipts</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TIMELINE TAB -->
+<div class="section" id="tab-timeline">
+  <div class="section-title">📅 Key Dates & Deadlines — Tax Year 2025</div>
+  <div class="timeline">
+
+    <div class="timeline-item done-tl">
+      <div class="tl-date">Jan 31, 2026</div>
+      <div class="tl-title">Employer W-2 & 1099 Deadline <span class="badge ok">PASSED</span></div>
+      <div class="tl-desc">Employers and payers must mail or electronically deliver income forms to you.</div>
+    </div>
+
+    <div class="timeline-item done-tl">
+      <div class="tl-date">Feb 18, 2026</div>
+      <div class="tl-title">1099-B / 1099-S Brokerage Forms <span class="badge ok">PASSED</span></div>
+      <div class="tl-desc">Investment income statements from brokerages due. Check your brokerage portal.</div>
+    </div>
+
+    <div class="timeline-item warning">
+      <div class="tl-date">Mar 15, 2026</div>
+      <div class="tl-title">S-Corp & Partnership Returns Due <span class="badge warning">PASSED</span></div>
+      <div class="tl-desc">If you have pass-through income from an S-Corp or partnership, Schedule K-1 should arrive by now.</div>
+    </div>
+
+    <div class="timeline-item urgent">
+      <div class="tl-date">Apr 15, 2026</div>
+      <div class="tl-title">Federal Tax Return Deadline <span class="badge urgent">19 DAYS LEFT</span></div>
+      <div class="tl-desc">File Form 1040 or request a 6-month extension (Form 4868). An extension to file is NOT an extension to pay.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date">Apr 15, 2026</div>
+      <div class="tl-title">Q1 2026 Estimated Tax Due (if self-employed)</div>
+      <div class="tl-desc">First estimated quarterly tax payment for 2026 tax year is also due April 15.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date">Oct 15, 2026</div>
+      <div class="tl-title">Extended Return Deadline</div>
+      <div class="tl-desc">If you filed Form 4868, your extended return is due. Final hard deadline — no further extensions.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- INCOME TAB -->
+<div class="section" id="tab-income">
+  <div class="section-title">💰 Income Summary</div>
+  <div class="income-grid">
+    <div class="income-card">
+      <label>W-2 Wages (Box 1)</label>
+      <input type="number" id="inc-w2" placeholder="$0" oninput="calcTotals()" />
+    </div>
+    <div class="income-card">
+      <label>Freelance / 1099-NEC</label>
+      <input type="number" id="inc-misc" placeholder="$0" oninput="calcTotals()" />
+    </div>
+    <div class="income-card">
+      <label>Interest Income (1099-INT)</label>
+      <input type="number" id="inc-int" placeholder="$0" oninput="calcTotals()" />
+    </div>
+    <div class="income-card">
+      <label>Dividends (1099-DIV)</label>
+      <input type="number" id="inc-div" placeholder="$0" oninput="calcTotals()" />
+    </div>
+    <div class="income-card">
+      <label>Capital Gains (1099-B)</label>
+      <input type="number" id="inc-cg" placeholder="$0" oninput="calcTotals()" />
+    </div>
+    <div class="income-card">
+      <label>Other Income (rental, etc.)</label>
+      <input type="number" id="inc-other" placeholder="$0" oninput="calcTotals()" />
+    </div>
+  </div>
+
+  <div class="totals-row">
+    <div class="tot-item">
+      <div class="tot-label">Gross Income</div>
+      <div class="tot-val neutral" id="gross-income">$0</div>
+    </div>
+    <div class="tot-item">
+      <div class="tot-label">Above-the-Line Deductions</div>
+      <div class="tot-val" id="above-line-ded">—</div>
+    </div>
+    <div class="tot-item">
+      <div class="tot-label">Est. AGI</div>
+      <div class="tot-val" id="est-agi">$0</div>
+    </div>
+    <div class="tot-item">
+      <div class="tot-label">Standard Deduction (Single)</div>
+      <div class="tot-val neutral">$14,600</div>
+    </div>
+    <div class="tot-item">
+      <div class="tot-label">Est. Taxable Income</div>
+      <div class="tot-val" id="taxable-income">$0</div>
+    </div>
+  </div>
+
+  <div class="tax-estimate-box">
+    <h3>Estimated Federal Tax Liability</h3>
+    <div class="tax-estimate-big" id="tax-estimate">$0</div>
+    <div class="tax-estimate-note">Rough estimate using 2025 brackets. Does not account for credits, withholding, or state taxes.</div>
+  </div>
+</div>
+
+<!-- DEDUCTIONS TAB -->
+<div class="section" id="tab-deductions">
+  <div class="section-title">🧾 Deduction Tracker</div>
+  <div id="deduction-list"></div>
+  <button class="add-btn" onclick="addDeduction()">+ Add Deduction</button>
+
+  <div class="totals-row" style="margin-top:20px">
+    <div class="tot-item">
+      <div class="tot-label">Total Tracked Deductions</div>
+      <div class="tot-val" id="total-deductions">$0</div>
+    </div>
+    <div class="tot-item">
+      <div class="tot-label">Standard Deduction (Single 2025)</div>
+      <div class="tot-val neutral">$14,600</div>
+    </div>
+    <div class="tot-item">
+      <div class="tot-label">Recommendation</div>
+      <div class="tot-val neutral" id="deduction-rec">Itemize or Standard?</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS TAB -->
+<div class="section" id="tab-tips">
+  <div class="section-title">💡 Tax-Saving Tips for 2025</div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">🏦</div>
+      <div class="tip-title">Max Your IRA Contribution</div>
+      <div class="tip-text">You can contribute up to $7,000 ($8,000 if 50+) to a Traditional IRA by April 15 and deduct it from 2025 income.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🏥</div>
+      <div class="tip-title">Use Your HSA</div>
+      <div class="tip-text">HSA contributions ($4,150 individual / $8,300 family) are triple-tax advantaged — deductible, grow tax-free, and withdrawals for medical are tax-free.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📉</div>
+      <div class="tip-title">Tax-Loss Harvesting</div>
+      <div class="tip-text">Investment losses offset capital gains dollar-for-dollar. Up to $3,000 excess losses can offset ordinary income each year.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🎁</div>
+      <div class="tip-title">Bunching Charitable Donations</div>
+      <div class="tip-text">If itemizing is marginal, consider donating 2 years of contributions in one year to exceed the standard deduction threshold.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🏠</div>
+      <div class="tip-title">Home Office Deduction</div>
+      <div class="tip-text">Self-employed? The simplified method allows $5/sq ft (up to 300 sq ft) or you can calculate actual expenses for the dedicated home office space.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🚗</div>
+      <div class="tip-title">Business Mileage</div>
+      <div class="tip-text">The 2025 standard mileage rate is 70¢/mile for business use. Keep a mileage log throughout the year for best results.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⏰</div>
+      <div class="tip-title">File an Extension if Needed</div>
+      <div class="tip-text">Form 4868 gives you until Oct 15, 2026 to FILE, but you must PAY any taxes owed by April 15 to avoid penalties.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🔄</div>
+      <div class="tip-title">Roth vs Traditional IRA</div>
+      <div class="tip-text">If you expect to be in a higher tax bracket in retirement, a Roth IRA may be better despite no current deduction — contributions grow tax-free.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">👶</div>
+      <div class="tip-title">Child Tax Credit</div>
+      <div class="tip-text">Up to $2,000 per qualifying child under 17. Phase-out starts at $200K (single) / $400K (MFJ). Partially refundable up to $1,700.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Action Bar -->
+<div class="action-bar">
+  <button class="btn-primary" onclick="printSummary()">🖨 Print / Save as PDF</button>
+  <button class="btn-ghost" onclick="resetAll()">↺ Reset Checklist</button>
+</div>
+
+<script>
+  // --- Tab switching ---
+  function showTab(name) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // --- Checklist toggle ---
+  function toggle(el) {
+    el.classList.toggle('done');
+    saveState();
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.checklist-item');
+    const done = document.querySelectorAll('.checklist-item.done');
+    const pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = pct + '%';
+  }
+
+  // --- Income calculations ---
+  const STANDARD_DEDUCTION = 14600;
+
+  function calcTotals() {
+    const ids = ['inc-w2', 'inc-misc', 'inc-int', 'inc-div', 'inc-cg', 'inc-other'];
+    const gross = ids.reduce((s, id) => s + (parseFloat(document.getElementById(id).value) || 0), 0);
+
+    const agi = gross; // simplified (no above-the-line deductions entered)
+    const taxable = Math.max(0, agi - STANDARD_DEDUCTION);
+    const tax = estimateTax(taxable);
+
+    document.getElementById('gross-income').textContent = fmt(gross);
+    document.getElementById('above-line-ded').textContent = '—';
+    document.getElementById('est-agi').textContent = fmt(agi);
+    document.getElementById('taxable-income').textContent = fmt(taxable);
+    document.getElementById('tax-estimate').textContent = fmt(tax);
+
+    // Color
+    document.getElementById('taxable-income').className = 'tot-val ' + (taxable > 0 ? '' : 'neutral');
+  }
+
+  function estimateTax(taxable) {
+    // 2025 Single brackets (approximate)
+    const brackets = [
+      [11925, 0.10],
+      [48475, 0.12],
+      [103350, 0.22],
+      [197300, 0.24],
+      [250525, 0.32],
+      [626350, 0.35],
+      [Infinity, 0.37],
+    ];
+    let tax = 0;
+    let prev = 0;
+    for (const [limit, rate] of brackets) {
+      if (taxable <= prev) break;
+      tax += (Math.min(taxable, limit) - prev) * rate;
+      prev = limit;
+    }
+    return Math.round(tax);
+  }
+
+  function fmt(n) {
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  // --- Deductions ---
+  let deductionCount = 0;
+
+  function addDeduction(name = '', amount = '') {
+    deductionCount++;
+    const id = 'ded-' + deductionCount;
+    const list = document.getElementById('deduction-list');
+    const row = document.createElement('div');
+    row.className = 'deduction-row';
+    row.id = id;
+    row.innerHTML = `
+      <input type="text" placeholder="Deduction description" value="${name}" oninput="calcDeductions()" />
+      <input type="number" placeholder="$Amount" value="${amount}" oninput="calcDeductions()" />
+      <button class="del-btn" onclick="document.getElementById('${id}').remove(); calcDeductions()">✕</button>
+    `;
+    list.appendChild(row);
+    calcDeductions();
+  }
+
+  function calcDeductions() {
+    const rows = document.querySelectorAll('#deduction-list .deduction-row');
+    let total = 0;
+    rows.forEach(r => {
+      const val = parseFloat(r.querySelector('input[type="number"]').value) || 0;
+      total += val;
+    });
+    document.getElementById('total-deductions').textContent = fmt(total);
+    const rec = total > STANDARD_DEDUCTION
+      ? '✅ Itemize (' + fmt(total - STANDARD_DEDUCTION) + ' more)'
+      : '📋 Take Standard';
+    document.getElementById('deduction-rec').textContent = rec;
+    saveState();
+  }
+
+  // Default deduction rows
+  const defaultDeductions = [
+    ['Mortgage Interest', ''],
+    ['Property Taxes', ''],
+    ['Charitable Donations', ''],
+    ['Student Loan Interest', ''],
+    ['Medical Expenses', ''],
+  ];
+  defaultDeductions.forEach(([n, a]) => addDeduction(n, a));
+
+  // --- Persist state ---
+  function saveState() {
+    const done = [...document.querySelectorAll('.checklist-item')].map(el => el.classList.contains('done'));
+    localStorage.setItem('taxprep-checklist', JSON.stringify(done));
+  }
+
+  function loadState() {
+    const saved = JSON.parse(localStorage.getItem('taxprep-checklist') || '[]');
+    const items = document.querySelectorAll('.checklist-item');
+    saved.forEach((isDone, i) => {
+      if (items[i] && isDone) items[i].classList.add('done');
+    });
+    updateProgress();
+  }
+
+  function resetAll() {
+    if (!confirm('Reset all checklist items?')) return;
+    document.querySelectorAll('.checklist-item').forEach(el => el.classList.remove('done'));
+    localStorage.removeItem('taxprep-checklist');
+    updateProgress();
+  }
+
+  function printSummary() {
+    window.print();
+  }
+
+  // Init
+  loadState();
+  calcTotals();
+  calcDeductions();
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "catalogName": "frontline_mental_health_topics",
+  "notes": "47 titles currently available from Titles_master; supports adding chapter 48 later.",
+  "topics": [
+    { "id": "ch01", "chapter": 1, "domain": "nervous_system_mood_cognition", "title": "Always On: Your High-Alert Brain", "tags": ["hyperarousal", "stress", "nervous_system"] },
+    { "id": "ch02", "chapter": 2, "domain": "nervous_system_mood_cognition", "title": "Blow Up or Shut Down: Two Sides of the Same Stress Response", "tags": ["anger", "shutdown", "stress_response"] },
+    { "id": "ch03", "chapter": 3, "domain": "nervous_system_mood_cognition", "title": "Hypervigilance at Home: Turning the Threat Dial Down", "tags": ["hypervigilance", "home", "safety"] },
+    { "id": "ch04", "chapter": 4, "domain": "nervous_system_mood_cognition", "title": "Anger and Short-Fuse Days", "tags": ["anger", "irritability", "reactivity"] },
+    { "id": "ch05", "chapter": 5, "domain": "nervous_system_mood_cognition", "title": "Worry, Rumination, and the 'Can't Turn My Brain Off' Loop", "tags": ["anxiety", "rumination", "overthinking"] },
+    { "id": "ch06", "chapter": 6, "domain": "nervous_system_mood_cognition", "title": "Depression in Frontline Folks: When Numbness Replaces Joy", "tags": ["depression", "numbness", "low_mood"] },
+    { "id": "ch07", "chapter": 7, "domain": "nervous_system_mood_cognition", "title": "'Everyone's Better Off Without Me': Suicidal Thoughts and Hopelessness", "tags": ["suicidal_thoughts", "hopelessness", "crisis"] },
+    { "id": "ch08", "chapter": 8, "domain": "nervous_system_mood_cognition", "title": "Shame Spirals and Self-Loathing", "tags": ["shame", "self_criticism", "guilt"] },
+    { "id": "ch09", "chapter": 9, "domain": "nervous_system_mood_cognition", "title": "Memory Slips and 'What Did You Just Say?'", "tags": ["memory", "focus", "cognitive_load"] },
+    { "id": "ch10", "chapter": 10, "domain": "nervous_system_mood_cognition", "title": "Tunnel Vision vs Scattered Brain", "tags": ["attention", "focus", "cognition"] },
+    { "id": "ch11", "chapter": 11, "domain": "nervous_system_mood_cognition", "title": "Decision Fatigue and Choice Overload", "tags": ["decision_fatigue", "overwhelm", "executive_function"] },
+    { "id": "ch12", "chapter": 12, "domain": "nervous_system_mood_cognition", "title": "Overreacting to Small Stuff", "tags": ["reactivity", "irritability", "stress"] },
+
+    { "id": "ch13", "chapter": 13, "domain": "sleep_body_pain_substances", "title": "Running on Empty: Chronic Sleep Debt", "tags": ["sleep", "fatigue", "recovery"] },
+    { "id": "ch14", "chapter": 14, "domain": "sleep_body_pain_substances", "title": "Sleep Apnea and Snoring: When Your Brain Never Fully Rests", "tags": ["sleep", "apnea", "restoration"] },
+    { "id": "ch15", "chapter": 15, "domain": "sleep_body_pain_substances", "title": "Nightmares, Night Sweats, and 3 a.m. Wake-Ups", "tags": ["sleep", "nightmares", "trauma_sleep"] },
+    { "id": "ch16", "chapter": 16, "domain": "sleep_body_pain_substances", "title": "Chronic Pain and Tension: When Your Body Never Stands Down", "tags": ["pain", "tension", "body_stress"] },
+    { "id": "ch17", "chapter": 17, "domain": "sleep_body_pain_substances", "title": "Headaches, TBI, and Brain Fog in Daily Life", "tags": ["tbi", "headache", "brain_fog"] },
+    { "id": "ch18", "chapter": 18, "domain": "sleep_body_pain_substances", "title": "Substances as Off-Switches: Alcohol, Pills, and Numbing Out", "tags": ["substances", "numbing", "coping"] },
+    { "id": "ch19", "chapter": 19, "domain": "sleep_body_pain_substances", "title": "Noise, Crowds, and Public Spaces", "tags": ["sensory", "overload", "public_spaces"] },
+    { "id": "ch20", "chapter": 20, "domain": "sleep_body_pain_substances", "title": "Vision, Balance, and Motion Sensitivity After Hits and Stress", "tags": ["vision", "balance", "sensitivity"] },
+
+    { "id": "ch21", "chapter": 21, "domain": "relationships_family_parenting", "title": "When Home Feels Like a Minefield: Walking on Eggshells with the People You Love", "tags": ["relationships", "family", "conflict"] },
+    { "id": "ch22", "chapter": 22, "domain": "relationships_family_parenting", "title": "Red / Yellow / Green Communication: Talking Before It Blows", "tags": ["communication", "deescalation", "repair"] },
+    { "id": "ch23", "chapter": 23, "domain": "relationships_family_parenting", "title": "Repair After Damage: Apologies That Actually Land", "tags": ["repair", "apology", "trust"] },
+    { "id": "ch24", "chapter": 24, "domain": "relationships_family_parenting", "title": "Parenting on Empty: Showing Up for Kids When You're Fried", "tags": ["parenting", "fatigue", "family"] },
+    { "id": "ch25", "chapter": 25, "domain": "relationships_family_parenting", "title": "Secondary Trauma in Partners and Teams", "tags": ["secondary_trauma", "partners", "teams"] },
+    { "id": "ch26", "chapter": 26, "domain": "relationships_family_parenting", "title": "Kids in the Blast Radius: How Children Are Affected and What Helps", "tags": ["children", "family_impact", "support"] },
+    { "id": "ch27", "chapter": 27, "domain": "relationships_family_parenting", "title": "Family Life in Transition: Moves, Shifts, and New Normals", "tags": ["transition", "family", "adaptation"] },
+
+    { "id": "ch28", "chapter": 28, "domain": "intimacy_sex_connection", "title": "Emotional Numbness and Wanting to Feel Again", "tags": ["numbness", "connection", "intimacy"] },
+    { "id": "ch29", "chapter": 29, "domain": "intimacy_sex_connection", "title": "Low Desire and Low Drive", "tags": ["desire", "energy", "intimacy"] },
+    { "id": "ch30", "chapter": 30, "domain": "intimacy_sex_connection", "title": "When Stress Shuts Down Sex: High Alert, High Cortisol, and Trouble Getting or Finishing", "tags": ["stress", "sex", "arousal"] },
+    { "id": "ch31", "chapter": 31, "domain": "intimacy_sex_connection", "title": "Sex and Avoidance After Difficult Experiences", "tags": ["avoidance", "trauma", "intimacy"] },
+    { "id": "ch32", "chapter": 32, "domain": "intimacy_sex_connection", "title": "Porn, Solo Sex, and Secret Coping", "tags": ["coping", "porn", "habits"] },
+    { "id": "ch33", "chapter": 33, "domain": "intimacy_sex_connection", "title": "Touch Without Pressure: Relearning Safe Closeness", "tags": ["touch", "safety", "closeness"] },
+    { "id": "ch34", "chapter": 34, "domain": "intimacy_sex_connection", "title": "Body Image, Scars, and Sexual Confidence", "tags": ["body_image", "confidence", "intimacy"] },
+    { "id": "ch35", "chapter": 35, "domain": "intimacy_sex_connection", "title": "Sex After Injury or Major Health Change", "tags": ["injury", "health_change", "sex"] },
+
+    { "id": "ch36", "chapter": 36, "domain": "moral_injury_guilt_shame_spirituality", "title": "The Weight You Don't Talk About: Moral Injury 101", "tags": ["moral_injury", "guilt", "identity"] },
+    { "id": "ch37", "chapter": 37, "domain": "moral_injury_guilt_shame_spirituality", "title": "Betrayed by the System: When Institutions Fail You", "tags": ["betrayal", "system", "trust"] },
+    { "id": "ch38", "chapter": 38, "domain": "moral_injury_guilt_shame_spirituality", "title": "When You Feel Like the Villain", "tags": ["self_blame", "shame", "moral_pain"] },
+    { "id": "ch39", "chapter": 39, "domain": "moral_injury_guilt_shame_spirituality", "title": "Faith, God, and Big Questions After Trauma", "tags": ["faith", "meaning", "spirituality"] },
+    { "id": "ch40", "chapter": 40, "domain": "moral_injury_guilt_shame_spirituality", "title": "Moral Injury in the Bedroom: Sex, Secrets, and Self-Condemnation", "tags": ["moral_injury", "intimacy", "shame"] },
+
+    { "id": "ch41", "chapter": 41, "domain": "work_identity_transition", "title": "Between Worlds: Who Am I After This Role?", "tags": ["identity", "transition", "role_change"] },
+    { "id": "ch42", "chapter": 42, "domain": "work_identity_transition", "title": "Rebuilding Mission and Meaning Outside the Job", "tags": ["mission", "meaning", "purpose"] },
+    { "id": "ch43", "chapter": 43, "domain": "work_identity_transition", "title": "Underemployed, Overqualified, and Bored (or Overwhelmed)", "tags": ["work_stress", "purpose", "career"] },
+    { "id": "ch44", "chapter": 44, "domain": "work_identity_transition", "title": "Money, Chaos, and Avoidance at Home", "tags": ["money", "avoidance", "household_stress"] },
+    { "id": "ch45", "chapter": 45, "domain": "work_identity_transition", "title": "Loneliness and Loss of Tribe", "tags": ["loneliness", "belonging", "community"] },
+    { "id": "ch46", "chapter": 46, "domain": "work_identity_transition", "title": "From Lone Wolf to Healthy Team Member", "tags": ["team", "connection", "support"] },
+
+    { "id": "ch47", "chapter": 47, "domain": "dopamine_habits_addictions", "title": "Dopamine Hijack: When Your Reward System Gets Captured", "tags": ["dopamine", "habits", "compulsion"] }
+  ]
+}

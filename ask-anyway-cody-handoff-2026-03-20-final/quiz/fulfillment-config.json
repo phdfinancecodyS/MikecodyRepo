@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "name": "fulfillment_config",
+  "description": "Maps product ids to the ordered list of fulfillment actions that run after a successful payment.",
+  "eventTypes": {
+    "guide_delivery": {
+      "description": "Deliver an audience-specific guide file via email link or direct download.",
+      "provider": "email",
+      "requiresGuideId": true,
+      "requiresAudienceBucketId": true,
+      "assetPathTemplate": "content/topic-guides/audience-slants/{audienceBucketId}/{guideId}.md",
+      "fallbackPath": "content/topic-guides/chapters/{guideId}.md"
+    },
+    "kit_delivery": {
+      "description": "Deliver the kit package: guide + worksheets + scripts bundle.",
+      "provider": "email",
+      "requiresGuideId": true,
+      "requiresAudienceBucketId": true,
+      "assetPathTemplate": "content/topic-guides/audience-slants/{audienceBucketId}/{guideId}-kit.zip",
+      "fallbackPath": "content/topic-guides/chapters/{guideId}-kit.zip",
+      "note": "Kit zip files must be pre-built from guide + worksheets before launch."
+    },
+    "sms_enrollment": {
+      "description": "Enroll the lead in the check-in SMS automation.",
+      "provider": "sms_platform",
+      "requiresPhone": true,
+      "requiresSmsOptIn": true,
+      "complianceCheck": "verify_sms_opt_in_before_enroll",
+      "note": "Never enroll without confirmed opt-in. TCPA compliance required."
+    },
+    "email_sequence_trigger": {
+      "description": "Add lead to the post-purchase email nurture sequence.",
+      "provider": "email_platform",
+      "sequenceIdByRisk": {
+        "low_risk":      "post_purchase_low_risk",
+        "moderate_risk": "post_purchase_moderate_risk",
+        "high_risk":     "post_purchase_high_risk",
+        "critical":      "post_crisis_resources"
+      }
+    }
+  },
+  "productFulfillmentMap": {
+    "guide": {
+      "description": "Single focused guide delivery.",
+      "actions": [
+        "guide_delivery",
+        "email_sequence_trigger"
+      ]
+    },
+    "kit": {
+      "description": "Guide plus full kit package.",
+      "actions": [
+        "guide_delivery",
+        "kit_delivery",
+        "email_sequence_trigger"
+      ]
+    },
+    "sms": {
+      "description": "Ongoing SMS check-in subscription.",
+      "actions": [
+        "sms_enrollment",
+        "email_sequence_trigger"
+      ]
+    },
+    "bundle": {
+      "description": "Multiple guides plus optional SMS.",
+      "actions": [
+        "guide_delivery",
+        "kit_delivery",
+        "sms_enrollment",
+        "email_sequence_trigger"
+      ],
+      "note": "sms_enrollment only fires if lead opted in."
+    },
+    "free_crisis_resources": {
+      "description": "Crisis support resources — no payment, no delivery action.",
+      "actions": [],
+      "note": "free_crisis_resources never enters the Stripe checkout flow."
+    }
+  },
+  "providerPlaceholders": {
+    "email": {
+      "note": "Replace with SendGrid or ConvertKit. Use transactional email for delivery, not broadcast.",
+      "envVar": "EMAIL_PROVIDER_API_KEY"
+    },
+    "email_platform": {
+      "note": "Replace with ConvertKit or ActiveCampaign for sequence triggers.",
+      "envVar": "EMAIL_PLATFORM_API_KEY"
+    },
+    "sms_platform": {
+      "note": "Replace with Twilio or similar. Implement TCPA opt-in verification before enrollment.",
+      "envVar": "SMS_PLATFORM_API_KEY"
+    }
+  }
+}

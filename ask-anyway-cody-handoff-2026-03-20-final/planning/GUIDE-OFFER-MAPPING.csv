@@ -1,0 +1,80 @@
+guide_id,title,source,batch,priority,cluster,domain,primary_offer,secondary_offer,bundle_role
+ch-01,Always On: Your High-Alert Brain,Ch1,batch-1,high,reactivity,nervous_system_mood_cognition,kit,sms,practical_support
+ch-03,Hypervigilance at Home,Ch3,batch-3,medium,reactivity,nervous_system_mood_cognition,guide,sms,practical_support
+ch-04,Anger and Short-Fuse Days,Ch4,batch-1,high,reactivity,nervous_system_mood_cognition,kit,sms,practical_support
+ch-06,Depression and Numbness,Ch6,batch-1,high,general,nervous_system_mood_cognition,kit,sms,practical_support
+ch-08,Shame Spirals + Self-Loathing,Ch8,batch-1,high,moral,nervous_system_mood_cognition,guide,kit,conversation_tools
+ch-09,Memory Slips,Ch9,batch-3,medium,general,nervous_system_mood_cognition,guide,sms,practical_support
+ch-11,Decision Fatigue,Ch11,batch-3,medium,general,nervous_system_mood_cognition,guide,sms,practical_support
+ch-12,Overreacting to Small Stuff,Ch12,batch-3,medium,reactivity,nervous_system_mood_cognition,guide,sms,practical_support
+ch-13,Chronic Sleep Debt,Ch13,batch-3,medium,sleep,sleep_body_pain_substances,guide,bundle,regulation_stack
+ch-14,Sleep Apnea and Snoring,Ch14,batch-3,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+ch-19,"Noise, Crowds, Public Spaces",Ch19,batch-3,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+ch-20,"Vision, Balance, Motion Sensitivity",Ch20,batch-3,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+ch-21,Home Feels Like a Minefield,Ch21,batch-3,medium,relationship,relationships_family_parenting,guide,kit,conversation_tools
+ch-22,Red/Yellow/Green Communication,Ch22,batch-3,medium,relationship,relationships_family_parenting,guide,kit,conversation_tools
+ch-23,Repair After Damage,Ch23,batch-1,high,relationship,relationships_family_parenting,guide,kit,conversation_tools
+ch-24,Parenting on Empty,Ch24,batch-2,medium,relationship,relationships_family_parenting,guide,kit,conversation_tools
+ch-26,Kids in the Blast Radius,Ch26,batch-2,medium,relationship,relationships_family_parenting,guide,kit,conversation_tools
+ch-27,Family Life in Transition,Ch27,batch-2,medium,relationship,relationships_family_parenting,guide,kit,conversation_tools
+ch-28,Emotional Numbness,Ch28,batch-3,medium,general,intimacy_sex_connection,guide,sms,practical_support
+ch-29,Low Desire and Low Drive,Ch29,batch-2,medium,intimacy,intimacy_sex_connection,guide,kit,conversation_tools
+ch-30,Stress Shuts Down Sex,Ch30,batch-2,medium,intimacy,intimacy_sex_connection,guide,kit,conversation_tools
+ch-31,Sex and Avoidance After Difficult Experiences,Ch31,batch-2,medium,intimacy,intimacy_sex_connection,guide,kit,conversation_tools
+ch-33,Touch Without Pressure,Ch33,batch-3,medium,intimacy,intimacy_sex_connection,guide,kit,conversation_tools
+ch-34,"Body Image, Scars, Sexual Confidence",Ch34,batch-3,medium,intimacy,intimacy_sex_connection,guide,kit,conversation_tools
+ch-35,Sex After Injury/Health Change,Ch35,batch-3,medium,intimacy,intimacy_sex_connection,guide,kit,conversation_tools
+ch-36,Moral Injury 101,Ch36,batch-1,high,moral,moral_injury_guilt_shame_spirituality,guide,kit,conversation_tools
+ch-37,Betrayed by the System,Ch37,batch-3,medium,moral,moral_injury_guilt_shame_spirituality,guide,kit,conversation_tools
+ch-38,When You Feel Like the Villain,Ch38,batch-3,medium,moral,moral_injury_guilt_shame_spirituality,guide,kit,conversation_tools
+ch-39,"Faith, God, Big Questions",Ch39,batch-3,medium,moral,moral_injury_guilt_shame_spirituality,guide,kit,conversation_tools
+ch-41,Between Worlds: Identity After Role,Ch41,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+ch-42,Rebuilding Mission and Meaning,Ch42,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+ch-45,Loneliness and Loss of Tribe,Ch45,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+ch-46,Lone Wolf to Healthy Team Member,Ch46,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+split-01,Blow Up Recovery,Ch02,batch-1,high,reactivity,gap_or_custom,kit,sms,practical_support
+split-02,Shut Down Reconnect,Ch02,batch-1,high,relationship,gap_or_custom,guide,kit,conversation_tools
+split-03,Overthinking Loop,Ch05,batch-1,high,general,gap_or_custom,kit,sms,practical_support
+split-04,Night Spiral Stopper,Ch05,batch-1,high,sleep,gap_or_custom,guide,bundle,regulation_stack
+split-05,Hopelessness First Aid,Ch07,batch-1,high,crisis,gap_or_custom,kit,sms,safety_first
+split-06,Crisis Conversation Action,Ch07,batch-1,high,crisis,gap_or_custom,kit,sms,safety_first
+split-07,Tunnel Vision Reset,Ch10,batch-2,medium,general,nervous_system_mood_cognition,guide,sms,practical_support
+split-08,Scattered Brain Reset,Ch10,batch-2,medium,general,nervous_system_mood_cognition,guide,sms,practical_support
+split-09,Nightmare Recovery Plan,Ch15,batch-2,medium,sleep,sleep_body_pain_substances,guide,bundle,regulation_stack
+split-10,3am Wake Loop Reset,Ch15,batch-2,medium,sleep,sleep_body_pain_substances,guide,bundle,regulation_stack
+split-11,Pain Flare Plan,Ch16,batch-2,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+split-12,Tension Release Plan,Ch16,batch-2,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+split-13,TBI Brain Fog Plan,Ch17,batch-2,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+split-14,Headache Functional Plan,Ch17,batch-2,medium,body,sleep_body_pain_substances,guide,bundle,regulation_stack
+split-15,Alcohol Numbing Interrupt,Ch18,batch-2,medium,habit,sleep_body_pain_substances,bundle,sms,ongoing_support
+split-16,Pill-Cycle Interrupt Plan,Ch18,batch-2,medium,habit,sleep_body_pain_substances,bundle,sms,ongoing_support
+split-17,Secondary Trauma for Partners,Ch25,batch-3,medium,relationship,relationships_family_parenting,guide,kit,conversation_tools
+split-18,Secondary Trauma for Teams,Ch25,batch-3,medium,work,relationships_family_parenting,bundle,sms,ongoing_support
+split-19,Habit Loop Reset,Ch32,batch-3,medium,habit,intimacy_sex_connection,bundle,sms,ongoing_support
+split-20,Shame Loop Repair,Ch32,batch-3,medium,moral,intimacy_sex_connection,guide,kit,conversation_tools
+split-21,Shame and Intimacy Repair,Ch40,batch-3,medium,intimacy,moral_injury_guilt_shame_spirituality,guide,kit,conversation_tools
+split-22,Disclosure Repair,Ch40,batch-3,medium,intimacy,moral_injury_guilt_shame_spirituality,guide,kit,conversation_tools
+split-23,Work Identity Loss Plan,Ch43,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+split-24,Overwhelm Stabilization Plan,Ch43,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+split-25,Money Avoidance Reset,Ch44,batch-3,medium,work,work_identity_transition,bundle,sms,ongoing_support
+split-26,Household Chaos Reset,Ch44,batch-3,medium,relationship,work_identity_transition,guide,kit,conversation_tools
+split-27,Screen and Scroll Loop Reset,Ch47,batch-3,medium,habit,dopamine_habits_addictions,bundle,sms,ongoing_support
+split-28,Compulsion Interrupt Plan,Ch47,batch-3,medium,habit,dopamine_habits_addictions,bundle,sms,ongoing_support
+new-01,Panic Attacks in Public: What To Do in 90 Seconds,Gap,batch-1,high,crisis,gap_or_custom,kit,sms,safety_first
+new-02,Post-Incident Crash: The Day-After Recovery Guide,Gap,batch-1,high,body,gap_or_custom,guide,bundle,regulation_stack
+new-03,Grief After Suicide Loss,Gap,batch-1,high,crisis,gap_or_custom,kit,sms,safety_first
+new-04,Survivor Guilt After Calls Scenes Incidents,Gap,batch-1,high,moral,gap_or_custom,guide,kit,conversation_tools
+new-05,Court Complaint or Investigation Stress Survival,Gap,batch-1,high,work,gap_or_custom,bundle,sms,ongoing_support
+new-06,Shift-Work Relationship Survival Plan,Gap,batch-1,high,relationship,gap_or_custom,guide,kit,conversation_tools
+new-07,Co-Parenting Under Burnout and Conflict,Gap,batch-2,medium,relationship,gap_or_custom,guide,kit,conversation_tools
+new-08,Returning to Work After Mental Health Leave,Gap,batch-2,medium,work,gap_or_custom,bundle,sms,ongoing_support
+new-09,Peer-Support Conversations for Teammates,Gap,batch-2,medium,relationship,gap_or_custom,guide,kit,conversation_tools
+new-10,How To Ask for Help Without Feeling Weak,Gap,batch-2,medium,general,gap_or_custom,guide,sms,practical_support
+new-11,Building a Personal Safety Network,Gap,batch-2,medium,crisis,gap_or_custom,kit,sms,safety_first
+new-12,What To Do When Someone Refuses Help,Gap,batch-2,medium,crisis,gap_or_custom,kit,sms,safety_first
+new-13,Digital Overload and Doom-Scroll Recovery,Gap,batch-3,medium,habit,gap_or_custom,bundle,sms,ongoing_support
+new-14,Caffeine and Sleep Trap Reset for Frontline Schedules,Gap,batch-3,medium,sleep,gap_or_custom,guide,bundle,regulation_stack
+new-15,Eating Patterns Under Stress Reset Guide,Gap,batch-3,medium,habit,gap_or_custom,bundle,sms,ongoing_support
+new-16,Boundaries With Family Who Do Not Understand the Job,Gap,batch-3,medium,relationship,gap_or_custom,guide,kit,conversation_tools
+new-17,Dating While Carrying Trauma and Hypervigilance,Gap,batch-3,medium,intimacy,gap_or_custom,guide,kit,conversation_tools
+new-18,Year-One Transition Guide for Newly Separated or Retired Frontline,Gap,batch-3,medium,work,gap_or_custom,bundle,sms,ongoing_support

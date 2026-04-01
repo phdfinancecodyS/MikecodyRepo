@@ -1,0 +1,232 @@
+{
+  "psychoeducational-flow": {
+    "id": "psychoeducational-flow",
+    "name": "Psychoeducational Flow",
+    "description": "Open-ended exploration. Matches topics to educational content.",
+    "entry": "open_checkin",
+    "steps": {
+      "open_checkin": {
+        "id": "open_checkin",
+        "prompt": "How are you doing today?",
+        "type": "free_text",
+        "routing": "sentiment"
+      },
+      "good_probe": {
+        "id": "good_probe",
+        "prompt": "That\u2019s really good to hear. What\u2019s been making things feel good lately?",
+        "type": "free_text",
+        "routing": "topic_match",
+        "terminal": false
+      },
+      "not_good_probe": {
+        "id": "not_good_probe",
+        "prompt": "I\u2019m sorry to hear that. Can you tell me a bit more about what\u2019s been going on?",
+        "type": "free_text",
+        "routing": "topic_match",
+        "terminal": false
+      },
+      "topic_followup": {
+        "id": "topic_followup",
+        "prompt": "Thank you for sharing that. How long has this been affecting you?",
+        "type": "choice",
+        "options": [
+          {"id": "few_days", "text": "A few days"},
+          {"id": "few_weeks", "text": "A few weeks"},
+          {"id": "months", "text": "A month or more"},
+          {"id": "long_time", "text": "A long time \u2014 it\u2019s ongoing"}
+        ],
+        "terminal": true
+      }
+    }
+  },
+
+  "mental-health-triage": {
+    "id": "mental-health-triage",
+    "name": "Mental Health Triage",
+    "description": "Structured 10-question assessment with triage banding.",
+    "entry": "q1",
+    "steps": {
+      "q1": {
+        "id": "q1",
+        "prompt": "Over the past two weeks, how have you been feeling overall?",
+        "type": "choice",
+        "score_key": "mood",
+        "options": [
+          {"id": "q1_good",       "text": "Pretty good, all things considered", "score": 0},
+          {"id": "q1_okay",       "text": "Okay \u2014 some ups and downs",          "score": 1},
+          {"id": "q1_struggling", "text": "Struggling more than usual",          "score": 2},
+          {"id": "q1_bad",        "text": "Really not well at all",              "score": 3}
+        ],
+        "next": "q2"
+      },
+      "q2": {
+        "id": "q2",
+        "prompt": "How often have you felt nervous, anxious, or on edge?",
+        "type": "choice",
+        "score_key": "anxiety",
+        "options": [
+          {"id": "q2_not",      "text": "Not at all",                 "score": 0},
+          {"id": "q2_several",  "text": "Several days",               "score": 1},
+          {"id": "q2_most",     "text": "More than half the days",    "score": 2},
+          {"id": "q2_nearly",   "text": "Nearly every day",           "score": 3}
+        ],
+        "next": "q3"
+      },
+      "q3": {
+        "id": "q3",
+        "prompt": "How often have you had little interest or pleasure in doing things?",
+        "type": "choice",
+        "score_key": "depression",
+        "options": [
+          {"id": "q3_not",      "text": "Not at all",                 "score": 0},
+          {"id": "q3_several",  "text": "Several days",               "score": 1},
+          {"id": "q3_most",     "text": "More than half the days",    "score": 2},
+          {"id": "q3_nearly",   "text": "Nearly every day",           "score": 3}
+        ],
+        "next": "q4"
+      },
+      "q4": {
+        "id": "q4",
+        "prompt": "How has your sleep been?",
+        "type": "choice",
+        "score_key": "sleep",
+        "options": [
+          {"id": "q4_fine",       "text": "Fine \u2014 I\u2019m sleeping well",             "score": 0},
+          {"id": "q4_little",     "text": "A little off \u2014 some restless nights", "score": 1},
+          {"id": "q4_often",      "text": "Often difficulty sleeping or oversleeping","score": 2},
+          {"id": "q4_severe",     "text": "Severely disrupted most nights",       "score": 3}
+        ],
+        "next": "q5"
+      },
+      "q5": {
+        "id": "q5",
+        "prompt": "How would you describe your energy and motivation lately?",
+        "type": "choice",
+        "score_key": "energy",
+        "options": [
+          {"id": "q5_good",    "text": "Good \u2014 I feel motivated and have energy", "score": 0},
+          {"id": "q5_low",     "text": "A bit low but I\u2019m managing",              "score": 1},
+          {"id": "q5_very",    "text": "Very low \u2014 hard to get started on things","score": 2},
+          {"id": "q5_none",    "text": "Almost none \u2014 basic tasks feel exhausting","score": 3}
+        ],
+        "next": "q6"
+      },
+      "q6": {
+        "id": "q6",
+        "prompt": "How connected do you feel to people around you?",
+        "type": "choice",
+        "score_key": "connection",
+        "options": [
+          {"id": "q6_connected",  "text": "Very connected \u2014 good support around me", "score": 0},
+          {"id": "q6_some",       "text": "Some connection but I feel a bit isolated", "score": 1},
+          {"id": "q6_lonely",     "text": "Pretty lonely most of the time",           "score": 2},
+          {"id": "q6_alone",      "text": "Completely alone \u2014 no one to lean on",   "score": 3}
+        ],
+        "next": "q7"
+      },
+      "q7": {
+        "id": "q7",
+        "prompt": "Have you been using alcohol or other substances more than usual to cope?",
+        "type": "choice",
+        "score_key": "substances",
+        "options": [
+          {"id": "q7_no",     "text": "No",                                             "score": 0},
+          {"id": "q7_little", "text": "A little more than usual",                       "score": 1},
+          {"id": "q7_yes",    "text": "Yes, noticeably more",                           "score": 2},
+          {"id": "q7_rely",   "text": "I\u2019m relying on them heavily to get through the day","score": 3}
+        ],
+        "next": "q8"
+      },
+      "q8": {
+        "id": "q8",
+        "prompt": "Have you had any thoughts of hurting yourself or that you would be better off not being here?",
+        "type": "choice",
+        "score_key": "safety",
+        "is_crisis_check": true,
+        "options": [
+          {"id": "q8_no",       "text": "No, not at all",                               "score": 0},
+          {"id": "q8_passing",  "text": "Fleeting thoughts but I\u2019m not acting on them", "score": 2},
+          {"id": "q8_frequent", "text": "Yes, fairly frequently",                        "score": 3, "crisis": true},
+          {"id": "q8_plan",     "text": "Yes, and I have thoughts of a plan",            "score": 4, "crisis": true}
+        ],
+        "next": "q9"
+      },
+      "q9": {
+        "id": "q9",
+        "prompt": "Has any of what you\u2019re going through been affecting your work, school, or daily responsibilities?",
+        "type": "choice",
+        "score_key": "function",
+        "options": [
+          {"id": "q9_no",      "text": "Not really \u2014 I\u2019m managing fine",              "score": 0},
+          {"id": "q9_little",  "text": "A little \u2014 some things are slipping",          "score": 1},
+          {"id": "q9_quite",   "text": "Quite a bit \u2014 it\u2019s noticeably harder",       "score": 2},
+          {"id": "q9_barely",  "text": "I\u2019m barely keeping up or have stopped functioning","score": 3}
+        ],
+        "next": "q10"
+      },
+      "q10": {
+        "id": "q10",
+        "prompt": "Is there one area of your life that\u2019s felt the hardest lately?",
+        "type": "choice",
+        "score_key": "topic",
+        "options": [
+          {"id": "topic_anxiety",      "text": "Anxiety or worry that won\u2019t stop",       "score": 0, "topic": "anxiety"},
+          {"id": "topic_depression",   "text": "Low mood or feeling numb",                  "score": 0, "topic": "depression"},
+          {"id": "topic_relationships","text": "Relationships or loneliness",                "score": 0, "topic": "relationships"},
+          {"id": "topic_grief",        "text": "Grief or a major loss",                      "score": 0, "topic": "grief"},
+          {"id": "topic_work",         "text": "Work, school, or life pressure",             "score": 0, "topic": "work"},
+          {"id": "topic_trauma",       "text": "Past trauma or difficult memories",          "score": 0, "topic": "trauma"},
+          {"id": "topic_recovery",     "text": "Substance use or recovery",                  "score": 0, "topic": "recovery"},
+          {"id": "topic_family",       "text": "Family stress or conflict",                  "score": 0, "topic": "family"}
+        ],
+        "terminal": true
+      }
+    }
+  },
+
+  "main-flow": {
+    "id": "main-flow",
+    "name": "Main Flow",
+    "description": "Guided check-in that combines exploration with support matching.",
+    "entry": "checkin",
+    "steps": {
+      "checkin": {
+        "id": "checkin",
+        "prompt": "How are you doing today?",
+        "type": "choice",
+        "options": [
+          {"id": "good", "text": "\uD83D\uDE0A Good", "sentiment": "positive"},
+          {"id": "meh",  "text": "\uD83D\uDE10 Meh",  "sentiment": "neutral"},
+          {"id": "bad",  "text": "\uD83D\uDE1E Rough", "sentiment": "negative"}
+        ],
+        "routing": "sentiment_branch"
+      },
+      "good_what": {
+        "id": "good_what",
+        "prompt": "That\u2019s really good to hear. What\u2019s been making things feel good?",
+        "type": "free_text",
+        "routing": "topic_match",
+        "terminal": false
+      },
+      "not_good_what": {
+        "id": "not_good_what",
+        "prompt": "I\u2019m sorry. Tell me a little about what\u2019s been going on.",
+        "type": "free_text",
+        "routing": "topic_match",
+        "terminal": false
+      },
+      "topic_depth": {
+        "id": "topic_depth",
+        "prompt": "How long has this been weighing on you?",
+        "type": "choice",
+        "options": [
+          {"id": "duration_days",  "text": "Just the past few days"},
+          {"id": "duration_weeks", "text": "A few weeks"},
+          {"id": "duration_month", "text": "A month or more"},
+          {"id": "duration_long",  "text": "A long time \u2014 it\u2019s ongoing"}
+        ],
+        "terminal": true
+      }
+    }
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "number": 11,
+  "title": "Decision Fatigue and Choice Overload",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "When every small decision feels like too much.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Decision Fatigue Looks Like",
+      "content": [
+        {
+          "type": "para",
+          "text": "Decision fatigue is the exhaustion that comes from making too many decisions without recovery. For frontline folks, high-stakes decisions at work drain your decision-making capacity, leaving nothing left for basic life choices. By the time you're off shift, deciding what to eat feels impossible. You either avoid decisions entirely, default to whatever's easiest, or get stuck in analysis paralysis where every small choice feels overwhelming."
+        },
+        {
+          "type": "h3",
+          "text": "What decision fatigue looks like in frontline work"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "'I don't care' or 'You decide' becomes your default response.",
+            "Simple choices (what to eat, what to wear) feel overwhelming.",
+            "Defaulting to the easiest option even when it's not what you want.",
+            "Analysis paralysis: Can't decide, so you do nothing.",
+            "Irritability when asked to make even small decisions.",
+            "Avoiding tasks that require choices (meal planning, scheduling, shopping)."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Not apathy:",
+            "Decision fatigue isn't about not caring. It's about your prefrontal cortex (decision-making center) being depleted after high-stakes work. Your brain needs recovery, not more choices."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why Frontline Work Burns Through Decision Capacity",
+      "content": [
+        {
+          "type": "para",
+          "text": "Every decision uses glucose and depletes executive function. High-stakes decisions (life-or-death calls, complex judgments under pressure) drain capacity faster. When you leave work, your decision-making tank is empty, but life keeps demanding choices: dinner, bills, conversations, parenting, logistics. Your brain responds by shutting down choice-making entirely or defaulting to the path of least resistance."
+        },
+        {
+          "type": "h3",
+          "text": "What amplifies decision fatigue"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "High-stakes work decisions: Life-or-death calls drain capacity fast.",
+            "Chronic sleep debt: Decision-making is one of the first functions to degrade when tired.",
+            "Choice overload at home: Too many options paralyze action.",
+            "Unstructured routines: Every day requires new decisions instead of defaulting to habits.",
+            "Perfectionism: 'Must make the right choice' increases decision cost."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: Reducing total decisions (via routines and pre-decisions) conserves executive function. Glucose replenishment (eating regularly) restores decision-making capacity. Sleep restores prefrontal cortex function."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Field Tools: Reducing Decision Load",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can't increase decision-making capacity overnight, but you can radically reduce how many decisions you're making. Automate, routinize, and pre-decide as much as possible."
+        },
+        {
+          "type": "h3",
+          "text": "Immediate strategies"
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Build default routines: Same breakfast, same workout time, same meal rotation. Eliminate daily decisions.",
+            "Pre-decide big choices: Meal plan Sunday for the week. Pick clothes the night before. Automate bills.",
+            "Limit options: Three meal choices, not thirty. Decision quality improves when options decrease.",
+            "Use 'good enough' rule: For low-stakes decisions, pick the first acceptable option. Save energy for what matters.",
+            "Batch decisions: Make all small decisions at once (weekly meal plan) instead of daily.",
+            "Eat regularly: Low blood sugar tanks decision-making. Protein and fat stabilize glucose."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: Decisions are a finite resource. Reduce total decisions, not just hard ones. Routines free up capacity for what matters."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Family",
+      "content": [
+        {
+          "type": "para",
+          "text": "When your partner says 'I don't care' or defaults to you for every decision, it feels like they're checking out. They're not—they're depleted. Demanding decisions from someone in decision fatigue guarantees conflict."
+        },
+        {
+          "type": "h3",
+          "text": "What helps"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Build shared routines: Reduce daily decision-making for both of you.",
+            "Narrow options: 'Pizza or tacos?' not 'What do you want for dinner?'",
+            "Pre-decide together: Meal rotation, standing weekend plans, bill autopay.",
+            "Take turns: Alternate who decides on low-stakes choices (dinner, plans, etc.)."
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "What makes it worse"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "'You never help decide anything': Shame doesn't restore decision capacity.",
+            "Open-ended questions: 'What should we do this weekend?' paralyzes.",
+            "Demanding decisions after work: They just used all their capacity. Wait or decide for them."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Decision fatigue that doesn't improve with routines and rest may indicate depression (anhedonia = nothing sounds good) or executive function deficits. Get assessed if decision-making doesn't improve."
+        },
+        {
+          "type": "h3",
+          "text": "Escalate if:"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Decision fatigue persists despite routines and reduced load.",
+            "Accompanied by anhedonia (nothing brings pleasure or interest).",
+            "Work decisions are also impaired (not just home life).",
+            "Daily function is breaking down (not eating, not paying bills, avoiding all responsibility).",
+            "Depression symptoms are present (see Chapter 6)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Decision Audit and Routine Build",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet to track how many decisions you're making daily, then systematically eliminate or automate as many as possible."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Log every decision you made today (big and small).",
+            "2) Mark which decisions could be routinized or pre-decided.",
+            "3) Pick two decisions to eliminate this week (build routine or pre-decide).",
+            "4) Track decision load daily. Goal: reduce total count."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Decision Fatigue and Choice Overload",
+      "intro": "Use this to track decision load and systematically reduce how many choices you're making.",
+      "question_groups": [
+        {
+          "label": "What decisions exhausted you this week?",
+          "hint": "List all decisions, big and small: meals, clothes, plans, work calls, logistics, conversations.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "Which decisions could be routinized or pre-decided?",
+          "hint": "Examples: meal rotation, same breakfast, clothes picked night before, bills on autopay.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two routines will you build this week to reduce decision load?",
+          "hint": "Pick simple ones: same breakfast daily, meal plan Sunday for the week, pick clothes night before.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Decision capacity is finite. Build routines to conserve it for what matters."
+    },
+    {
+      "title": "Worksheet: Decision Fatigue and Choice Overload - Partner/Team Check-In",
+      "intro": "Use this with a partner to build shared routines and reduce total household decision load.",
+      "question_groups": [
+        {
+          "label": "What decisions drain us most as a household?",
+          "hint": "Examples: daily 'what's for dinner?', weekend plans, who does what chores, scheduling logistics.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What shared routines could eliminate repeat decisions?",
+          "hint": "Examples: meal rotation, standing weekend plans, alternating who decides, pre-set chore schedules.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What's one routine we'll build together this week?",
+          "hint": "Example: 'We'll create a 7-day meal rotation and shop for it once on Sunday. No more daily dinner decisions.'",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "number": 5,
+  "title": "Worry, Rumination, and the 'Can't Turn My Brain Off' Loop",
+  "domain": "Nervous system, mood, and cognition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Rumination feels productive while it quietly drains your life.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "Worry vs. Rumination",
+      "content": [
+        {
+          "type": "para",
+          "text": "Worry asks, 'What if?' Rumination repeats, 'What should I have done?' Both can masquerade as problem-solving while keeping your nervous system activated."
+        },
+        {
+          "type": "para",
+          "text": "If your brain never powers down, sleep suffers, patience drops, and the same loops get stronger."
+        },
+        {
+          "type": "h3",
+          "text": "Signs you are in a loop"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Repeating the same thought without new action",
+            "Mentally replaying conversations for hours",
+            "Worst-case forecasting before sleep",
+            "Needing constant reassurance but still feeling unsafe"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why the Loop Feels Hard to Stop",
+      "content": [
+        {
+          "type": "para",
+          "text": "Under stress, the brain mistakes repetitive thinking for control. The loop provides temporary certainty while increasing long-term anxiety and fatigue."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Sleep debt reduces cognitive flexibility",
+            "Unstructured downtime invites looping",
+            "High caffeine and low movement increase arousal",
+            "Shame and perfectionism keep replay cycles alive"
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: externalizing thoughts and time-boxing worry reduce perseverative cognition and improve attentional control."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "Loop-Breaker Protocol",
+      "content": [
+        {
+          "type": "numbered",
+          "items": [
+            {
+              "lead": "Name the loop:",
+              "text": "say, 'I am looping, not solving.'"
+            },
+            {
+              "lead": "Externalize it:",
+              "text": "write the thought in one sentence instead of rehearsing it mentally."
+            },
+            {
+              "lead": "Set a worry window:",
+              "text": "10-15 minutes at a fixed time, never at bedtime."
+            },
+            {
+              "lead": "Re-engage body:",
+              "text": "movement, breath pacing, or a task with clear sensory input."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "Partner Support Without Feeding the Loop",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Offer grounding, not endless reassurance cycles.",
+            "Ask, 'Do you want comfort or action planning right now?'",
+            "Use a shared phrase: 'This sounds like a loop. Want to reset first?'",
+            "Protect bedtime from heavy unresolved processing when possible."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When Rumination Needs Clinical Help",
+      "content": [
+        {
+          "type": "bullets",
+          "items": [
+            "Loops consume multiple hours most days",
+            "Sleep is consistently disrupted by mental replay",
+            "Rumination is paired with panic, depression, or substance use",
+            "You cannot disengage even with structured self-help"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Loop Interruption Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Track each major loop, what interrupted it, and how long recovery took. The goal is shorter loops and faster exits."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily target:",
+            "Catch one loop by name.",
+            "Use one externalization tool.",
+            "Protect one pre-sleep period from rumination."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Worry and Rumination - Loop Tracker",
+      "intro": "Use this to identify your highest-frequency loops and the interventions that actually work.",
+      "question_groups": [
+        {
+          "label": "What topics did you loop on most this week?",
+          "hint": "List repeated themes (work replay, future fear, relationship review, self-criticism).",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did loops cost you?",
+          "hint": "Sleep, focus, patience, performance, connection.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "Which loop-breaker had the best effect?",
+          "hint": "Pick one intervention to prioritize this week.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Loop start cue:",
+          "hint": "What event/time/context kicked off the loop?",
+          "field_height": 30,
+          "multiline": false
+        },
+        {
+          "step": "2. Loop duration:",
+          "hint": "How long did it run before interruption?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Interrupt used:",
+          "hint": "Write exact action used to break the loop.",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Recovery quality (1-10):",
+          "hint": "Rate how effectively you returned to present-time tasks.",
+          "field_height": 28,
+          "multiline": false
+        }
+      ],
+      "closing_note": "You do not need to win every loop. You need faster exits."
+    },
+    {
+      "title": "Worksheet: Worry and Rumination - Scheduled Worry Plan",
+      "intro": "Use this with a trusted person to contain worry to structured windows instead of all-day mental replay.",
+      "question_groups": [
+        {
+          "label": "When is your daily worry window?",
+          "hint": "Set a consistent 10-15 minute block outside bedtime.",
+          "field_count": 1,
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "label": "What phrase will you use to postpone loops outside the window?",
+          "hint": "Example: 'Not now. I will review this at 5:30 PM.'",
+          "field_count": 1,
+          "field_height": 30,
+          "multiline": true
+        },
+        {
+          "label": "What support helps you disengage when loops spike?",
+          "hint": "List two grounding supports from partner or teammate.",
+          "field_count": 2,
+          "field_height": 32,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Top worry captured:",
+          "hint": "Write one worry exactly as it appears.",
+          "field_height": 30,
+          "multiline": true
+        },
+        {
+          "step": "2. Actionable vs. not actionable:",
+          "hint": "Can you act in 24 hours? If no, defer it.",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. One next step:",
+          "hint": "If actionable, write one concrete next action.",
+          "field_height": 30,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Contain worry in time and your brain relearns safety outside the loop."
+    }
+  ],
+  "closing": {
+    "paragraphs": [
+      "Your brain loops because it wants certainty, not because you are weak.",
+      "When you externalize thoughts and time-box worry, you can reclaim attention, sleep, and connection."
+    ],
+    "highlight": "Rumination shrinks when action gets concrete and time gets structured."
+  }
+}
