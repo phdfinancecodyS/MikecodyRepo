@@ -763,7 +763,7 @@ function cceChoiceHTML(options) {
 //  STATE MACHINE
 // ─────────────────────────────────────────────────────────────
 
-const TRACK = { UNKNOWN: 'unknown', GOOD: 'good', NOT_GOOD: 'not_good', RISKY: 'risky' };
+const TRACK = { UNKNOWN: 'unknown', GOOD: 'good', NOT_GOOD: 'not_good', RISKY: 'risky', OTHER: 'other' };
 
 const Stage = {
   // Shared
@@ -781,6 +781,10 @@ const Stage = {
   RISKY_END: 'risky_end',      // Route to recs after probing
   // Special
   CRISIS: 'crisis',
+  CRISIS_S2: 'crisis_s2',        // Follow-up after initial crisis response
+  BRANCH_SELECT: 'branch_select', // "What happened when you asked" branch buttons
+  OTHER_S1: 'other_s1',          // Checking on someone else — guide flow
+  OTHER_TEASE: 'other_tease',    // Show teaser starters
   DONE: 'done',
 };
 
@@ -945,45 +949,102 @@ function isNotGood(t) {
 }
 
 function isCrisis(t) {
-  return /suicid|kill my ?self|end it all|don.?t want to (be here|live|exist|wake up)|not worth living|hurt my ?self|self.?harm|no reason to live|can.?t go on|want to die|wanna die|thinking about (ending|killing)|take my (life|own life)/.test(t);
+  // Explicit ideation
+  if (/suicid|kill my ?self|end it all|don.?t want to (be here|live|exist|wake up)|not worth living|hurt my ?self|self.?harm|no reason to live|can.?t go on|want to die|wanna die|thinking about (ending|killing)|take my (life|own life)/.test(t)) return true;
+  // Passive ideation — people rarely say "suicidal" right away
+  if (/(better off without me|world would be better without me|everyone would be better off|they.?d be better off without me)/.test(t)) return true;
+  if (/(want to (just )?disappear|wish i could disappear|want to vanish forever)/.test(t)) return true;
+  if (/(tired of (being alive|living|existing|this life)|don.?t want to wake up|wish i wouldn.?t wake up|wish i didn.?t wake up)/.test(t)) return true;
+  if (/(no point (anymore|in anything|in living|to (this|it all))|what.?s the point (of living|of me|of anything|of going on)|no reason (anymore|to keep going|to be here))/.test(t)) return true;
+  if (/(can.?t see a (future|way out|reason to)|don.?t see a (future|point|way forward)|don.?t see the point (of|in) (this|living|going on))/.test(t)) return true;
+  if (/(just want it (to stop|all to stop|to end|to be over)|want everything to (stop|end|be over)|just want it all to end)/.test(t)) return true;
+  if (/(not sure (i want to be here|if i want to be here|i should (still )?be here)|sometimes i don.?t want to (be here|exist|live))/.test(t)) return true;
+  if (/(ready to (go|give up|be done)|done (fighting|trying|being here)|too (tired|exhausted) to (keep going|carry on|try))/.test(t)) return true;
+  return false;
 }
 
 function isRisky(t) {
-  return /(drinking (to forget|every night|alone|a lot|more than usual|heavily)|drunk (every|most|all the)|blackout|blacking out|can.?t stop drinking|can.?t stop using|using (again|more|every day|to cope)|back on|relapsed|relapse|high (every|most|all the)|pills to sleep|taking (more|extra) pills|cutting (myself|again)|been cutting|punching (walls|things)|reckless|doing (stupid|dangerous|dumb) (stuff|things|shit)|driving (drunk|high)|hooking up (just to|so i don.?t|because i|to numb)|not eating (at all|for days|anything)|haven.?t eaten|stopped eating|can.?t eat|been skipping (meals|eating)|isolation|isolating|hiding|nobody knows|keeping it hidden|not telling anyone)/.test(t);
+  if (/(drinking (to forget|every night|alone|a lot|more than usual|heavily)|drunk (every|most|all the)|blackout|blacking out|can.?t stop drinking|can.?t stop using|using (again|more|every day|to cope)|back on|relapsed|relapse|high (every|most|all the)|pills to sleep|taking (more|extra) pills|cutting (myself|again)|been cutting|punching (walls|things)|reckless|doing (stupid|dangerous|dumb) (stuff|things|shit)|driving (drunk|high)|hooking up (just to|so i don.?t|because i|to numb))/.test(t)) return true;
+  if (/(not eating (at all|for days|anything)|haven.?t eaten|stopped eating|can.?t eat|been skipping (meals|eating))/.test(t)) return true;
+  if (/(isolation|isolating|hiding|nobody knows|keeping it hidden|not telling anyone)/.test(t)) return true;
+  // Giving things away, saying goodbye signals
+  if (/(giving (my|stuff|things|away)|said (goodbye|my goodbyes)|wrote a (note|letter)|been writing (letters|notes)|putting (affairs|things) in order)/.test(t)) return true;
+  // Dark humor as shield
+  if (/(joking about (dying|death|killing myself|not being here)|people joke about (wanting to die|killing themselves) but)/.test(t)) return true;
+  return false;
+}
+
+function isConcernedAboutOther(t) {
+  // Someone checking on another person — NOT struggling themselves
+  if (/(i.?m (worried|concerned) about (my|a|someone)|i think (my|someone i))/.test(t)) return true;
+  if (/(how (do|can|should) i (talk to|help|approach|ask|reach out to) (my|someone))/.test(t)) return true;
+  if (/(my (girlfriend|boyfriend|partner|wife|husband|friend|sister|brother|son|daughter|coworker|colleague|roommate|mom|dad|kid) (seems|has been|is|looks|keeps|won.?t|told me))/.test(t)) return true;
+  if (/(someone (i|I) (love|care about|know|work with|am close to) (is|might be|seems|has been|told me))/.test(t)) return true;
+  if (/(asking (for|about) (my|a) (friend|partner|family|loved one|coworker))/.test(t)) return true;
+  if (/(checking in on|reaching out for|trying to (help|support|talk to) someone)/.test(t)) return true;
+  if (/(they (told me|said they|mentioned|seemed|looked|have been) (struggling|not okay|depressed|sad|different|withdrawn|distant|quiet|not themselves))/.test(t)) return true;
+  if (/i (don.?t|don't) know (how to|what to) (talk to|help|tell|approach|ask)/.test(t)) return true;
+  return false;
 }
 
 function detectTopic(t) {
   if (/broke up|breakup|girlfriend|boyfriend|gf|bf|partner|relationship|dating|divorce|marriage|she left|he left/.test(t)) return 'relationship';
   if (/fired|laid off|job|work|boss|career|unemployed|money|debt|bills|financial/.test(t)) return 'work';
-  if (/died|death|passed away|loss|grief|mourning|widow|funeral|gone/.test(t)) return 'loss';
+  if (/died|death|passed away|loss|grief|mourning|widow|funeral|gone|suicide loss|took (their|his|her) (life|own life)/.test(t)) return 'loss';
   if (/anxious|anxiety|panic|attack|worry|overthinking|racing mind/.test(t)) return 'anxiety';
   if (/alone|lonely|isolated|no friends|no one cares|nobody/.test(t)) return 'loneliness';
   if (/family|parents|dad|mom|sibling|kids|children/.test(t)) return 'family';
   if (/drink|alcohol|sober|relapse|drugs|substance/.test(t)) return 'recovery';
   if (/faith|god|church|prayer|spiritual|belief|religion/.test(t)) return 'faith';
+  if (/adhd|autism|autistic|neurodivergent|executive function|sensory overload|stimming|masking/.test(t)) return 'neurodivergent';
+  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|disability|flare|lupus/.test(t)) return 'chronic_illness';
+  if (/racism|racial trauma|discrimination|microaggression|being (black|latino|hispanic|asian|indigenous)/.test(t)) return 'racial_trauma';
+  if (/burnout|burnt out|burned out|always (working|on call)|no days off|exhausted (at|by|from) work/.test(t)) return 'burnout';
+  if (/body image|eating disorder|anorexia|bulimia|binge|restrict|food|weight|calories/.test(t)) return 'eating';
   return 'general';
 }
 
 function detectAudience(t) {
-  if (/veteran|military|deployed|combat|ptsd|army|marines|navy|air force|service member/.test(t)) return 'veteran';
-  if (/first responder|firefight|paramedic|emt|police|officer|dispatch/.test(t)) return 'first_responder';
-  if (/nurse|doctor|hospital|healthcare|clinician|medical worker/.test(t)) return 'healthcare';
-  if (/teacher|school|educator|classroom/.test(t)) return 'educator';
-  if (/christian|faith|god|church|prayer|bible/.test(t)) return 'christian';
-  if (/lgbtq|gay|lesbian|bisexual|trans|queer|non.?binary/.test(t)) return 'lgbtq';
-  if (/single (mom|dad|parent)|raising (my kids|them) alone/.test(t)) return 'single_parent';
+  // Specific occupational beats broad
+  if (/veteran|military|deployed|combat|\bptsd\b|\barmy\b|marines|\bnavy\b|air force|service member/.test(t)) return 'veteran';
+  if (/first responder|firefighter|firefight|paramedic|\bemt\b|\bpolice\b|law enforcement|dispatch/.test(t)) return 'first_responder';
+  if (/nurse|doctor|hospital|healthcare|clinician|medical (worker|professional|staff)/.test(t)) return 'healthcare';
+  if (/teacher|educator|classroom|i teach|i.?m a teacher/.test(t)) return 'educator';
+  if (/social worker|i.?m a (counselor|therapist)|i work as a (counselor|therapist)|\bin social work\b/.test(t)) return 'social_worker';
+  if (/lgbtq|\bgay\b|\blesbian\b|\bbisexual\b|\btrans\b|\bqueer\b|non.?binary|same.?sex/.test(t)) return 'lgbtq';
+  if (/single (mom|dad|parent)|raising (my kids|them|him|her) alone|parenting alone/.test(t)) return 'single_parent';
+  // Identity/community buckets
+  if (/racial trauma|\bracism\b|discrimination|microaggression|being (black|latino|latina|hispanic|asian|indigenous)|\bpoc\b|\bbipoc\b|black (man|woman|person|community)|latinx|as a (black|latino|hispanic|asian|indigenous)/.test(t)) return 'bipoc';
+  if (/\badhd\b|\bautis[mt]\b|autistic|neurodivergent|sensory (issues|overload|processing)|executive function|stimming|hyperfocus|\bmasking\b|asperger/.test(t)) return 'neurodivergent';
+  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|\bdisabilit|\bdisabled\b|invisible illness|flare.?up|\blupus\b|\b(ms|multiple sclerosis)\b/.test(t)) return 'chronic_illness';
+  if (/\b(i.?m |i am )?(18|19|20|21|22|23)\b|gen z|\bin college\b|college (student|freshman|sophomore|junior|senior)|\bdorm\b|\bcampus\b|student (loan|debt)|post.?pandemic|zoom (school|class)/.test(t)) return 'gen_z';
+  if (/\b(ceo|lawyer|attorney|surgeon)\b|investment bank|hedge fund|\bexecutive\b|always (on|working)|80.?hour (week|weeks)|never (off|not working|stop working)/.test(t)) return 'high_stress';
+  if (/\bmuslim\b|\bislam\b|\bjewish\b|\bjew\b|\bhindu\b|\bbuddhist\b|\bsikh\b|\bmosque\b|\bsynagogue\b|spiritual but not religious|not religious but spiritual|\bramadan\b|\bshabbat\b/.test(t)) return 'faith_other';
+  if (/(lost (my|a) (mom|dad|brother|sister|friend|child|son|daughter|partner|wife|husband) to suicide|suicide loss|they (died|took their life) by suicide|lost someone to (suicide|overdose))/.test(t)) return 'grief_audience';
+  if (/\b(in recovery|i.?m (sober|clean)|sobriety date|\bAA\b|\bNA\b|narcotics anonymous|alcoholics anonymous|recovery community|12.?step|clean (date|and sober))/.test(t)) return 'addiction_recovery';
+  // Christian comes after faith-specific buckets
+  if (/christian|faith|god|church|prayer|bible|jesus|scripture/.test(t)) return 'christian';
   return null;
 }
 
 function audienceLayer(base) {
   const overlays = {
-    veteran: '\n\nBeing strong doesn\'t mean not struggling. That doesn\'t go away with a discharge date.',
-    first_responder: '\n\nYou spend your whole life showing up for others. This space is for you.',
-    healthcare: '\n\nYou notice this in patients every day. It\'s harder to recognize in yourself.',
-    educator: '\n\nYou carry so many kids. Let this space carry you a little.',
-    christian: '\n\nWhatever you believe — you don\'t have to carry this alone.',
-    lgbtq: '\n\nYou are allowed to be exactly who you are in this conversation.',
-    single_parent: '\n\nEven when you\'re the one holding everything together, you\'re allowed to fall apart a little.',
+    veteran:           '\n\nBeing strong doesn\'t mean not struggling. That doesn\'t go away with a discharge date.',
+    first_responder:   '\n\nYou spend your whole life showing up for others. This space is for you.',
+    healthcare:        '\n\nYou notice this in patients every day. It\'s harder to recognize in yourself.',
+    educator:          '\n\nYou carry so many kids. Let this space carry you a little.',
+    christian:         '\n\nFaith doesn\'t mean you have to hold it together. You don\'t have to carry this alone.',
+    lgbtq:             '\n\nYou are allowed to be exactly who you are in this conversation. No editing.',
+    single_parent:     '\n\nEven when you\'re the one holding everything together, you\'re allowed to need holding too.',
+    social_worker:     '\n\nYou hold space for everyone else. This is a space where someone holds it for you.',
+    bipoc:             '\n\nWhat you carry is real — including the weight others don\'t see. This space sees it.',
+    neurodivergent:    '\n\nYour brain works differently, and that\'s not a flaw. This conversation can be as nonlinear as you need.',
+    chronic_illness:   '\n\nLiving with a body that fights you is exhausting in a way most people don\'t understand. I hear you.',
+    gen_z:             '\n\nYou\'re not dramatic. You inherited a lot. What you\'re feeling is real.',
+    high_stress:       '\n\nSuccess can be its own kind of cage. What you\'re carrying matters even when you look like you have it together.',
+    faith_other:       '\n\nYour faith isn\'t an obstacle to getting support. It\'s part of who you are — this conversation holds that.',
+    grief_audience:    '\n\nLosing someone that way leaves a kind of weight that doesn\'t have a name. You don\'t have to explain it here.',
+    addiction_recovery:'\n\nRecovery is hard work. You deserve real support — not just slogans. You\'re allowed to not be okay.',
   };
   return ctx.audience ? base + (overlays[ctx.audience] || '') : base;
 }
@@ -1105,14 +1166,20 @@ function ngS1(userText) {
 
   // One empathetic line + one short question
   const openers = {
-    relationship: audienceLayer(`That's real, and it hurts.\n\nHow are you holding up right now?`),
-    work:         audienceLayer(`That kind of stress hits everything.\n\nHow are you doing with it day to day?`),
-    loss:         audienceLayer(`I'm really sorry.\n\nHow are you holding up?`),
-    anxiety:      audienceLayer(`That constant pressure is exhausting.\n\nIs this something that just started or has it been building?`),
-    loneliness:   audienceLayer(`Feeling that alone is heavy.\n\nHow long has it felt this way?`),
-    recovery:     audienceLayer(`That takes a lot to navigate.\n\nHow are you doing with it right now?`),
-    faith:        audienceLayer(`I hear you.\n\nWhat's been the hardest part lately?`),
-    general:      audienceLayer(`I hear you.\n\nWhat's been the hardest part of it?`),
+    relationship:   audienceLayer(`That's real, and it hurts.\n\nHow are you holding up right now?`),
+    work:           audienceLayer(`That kind of stress hits everything — sleep, focus, all of it.\n\nHow are you doing with it day to day?`),
+    loss:           audienceLayer(`I'm really sorry. There's no right way to move through that.\n\nHow are you holding up?`),
+    anxiety:        audienceLayer(`That constant pressure is exhausting. Your nervous system is working overtime.\n\nIs this something that just started, or has it been building for a while?`),
+    loneliness:     audienceLayer(`Feeling that alone is one of the heaviest things a person can carry.\n\nHow long has it felt this way?`),
+    recovery:       audienceLayer(`That's a lot to navigate, especially when you're already fighting hard.\n\nHow are you doing with it right now?`),
+    faith:          audienceLayer(`I hear you. When your faith feels shaky, everything else feels less solid.\n\nWhat's been the hardest part lately?`),
+    family:         audienceLayer(`Family gets complicated — and complicated often means painful.\n\nWhat's going on?`),
+    neurodivergent: audienceLayer(`That struggle is real — and often invisible to everyone around you.\n\nWhat's been hitting hardest lately?`),
+    chronic_illness:audienceLayer(`Managing symptoms on top of everything else is an invisible weight.\n\nHow are you doing emotionally through it?`),
+    racial_trauma:  audienceLayer(`What you're carrying is real. Not imagined, not dramatic — real.\n\nHow are you doing underneath it all?`),
+    burnout:        audienceLayer(`Running on empty for too long wears something down.\n\nWhen did you last feel like you weren\'t just surviving the week?`),
+    eating:         audienceLayer(`That relationship is hard. The body keeps the score on all of it.\n\nHow long has this been part of things for you?`),
+    general:        audienceLayer(`I hear you.\n\nWhat's been the hardest part of it?`),
   };
   return openers[ctx.topic] || openers.general;
 }
@@ -1127,14 +1194,19 @@ function ngS2(userText) {
 
   // Topic-aware follow-up
   const probes = {
-    relationship: `Has this hit your sleep or your eating at all — or have you been able to hold that together?`,
-    work:         `Is there anyone around you who knows how bad it's gotten, or are you carrying this mostly on your own?`,
-    loss:         `Grief isn't linear — are there moments in the day when it's heavier than others?`,
-    anxiety:      `When the anxiety spikes, what does that look like for you — is it more physical, or more in your head?`,
-    loneliness:   `Is this something that just crept up, or has it been there for longer than you can remember?`,
-    recovery:     `When you picture getting through today — what does that look like?`,
-    family:       `Is there one person in your corner right now, or does it feel like you're navigating this alone?`,
-    general:      `Have you been able to talk to anyone about this, or has most of it stayed inside?`,
+    relationship:   `Has this hit your sleep or your eating at all — or have you been able to hold that together?`,
+    work:           `Is there anyone around you who knows how bad it\'s gotten, or are you carrying this mostly on your own?`,
+    loss:           `Grief isn't linear — are there moments in the day when it\'s heavier than others?`,
+    anxiety:        `When the anxiety spikes, what does that look like for you — is it more physical, or more in your head?`,
+    loneliness:     `Is this something that just crept up, or has it been there for longer than you can remember?`,
+    recovery:       `When you picture getting through today — what does that look like?`,
+    family:         `Is there one person in your corner right now, or does it feel like you\'re navigating this alone?`,
+    neurodivergent: `When things get overwhelming, do you have anywhere to go that actually helps — or does it mostly just pile up?`,
+    chronic_illness:`On the harder days, is there someone who actually understands what you\'re living with, or does it feel like you explain it constantly?`,
+    racial_trauma:  `Do you have space in your life to actually process this — or do you mostly have to hold it and keep moving?`,
+    burnout:        `What\'s the part you\'re most afraid to stop doing — even though it\'s wearing you down?`,
+    eating:         `On the hardest days with food, what does your internal voice sound like?`,
+    general:        `Have you been able to talk to anyone about this, or has most of it stayed inside?`,
   };
   const q = probes[ctx.topic] || probes.general;
   return audienceLayer(q);
@@ -1155,9 +1227,68 @@ function ngS3(userText) {
 function crisisResponse() {
   stage = Stage.CRISIS;
   return {
-    text: `I'm really glad you said that out loud.\n\nI want you to stay here with me for a second.\n\nRight now, the most important thing is making sure you're safe.`,
-    card: { type: 'crisis' },
-    followup: `Are you safe where you are right now?`,
+    text: `I'm really glad you said that out loud.\n\nI want you to stay here with me for a second.\n\nYou don't have to carry this alone right now.`,
+    card: { type: 'crisis_probe' },
+  };
+}
+
+function crisisS2(userText) {
+  // Second crisis turn — probe with Mike's exact questions, then show resources
+  stage = Stage.CRISIS_S2;
+  const t = userText.toLowerCase();
+
+  // Any confirmation of danger → escalate and show full crisis cards
+  const confirmedDanger = /(yes|yeah|yep|i am|i think so|kind of|sort of|i have|i do|i've thought|i have a plan|i have access|right now|immediately)/.test(t);
+  const deniedDanger    = /(no|not right now|i'm okay|i'm safe|just thoughts|just thinking|not going to|i wouldn't|not today)/.test(t);
+
+  if (confirmedDanger && !deniedDanger) {
+    // Affirmative — Mike's exact stabilize script
+    return {
+      text: `Thank you for being honest with me. That took courage.\n\nI want us to get support now, together.\n\nWould you call 988 with me right now, or text HOME to 741741 while I stay with you?`,
+      card: { type: 'crisis' },
+    };
+  }
+
+  if (deniedDanger) {
+    // They say they're safe — hold the space, go one level deeper gently
+    return {
+      text: `Okay. I believe you.\n\nI still want to ask — have things felt unbearable lately?\n\nNot just hard. Unbearable.`,
+      card: { type: 'crisis_soft' },
+    };
+  }
+
+  // Unclear — continue probing with Mike's safety protocol questions
+  return {
+    text: `Are you in immediate danger right now?\n\nHave you thought about how you would do it?\n\nDo you have access right now?`,
+    card: { type: 'crisis_probe_2' },
+  };
+}
+
+// ── CHECKING ON SOMEONE ELSE ─────────────────────────────────
+
+function otherConcernS1() {
+  track = TRACK.OTHER;
+  stage = Stage.OTHER_S1;
+  ctx.askedAboutOthers = true;
+  return audienceLayer(
+    `It means a lot that you're paying attention.\n\nThe fact that you noticed and you're asking — that already matters.\n\nLet me help you have that conversation.`
+  );
+}
+
+function otherTeaseScreen() {
+  stage = Stage.OTHER_TEASE;
+  return {
+    text: `Here are two ways to open the door. Pick one that feels right for you — then use it.`,
+    card: { type: 'other_tease' },
+  };
+}
+
+function otherBranchRouter(branchId) {
+  // Branch selected from the "what happened when you asked?" screen
+  stage = Stage.DONE;
+  return {
+    text: null,
+    card: { type: 'branch_script', branchId },
   };
 }
 
@@ -1166,15 +1297,20 @@ function crisisResponse() {
 function buildRecommendations() {
   const topic = ctx.topic || 'general';
   const topicLabels = {
-    relationship: 'going through a breakup',
-    work:         'navigating a work situation',
-    loss:         'dealing with loss',
-    anxiety:      'working through anxiety',
-    loneliness:   'feeling alone',
-    family:       'what\'s going on with your family',
-    recovery:     'what you\'re navigating with substances',
-    faith:        'what you\'re working through',
-    general:      'what you\'re going through',
+    relationship:   'going through a breakup',
+    work:           'navigating a work situation',
+    loss:           'dealing with loss',
+    anxiety:        'working through anxiety',
+    loneliness:     'feeling alone',
+    family:         'what\'s going on with your family',
+    recovery:       'what you\'re navigating with substances',
+    faith:          'what you\'re working through',
+    neurodivergent: 'what you\'re navigating as a neurodivergent person',
+    chronic_illness:'what living with chronic illness feels like right now',
+    racial_trauma:  'what you\'re carrying',
+    burnout:        'the burnout you\'re feeling',
+    eating:         'what you\'re going through with food and your body',
+    general:        'what you\'re going through',
   };
   const label = topicLabels[topic] || topicLabels.general;
 
@@ -1203,11 +1339,14 @@ async function getResponse(userText, cceOptionId) {
   const t = userText.toLowerCase().trim();
   const sentiment = analyze(t); // always run — populates ctx.sentiment
 
-  // Crisis check at every stage
+  // Crisis check at every stage — catches passive ideation too
   if (isCrisis(t)) {
     ctx.crisisLevel = 2;
     return crisisResponse();
   }
+
+  // Crisis second turn — they responded to "are you safe?"
+  if (stage === Stage.CRISIS || stage === Stage.CRISIS_S2) return crisisS2(userText);
 
   // Risky behavior check at every stage
   if (isRisky(t)) return riskyProbe(userText);
@@ -1216,6 +1355,10 @@ async function getResponse(userText, cceOptionId) {
   if (stage === Stage.OPENING) {
     stepCount = 1;
     ctx.audience = detectAudience(t) || ctx.audience;
+
+    // Check if they're worried about someone else
+    if (isConcernedAboutOther(t)) return otherConcernS1();
+
     if (isGood(t)) return goodS1(userText);
     if (isNotGood(t)) return ngS1(userText);
     // Sentiment-informed ambiguous response
@@ -1249,6 +1392,12 @@ async function getResponse(userText, cceOptionId) {
   // RISKY TRACK
   if (stage === Stage.RISKY_PROBE) return riskyProbe(userText);
   if (stage === Stage.RISKY_END) return buildRecommendations();
+
+  // OTHER TRACK — checking on someone else
+  if (stage === Stage.OTHER_S1) return otherTeaseScreen();
+  if (stage === Stage.OTHER_TEASE || stage === Stage.BRANCH_SELECT) {
+    return `This is here whenever you need to come back.\n\nYou showed up for them — that matters.`;
+  }
 
   // Fallback — keep them talking
   ctx.audience = detectAudience(t) || ctx.audience;
@@ -1318,14 +1467,19 @@ function humanDelay(content) {
 
 // Topic-specific guide mapping
 const TOPIC_GUIDES = {
-  relationship: { title: 'Connection 101 — Relationships', url: '/guides/connection-101.pdf' },
-  loneliness:   { title: 'Connection 101 — Feeling Alone', url: '/guides/connection-101.pdf' },
-  anxiety:      { title: 'Connection 101 — Anxiety', url: '/guides/connection-101.pdf' },
-  work:         { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.pdf' },
-  loss:         { title: 'Connection 101 — Grief', url: '/guides/connection-101.pdf' },
-  family:       { title: 'Connection 101 — Family Stress', url: '/guides/connection-101.pdf' },
-  recovery:     { title: 'Connection 101 — Recovery', url: '/guides/connection-101.pdf' },
-  general:      { title: 'Connection 101 — Getting Started', url: '/guides/connection-101.pdf' },
+  relationship:   { title: 'Connection 101 — Relationships', url: '/guides/connection-101.pdf' },
+  loneliness:     { title: 'Connection 101 — Feeling Alone', url: '/guides/connection-101.pdf' },
+  anxiety:        { title: 'Connection 101 — Anxiety', url: '/guides/connection-101.pdf' },
+  work:           { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.pdf' },
+  loss:           { title: 'Connection 101 — Grief', url: '/guides/connection-101.pdf' },
+  family:         { title: 'Connection 101 — Family Stress', url: '/guides/connection-101.pdf' },
+  recovery:       { title: 'Connection 101 — Recovery', url: '/guides/connection-101.pdf' },
+  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds', url: '/guides/connection-101.pdf' },
+  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain', url: '/guides/connection-101.pdf' },
+  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: '/guides/connection-101.pdf' },
+  burnout:        { title: 'Connection 101 — Burnout & Work', url: '/guides/connection-101.pdf' },
+  eating:         { title: 'Connection 101 — Body & Food Stress', url: '/guides/connection-101.pdf' },
+  general:        { title: 'Connection 101 — Getting Started', url: '/guides/connection-101.pdf' },
 };
 
 function recCardsHTML(crisisLevel) {
@@ -1359,6 +1513,15 @@ function recCardsHTML(crisisLevel) {
       </a>
       ${therapistWidgetHTML(ctx.topic || 'general')}
       ${crisisRow}
+    </div>
+    <div style="margin-top:2px;">
+      <div class="rec-item local" style="cursor:pointer;" onclick="startOtherFlow()">
+        <div class="rec-icon">🗣️</div>
+        <div class="rec-content">
+          <div class="rec-title">Worried about someone? How to ask them directly</div>
+          <div class="rec-desc">Word-for-word scripts for a hard conversation — free</div>
+        </div>
+      </div>
     </div>
     <a class="restart-link" onclick="restart()">start over</a>
     ${betaBarHTML()}`;
@@ -1511,6 +1674,158 @@ function betaBarHTML() {
   </div>`;
 }
 
+// ─── Persistent mini crisis footer (always visible on crisis/branch screens) ───
+function crisisMiniFooterHTML() {
+  return `
+  <div style="margin-top:20px;padding:12px 14px;background:#08030a;border:1px solid #280d28;border-radius:10px;">
+    <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a02828;margin-bottom:8px;">Always available — no wait</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="tel:988" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">📞 Call 988</a>
+      <a href="sms:741741&amp;body=HOME" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">💬 Text HOME to 741741</a>
+      <a href="tel:911" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">🚑 Call 911</a>
+    </div>
+  </div>`;
+}
+
+// crisis_probe card — "Are you safe right now?" + mini crisis footer + input
+function crisisProbeHTML() {
+  return `
+    ${crisisMiniFooterHTML()}
+    ${inputHTML()}`;
+}
+
+// crisis_probe_2 card — follow-up probing questions + crisis footer + input
+function crisisProbe2HTML() {
+  return `
+    ${crisisMiniFooterHTML()}
+    ${inputHTML()}`;
+}
+
+// crisis_soft card — "I heard you're safe" + gentle 988 nudge + input
+function crisisSoftHTML() {
+  return `
+    <div style="margin-top:16px;padding:12px 14px;background:#020a04;border:1px solid #0a2010;border-radius:10px;font-size:.8rem;color:#555;line-height:1.6;">
+      If that ever changes — even a little — please reach out.<br>
+      <a href="tel:988" style="color:#22c55e;text-decoration:none;font-weight:600;">988</a> is there 24/7.\u2003<a href="sms:741741&amp;body=HOME" style="color:#22c55e;text-decoration:none;font-weight:600;">Text HOME to 741741</a>
+    </div>
+    ${inputHTML()}`;
+}
+
+// other_tease card — "Try one direct line" with Mike's teasers + 3 branch buttons
+function otherTeaseHTML() {
+  const starters = [
+    `"I care about you and I have noticed some changes. Can I ask you something direct?"`,
+    `"You matter to me. Are you thinking about suicide?"`,
+  ];
+  const starterHTML = starters.map(s =>
+    `<div style="padding:11px 14px;background:#080808;border:1px solid #1a1a1a;border-radius:8px;font-size:.85rem;color:#ccc;line-height:1.5;font-style:italic;">${escHtml(s)}</div>`
+  ).join('');
+
+  return `
+    <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:4px;">Try one of these</div>
+      ${starterHTML}
+    </div>
+    <div style="font-size:.8rem;color:#777;margin-bottom:14px;">What happened when you asked?</div>
+    <div class="choice-row">
+      <button class="choice-btn" onclick="selectBranch('affirmative')">They said yes</button>
+      <button class="choice-btn" onclick="selectBranch('denied_defensive')">They denied it or got defensive</button>
+      <button class="choice-btn" onclick="selectBranch('changed_subject')">They changed the subject or avoided</button>
+    </div>
+    ${crisisMiniFooterHTML()}`;
+}
+
+// branch_script card — the full conversation script for whatever branch was picked
+function branchScriptHTML(branchId) {
+  const BRANCHES = {
+    affirmative: {
+      title: 'If they said yes',
+      severity: 'high',
+      sections: [
+        { heading: 'Say this first', lines: [
+          'Thank you for telling me. I am really glad you said that out loud.',
+          'I am here with you. You do not have to carry this alone.',
+        ]},
+        { heading: 'Ask these next', lines: [
+          'Are you in immediate danger right now?',
+          'Have you thought about how you would do it?',
+          'Do you have access right now?',
+        ]},
+        { heading: 'Stabilize and connect', lines: [
+          'I want us to get support now, together.',
+          'Would you call 988 with me right now, or text HOME to 741741 while I stay with you?',
+        ]},
+        { heading: 'If they hesitate', lines: [
+          'I hear you. We can do one step at a time. I am not leaving you alone in this.',
+        ]},
+      ],
+      showCrisis: true,
+    },
+    denied_defensive: {
+      title: 'If they denied it or got defensive',
+      severity: 'moderate',
+      sections: [
+        { heading: 'De-escalate', lines: [
+          'I hear you. I am not trying to judge you or label you.',
+          'I asked because I care about you and I want you safe.',
+        ]},
+        { heading: 'Keep the door open', lines: [
+          'If today is not the day to talk, that is okay.',
+          'I am still here, and you can tell me anytime.',
+        ]},
+        { heading: 'Gentle re-check', lines: [
+          'Can I ask one better question: have things felt unbearable lately?',
+          'On a hard day, do you feel like you want to disappear?',
+        ]},
+        { heading: 'Close with connection', lines: [
+          'I care about you either way.',
+          'Can I check in again tomorrow?',
+        ]},
+      ],
+      showCrisis: false,
+    },
+    changed_subject: {
+      title: 'If they changed the subject or avoided',
+      severity: 'moderate',
+      sections: [
+        { heading: 'Return to topic', lines: [
+          'Before we move on, I want to come back to something important.',
+          'I asked because you matter to me.',
+        ]},
+        { heading: 'Direct and calm', lines: [
+          'I want to be clear: are you having thoughts about suicide?',
+        ]},
+        { heading: 'If they keep avoiding', lines: [
+          'You do not have to explain everything right now.',
+          'I just need to know if you are safe tonight.',
+        ]},
+        { heading: 'Bridge to support', lines: [
+          'If talking to me feels hard, we can contact someone neutral together right now.',
+          'We can call 988 and just start with: I am worried and not sure what to say.',
+        ]},
+      ],
+      showCrisis: false,
+    },
+  };
+
+  const branch = BRANCHES[branchId] || BRANCHES.affirmative;
+  const sectionsHTML = branch.sections.map(sec => `
+    <div style="margin-bottom:16px;">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:6px;">${escHtml(sec.heading)}</div>
+      ${sec.lines.map(l => `
+        <div style="padding:10px 13px;background:#060606;border:1px solid #141414;border-radius:7px;font-size:.88rem;color:#ccc;line-height:1.55;margin-bottom:5px;font-style:italic;">"${escHtml(l)}"</div>
+      `).join('')}
+    </div>`).join('');
+
+  return `
+    <div class="rec-label">${escHtml(branch.title)}</div>
+    ${sectionsHTML}
+    ${branch.showCrisis ? crisisCardsHTML() : crisisMiniFooterHTML()}
+    <button class="choice-btn" style="margin-top:14px;font-size:.8rem;padding:10px 14px;" onclick="goBackToBranches()">← Try a different script</button>
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
+}
+
 function crisisCardsHTML() {
   return `
     <div class="rec-label">🚨 Immediate support — always free</div>
@@ -1573,7 +1888,8 @@ function showResponse(response, echoText) {
 
   // Progress dots — show on turns 1-3 (not on opening or final screens)
   const showDots = stepCount > 0 && stage !== Stage.DONE && stage !== Stage.GOOD_S4
-    && stage !== Stage.NG_S4 && stage !== Stage.RISKY_END && stage !== Stage.CRISIS;
+    && stage !== Stage.NG_S4 && stage !== Stage.RISKY_END && stage !== Stage.CRISIS
+    && stage !== Stage.CRISIS_S2 && stage !== Stage.BRANCH_SELECT && stage !== Stage.OTHER_TEASE;
   const totalDots = (track === TRACK.GOOD) ? 3 : 4;
   const dotsHTML = showDots ? progressDotsHTML(Math.min(stepCount - 1, totalDots - 1), totalDots) : '';
 
@@ -1620,6 +1936,16 @@ function showResponse(response, echoText) {
     if (response.card) {
       if (response.card.type === 'crisis') {
         html += crisisCardsHTML();
+      } else if (response.card.type === 'crisis_probe') {
+        html += crisisProbeHTML();
+      } else if (response.card.type === 'crisis_probe_2') {
+        html += crisisProbe2HTML();
+      } else if (response.card.type === 'crisis_soft') {
+        html += crisisSoftHTML();
+      } else if (response.card.type === 'other_tease') {
+        html += otherTeaseHTML();
+      } else if (response.card.type === 'branch_script') {
+        html += branchScriptHTML(response.card.branchId);
       } else if (response.card.type === 'recommendations') {
         html += recCardsHTML(response.card.crisisLevel || 0);
       }
@@ -1693,6 +2019,57 @@ async function submitText(text) {
 }
 
 // ─── CCE choice button click ───
+
+// ─── Conversation branch selection (other_tease → branch_script) ───
+
+function selectBranch(branchId) {
+  if (locked) return;
+  locked = true;
+  stage = Stage.BRANCH_SELECT;
+  const response = otherBranchRouter(branchId);
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(response, null);
+    locked = false;
+  }, 360);
+}
+
+function goBackToBranches() {
+  if (locked) return;
+  locked = true;
+  stage = Stage.OTHER_TEASE;
+  const response = otherTeaseScreen();
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(response, null);
+    locked = false;
+  }, 360);
+}
+
+function startOtherFlow() {
+  // Entry point from rec cards — user is worried about someone else
+  if (locked) return;
+  locked = true;
+  ctx.askedAboutOthers = true;
+  const response = otherTeaseScreen();
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(response, null);
+    locked = false;
+  }, 360);
+}
 
 async function submitChoice(optionId, optionText) {
   if (locked) return;
