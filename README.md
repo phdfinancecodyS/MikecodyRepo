@@ -40,6 +40,22 @@ cd MikecodyRepo
 
 ## Starting the local environment
 
+Quick start for shared work:
+
+```bash
+./run-shared-workspace.sh
+```
+
+This starts both services with standard ports:
+- Frontend static server at `http://127.0.0.1:3131/ask-anyway-deploy/index.html`
+- CCE backend at `http://127.0.0.1:8000`
+
+Run the API smoke test any time:
+
+```bash
+./cce-backend/smoke-test.sh
+```
+
 **Step 1 — Start the file server** (serves the HTML tools at localhost:3131)
 
 ```bash
