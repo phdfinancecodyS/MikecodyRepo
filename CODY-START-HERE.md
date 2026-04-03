@@ -113,7 +113,7 @@ Expected: 100/100 across 5 levels.
 ## File counts
 
 - 4,117 content markdown files (79 base guides x 17 audiences + worksheets + modules + lead magnet)
-- 1,343 kit zips ready for delivery
+- 1,343 kit zips (gitignored build artifacts: run `python3 scripts/build_kit_zips.py` to regenerate)
 - 7 API routes (all implemented, not stubs)
 - 100/100 beta tests passing
 - 0 npm vulnerabilities

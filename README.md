@@ -6,16 +6,19 @@
 
 **Built by:** Licensed Clinical Social Worker (content/clinical) + Cody Sullivan (tech/business)
 
-**Last updated:** 2026-03-20
+**Last updated:** 2026-04-03
 
 ---
 
 ## Quick Start for Cody
 
-> **Start here.** Open these files in order. If anything conflicts with an older doc, these win.
+> **Start here.** Read `CODY-START-HERE.md` at the repo root first. It has a plain-language status update and a full changelog of everything built since the March 20 handoff.
+
+Then open these files in order. If anything conflicts with an older doc, these win.
 
 | Order | File | What it tells you |
 |-------|------|-------------------|
+| 0 | `CODY-START-HERE.md` | April 2026 status update, changelog, provisioning checklist, local run instructions |
 | 1 | `planning/CODY-VSCODE-IMPORT-RUNBOOK.md` | Single-page orientation: what's built, what to open, env vars, VS Code workflow |
 | 2 | `planning/TECH-HANDOFF-FOR-CODY.md` | Full tech handoff: phases A–F, scoring logic, Stripe, email/SMS, deployment checklist |
 | 3 | `planning/QUIZ-IMPLEMENTATION-CONTRACT.md` | Non-negotiable product rules, scoring bands, routing contract, result CTAs, QA gate |
@@ -238,48 +241,27 @@ Open and read these files first — they are your source of truth:
 3. `planning/QUIZ-IMPLEMENTATION-CONTRACT.md` — scoring/routing rules
 4. `web/api/README.md` — API scaffold guide
 
-### 3. Initialize your Next.js project
+### 3. Install frontend dependencies
+
+The Next.js app already exists in `web/`. No need to create-next-app.
 
 ```bash
-# Create Next.js app (if not already initialized)
-npx create-next-app@latest ask-anyway --typescript --app --tailwind --eslint
-
-# Install required packages
-cd ask-anyway
-npm install @supabase/supabase-js stripe
+cd web
+npm install
 ```
 
-### 4. Copy the API scaffold into your project
+### 4. Set up environment variables
+
+The API routes already live at `web/api/`. An env template is at `web/.env.local` with all 18 variables documented. Fill in your real keys:
 
 ```bash
-# From the workspace root, copy API handlers into your Next.js app
-cp -r web/api/* ask-anyway/app/api/
+# Edit the existing template
+open web/.env.local
 ```
 
-This gives you the full `app/api/` structure:
-- `app/api/quiz/score/route.ts`
-- `app/api/quiz/topic-match/route.ts`
-- `app/api/quiz/audience-match/route.ts`
-- `app/api/quiz/recommendation/route.ts`
-- `app/api/checkout/session/route.ts`
-- `app/api/webhooks/stripe/route.ts`
-- `app/api/analytics/event/route.ts`
-- `app/api/_lib/types.ts`, `supabase.ts`, `scorer.ts`
+See the provisioning checklist in `CODY-START-HERE.md` for which services to set up.
 
-### 5. Set up environment variables
-
-Create `.env.local` in your Next.js project root:
-
-```env
-SUPABASE_URL=https://yourproject.supabase.co
-SUPABASE_SERVICE_KEY=your_service_role_key
-
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-STRIPE_PRICE_IDS={"guide":"price_xxx","kit":"price_yyy","sms":"price_zzz","bundle":"price_aaa"}
-```
-
-### 6. Apply Supabase migrations
+### 5. Apply Supabase migrations
 
 ```bash
 # Option A: Supabase CLI (if using hosted Supabase)
@@ -291,7 +273,7 @@ supabase db push
 #   supabase/migrations/20260320160000_rls_policies.sql
 ```
 
-### 7. Run the workspace audit
+### 6. Run the workspace audit
 
 ```bash
 python3 scripts/full_workspace_audit.py
@@ -299,7 +281,7 @@ python3 scripts/full_workspace_audit.py
 
 Expected result: **0 CRITICAL, 0 WARNING, 2 INFO** (stale handoff doc references — cosmetic only).
 
-### 8. Verify Stripe test mode
+### 7. Verify Stripe test mode
 
 ```bash
 # Install Stripe CLI
@@ -310,19 +292,10 @@ stripe login
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```
 
-### 9. Copy quiz config into your app
-
-The quiz engine reads from JSON config files. Copy them into your project's data layer:
+### 8. Start development
 
 ```bash
-mkdir -p ask-anyway/data
-cp quiz/*.json ask-anyway/data/
-```
-
-### 10. Start development
-
-```bash
-cd ask-anyway
+cd web
 npm run dev
 ```
 
@@ -391,6 +364,6 @@ All content follows safe messaging guidelines from AFSP, SAMHSA, JED Foundation,
 - [x] Root web app shell — Next.js app scaffolded in `web/` with route wrappers and quiz page
 - [ ] Stripe product setup — needs live price IDs
 - [ ] Email/SMS provider verification — SendGrid/Twilio credentials and live webhook replay still needed
-- [ ] Frontend refinement — current quiz page is functional scaffolding and still needs product polish
+- [ ] Frontend refinement — quiz wizard works end-to-end but still needs visual/product polish
 - [ ] Platform selected (Teachable / Kajabi / Gumroad / Stan Store)
 - [ ] Launch
