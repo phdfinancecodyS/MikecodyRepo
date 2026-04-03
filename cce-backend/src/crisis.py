@@ -25,8 +25,18 @@ CRISIS_PATTERNS = [
 
 CRISIS_RE = re.compile("|".join(CRISIS_PATTERNS), re.IGNORECASE)
 
+# Phrases that should force critical handling regardless of downstream score.
+CRITICAL_OVERRIDE_PATTERNS = [
+    r"\b(tonight|right\s+now|today)\b.*\b(kill\s+myself|end\s+my\s+life|suicide)\b",
+    r"\b(kill\s+myself|end\s+my\s+life|suicide)\b.*\b(tonight|right\s+now|today)\b",
+    r"\bi\s+have\s+a\s+plan\b",
+    r"\bi\s+am\s+going\s+to\s+(kill\s+myself|end\s+my\s+life)\b",
+]
+
+CRITICAL_OVERRIDE_RE = re.compile("|".join(CRITICAL_OVERRIDE_PATTERNS), re.IGNORECASE)
+
 # Crisis option IDs from the triage tree
-CRISIS_OPTION_IDS = {"q8_frequent", "q8_plan"}
+CRISIS_OPTION_IDS = {"q8_frequent", "q8_plan", "safety_cannot_commit"}
 
 
 def is_crisis_text(text: str) -> bool:
@@ -34,6 +44,13 @@ def is_crisis_text(text: str) -> bool:
     if not text:
         return False
     return bool(CRISIS_RE.search(text))
+
+
+def is_critical_override_text(text: str) -> bool:
+    """Return True if text contains explicit high-immediacy phrases."""
+    if not text:
+        return False
+    return bool(CRITICAL_OVERRIDE_RE.search(text))
 
 
 def is_crisis_option(option_id: str) -> bool:

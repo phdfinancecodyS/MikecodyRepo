@@ -213,17 +213,141 @@
         "prompt": "I\u2019m sorry. Tell me a little about what\u2019s been going on.",
         "type": "free_text",
         "routing": "topic_match",
+        "next": "ng_impact",
         "terminal": false
+      },
+      "ng_impact": {
+        "id": "ng_impact",
+        "prompt": "Thanks for sharing that. How much has this been affecting your day to day life?",
+        "type": "choice",
+        "score_key": "impact",
+        "options": [
+          {"id": "impact_light", "text": "A little - I can still function", "score": 1},
+          {"id": "impact_moderate", "text": "Noticeably - it is getting harder", "score": 2},
+          {"id": "impact_heavy", "text": "A lot - basic stuff feels heavy", "score": 3}
+        ],
+        "next": "ng_duration"
+      },
+      "ng_duration": {
+        "id": "ng_duration",
+        "prompt": "How long has this been weighing on you?",
+        "type": "choice",
+        "score_key": "duration",
+        "options": [
+          {"id": "duration_days", "text": "Just the past few days", "score": 0},
+          {"id": "duration_weeks", "text": "A few weeks", "score": 1},
+          {"id": "duration_month", "text": "A month or more", "score": 2},
+          {"id": "duration_long", "text": "A long time - it is ongoing", "score": 3}
+        ],
+        "next": "ng_support"
+      },
+      "ng_support": {
+        "id": "ng_support",
+        "prompt": "Who knows you are carrying this right now?",
+        "type": "choice",
+        "score_key": "support",
+        "options": [
+          {"id": "support_yes", "text": "At least one person knows", "score": 0},
+          {"id": "support_unsure", "text": "Kind of, but not the full picture", "score": 1},
+          {"id": "support_no", "text": "No one really knows", "score": 2}
+        ],
+        "next": "ng_function"
+      },
+      "ng_function": {
+        "id": "ng_function",
+        "prompt": "In the last week, how often did this make it hard to do what you needed to do?",
+        "type": "choice",
+        "score_key": "function",
+        "options": [
+          {"id": "function_rare", "text": "Rarely", "score": 0},
+          {"id": "function_some", "text": "Some days", "score": 1},
+          {"id": "function_often", "text": "Most days", "score": 2},
+          {"id": "function_daily", "text": "Every day", "score": 3}
+        ],
+        "next": "ng_checkin"
+      },
+      "ng_checkin": {
+        "id": "ng_checkin",
+        "prompt": "Thanks for being real with me. Before I pull resources, do you feel safe right now?",
+        "type": "choice",
+        "score_key": "safety_check",
+        "options": [
+          {"id": "safety_yes", "text": "Yes, I am safe right now", "score": 0},
+          {"id": "safety_unsure", "text": "I am not fully sure", "score": 2},
+          {"id": "safety_cannot_commit", "text": "No, I do not feel safe", "score": 4}
+        ],
+        "terminal": true
       },
       "topic_depth": {
         "id": "topic_depth",
         "prompt": "How long has this been weighing on you?",
         "type": "choice",
         "options": [
-          {"id": "duration_days",  "text": "Just the past few days"},
-          {"id": "duration_weeks", "text": "A few weeks"},
-          {"id": "duration_month", "text": "A month or more"},
-          {"id": "duration_long",  "text": "A long time \u2014 it\u2019s ongoing"}
+          {"id": "duration_days",  "text": "Just the past few days", "score": 0},
+          {"id": "duration_weeks", "text": "A few weeks", "score": 1},
+          {"id": "duration_month", "text": "A month or more", "score": 2},
+          {"id": "duration_long",  "text": "A long time - it is ongoing", "score": 3}
+        ],
+        "score_key": "duration",
+        "terminal": true
+      },
+      "suicide_screener_q1": {
+        "id": "suicide_screener_q1",
+        "prompt": "Thank you for saying that out loud. Quick safety check so I can route you correctly: are you having thoughts of ending your life right now?",
+        "type": "choice",
+        "score_key": "safety_now",
+        "options": [
+          {"id": "sq1_no", "text": "No", "score": 0},
+          {"id": "sq1_unsure", "text": "Not sure", "score": 2},
+          {"id": "sq1_yes", "text": "Yes", "score": 4}
+        ],
+        "next": "suicide_screener_q2"
+      },
+      "suicide_screener_q2": {
+        "id": "suicide_screener_q2",
+        "prompt": "Have you thought about how you might do it?",
+        "type": "choice",
+        "score_key": "safety_plan",
+        "options": [
+          {"id": "sq2_no", "text": "No", "score": 0},
+          {"id": "sq2_some", "text": "Some thoughts, no clear plan", "score": 2},
+          {"id": "sq2_yes", "text": "Yes, a clear plan", "score": 4}
+        ],
+        "next": "suicide_screener_q3"
+      },
+      "suicide_screener_q3": {
+        "id": "suicide_screener_q3",
+        "prompt": "Do you have access to what you would need to carry that out?",
+        "type": "choice",
+        "score_key": "safety_access",
+        "options": [
+          {"id": "sq3_no", "text": "No", "score": 0},
+          {"id": "sq3_unsure", "text": "Maybe", "score": 2},
+          {"id": "sq3_yes", "text": "Yes", "score": 4}
+        ],
+        "next": "suicide_screener_q4"
+      },
+      "suicide_screener_q4": {
+        "id": "suicide_screener_q4",
+        "prompt": "Do you feel like you might act on these thoughts in the next 24 hours?",
+        "type": "choice",
+        "score_key": "safety_intent",
+        "options": [
+          {"id": "sq4_no", "text": "No", "score": 0},
+          {"id": "sq4_unsure", "text": "I am not sure", "score": 3},
+          {"id": "sq4_yes", "text": "Yes", "score": 5}
+        ],
+        "next": "suicide_screener_q5"
+      },
+      "suicide_screener_q5": {
+        "id": "suicide_screener_q5",
+        "prompt": "Last one: can you commit to a safety step right now (call/text 988, text HOME to 741741, or contact someone you trust)?",
+        "type": "choice",
+        "score_key": "safety_commitment",
+        "options": [
+          {"id": "sq5_yes", "text": "Yes, I can do that now", "score": 0},
+          {"id": "sq5_maybe", "text": "Maybe", "score": 2},
+          {"id": "safety_cannot_commit", "text": "No, I cannot commit to that right now", "score": 5}
         ],
         "terminal": true
       }

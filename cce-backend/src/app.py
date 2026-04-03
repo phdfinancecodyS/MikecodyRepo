@@ -22,6 +22,11 @@ from .engine import (
     get_session,
     process_response,
 )
+from .config import (
+    GUIDES_BY_ID, GUIDES_BY_DOMAIN, AUDIENCE_BUCKETS, AUDIENCE_QUESTIONS,
+    PRODUCTS_BY_ID, PRICING_PROFILES, ACTIVE_PRICING, ETSY_LISTINGS,
+    resolve_guide_path, get_guide_for_topic, get_offer_for_risk, get_offer_for_guide,
+)
 from .models import (
     HealthResponse,
     RespondRequest,
@@ -115,6 +120,162 @@ async def session_respond(request: Request, session_id: str, body: RespondReques
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
     return RespondResponse(**result)
+
+
+# ─── Guide Catalog & Delivery ─────────────────────────────────────────────────
+
+
+@app.get("/guides/catalog")
+async def guide_catalog():
+    """Return the full guide catalog with domains and clusters."""
+    return {
+        "count": len(GUIDES_BY_ID),
+        "guides": list(GUIDES_BY_ID.values()),
+        "domains": {d: len(gs) for d, gs in GUIDES_BY_DOMAIN.items()},
+    }
+
+
+@app.get("/guides/{guide_id}")
+async def get_guide(guide_id: str, audience: str = Query("general-mental-health", max_length=50)):
+    """Serve a guide's markdown content, with optional audience-specific variant."""
+    if guide_id not in GUIDES_BY_ID:
+        raise HTTPException(status_code=404, detail=f"Guide not found: {guide_id}")
+
+    path = resolve_guide_path(guide_id, audience)
+    if not path or not path.exists():
+        raise HTTPException(status_code=404, detail="Guide file not found on disk")
+
+    content = path.read_text(encoding="utf-8")
+    guide_meta = GUIDES_BY_ID[guide_id]
+    return {
+        "guide_id": guide_id,
+        "title": guide_meta["title"],
+        "domain": guide_meta["domain"],
+        "cluster": guide_meta.get("cluster"),
+        "audience": audience,
+        "content": content,
+    }
+
+
+# ─── Audience Buckets ─────────────────────────────────────────────────────────
+
+
+@app.get("/audience/buckets")
+async def audience_buckets():
+    """Return available audience buckets and matching questions."""
+    return {
+        "count": len(AUDIENCE_BUCKETS),
+        "buckets": list(AUDIENCE_BUCKETS.values()),
+        "questions": AUDIENCE_QUESTIONS,
+    }
+
+
+# ─── Products & Pricing ──────────────────────────────────────────────────────
+
+
+@app.get("/products")
+async def products():
+    """Return the product catalog with active pricing."""
+    profile = PRICING_PROFILES.get(ACTIVE_PRICING, {})
+    enriched = []
+    for pid, pdata in PRODUCTS_BY_ID.items():
+        price_info = profile.get(pdata.get("pricingProfileKey", pid), {})
+        enriched.append({
+            **pdata,
+            "price": price_info.get("price"),
+            "billing": price_info.get("billing", "one_time"),
+        })
+    return {
+        "pricing_profile": ACTIVE_PRICING,
+        "products": enriched,
+    }
+
+
+# ─── Audience Resolution ─────────────────────────────────────────────────────
+
+
+@app.post("/audience/resolve")
+@limiter.limit("60/minute")
+async def resolve_audience(request: Request):
+    """Set the audience bucket for a completed session and return updated outcome."""
+    body = await request.json()
+    session_id = body.get("session_id")
+    audience_bucket = body.get("audience_bucket", "general-mental-health")
+
+    if not session_id:
+        raise HTTPException(status_code=422, detail="session_id required")
+
+    session = get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    # Update audience on the session
+    session.audience_bucket = audience_bucket
+
+    # Return the updated outcome with new audience-specific guide URL
+    outcome = session.outcome
+    if not outcome:
+        raise HTTPException(status_code=409, detail="Session not complete")
+
+    primary_topic = (outcome.matched_topics or ["general"])[0]
+    guide = get_guide_for_topic(primary_topic)
+    guide_id = guide["guide_id"] if guide else None
+    offer = get_offer_for_guide(guide_id, outcome.band) if guide_id else get_offer_for_risk(outcome.band)
+
+    return {
+        "session_id": session_id,
+        "audience_bucket": audience_bucket,
+        "guide_url": f"/guides/{guide_id}?audience={audience_bucket}" if guide_id else None,
+        "etsy_url": offer.get("etsy_url"),
+        "offer": offer,
+    }
+
+
+# ─── Recommendation (config-driven) ──────────────────────────────────────────
+
+
+@app.post("/recommend")
+@limiter.limit("30/minute")
+async def recommend(request: Request):
+    """Generate a config-driven recommendation from session outcome."""
+    body = await request.json()
+    session_id = body.get("session_id")
+    if not session_id:
+        raise HTTPException(status_code=422, detail="session_id required")
+
+    session = get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    if not session.is_complete or not session.outcome:
+        raise HTTPException(status_code=409, detail="Session not complete")
+
+    outcome = session.outcome
+    primary_topic = (outcome.matched_topics or ["general"])[0]
+    audience = outcome.audience_bucket or "general-mental-health"
+
+    guide = get_guide_for_topic(primary_topic)
+    offer = get_offer_for_guide(guide["guide_id"], outcome.band) if guide else get_offer_for_risk(outcome.band)
+
+    guide_path = None
+    if guide:
+        resolved = resolve_guide_path(guide["guide_id"], audience)
+        guide_path = str(resolved) if resolved else None
+
+    return {
+        "session_id": session_id,
+        "band": outcome.band,
+        "topic": primary_topic,
+        "audience_bucket": audience,
+        "guide": {
+            "guide_id": guide["guide_id"] if guide else None,
+            "title": guide["title"] if guide else None,
+            "domain": guide["domain"] if guide else None,
+            "url": f"/guides/{guide['guide_id']}?audience={audience}" if guide else None,
+            "file_exists": guide_path is not None,
+        },
+        "offer": offer,
+        "crisis_resources": [r.dict() for r in outcome.crisis_resources] if outcome.crisis_resources else None,
+    }
 
 
 # ─── Therapist Finder ─────────────────────────────────────────────────────────

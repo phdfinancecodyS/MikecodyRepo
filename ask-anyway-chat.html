@@ -980,6 +980,8 @@ function isHedging(t) {
 }
 
 function isGood(t) {
+  const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
+  if (/^(yes|yeah|yep|yup|mostly|pretty much|i am|i'm okay|im okay|i'm good|im good)$/.test(compact)) return true;
   // Only fire on clearly enthusiastic positivity — NOT hedging words like okay/fine/meh
   if (/^(great|doing great|doing well|pretty good|doing really well|blessed|fantastic|amazing|wonderful|thriving|excellent|really good)([.!,\s]|$)/.test(t)
     || /\bi.?m (great|doing great|doing well|doing really well|blessed|fantastic|amazing|wonderful|thriving|really good|feeling great|feeling good|feeling amazing)/.test(t)
@@ -989,6 +991,8 @@ function isGood(t) {
 }
 
 function isNotGood(t) {
+  const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
+  if (/^(no|nope|nah|naah|not really|not okay|not ok|not good|bad|rough|hard|idk|i don't know|i dont know|dont know|unsure)$/.test(compact)) return true;
   // Keyword fast-path — explicit negative signals
   if (/(not (okay|ok|doing well|good|great|feeling well)|struggling|overwhelmed|exhausted|burnt out|can.?t cope|falling apart|going through|dark place|depressed|anxious|panic|numb|lost|empty|alone|hopeless|worthless|tired of|can.?t sleep|can.?t eat|rough|hard time|difficult|bad day|bad week|stressed|broke up|breakup|lost my|fired|laid off|grief|grieving|mourning|worried|scared|not sure)/.test(t)
     || /(my (girlfriend|boyfriend|partner|wife|husband|gf|bf|mom|dad|friend|job|dog|cat)|i got|i lost|we broke|she left|he left|they left)/.test(t)) return true;
@@ -1000,8 +1004,8 @@ function isNotGood(t) {
 
 function isCrisis(t) {
   // Explicit ideation
-  if (/suicid|kill my ?self|end it all|don.?t want to (be here|live|exist|wake up)|not worth living|hurt my ?self|self.?harm|no reason to live|can.?t go on|want to die|wanna die|thinking about (ending|killing)|take my (life|own life)/.test(t)) return true;
-  // Passive ideation — people rarely say "suicidal" right away
+  if (/suicid|kill my ?self|end it all|don.?t want to (be here|live|exist|wake up)|not worth living|hurt my ?self|self.?harm|no reason to live|can.?t go on|want to die|wanna die|wanna (not exist|stop existing)|don.?t wanna exist|thinking about (ending|killing)|take my (life|own life)/.test(t)) return true;
+  // Passive ideation - people rarely say "suicidal" right away
   if (/(better off without me|world would be better without me|everyone would be better off|they.?d be better off without me)/.test(t)) return true;
   if (/(want to (just )?disappear|wish i could disappear|want to vanish forever)/.test(t)) return true;
   if (/(tired of (being alive|living|existing|this life)|don.?t want to wake up|wish i wouldn.?t wake up|wish i didn.?t wake up)/.test(t)) return true;

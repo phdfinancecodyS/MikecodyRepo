@@ -66,9 +66,12 @@ class Outcome(BaseModel):
     disclaimer: str
     next_step: str
     matched_topics: List[str] = Field(default_factory=list)
+    audience_bucket: Optional[str] = None
+    matched_guide_id: Optional[str] = None
     free_resource: Optional[GuideItem] = None
     upsell: List[GuideItem] = Field(default_factory=list)
     crisis_resources: Optional[List[CrisisResource]] = None
+    offer: Optional[Dict[str, Any]] = None
 
 
 # ─── Session State (internal) ──────────────────────────────────────
@@ -87,6 +90,8 @@ class SessionState(BaseModel):
     outcome: Optional[Outcome] = None
     awaiting_clarification: bool = False
     clarification_options: Optional[List[PromptOption]] = None
+    safety_screener_active: bool = False
+    audience_bucket: Optional[str] = None
 
 
 # ─── API Responses ─────────────────────────────────────────────────

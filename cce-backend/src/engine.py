@@ -9,7 +9,12 @@ import uuid
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from .crisis import is_crisis_text, is_crisis_option
+from .crisis import is_crisis_option, is_crisis_text, is_critical_override_text
+from .config import (
+    get_guide_for_topic, get_offer_for_risk, get_offer_for_guide, resolve_guide_path,
+    GUIDES_BY_ID, AUDIENCE_BUCKETS, AUDIENCE_QUESTIONS,
+    QUIZ_SCORING_RANGES, QUIZ_SCORING_OVERRIDES,
+)
 from .models import (
     Clarification, CrisisResource, GuideItem, Outcome,
     PolicyNotice, Prompt, PromptOption, SessionState,
@@ -118,6 +123,40 @@ def _step_to_prompt(step: Dict[str, Any]) -> Prompt:
     )
 
 
+def _adaptive_screener_next(
+    current_step_id: str,
+    scores: Dict[str, int],
+    option_id: Optional[str],
+) -> Optional[str]:
+    """Return next screener step id, or CRITICAL_NOW for immediate crisis completion."""
+    if option_id == "safety_cannot_commit":
+        return "CRITICAL_NOW"
+
+    safety_total = (
+        scores.get("safety_now", 0)
+        + scores.get("safety_plan", 0)
+        + scores.get("safety_access", 0)
+        + scores.get("safety_intent", 0)
+        + scores.get("safety_commitment", 0)
+    )
+
+    # Low signal after first question: still continue, but skip one detail step.
+    if current_step_id == "suicide_screener_q1" and scores.get("safety_now", 0) == 0:
+        return "suicide_screener_q3"
+
+    # Low cumulative signal: shorten screener and move to commitment question.
+    if current_step_id == "suicide_screener_q2" and safety_total <= 2:
+        return "suicide_screener_q5"
+    if current_step_id == "suicide_screener_q3" and safety_total <= 3:
+        return "suicide_screener_q5"
+
+    # High cumulative signal by intent step: route immediately to crisis outcome.
+    if current_step_id == "suicide_screener_q4" and safety_total >= 9:
+        return "CRITICAL_NOW"
+
+    return None
+
+
 # ─── Outcome builder ───────────────────────────────────────────────────────────
 
 def _build_outcome(session: SessionState) -> Outcome:
@@ -126,40 +165,100 @@ def _build_outcome(session: SessionState) -> Outcome:
         band_data = BANDS["critical"]
         cr_list = [CrisisResource(**r) for r in band_data.get("crisis_resources", [])]
         primary_topic = (session.detected_topics or ["general"])[0]
-        topic_data = TOPICS.get(primary_topic, TOPICS["general"])
+
+        # Config-driven guide recommendation
+        guide_entry = get_guide_for_topic(primary_topic)
+        free_res = None
+        if guide_entry:
+            audience = getattr(session, 'audience_bucket', None) or "general-mental-health"
+            free_res = GuideItem(
+                title=guide_entry["title"],
+                url=f"/guides/{guide_entry['guide_id']}/{audience}",
+                description=f"Matched guide for {primary_topic}",
+            )
+
         return Outcome(
             band="critical",
             summary=band_data["summary"],
             disclaimer=band_data["disclaimer"],
             next_step=band_data["next_step"],
             matched_topics=session.detected_topics,
-            free_resource=GuideItem(**topic_data.get("free_resource", {})) if topic_data.get("free_resource") else None,
+            audience_bucket=audience,
+            matched_guide_id=guide_entry["guide_id"] if guide_entry else None,
+            free_resource=free_res,
             upsell=[],
             crisis_resources=cr_list,
         )
 
-    # Triage score → band
+    # Triage score to band
     score = session.total_score
     band_key = "low_risk"
-    for key, bdata in BANDS.items():
-        lo, hi = bdata["threshold"]
-        if lo <= score <= hi:
-            band_key = key
-            break
+
+    # Tree-aware banding: mental-health-triage uses quiz-content.json ranges
+    if session.tree_id == "mental-health-triage" and QUIZ_SCORING_RANGES:
+        # Step 1: Determine band from total score ranges
+        for r in QUIZ_SCORING_RANGES:
+            if r["min"] <= score <= r["max"]:
+                band_key = r["riskLevel"]
+                break
+
+        # Step 2: Apply overrides (force or minimum floor)
+        rank = {"low_risk": 0, "moderate_risk": 1, "high_risk": 2, "critical": 3}
+        for override in QUIZ_SCORING_OVERRIDES:
+            qid = override.get("questionId", "")
+            override_score = override.get("score")
+            actual_score = session.scores.get(
+                # Map q5 -> safety (the score_key for Q8/Q5 in trees.json)
+                {"q5": "safety", "q8": "safety"}.get(qid, qid),
+                None
+            )
+            if actual_score is not None and actual_score >= override_score:
+                forced_level = override.get("riskLevel")
+                min_level = override.get("minimumRiskLevel")
+                if forced_level:
+                    band_key = forced_level
+                    break
+                if min_level and rank.get(band_key, 0) < rank.get(min_level, 0):
+                    band_key = min_level
+    else:
+        # Main-flow uses content.json triage bands
+        for key, bdata in BANDS.items():
+            lo, hi = bdata["threshold"]
+            if lo <= score <= hi:
+                band_key = key
+                break
 
     band_data = BANDS[band_key]
     primary_topic = (session.detected_topics or ["general"])[0]
-    topic_data = TOPICS.get(primary_topic, TOPICS["general"])
+    audience = getattr(session, 'audience_bucket', None) or "general-mental-health"
 
+    # Config-driven guide lookup
+    guide_entry = get_guide_for_topic(primary_topic)
     free_res = None
-    if topic_data.get("free_resource"):
-        free_res = GuideItem(**topic_data["free_resource"])
+    matched_gid = guide_entry["guide_id"] if guide_entry else None
+    if guide_entry:
+        free_res = GuideItem(
+            title=guide_entry["title"],
+            url=f"/guides/{guide_entry['guide_id']}?audience={audience}",
+            description=f"Matched guide for {primary_topic}",
+        )
 
-    upsell = [GuideItem(**g) for g in topic_data.get("upsell", [])]
+    # Per-guide offer routing (uses GUIDE-OFFER-MAPPING.csv + Etsy links)
+    offer = get_offer_for_guide(matched_gid, band_key) if matched_gid else get_offer_for_risk(band_key)
+    upsell = []
+    if not offer.get("hide_paid_above_fold"):
+        upsell_url = offer.get("etsy_url") or f"/checkout/{offer['product_id']}"
+        upsell_item = GuideItem(
+            title=offer["label"],
+            price=offer.get("etsy_price") or offer.get("price"),
+            description=offer["description"],
+            url=upsell_url,
+        )
+        upsell.append(upsell_item)
 
     cr_list = None
-    if band_key == "critical":
-        cr_list = [CrisisResource(**r) for r in band_data.get("crisis_resources", [])]
+    if band_key in ("critical", "high_risk"):
+        cr_list = [CrisisResource(**r) for r in BANDS.get("critical", {}).get("crisis_resources", [])]
 
     return Outcome(
         band=band_key,
@@ -167,9 +266,12 @@ def _build_outcome(session: SessionState) -> Outcome:
         disclaimer=band_data["disclaimer"],
         next_step=band_data["next_step"],
         matched_topics=session.detected_topics,
+        audience_bucket=audience,
+        matched_guide_id=matched_gid,
         free_resource=free_res,
         upsell=upsell,
         crisis_resources=cr_list,
+        offer=offer,
     )
 
 
@@ -238,19 +340,6 @@ def process_response(
         "message": message,
     })
 
-    # ── Crisis check (free text) ───────────────────────────────────
-    if message and is_crisis_text(message):
-        session.is_crisis = True
-
-    # ── Crisis check (option) ──────────────────────────────────────
-    if option_id and is_crisis_option(option_id):
-        session.is_crisis = True
-
-    if session.is_crisis:
-        session.is_complete = True
-        session.outcome = _build_outcome(session)
-        return {"status": "complete", "outcome": session.outcome}
-
     # ── Policy notice ──────────────────────────────────────────────
     if message and _is_policy_trigger(message):
         policy_notice = PolicyNotice()
@@ -262,10 +351,8 @@ def process_response(
                 sc = opt.get("score", 0)
                 session.scores[current_step.get("score_key", "misc")] = sc
                 session.total_score += sc
-                # Topic pin from option
-                if opt.get("topic"):
-                    if opt["topic"] not in session.detected_topics:
-                        session.detected_topics.append(opt["topic"])
+                if opt.get("topic") and opt["topic"] not in session.detected_topics:
+                    session.detected_topics.append(opt["topic"])
                 break
 
     # ── Sentiment & topic from free text ──────────────────────────
@@ -276,34 +363,91 @@ def process_response(
             if t not in session.detected_topics:
                 session.detected_topics.append(t)
 
+    # ── Safety screener trigger (always for safety language) ───────
+    if message and is_critical_override_text(message):
+        session.total_score += 12
+        session.is_crisis = True
+        session.is_complete = True
+        session.outcome = _build_outcome(session)
+        _SESSIONS[session_id] = session
+        return {
+            "status": "complete",
+            "outcome": session.outcome,
+            "policy_notice": policy_notice,
+        }
+
+    if message and is_crisis_text(message):
+        if "crisis" not in session.detected_topics:
+            session.detected_topics.append("crisis")
+
+        has_screener = "suicide_screener_q1" in steps
+        in_screener = session.current_step.startswith("suicide_screener_")
+
+        if has_screener and not in_screener:
+            session.safety_screener_active = True
+            session.current_step = "suicide_screener_q1"
+            _SESSIONS[session_id] = session
+            return {
+                "status": "in_progress",
+                "next_prompt": _step_to_prompt(steps["suicide_screener_q1"]),
+                "policy_notice": policy_notice,
+            }
+
+    # ── Crisis check (option) ──────────────────────────────────────
+    if option_id and is_crisis_option(option_id):
+        session.is_crisis = True
+
+    if session.is_crisis:
+        session.is_complete = True
+        session.outcome = _build_outcome(session)
+        _SESSIONS[session_id] = session
+        return {
+            "status": "complete",
+            "outcome": session.outcome,
+            "policy_notice": policy_notice,
+        }
+
+    # ── Adaptive screener flow control ─────────────────────────────
+    if current_step["id"].startswith("suicide_screener_") and option_id:
+        screener_next = _adaptive_screener_next(current_step["id"], session.scores, option_id)
+        if screener_next == "CRITICAL_NOW":
+            session.is_crisis = True
+            session.is_complete = True
+            session.outcome = _build_outcome(session)
+            _SESSIONS[session_id] = session
+            return {
+                "status": "complete",
+                "outcome": session.outcome,
+                "policy_notice": policy_notice,
+            }
+        if screener_next and screener_next in steps:
+            session.current_step = screener_next
+            _SESSIONS[session_id] = session
+            return {
+                "status": "in_progress",
+                "next_prompt": _step_to_prompt(steps[screener_next]),
+                "policy_notice": policy_notice,
+            }
+
     # ── Determine next step ────────────────────────────────────────
     routing = current_step.get("routing")
 
     if routing == "sentiment":
-        # psychoeducational-flow entry
-        if session.sentiment == "positive":
-            next_step_id = "good_probe"
-        else:
-            next_step_id = "not_good_probe"
-
+        next_step_id = "good_probe" if session.sentiment == "positive" else "not_good_probe"
     elif routing == "sentiment_branch":
-        # main-flow emoji check-in
         sentiment_map = {"good": "good_what", "meh": "not_good_what", "bad": "not_good_what"}
         next_step_id = sentiment_map.get(option_id or "", "not_good_what")
-
     elif routing == "topic_match":
-        # After probe: may need clarification or go to followup
         if len(session.detected_topics) == 0 or session.detected_topics == ["general"]:
-            # Offer clarification
             clarify_options = [
-                PromptOption(id="clarify_anxiety",      text="Anxiety or constant worry"),
-                PromptOption(id="clarify_depression",   text="Low mood or feeling empty"),
-                PromptOption(id="clarify_relationships",text="Relationships or loneliness"),
-                PromptOption(id="clarify_work",         text="Work or life stress"),
-                PromptOption(id="clarify_grief",        text="Grief or loss"),
-                PromptOption(id="clarify_family",       text="Family stress"),
-                PromptOption(id="clarify_trauma",       text="Past trauma or difficult memories"),
-                PromptOption(id="clarify_recovery",     text="Substance use or recovery"),
+                PromptOption(id="clarify_anxiety", text="Anxiety or constant worry"),
+                PromptOption(id="clarify_depression", text="Low mood or feeling empty"),
+                PromptOption(id="clarify_relationships", text="Relationships or loneliness"),
+                PromptOption(id="clarify_work", text="Work or life stress"),
+                PromptOption(id="clarify_grief", text="Grief or loss"),
+                PromptOption(id="clarify_family", text="Family stress"),
+                PromptOption(id="clarify_trauma", text="Past trauma or difficult memories"),
+                PromptOption(id="clarify_recovery", text="Substance use or recovery"),
             ]
             session.awaiting_clarification = True
             session.clarification_options = clarify_options
@@ -311,30 +455,28 @@ def process_response(
             return {
                 "status": "needs_clarification",
                 "clarification": Clarification(
-                    text="Can you help me understand a bit better — which of these feels closest to what you\u2019re going through?",
+                    text="Can you help me understand a bit better - which of these feels closest to what you\u2019re going through?",
                     options=clarify_options,
                 ),
                 "policy_notice": policy_notice,
             }
-        else:
-            # Move to followup depth question
-            next_step_id = current_step.get("next", None) or (
-                "topic_followup" if "topic_followup" in steps else None
-            ) or (
-                "topic_depth" if "topic_depth" in steps else None
-            )
-            if next_step_id is None:
-                # terminal — no followup step in this tree
-                session.is_complete = True
-                session.outcome = _build_outcome(session)
-                _SESSIONS[session_id] = session
-                return {
-                    "status": "complete",
-                    "outcome": session.outcome,
-                    "policy_notice": policy_notice,
-                }
+
+        next_step_id = current_step.get("next", None) or (
+            "topic_followup" if "topic_followup" in steps else None
+        ) or (
+            "topic_depth" if "topic_depth" in steps else None
+        )
+
+        if next_step_id is None:
+            session.is_complete = True
+            session.outcome = _build_outcome(session)
+            _SESSIONS[session_id] = session
+            return {
+                "status": "complete",
+                "outcome": session.outcome,
+                "policy_notice": policy_notice,
+            }
     else:
-        # Explicit next pointer or terminal
         next_step_id = current_step.get("next")
 
     # ── Terminal step? ────────────────────────────────────────────
