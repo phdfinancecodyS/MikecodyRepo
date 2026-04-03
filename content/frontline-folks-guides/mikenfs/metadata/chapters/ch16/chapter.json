@@ -1,0 +1,272 @@
+{
+  "number": 16,
+  "title": "Chronic Pain and Tension: When Your Body Never Stands Down",
+  "domain": "Sleep, body, pain, and substances",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Pain and stress amplify each other until you break the loop.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening in Your System",
+      "content": [
+        {
+          "type": "para",
+          "text": "Chronic pain in frontline work isn't just old injuries - it's a nervous system that never fully downshifts. When your body stays in high-alert mode, muscles stay contracted, inflammation stays elevated, and pain signals get amplified. What started as tension becomes chronic: jaw clenching, neck and shoulder pain, low back strain, headaches. Your body is holding the stress you can't process, and pain becomes the constant background noise of your life."
+        },
+        {
+          "type": "h3",
+          "text": "Common pain patterns in frontline folks"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Jaw clenching and TMJ pain (especially during sleep or stress).",
+            "Chronic neck and shoulder tension ('carrying the weight').",
+            "Low back pain from long shifts in static postures or gear weight.",
+            "Tension headaches from sustained muscle contraction.",
+            "Old injuries that won't heal or keep flaring.",
+            "Guarded posture and reduced mobility (body protecting itself)."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Pain-stress loop:",
+            "Stress increases muscle tension and inflammation. Pain increases stress and catastrophizing. The loop tightens until something breaks."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Gets Worse Under Frontline Load",
+      "content": [
+        {
+          "type": "para",
+          "text": "Frontline work loads your body with physical and psychological stress. Long shifts in static postures (sitting, standing, wearing gear), suppressed emotional activation (can't release stress in real-time), and inadequate recovery between shifts mean your muscles never fully relax. Add old injuries, poor sleep, and chronic inflammation, and you get a body stuck in defensive tension. Pain signals get amplified by a sensitized nervous system - what used to be a 3/10 now feels like a 7/10."
+        },
+        {
+          "type": "h3",
+          "text": "Typical amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Static postures during long shifts: Sitting in vehicles, standing on scene, wearing heavy gear.",
+            "Suppressed stress: Can't discharge activation in real-time, so body holds it.",
+            "Old injuries never fully rehabbed: Compensatory patterns create new pain.",
+            "Poor sleep: Pain lowers sleep quality, sleep debt amplifies pain.",
+            "Chronic inflammation from stress and poor recovery."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and improving predictability lowers baseline arousal and restores decision quality."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can't eliminate pain overnight, but you can break the pain-stress loop. Movement, heat, breathing, and micro-recovery windows reduce tension and restore some mobility."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Add 3 micro-mobility breaks per shift: 90 seconds of movement (neck rolls, shoulder shrugs, spinal twists, hip openers). Breaks the static posture loop.",
+            "Use heat or ice after work: 10 minutes on problem areas. Heat relaxes muscles, ice reduces inflammation.",
+            "Pair breathing with stretching: Slow exhale while stretching reduces guarding and deepens release.",
+            "Track pain before and after movement: Prove to your brain that movement helps. Data overrides fear-avoidance.",
+            "Massage or self-myofascial release: Foam roller, lacrosse ball, or hands-on work 2-3x per week.",
+            "Physical therapy for persistent pain: PT teaches you how to move without compensation patterns."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: make the action small enough that you can still do it on a bad day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Family",
+      "content": [
+        {
+          "type": "para",
+          "text": "Household stability improves when everyone knows the plan before stress spikes."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Name pain level early: 'I'm at a 6 today, feeling tight and short-fused.' Prevents misreading pain as hostility.",
+            "Support movement: Encourage breaks, walks, stretching - not 'toughing it out.'",
+            "Don't take guarded posture personally: Pain makes people withdraw and protect.",
+            "Offer practical help: Heat packs, massage, covering tasks that aggravate pain."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Escalate Care",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-management is a starting point, not a lifetime sentence. Escalate when function, safety, or relationships keep declining."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Pain persists despite self-care and movement.",
+            "Pain is limiting work capacity, sleep, or daily function.",
+            "You're relying on pain meds or alcohol to manage pain daily.",
+            "Old injuries keep flaring with no clear recovery pattern.",
+            "Pain is spreading or changing (new areas, different quality)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet daily for one week. Measure trigger intensity, response size, and recovery time."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "Name one trigger, one body signal, and one reset action.",
+            "At end of week, keep what worked and remove what did not."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Chronic Pain and Tension: When Your Body Never Stands Down",
+      "intro": "Use this to track chronic pain and full-body tension in real time and build a repeatable response plan.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, or during transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you?",
+          "hint": "Include effect on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose small, realistic actions you can perform under stress.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What event, cue, or context activated this pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What 30-90 second action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "Write the exact behavior you will use next time.",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then adjust based on what actually worked."
+    },
+    {
+      "title": "Worksheet: Chronic Pain and Tension: When Your Body Never Stands Down - Partner/Team Check-In",
+      "intro": "Use this page for one short, practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Ask for concrete observations, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most?",
+          "hint": "List what helps and what makes it worse.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will we practice this week?",
+          "hint": "One clear behavior from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return:",
+          "hint": "How long until re-engagement after a pause?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens if things go sideways?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

@@ -1,0 +1,1275 @@
+{
+  "summary": {
+    "total": 79,
+    "found": 79,
+    "not_found": 0,
+    "avg_intent_score": 100,
+    "guides_with_all_signals": 79
+  },
+  "guides": [
+    {
+      "guide_id": "ch-01",
+      "title": "Always On: Your High-Alert Brain",
+      "fpath": "content/topic-guides/chapters/ch-01-always-on-your-high-alert-brain.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-03",
+      "title": "Hypervigilance at Home",
+      "fpath": "content/topic-guides/chapters/ch-03-hypervigilance-at-home.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-04",
+      "title": "Anger and Short-Fuse Days",
+      "fpath": "content/topic-guides/chapters/ch-04-anger-and-short-fuse-days.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-06",
+      "title": "Depression and Numbness",
+      "fpath": "content/topic-guides/chapters/ch-06-depression-and-numbness.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-08",
+      "title": "Shame Spirals + Self-Loathing",
+      "fpath": "content/topic-guides/chapters/ch-08-shame-spirals-and-self-loathing.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-09",
+      "title": "Memory Slips",
+      "fpath": "content/topic-guides/chapters/ch-09-memory-slips.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-11",
+      "title": "Decision Fatigue",
+      "fpath": "content/topic-guides/chapters/ch-11-decision-fatigue.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-12",
+      "title": "Overreacting to Small Stuff",
+      "fpath": "content/topic-guides/chapters/ch-12-overreacting-to-small-stuff.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-13",
+      "title": "Chronic Sleep Debt",
+      "fpath": "content/topic-guides/chapters/ch-13-chronic-sleep-debt.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-14",
+      "title": "Sleep Apnea and Snoring",
+      "fpath": "content/topic-guides/chapters/ch-14-sleep-apnea-and-snoring.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-19",
+      "title": "Noise, Crowds, Public Spaces",
+      "fpath": "content/topic-guides/chapters/ch-19-noise,-crowds,-public-spaces.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-20",
+      "title": "Vision, Balance, Motion Sensitivity",
+      "fpath": "content/topic-guides/chapters/ch-20-vision,-balance,-motion-sensitivity.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-21",
+      "title": "Home Feels Like a Minefield",
+      "fpath": "content/topic-guides/chapters/ch-21-home-feels-like-a-minefield.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-22",
+      "title": "Red/Yellow/Green Communication",
+      "fpath": "content/topic-guides/chapters/ch-22-red-and-yellow-and-green-communication.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-23",
+      "title": "Repair After Damage",
+      "fpath": "content/topic-guides/chapters/ch-23-repair-after-damage.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-24",
+      "title": "Parenting on Empty",
+      "fpath": "content/topic-guides/chapters/ch-24-parenting-on-empty.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-26",
+      "title": "Kids in the Blast Radius",
+      "fpath": "content/topic-guides/chapters/ch-26-kids-in-the-blast-radius.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-27",
+      "title": "Family Life in Transition",
+      "fpath": "content/topic-guides/chapters/ch-27-family-life-in-transition.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-28",
+      "title": "Emotional Numbness",
+      "fpath": "content/topic-guides/chapters/ch-28-emotional-numbness.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-29",
+      "title": "Low Desire and Low Drive",
+      "fpath": "content/topic-guides/chapters/ch-29-low-desire-and-low-drive.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-30",
+      "title": "Stress Shuts Down Sex",
+      "fpath": "content/topic-guides/chapters/ch-30-stress-shuts-down-sex.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-31",
+      "title": "Sex and Avoidance After Difficult Experiences",
+      "fpath": "content/topic-guides/chapters/ch-31-sex-and-avoidance-after-difficult-experiences.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-33",
+      "title": "Touch Without Pressure",
+      "fpath": "content/topic-guides/chapters/ch-33-touch-without-pressure.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-34",
+      "title": "Body Image, Scars, Sexual Confidence",
+      "fpath": "content/topic-guides/chapters/ch-34-body-image,-scars,-sexual-confidence.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-35",
+      "title": "Sex After Injury/Health Change",
+      "fpath": "content/topic-guides/chapters/ch-35-sex-after-injury-and-health-change.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-36",
+      "title": "Moral Injury 101",
+      "fpath": "content/topic-guides/chapters/ch-36-moral-injury-101.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-37",
+      "title": "Betrayed by the System",
+      "fpath": "content/topic-guides/chapters/ch-37-betrayed-by-the-system.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-38",
+      "title": "When You Feel Like the Villain",
+      "fpath": "content/topic-guides/chapters/ch-38-when-you-feel-like-the-villain.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-39",
+      "title": "Faith, God, Big Questions",
+      "fpath": "content/topic-guides/chapters/ch-39-faith,-god,-big-questions.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-41",
+      "title": "Between Worlds: Identity After Role",
+      "fpath": "content/topic-guides/chapters/ch-41-between-worlds-identity-after-role.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-42",
+      "title": "Rebuilding Mission and Meaning",
+      "fpath": "content/topic-guides/chapters/ch-42-rebuilding-mission-and-meaning.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-45",
+      "title": "Loneliness and Loss of Tribe",
+      "fpath": "content/topic-guides/chapters/ch-45-loneliness-and-loss-of-tribe.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "ch-46",
+      "title": "Lone Wolf to Healthy Team Member",
+      "fpath": "content/topic-guides/chapters/ch-46-lone-wolf-to-healthy-team-member.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-01",
+      "title": "Blow Up Recovery",
+      "fpath": "content/topic-guides/splits/split-01-blow-up-recovery.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-02",
+      "title": "Shut Down Reconnect",
+      "fpath": "content/topic-guides/splits/split-02-shut-down-reconnect.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-03",
+      "title": "Overthinking Loop",
+      "fpath": "content/topic-guides/splits/split-03-overthinking-loop.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-04",
+      "title": "Night Spiral Stopper",
+      "fpath": "content/topic-guides/splits/split-04-night-spiral-stopper.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-05",
+      "title": "Hopelessness First Aid",
+      "fpath": "content/topic-guides/splits/split-05-hopelessness-first-aid.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-06",
+      "title": "Crisis Conversation Action",
+      "fpath": "content/topic-guides/splits/split-06-crisis-conversation-action.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-07",
+      "title": "Tunnel Vision Reset",
+      "fpath": "content/topic-guides/splits/split-07-tunnel-vision-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-08",
+      "title": "Scattered Brain Reset",
+      "fpath": "content/topic-guides/splits/split-08-scattered-brain-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-09",
+      "title": "Nightmare Recovery Plan",
+      "fpath": "content/topic-guides/splits/split-09-nightmare-recovery-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-10",
+      "title": "3am Wake Loop Reset",
+      "fpath": "content/topic-guides/splits/split-10-3am-wake-loop-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-11",
+      "title": "Pain Flare Plan",
+      "fpath": "content/topic-guides/splits/split-11-pain-flare-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-12",
+      "title": "Tension Release Plan",
+      "fpath": "content/topic-guides/splits/split-12-tension-release-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-13",
+      "title": "TBI Brain Fog Plan",
+      "fpath": "content/topic-guides/splits/split-13-tbi-brain-fog-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-14",
+      "title": "Headache Functional Plan",
+      "fpath": "content/topic-guides/splits/split-14-headache-functional-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-15",
+      "title": "Alcohol Numbing Interrupt",
+      "fpath": "content/topic-guides/splits/split-15-alcohol-numbing-interrupt.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-16",
+      "title": "Pill-Cycle Interrupt Plan",
+      "fpath": "content/topic-guides/splits/split-16-pill-cycle-interrupt-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-17",
+      "title": "Secondary Trauma for Partners",
+      "fpath": "content/topic-guides/splits/split-17-secondary-trauma-for-partners.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-18",
+      "title": "Secondary Trauma for Teams",
+      "fpath": "content/topic-guides/splits/split-18-secondary-trauma-for-teams.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-19",
+      "title": "Habit Loop Reset",
+      "fpath": "content/topic-guides/splits/split-19-habit-loop-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-20",
+      "title": "Shame Loop Repair",
+      "fpath": "content/topic-guides/splits/split-20-shame-loop-repair.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-21",
+      "title": "Shame and Intimacy Repair",
+      "fpath": "content/topic-guides/splits/split-21-shame-and-intimacy-repair.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-22",
+      "title": "Disclosure Repair",
+      "fpath": "content/topic-guides/splits/split-22-disclosure-repair.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-23",
+      "title": "Work Identity Loss Plan",
+      "fpath": "content/topic-guides/splits/split-23-work-identity-loss-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-24",
+      "title": "Overwhelm Stabilization Plan",
+      "fpath": "content/topic-guides/splits/split-24-overwhelm-stabilization-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-25",
+      "title": "Money Avoidance Reset",
+      "fpath": "content/topic-guides/splits/split-25-money-avoidance-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-26",
+      "title": "Household Chaos Reset",
+      "fpath": "content/topic-guides/splits/split-26-household-chaos-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-27",
+      "title": "Screen and Scroll Loop Reset",
+      "fpath": "content/topic-guides/splits/split-27-screen-and-scroll-loop-reset.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "split-28",
+      "title": "Compulsion Interrupt Plan",
+      "fpath": "content/topic-guides/splits/split-28-compulsion-interrupt-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-01",
+      "title": "Panic Attacks in Public: What To Do in 90 Seconds",
+      "fpath": "content/topic-guides/new-topics/new-01-panic-attacks-in-public-what-to-do-in-90-seconds.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-02",
+      "title": "Post-Incident Crash: The Day-After Recovery Guide",
+      "fpath": "content/topic-guides/new-topics/new-02-post-incident-crash-the-day-after-recovery-guide.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-03",
+      "title": "Grief After Suicide Loss",
+      "fpath": "content/topic-guides/new-topics/new-03-grief-after-suicide-loss.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-04",
+      "title": "Survivor Guilt After Calls Scenes Incidents",
+      "fpath": "content/topic-guides/new-topics/new-04-survivor-guilt-after-calls-scenes-incidents.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-05",
+      "title": "Court Complaint or Investigation Stress Survival",
+      "fpath": "content/topic-guides/new-topics/new-05-court-complaint-or-investigation-stress-survival.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-06",
+      "title": "Shift-Work Relationship Survival Plan",
+      "fpath": "content/topic-guides/new-topics/new-06-shift-work-relationship-survival-plan.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-07",
+      "title": "Co-Parenting Under Burnout and Conflict",
+      "fpath": "content/topic-guides/new-topics/new-07-co-parenting-under-burnout-and-conflict.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-08",
+      "title": "Returning to Work After Mental Health Leave",
+      "fpath": "content/topic-guides/new-topics/new-08-returning-to-work-after-mental-health-leave.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-09",
+      "title": "Peer-Support Conversations for Teammates",
+      "fpath": "content/topic-guides/new-topics/new-09-peer-support-conversations-for-teammates.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-10",
+      "title": "How To Ask for Help Without Feeling Weak",
+      "fpath": "content/topic-guides/new-topics/new-10-how-to-ask-for-help-without-feeling-weak.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-11",
+      "title": "Building a Personal Safety Network",
+      "fpath": "content/topic-guides/new-topics/new-11-building-a-personal-safety-network.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-12",
+      "title": "What To Do When Someone Refuses Help",
+      "fpath": "content/topic-guides/new-topics/new-12-what-to-do-when-someone-refuses-help.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-13",
+      "title": "Digital Overload and Doom-Scroll Recovery",
+      "fpath": "content/topic-guides/new-topics/new-13-digital-overload-and-doom-scroll-recovery.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-14",
+      "title": "Caffeine and Sleep Trap Reset for Frontline Schedules",
+      "fpath": "content/topic-guides/new-topics/new-14-caffeine-and-sleep-trap-reset-for-frontline-schedules.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-15",
+      "title": "Eating Patterns Under Stress Reset Guide",
+      "fpath": "content/topic-guides/new-topics/new-15-eating-patterns-under-stress-reset-guide.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-16",
+      "title": "Boundaries With Family Who Do Not Understand the Job",
+      "fpath": "content/topic-guides/new-topics/new-16-boundaries-with-family-who-do-not-understand-the-job.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-17",
+      "title": "Dating While Carrying Trauma and Hypervigilance",
+      "fpath": "content/topic-guides/new-topics/new-17-dating-while-carrying-trauma-and-hypervigilance.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    },
+    {
+      "guide_id": "new-18",
+      "title": "Year-One Transition Guide for Newly Separated or Retired Frontline",
+      "fpath": "content/topic-guides/new-topics/new-18-year-one-transition-guide-for-newly-separated-or-retired-frontline.md",
+      "status": "OK",
+      "scores": {
+        "has_what_to_say": true,
+        "has_what_to_do": true,
+        "has_scripts": true,
+        "has_follow_up": true,
+        "has_worksheets": true,
+        "has_safety": true,
+        "warm_tone": true
+      },
+      "intent_score": 100
+    }
+  ]
+}

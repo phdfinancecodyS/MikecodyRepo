@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Etsy Shop Banner - Ask Anyway Campaign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1a6b6a;
+    --teal-dark: #0f4e4d;
+    --amber: #d4922a;
+    --amber-light: #e8a840;
+    --warm-white: #faf7f2;
+    --charcoal: #2d2d2d;
+    --soft-gray: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #e8e4de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px;
+  }
+
+  .banner {
+    width: 1200px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, #1d7d7b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle background texture pattern */
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 50%, rgba(212, 146, 42, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(255,255,255,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(212, 146, 42, 0.05) 0%, transparent 35%);
+  }
+
+  /* Decorative amber accent line */
+  .banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-light) 50%, var(--amber) 100%);
+  }
+
+  /* Left side: Logo block */
+  .logo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1;
+  }
+
+  .logo-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2px;
+    margin-left: 3px;
+  }
+
+  .logo-main {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .logo-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .logo-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .logo-line {
+    width: 60px;
+    height: 2px;
+    background: var(--amber);
+    margin: 8px 0 6px 3px;
+  }
+
+  .logo-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-left: 3px;
+  }
+
+  /* Right side: Tagline + descriptors */
+  .right-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    max-width: 480px;
+  }
+
+  .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .tagline em {
+    font-style: normal;
+    color: var(--amber-light);
+  }
+
+  .descriptors {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .descriptor {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* Decorative ring element */
+  .ring {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 50%;
+    right: 480px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .ring-inner {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 1px solid rgba(212, 146, 42, 0.06);
+    border-radius: 50%;
+    right: 500px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Screenshot helper label */
+  .size-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    color: var(--soft-gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 12px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div>
+  <div class="banner">
+    <div class="ring"></div>
+    <div class="ring-inner"></div>
+
+    <div class="logo-block">
+      <div class="logo-the">the</div>
+      <div class="logo-main">
+        <span class="logo-ask">ASK</span>
+        <span class="logo-anyway">ANYWAY</span>
+      </div>
+      <div class="logo-line"></div>
+      <div class="logo-campaign">Campaign</div>
+    </div>
+
+    <div class="right-block">
+      <div class="tagline">Real talk. <em>Real tools.</em><br>No clinical fluff.</div>
+      <div class="descriptors">
+        <span class="descriptor">Digital Guides</span>
+        <span class="dot"></span>
+        <span class="descriptor">Worksheets</span>
+        <span class="dot"></span>
+        <span class="descriptor">Instant Download</span>
+      </div>
+    </div>
+  </div>
+  <div class="size-label">1200 &times; 300px &mdash; Etsy Shop Banner</div>
+</div>
+
+</body>
+</html>

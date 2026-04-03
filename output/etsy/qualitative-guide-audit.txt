@@ -1,0 +1,172 @@
+QUALITATIVE GUIDE AUDIT (79 Base Guides)
+================================================================================
+
+{
+  "total": 79,
+  "found": 79,
+  "not_found": 0,
+  "avg_intent_score": 100,
+  "guides_with_all_signals": 79
+}
+
+DETAILED RESULTS
+--------------------------------------------------------------------------------
+
+100 | ch-01    | 7/7 signals | Always On: Your High-Alert Brain
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-03    | 7/7 signals | Hypervigilance at Home
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-04    | 7/7 signals | Anger and Short-Fuse Days
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-06    | 7/7 signals | Depression and Numbness
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-08    | 7/7 signals | Shame Spirals + Self-Loathing
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-09    | 7/7 signals | Memory Slips
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-11    | 7/7 signals | Decision Fatigue
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-12    | 7/7 signals | Overreacting to Small Stuff
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-13    | 7/7 signals | Chronic Sleep Debt
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-14    | 7/7 signals | Sleep Apnea and Snoring
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-19    | 7/7 signals | Noise, Crowds, Public Spaces
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-20    | 7/7 signals | Vision, Balance, Motion Sensitivity
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-21    | 7/7 signals | Home Feels Like a Minefield
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-22    | 7/7 signals | Red/Yellow/Green Communication
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-23    | 7/7 signals | Repair After Damage
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-24    | 7/7 signals | Parenting on Empty
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-26    | 7/7 signals | Kids in the Blast Radius
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-27    | 7/7 signals | Family Life in Transition
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-28    | 7/7 signals | Emotional Numbness
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-29    | 7/7 signals | Low Desire and Low Drive
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-30    | 7/7 signals | Stress Shuts Down Sex
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-31    | 7/7 signals | Sex and Avoidance After Difficult Experiences
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-33    | 7/7 signals | Touch Without Pressure
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-34    | 7/7 signals | Body Image, Scars, Sexual Confidence
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-35    | 7/7 signals | Sex After Injury/Health Change
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-36    | 7/7 signals | Moral Injury 101
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-37    | 7/7 signals | Betrayed by the System
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-38    | 7/7 signals | When You Feel Like the Villain
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-39    | 7/7 signals | Faith, God, Big Questions
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-41    | 7/7 signals | Between Worlds: Identity After Role
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-42    | 7/7 signals | Rebuilding Mission and Meaning
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-45    | 7/7 signals | Loneliness and Loss of Tribe
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | ch-46    | 7/7 signals | Lone Wolf to Healthy Team Member
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-01 | 7/7 signals | Blow Up Recovery
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-02 | 7/7 signals | Shut Down Reconnect
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-03 | 7/7 signals | Overthinking Loop
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-04 | 7/7 signals | Night Spiral Stopper
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-05 | 7/7 signals | Hopelessness First Aid
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-06 | 7/7 signals | Crisis Conversation Action
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-07 | 7/7 signals | Tunnel Vision Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-08 | 7/7 signals | Scattered Brain Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-09 | 7/7 signals | Nightmare Recovery Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-10 | 7/7 signals | 3am Wake Loop Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-11 | 7/7 signals | Pain Flare Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-12 | 7/7 signals | Tension Release Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-13 | 7/7 signals | TBI Brain Fog Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-14 | 7/7 signals | Headache Functional Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-15 | 7/7 signals | Alcohol Numbing Interrupt
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-16 | 7/7 signals | Pill-Cycle Interrupt Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-17 | 7/7 signals | Secondary Trauma for Partners
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-18 | 7/7 signals | Secondary Trauma for Teams
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-19 | 7/7 signals | Habit Loop Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-20 | 7/7 signals | Shame Loop Repair
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-21 | 7/7 signals | Shame and Intimacy Repair
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-22 | 7/7 signals | Disclosure Repair
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-23 | 7/7 signals | Work Identity Loss Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-24 | 7/7 signals | Overwhelm Stabilization Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-25 | 7/7 signals | Money Avoidance Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-26 | 7/7 signals | Household Chaos Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-27 | 7/7 signals | Screen and Scroll Loop Reset
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | split-28 | 7/7 signals | Compulsion Interrupt Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-01   | 7/7 signals | Panic Attacks in Public: What To Do in 90 Seconds
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-02   | 7/7 signals | Post-Incident Crash: The Day-After Recovery Guide
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-03   | 7/7 signals | Grief After Suicide Loss
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-04   | 7/7 signals | Survivor Guilt After Calls Scenes Incidents
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-05   | 7/7 signals | Court Complaint or Investigation Stress Survival
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-06   | 7/7 signals | Shift-Work Relationship Survival Plan
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-07   | 7/7 signals | Co-Parenting Under Burnout and Conflict
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-08   | 7/7 signals | Returning to Work After Mental Health Leave
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-09   | 7/7 signals | Peer-Support Conversations for Teammates
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-10   | 7/7 signals | How To Ask for Help Without Feeling Weak
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-11   | 7/7 signals | Building a Personal Safety Network
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-12   | 7/7 signals | What To Do When Someone Refuses Help
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-13   | 7/7 signals | Digital Overload and Doom-Scroll Recovery
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-14   | 7/7 signals | Caffeine and Sleep Trap Reset for Frontline Schedules
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-15   | 7/7 signals | Eating Patterns Under Stress Reset Guide
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-16   | 7/7 signals | Boundaries With Family Who Do Not Understand the Job
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-17   | 7/7 signals | Dating While Carrying Trauma and Hypervigilance
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}
+100 | new-18   | 7/7 signals | Year-One Transition Guide for Newly Separated or Retired Frontline
+      {"has_what_to_say": true, "has_what_to_do": true, "has_scripts": true, "has_follow_up": true, "has_worksheets": true, "has_safety": true, "warm_tone": true}

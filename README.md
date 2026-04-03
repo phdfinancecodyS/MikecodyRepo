@@ -1,190 +1,396 @@
-# MikecodyRepo
+# Ask Anyway: Developer README
 
-Shared workspace for Cody & Mike — Ask Anyway platform, CCE backend, creator tools, and planning docs.
+**Product:** Ask Anyway: a practical skills-based program teaching everyday people how to start, stay in, and follow through on a conversation about suicide.
 
----
+**Primary channel:** TikTok organic → free quiz funnel → digital product offers + SMS subscription
 
-## What's in here
+**Built by:** Licensed Clinical Social Worker (content/clinical) + Cody Sullivan (tech/business)
 
-| Folder / File | What it is |
-|---|---|
-| `ask-anyway-chat.html` | Main Ask Anyway chatbot UI — runs in the browser |
-| `cce-backend/` | FastAPI conversation engine (CCE) — powers the chatbot |
-| `ask-anyway-workspace/` | Full platform — content, guides, quiz, marketing, API routes |
-| `ask-anyway-cody-handoff-2026-03-20-final/` | Handoff archive with brand, content, and planning docs |
-| `ask-anyway-deploy/` | Static deploy files (landing page, dashboard) |
-| `CreatorScraper/` | Instagram + TikTok scraper scripts |
-| `tax-prep-strategy.html` | Tax prep strategy tool |
-| `typewriter-demo.html` | Typewriter animation style demos |
+**Last updated:** 2026-03-20
 
 ---
 
-## Prerequisites
+## Quick Start for Cody
 
-Make sure you have these installed before starting:
+> **Start here.** Open these files in order. If anything conflicts with an older doc, these win.
 
-- [Git](https://git-scm.com/)
-- [Python 3.9+](https://www.python.org/)
-- A terminal (zsh on Mac, bash or WSL on Windows)
+| Order | File | What it tells you |
+|-------|------|-------------------|
+| 1 | `planning/CODY-VSCODE-IMPORT-RUNBOOK.md` | Single-page orientation: what's built, what to open, env vars, VS Code workflow |
+| 2 | `planning/TECH-HANDOFF-FOR-CODY.md` | Full tech handoff: phases A–F, scoring logic, Stripe, email/SMS, deployment checklist |
+| 3 | `planning/QUIZ-IMPLEMENTATION-CONTRACT.md` | Non-negotiable product rules, scoring bands, routing contract, result CTAs, QA gate |
+| 4 | `web/api/README.md` | API scaffold docs: file structure, env vars, npm packages, known TODOs |
+| 5 | `planning/API-ROUTE-SPECS.md` | Full request/response contracts for all 7 endpoints |
+| 6 | `planning/BACKEND-SYSTEM-CONTRACT.md` | Database entity definitions, persistence fields, source-of-truth file list |
+| 7 | `quiz/api-contracts.json` | Machine-readable API contracts (mirrors the markdown spec) |
 
 ---
 
-## First-time setup (clone the repo)
+## One-Place Local Commands (This TikTok Folder)
+
+Run everything from this workspace root:
 
 ```bash
-git clone https://github.com/phdfinancecodyS/MikecodyRepo.git
-cd MikecodyRepo
+./run-ask-anyway-shared.sh
+```
+
+Smoke test the backend from this same folder:
+
+```bash
+./smoke-test-ask-anyway.sh
+```
+
+Stop local services (frontend/backend/demo ports):
+
+```bash
+./stop-ask-anyway-shared.sh
+```
+
+Open both local pages in your browser:
+
+```bash
+./open-ask-anyway.sh
+```
+
+Pull latest changes from GitHub into the shared Ask Anyway repo:
+
+```bash
+./pull-ask-anyway.sh
+```
+
+Export your local changes back to GitHub with one command:
+
+```bash
+./export-ask-anyway.sh "your commit message"
 ```
 
 ---
 
-## Starting the local environment
+## What's in This Workspace
 
-Quick start for shared work:
+### Content System: 4,116 markdown files, fully written
 
-```bash
-./run-shared-workspace.sh
-```
+| Layer | Count | Location |
+|-------|-------|----------|
+| Base topic guides | 79 | `content/topic-guides/chapters/` (33), `splits/` (28), `new-topics/` (18) |
+| Audience-specific variants | 1,343 | `content/topic-guides/audience-slants/{audience}/` (79 guides × 17 audiences) |
+| Standalone worksheets | 2,686 | `content/worksheets/{audience}/` (2 per guide × 79 × 17) |
+| Program modules | 3 | `content/modules/module-{1,2,3}-*.md` |
+| Lead magnet | 1 | `content/lead-magnet/ask-anyway-content.md` |
+| Frontline Folks reference | 157 | `content/frontline-folks-guides/mikenfs/` |
 
-This starts both services with standard ports:
-- Frontend static server at `http://127.0.0.1:3131/ask-anyway-deploy/index.html`
-- CCE backend at `http://127.0.0.1:8000`
+**17 audience buckets:**
+`addiction-recovery` · `bipoc-racial-trauma` · `christian` · `chronic-illness-chronic-pain` · `educators` · `faith-beyond-christian` · `first-responder` · `general-mental-health` · `grief-loss` · `healthcare-workers` · `high-stress-jobs` · `lgbtq` · `military-veteran` · `neurodivergent` · `single-parent` · `social-workers-counselors` · `young-adult-gen-z`
 
-Run the API smoke test any time:
-
-```bash
-./cce-backend/smoke-test.sh
-```
-
-**Step 1 — Start the file server** (serves the HTML tools at localhost:3131)
-
-```bash
-python3 -m http.server 3131 &
-```
-
-Then open your browser to: `http://localhost:3131/ask-anyway-chat.html`
+**Voice standard:** Warm, direct, second-person, uses contractions and humor, "session-5 energy", as if talking with the reader, not at them. Every file has an educational disclaimer and 988/Crisis Text Line resources.
 
 ---
 
-**Step 2 — Start the CCE backend** (powers the chatbot API)
+### Quiz & Recommendation Engine: 10 JSON config files
 
-```bash
-cd cce-backend
-./start.sh
+| File | Purpose |
+|------|---------|
+| `quiz/quiz-content.json` | 10 scored questions (0-3 each, 0-30 total) |
+| `quiz/topic-catalog.json` | 47 frontline topics mapped to domains |
+| `quiz/topic-matcher-flow.json` | 3-question post-quiz topic matcher with 14 topicHints |
+| `quiz/audience-bucket-flow.json` | Audience identity/context matcher (17 buckets) |
+| `quiz/base-guide-catalog.json` | 79 base guides with domains, tags, offer lanes |
+| `quiz/recommendation-routing-config.json` | Risk-based routing pipeline (what to show/hide per band) |
+| `quiz/product-catalog.json` | 4 products: Guide ($9), Kit ($19), SMS ($4.99/mo), Bundle ($34) |
+| `quiz/fulfillment-config.json` | Post-purchase delivery rules by product |
+| `quiz/conversation-branch-flow.json` | Post-quiz conversational branching |
+| `quiz/api-contracts.json` | Machine-readable API request/response contracts |
+
+**Scoring:**
+- 0–10 = `low_risk` · 11–20 = `moderate_risk` · 21–25 = `high_risk` · 26–30 = `critical`
+- Q5 = 3 → force `critical` · Q5 = 2 → minimum `high_risk`
+- Critical results: crisis resources first, no paid products above crisis CTAs, contact capture blocked before crisis actions
+
+---
+
+### Backend: Supabase + Next.js App Router + Stripe
+
+**Database (Supabase):**
+
+| File | What it creates |
+|------|-----------------|
+| `supabase/migrations/20260320153000_backend_architecture.sql` | Core tables: `leads`, `quiz_sessions`, `topic_match_sessions`, `audience_match_sessions`, `guide_recommendations`, `product_clicks`, `purchases`, `fulfillment_events` |
+| `supabase/migrations/20260320160000_rls_policies.sql` | Row Level Security policies (service-role server access pattern) |
+| `supabase/migrations/20260402120000_analytics_events.sql` | Dedicated `analytics_events` table for non-CTA event persistence |
+
+**API Routes (scaffolded, Next.js App Router):**
+
+| Route | Handler | Purpose |
+|-------|---------|---------|
+| `POST /api/quiz/score` | `web/api/quiz/score/route.ts` | Score answers, assign risk band, persist session |
+| `POST /api/quiz/topic-match` | `web/api/quiz/topic-match/route.ts` | Match topic from post-quiz questions |
+| `POST /api/quiz/audience-match` | `web/api/quiz/audience-match/route.ts` | Match audience bucket(s) |
+| `POST /api/quiz/recommendation` | `web/api/quiz/recommendation/route.ts` | Resolve final guide + offer stack |
+| `POST /api/checkout/session` | `web/api/checkout/session/route.ts` | Create Stripe checkout session |
+| `POST /api/webhooks/stripe` | `web/api/webhooks/stripe/route.ts` | Handle purchase → trigger fulfillment |
+| `POST /api/analytics/event` | `web/api/analytics/event/route.ts` | Track quiz/CTA/conversion events |
+
+**Shared libraries:** `web/api/_lib/types.ts` (TypeScript types), `supabase.ts` (client factory), `scorer.ts` (scoring + validation)
+
+**Current backend status:**
+1. `topic-match/route.ts`: implemented with config-driven matching against `quiz/topic-matcher-flow.json`
+2. `recommendation/route.ts`: resolves guide title and offer lane from `quiz/base-guide-catalog.json`
+3. `webhooks/stripe/route.ts`: provider dispatch code added for SendGrid and Twilio; live credentials still required for runtime verification
+4. `analytics/event/route.ts`: non-CTA events now persist to `analytics_events`
+5. Frontend: root `web/` folder now contains a runnable Next.js app shell, API route wrappers, and a first quiz page at `web/app/quiz/page.tsx`
+
+---
+
+### Planning & Strategy — 24 docs
+
+| Category | Key files |
+|----------|-----------|
+| Architecture | `PLATFORM-ARCHITECTURE-BLUEPRINT.md`, `BACKEND-SYSTEM-CONTRACT.md` |
+| API contracts | `API-ROUTE-SPECS.md`, `QUIZ-IMPLEMENTATION-CONTRACT.md` |
+| Content pipeline | `GUIDE-BUILD-MANIFEST.csv` (79 rows), `GUIDE-OFFER-MAPPING.csv`, `AUDIENCE-SLANT-MANIFEST.csv`, `AUDIENCE-SLANT-BACKBONE.md` |
+| Handoff | `TECH-HANDOFF-FOR-CODY.md`, `CODY-VSCODE-IMPORT-RUNBOOK.md`, `CODY-HANDOFF-TOPIC-MATCHER.md`, `CODY-HANDOFF-CONVERSATION-BRANCHES.md` |
+| Launch | `QUIZ-LAUNCH-PLAYBOOK.md` (14-day timeline) |
+| Program design | `program-outline.md`, `GUIDE-REQUIREMENTS-STANDARD.md`, `NICHES-STRATEGY-KB.md` |
+| Business | `affiliate-program.md`, `marketing-strategy.md`, `lead-magnet.md` |
+
+---
+
+### Marketing & Outreach — 8 files
+
+| File | Purpose |
+|------|---------|
+| `marketing/tiktok-launch-calendar.md` | 28-day Month 1 calendar (2 posts/day) + Month 2 strategy |
+| `marketing/tiktok-scripts/video-script-templates.md` | 8 video script templates (myth-busting, script comparison, etc.) |
+| `marketing/creator-pitches-PLANNING.md` | Creator partnership planning |
+| `marketing/affiliate/INFLUENCER-STRATEGY.md` | Influencer targeting and outreach strategy |
+| `marketing/affiliate/COMPENSATION-STRUCTURE.md` | Commission rates and tiers |
+| `marketing/affiliate/cold-dm-templates.md` | Ready-to-send DM scripts |
+| `marketing/affiliate/email-pitch-templates.md` | Ready-to-send email pitches |
+| `marketing/affiliate/creator-one-pager.md` | One-page creator partnership overview |
+
+---
+
+### Email & SMS Automation
+
+| File | Purpose |
+|------|---------|
+| `email-sms/post-quiz-automations.md` | 5 email sequences (one per risk level) + 4-week SMS check-in content |
+| `landing-page/quiz-landing-page.md` | Full quiz landing page copy: hero, 8 conversion sections, A/B test versions |
+
+---
+
+### Build & QA Scripts — 20 scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/full_workspace_audit.py` | **9-category integrity audit** — file counts, voice sampling, quiz references, audience coverage, scoring/safety, product alignment, manifest sync, known gaps, placeholder/secret scan |
+| `scripts/extract_worksheets.py` | Extract standalone worksheets from all guides |
+| `scripts/generate_audience_slants.py` | Generate 1,343 audience-specific guide variants |
+| `scripts/voice_contractions_pass.py` | Automated voice pass for contractions |
+| `scripts/voice_pass_2.py` | Second voice pass (openers, action plans, diversification) |
+| `scripts/fix_disclaimers.py` | Scan all files for missing disclaimers |
+| `scripts/draft_all_guides.sh` | Batch guide drafting |
+| `scripts/editorial_pass.py` | Editorial quality pass |
+| `scripts/audit_quiz_deep.py` | Deep quiz reference validation |
+| `scripts/audit_quiz_refs.py` | Quiz cross-reference checker |
+| `scripts/build_architecture_assets.py` | Generate architecture config files |
+| Other scripts | Chapter scaffolding, metadata fixes, manifest repairs |
+
+---
+
+## End-to-End User Flow
+
+```
+TikTok video (with UTM link)
+  → Quiz landing page
+    → 10-question scored quiz
+      → Immediate results page (risk-band specific)
+        → [low/moderate] Topic matcher (3 questions → matched guide)
+          → [low/moderate] Audience matcher (identity/context → audience variant)
+            → Recommendation stack (guide + offer lane + crisis resources)
+              → Optional email/SMS capture
+                → Stripe checkout (if purchasing)
+                  → Webhook → fulfillment (email delivery, SMS enrollment)
+                    → Post-quiz email sequence (risk-personalized)
+                    → Check On Me SMS (weekly, 4 weeks + recurring)
 ```
 
-This will:
-- Create a Python virtual environment (`.venv/`) if it doesn't exist
-- Install all dependencies from `requirements.txt`
-- Start the API at `http://localhost:8000`
-
-To verify it's running:
-```bash
-curl http://localhost:8000/health
-# → {"status":"ok","version":"1.0.0"}
-```
-
-> **Note:** The file server and CCE backend both need to be running for the chatbot to work fully. If the backend is offline, the chatbot falls back to its built-in local engine automatically.
+**Critical safety rule:** For `critical` risk results, crisis resources (988, Crisis Text Line, 911) display first and prominently. Paid products are never primary. Contact capture cannot appear before crisis actions.
 
 ---
 
-## Day-to-day workflow
+## VS Code Setup Instructions
 
-### Before you start working
-
-Always pull the latest changes first so you don't overwrite each other's work:
+### 1. Open the workspace
 
 ```bash
-git pull
+# Navigate to wherever you extracted the workspace
+cd path/to/tiktok-mental-health
+code .
 ```
 
----
+### 2. Read orientation files (in order)
 
-### While you work
+Open and read these files first — they are your source of truth:
 
-Edit any files normally — VS Code, Cursor, whatever you use.
+1. `planning/CODY-VSCODE-IMPORT-RUNBOOK.md` — start here
+2. `planning/TECH-HANDOFF-FOR-CODY.md` — full implementation spec
+3. `planning/QUIZ-IMPLEMENTATION-CONTRACT.md` — scoring/routing rules
+4. `web/api/README.md` — API scaffold guide
 
----
-
-### When you're done (commit + push)
+### 3. Initialize your Next.js project
 
 ```bash
-git add .
-git commit -m "short description of what you changed"
-git push
+# Create Next.js app (if not already initialized)
+npx create-next-app@latest ask-anyway --typescript --app --tailwind --eslint
+
+# Install required packages
+cd ask-anyway
+npm install @supabase/supabase-js stripe
 ```
 
-**Examples of good commit messages:**
-- `add anxiety guide worksheet`
-- `fix crisis detection regex in cce-backend`
-- `update tiktok script templates`
-- `refactor chatbot recommendation cards`
-
----
-
-### If you get a conflict
-
-When two people edit the same file, Git will tell you on `git pull`. Open the file, look for the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`), keep the version you want, then:
+### 4. Copy the API scaffold into your project
 
 ```bash
-git add .
-git commit -m "resolve merge conflict"
-git push
+# From the workspace root, copy API handlers into your Next.js app
+cp -r web/api/* ask-anyway/app/api/
 ```
 
----
+This gives you the full `app/api/` structure:
+- `app/api/quiz/score/route.ts`
+- `app/api/quiz/topic-match/route.ts`
+- `app/api/quiz/audience-match/route.ts`
+- `app/api/quiz/recommendation/route.ts`
+- `app/api/checkout/session/route.ts`
+- `app/api/webhooks/stripe/route.ts`
+- `app/api/analytics/event/route.ts`
+- `app/api/_lib/types.ts`, `supabase.ts`, `scorer.ts`
 
-## CCE Backend — quick reference
+### 5. Set up environment variables
 
-The backend lives at `http://localhost:8000` when running.
+Create `.env.local` in your Next.js project root:
 
-| Endpoint | Method | What it does |
-|---|---|---|
-| `/health` | GET | Check if server is up |
-| `/trees` | GET | List available conversation trees |
-| `/session/start` | POST | Start a new chat session |
-| `/session/{id}/respond` | POST | Send a user message or option choice |
-| `/session/{id}/outcome` | GET | Get the final outcome/recommendations |
-| `/docs` | GET | Swagger UI — interactive API docs |
+```env
+SUPABASE_URL=https://yourproject.supabase.co
+SUPABASE_SERVICE_KEY=your_service_role_key
 
-**Conversation trees available:**
-- `main-flow` — emoji check-in → topic matching (default)
-- `mental-health-triage` — 10-question scored assessment
-- `psychoeducational-flow` — open-ended exploration
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PRICE_IDS={"guide":"price_xxx","kit":"price_yyy","sms":"price_zzz","bundle":"price_aaa"}
+```
 
----
-
-## Adding Python dependencies
-
-If you need to add a new Python package to the backend:
+### 6. Apply Supabase migrations
 
 ```bash
-cd cce-backend
-source .venv/bin/activate
-pip install <package-name>
-pip freeze > requirements.txt
-git add requirements.txt
-git commit -m "add <package-name> to requirements"
-git push
+# Option A: Supabase CLI (if using hosted Supabase)
+supabase db push
+
+# Option B: Run SQL directly in Supabase dashboard → SQL Editor
+# Paste contents of these files in order:
+#   supabase/migrations/20260320153000_backend_architecture.sql
+#   supabase/migrations/20260320160000_rls_policies.sql
 ```
 
-The other person just runs `./start.sh` and it will install automatically.
+### 7. Run the workspace audit
+
+```bash
+python3 scripts/full_workspace_audit.py
+```
+
+Expected result: **0 CRITICAL, 0 WARNING, 2 INFO** (stale handoff doc references — cosmetic only).
+
+### 8. Verify Stripe test mode
+
+```bash
+# Install Stripe CLI
+brew install stripe/stripe-cli/stripe
+
+# Login and forward webhooks to local
+stripe login
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+```
+
+### 9. Copy quiz config into your app
+
+The quiz engine reads from JSON config files. Copy them into your project's data layer:
+
+```bash
+mkdir -p ask-anyway/data
+cp quiz/*.json ask-anyway/data/
+```
+
+### 10. Start development
+
+```bash
+cd ask-anyway
+npm run dev
+```
+
+Test each route in order:
+1. `POST /api/quiz/score` — verify scoring and risk bands
+2. `POST /api/quiz/topic-match` — verify topic resolution
+3. `POST /api/quiz/audience-match` — verify audience bucket assignment
+4. `POST /api/quiz/recommendation` — verify full recommendation stack
+5. `POST /api/checkout/session` — verify Stripe session creation
+6. `POST /api/webhooks/stripe` — verify with `stripe trigger checkout.session.completed`
+7. `POST /api/analytics/event` — verify event logging
 
 ---
 
-## What's ignored (not tracked by git)
+## Source-of-Truth Reference
 
-These are excluded via `.gitignore` and will never be committed:
+When files conflict, use this precedence:
 
-- `.venv/` — Python virtual environment (rebuilt locally by `start.sh`)
-- `__pycache__/` — Python bytecode
-- `.DS_Store` — Mac system files
-- `Zoom/` — Zoom recordings
-- `*.zip` — Archive files
-- `.env` files — Secrets and API keys
+| Domain | Source of truth |
+|--------|----------------|
+| API behavior & request/response | `planning/API-ROUTE-SPECS.md` + `quiz/api-contracts.json` |
+| Database schema | `planning/BACKEND-SYSTEM-CONTRACT.md` + `supabase/migrations/` |
+| Scoring & safety rules | `planning/QUIZ-IMPLEMENTATION-CONTRACT.md` |
+| Product rules & routing | `quiz/recommendation-routing-config.json` |
+| Guide catalog & offer mapping | `quiz/base-guide-catalog.json` + `planning/GUIDE-OFFER-MAPPING.csv` |
+| Audience resolution | `quiz/audience-bucket-flow.json` + `planning/AUDIENCE-SLANT-MANIFEST.csv` |
+| Fulfillment logic | `quiz/fulfillment-config.json` |
+| Implementation scaffolds | `web/api/` |
 
 ---
 
-## Questions / issues
+## Product & Pricing
 
-Open a GitHub Issue on the repo or just message each other directly.
+| Product | Price | Type |
+|---------|-------|------|
+| Ask Anyway Guide | $9 | One-time (single topic guide, audience-matched) |
+| Ask Anyway Kit | $19 | One-time (multi-guide bundle) |
+| Check On Me SMS | $4.99/mo | Subscription (weekly check-in texts) |
+| Ask Anyway Bundle | $34 | One-time (guide + kit + 1 month SMS) |
+
+---
+
+## Safe Messaging Commitment
+
+All content follows safe messaging guidelines from AFSP, SAMHSA, JED Foundation, and 988 Suicide & Crisis Lifeline standards. Content does not sensationalize, glamorize, or provide method details. Crisis resources (988, Crisis Text Line) are embedded in every content file and on every quiz result page.
+
+---
+
+## Content Production Status
+
+- [x] 79 base topic guides — written, voice-passed, disclaimed
+- [x] 1,343 audience variants — generated across 17 buckets
+- [x] 2,686 standalone worksheets — extracted, audience-matched
+- [x] Module 1: Why You Don't Ask — written
+- [x] Module 2: Seeing the Opening — written
+- [x] Module 3: The Words — written
+- [x] Lead magnet content — written
+- [x] Quiz questions + scoring — complete (10 JSON configs)
+- [x] API route scaffolds — 7 endpoints, TypeScript, App Router
+- [x] Supabase migrations — schema + RLS policies
+- [x] Landing page copy — written
+- [x] Email/SMS automations — 5 sequences + 4-week SMS content
+- [x] TikTok launch calendar — 28-day Month 1 + Month 2
+- [x] Influencer outreach pack — strategy, DMs, pitches, one-pager, compensation
+- [x] Full workspace audit — passing clean (0 critical, 0 warnings)
+- [x] Root web app shell — Next.js app scaffolded in `web/` with route wrappers and quiz page
+- [ ] Stripe product setup — needs live price IDs
+- [ ] Email/SMS provider verification — SendGrid/Twilio credentials and live webhook replay still needed
+- [ ] Frontend refinement — current quiz page is functional scaffolding and still needs product polish
+- [ ] Platform selected (Teachable / Kajabi / Gumroad / Stan Store)
+- [ ] Launch

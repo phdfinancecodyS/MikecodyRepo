@@ -1,0 +1,17 @@
+{
+  "1": {
+    "file": "slide-01.mp3",
+    "text": "Someone you love is struggling, and you have no idea what to say.",
+    "duration": 3.71
+  },
+  "2": {
+    "file": "slide-02.mp3",
+    "text": "You're not scared of saying the wrong thing. You're scared of saying nothing at all.",
+    "duration": 4.44
+  },
+  "3": {
+    "file": "slide-03.mp3",
+    "text": "So you just... don't bring it up. And that silence? It stays with you.",
+    "duration": 4.86
+  }
+}

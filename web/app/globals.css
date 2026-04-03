@@ -1,0 +1,362 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f1e8;
+  --paper: #fffdf8;
+  --ink: #1d2a24;
+  --muted: #5f6d66;
+  --line: #d9d0c2;
+  --accent: #1f6b52;
+  --accent-strong: #124434;
+  --accent-soft: #dcece5;
+  --warning: #d77d1f;
+  --warning-soft: #fff1df;
+  --danger: #b63d2d;
+  --danger-soft: #fbe3de;
+  --shadow: 0 18px 40px rgba(26, 39, 33, 0.08);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(31, 107, 82, 0.08), transparent 26%),
+    radial-gradient(circle at top right, rgba(215, 125, 31, 0.12), transparent 22%),
+    var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.shell {
+  width: min(1080px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+.hero {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1.3fr 0.9fr;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.hero-card,
+.panel,
+.result-card,
+.question-card,
+.notice,
+.summary-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-card {
+  padding: 36px;
+}
+
+.hero-card h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.hero-card p,
+.panel p,
+.result-card p,
+.summary-card p,
+.notice p {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.eyebrow,
+.pill,
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 107, 82, 0.16);
+  background: rgba(31, 107, 82, 0.08);
+  color: var(--accent-strong);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.hero-actions,
+.result-actions,
+.question-grid,
+.two-col,
+.inline-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: var(--accent-strong);
+}
+
+.btn.secondary {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn.warning {
+  background: var(--warning);
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.hero-side {
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(31, 107, 82, 0.12), rgba(31, 107, 82, 0.04));
+}
+
+.hero-side ul,
+.crisis-list,
+.why-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.panel,
+.result-card,
+.summary-card,
+.notice {
+  padding: 24px;
+}
+
+.quiz-layout {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+  align-items: start;
+}
+
+.question-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.question-card {
+  padding: 20px;
+}
+
+.question-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.question-head h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.choice-list {
+  display: grid;
+  gap: 10px;
+}
+
+.choice,
+.checkbox-row,
+.summary-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.choice input,
+.checkbox-row input {
+  margin-top: 4px;
+}
+
+.choice span strong,
+.summary-row strong {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.choice span small,
+.summary-row small,
+.muted {
+  color: var(--muted);
+}
+
+.input,
+.select {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.stack {
+  display: grid;
+  gap: 12px;
+}
+
+.notice {
+  background: #fffaf2;
+}
+
+.notice.warning {
+  background: var(--warning-soft);
+}
+
+.notice.danger {
+  background: var(--danger-soft);
+}
+
+.progress {
+  height: 10px;
+  overflow: hidden;
+  background: #ece4d8;
+  border-radius: 999px;
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #49a37d);
+  border-radius: inherit;
+}
+
+.result-card h2,
+.summary-card h3,
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.result-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.offer-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.offer-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.offer-card h4 {
+  margin: 0 0 6px;
+}
+
+.offer-card p {
+  margin: 0;
+}
+
+.score-box {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.score-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-strong);
+}
+
+.footer-note {
+  margin-top: 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .quiz-layout {
+    grid-template-columns: 1fr;
+  }
+}

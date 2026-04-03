@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circle Badge Variants — The Ask Anyway Campaign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1a6b6a;
+    --teal-dark: #0f4e4d;
+    --teal-light: #2a8a89;
+    --amber: #d4922a;
+    --amber-light: #e8a840;
+    --warm-white: #faf7f2;
+    --cream: #f0ebe3;
+    --charcoal: #2d2d2d;
+    --soft-gray: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #e8e4de;
+    color: var(--charcoal);
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--soft-gray);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: var(--soft-gray);
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+  }
+
+  .concept {
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+
+  .concept-label {
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .card-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .logo-card {
+    border-radius: 12px;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 320px;
+  }
+
+  .card-light { background: var(--warm-white); }
+  .card-dark  { background: var(--teal-dark); }
+
+  .description {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--soft-gray);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* === VARIANT 1: Open Ring (original refined) === */
+  .v1 .badge {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 3px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .v1 .badge-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  .v1 .badge-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .v1 .badge-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .v1 .badge-line {
+    width: 50px;
+    height: 2px;
+    background: var(--amber);
+    margin: 6px auto;
+  }
+  .v1 .badge-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  /* Dark variant */
+  .v1.dark .badge {
+    border-color: var(--warm-white);
+  }
+  .v1.dark .badge-the,
+  .v1.dark .badge-ask,
+  .v1.dark .badge-campaign {
+    color: var(--warm-white);
+  }
+  .v1.dark .badge-anyway {
+    color: var(--amber-light);
+  }
+  .v1.dark .badge-line {
+    background: var(--amber-light);
+  }
+
+  /* === VARIANT 2: Filled Seal === */
+  .v2 .badge {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(26, 107, 106, 0.3);
+  }
+  .v2 .badge-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .v2 .badge-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1;
+  }
+  .v2 .badge-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    line-height: 1;
+  }
+  .v2 .badge-line {
+    width: 50px;
+    height: 2px;
+    background: rgba(255,255,255,0.4);
+    margin: 6px auto;
+  }
+  .v2 .badge-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  /* Amber-filled variant */
+  .v2.amber .badge {
+    background: var(--amber);
+    box-shadow: 0 4px 20px rgba(212, 146, 42, 0.3);
+  }
+  .v2.amber .badge-the,
+  .v2.amber .badge-campaign {
+    color: rgba(255,255,255,0.75);
+  }
+  .v2.amber .badge-ask {
+    color: white;
+  }
+  .v2.amber .badge-anyway {
+    color: var(--teal-dark);
+  }
+  .v2.amber .badge-line {
+    background: rgba(255,255,255,0.5);
+  }
+
+  /* === VARIANT 3: Double Ring === */
+  .v3 .badge-outer {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .v3 .badge-inner {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .v3 .ring-text-top {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--warm-white);
+    padding: 0 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  .v3 .ring-text-bottom {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--warm-white);
+    padding: 0 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  .v3 .badge-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .v3 .badge-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--amber);
+    line-height: 1;
+  }
+  /* Dark variant */
+  .v3.dark .badge-outer,
+  .v3.dark .badge-inner {
+    border-color: var(--warm-white);
+  }
+  .v3.dark .ring-text-top,
+  .v3.dark .ring-text-bottom {
+    background: var(--teal-dark);
+    color: var(--warm-white);
+  }
+  .v3.dark .badge-ask {
+    color: var(--warm-white);
+  }
+  .v3.dark .badge-anyway {
+    color: var(--amber-light);
+  }
+
+  /* === VARIANT 4: Amber Accent Ring === */
+  .v4 .badge {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 4px solid var(--teal);
+    border-top-color: var(--amber);
+    border-right-color: var(--amber);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: rotate(-45deg);
+  }
+  .v4 .badge-content {
+    transform: rotate(45deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .v4 .badge-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--soft-gray);
+  }
+  .v4 .badge-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .v4 .badge-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .v4 .badge-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--soft-gray);
+    margin-top: 6px;
+  }
+  /* Dark variant */
+  .v4.dark .badge {
+    border-color: var(--warm-white);
+    border-top-color: var(--amber-light);
+    border-right-color: var(--amber-light);
+  }
+  .v4.dark .badge-the,
+  .v4.dark .badge-campaign {
+    color: rgba(255,255,255,0.6);
+  }
+  .v4.dark .badge-ask {
+    color: var(--warm-white);
+  }
+  .v4.dark .badge-anyway {
+    color: var(--amber-light);
+  }
+
+  /* === VARIANT 5: Minimal Monogram === */
+  .v5 .badge {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 3px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .v5 .monogram {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    color: var(--teal);
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+  .v5 .monogram .a2 {
+    color: var(--amber);
+  }
+  .v5 .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    margin: 8px auto;
+  }
+  .v5 .badge-full {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-align: center;
+    line-height: 1.6;
+  }
+  /* Dark variant */
+  .v5.dark .badge {
+    border-color: var(--warm-white);
+  }
+  .v5.dark .monogram {
+    color: var(--warm-white);
+  }
+  .v5.dark .monogram .a2 {
+    color: var(--amber-light);
+  }
+  .v5.dark .badge-dot {
+    background: var(--amber-light);
+  }
+  .v5.dark .badge-full {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 11px;
+    color: var(--soft-gray);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<h1>The Ask Anyway Campaign</h1>
+<p class="subtitle">Circle Badge Variants — 5 Treatments on Light + Dark</p>
+
+<!-- VARIANT 1: Open Ring (refined original) -->
+<div class="concept">
+  <div class="concept-label">Variant 1 — Open Ring</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="v1">
+        <div class="badge">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="v1 dark">
+        <div class="badge">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Refined version of the original. Thin 3px ring, Raleway for "THE" and "CAMPAIGN" to add contrast, amber divider line. Clean and versatile — works as a watermark, profile pic, or cover element.</p>
+</div>
+
+<!-- VARIANT 2: Filled Seal -->
+<div class="concept">
+  <div class="concept-label">Variant 2 — Filled Seal</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="v2">
+        <div class="badge">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-light">
+      <div class="v2 amber">
+        <div class="badge">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Solid filled circle — teal and amber versions. Bold, confident, impossible to miss. The filled seal works as a standalone brand mark, social avatar, or sticker. Shadow adds depth. "ANYWAY" pops in the contrasting accent color.</p>
+</div>
+
+<!-- VARIANT 3: Double Ring -->
+<div class="concept">
+  <div class="concept-label">Variant 3 — Double Ring</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="v3">
+        <div class="badge-outer">
+          <span class="ring-text-top">THE</span>
+          <div class="badge-inner">
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+          </div>
+          <span class="ring-text-bottom">CAMPAIGN</span>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="v3 dark">
+        <div class="badge-outer">
+          <span class="ring-text-top">THE</span>
+          <div class="badge-inner">
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+          </div>
+          <span class="ring-text-bottom">CAMPAIGN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Classic double-ring seal. "THE" and "CAMPAIGN" break the outer ring at top and bottom, giving it a passport-stamp or official-seal quality. Text between the rings adds prestige. Great for PDF covers, certificates, merch.</p>
+</div>
+
+<!-- VARIANT 4: Amber Accent Ring -->
+<div class="concept">
+  <div class="concept-label">Variant 4 — Split Ring</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="v4">
+        <div class="badge">
+          <div class="badge-content">
+            <div class="badge-the">THE</div>
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+            <div class="badge-campaign">CAMPAIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="v4 dark">
+        <div class="badge">
+          <div class="badge-content">
+            <div class="badge-the">THE</div>
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+            <div class="badge-campaign">CAMPAIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">The ring itself is split — half teal, half amber — creating dynamic tension. The two-tone border is instantly recognizable at any size. Thicker 4px stroke gives it weight. Works especially well as a favicon, app icon, or corner badge on product images.</p>
+</div>
+
+<!-- VARIANT 5: Minimal Monogram -->
+<div class="concept">
+  <div class="concept-label">Variant 5 — Monogram Seal</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="v5">
+        <div class="badge">
+          <div class="monogram">A<span class="a2">A</span></div>
+          <div class="badge-dot"></div>
+          <div class="badge-full">THE ASK ANYWAY<br>CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="v5 dark">
+        <div class="badge">
+          <div class="monogram">A<span class="a2">A</span></div>
+          <div class="badge-dot"></div>
+          <div class="badge-full">THE ASK ANYWAY<br>CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Paired "AA" monogram — minimal, luxury feel. The second A in amber creates the brand mark. Amber dot separates the monogram from the full name. This is a true icon treatment: watermark-ready, works at 16px favicon size up to billboard. The most scalable option.</p>
+</div>
+
+<div class="footer">The Ask Anyway Campaign · Circle Badge Exploration · Montserrat 900 + Raleway · 2026</div>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+{
+  "number": 20,
+  "title": "Vision, Balance, and Motion Sensitivity After Hits and Stress",
+  "domain": "Sleep, body, pain, and substances",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "If vision and balance systems are overloaded, safety and confidence drop.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening in Your System",
+      "content": [
+        {
+          "type": "para",
+          "text": "Dizziness, motion intolerance, balance issues, and visual tracking problems are common after head injuries, chronic stress, or accumulated subconcussive hits. Your vestibular system (inner ear balance) and visual processing systems get dysregulated, making everyday movement feel unstable. Stairs become treacherous, driving in traffic feels disorienting, and busy environments trigger nausea or vertigo. This isn't 'clumsiness' - it's a nervous system struggling to integrate sensory input from eyes, inner ear, and body position."
+        },
+        {
+          "type": "h3",
+          "text": "Common vestibular and visual symptoms"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Dizziness or vertigo, especially with head movements.",
+            "Motion intolerance (car passenger, scrolling screens, crowds).",
+            "Visual tracking fatigue (difficulty following moving objects or reading).",
+            "Nausea in busy or visually complex environments.",
+            "Balance issues on stairs, uneven surfaces, or in the dark.",
+            "Feeling 'off' or unsteady without obvious cause."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Post-concussion or chronic stress:",
+            "Even 'minor' hits (falls, vehicle impacts, blasts) can cause lasting vestibular symptoms. Chronic stress alone can dysregulate balance systems."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Gets Worse Under Frontline Load",
+      "content": [
+        {
+          "type": "para",
+          "text": "Frontline work involves frequent rapid head movements (checking surroundings, vehicle operations), potential head impacts (falls, physical altercations, vehicle crashes), visual clutter (busy scenes with lots of movement), and chronic stress. All of these strain your vestibular and visual systems. Sleep deprivation and fatigue make symptoms worse - your brain relies on vision and balance cues more when you're tired, so errors compound."
+        },
+        {
+          "type": "h3",
+          "text": "Typical vestibular amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Rapid head turns or sudden positional changes (looking over shoulder, bending down).",
+            "Visual clutter and movement: Busy environments with lots of people or objects moving.",
+            "Stairs, curbs, or uneven surfaces: Require more vestibular processing.",
+            "Driving or being a passenger: Optic flow and vehicle motion challenge balance systems.",
+            "Fatigue and stress: Lower the threshold for dizziness and visual overload.",
+            "Screen time: Scrolling, rapid visual tracking exhausts visual processing."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and improving predictability lowers baseline arousal and restores decision quality."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can't fix vestibular dysfunction with willpower, but you can pace movement, rebuild tolerance gradually, and reduce environmental triggers."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Pace movement transitions: Slow head turns, pause before standing, use handrails. Reduces vestibular demand.",
+            "Use visual anchors when dizzy: Fix your gaze on a stable object (wall, sign) to stabilize balance.",
+            "Limit multitasking while walking: Don't text and walk, or turn your head while moving. One task at a time.",
+            "Track dizziness episodes: Log when dizziness happens (time, trigger, position). Patterns guide solutions.",
+            "Gradual vestibular rehab: Practice short balance exercises (standing on one foot, head turns while standing). Rebuild tolerance slowly.",
+            "Reduce screen scrolling: Use larger text, fewer rapid movements, frequent eye breaks."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: make the action small enough that you can still do it on a bad day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Family",
+      "content": [
+        {
+          "type": "para",
+          "text": "Household stability improves when everyone knows the plan before stress spikes."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use short, clear language when symptoms are active: 'I'm dizzy, give me a minute' not complex explanations.",
+            "Agree on a pause signal: Physical cue (hand up) when balance is unstable and communication is hard.",
+            "Debrief after hard moments without blame: 'I felt off-balance today' not 'You rushed me down the stairs.'",
+            "Slow transitions and clear environmental setup reduce falls and shame: Remove clutter, improve lighting, use contrast tape on stairs."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Escalate Care",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-management is a starting point, not a lifetime sentence. Escalate when function, safety, or relationships keep declining."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Dizziness or balance issues persist beyond basic self-care efforts.",
+            "Falls or near-falls are increasing.",
+            "Symptoms interfere with work safety or driving.",
+            "Vision problems (double vision, tracking issues) are worsening.",
+            "Persistent vestibular symptoms should be evaluated by vestibular or neuro specialists (audiologist, neurologist, PT with vestibular certification)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet daily for one week. Measure trigger intensity, response size, and recovery time."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "Name one trigger, one body signal, and one reset action.",
+            "At end of week, keep what worked and remove what did not."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Vision, Balance, and Motion Sensitivity After Hits and Stress",
+      "intro": "Use this to track vision and balance sensitivity in real time and build a repeatable response plan.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, or during transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you?",
+          "hint": "Include effect on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose small, realistic actions you can perform under stress.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What event, cue, or context activated this pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What 30-90 second action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "Write the exact behavior you will use next time.",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then adjust based on what actually worked."
+    },
+    {
+      "title": "Worksheet: Vision, Balance, and Motion Sensitivity After Hits and Stress - Partner/Team Check-In",
+      "intro": "Use this page for one short, practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Ask for concrete observations, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most?",
+          "hint": "List what helps and what makes it worse.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will we practice this week?",
+          "hint": "One clear behavior from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return:",
+          "hint": "How long until re-engagement after a pause?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens if things go sideways?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

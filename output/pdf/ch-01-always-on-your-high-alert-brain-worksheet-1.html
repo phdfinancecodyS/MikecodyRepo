@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+@page { size: letter; margin: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Raleway', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: #2d2d2d;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ───────────── Cover ───────────── */
+.cover {
+    width: 8.5in;
+    height: 11in;
+    background: #faf7f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    overflow: hidden;
+}
+
+.cover-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid #1a6b6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-shrink: 0;
+}
+.cover-logo .logo-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 6.5pt;
+    letter-spacing: 3.5pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+.cover-logo .logo-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+}
+.cover-logo .logo-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+}
+.cover-logo .logo-line {
+    width: 28px;
+    height: 1.5px;
+    background: #d4922a;
+    margin: 4px 0;
+}
+.cover-logo .logo-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 5.5pt;
+    letter-spacing: 3.5pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+
+.cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 22pt;
+    color: #1a6b6a;
+    line-height: 1.25;
+    margin: 0 1.2in 10px 1.2in;
+    max-width: 5.5in;
+}
+.cover-bar {
+    width: 48px;
+    height: 2px;
+    background: #d4922a;
+    margin: 14px auto;
+}
+.cover-audience {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 2.5pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    margin-bottom: 18px;
+}
+.cover-type {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 8.5pt;
+    color: #999;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+}
+.cover-from {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* ───────────── Content pages ───────────── */
+.content {
+    padding: 0.65in 0.75in;
+}
+
+.content h1 { display: none; }
+
+.content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    color: #1a6b6a;
+    margin: 20pt 0 6pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5px solid #d4922a;
+    line-height: 1.35;
+    page-break-after: avoid;
+}
+
+.content h2:first-child {
+    margin-top: 0;
+}
+
+.content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    color: #0f4e4d;
+    margin: 14pt 0 4pt 0;
+    page-break-after: avoid;
+}
+
+.content p  { margin: 0 0 8pt 0; }
+.content ol { margin: 0 0 10pt 22pt; }
+.content ul { margin: 0 0 10pt 22pt; }
+.content li { margin-bottom: 4pt; }
+.content strong { font-weight: 600; }
+.content em { font-style: italic; color: #555; }
+.content blockquote {
+    border-left: 3px solid #1a6b6a;
+    margin: 10pt 0;
+    padding: 8pt 14pt;
+    color: #555;
+    font-size: 9.5pt;
+    background: #f9f8f5;
+    border-radius: 0 4px 4px 0;
+}
+
+/* ── Worksheet sections inside guides ── */
+.worksheet-section {
+    background: #f4f1ec;
+    border-left: 3px solid #d4922a;
+    padding: 12pt 16pt 8pt 16pt;
+    margin: 18pt 0;
+    border-radius: 0 6px 6px 0;
+    page-break-inside: avoid;
+}
+.worksheet-section h2 {
+    border-bottom: none;
+    margin-top: 0;
+    padding-bottom: 0;
+    color: #d4922a;
+    font-size: 12pt;
+}
+.worksheet-section .ws-goal {
+    font-style: italic;
+    color: #0f4e4d;
+    font-size: 10pt;
+    margin-bottom: 8pt;
+}
+.worksheet-section ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.worksheet-section li {
+    padding: 6pt 0;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 0;
+}
+.worksheet-section li:last-child {
+    border-bottom: none;
+}
+
+/* ── Standalone worksheet body ── */
+.worksheet-standalone .ws-goal {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: #1a6b6a;
+    margin-bottom: 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 1px solid #ddd;
+}
+.worksheet-standalone ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.worksheet-standalone li {
+    padding: 10pt 0 36pt 0;
+    border-bottom: 1px solid #e0ddd7;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+.worksheet-standalone li:last-child {
+    border-bottom: none;
+}
+
+/* ── Crisis footer ── */
+.crisis-footer {
+    margin-top: 28pt;
+    padding-top: 12pt;
+    border-top: 1px solid #ddd;
+    page-break-inside: avoid;
+}
+.crisis-footer .note {
+    font-size: 8.5pt;
+    color: #888;
+    line-height: 1.55;
+    margin-bottom: 8pt;
+}
+.crisis-box {
+    background: #faf7f2;
+    border: 1px solid #1a6b6a;
+    border-radius: 5px;
+    padding: 10pt 12pt;
+}
+.crisis-box p {
+    font-size: 8.5pt;
+    color: #0f4e4d;
+    margin: 0 0 3pt 0;
+    line-height: 1.5;
+}
+.crisis-box p:last-child { margin-bottom: 0; }
+.crisis-box strong { color: #1a6b6a; font-weight: 600; }
+
+/* ───────────── Back page ───────────── */
+.back-page {
+    width: 8.5in;
+    height: 11in;
+    page-break-before: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+.back-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid #1a6b6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+.back-logo .logo-the { font-size: 4.5pt; letter-spacing: 2pt; }
+.back-logo .logo-ask,
+.back-logo .logo-anyway { font-size: 12pt; }
+.back-logo .logo-line { width: 14px; height: 1px; margin: 2px 0; }
+.back-logo .logo-campaign { font-size: 3.5pt; letter-spacing: 2pt; }
+
+.back-tagline {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
+    color: #999;
+    margin-bottom: 28px;
+    font-style: italic;
+}
+.back-crisis {
+    font-family: 'Raleway', sans-serif;
+    font-size: 8.5pt;
+    color: #1a6b6a;
+    line-height: 1.9;
+}
+.back-crisis strong { color: #1a6b6a; }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="cover-logo"><div class="logo-the">THE</div>
+<div class="logo-ask">ASK</div>
+<div class="logo-anyway">ANYWAY</div>
+<div class="logo-line"></div>
+<div class="logo-campaign">CAMPAIGN</div></div>
+<div class="cover-title">Always On: Your High-Alert Brain — Pattern Finder</div>
+<div class="cover-bar"></div>
+<div class='cover-audience'>Addiction / Recovery</div>
+<div class="cover-type">Worksheet</div>
+<div class='cover-from'>From: Always On: Your High-Alert Brain</div>
+</div>
+<div class="content worksheet-standalone">
+<p class='ws-goal'>Spot the pattern — when it shows up, what triggers it, and what you notice first.</p>
+<ul>
+<li>What time of day does the scanning get loudest?</li>
+<li>What's the last false alarm your brain triggered? What actually happened?</li>
+<li>Where do you feel the hyperarousal first — head, chest, gut, hands?</li>
+<li>What were you doing when you last felt genuinely safe?</li>
+<li>What's one thing that helps your body believe the danger is over?</li>
+<li>What thoughts, feelings, or situations around this problem make you want to numb out, hide, or go back to old coping?</li>
+</ul>
+<div class="crisis-footer">
+<p class="note">This worksheet is educational&nbsp;&mdash; it&rsquo;s not therapy, not a diagnosis, and using it doesn&rsquo;t create a clinical relationship. It&rsquo;s built to help you take the next step, not replace professional support.</p>
+<div class="crisis-box">
+<p><strong>988 Suicide &amp; Crisis Lifeline</strong> — call or text <strong>988</strong></p>
+<p><strong>Crisis Text Line</strong> — text <strong>HOME</strong> to <strong>741741</strong></p>
+<p>If you or someone you know is in immediate danger, call <strong>911</strong>.</p>
+</div>
+</div>
+</div>
+<div class="back-page">
+<div class="back-logo"><div class="logo-the">THE</div>
+<div class="logo-ask">ASK</div>
+<div class="logo-anyway">ANYWAY</div>
+<div class="logo-line"></div>
+<div class="logo-campaign">CAMPAIGN</div></div>
+<div class="back-tagline">You don&rsquo;t need the perfect words. You just need to ask.</div>
+<div class="back-crisis">
+<strong>988 Suicide &amp; Crisis Lifeline</strong> &mdash; call or text 988<br>
+<strong>Crisis Text Line</strong> &mdash; text HOME to 741741<br>
+<strong>Emergency</strong> &mdash; call 911
+</div>
+</div>
+</body>
+</html>

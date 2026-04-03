@@ -1,0 +1,281 @@
+{
+  "number": 45,
+  "title": "Loneliness and Loss of Tribe",
+  "domain": "Work, mission, identity, and transition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Field notes for the specific loneliness of leaving a high-trust team and not finding people who get it.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening",
+      "content": [
+        {
+          "type": "para",
+          "text": "The people you used to work with understood you without explanation. You trusted them with your life. You had shorthand - a look, a word, and they knew exactly what you meant. Now you're around people who have never been in a high-stakes environment, who complain about the commute, who don't have any idea what your former work actually required. You're lonely, but it's a specific loneliness: you're surrounded by people and still completely alone because no one in your current life has the context to truly understand you. And the former tribe? They're still at work. Or they've moved away. Or you've lost touch because leaving the role means losing access."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Context gap: People around you don't understand your background and you're exhausted explaining it.",
+            "Former team grief: You miss specific people and the specific experience of working with them.",
+            "Surface-level relationships: New relationships feel thin - pleasant but not deep. No trust foundation.",
+            "Isolation in crowds: You're at a party, surrounded by people, and feel utterly alone.",
+            "Withdrawal: You've stopped trying to make new connections because it requires too much explanation.",
+            "Cynicism about civilians: 'They complain about nothing. They have no idea.' Makes new connections harder.",
+            "Digital substitution: Social media or gaming replaces real connection without providing it.",
+            "Partner carrying it all: Your partner is your only connection, which creates pressure they can't sustain."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is a real loss, not self-pity:",
+            "High-trust operational teams are rare. Losing that context does create a specific loneliness that ordinary social life can't immediately fill."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "Your former team gave you a specific kind of connection: shared high stakes, mutual trust under pressure, complete context. That's neurologically and socially different from ordinary friendship. Your brain learned what 'real connection' feels like in that context, and civilian relationships feel thin by comparison. Except they're not thin - they're just different. The problem is you're comparing civilian friendship to operational bonding, which is unfair to both. Add the context gap (you can't explain your background easily) and the grief of losing the former team, and you get a withdrawal pattern that deepens isolation."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Comparison trap: Measuring new relationships against former-team standards kills them before they start.",
+            "Withdrawal deepening: Every failed connection attempt reinforces 'civilians don't get it' belief.",
+            "Partner overload: Partner becomes your only social outlet. That creates relationship pressure and their resentment.",
+            "Cynicism solidifying: 'No one understands me here' → stop trying → definitely no one understands you.",
+            "Social skills atrophy: High-trust operational relationships have different social norms. Civilian social skills need practice.",
+            "Digital replacing real: Online social activity (gaming, forums, social media) reduces motivation for in-person connection.",
+            "Depression risk increasing: Chronic loneliness is a significant risk factor for depression and deteriorating mental health."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and increasing predictability lowers baseline arousal and improves regulation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can rebuild connection, but it requires accepting that it will feel different than operational bonding - and different doesn't mean worse or fake."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Identify who in your former tribe you can maintain: Make deliberate effort to stay connected with 2-3 former colleagues. One call a month. It won't be the same, but it keeps the thread.",
+            "Find context-overlap communities: Veterans' groups, first responder networks, peer support programs - places where your background is understood without full explanation.",
+            "Lower the standard for new connection: New civilian relationships won't start at trust-level 9. They start at 2. That's normal, not a sign they're not worth it.",
+            "Invest time in one new relationship: Pick one person with potential for deeper connection. Show up consistently. Give it 6+ months.",
+            "Reduce cynicism deliberately: 'They have no idea' is true AND unhelpful. Civilian problems are still problems. Practicing this perspective makes new connection easier.",
+            "Get your partner back in a shared social context: Couple friendships reduce isolation for both of you. Find one other couple to invest in.",
+            "Use structured social contexts: Classes, sports leagues, volunteer groups, faith communities - contexts with repeated contact lower the social effort bar.",
+            "Rebuild slowly: The former tribe took years to build. New connections need time. Don't rush and don't give up after one surface conversation.",
+            "Name the loneliness explicitly: Telling a new connection 'I find it hard to connect because I came from a very specific work context' often accelerates trust."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: set the bar low enough to do it even on your worst day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Stress communication should be clear, brief, and repeatable. Predictable routines protect relationships."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use concrete language: 'I'm struggling to connect with people outside my former work context. This isn't about you - I'm working on it.'",
+            "Name what you need: 'I need you to be patient while I rebuild my social network. And I need us to find people together.'",
+            "Acknowledge the pressure on them: 'I know I've been relying on you too much for social connection. I'm working on expanding that.'",
+            "Invite them into the solution: 'Can we invest in one or two couple friendships? I need more connection than I'm getting right now.'"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-guided tools are a start. Escalate care when symptoms persist, spread, or begin harming safety and function."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "You've been without meaningful peer connection for 6+ months and it's affecting your mood.",
+            "Partner is your only meaningful social relationship and it's straining the relationship.",
+            "Chronic loneliness is accompanying depression or suicidal ideation.",
+            "You've completely withdrawn from social attempts because of repeated disappointment.",
+            "Peer support groups (veterans, first responders, clinical support groups) specifically address the context-gap loneliness that transition creates."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet every day for one week. Track trigger, body signal, and reset action. Keep what works and remove what does not."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the trigger.",
+            "2) Name the first body signal.",
+            "3) Run one reset action.",
+            "4) Log response quality."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Loneliness and Loss of Tribe",
+      "intro": "Use this to track loss of tribe and chronic isolation and build a practical response you can repeat under load.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, and in transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you when it took over?",
+          "hint": "Name impact on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose actions small enough to use on hard days.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then tighten the plan around what actually worked."
+    },
+    {
+      "title": "Worksheet: Loneliness and Loss of Tribe - Partner/Team Check-In",
+      "intro": "Use this page for one short practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Capture observable behavior, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most and least?",
+          "hint": "List what helps and what escalates the issue.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will you both practice this week?",
+          "hint": "One clear action from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

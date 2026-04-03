@@ -1,0 +1,66 @@
+CONTENT INTENT AUDIT
+{
+  "total_files": 4108,
+  "pass_count": 1486,
+  "fail_count": 2622,
+  "topic_guides_total": 1422,
+  "worksheets_total": 2686,
+  "topic_guides_fail": 0,
+  "worksheets_fail": 2622,
+  "missing_start": 3605,
+  "missing_stay": 2622,
+  "missing_follow": 0,
+  "missing_safety": 0
+}
+
+TOP 50 FAILS
+2 missing | content/worksheets/addiction-recovery/ch-01-always-on-your-high-alert-brain-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-01-always-on-your-high-alert-brain-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-03-hypervigilance-at-home-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-03-hypervigilance-at-home-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-04-anger-and-short-fuse-days-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-04-anger-and-short-fuse-days-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-06-depression-and-numbness-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-06-depression-and-numbness-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-08-shame-spirals-and-self-loathing-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-08-shame-spirals-and-self-loathing-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-09-memory-slips-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-09-memory-slips-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-11-decision-fatigue-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-11-decision-fatigue-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-12-overreacting-to-small-stuff-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-12-overreacting-to-small-stuff-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-13-chronic-sleep-debt-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-13-chronic-sleep-debt-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-14-sleep-apnea-and-snoring-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-14-sleep-apnea-and-snoring-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-19-noise,-crowds,-public-spaces-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-19-noise,-crowds,-public-spaces-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-20-vision,-balance,-motion-sensitivity-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-20-vision,-balance,-motion-sensitivity-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-21-home-feels-like-a-minefield-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-21-home-feels-like-a-minefield-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-22-red-and-yellow-and-green-communication-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-22-red-and-yellow-and-green-communication-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-23-repair-after-damage-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-23-repair-after-damage-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-24-parenting-on-empty-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-24-parenting-on-empty-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-26-kids-in-the-blast-radius-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-26-kids-in-the-blast-radius-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-27-family-life-in-transition-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-28-emotional-numbness-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-28-emotional-numbness-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-29-low-desire-and-low-drive-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-29-low-desire-and-low-drive-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-30-stress-shuts-down-sex-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-30-stress-shuts-down-sex-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-31-sex-and-avoidance-after-difficult-experiences-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-31-sex-and-avoidance-after-difficult-experiences-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-33-touch-without-pressure-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-33-touch-without-pressure-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-34-body-image,-scars,-sexual-confidence-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-34-body-image,-scars,-sexual-confidence-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-35-sex-after-injury-and-health-change-worksheet-1.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-35-sex-after-injury-and-health-change-worksheet-2.md | start=False stay=False follow=True safety=True
+2 missing | content/worksheets/addiction-recovery/ch-36-moral-injury-101-worksheet-1.md | start=False stay=False follow=True safety=True

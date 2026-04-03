@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Anyway — Mental Health Check-In</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e2dd;
+    --accent: #2d6a4f;
+    --accent-light: #d8f3dc;
+    --yellow: #f9a825;
+    --yellow-light: #fff8e1;
+    --orange: #e65100;
+    --orange-light: #fff3e0;
+    --red: #c62828;
+    --red-light: #ffebee;
+    --red-dark: #b71c1c;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ============ VIEW SWITCHING ============ */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ============ QUIZ VIEW STYLES ============ */
+  .quiz-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* LANDING */
+  .landing-hero { text-align: center; padding: 48px 0 24px; }
+  .landing-hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; line-height: 1.2; }
+  .landing-hero p { font-size: 1.1rem; color: var(--muted); max-width: 480px; margin: 0 auto 24px; }
+
+  .clinically-informed {
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 0 auto 32px;
+    max-width: 520px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .clinically-informed strong { color: var(--accent); }
+
+  .landing-features {
+    text-align: left; margin: 0 auto 40px; max-width: 440px;
+  }
+  .landing-features li { list-style: none; padding: 8px 0; font-size: 1rem; }
+  .landing-features li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block; padding: 16px 40px; border: none; border-radius: var(--radius);
+    font-size: 1.1rem; font-weight: 600; cursor: pointer; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .btn:active { transform: translateY(0); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-secondary { background: var(--border); color: var(--text); }
+  .btn-crisis { background: var(--red); color: #fff; font-size: 1.2rem; padding: 20px 40px; }
+  .btn-crisis-outline { background: #fff; color: var(--red); border: 2px solid var(--red); }
+  .btn-yellow { background: var(--yellow); color: #fff; }
+  .btn-orange { background: var(--orange); color: #fff; }
+  .btn-block { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
+  .btn-sm { padding: 12px 24px; font-size: 0.95rem; }
+  .btn-text { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.9rem; padding: 8px; text-decoration: underline; }
+
+  /* TRACK SELECTION */
+  .track-card {
+    background: var(--card); border: 2px solid var(--border); border-radius: var(--radius);
+    padding: 28px 24px; text-align: center; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s; margin-bottom: 16px;
+  }
+  .track-card:hover { border-color: var(--accent); background: var(--accent-light); transform: translateY(-2px); }
+  .track-card .track-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .track-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .track-card p { font-size: 0.9rem; color: var(--muted); }
+  .track-heading { text-align: center; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; padding-top: 32px; }
+  .track-subhead { text-align: center; font-size: 1rem; color: var(--muted); margin-bottom: 28px; }
+
+  /* PROGRESS */
+  .progress-bar {
+    background: var(--border); height: 6px; border-radius: 3px; margin-bottom: 32px; overflow: hidden;
+  }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.4s ease; }
+  .question-count { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: var(--card); border-radius: var(--radius); padding: 32px 28px;
+    box-shadow: var(--shadow); margin-bottom: 24px;
+  }
+  .question-card h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 24px; line-height: 1.4; }
+
+  .option {
+    display: block; width: 100%; text-align: left; padding: 16px 20px; margin-bottom: 10px;
+    background: var(--bg); border: 2px solid var(--border); border-radius: 10px;
+    font-size: 1rem; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    color: var(--text); line-height: 1.4;
+  }
+  .option:hover { border-color: var(--accent); background: var(--accent-light); }
+  .option.selected { border-color: var(--accent); background: var(--accent-light); font-weight: 500; }
+
+  .question-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+
+  /* TRANSITION SCREEN */
+  .transition-card {
+    border-radius: var(--radius); padding: 40px 28px; text-align: center; margin-bottom: 24px;
+  }
+  .transition-card h1 { font-size: 1.5rem; margin-bottom: 16px; line-height: 1.3; }
+  .transition-card p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 16px; color: var(--text); }
+  .transition-low { background: var(--accent-light); border: 2px solid var(--accent); }
+  .transition-moderate { background: var(--yellow-light); border: 2px solid var(--yellow); }
+  .transition-high { background: var(--orange-light); border: 2px solid var(--orange); }
+
+  /* RESULTS */
+  .result-card {
+    border-radius: var(--radius); padding: 40px 28px; text-align: center; margin-bottom: 24px;
+  }
+  .result-card h1 { font-size: 1.6rem; margin-bottom: 16px; line-height: 1.3; }
+  .result-card p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 16px; }
+  .result-card .support-note { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-top: 8px; }
+
+  .result-low { background: var(--accent-light); border: 2px solid var(--accent); }
+  .result-moderate { background: var(--yellow-light); border: 2px solid var(--yellow); }
+  .result-high { background: var(--orange-light); border: 2px solid var(--orange); }
+  .result-critical { background: var(--red-light); border: 3px solid var(--red); }
+
+  .cta-section {
+    background: var(--card); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); margin-bottom: 20px;
+  }
+  .cta-section h3 { font-size: 1.1rem; margin-bottom: 16px; }
+
+  .capture-section {
+    background: var(--card); border-radius: var(--radius); padding: 24px 28px;
+    box-shadow: var(--shadow); margin-bottom: 20px; text-align: center;
+  }
+  .capture-section h3 { margin-bottom: 8px; }
+  .capture-section p { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; }
+  .capture-input {
+    width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: 10px;
+    font-size: 1rem; margin-bottom: 12px; outline: none;
+  }
+  .capture-input:focus { border-color: var(--accent); }
+
+  .capture-toggle { display: flex; border: 2px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .capture-toggle button {
+    flex: 1; padding: 12px; border: none; background: var(--bg); font-size: 0.95rem;
+    font-weight: 600; cursor: pointer; color: var(--muted); transition: background 0.2s, color 0.2s;
+  }
+  .capture-toggle button.active { background: var(--accent); color: #fff; }
+  .capture-toggle button:first-child { border-right: 1px solid var(--border); }
+
+  /* CRISIS FOOTER */
+  .crisis-footer {
+    background: #f5f5f5; border-radius: var(--radius); padding: 20px 24px;
+    text-align: center; margin-top: 24px; border: 1px solid var(--border);
+  }
+  .crisis-footer p { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+  .crisis-footer a { color: var(--red); font-weight: 600; text-decoration: none; margin: 0 8px; }
+  .crisis-footer a:hover { text-decoration: underline; }
+
+  .score-badge {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 600; margin-bottom: 16px;
+  }
+  .badge-low { background: var(--accent); color: #fff; }
+  .badge-moderate { background: var(--yellow); color: #fff; }
+  .badge-high { background: var(--orange); color: #fff; }
+  .badge-critical { background: var(--red); color: #fff; }
+
+  .product-card {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 10px;
+  }
+  .product-card .product-info { text-align: left; }
+  .product-card .product-name { font-weight: 600; font-size: 1rem; }
+  .product-card .product-price { color: var(--muted); font-size: 0.9rem; }
+
+  /* Matched guide card */
+  .matched-guide-card {
+    background: var(--card); border: 2px solid var(--accent); border-radius: var(--radius);
+    padding: 28px; margin-bottom: 20px; text-align: center;
+  }
+  .matched-guide-card .match-label {
+    font-size: 0.85rem; color: var(--accent); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+  }
+  .matched-guide-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+  .matched-guide-card .match-audience {
+    font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;
+  }
+  .matched-guide-card .match-price {
+    font-size: 1.3rem; font-weight: 700; color: var(--accent); margin-bottom: 16px;
+  }
+
+  .crisis-btn-stack { margin: 20px 0; }
+  .crisis-btn-stack a {
+    display: block; text-align: center; padding: 20px; margin-bottom: 12px;
+    border-radius: var(--radius); font-size: 1.15rem; font-weight: 700;
+    text-decoration: none; transition: transform 0.15s; color: #fff;
+  }
+  .crisis-btn-stack a:hover { transform: translateY(-1px); }
+
+  .disclaimer {
+    font-size: 0.8rem; color: var(--muted); text-align: center;
+    margin-top: 32px; padding: 16px; line-height: 1.5;
+  }
+
+  /* Fade-in animation for screens */
+  .screen.active { animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ CATALOG VIEW STYLES ============ */
+  .catalog-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  .catalog-header {
+    text-align: center;
+    padding: 32px 0 16px;
+  }
+  .catalog-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .catalog-header p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 24px;
+  }
+  .quiz-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .quiz-link:hover { text-decoration: underline; }
+
+  /* SEARCH + FILTERS */
+  .filter-bar {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%236b6b6b' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E") no-repeat 14px center;
+    margin-bottom: 16px;
+  }
+  .search-input:focus { border-color: var(--accent); }
+
+  .filter-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .filter-group { flex: 1; min-width: 180px; }
+  .filter-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .filter-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+  }
+  .filter-select:focus { border-color: var(--accent); }
+
+  /* RESULT COUNT */
+  .result-count {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding: 0 4px;
+  }
+  .result-count strong { color: var(--text); }
+
+  /* GUIDE GRID */
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 720px) {
+    .guide-grid { grid-template-columns: 1fr; }
+  }
+
+  .guide-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .guide-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .guide-domain-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  .domain-nervous { background: #e8f5e9; color: #2e7d32; }
+  .domain-sleep { background: #e3f2fd; color: #1565c0; }
+  .domain-relationships { background: #fce4ec; color: #c62828; }
+  .domain-intimacy { background: #f3e5f5; color: #7b1fa2; }
+  .domain-moral { background: #fff3e0; color: #e65100; }
+  .domain-work { background: #e0f2f1; color: #00695c; }
+  .domain-dopamine { background: #fff8e1; color: #f57f17; }
+  .domain-gap { background: #f5f5f5; color: #616161; }
+
+  .guide-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    flex-grow: 1;
+  }
+
+  .guide-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .guide-offer {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .guide-offer .offer-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .offer-guide { background: var(--accent-light); color: var(--accent); }
+  .offer-kit { background: #e3f2fd; color: #1565c0; }
+  .offer-bundle { background: #fff3e0; color: var(--orange); }
+
+  .guide-price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .guide-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    margin-top: 12px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .guide-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  /* AUDIENCE EDITION PICKER */
+  .audience-editions {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .audience-toggle {
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+  }
+  .audience-toggle:hover { text-decoration: underline; }
+  .audience-list {
+    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .audience-list.open { display: flex; }
+  .audience-chip {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: var(--muted);
+    cursor: default;
+  }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--muted);
+  }
+  .empty-state h3 { margin-bottom: 8px; color: var(--text); }
+
+  @media (max-width: 480px) {
+    .quiz-container { padding: 16px 14px; }
+    .landing-hero h1 { font-size: 1.6rem; }
+    .question-card { padding: 24px 20px; }
+    .result-card { padding: 28px 20px; }
+    .track-card { padding: 20px 16px; }
+    .transition-card { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ################################################################
+     VIEW 1: QUIZ
+     ################################################################ -->
+<div id="view-quiz" class="view active">
+<div class="quiz-container">
+
+  <!-- ==================== LANDING SCREEN ==================== -->
+  <div id="screen-landing" class="screen active">
+    <div class="landing-hero">
+      <h1>How Are You Really Doing?</h1>
+      <p>A free, private mental health check-in. Takes about 2 minutes. No diagnosis — just a real snapshot, the right next step, and a resource matched to your situation.</p>
+    </div>
+    <div class="clinically-informed">
+      <strong>Clinically informed, not clinical advice.</strong><br>
+      This check-in was built with licensed clinical expertise (LCSW). It is not a diagnosis, not therapy, and not a substitute for professional treatment.
+    </div>
+    <ul class="landing-features">
+      <li>Completely free — no account needed</li>
+      <li>Results shown immediately</li>
+      <li>Matched to a resource built for your situation</li>
+      <li>Crisis resources available no matter your result</li>
+    </ul>
+    <div style="text-align:center;">
+      <button class="btn btn-primary btn-block" onclick="showScreen('screen-track')">Start the Check-In</button>
+      <a onclick="switchView('catalog')" style="display:inline-block; margin-top:12px; font-size:0.95rem; color:var(--accent); font-weight:600; text-decoration:none; cursor:pointer;">Or browse all 79 resources →</a>
+    </div>
+    <div class="crisis-footer">
+      <p>If you or someone you know is in crisis right now, skip the check-in:</p>
+      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    </div>
+  </div>
+
+  <!-- ==================== TRACK SELECTION ==================== -->
+  <div id="screen-track" class="screen">
+    <h2 class="track-heading">Who is this check-in for?</h2>
+    <p class="track-subhead">We'll ask different questions depending on your answer.</p>
+
+    <div class="track-card" onclick="selectTrack('self')">
+      <div class="track-icon">🪞</div>
+      <h3>This is for me</h3>
+      <p>I want to check in on my own mental health right now.</p>
+    </div>
+
+    <div class="track-card" onclick="selectTrack('someone')">
+      <div class="track-icon">🤝</div>
+      <h3>This is about someone I care about</h3>
+      <p>I'm worried about someone and I'm not sure what to do.</p>
+    </div>
+
+    <div class="crisis-footer">
+      <p>Crisis resources are always free and available:</p>
+      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    </div>
+  </div>
+
+  <!-- ==================== QUIZ SCREEN (risk questions) ==================== -->
+  <div id="screen-quiz" class="screen">
+    <div class="question-count" id="question-count"></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="question-card">
+      <h2 id="question-prompt"></h2>
+      <div id="options-container"></div>
+    </div>
+    <div class="question-nav">
+      <button class="btn btn-secondary btn-sm" id="btn-back" onclick="prevQuestion()">← Back</button>
+      <button class="btn btn-primary btn-sm" id="btn-next" onclick="nextQuestion()" disabled>Next →</button>
+    </div>
+    <div class="crisis-footer" style="margin-top:32px;">
+      <p>Need help right now?</p>
+      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    </div>
+  </div>
+
+  <!-- ==================== TRANSITION SCREEN ==================== -->
+  <div id="screen-transition" class="screen">
+    <div id="transition-card" class="transition-card">
+      <span id="transition-badge" class="score-badge"></span>
+      <h1 id="transition-headline"></h1>
+      <p id="transition-body"></p>
+    </div>
+
+    <!-- Crisis resources shown for high risk on transition -->
+    <div id="transition-crisis" class="cta-section" style="display:none;">
+      <h3>Free crisis support — always available</h3>
+      <div class="crisis-btn-stack">
+        <a href="tel:988" style="background:var(--orange);">📞 Call 988 — Suicide &amp; Crisis Lifeline</a>
+        <a href="sms:741741&body=HOME" style="background:var(--orange);">💬 Text HOME to 741741 — Crisis Text Line</a>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 24px;">
+      <button class="btn btn-primary btn-block" onclick="startMatching()">Continue — Find My Resource →</button>
+    </div>
+
+    <div class="crisis-footer">
+      <p>Crisis resources are always free and available:</p>
+      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    </div>
+  </div>
+
+  <!-- ==================== MATCHING SCREEN (topic + audience) ==================== -->
+  <div id="screen-match" class="screen">
+    <div class="question-count" id="match-question-count"></div>
+    <div class="progress-bar"><div class="progress-fill" id="match-progress-fill"></div></div>
+    <div class="question-card">
+      <h2 id="match-question-prompt"></h2>
+      <p id="match-question-subtext" style="font-size:0.9rem; color:var(--muted); margin:-16px 0 20px;"></p>
+      <div id="match-options-container"></div>
+    </div>
+    <div class="question-nav">
+      <button class="btn btn-secondary btn-sm" id="match-btn-back" onclick="prevMatchQuestion()">← Back</button>
+      <button class="btn btn-primary btn-sm" id="match-btn-next" onclick="nextMatchQuestion()" disabled>Next →</button>
+    </div>
+    <div class="crisis-footer" style="margin-top:32px;">
+      <p>Need help right now?</p>
+      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    </div>
+  </div>
+
+  <!-- ==================== RESULT SCREEN (dynamic) ==================== -->
+  <div id="screen-result" class="screen">
+    <div id="result-card" class="result-card">
+      <span id="result-badge" class="score-badge"></span>
+      <h1 id="result-headline"></h1>
+      <p id="result-body"></p>
+      <p id="result-support-note" class="support-note"></p>
+    </div>
+
+    <!-- Crisis buttons (high / critical only) -->
+    <div id="crisis-cta-section" class="cta-section" style="display:none;">
+      <h3 id="crisis-cta-heading"></h3>
+      <div class="crisis-btn-stack">
+        <a href="tel:988" id="crisis-btn-988">📞 Call 988 — Suicide &amp; Crisis Lifeline</a>
+        <a href="sms:741741&body=HOME" id="crisis-btn-text">💬 Text HOME to 741741 — Crisis Text Line</a>
+        <a href="tel:911" id="crisis-btn-911" style="display:none;">🚨 Call 911</a>
+      </div>
+    </div>
+
+    <!-- If-you-can't section (critical only) -->
+    <div id="cant-call-section" class="cta-section" style="display:none;">
+      <h3 id="cant-call-heading">If you can't call right now:</h3>
+      <ul id="cant-call-list" style="text-align:left; padding-left:20px; line-height:2;"></ul>
+    </div>
+
+    <!-- Matched guide (non-critical) -->
+    <div id="matched-guide-section" class="matched-guide-card" style="display:none;">
+      <div class="match-label">Your Matched Resource</div>
+      <h3 id="matched-guide-title"></h3>
+      <div class="match-audience" id="matched-guide-audience"></div>
+      <div class="match-price" id="matched-guide-price"></div>
+      <button class="btn btn-primary btn-block" id="matched-guide-cta">Get My Guide — $9</button>
+    </div>
+
+    <!-- Email / Text capture -->
+    <div id="capture-section" class="capture-section" style="display:none;">
+      <h3 id="capture-heading"></h3>
+      <p id="capture-body"></p>
+      <div class="capture-toggle">
+        <button class="active" onclick="toggleCapture('email')">📧 Email</button>
+        <button onclick="toggleCapture('text')">💬 Text</button>
+      </div>
+      <div id="capture-email-field">
+        <input type="email" class="capture-input" placeholder="Your email (optional)">
+      </div>
+      <div id="capture-text-field" style="display:none;">
+        <input type="tel" class="capture-input" placeholder="Your phone number (optional)">
+      </div>
+      <button id="capture-btn" class="btn btn-block btn-sm" style="color:#fff;"></button>
+      <button class="btn-text" style="display:block; margin: 0 auto;">No thanks</button>
+    </div>
+
+    <!-- Additional products -->
+    <div id="products-section" class="cta-section" style="display:none;">
+      <h3 id="products-heading"></h3>
+      <div id="products-list"></div>
+    </div>
+
+    <!-- Browse all resources link -->
+    <div id="browse-all-section" style="text-align:center; margin-bottom:20px;">
+      <a onclick="switchView('catalog')" style="color:var(--accent); font-weight:600; font-size:0.95rem; text-decoration:none; cursor:pointer;">Browse all 79 resources →</a>
+      <p style="font-size:0.85rem; color:var(--muted); margin-top:4px;">Search by topic, audience, or keyword</p>
+    </div>
+
+    <div class="crisis-footer" id="result-crisis-footer">
+      <p>Crisis resources are always free and available:</p>
+      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    </div>
+    <div class="disclaimer">This check-in is clinically informed but is not clinical advice, a diagnosis, or a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988, or text HOME to 741741 to reach the Crisis Text Line.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ################################################################
+     VIEW 2: RESOURCE CATALOG
+     ################################################################ -->
+<div id="view-catalog" class="view">
+<div class="catalog-container">
+
+  <!-- HEADER -->
+  <div class="catalog-header">
+    <h1>All Resources</h1>
+    <p>Browse all 79 guides — each available in 17 audience-specific editions. Search by keyword, filter by topic or type.</p>
+    <a class="quiz-link" onclick="switchView('quiz')">← Not sure where to start? Take the quiz</a>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="search" placeholder="Search guides..." oninput="applyFilters()">
+    <div class="filter-row">
+      <div class="filter-group">
+        <label>Topic Area</label>
+        <select class="filter-select" id="filter-domain" onchange="applyFilters()">
+          <option value="all">All topics</option>
+          <option value="nervous_system_mood_cognition">Mind & Nervous System</option>
+          <option value="sleep_body_pain_substances">Sleep, Body & Substances</option>
+          <option value="relationships_family_parenting">Relationships & Family</option>
+          <option value="intimacy_sex_connection">Intimacy & Connection</option>
+          <option value="moral_injury_guilt_shame_spirituality">Moral Injury & Spirituality</option>
+          <option value="work_identity_transition">Work, Identity & Transition</option>
+          <option value="dopamine_habits_addictions">Habits & Addictions</option>
+          <option value="gap_or_custom">Specialized Topics</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Product Type</label>
+        <select class="filter-select" id="filter-offer" onchange="applyFilters()">
+          <option value="all">All types</option>
+          <option value="guide">Guide — $9</option>
+          <option value="kit">Kit — $19</option>
+          <option value="bundle">Bundle — $34</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Audience</label>
+        <select class="filter-select" id="filter-audience" onchange="applyFilters()">
+          <option value="all">All editions</option>
+          <option value="military-veteran">Military / Veteran</option>
+          <option value="first-responder">First Responder</option>
+          <option value="healthcare-workers">Healthcare Worker</option>
+          <option value="educators">Educator</option>
+          <option value="lgbtq">LGBTQ+</option>
+          <option value="christian">Christian</option>
+          <option value="faith-beyond-christian">Faith (non-Christian)</option>
+          <option value="bipoc-racial-trauma">BIPOC / Racial Trauma</option>
+          <option value="young-adult-gen-z">Young Adult / Gen Z</option>
+          <option value="single-parent">Single Parent</option>
+          <option value="neurodivergent">Neurodivergent</option>
+          <option value="addiction-recovery">Addiction / Recovery</option>
+          <option value="grief-loss">Grief / Loss</option>
+          <option value="chronic-illness-chronic-pain">Chronic Illness / Pain</option>
+          <option value="social-workers-counselors">Social Worker / Counselor</option>
+          <option value="high-stress-jobs">High Stress Job</option>
+          <option value="general-mental-health">General</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT COUNT -->
+  <div class="result-count" id="result-count"></div>
+
+  <!-- GUIDE GRID -->
+  <div class="guide-grid" id="guide-grid"></div>
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="empty-state" style="display:none;">
+    <h3>No guides match your search</h3>
+    <p>Try a different keyword or clear your filters.</p>
+  </div>
+
+  <!-- CRISIS FOOTER -->
+  <div class="crisis-footer">
+    <p>Crisis resources are always free and available:</p>
+    <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+    <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+  </div>
+  <div class="disclaimer">This content is clinically informed but is not clinical advice, a diagnosis, or a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988, or text HOME to 741741 to reach the Crisis Text Line.</div>
+
+</div>
+</div>
+
+<script>
+/* ============================================================
+   VIEW SWITCHING
+   ============================================================ */
+
+function switchView(target) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  if (target === 'catalog') {
+    document.getElementById('view-catalog').classList.add('active');
+    applyFilters(); // render catalog on first visit
+  } else {
+    document.getElementById('view-quiz').classList.add('active');
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   SHARED GUIDE CATALOG — 79 guides with domain + offer mapping
+   ============================================================ */
+
+const guideCatalog = [
+  { id:"ch-01", title:"Always On: Your High-Alert Brain", domain:"nervous_system_mood_cognition", hints:["ch01"], offer:"kit", price:19 },
+  { id:"ch-03", title:"Hypervigilance at Home", domain:"nervous_system_mood_cognition", hints:["ch03"], offer:"guide", price:9 },
+  { id:"ch-04", title:"Anger and Short-Fuse Days", domain:"nervous_system_mood_cognition", hints:["ch04"], offer:"kit", price:19 },
+  { id:"ch-06", title:"Depression and Numbness", domain:"nervous_system_mood_cognition", hints:["ch06"], offer:"kit", price:19 },
+  { id:"ch-08", title:"Shame Spirals + Self-Loathing", domain:"nervous_system_mood_cognition", hints:["ch08"], offer:"guide", price:9 },
+  { id:"ch-09", title:"Memory Slips", domain:"nervous_system_mood_cognition", hints:["ch09"], offer:"guide", price:9 },
+  { id:"ch-11", title:"Decision Fatigue", domain:"nervous_system_mood_cognition", hints:["ch11"], offer:"guide", price:9 },
+  { id:"ch-12", title:"Overreacting to Small Stuff", domain:"nervous_system_mood_cognition", hints:["ch12"], offer:"guide", price:9 },
+  { id:"split-01", title:"Blow Up Recovery", domain:"nervous_system_mood_cognition", hints:["ch02"], offer:"kit", price:19 },
+  { id:"split-02", title:"Shut Down Reconnect", domain:"nervous_system_mood_cognition", hints:["ch02"], offer:"guide", price:9 },
+  { id:"split-03", title:"Overthinking Loop", domain:"nervous_system_mood_cognition", hints:["ch05"], offer:"kit", price:19 },
+  { id:"split-04", title:"Night Spiral Stopper", domain:"nervous_system_mood_cognition", hints:["ch05"], offer:"guide", price:9 },
+  { id:"split-05", title:"Hopelessness First Aid", domain:"nervous_system_mood_cognition", hints:["ch07"], offer:"kit", price:19 },
+  { id:"split-06", title:"Crisis Conversation Action", domain:"nervous_system_mood_cognition", hints:["ch07"], offer:"kit", price:19 },
+  { id:"split-07", title:"Tunnel Vision Reset", domain:"nervous_system_mood_cognition", hints:["ch10"], offer:"guide", price:9 },
+  { id:"split-08", title:"Scattered Brain Reset", domain:"nervous_system_mood_cognition", hints:["ch10"], offer:"guide", price:9 },
+
+  { id:"ch-13", title:"Chronic Sleep Debt", domain:"sleep_body_pain_substances", hints:["ch13"], offer:"guide", price:9 },
+  { id:"ch-14", title:"Sleep Apnea and Snoring", domain:"sleep_body_pain_substances", hints:["ch14"], offer:"guide", price:9 },
+  { id:"ch-19", title:"Noise, Crowds, Public Spaces", domain:"sleep_body_pain_substances", hints:["ch19"], offer:"guide", price:9 },
+  { id:"ch-20", title:"Vision, Balance, Motion Sensitivity", domain:"sleep_body_pain_substances", hints:["ch20"], offer:"guide", price:9 },
+  { id:"split-09", title:"Nightmare Recovery Plan", domain:"sleep_body_pain_substances", hints:["ch15"], offer:"guide", price:9 },
+  { id:"split-10", title:"3am Wake Loop Reset", domain:"sleep_body_pain_substances", hints:["ch15"], offer:"guide", price:9 },
+  { id:"split-11", title:"Pain Flare Plan", domain:"sleep_body_pain_substances", hints:["ch16"], offer:"guide", price:9 },
+  { id:"split-12", title:"Tension Release Plan", domain:"sleep_body_pain_substances", hints:["ch16"], offer:"guide", price:9 },
+  { id:"split-13", title:"TBI Brain Fog Plan", domain:"sleep_body_pain_substances", hints:["ch17"], offer:"guide", price:9 },
+  { id:"split-14", title:"Headache Functional Plan", domain:"sleep_body_pain_substances", hints:["ch17"], offer:"guide", price:9 },
+  { id:"split-15", title:"Alcohol Numbing Interrupt", domain:"sleep_body_pain_substances", hints:["ch18"], offer:"bundle", price:34 },
+  { id:"split-16", title:"Pill-Cycle Interrupt Plan", domain:"sleep_body_pain_substances", hints:["ch18"], offer:"bundle", price:34 },
+
+  { id:"ch-21", title:"Home Feels Like a Minefield", domain:"relationships_family_parenting", hints:["ch21"], offer:"guide", price:9 },
+  { id:"ch-22", title:"Red/Yellow/Green Communication", domain:"relationships_family_parenting", hints:["ch22"], offer:"guide", price:9 },
+  { id:"ch-23", title:"Repair After Damage", domain:"relationships_family_parenting", hints:["ch23"], offer:"guide", price:9 },
+  { id:"ch-24", title:"Parenting on Empty", domain:"relationships_family_parenting", hints:["ch24"], offer:"guide", price:9 },
+  { id:"ch-26", title:"Kids in the Blast Radius", domain:"relationships_family_parenting", hints:["ch26"], offer:"guide", price:9 },
+  { id:"ch-27", title:"Family Life in Transition", domain:"relationships_family_parenting", hints:["ch27"], offer:"guide", price:9 },
+  { id:"split-17", title:"Secondary Trauma for Partners", domain:"relationships_family_parenting", hints:["ch25"], offer:"guide", price:9 },
+  { id:"split-18", title:"Secondary Trauma for Teams", domain:"relationships_family_parenting", hints:["ch25"], offer:"bundle", price:34 },
+
+  { id:"ch-28", title:"Emotional Numbness", domain:"intimacy_sex_connection", hints:["ch28"], offer:"guide", price:9 },
+  { id:"ch-29", title:"Low Desire and Low Drive", domain:"intimacy_sex_connection", hints:["ch29"], offer:"guide", price:9 },
+  { id:"ch-30", title:"Stress Shuts Down Sex", domain:"intimacy_sex_connection", hints:["ch30"], offer:"guide", price:9 },
+  { id:"ch-31", title:"Sex and Avoidance After Difficult Experiences", domain:"intimacy_sex_connection", hints:["ch31"], offer:"guide", price:9 },
+  { id:"ch-33", title:"Touch Without Pressure", domain:"intimacy_sex_connection", hints:["ch33"], offer:"guide", price:9 },
+  { id:"ch-34", title:"Body Image, Scars, Sexual Confidence", domain:"intimacy_sex_connection", hints:["ch34"], offer:"guide", price:9 },
+  { id:"ch-35", title:"Sex After Injury/Health Change", domain:"intimacy_sex_connection", hints:["ch35"], offer:"guide", price:9 },
+  { id:"split-19", title:"Habit Loop Reset", domain:"intimacy_sex_connection", hints:["ch32"], offer:"bundle", price:34 },
+  { id:"split-20", title:"Shame Loop Repair", domain:"intimacy_sex_connection", hints:["ch32"], offer:"guide", price:9 },
+
+  { id:"ch-36", title:"Moral Injury 101", domain:"moral_injury_guilt_shame_spirituality", hints:["ch36"], offer:"guide", price:9 },
+  { id:"ch-37", title:"Betrayed by the System", domain:"moral_injury_guilt_shame_spirituality", hints:["ch37"], offer:"guide", price:9 },
+  { id:"ch-38", title:"When You Feel Like the Villain", domain:"moral_injury_guilt_shame_spirituality", hints:["ch38"], offer:"guide", price:9 },
+  { id:"ch-39", title:"Faith, God, Big Questions", domain:"moral_injury_guilt_shame_spirituality", hints:["ch39"], offer:"guide", price:9 },
+  { id:"split-21", title:"Shame and Intimacy Repair", domain:"moral_injury_guilt_shame_spirituality", hints:["ch40"], offer:"guide", price:9 },
+  { id:"split-22", title:"Disclosure Repair", domain:"moral_injury_guilt_shame_spirituality", hints:["ch40"], offer:"guide", price:9 },
+
+  { id:"ch-41", title:"Between Worlds: Identity After Role", domain:"work_identity_transition", hints:["ch41"], offer:"bundle", price:34 },
+  { id:"ch-42", title:"Rebuilding Mission and Meaning", domain:"work_identity_transition", hints:["ch42"], offer:"bundle", price:34 },
+  { id:"ch-45", title:"Loneliness and Loss of Tribe", domain:"work_identity_transition", hints:["ch45"], offer:"bundle", price:34 },
+  { id:"ch-46", title:"Lone Wolf to Healthy Team Member", domain:"work_identity_transition", hints:["ch46"], offer:"bundle", price:34 },
+  { id:"split-23", title:"Work Identity Loss Plan", domain:"work_identity_transition", hints:["ch43"], offer:"bundle", price:34 },
+  { id:"split-24", title:"Overwhelm Stabilization Plan", domain:"work_identity_transition", hints:["ch43"], offer:"bundle", price:34 },
+  { id:"split-25", title:"Money Avoidance Reset", domain:"work_identity_transition", hints:["ch44"], offer:"bundle", price:34 },
+  { id:"split-26", title:"Household Chaos Reset", domain:"work_identity_transition", hints:["ch44"], offer:"guide", price:9 },
+
+  { id:"split-27", title:"Screen and Scroll Loop Reset", domain:"dopamine_habits_addictions", hints:["ch47"], offer:"bundle", price:34 },
+  { id:"split-28", title:"Compulsion Interrupt Plan", domain:"dopamine_habits_addictions", hints:["ch47"], offer:"bundle", price:34 },
+
+  { id:"new-01", title:"Panic Attacks in Public: What To Do in 90 Seconds", domain:"gap_or_custom", hints:[], offer:"kit", price:19 },
+  { id:"new-02", title:"Post-Incident Crash: The Day-After Recovery Guide", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-03", title:"Grief After Suicide Loss", domain:"gap_or_custom", hints:[], offer:"kit", price:19 },
+  { id:"new-04", title:"Survivor Guilt After Calls, Scenes, Incidents", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-05", title:"Court/Complaint/Investigation Stress Survival", domain:"gap_or_custom", hints:[], offer:"bundle", price:34 },
+  { id:"new-06", title:"Shift-Work Relationship Survival Plan", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-07", title:"Co-Parenting Under Burnout and Conflict", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-08", title:"Returning to Work After Mental Health Leave", domain:"gap_or_custom", hints:[], offer:"bundle", price:34 },
+  { id:"new-09", title:"Peer-Support Conversations for Teammates", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-10", title:"How To Ask for Help Without Feeling Weak", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-11", title:"Building a Personal Safety Network", domain:"gap_or_custom", hints:[], offer:"kit", price:19 },
+  { id:"new-12", title:"What To Do When Someone Refuses Help", domain:"gap_or_custom", hints:[], offer:"kit", price:19 },
+  { id:"new-13", title:"Digital Overload and Doom-Scroll Recovery", domain:"gap_or_custom", hints:[], offer:"bundle", price:34 },
+  { id:"new-14", title:"Caffeine and Sleep Trap Reset", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-15", title:"Eating Patterns Under Stress Reset", domain:"gap_or_custom", hints:[], offer:"bundle", price:34 },
+  { id:"new-16", title:"Boundaries With Family Who Don't Understand the Job", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-17", title:"Dating While Carrying Trauma and Hypervigilance", domain:"gap_or_custom", hints:[], offer:"guide", price:9 },
+  { id:"new-18", title:"Year-One Transition Guide for Newly Separated or Retired", domain:"gap_or_custom", hints:[], offer:"bundle", price:34 }
+];
+
+/* ============================================================
+   RISK QUIZ QUESTIONS — Two per track
+   ============================================================ */
+
+const tracks = {
+  self: [
+    {
+      id: "self-q1", category: "State",
+      prompt: "How are you really doing right now?",
+      options: [
+        { label: "I'm doing okay — some stress, but I'm managing", score: 0 },
+        { label: "I'm struggling more than usual — low energy, poor sleep, feeling disconnected", score: 1 },
+        { label: "I'm in real pain — overwhelmed, hopeless, or barely getting through the day", score: 2 },
+        { label: "I feel like I'm in crisis — I can't function and I need help now", score: 3 }
+      ]
+    },
+    {
+      id: "self-q2", category: "Safety",
+      prompt: "Have you had thoughts about hurting yourself or that you'd be better off dead?",
+      options: [
+        { label: "No, not at all", score: 0 },
+        { label: "I've had a fleeting thought, but it passed", score: 1 },
+        { label: "I've had these thoughts more than once and they're hard to shake", score: 2 },
+        { label: "I think about it constantly or I have a plan", score: 3 }
+      ]
+    }
+  ],
+  someone: [
+    {
+      id: "someone-q1", category: "Observations",
+      prompt: "What changes have you noticed in the person you're worried about?",
+      options: [
+        { label: "They seem a little off, but mostly themselves", score: 0 },
+        { label: "They've been more withdrawn, moody, or not acting like themselves", score: 1 },
+        { label: "They've changed a lot — isolating, sleeping differently, losing interest in everything", score: 2 },
+        { label: "They've given things away, said goodbye, talked about being a burden, or mentioned not wanting to be here", score: 3 }
+      ]
+    },
+    {
+      id: "someone-q2", category: "Direct Concern",
+      prompt: "Has this person talked about suicide, self-harm, or not wanting to be alive?",
+      options: [
+        { label: "No, nothing like that", score: 0 },
+        { label: "They've made vague comments that made me uneasy", score: 1 },
+        { label: "They've said things that really worried me, more than once", score: 2 },
+        { label: "They've told me they have a plan, or they've attempted before", score: 3 }
+      ]
+    }
+  ]
+};
+
+/* ============================================================
+   MATCHING QUESTIONS — 3 questions to find the right guide
+   ============================================================ */
+
+const matchQuestions = [
+  {
+    id: "topic-need",
+    prompt: "What do you need most right now?",
+    subtext: "",
+    type: "single",
+    options: [
+      { label: "Calm my mind and body — stop spiraling", weights: { nervous_system_mood_cognition: 3, sleep_body_pain_substances: 2 } },
+      { label: "Handle conflict at home and communicate better", weights: { relationships_family_parenting: 3, intimacy_sex_connection: 2 } },
+      { label: "Work through guilt, shame, or moral injury", weights: { moral_injury_guilt_shame_spirituality: 3 } },
+      { label: "Rebuild purpose, identity, and connection", weights: { work_identity_transition: 3 } },
+      { label: "Break coping habits I feel stuck in", weights: { dopamine_habits_addictions: 3, sleep_body_pain_substances: 1 } }
+    ]
+  },
+  {
+    id: "situation",
+    prompt: "Which sounds most like your week?",
+    subtext: "",
+    type: "single",
+    options: [
+      { label: "Short fuse, then shut down, then regret", hints: ["ch02","ch04","ch23"] },
+      { label: "Can't switch off — bad sleep, wired and tired", hints: ["ch05","ch13","ch15"] },
+      { label: "Home feels tense and conversations go sideways", hints: ["ch21","ch22","ch23"] },
+      { label: "I feel alone and disconnected from purpose", hints: ["ch41","ch42","ch45"] },
+      { label: "I keep numbing out with habits or substances", hints: ["ch18","ch32","ch47"] }
+    ]
+  },
+  {
+    id: "audience",
+    prompt: "Which of these fits you best?",
+    subtext: "This helps us match you with a version written for your world. Pick one, or keep it general.",
+    type: "single",
+    options: [
+      { label: "Military / Veteran", bucket: "military-veteran" },
+      { label: "First Responder", bucket: "first-responder" },
+      { label: "Healthcare Worker", bucket: "healthcare-workers" },
+      { label: "Educator", bucket: "educators" },
+      { label: "LGBTQ+", bucket: "lgbtq" },
+      { label: "Christian", bucket: "christian" },
+      { label: "Faith (non-Christian)", bucket: "faith-beyond-christian" },
+      { label: "BIPOC / Racial Trauma", bucket: "bipoc-racial-trauma" },
+      { label: "Young Adult / Gen Z", bucket: "young-adult-gen-z" },
+      { label: "Single Parent", bucket: "single-parent" },
+      { label: "Neurodivergent", bucket: "neurodivergent" },
+      { label: "Addiction / Recovery", bucket: "addiction-recovery" },
+      { label: "Grief / Loss", bucket: "grief-loss" },
+      { label: "Chronic Illness / Pain", bucket: "chronic-illness-chronic-pain" },
+      { label: "Social Worker / Counselor", bucket: "social-workers-counselors" },
+      { label: "High Stress Job", bucket: "high-stress-jobs" },
+      { label: "Keep it general", bucket: "general-mental-health" }
+    ]
+  }
+];
+
+const matchQuestionsSomeone = [
+  {
+    id: "topic-need",
+    prompt: "What does this person seem to need most?",
+    subtext: "",
+    type: "single",
+    options: [
+      { label: "Help calming down — they seem wired, on edge, or spiraling", weights: { nervous_system_mood_cognition: 3, sleep_body_pain_substances: 2 } },
+      { label: "Help with relationships — home tension or conflict", weights: { relationships_family_parenting: 3, intimacy_sex_connection: 2 } },
+      { label: "They're carrying guilt, shame, or moral pain", weights: { moral_injury_guilt_shame_spirituality: 3 } },
+      { label: "They seem lost — disconnected from purpose or identity", weights: { work_identity_transition: 3 } },
+      { label: "They're stuck in habits or numbing out", weights: { dopamine_habits_addictions: 3, sleep_body_pain_substances: 1 } }
+    ]
+  },
+  {
+    id: "situation",
+    prompt: "Which sounds most like what you're seeing?",
+    subtext: "",
+    type: "single",
+    options: [
+      { label: "They blow up, then shut down, then seem to regret it", hints: ["ch02","ch04","ch23"] },
+      { label: "They're exhausted but can't switch off or sleep", hints: ["ch05","ch13","ch15"] },
+      { label: "They're tense at home — conversations keep going wrong", hints: ["ch21","ch22","ch23"] },
+      { label: "They seem isolated and disconnected from everything", hints: ["ch41","ch42","ch45"] },
+      { label: "They're numbing out — drinking, scrolling, checking out", hints: ["ch18","ch32","ch47"] }
+    ]
+  },
+  {
+    id: "audience",
+    prompt: "Which of these best describes them?",
+    subtext: "This helps us match a version written for their world.",
+    type: "single",
+    options: matchQuestions[2].options
+  }
+];
+
+/* ============================================================
+   RESULT COPY — varies by track × risk band
+   ============================================================ */
+
+const resultCopy = {
+  self: {
+    low_risk: {
+      badge: "Low Risk", badgeClass: "badge-low", cardClass: "result-low",
+      headline: "You're in a good place right now.",
+      body: "Based on your answers, you're managing well. That's great — and it tells us a lot about your resilience. We matched you with a resource for where you are right now.",
+      supportNote: "This is not a diagnosis. Just a quick snapshot of where things are right now.",
+      captureHeading: "Want a copy of your results?",
+      captureBody: "We can send your result and your matched resource. Optional.",
+      captureBtn: "Send Me My Results", captureBtnClass: "btn-primary",
+      productsHeading: "More tools that match where you are",
+      products: [
+        { icon: "💬", name: "Check On Me", price: "Weekly check-in texts — $4.99/mo" },
+        { icon: "🗂", name: "Find a Therapist", price: "Free therapist directory" }
+      ]
+    },
+    moderate_risk: {
+      badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "result-moderate",
+      headline: "You're carrying more than you should have to carry alone.",
+      body: "Your answers tell us you're dealing with some real weight right now. That's not weakness — it's a signal. We matched you with a resource built for exactly this.",
+      supportNote: "You don't have to wait until things get worse to get support.",
+      captureHeading: "Want these next steps sent to you?",
+      captureBody: "We can send your result and your matched resource. Optional.",
+      captureBtn: "Send Me My Next Steps", captureBtnClass: "btn-yellow",
+      productsHeading: "Additional support",
+      products: [
+        { icon: "💬", name: "Check On Me", price: "Weekly support texts — $4.99/mo" },
+        { icon: "🗂", name: "Find a Therapist", price: "Free therapist directory" }
+      ]
+    },
+    high_risk: {
+      badge: "High Risk", badgeClass: "badge-high", cardClass: "result-high",
+      headline: "You matter. Support is available right now.",
+      body: "Your answers tell us you're in real pain. That's not your fault, and you don't have to white-knuckle this alone. Please start with the crisis resources below — then check out the resource we matched for you.",
+      supportNote: "Please use the free crisis support options first if you need help right now.",
+      crisisHeading: "Free crisis support — use these first",
+      captureHeading: "Want these resources in one place?",
+      captureBody: "We can send you everything on this page. Use the crisis options above first if you need help right now.",
+      captureBtn: "Send Me These Resources", captureBtnClass: "btn-orange",
+      productsHeading: "Additional support tools",
+      products: []
+    },
+    critical: {
+      badge: "Crisis", badgeClass: "badge-critical", cardClass: "result-critical",
+      headline: "You're in crisis. Get help right now.",
+      body: "Based on your answers, you're experiencing a mental health crisis. This is serious, and help is available immediately. You do not have to do this alone.",
+      crisisHeading: "",
+      cantCallItems: [
+        "Go to your nearest emergency room",
+        "Tell someone you trust what you're experiencing",
+        "Stay in a safe place until help arrives"
+      ],
+      captureHeading: "Want a copy of these crisis resources?",
+      captureBody: "If it would help, we can email this list to you. <strong>Only do this after you've used the crisis support options above.</strong>",
+      captureBtn: "Email Me This List", captureBtnClass: "btn-crisis-outline"
+    }
+  },
+  someone: {
+    low_risk: {
+      badge: "Low Risk", badgeClass: "badge-low", cardClass: "result-low",
+      headline: "It sounds like they're okay — but you're smart to check.",
+      body: "Based on what you've shared, the person you're thinking about doesn't seem to be in immediate danger. We matched you with a resource to help you start or continue that conversation.",
+      supportNote: "Trust your instincts. If things change, come back.",
+      captureHeading: "Want a copy of these resources?",
+      captureBody: "We'll send you this result and your matched resource. Optional.",
+      captureBtn: "Send Me These Resources", captureBtnClass: "btn-primary",
+      productsHeading: "More tools for the conversation",
+      products: [
+        { icon: "💬", name: "Check On Me", price: "Weekly nudges to keep checking in — $4.99/mo" },
+        { icon: "🗂", name: "Find a Therapist", price: "Free directory for them (or you)" }
+      ]
+    },
+    moderate_risk: {
+      badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "result-moderate",
+      headline: "What you're noticing matters. Here's how to help.",
+      body: "The person you're concerned about is showing signs that something is off. You don't need a perfect script or a clinical degree to help — we matched you with a resource built for exactly this situation.",
+      supportNote: "You don't have to have all the answers. You just have to ask the question.",
+      captureHeading: "Want these next steps sent to you?",
+      captureBody: "We'll send you your result and the matched resource. Optional.",
+      captureBtn: "Send Me My Next Steps", captureBtnClass: "btn-yellow",
+      productsHeading: "More tools for this situation",
+      products: [
+        { icon: "💬", name: "Check On Me", price: "Weekly nudges to keep checking in — $4.99/mo" },
+        { icon: "🗂", name: "Find a Therapist", price: "Free directory for them (or you)" }
+      ]
+    },
+    high_risk: {
+      badge: "High Risk", badgeClass: "badge-high", cardClass: "result-high",
+      headline: "Trust your gut. This person may need help now.",
+      body: "What you're describing is serious. Start with the crisis resources below — then check the resource we matched for you.",
+      supportNote: "You are not responsible for fixing this. But you can be the person who doesn't look away.",
+      crisisHeading: "Help them get support right now",
+      captureHeading: "Want these steps sent to you?",
+      captureBody: "We'll send you everything on this page. Use the crisis resources above first if this is urgent.",
+      captureBtn: "Send Me These Resources", captureBtnClass: "btn-orange",
+      productsHeading: "More tools to help",
+      products: []
+    },
+    critical: {
+      badge: "Crisis", badgeClass: "badge-critical", cardClass: "result-critical",
+      headline: "This is a crisis. Act now.",
+      body: "Based on what you've shared, this person is in serious danger. You don't need to be a professional to act. What matters most right now is that you don't leave them alone — and that you get them connected to help immediately.",
+      crisisHeading: "",
+      cantCallItems: [
+        "Stay with them or keep them on the phone",
+        "Call 988 together — or call for them",
+        "Take them to the nearest emergency room",
+        "Remove access to anything they could use to hurt themselves if you safely can"
+      ],
+      captureHeading: "Want a copy of these crisis resources?",
+      captureBody: "We can email this list to you so you can reference it or share it. <strong>Only do this after you've taken action with the crisis options above.</strong>",
+      captureBtn: "Email Me This List", captureBtnClass: "btn-crisis-outline"
+    }
+  }
+};
+
+/* ============================================================
+   TRANSITION SCREEN COPY
+   ============================================================ */
+
+const transitionCopy = {
+  self: {
+    low_risk: {
+      badge: "Low Risk", badgeClass: "badge-low", cardClass: "transition-low",
+      headline: "You're in a good place. Let's find a resource that keeps you there.",
+      body: "You're managing well — and that's worth protecting. Three quick questions and we'll match you with a resource built for your situation."
+    },
+    moderate_risk: {
+      badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "transition-moderate",
+      headline: "You're carrying more than you need to carry alone.",
+      body: "We've got something specific for your situation. Three quick questions and we'll match you with a resource built for exactly what you're going through."
+    },
+    high_risk: {
+      badge: "High Risk", badgeClass: "badge-high", cardClass: "transition-high",
+      headline: "You matter. And there's a resource built for this.",
+      body: "Before we match you, remember — 988 and Crisis Text Line are always here for you. When you're ready, three quick questions and we'll find the right resource."
+    }
+  },
+  someone: {
+    low_risk: {
+      badge: "Low Risk", badgeClass: "badge-low", cardClass: "transition-low",
+      headline: "They seem okay — but you're smart to be ready.",
+      body: "Three quick questions and we'll match you with a resource for how to start or continue the conversation."
+    },
+    moderate_risk: {
+      badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "transition-moderate",
+      headline: "What you're noticing matters. Let's find the right tool.",
+      body: "Three quick questions and we'll match you with a resource built for exactly this situation — so you know what to say and how to help."
+    },
+    high_risk: {
+      badge: "High Risk", badgeClass: "badge-high", cardClass: "transition-high",
+      headline: "Trust your gut. Let's find you the right resource.",
+      body: "If this is urgent, start with the crisis resources below. When you're ready, three quick questions and we'll match you with the right tool to help them."
+    }
+  }
+};
+
+/* ============================================================
+   QUIZ STATE
+   ============================================================ */
+
+let currentTrack = null;
+let currentQuestion = 0;
+const riskAnswers = [null, null];
+let riskResult = null;
+
+let currentMatchQuestion = 0;
+const matchAnswers = [null, null, null];
+
+let matchedGuide = null;
+let matchedAudience = null;
+
+/* ============================================================
+   QUIZ NAVIGATION
+   ============================================================ */
+
+function showScreen(id) {
+  document.querySelectorAll('#view-quiz .screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function selectTrack(track) {
+  currentTrack = track;
+  currentQuestion = 0;
+  riskAnswers[0] = null;
+  riskAnswers[1] = null;
+  renderQuestion();
+  showScreen('screen-quiz');
+}
+
+/* ============================================================
+   RISK QUIZ
+   ============================================================ */
+
+function renderQuestion() {
+  const questions = tracks[currentTrack];
+  const q = questions[currentQuestion];
+  const totalSteps = 5;
+  const step = currentQuestion + 1;
+
+  document.getElementById('question-count').textContent = 'Question ' + step + ' of ' + totalSteps;
+  document.getElementById('progress-fill').style.width = ((step / totalSteps) * 100) + '%';
+  document.getElementById('question-prompt').textContent = q.prompt;
+
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
+  q.options.forEach(function(opt, i) {
+    const btn = document.createElement('button');
+    btn.className = 'option' + (riskAnswers[currentQuestion] === i ? ' selected' : '');
+    btn.textContent = opt.label;
+    btn.addEventListener('click', function() { selectRiskOption(i); });
+    container.appendChild(btn);
+  });
+
+  document.getElementById('btn-back').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
+  document.getElementById('btn-next').disabled = riskAnswers[currentQuestion] === null;
+}
+
+function selectRiskOption(index) {
+  riskAnswers[currentQuestion] = index;
+  document.querySelectorAll('#options-container .option').forEach(function(el, i) {
+    el.classList.toggle('selected', i === index);
+  });
+  document.getElementById('btn-next').disabled = false;
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+  } else {
+    showScreen('screen-track');
+  }
+}
+
+function nextQuestion() {
+  if (riskAnswers[currentQuestion] === null) return;
+  if (currentQuestion < tracks[currentTrack].length - 1) {
+    currentQuestion++;
+    renderQuestion();
+  } else {
+    riskResult = calculateScore();
+    if (riskResult.riskLevel === 'critical') {
+      showCriticalResult();
+    } else {
+      showTransition();
+    }
+  }
+}
+
+/* ============================================================
+   SCORING
+   ============================================================ */
+
+function calculateScore() {
+  const questions = tracks[currentTrack];
+  var total = 0;
+  for (var i = 0; i < questions.length; i++) {
+    total += questions[i].options[riskAnswers[i]].score;
+  }
+  var q2Score = questions[1].options[riskAnswers[1]].score;
+  if (q2Score === 3) return { total: total, riskLevel: 'critical', override: 'q2_force_critical' };
+  if (q2Score === 2) return { total: Math.max(total, 4), riskLevel: 'high_risk', override: 'q2_min_high_risk' };
+  if (total >= 6) return { total: total, riskLevel: 'critical', override: null };
+  if (total >= 4) return { total: total, riskLevel: 'high_risk', override: null };
+  if (total >= 2) return { total: total, riskLevel: 'moderate_risk', override: null };
+  return { total: total, riskLevel: 'low_risk', override: null };
+}
+
+/* ============================================================
+   TRANSITION SCREEN
+   ============================================================ */
+
+function showTransition() {
+  var copy = transitionCopy[currentTrack][riskResult.riskLevel];
+
+  document.getElementById('transition-card').className = 'transition-card ' + copy.cardClass;
+  document.getElementById('transition-badge').className = 'score-badge ' + copy.badgeClass;
+  document.getElementById('transition-badge').textContent = copy.badge;
+  document.getElementById('transition-headline').textContent = copy.headline;
+  document.getElementById('transition-body').textContent = copy.body;
+
+  document.getElementById('transition-crisis').style.display =
+    riskResult.riskLevel === 'high_risk' ? '' : 'none';
+
+  showScreen('screen-transition');
+}
+
+/* ============================================================
+   MATCHING QUESTIONS
+   ============================================================ */
+
+function startMatching() {
+  currentMatchQuestion = 0;
+  matchAnswers[0] = null;
+  matchAnswers[1] = null;
+  matchAnswers[2] = null;
+  renderMatchQuestion();
+  showScreen('screen-match');
+}
+
+function getMatchQuestions() {
+  return currentTrack === 'someone' ? matchQuestionsSomeone : matchQuestions;
+}
+
+function renderMatchQuestion() {
+  var questions = getMatchQuestions();
+  var q = questions[currentMatchQuestion];
+  var totalSteps = 5;
+  var step = 3 + currentMatchQuestion;
+
+  document.getElementById('match-question-count').textContent = 'Question ' + step + ' of ' + totalSteps;
+  document.getElementById('match-progress-fill').style.width = ((step / totalSteps) * 100) + '%';
+  document.getElementById('match-question-prompt').textContent = q.prompt;
+  document.getElementById('match-question-subtext').textContent = q.subtext || '';
+
+  var container = document.getElementById('match-options-container');
+  container.innerHTML = '';
+  q.options.forEach(function(opt, i) {
+    var btn = document.createElement('button');
+    btn.className = 'option' + (matchAnswers[currentMatchQuestion] === i ? ' selected' : '');
+    btn.textContent = opt.label;
+    btn.addEventListener('click', function() { selectMatchOption(i); });
+    container.appendChild(btn);
+  });
+
+  document.getElementById('match-btn-back').style.visibility = 'visible';
+  var nextBtn = document.getElementById('match-btn-next');
+  nextBtn.disabled = matchAnswers[currentMatchQuestion] === null;
+  nextBtn.textContent = currentMatchQuestion === questions.length - 1 ? 'See My Results →' : 'Next →';
+}
+
+function selectMatchOption(index) {
+  matchAnswers[currentMatchQuestion] = index;
+  document.querySelectorAll('#match-options-container .option').forEach(function(el, i) {
+    el.classList.toggle('selected', i === index);
+  });
+  document.getElementById('match-btn-next').disabled = false;
+}
+
+function prevMatchQuestion() {
+  if (currentMatchQuestion > 0) {
+    currentMatchQuestion--;
+    renderMatchQuestion();
+  } else {
+    showScreen('screen-transition');
+  }
+}
+
+function nextMatchQuestion() {
+  if (matchAnswers[currentMatchQuestion] === null) return;
+  var questions = getMatchQuestions();
+  if (currentMatchQuestion < questions.length - 1) {
+    currentMatchQuestion++;
+    renderMatchQuestion();
+  } else {
+    resolveGuide();
+    showMatchedResult();
+  }
+}
+
+/* ============================================================
+   GUIDE RESOLUTION
+   ============================================================ */
+
+function resolveGuide() {
+  var questions = getMatchQuestions();
+  var q1Option = questions[0].options[matchAnswers[0]];
+  var weights = q1Option.weights || {};
+  var q2Option = questions[1].options[matchAnswers[1]];
+  var hints = q2Option.hints || [];
+  var q3Option = questions[2].options[matchAnswers[2]];
+  matchedAudience = q3Option.bucket;
+
+  var scored = guideCatalog.map(function(guide) {
+    var score = 0;
+    if (weights[guide.domain]) score += weights[guide.domain] * 10;
+    for (var h = 0; h < hints.length; h++) {
+      if (guide.hints && guide.hints.indexOf(hints[h]) !== -1) score += 25;
+    }
+    if (guide.offer === 'kit') score += 1;
+    if (guide.offer === 'bundle') score += 0.5;
+    return { id: guide.id, title: guide.title, domain: guide.domain, hints: guide.hints, offer: guide.offer, price: guide.price, matchScore: score };
+  });
+
+  scored.sort(function(a, b) { return b.matchScore - a.matchScore; });
+  matchedGuide = scored[0];
+}
+
+/* ============================================================
+   RESULT SCREENS
+   ============================================================ */
+
+function showCriticalResult() {
+  var copy = resultCopy[currentTrack].critical;
+  var isSomeone = currentTrack === 'someone';
+
+  renderResultCard(copy);
+
+  var crisisCta = document.getElementById('crisis-cta-section');
+  crisisCta.style.display = '';
+  crisisCta.style.border = '2px solid var(--red)';
+  var heading = document.getElementById('crisis-cta-heading');
+  heading.textContent = copy.crisisHeading || '';
+  heading.style.display = copy.crisisHeading ? '' : 'none';
+
+  document.getElementById('crisis-btn-988').style.background = 'var(--red)';
+  document.getElementById('crisis-btn-text').style.background = 'var(--red)';
+  document.getElementById('crisis-btn-911').style.display = '';
+  document.getElementById('crisis-btn-911').style.background = 'var(--red-dark)';
+
+  if (isSomeone) {
+    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 together — Suicide & Crisis Lifeline';
+  } else {
+    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 — Suicide & Crisis Lifeline';
+  }
+
+  var cantCall = document.getElementById('cant-call-section');
+  cantCall.style.display = '';
+  document.getElementById('cant-call-heading').textContent =
+    isSomeone ? "If they can't or won't call:" : "If you can't call right now:";
+  var list = document.getElementById('cant-call-list');
+  list.innerHTML = '';
+  copy.cantCallItems.forEach(function(item) {
+    var li = document.createElement('li');
+    li.textContent = item;
+    list.appendChild(li);
+  });
+
+  document.getElementById('matched-guide-section').style.display = 'none';
+  renderCapture(copy);
+  document.getElementById('products-section').style.display = 'none';
+
+  showScreen('screen-result');
+}
+
+function showMatchedResult() {
+  var copy = resultCopy[currentTrack][riskResult.riskLevel];
+  var isHigh = riskResult.riskLevel === 'high_risk';
+
+  renderResultCard(copy);
+
+  var crisisCta = document.getElementById('crisis-cta-section');
+  if (isHigh) {
+    crisisCta.style.display = '';
+    crisisCta.style.border = 'none';
+    var heading = document.getElementById('crisis-cta-heading');
+    heading.textContent = copy.crisisHeading || '';
+    heading.style.display = copy.crisisHeading ? '' : 'none';
+
+    document.getElementById('crisis-btn-988').style.background = 'var(--orange)';
+    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 — Suicide & Crisis Lifeline';
+    document.getElementById('crisis-btn-text').style.background = 'var(--orange)';
+    document.getElementById('crisis-btn-911').style.display = 'none';
+  } else {
+    crisisCta.style.display = 'none';
+  }
+
+  document.getElementById('cant-call-section').style.display = 'none';
+
+  var guideSection = document.getElementById('matched-guide-section');
+  guideSection.style.display = '';
+
+  document.getElementById('matched-guide-title').textContent = matchedGuide.title;
+
+  var audienceLabel = matchedAudience === 'general-mental-health'
+    ? 'General edition'
+    : matchQuestions[2].options.find(function(o) { return o.bucket === matchedAudience; }).label + ' edition';
+  document.getElementById('matched-guide-audience').textContent = audienceLabel;
+
+  document.getElementById('matched-guide-price').textContent = '$' + matchedGuide.price;
+
+  var offerLabelsMap = { guide: 'Get My Guide', kit: 'Get My Kit', bundle: 'Get My Bundle' };
+  var cta = document.getElementById('matched-guide-cta');
+  cta.textContent = (offerLabelsMap[matchedGuide.offer] || 'Get My Guide') + ' — $' + matchedGuide.price;
+  cta.className = 'btn btn-primary btn-block';
+
+  renderCapture(copy);
+
+  if (copy.products && copy.products.length > 0) {
+    var productsSection = document.getElementById('products-section');
+    productsSection.style.display = '';
+    document.getElementById('products-heading').textContent = copy.productsHeading;
+    var productsList = document.getElementById('products-list');
+    productsList.innerHTML = '';
+    copy.products.forEach(function(p) {
+      var card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = '<div class="product-info"><div class="product-name">' + p.icon + ' ' + p.name + '</div><div class="product-price">' + p.price + '</div></div>';
+      productsList.appendChild(card);
+    });
+  } else {
+    document.getElementById('products-section').style.display = 'none';
+  }
+
+  showScreen('screen-result');
+}
+
+function renderResultCard(copy) {
+  var card = document.getElementById('result-card');
+  card.className = 'result-card ' + copy.cardClass;
+  document.getElementById('result-badge').className = 'score-badge ' + copy.badgeClass;
+  document.getElementById('result-badge').textContent = copy.badge;
+  document.getElementById('result-headline').textContent = copy.headline;
+  document.getElementById('result-body').textContent = copy.body;
+
+  var supportNote = document.getElementById('result-support-note');
+  if (copy.supportNote) {
+    supportNote.textContent = copy.supportNote;
+    supportNote.style.display = '';
+  } else {
+    supportNote.style.display = 'none';
+  }
+}
+
+function renderCapture(copy) {
+  var capture = document.getElementById('capture-section');
+  if (copy.captureHeading) {
+    capture.style.display = '';
+    document.getElementById('capture-heading').textContent = copy.captureHeading;
+    document.getElementById('capture-body').innerHTML = copy.captureBody;
+    var captureBtn = document.getElementById('capture-btn');
+    captureBtn.textContent = copy.captureBtn;
+    captureBtn.className = 'btn btn-block btn-sm ' + copy.captureBtnClass;
+  } else {
+    capture.style.display = 'none';
+  }
+}
+
+function toggleCapture(mode) {
+  var buttons = document.querySelectorAll('.capture-toggle button');
+  buttons.forEach(function(b) { b.classList.remove('active'); });
+  if (mode === 'email') {
+    buttons[0].classList.add('active');
+    document.getElementById('capture-email-field').style.display = '';
+    document.getElementById('capture-text-field').style.display = 'none';
+  } else {
+    buttons[1].classList.add('active');
+    document.getElementById('capture-email-field').style.display = 'none';
+    document.getElementById('capture-text-field').style.display = '';
+  }
+}
+
+/* ============================================================
+   CATALOG LOGIC
+   ============================================================ */
+
+const domainLabels = {
+  nervous_system_mood_cognition: "Mind & Nervous System",
+  sleep_body_pain_substances: "Sleep, Body & Substances",
+  relationships_family_parenting: "Relationships & Family",
+  intimacy_sex_connection: "Intimacy & Connection",
+  moral_injury_guilt_shame_spirituality: "Moral Injury & Spirituality",
+  work_identity_transition: "Work, Identity & Transition",
+  dopamine_habits_addictions: "Habits & Addictions",
+  gap_or_custom: "Specialized Topics"
+};
+
+const domainClasses = {
+  nervous_system_mood_cognition: "domain-nervous",
+  sleep_body_pain_substances: "domain-sleep",
+  relationships_family_parenting: "domain-relationships",
+  intimacy_sex_connection: "domain-intimacy",
+  moral_injury_guilt_shame_spirituality: "domain-moral",
+  work_identity_transition: "domain-work",
+  dopamine_habits_addictions: "domain-dopamine",
+  gap_or_custom: "domain-gap"
+};
+
+const catOfferLabels = { guide: "Guide", kit: "Kit", bundle: "Bundle" };
+const catOfferClasses = { guide: "offer-guide", kit: "offer-kit", bundle: "offer-bundle" };
+const catOfferCTA = { guide: "Get Guide", kit: "Get Kit", bundle: "Get Bundle" };
+
+const audiences = [
+  { bucket: "military-veteran", label: "Military / Veteran" },
+  { bucket: "first-responder", label: "First Responder" },
+  { bucket: "healthcare-workers", label: "Healthcare Worker" },
+  { bucket: "educators", label: "Educator" },
+  { bucket: "lgbtq", label: "LGBTQ+" },
+  { bucket: "christian", label: "Christian" },
+  { bucket: "faith-beyond-christian", label: "Faith (non-Christian)" },
+  { bucket: "bipoc-racial-trauma", label: "BIPOC / Racial Trauma" },
+  { bucket: "young-adult-gen-z", label: "Young Adult / Gen Z" },
+  { bucket: "single-parent", label: "Single Parent" },
+  { bucket: "neurodivergent", label: "Neurodivergent" },
+  { bucket: "addiction-recovery", label: "Addiction / Recovery" },
+  { bucket: "grief-loss", label: "Grief / Loss" },
+  { bucket: "chronic-illness-chronic-pain", label: "Chronic Illness / Pain" },
+  { bucket: "social-workers-counselors", label: "Social Worker / Counselor" },
+  { bucket: "high-stress-jobs", label: "High Stress Job" },
+  { bucket: "general-mental-health", label: "General" }
+];
+
+function renderGuideCard(guide, selectedAudience) {
+  var audienceLabel = selectedAudience && selectedAudience !== 'all'
+    ? audiences.find(function(a) { return a.bucket === selectedAudience; }).label + ' edition'
+    : null;
+
+  var card = document.createElement('div');
+  card.className = 'guide-card';
+  card.innerHTML =
+    '<span class="guide-domain-tag ' + domainClasses[guide.domain] + '">' + domainLabels[guide.domain] + '</span>' +
+    '<div class="guide-title">' + escapeHtml(guide.title) + '</div>' +
+    (audienceLabel ? '<div style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;">' + escapeHtml(audienceLabel) + '</div>' : '') +
+    '<div class="guide-meta">' +
+      '<span class="guide-offer"><span class="offer-badge ' + catOfferClasses[guide.offer] + '">' + catOfferLabels[guide.offer] + '</span></span>' +
+      '<span class="guide-price">$' + guide.price + '</span>' +
+    '</div>' +
+    '<button class="guide-cta">' + catOfferCTA[guide.offer] + ' — $' + guide.price + '</button>' +
+    '<div class="audience-editions">' +
+      '<button class="audience-toggle" onclick="toggleAudiences(this)">17 audience editions available ▾</button>' +
+      '<div class="audience-list">' +
+        audiences.map(function(a) { return '<span class="audience-chip">' + escapeHtml(a.label) + '</span>'; }).join('') +
+      '</div>' +
+    '</div>';
+  return card;
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function toggleAudiences(btn) {
+  var list = btn.nextElementSibling;
+  var isOpen = list.classList.contains('open');
+  list.classList.toggle('open');
+  btn.textContent = isOpen
+    ? '17 audience editions available ▾'
+    : '17 audience editions available ▴';
+}
+
+function applyFilters() {
+  var searchEl = document.getElementById('search');
+  if (!searchEl) return;
+  var search = searchEl.value.toLowerCase().trim();
+  var domain = document.getElementById('filter-domain').value;
+  var offer = document.getElementById('filter-offer').value;
+  var audience = document.getElementById('filter-audience').value;
+
+  var filtered = guideCatalog.filter(function(g) {
+    if (domain !== 'all' && g.domain !== domain) return false;
+    if (offer !== 'all' && g.offer !== offer) return false;
+    if (search && !g.title.toLowerCase().includes(search) && !domainLabels[g.domain].toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  var grid = document.getElementById('guide-grid');
+  grid.innerHTML = '';
+
+  var emptyState = document.getElementById('empty-state');
+  var countEl = document.getElementById('result-count');
+
+  if (filtered.length === 0) {
+    emptyState.style.display = '';
+    countEl.textContent = '';
+  } else {
+    emptyState.style.display = 'none';
+    var totalEditions = audience !== 'all' ? filtered.length : filtered.length * 17;
+    countEl.innerHTML = 'Showing <strong>' + filtered.length + '</strong> guide' + (filtered.length === 1 ? '' : 's') +
+      (audience !== 'all' ? ' — ' + audiences.find(function(a) { return a.bucket === audience; }).label + ' edition' : ' — ' + totalEditions.toLocaleString() + ' total editions across 17 audiences');
+
+    filtered.forEach(function(g) {
+      grid.appendChild(renderGuideCard(g, audience));
+    });
+  }
+}
+</script>
+</body>
+</html>

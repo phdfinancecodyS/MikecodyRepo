@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+@page {
+    size: letter;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.65;
+    color: #2d2d2d;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ── Cover Page ─────────────────────────────── */
+.cover {
+    width: 100%;
+    height: 100%;
+    background: #faf7f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always;
+    padding: 2in 1.2in;
+    text-align: center;
+}
+
+.cover-logo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 1px solid #1a6b6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.cover-logo .logo-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 7pt;
+    letter-spacing: 4pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+
+.cover-logo .logo-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 28pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+    line-height: 1;
+    letter-spacing: -0.5pt;
+}
+
+.cover-logo .logo-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 28pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    line-height: 1;
+    letter-spacing: -0.5pt;
+}
+
+.cover-logo .logo-line {
+    width: 32px;
+    height: 1.5px;
+    background: #d4922a;
+    margin: 5px 0;
+}
+
+.cover-logo .logo-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 6pt;
+    letter-spacing: 4pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+
+.cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 24pt;
+    color: #1a6b6a;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.cover-audience {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    margin-bottom: 24px;
+}
+
+.cover-type {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 9pt;
+    color: #888;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+}
+
+.cover-bar {
+    width: 50px;
+    height: 2px;
+    background: #d4922a;
+    margin: 18px auto;
+}
+
+/* ── Body Content ───────────────────────────── */
+.content {
+    padding-top: 0;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18pt;
+    color: #1a6b6a;
+    margin: 0 0 18pt 0;
+    line-height: 1.3;
+    display: none; /* Title is on cover */
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    color: #1a6b6a;
+    margin: 22pt 0 8pt 0;
+    padding-bottom: 4pt;
+    border-bottom: 1.5px solid #d4922a;
+    line-height: 1.3;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    color: #0f4e4d;
+    margin: 16pt 0 6pt 0;
+}
+
+p {
+    margin: 0 0 10pt 0;
+}
+
+ol, ul {
+    margin: 0 0 12pt 20pt;
+}
+
+li {
+    margin-bottom: 6pt;
+}
+
+strong {
+    font-weight: 700;
+    color: #2d2d2d;
+}
+
+/* ── Section-specific styling ───────────────── */
+
+/* Worksheet sections get a tinted box */
+.worksheet-section {
+    background: #f4f1ec;
+    border-left: 3px solid #d4922a;
+    padding: 14pt 16pt;
+    margin: 16pt 0;
+    border-radius: 0 6px 6px 0;
+    page-break-inside: avoid;
+}
+
+.worksheet-section h2 {
+    border-bottom: none;
+    margin-top: 0;
+    padding-bottom: 0;
+    color: #d4922a;
+}
+
+.worksheet-section ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.worksheet-section li {
+    padding: 6pt 0;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 0;
+}
+
+.worksheet-section li:last-child {
+    border-bottom: none;
+}
+
+/* ── Standalone Worksheet styling ───────────── */
+.worksheet-standalone .prompt-item {
+    padding: 10pt 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0;
+}
+
+.worksheet-standalone .prompt-item:last-child {
+    border-bottom: none;
+}
+
+.worksheet-standalone .writing-space {
+    display: block;
+    height: 60pt;
+    margin-top: 4pt;
+}
+
+/* ── Crisis footer ──────────────────────────── */
+.crisis-footer {
+    margin-top: 30pt;
+    padding-top: 14pt;
+    border-top: 1px solid #ddd;
+    page-break-inside: avoid;
+}
+
+.crisis-footer p {
+    font-size: 9pt;
+    color: #666;
+    line-height: 1.6;
+}
+
+.crisis-footer .crisis-box {
+    background: #faf7f2;
+    border: 1px solid #1a6b6a;
+    border-radius: 6px;
+    padding: 12pt 14pt;
+    margin-top: 10pt;
+}
+
+.crisis-footer .crisis-box p {
+    font-size: 9pt;
+    color: #0f4e4d;
+    margin-bottom: 4pt;
+}
+
+.crisis-footer .crisis-box strong {
+    color: #1a6b6a;
+}
+
+/* ── Back Page ──────────────────────────────── */
+.back-page {
+    page-break-before: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5in 1.2in;
+}
+
+.back-page .back-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #1a6b6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.back-page .back-logo .logo-the {
+    font-size: 5pt;
+    letter-spacing: 2pt;
+}
+
+.back-page .back-logo .logo-ask,
+.back-page .back-logo .logo-anyway {
+    font-size: 14pt;
+}
+
+.back-page .back-logo .logo-line {
+    width: 16px;
+    height: 1px;
+    margin: 3px 0;
+}
+
+.back-page .back-logo .logo-campaign {
+    font-size: 4pt;
+    letter-spacing: 2pt;
+}
+
+.back-page .back-tagline {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
+    color: #888;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.back-page .back-crisis {
+    font-family: 'Raleway', sans-serif;
+    font-size: 9pt;
+    color: #1a6b6a;
+    line-height: 1.8;
+}
+
+.back-page .back-crisis strong {
+    color: #1a6b6a;
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+    <div class="cover-logo"><div class="logo-the">THE</div>
+<div class="logo-ask">ASK</div>
+<div class="logo-anyway">ANYWAY</div>
+<div class="logo-line"></div>
+<div class="logo-campaign">CAMPAIGN</div></div>
+    <div class="cover-title">Always On: Your High-Alert Brain</div>
+    <div class="cover-bar"></div>
+    <div class='cover-audience'>Addiction / Recovery</div>
+    <div class="cover-type">Chapter Guide</div>
+</div>
+
+<div class="content">
+<h2>What This Helps With</h2>
+<p>If your brain won't stop scanning for danger — even when you're safe on your own couch — this one's for you. Not theory. Just what to actually do about it.
+This version is written for people dealing with addiction, compulsive coping, sobriety, recovery, relapse fear, secrecy, and the work of building a life that doesn't depend on numbing.</p>
+<h2>What Is Happening</h2>
+<p>Addiction and recovery change how mental health problems feel because the urge to numb, escape, control, or disappear is always close by. Even if substances or compulsions aren't the main issue today, recovery thinking, shame, secrecy, and relapse fear can still shape the problem hard.</p>
+<p>Your high-alert brain is scanning for threat constantly. Your threat system stays locked on even when you aren't in danger. This isn't paranoia—it's your nervous system doing what it learned to do. The problem is it doesn't turn off.</p>
+<h2>What To Do Now</h2>
+<ol>
+<li>Ask whether this issue is waking up urges to numb, isolate, hide, or tell yourself one slip doesn't matter.</li>
+<li>Name three false alarms your brain has triggered this week.</li>
+<li>Practice one grounding action when you notice the scanning (5-4-3-2-1 senses, or feet-to-ground breathing).</li>
+<li>Set one anchor point in your day where you pause and check: am I actually in danger right now?</li>
+</ol>
+<h2>What To Say</h2>
+<ul>
+<li>This is the kind of moment that can push me toward old coping, so I need to move early.</li>
+<li>I don't need to handle this alone or in secret.</li>
+<li>My brain is in high-alert mode and I'm not in danger right now.</li>
+<li>I'm noticing I'm scanning and I'm going to pause and ground.</li>
+<li>This is an old pattern and I'm practicing a new response.</li>
+</ul>
+<h2>Common Mistakes To Avoid</h2>
+<ul>
+<li>Waiting until the urge is loud before using support, structure, or accountability.</li>
+<li>Trying to logic yourself out of a body response. Your brain won't believe it's safe because you told it to.</li>
+<li>White-knuckling through situations that are flooding your system instead of leaving and resetting.</li>
+<li>Shaming yourself for scanning — it kept you alive. The goal is recalibration, not elimination.</li>
+</ul>
+<h2>24-Hour Action Plan</h2>
+<ul>
+<li>Right now: pick one grounding move (5-4-3-2-1, cold water on your wrists, feet flat on the floor) and do it once today. Just once.</li>
+<li>Before bed tonight: write down three moments your brain sounded the alarm and nothing was actually wrong.</li>
+<li>Tomorrow: set one anchor check-in during the day — pause, ask yourself "am I actually in danger right now?" and answer honestly.</li>
+<li>Audience-lens support step: use one support, person, community, or routine that fits addiction / recovery life.</li>
+</ul>
+<div class="worksheet-section"><h2>Worksheet 1: Pattern Finder</h2>
+<p>Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.</p>
+<p>Prompts:
+- What time of day does the scanning get loudest?
+- What's the last false alarm your brain triggered? What actually happened?
+- Where do you feel the hyperarousal first — head, chest, gut, hands?
+- What were you doing when you last felt genuinely safe?
+- What's one thing that helps your body believe the danger is over?
+- What thoughts, feelings, or situations around this problem make you want to numb out, hide, or go back to old coping?</p></div>
+<div class="worksheet-section"><h2>Worksheet 2: Action Builder</h2>
+<p>Goal: Turn what you noticed into one action and one commitment.</p>
+<p>Prompts:
+- The grounding move I'll use when I catch myself scanning:
+- The sentence I'll say to myself when my brain says I'm in danger and I'm not:
+- One daily anchor check-in I'll build into my routine:
+- The person I'll tell about this pattern:
+- By tomorrow night, I'll know this worked if:</p></div>
+
+<div class="crisis-footer">
+<div class="crisis-box">
+<p><strong>988 Suicide &amp; Crisis Lifeline</strong> — call or text <strong>988</strong></p>
+<p><strong>Crisis Text Line</strong> — text <strong>HOME</strong> to <strong>741741</strong></p>
+<p>If you or someone you know is in immediate danger, call <strong>911</strong>.</p>
+</div>
+<p style="margin-top: 8pt;">This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship. It's built to help you take the next step, not replace professional support.</p>
+</div>
+</div>
+
+<div class="back-page">
+    <div class="back-logo"><div class="logo-the">THE</div>
+<div class="logo-ask">ASK</div>
+<div class="logo-anyway">ANYWAY</div>
+<div class="logo-line"></div>
+<div class="logo-campaign">CAMPAIGN</div></div>
+    <div class="back-tagline">You don't need the perfect words. You just need to ask.</div>
+    <div class="back-crisis">
+        <strong>988 Suicide &amp; Crisis Lifeline</strong> — call or text 988<br>
+        <strong>Crisis Text Line</strong> — text HOME to 741741<br>
+        <strong>Emergency</strong> — call 911
+    </div>
+</div>
+
+</body>
+</html>

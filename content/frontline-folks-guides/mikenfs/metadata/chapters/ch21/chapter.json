@@ -1,0 +1,274 @@
+{
+  "number": 21,
+  "title": "When Home Feels Like a Minefield: Walking on Eggshells with the People You Love",
+  "domain": "Relationships, family, and parenting",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Home conflict often reflects nervous system load, not lack of love.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening in Your System",
+      "content": [
+        {
+          "type": "para",
+          "text": "When you're constantly tense at home, monitoring your partner's mood, choosing words carefully to avoid explosions, or feeling like everything is your fault - you're walking on eggshells. This pattern happens when one (or both) people have a dysregulated nervous system: high reactivity, low tolerance, and unpredictable responses to normal life. It's not about lack of love - it's about a brain stuck in threat mode, where even minor conflicts feel like survival threats. Over time, this erodes trust, intimacy, and safety. Both people feel trapped."
+        },
+        {
+          "type": "h3",
+          "text": "Signs you're walking on eggshells at home"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Constant tension: Feeling like you're always one wrong word away from a fight.",
+            "Avoiding conversation: Not bringing up problems because it's 'not worth the fight.'",
+            "Tone policing: Arguments about how something was said, not what was said.",
+            "Rapid escalation: Small disagreements become explosive fast.",
+            "Feeling responsible for their mood: If they're upset, it must be your fault.",
+            "Loss of spontaneity: Can't relax, laugh, or be yourself at home."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is about nervous systems, not character:",
+            "Walking on eggshells happens when dysregulation meets dysregulation. Both people are trapped by threat responses, not malice."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Gets Worse Under Frontline Load",
+      "content": [
+        {
+          "type": "para",
+          "text": "Frontline work keeps your nervous system in high-alert mode. You come home activated, with no transition time, and expect to be 'fine' immediately. But your brain is still scanning for threats, interpreting neutral tone as hostile, and reacting to normal household stress as if it's a dangerous scene. Add unresolved resentment, unclear boundaries, and accumulated exhaustion, and home becomes a place where both people are braced for conflict."
+        },
+        {
+          "type": "h3",
+          "text": "Typical amplifiers of home conflict"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Unresolved resentment: Years of 'letting it go' build into explosive reactivity.",
+            "Unclear boundaries: No agreed-upon rules for conflict, time-outs, or repairs.",
+            "Poor transition from work to home: No downshift time before entering family space.",
+            "Stacked fatigue: Both people exhausted, neither can regulate well.",
+            "Mismatched nervous system states: One person wants connection, the other needs space.",
+            "No repair protocol: Fights happen, but no one knows how to fix them afterward."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and improving predictability lowers baseline arousal and restores decision quality."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can't eliminate conflict, but you can build structures that prevent escalation and create repair pathways when things go wrong."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Set a daily 10-minute check-in: 'How loaded are you today? What do you need tonight?' Prevents unspoken resentment.",
+            "Name yellow before red: Use a color system (green/yellow/red) to signal capacity. 'I'm yellow - can we go slow?'",
+            "Use one pause phrase both people agree on: 'I need 20 minutes' stops escalation without blame. Return time must be honored.",
+            "Schedule one repair conversation weekly: After a hard week, debrief what happened without attacking. 'What do we do differently next time?'",
+            "Remove contempt and criticism: Replace 'You always...' with 'I felt hurt when...' Contempt kills relationships faster than anger.",
+            "Seek couples therapy if this is chronic: Structured support helps when both people are stuck in reactivity."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: make the action small enough that you can still do it on a bad day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Family",
+      "content": [
+        {
+          "type": "para",
+          "text": "Household stability improves when everyone knows the plan before stress spikes."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use short, clear language when activation is high: 'I'm overwhelmed' not multi-paragraph explanations.",
+            "Agree on a pause signal and return time: 'I need to walk. I'll be back in 30 minutes.' Prevents abandonment panic.",
+            "Debrief after hard moments without blame: 'That was rough. What do I need to do differently?' not 'You ruined everything.'",
+            "Safety grows when both people can name load without blame: 'I'm at a 7 today' becomes data, not an accusation."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Escalate Care",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-management is a starting point, not a lifetime sentence. Escalate when function, safety, or relationships keep declining."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Home conflict is constant, and self-management isn't improving it.",
+            "One or both people feel unsafe (emotionally or physically).",
+            "Repair attempts no longer work - fights don't get resolved.",
+            "Kids are showing signs of distress from home tension.",
+            "Contempt, stonewalling, or threats are regular patterns.",
+            "If fear and volatility are constant, bring in structured couples or family support (Gottman-trained therapist, trauma-informed couples work)."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet daily for one week. Measure trigger intensity, response size, and recovery time."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "Name one trigger, one body signal, and one reset action.",
+            "At end of week, keep what worked and remove what did not."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: When Home Feels Like a Minefield: Walking on Eggshells with the People You Love",
+      "intro": "Use this to track walking on eggshells at home in real time and build a repeatable response plan.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, or during transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you?",
+          "hint": "Include effect on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose small, realistic actions you can perform under stress.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What event, cue, or context activated this pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What 30-90 second action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "Write the exact behavior you will use next time.",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then adjust based on what actually worked."
+    },
+    {
+      "title": "Worksheet: When Home Feels Like a Minefield: Walking on Eggshells with the People You Love - Partner/Team Check-In",
+      "intro": "Use this page for one short, practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Ask for concrete observations, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most?",
+          "hint": "List what helps and what makes it worse.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will we practice this week?",
+          "hint": "One clear behavior from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return:",
+          "hint": "How long until re-engagement after a pause?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens if things go sideways?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

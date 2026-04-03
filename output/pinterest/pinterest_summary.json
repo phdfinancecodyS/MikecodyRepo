@@ -1,0 +1,17 @@
+{
+  "total_pins": 79,
+  "daily_pins": 4,
+  "schedule_days": 14,
+  "start_date": "2026-03-27",
+  "files": {
+    "pins_master_csv": "output/pinterest/pins_master.csv",
+    "pins_14day_schedule_csv": "output/pinterest/pins_14day_schedule.csv"
+  },
+  "boards": [
+    "Burnout Recovery Printables",
+    "Crisis Conversation Support",
+    "Mental Health Conversation Guides",
+    "Relationship Communication Tools",
+    "Sleep and Stress Reset"
+  ]
+}

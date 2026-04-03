@@ -1,0 +1,6 @@
+numpy
+Pillow
+imageio-ffmpeg
+moviepy
+elevenlabs
+edge-tts

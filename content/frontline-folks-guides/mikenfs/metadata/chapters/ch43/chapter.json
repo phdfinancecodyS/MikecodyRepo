@@ -1,0 +1,281 @@
+{
+  "number": 43,
+  "title": "Underemployed, Overqualified, and Bored (or Overwhelmed)",
+  "domain": "Work, mission, identity, and transition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Field notes for being too much for your job, or not enough, and all the frustration in between.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening",
+      "content": [
+        {
+          "type": "para",
+          "text": "You have a decade of specialized expertise, and you're doing work a new hire could handle in a week. Or you landed in a role that expects you to out-perform immediately but your skills don't map cleanly. Either way, the fit is wrong. Underemployment is subtle but corrosive: you're watching the clock, resenting the work, feeling like your capability is wasted, and gradually losing the motivation that made you excellent at your former role. Overqualification doesn't just feel bad - it creates resentment, cynicism, and withdrawal from the very work you're being paid to do."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Boredom and disengagement: You've mastered the work in weeks. Now you're just filling time.",
+            "Resentment toward leadership: They're not utilizing your skills. They don't see your capability.",
+            "Status tension: You used to lead. Now you're equivalent to someone 20 years your junior.",
+            "Cynicism: 'This place doesn't know what it's doing. These people have no idea.'",
+            "Coasting vs. performance: You could do more but why bother? There's no incentive.",
+            "Imposter syndrome (overwhelmed version): New role demands things your former skills don't transfer to.",
+            "Skills mismatch: Your expertise doesn't map to the new context, so you're mediocre where you were excellent.",
+            "Motivation collapse: You can't find a reason to care about work that doesn't challenge you."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is a fit problem, not a character problem:",
+            "Underemployment and skills mismatch are structural. Your capability is real. The context isn't using it."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "Your nervous system learned 'this is what high performance feels like' - challenge, urgency, high stakes, rapid decisions. The new role has none of that. Your brain gets less dopamine from under-stimulating work. You feel sluggish, resentful, and detached. Add status loss (you led before, now you follow), skills irrelevance (your expertise doesn't transfer), and a team that doesn't understand your background, and you get demotivation. The overwhelmed version is inverse: a new role that expects civilian-world competency you haven't yet built, which creates imposter syndrome where you used to be excellent."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Under-stimulation deepening: The longer you're underemployed, the harder it is to motivate yourself for anything.",
+            "Resentment escalating: You watch less qualified people being challenged while you're held back.",
+            "Performance deteriorating: Boredom turns into visible coasting, which damages your reputation.",
+            "Skills atrophy: High-level skills need use. Underemployment means you're losing the edge you came with.",
+            "Status conflict with peers: Your former-role status bleeds into civilian interactions as condescension.",
+            "Overwhelm compounding (other version): You're struggling in a role designed for someone with civilian experience you don't have.",
+            "Shame entering: You were excellent. Now you're mediocre. Nobody says it but you feel it."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and increasing predictability lowers baseline arousal and improves regulation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can address underemployment actively - either by changing the role, negotiating expanded responsibility, or using the job as runway while building toward something that fits."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Be honest about the mismatch: 'This role isn't using my capability' OR 'This role expects skills I haven't built yet.' Name it without judgment.",
+            "Talk to your supervisor about expanded scope: 'I've mastered my current responsibilities. I'd like to take on X. What's possible?' Most supervisors want engaged people.",
+            "Identify what skills do transfer: Even if specialty doesn't translate, leadership, project management, pressure performance, and teamwork are universally valuable.",
+            "Build skills to close the gap (overwhelmed version): If you're underprepared, identify specifically what you need and build it. Ask for training, mentorship, or timeline relief.",
+            "Decide: stay and adapt, or change: You can negotiate new scope, seek internal transfer, or start planning an exit. Staying resentful isn't a strategy.",
+            "Use downtime strategically: If you're underemployed, use the slack time for learning, building, networking - don't waste it on resentment.",
+            "Find stimulation outside work temporarily: While navigating the transition, find stimulation through education, volunteer work, or side projects.",
+            "Set a decision timeline: 'I'll try to change my scope for 90 days. If nothing improves, I'll make a different plan.' Reduces the helplessness of indefinite drift.",
+            "Stop comparing to former-role performance: That context had specific scaffolding. This context is different. You're not failing, you're adapting."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: set the bar low enough to do it even on your worst day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Stress communication should be clear, brief, and repeatable. Predictable routines protect relationships."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use concrete language: 'I'm underemployed and it's affecting my motivation. I need either more challenge or a plan to move.'",
+            "Name what you need: 'I need you to understand that I have skills not being used here, and it's making it hard to stay engaged.'",
+            "Be transparent about the overwhelm: 'I was excellent in my former role. I'm struggling here. I need support.'",
+            "Avoid resentment projection: Your frustration is about the fit, not about individual coworkers who don't have your background."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-guided tools are a start. Escalate care when symptoms persist, spread, or begin harming safety and function."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Chronic underemployment has lasted 6+ months and your performance is visibly suffering.",
+            "Resentment is affecting your relationships at work or home.",
+            "You're stuck in a role that doesn't fit and can't identify a path out.",
+            "Skills mismatch is creating shame and avoidance that's spreading beyond work.",
+            "Career counseling can help identify transferable skills and map realistic pathways to better-fit roles."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet every day for one week. Track trigger, body signal, and reset action. Keep what works and remove what does not."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the trigger.",
+            "2) Name the first body signal.",
+            "3) Run one reset action.",
+            "4) Log response quality."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Underemployed, Overqualified, and Bored (or Overwhelmed)",
+      "intro": "Use this to track the pattern in this chapter and build a practical response you can repeat under load.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, and in transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you when it took over?",
+          "hint": "Name impact on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose actions small enough to use on hard days.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then tighten the plan around what actually worked."
+    },
+    {
+      "title": "Worksheet: Underemployed, Overqualified, and Bored (or Overwhelmed) - Partner/Team Check-In",
+      "intro": "Use this page for one short practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Capture observable behavior, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most and least?",
+          "hint": "List what helps and what escalates the issue.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will you both practice this week?",
+          "hint": "One clear action from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

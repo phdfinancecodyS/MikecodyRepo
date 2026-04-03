@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Ring Variants — The Ask Anyway Campaign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1a6b6a;
+    --teal-dark: #0f4e4d;
+    --teal-light: #2a8a89;
+    --amber: #d4922a;
+    --amber-light: #e8a840;
+    --warm-white: #faf7f2;
+    --cream: #f0ebe3;
+    --charcoal: #2d2d2d;
+    --soft-gray: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #e8e4de;
+    color: var(--charcoal);
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--soft-gray);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: var(--soft-gray);
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+  }
+
+  .concept {
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+
+  .concept-label {
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .card-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .logo-card {
+    border-radius: 12px;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 340px;
+  }
+
+  .card-light { background: var(--warm-white); }
+  .card-dark  { background: var(--teal-dark); }
+
+  .description {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--soft-gray);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* === Shared badge text styles === */
+  .badge-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  .badge-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .badge-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .badge-line {
+    width: 50px;
+    height: 2px;
+    background: var(--amber);
+    margin: 6px auto;
+  }
+  .badge-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  /* Dark text overrides */
+  .dark .badge-the,
+  .dark .badge-ask,
+  .dark .badge-campaign {
+    color: var(--warm-white);
+  }
+  .dark .badge-anyway {
+    color: var(--amber-light);
+  }
+  .dark .badge-line {
+    background: var(--amber-light);
+  }
+
+  /* === VARIANT 1: Hairline Ring === */
+  .r1 .ring {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 1px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .r1.dark .ring {
+    border-color: rgba(250, 247, 242, 0.5);
+  }
+
+  /* === VARIANT 2: Heavy Ring === */
+  .r2 .ring {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 6px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .r2.dark .ring {
+    border-color: var(--warm-white);
+  }
+
+  /* === VARIANT 3: Dashed Ring === */
+  .r3 .ring {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 2.5px dashed var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .r3.dark .ring {
+    border-color: rgba(250, 247, 242, 0.6);
+  }
+
+  /* === VARIANT 4: Double Stroke === */
+  .r4 .ring {
+    width: 244px;
+    height: 244px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+  }
+  .r4 .ring-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .r4.dark .ring {
+    border-color: rgba(250, 247, 242, 0.4);
+  }
+  .r4.dark .ring-inner {
+    border-color: var(--warm-white);
+  }
+
+  /* === VARIANT 5: Gradient Ring (SVG) === */
+  .r5 .ring-wrap {
+    position: relative;
+    width: 240px;
+    height: 240px;
+  }
+  .r5 .ring-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .r5 .ring-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 11px;
+    color: var(--soft-gray);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<h1>The Ask Anyway Campaign</h1>
+<p class="subtitle">Open Ring Variants — 5 Ring Styles on Light + Dark</p>
+
+<!-- VARIANT 1: Hairline Ring -->
+<div class="concept">
+  <div class="concept-label">Variant 1 — Hairline</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="r1">
+        <div class="ring">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="r1 dark">
+        <div class="ring">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Ultra-thin 1px ring. The text does the heavy lifting — the ring barely whispers around it. Elegant and editorial. Lets the typography breathe. Best for: PDF covers, large format prints, clean digital layouts.</p>
+</div>
+
+<!-- VARIANT 2: Heavy Ring -->
+<div class="concept">
+  <div class="concept-label">Variant 2 — Heavy</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="r2">
+        <div class="ring">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="r2 dark">
+        <div class="ring">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Thick 6px ring matches the weight of the Montserrat 900 inside it. Feels sturdy, grounded, protective. The ring is a container that says "this matters." Best for: social avatars, watermarks, small icons where presence is needed.</p>
+</div>
+
+<!-- VARIANT 3: Dashed Ring -->
+<div class="concept">
+  <div class="concept-label">Variant 3 — Dashed</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="r3">
+        <div class="ring">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="r3 dark">
+        <div class="ring">
+          <div class="badge-the">THE</div>
+          <div class="badge-ask">ASK</div>
+          <div class="badge-anyway">ANYWAY</div>
+          <div class="badge-line"></div>
+          <div class="badge-campaign">CAMPAIGN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Dashed border adds texture and an informal, human quality — like it was drawn, not manufactured. The gaps in the ring mirror the idea: the conversation isn't perfect, but you have it anyway. Best for: worksheets, workbook covers, approachable contexts.</p>
+</div>
+
+<!-- VARIANT 4: Double Stroke -->
+<div class="concept">
+  <div class="concept-label">Variant 4 — Double Stroke</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="r4">
+        <div class="ring">
+          <div class="ring-inner">
+            <div class="badge-the">THE</div>
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+            <div class="badge-line"></div>
+            <div class="badge-campaign">CAMPAIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="r4 dark">
+        <div class="ring">
+          <div class="ring-inner">
+            <div class="badge-the">THE</div>
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+            <div class="badge-line"></div>
+            <div class="badge-campaign">CAMPAIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">Two thin parallel rings with a gap between them — adds depth without heaviness. The outer ring is lighter on dark, creating a subtle layered effect. Has a certificate / seal-of-quality feel without going full crest. Best for: product labels, PDF headers, Etsy thumbnails.</p>
+</div>
+
+<!-- VARIANT 5: Gradient Ring -->
+<div class="concept">
+  <div class="concept-label">Variant 5 — Gradient</div>
+  <div class="card-row">
+    <div class="logo-card card-light">
+      <div class="r5">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 240 240">
+            <defs>
+              <linearGradient id="grad-light" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1a6b6a"/>
+                <stop offset="50%" style="stop-color:#1a6b6a"/>
+                <stop offset="100%" style="stop-color:#d4922a"/>
+              </linearGradient>
+            </defs>
+            <circle cx="120" cy="120" r="117" fill="none" stroke="url(#grad-light)" stroke-width="3"/>
+          </svg>
+          <div class="ring-content">
+            <div class="badge-the">THE</div>
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+            <div class="badge-line"></div>
+            <div class="badge-campaign">CAMPAIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card card-dark">
+      <div class="r5 dark">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 240 240">
+            <defs>
+              <linearGradient id="grad-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#faf7f2"/>
+                <stop offset="50%" style="stop-color:#faf7f2"/>
+                <stop offset="100%" style="stop-color:#e8a840"/>
+              </linearGradient>
+            </defs>
+            <circle cx="120" cy="120" r="117" fill="none" stroke="url(#grad-dark)" stroke-width="3"/>
+          </svg>
+          <div class="ring-content">
+            <div class="badge-the">THE</div>
+            <div class="badge-ask">ASK</div>
+            <div class="badge-anyway">ANYWAY</div>
+            <div class="badge-line"></div>
+            <div class="badge-campaign">CAMPAIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="description">The ring transitions from teal to amber — connecting the two brand colors in a single stroke. Subtle but distinctive; once you notice it, you can't unsee it. The gradient becomes a signature element. Best for: hero images, digital-first branding, social cards.</p>
+</div>
+
+<div class="footer">The Ask Anyway Campaign · Open Ring Exploration · Montserrat 900 + Raleway · 2026</div>
+
+</body>
+</html>

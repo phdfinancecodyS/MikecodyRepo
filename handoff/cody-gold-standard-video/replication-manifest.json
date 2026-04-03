@@ -1,0 +1,45 @@
+{
+  "bundle_name": "cody-gold-standard-video",
+  "created_utc": "2026-03-22",
+  "goal": "Replicate Ask Anyway gold standard campaign video",
+  "python": {
+    "version": "3.9.6"
+  },
+  "entrypoints": [
+    "OPEN-FIRST-CODY.md",
+    ".github/copilot-instructions.md"
+  ],
+  "command_sequence": [
+    "python3 -m venv .venv",
+    "source .venv/bin/activate",
+    "python -m pip install --upgrade pip",
+    "pip install -r requirements.txt",
+    "python scripts/_gen_ambient.py",
+    "python scripts/build_voiceover_elevenlabs.py render jessica",
+    "python scripts/build_campaign_video_v3.py"
+  ],
+  "inputs": [
+    "assets/fonts/Montserrat-Black.ttf",
+    "assets/fonts/Montserrat-Bold.ttf",
+    "assets/fonts/Montserrat-Regular.ttf",
+    "output/videos/ambient_pad.wav",
+    "output/videos/vo2/manifest.json",
+    "output/videos/vo2/slide-01.mp3",
+    "output/videos/vo2/slide-02.mp3",
+    "output/videos/vo2/slide-03.mp3"
+  ],
+  "scripts": [
+    "scripts/build_campaign_video.py",
+    "scripts/build_campaign_video_v2.py",
+    "scripts/build_campaign_video_v3.py",
+    "scripts/build_voiceover.py",
+    "scripts/build_voiceover_v2.py",
+    "scripts/build_voiceover_elevenlabs.py",
+    "scripts/_gen_ambient.py"
+  ],
+  "reference_output": "output/videos/ask-anyway-gold-standard.mp4",
+  "rebuild_output": "output/videos/ask-anyway-v3.mp4",
+  "integrity_file": "checksums.sha256",
+  "decision_log": "DECISION-LOG.md",
+  "verification_checklist": "VERIFICATION-CHECKLIST.md"
+}

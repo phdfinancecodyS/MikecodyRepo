@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Anyway — Resource Catalog</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e5e2dd;
+    --accent: #2d6a4f;
+    --accent-light: #d8f3dc;
+    --yellow: #f9a825;
+    --yellow-light: #fff8e1;
+    --orange: #e65100;
+    --orange-light: #fff3e0;
+    --red: #c62828;
+    --red-light: #ffebee;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  /* HEADER */
+  .catalog-header {
+    text-align: center;
+    padding: 32px 0 16px;
+  }
+  .catalog-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .catalog-header p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 24px;
+  }
+  .quiz-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+  .quiz-link:hover { text-decoration: underline; }
+
+  /* SEARCH + FILTERS */
+  .filter-bar {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%236b6b6b' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E") no-repeat 14px center;
+    margin-bottom: 16px;
+  }
+  .search-input:focus { border-color: var(--accent); }
+
+  .filter-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .filter-group { flex: 1; min-width: 180px; }
+  .filter-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .filter-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+  }
+  .filter-select:focus { border-color: var(--accent); }
+
+  /* RESULT COUNT */
+  .result-count {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding: 0 4px;
+  }
+  .result-count strong { color: var(--text); }
+
+  /* GUIDE GRID */
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 720px) {
+    .guide-grid { grid-template-columns: 1fr; }
+  }
+
+  .guide-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .guide-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .guide-domain-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  .domain-nervous { background: #e8f5e9; color: #2e7d32; }
+  .domain-sleep { background: #e3f2fd; color: #1565c0; }
+  .domain-relationships { background: #fce4ec; color: #c62828; }
+  .domain-intimacy { background: #f3e5f5; color: #7b1fa2; }
+  .domain-moral { background: #fff3e0; color: #e65100; }
+  .domain-work { background: #e0f2f1; color: #00695c; }
+  .domain-dopamine { background: #fff8e1; color: #f57f17; }
+  .domain-gap { background: #f5f5f5; color: #616161; }
+
+  .guide-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    flex-grow: 1;
+  }
+
+  .guide-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .guide-offer {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .guide-offer .offer-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .offer-guide { background: var(--accent-light); color: var(--accent); }
+  .offer-kit { background: #e3f2fd; color: #1565c0; }
+  .offer-bundle { background: #fff3e0; color: var(--orange); }
+
+  .guide-price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .guide-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    margin-top: 12px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .guide-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  /* AUDIENCE EDITION PICKER (collapsible) */
+  .audience-editions {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .audience-toggle {
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+  }
+  .audience-toggle:hover { text-decoration: underline; }
+  .audience-list {
+    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .audience-list.open { display: flex; }
+  .audience-chip {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: var(--muted);
+    cursor: default;
+  }
+
+  /* DOMAIN SECTION HEADERS */
+  .domain-section-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 32px 0 16px;
+    padding: 8px 0;
+    border-bottom: 2px solid var(--border);
+  }
+  .domain-section-header:first-of-type { margin-top: 0; }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--muted);
+  }
+  .empty-state h3 { margin-bottom: 8px; color: var(--text); }
+
+  /* CRISIS FOOTER */
+  .crisis-footer {
+    background: #f5f5f5; border-radius: var(--radius); padding: 20px 24px;
+    text-align: center; margin-top: 24px; border: 1px solid var(--border);
+  }
+  .crisis-footer p { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+  .crisis-footer a { color: var(--red); font-weight: 600; text-decoration: none; margin: 0 8px; }
+  .crisis-footer a:hover { text-decoration: underline; }
+
+  .disclaimer {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 16px 20px 40px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="catalog-header">
+    <h1>All Resources</h1>
+    <p>Browse all 79 guides — each available in 17 audience-specific editions. Search by keyword, filter by topic or type.</p>
+    <a class="quiz-link" href="quiz-prototype-v3.html">← Not sure where to start? Take the quiz</a>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="search" placeholder="Search guides..." oninput="applyFilters()">
+    <div class="filter-row">
+      <div class="filter-group">
+        <label>Topic Area</label>
+        <select class="filter-select" id="filter-domain" onchange="applyFilters()">
+          <option value="all">All topics</option>
+          <option value="nervous_system_mood_cognition">Mind & Nervous System</option>
+          <option value="sleep_body_pain_substances">Sleep, Body & Substances</option>
+          <option value="relationships_family_parenting">Relationships & Family</option>
+          <option value="intimacy_sex_connection">Intimacy & Connection</option>
+          <option value="moral_injury_guilt_shame_spirituality">Moral Injury & Spirituality</option>
+          <option value="work_identity_transition">Work, Identity & Transition</option>
+          <option value="dopamine_habits_addictions">Habits & Addictions</option>
+          <option value="gap_or_custom">Specialized Topics</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Product Type</label>
+        <select class="filter-select" id="filter-offer" onchange="applyFilters()">
+          <option value="all">All types</option>
+          <option value="guide">Guide — $9</option>
+          <option value="kit">Kit — $19</option>
+          <option value="bundle">Bundle — $34</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Audience</label>
+        <select class="filter-select" id="filter-audience" onchange="applyFilters()">
+          <option value="all">All editions</option>
+          <option value="military-veteran">Military / Veteran</option>
+          <option value="first-responder">First Responder</option>
+          <option value="healthcare-workers">Healthcare Worker</option>
+          <option value="educators">Educator</option>
+          <option value="lgbtq">LGBTQ+</option>
+          <option value="christian">Christian</option>
+          <option value="faith-beyond-christian">Faith (non-Christian)</option>
+          <option value="bipoc-racial-trauma">BIPOC / Racial Trauma</option>
+          <option value="young-adult-gen-z">Young Adult / Gen Z</option>
+          <option value="single-parent">Single Parent</option>
+          <option value="neurodivergent">Neurodivergent</option>
+          <option value="addiction-recovery">Addiction / Recovery</option>
+          <option value="grief-loss">Grief / Loss</option>
+          <option value="chronic-illness-chronic-pain">Chronic Illness / Pain</option>
+          <option value="social-workers-counselors">Social Worker / Counselor</option>
+          <option value="high-stress-jobs">High Stress Job</option>
+          <option value="general-mental-health">General</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT COUNT -->
+  <div class="result-count" id="result-count"></div>
+
+  <!-- GUIDE GRID -->
+  <div class="guide-grid" id="guide-grid"></div>
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="empty-state" style="display:none;">
+    <h3>No guides match your search</h3>
+    <p>Try a different keyword or clear your filters.</p>
+  </div>
+
+  <!-- CRISIS FOOTER -->
+  <div class="crisis-footer">
+    <p>Crisis resources are always free and available:</p>
+    <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
+    <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+  </div>
+  <div class="disclaimer">This content is clinically informed but is not clinical advice, a diagnosis, or a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988, or text HOME to 741741 to reach the Crisis Text Line.</div>
+
+</div>
+
+<script>
+/* ============================================================
+   GUIDE CATALOG
+   ============================================================ */
+const guideCatalog = [
+  { id:"ch-01", title:"Always On: Your High-Alert Brain", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"ch-03", title:"Hypervigilance at Home", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"ch-04", title:"Anger and Short-Fuse Days", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"ch-06", title:"Depression and Numbness", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"ch-08", title:"Shame Spirals + Self-Loathing", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"ch-09", title:"Memory Slips", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"ch-11", title:"Decision Fatigue", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"ch-12", title:"Overreacting to Small Stuff", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"split-01", title:"Blow Up Recovery", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"split-02", title:"Shut Down Reconnect", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"split-03", title:"Overthinking Loop", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"split-04", title:"Night Spiral Stopper", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"split-05", title:"Hopelessness First Aid", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"split-06", title:"Crisis Conversation Action", domain:"nervous_system_mood_cognition", offer:"kit", price:19 },
+  { id:"split-07", title:"Tunnel Vision Reset", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"split-08", title:"Scattered Brain Reset", domain:"nervous_system_mood_cognition", offer:"guide", price:9 },
+  { id:"ch-13", title:"Chronic Sleep Debt", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"ch-14", title:"Sleep Apnea and Snoring", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"ch-19", title:"Noise, Crowds, Public Spaces", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"ch-20", title:"Vision, Balance, Motion Sensitivity", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-09", title:"Nightmare Recovery Plan", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-10", title:"3am Wake Loop Reset", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-11", title:"Pain Flare Plan", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-12", title:"Tension Release Plan", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-13", title:"TBI Brain Fog Plan", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-14", title:"Headache Functional Plan", domain:"sleep_body_pain_substances", offer:"guide", price:9 },
+  { id:"split-15", title:"Alcohol Numbing Interrupt", domain:"sleep_body_pain_substances", offer:"bundle", price:34 },
+  { id:"split-16", title:"Pill-Cycle Interrupt Plan", domain:"sleep_body_pain_substances", offer:"bundle", price:34 },
+  { id:"ch-21", title:"Home Feels Like a Minefield", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"ch-22", title:"Red/Yellow/Green Communication", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"ch-23", title:"Repair After Damage", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"ch-24", title:"Parenting on Empty", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"ch-26", title:"Kids in the Blast Radius", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"ch-27", title:"Family Life in Transition", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"split-17", title:"Secondary Trauma for Partners", domain:"relationships_family_parenting", offer:"guide", price:9 },
+  { id:"split-18", title:"Secondary Trauma for Teams", domain:"relationships_family_parenting", offer:"bundle", price:34 },
+  { id:"ch-28", title:"Emotional Numbness", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-29", title:"Low Desire and Low Drive", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-30", title:"Stress Shuts Down Sex", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-31", title:"Sex and Avoidance After Difficult Experiences", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-33", title:"Touch Without Pressure", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-34", title:"Body Image, Scars, Sexual Confidence", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-35", title:"Sex After Injury/Health Change", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"split-19", title:"Habit Loop Reset", domain:"intimacy_sex_connection", offer:"bundle", price:34 },
+  { id:"split-20", title:"Shame Loop Repair", domain:"intimacy_sex_connection", offer:"guide", price:9 },
+  { id:"ch-36", title:"Moral Injury 101", domain:"moral_injury_guilt_shame_spirituality", offer:"guide", price:9 },
+  { id:"ch-37", title:"Betrayed by the System", domain:"moral_injury_guilt_shame_spirituality", offer:"guide", price:9 },
+  { id:"ch-38", title:"When You Feel Like the Villain", domain:"moral_injury_guilt_shame_spirituality", offer:"guide", price:9 },
+  { id:"ch-39", title:"Faith, God, Big Questions", domain:"moral_injury_guilt_shame_spirituality", offer:"guide", price:9 },
+  { id:"split-21", title:"Shame and Intimacy Repair", domain:"moral_injury_guilt_shame_spirituality", offer:"guide", price:9 },
+  { id:"split-22", title:"Disclosure Repair", domain:"moral_injury_guilt_shame_spirituality", offer:"guide", price:9 },
+  { id:"ch-41", title:"Between Worlds: Identity After Role", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"ch-42", title:"Rebuilding Mission and Meaning", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"ch-45", title:"Loneliness and Loss of Tribe", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"ch-46", title:"Lone Wolf to Healthy Team Member", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"split-23", title:"Work Identity Loss Plan", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"split-24", title:"Overwhelm Stabilization Plan", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"split-25", title:"Money Avoidance Reset", domain:"work_identity_transition", offer:"bundle", price:34 },
+  { id:"split-26", title:"Household Chaos Reset", domain:"work_identity_transition", offer:"guide", price:9 },
+  { id:"split-27", title:"Screen and Scroll Loop Reset", domain:"dopamine_habits_addictions", offer:"bundle", price:34 },
+  { id:"split-28", title:"Compulsion Interrupt Plan", domain:"dopamine_habits_addictions", offer:"bundle", price:34 },
+  { id:"new-01", title:"Panic Attacks in Public: What To Do in 90 Seconds", domain:"gap_or_custom", offer:"kit", price:19 },
+  { id:"new-02", title:"Post-Incident Crash: The Day-After Recovery Guide", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-03", title:"Grief After Suicide Loss", domain:"gap_or_custom", offer:"kit", price:19 },
+  { id:"new-04", title:"Survivor Guilt After Calls, Scenes, Incidents", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-05", title:"Court/Complaint/Investigation Stress Survival", domain:"gap_or_custom", offer:"bundle", price:34 },
+  { id:"new-06", title:"Shift-Work Relationship Survival Plan", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-07", title:"Co-Parenting Under Burnout and Conflict", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-08", title:"Returning to Work After Mental Health Leave", domain:"gap_or_custom", offer:"bundle", price:34 },
+  { id:"new-09", title:"Peer-Support Conversations for Teammates", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-10", title:"How To Ask for Help Without Feeling Weak", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-11", title:"Building a Personal Safety Network", domain:"gap_or_custom", offer:"kit", price:19 },
+  { id:"new-12", title:"What To Do When Someone Refuses Help", domain:"gap_or_custom", offer:"kit", price:19 },
+  { id:"new-13", title:"Digital Overload and Doom-Scroll Recovery", domain:"gap_or_custom", offer:"bundle", price:34 },
+  { id:"new-14", title:"Caffeine and Sleep Trap Reset", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-15", title:"Eating Patterns Under Stress Reset", domain:"gap_or_custom", offer:"bundle", price:34 },
+  { id:"new-16", title:"Boundaries With Family Who Don't Understand the Job", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-17", title:"Dating While Carrying Trauma and Hypervigilance", domain:"gap_or_custom", offer:"guide", price:9 },
+  { id:"new-18", title:"Year-One Transition Guide for Newly Separated or Retired", domain:"gap_or_custom", offer:"bundle", price:34 }
+];
+
+const domainLabels = {
+  nervous_system_mood_cognition: "Mind & Nervous System",
+  sleep_body_pain_substances: "Sleep, Body & Substances",
+  relationships_family_parenting: "Relationships & Family",
+  intimacy_sex_connection: "Intimacy & Connection",
+  moral_injury_guilt_shame_spirituality: "Moral Injury & Spirituality",
+  work_identity_transition: "Work, Identity & Transition",
+  dopamine_habits_addictions: "Habits & Addictions",
+  gap_or_custom: "Specialized Topics"
+};
+
+const domainClasses = {
+  nervous_system_mood_cognition: "domain-nervous",
+  sleep_body_pain_substances: "domain-sleep",
+  relationships_family_parenting: "domain-relationships",
+  intimacy_sex_connection: "domain-intimacy",
+  moral_injury_guilt_shame_spirituality: "domain-moral",
+  work_identity_transition: "domain-work",
+  dopamine_habits_addictions: "domain-dopamine",
+  gap_or_custom: "domain-gap"
+};
+
+const offerLabels = { guide: "Guide", kit: "Kit", bundle: "Bundle" };
+const offerClasses = { guide: "offer-guide", kit: "offer-kit", bundle: "offer-bundle" };
+const offerCTA = { guide: "Get Guide", kit: "Get Kit", bundle: "Get Bundle" };
+
+const audiences = [
+  { bucket: "military-veteran", label: "Military / Veteran" },
+  { bucket: "first-responder", label: "First Responder" },
+  { bucket: "healthcare-workers", label: "Healthcare Worker" },
+  { bucket: "educators", label: "Educator" },
+  { bucket: "lgbtq", label: "LGBTQ+" },
+  { bucket: "christian", label: "Christian" },
+  { bucket: "faith-beyond-christian", label: "Faith (non-Christian)" },
+  { bucket: "bipoc-racial-trauma", label: "BIPOC / Racial Trauma" },
+  { bucket: "young-adult-gen-z", label: "Young Adult / Gen Z" },
+  { bucket: "single-parent", label: "Single Parent" },
+  { bucket: "neurodivergent", label: "Neurodivergent" },
+  { bucket: "addiction-recovery", label: "Addiction / Recovery" },
+  { bucket: "grief-loss", label: "Grief / Loss" },
+  { bucket: "chronic-illness-chronic-pain", label: "Chronic Illness / Pain" },
+  { bucket: "social-workers-counselors", label: "Social Worker / Counselor" },
+  { bucket: "high-stress-jobs", label: "High Stress Job" },
+  { bucket: "general-mental-health", label: "General" }
+];
+
+/* ============================================================
+   RENDERING
+   ============================================================ */
+
+function renderGuideCard(guide, selectedAudience) {
+  const audienceLabel = selectedAudience && selectedAudience !== 'all'
+    ? audiences.find(a => a.bucket === selectedAudience)?.label + ' edition'
+    : null;
+
+  const card = document.createElement('div');
+  card.className = 'guide-card';
+  card.innerHTML = `
+    <span class="guide-domain-tag ${domainClasses[guide.domain]}">${domainLabels[guide.domain]}</span>
+    <div class="guide-title">${escapeHtml(guide.title)}</div>
+    ${audienceLabel ? `<div style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;">${escapeHtml(audienceLabel)}</div>` : ''}
+    <div class="guide-meta">
+      <span class="guide-offer"><span class="offer-badge ${offerClasses[guide.offer]}">${offerLabels[guide.offer]}</span></span>
+      <span class="guide-price">$${guide.price}</span>
+    </div>
+    <button class="guide-cta">${offerCTA[guide.offer]} — $${guide.price}</button>
+    <div class="audience-editions">
+      <button class="audience-toggle" onclick="toggleAudiences(this)">17 audience editions available ▾</button>
+      <div class="audience-list">
+        ${audiences.map(a => `<span class="audience-chip">${escapeHtml(a.label)}</span>`).join('')}
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function toggleAudiences(btn) {
+  const list = btn.nextElementSibling;
+  const isOpen = list.classList.contains('open');
+  list.classList.toggle('open');
+  btn.textContent = isOpen
+    ? '17 audience editions available ▾'
+    : '17 audience editions available ▴';
+}
+
+function applyFilters() {
+  const search = document.getElementById('search').value.toLowerCase().trim();
+  const domain = document.getElementById('filter-domain').value;
+  const offer = document.getElementById('filter-offer').value;
+  const audience = document.getElementById('filter-audience').value;
+
+  const filtered = guideCatalog.filter(g => {
+    if (domain !== 'all' && g.domain !== domain) return false;
+    if (offer !== 'all' && g.offer !== offer) return false;
+    if (search && !g.title.toLowerCase().includes(search) && !domainLabels[g.domain].toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  const grid = document.getElementById('guide-grid');
+  grid.innerHTML = '';
+
+  const emptyState = document.getElementById('empty-state');
+  const countEl = document.getElementById('result-count');
+
+  if (filtered.length === 0) {
+    emptyState.style.display = '';
+    countEl.textContent = '';
+  } else {
+    emptyState.style.display = 'none';
+    const totalEditions = audience !== 'all' ? filtered.length : filtered.length * 17;
+    countEl.innerHTML = `Showing <strong>${filtered.length}</strong> guide${filtered.length === 1 ? '' : 's'}` +
+      (audience !== 'all' ? ` — ${audiences.find(a => a.bucket === audience)?.label} edition` : ` — ${totalEditions.toLocaleString()} total editions across 17 audiences`);
+
+    filtered.forEach(g => {
+      grid.appendChild(renderGuideCard(g, audience));
+    });
+  }
+}
+
+// Initial render
+applyFilters();
+</script>
+</body>
+</html>

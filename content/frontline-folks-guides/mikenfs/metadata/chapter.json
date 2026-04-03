@@ -1,0 +1,622 @@
+{
+  "number": 48,
+  "title": "Is It PTSD? Bipolar? Anxiety? ADHD? Making Sense of Overlapping Diagnoses",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Understanding what you're dealing with - and why the label is just the starting point.",
+  "domain": "Nervous system, mood, and cognition",
+
+  "build_standard": true,
+  "build_clinical": true,
+
+  "sections": [
+
+    {
+      "number": 1,
+      "heading": "What Diagnostic Clarity Actually Looks Like",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "When symptoms pile up - hypervigilance, mood swings, attention problems, panic attacks - it's hard to know what you're dealing with. Is it PTSD? Anxiety? ADHD? Bipolar disorder? Something else entirely? The overlaps are real: PTSD and ADHD both cause attention problems. Bipolar disorder and PTSD both cause sleep disruption and irritability. Anxiety disorders share symptoms with almost everything. Getting clarity on your diagnosis matters because different problems require different treatments - but the diagnostic label is not your identity, and it's not the finish line. It's the starting point for a treatment plan that actually fits what's happening in your brain."
+        },
+
+        {
+          "type": "h2",
+          "text": "Why diagnosis matters (and why it doesn't define you)"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Diagnosis guides treatment: Trauma therapy for PTSD works differently than medication management for bipolar.",
+            "Diagnosis validates experience: 'This is a known thing with a name' reduces self-blame.",
+            "Diagnosis is provisional: It can change as you learn more or as symptoms evolve.",
+            "Diagnosis is not identity: You're not 'a bipolar' or 'an ADHD.' You're a person managing specific symptoms.",
+            "Diagnosis is not destiny: Treatment works. People recover, improve, and build functional lives."
+        ]
+        },
+
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Many frontline folks have multiple diagnoses:",
+            "",
+            "PTSD + depression, ADHD + anxiety, bipolar + PTSD - these combinations are common. You're not 'broken beyond repair.' You just need a treatment plan that addresses all the moving parts."
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 2,
+      "heading": "PTSD: When Trauma Gets Stuck in Your Nervous System",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "Post-Traumatic Stress Disorder (PTSD) happens when your brain can't fully process traumatic experiences, leaving you stuck in a state of threat. Your nervous system stays activated as if the danger is still happening. PTSD is not 'weakness' or 'inability to cope' - it's a neurobiological response to overwhelming experiences."
+        },
+
+        {
+          "type": "h2",
+          "text": "Core PTSD symptoms"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "Intrusions:", "text": "Flashbacks, nightmares, unwanted memories that feel like they're happening now."},
+            {"lead": "Avoidance:", "text": "Avoiding people, places, conversations, or reminders of the trauma."},
+            {"lead": "Hyperarousal:", "text": "Hypervigilance, exaggerated startle, constant scanning, feeling unsafe."},
+            {"lead": "Negative thoughts:", "text": "Blaming yourself, feeling detached, losing interest in things that used to matter."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "What PTSD looks like in frontline work"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Triggered by reminders of specific calls or incidents.",
+            "Avoiding certain types of calls, locations, or conversations.",
+            "Hypervigilance that never turns off, even at home.",
+            "Nightmares with clear trauma content.",
+            "Emotional numbing or feeling disconnected from loved ones."
+          ]
+        },
+
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: PTSD involves dysregulation of the amygdala (overactive threat detection) and hippocampus (impaired memory consolidation). Trauma-focused therapies like PE (Prolonged Exposure) and EMDR work by reprocessing traumatic memories so they're stored as 'past events' rather than 'current threats.'"
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Treatment that works for PTSD"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Trauma-focused therapy: PE, CPT (Cognitive Processing Therapy), EMDR.",
+            "Medications: SSRIs like sertraline or paroxetine can reduce symptoms.",
+            "Nervous system regulation: Breathing, grounding, body-based practices to reduce hyperarousal."
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 3,
+      "heading": "Bipolar Disorder: When Mood Swings Are Extreme and Cyclical",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "Bipolar disorder involves extreme mood episodes - highs (mania or hypomania) and lows (depression) - that cycle over time. It's not 'being moody' or 'having a bad week.' Bipolar episodes last days to weeks, disrupt function, and involve significant changes in energy, sleep, and thinking patterns."
+        },
+
+        {
+          "type": "h2",
+          "text": "Core bipolar symptoms"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "Manic/hypomanic episodes:", "text": "Elevated mood, decreased need for sleep, rapid speech, risky behavior, grandiose thoughts, racing thoughts."},
+            {"lead": "Depressive episodes:", "text": "Low mood, no energy, excessive sleep or insomnia, hopelessness, suicidal thoughts."},
+            {"lead": "Mixed episodes:", "text": "High energy with low mood - agitated depression, very high suicide risk."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Bipolar vs. PTSD: Key differences"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Bipolar episodes cycle over time (weeks to months). PTSD symptoms are more constant with acute spikes when triggered.",
+            "Bipolar includes distinct manic or hypomanic episodes. PTSD does not.",
+            "Bipolar often includes decreased need for sleep during mania. PTSD causes sleep disruption from hyperarousal.",
+            "Both can involve irritability, but bipolar irritability is tied to mood episodes. PTSD irritability is tied to hypervigilance."
+          ]
+        },
+
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Shift work complicates bipolar diagnosis:",
+            "",
+            "Rotating shifts and sleep disruption can trigger or mimic bipolar symptoms. Sleep tracking and mood logs help sort this out."
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Treatment that works for bipolar disorder"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Mood stabilizers: Lithium, lamotrigine, valproate.",
+            "Atypical antipsychotics: Quetiapine, aripiprazole for acute episodes.",
+            "Therapy: CBT, psychoeducation, interpersonal and social rhythm therapy (IPSRT) to stabilize routines.",
+            "Sleep and routine consistency: Critical for preventing episodes."
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 4,
+      "heading": "Anxiety Disorders: When Worry and Fear Take Over",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "Anxiety disorders involve excessive worry, fear, or physical symptoms of anxiety that interfere with daily life. Generalized Anxiety Disorder (GAD), panic disorder, social anxiety, and specific phobias all fall under this category. Anxiety is not the same as stress - it's persistent, often irrational, and hard to control."
+        },
+
+        {
+          "type": "h2",
+          "text": "Core anxiety disorder symptoms"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "GAD:", "text": "Chronic worry about many things (work, health, family), difficulty controlling worry, physical tension."},
+            {"lead": "Panic disorder:", "text": "Recurrent panic attacks (rapid heart rate, sweating, feeling like you're dying), fear of future attacks."},
+            {"lead": "Social anxiety:", "text": "Intense fear of judgment or embarrassment in social situations."},
+            {"lead": "Physical symptoms:", "text": "Muscle tension, headaches, GI issues, fatigue, trouble sleeping."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Anxiety vs. PTSD: Key differences"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Anxiety is future-focused ('What if something bad happens?'). PTSD is past-focused ('That bad thing is still happening to me.').",
+            "Anxiety involves worry spirals. PTSD involves intrusions (flashbacks, nightmares).",
+            "Both involve hyperarousal, but PTSD hyperarousal is tied to trauma reminders. Anxiety hyperarousal is more generalized.",
+            "Avoidance in anxiety is about feared situations. Avoidance in PTSD is about trauma reminders."
+          ]
+        },
+
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: Anxiety disorders involve overactive threat prediction systems (amygdala and insula). CBT works by retraining thought patterns and reducing avoidance. SSRIs reduce baseline anxiety by increasing serotonin."
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Treatment that works for anxiety disorders"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "CBT (Cognitive Behavioral Therapy): Restructures anxious thought patterns.",
+            "Exposure therapy: Gradual, controlled exposure to feared situations reduces avoidance.",
+            "Medications: SSRIs (sertraline, escitalopram) or SNRIs (venlafaxine).",
+            "Nervous system tools: Breathing exercises, grounding, progressive muscle relaxation."
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 5,
+      "heading": "ADHD: When Your Brain Won't Stay on Task",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "Attention-Deficit/Hyperactivity Disorder (ADHD) involves persistent difficulties with attention, impulsivity, and sometimes hyperactivity. It's not 'laziness' or 'lack of discipline' - it's a developmental difference in how your brain regulates attention and executive function. ADHD is often undiagnosed in adults, especially those who learned to compensate or whose hyperactivity wasn't obvious."
+        },
+
+        {
+          "type": "h2",
+          "text": "Core ADHD symptoms"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "Inattention:", "text": "Difficulty sustaining focus, easily distracted, forgetful, loses things, avoids tasks requiring sustained mental effort."},
+            {"lead": "Impulsivity:", "text": "Acting without thinking, interrupting others, difficulty waiting your turn."},
+            {"lead": "Hyperactivity (less common in adults):", "text": "Restlessness, fidgeting, feeling driven by a motor."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "ADHD vs. PTSD vs. Anxiety: Sorting out attention problems"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "ADHD attention problems are lifelong. PTSD attention problems start after trauma. Anxiety attention problems fluctuate with worry.",
+            "ADHD is distractible ('Oh, a squirrel'). PTSD is hypervigilant ('Is that a threat?'). Anxiety is preoccupied ('What if I fail?').",
+            "ADHD impulsivity is quick decisions without thought. PTSD impulsivity is reactive anger or shutdown. Anxiety avoids decisions to reduce risk.",
+            "ADHD often coexists with PTSD or anxiety - treating both matters."
+          ]
+        },
+
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "High-stimulation jobs can mask ADHD:",
+            "",
+            "Frontline work provides constant novelty and urgency, which keeps ADHD brains engaged. Problems show up at home when the stimulation drops and executive function tasks (bills, appointments, chores) pile up."
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Treatment that works for ADHD"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Stimulant medications: Methylphenidate (Ritalin), amphetamines (Adderall) improve focus and impulse control.",
+            "Non-stimulant options: Atomoxetine (Strattera), bupropion (Wellbutrin).",
+            "Behavioral strategies: External structure (timers, lists, routines), breaking tasks into smaller steps, accountability partners.",
+            "Coaching or therapy: ADHD coaching helps build systems. CBT addresses procrastination and negative self-talk."
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 6,
+      "heading": "Common Overlaps and How to Sort Them Out",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "Many symptoms overlap across diagnoses. Sorting out what's driving what requires careful assessment, often with a specialist. Here's a comparison chart to help you and your clinician differentiate."
+        },
+
+        {
+          "type": "h2",
+          "text": "Sleep problems"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "PTSD:", "text": "Nightmares, hypervigilance prevents deep sleep, waking to scan for threats."},
+            {"lead": "Bipolar:", "text": "Decreased need for sleep during mania, hypersomnia during depression."},
+            {"lead": "Anxiety:", "text": "Difficulty falling asleep due to rumination, waking with worry."},
+            {"lead": "ADHD:", "text": "Difficulty winding down, racing thoughts, delayed sleep phase."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Irritability and anger"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "PTSD:", "text": "Reactive anger when triggered, defensive aggression."},
+            {"lead": "Bipolar:", "text": "Episodic irritability during manic or mixed episodes."},
+            {"lead": "Anxiety:", "text": "Irritability from chronic tension and exhaustion."},
+            {"lead": "ADHD:", "text": "Impatience, frustration with delays or interruptions."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Attention and concentration problems"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "PTSD:", "text": "Distracted by hypervigilance and intrusive thoughts."},
+            {"lead": "Bipolar:", "text": "Racing thoughts during mania, slowed cognition during depression."},
+            {"lead": "Anxiety:", "text": "Preoccupied with worry, can't focus on tasks."},
+            {"lead": "ADHD:", "text": "Baseline difficulty sustaining attention, easily distracted by external stimuli."}
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "Impulsivity and risk-taking"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            {"lead": "PTSD:", "text": "Risk-taking to feel alive, recklessness from numbing."},
+            {"lead": "Bipolar:", "text": "Excessive risk-taking during manic episodes (spending, sex, dangerous activities)."},
+            {"lead": "Anxiety:", "text": "Risk avoidance, not risk-taking."},
+            {"lead": "ADHD:", "text": "Impulsive decisions without considering consequences."}
+          ]
+        },
+
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "Timeline matters:",
+            "",
+            "Did symptoms start after a specific trauma? (Suggests PTSD.) Have they been present since childhood? (Suggests ADHD.) Do they cycle in distinct episodes? (Suggests bipolar.) Are they constant with situational spikes? (Suggests anxiety.)"
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 7,
+      "heading": "Getting the Right Assessment and Treatment",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "Accurate diagnosis requires a thorough assessment - not a 15-minute intake. If you're unclear about your diagnosis or your treatment isn't working, seek a specialist evaluation."
+        },
+
+        {
+          "type": "h2",
+          "text": "What a good diagnostic assessment includes"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Symptom history: When symptoms started, how they've changed, what makes them better or worse.",
+            "Trauma history: Specific incidents, cumulative exposure, childhood adversity.",
+            "Family history: Mental health and substance use patterns in relatives.",
+            "Functional impact: How symptoms affect work, relationships, sleep, daily life.",
+            "Medical screening: Rule out thyroid issues, sleep apnea, neurological problems.",
+            "Collateral information: Input from partners or family members (with your permission)."
+          ]
+        },
+
+        {
+          "type": "h2",
+          "text": "When to seek a specialist"
+        },
+
+        {
+          "type": "bullets",
+          "items": [
+            "Your current treatment isn't working after 3+ months.",
+            "You have multiple overlapping diagnoses and unclear treatment direction.",
+            "You've been told different diagnoses by different providers.",
+            "You're considering medication changes or struggling with side effects.",
+            "Symptoms are worsening or new symptoms are emerging."
+          ]
+        },
+
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Specialists worth seeking:",
+            "",
+            "Psychiatrist for medication management. Psychologist for testing and diagnostic clarity. Trauma-focused therapist (EMDR, PE, CPT certified). ADHD specialist or neuropsychologist for complex attention/executive function problems."
+          ]
+        }
+
+      ]
+    },
+
+    {
+      "number": 8,
+      "heading": "7-Day Drill: Track Symptoms to Find Patterns",
+      "content": [
+
+        {
+          "type": "para",
+          "text": "If you're unclear about what you're dealing with, tracking symptoms for one week provides useful data for you and your clinician. Use the worksheet or a simple daily log."
+        },
+
+        {
+          "type": "numbered",
+          "items": [
+            "Track mood daily (scale 1-10, with notes on highs or lows).",
+            "Log sleep (time to bed, time awake, quality, nightmares or waking).",
+            "Note attention/focus issues (when they happen, what triggers them).",
+            "Track irritability or anger spikes (what triggered it, how you responded).",
+            "Note any intrusive thoughts, flashbacks, or avoidance behaviors.",
+            "Record risky or impulsive decisions.",
+            "Track energy levels (high, normal, low)."
+          ]
+        },
+
+        {
+          "type": "para",
+          "text": "Bring this log to your assessment. Patterns over time help differentiate diagnoses better than a single snapshot."
+        }
+
+      ]
+    }
+
+  ],
+
+  "worksheets": [
+
+    {
+      "title": "My Symptom Tracker (7-Day Log)",
+      "intro": "Track symptoms for one week to identify patterns. Bring this to your clinician or therapist.",
+      "question_groups": [
+        {
+          "label": "Day 1  -  Mood (1-10), Sleep (hrs, quality), Attention Issues, Triggers, Notes",
+          "hint": "Example: 'Mood 4/10. Slept 5 hrs, woke 3x. Couldn't focus during shift. Triggered by accident scene. Irritable with partner.'",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Day 2  -  Mood, Sleep, Attention, Triggers, Notes",
+          "hint": "",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Day 3  -  Mood, Sleep, Attention, Triggers, Notes",
+          "hint": "",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Day 4  -  Mood, Sleep, Attention, Triggers, Notes",
+          "hint": "",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Day 5  -  Mood, Sleep, Attention, Triggers, Notes",
+          "hint": "",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Day 6  -  Mood, Sleep, Attention, Triggers, Notes",
+          "hint": "",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Day 7  -  Mood, Sleep, Attention, Triggers, Notes",
+          "hint": "",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "Patterns I notice across the week",
+          "hint": "Example: 'Mood drops after night shifts. Sleep is worst after stressful calls. Attention problems worse in afternoon.'",
+          "field_count": 1,
+          "field_height": 50,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Bring this log to your next appointment. Patterns over time help clarify diagnosis."
+    },
+
+    {
+      "title": "Questions for My Clinician About Diagnosis",
+      "intro": "Use this worksheet to prepare questions for your assessment or follow-up appointment.",
+      "question_groups": [
+        {
+          "label": "What do you think is driving my symptoms? (PTSD, anxiety, ADHD, bipolar, something else?)",
+          "hint": "Ask for an explanation of their reasoning.",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "How do my symptoms fit (or not fit) the diagnosis you're considering?",
+          "hint": "Ask about overlaps and what differentiates diagnoses.",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "What treatment approach works best for this diagnosis?",
+          "hint": "Medication? Therapy? Both? What type of therapy?",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "If I have multiple diagnoses, which one do we treat first?",
+          "hint": "Ask about treatment sequencing and priorities.",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "How will we know if treatment is working?",
+          "hint": "What symptoms should improve? What timeline?",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        },
+        {
+          "label": "What should I do if my symptoms change or new ones show up?",
+          "hint": "When to call, when to adjust treatment, red flags to watch for.",
+          "field_count": 1,
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Good clinicians welcome questions. If yours doesn't, find a new one."
+    }
+
+  ],
+
+  "closing": {
+    "paragraphs": [
+      "Getting diagnostic clarity is not about labeling yourself - it's about understanding what's happening so you can get the right treatment. PTSD, bipolar disorder, anxiety, and ADHD all respond to specific interventions. The label matters because it points you toward what works.",
+      "If you're stuck in diagnostic confusion, track your symptoms and seek a specialist evaluation. You deserve a treatment plan that fits what you're actually dealing with - not a generic approach that misses the mark."
+    ]
+  }
+}

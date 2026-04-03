@@ -1,0 +1,21 @@
+# Blow Up Recovery: Pattern Finder
+
+**Audience:** LGBTQ+
+
+**From guide:** Blow Up Recovery
+
+---
+
+Goal: Map the blowup: what lit the fuse, what it looked like, and who caught the shrapnel.
+
+Prompts:
+- What happened right before the blowup? What were the first 30 seconds like in your body?
+- Who was the target? Was it the person you were actually angry at?
+- What's the sentence you said (or almost said) that you regret most?
+- How did the other person look when it happened? What did their face do?
+- How long does it usually take you to come back from one? Hours? Days?
+- Where do you feel most defended, hidden, or on alert in your current environment?
+
+---
+
+**A quick note:** This worksheet is educational: it's not therapy, it's not a diagnosis, and using it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.

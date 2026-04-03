@@ -1,0 +1,1 @@
+export { POST } from '../../../../api/analytics/event/route';

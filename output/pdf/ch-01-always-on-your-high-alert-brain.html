@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+@page { size: letter; margin: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Raleway', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    color: #2d2d2d;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ───────────── Cover ───────────── */
+.cover {
+    width: 8.5in;
+    height: 11in;
+    background: #faf7f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    overflow: hidden;
+}
+
+.cover-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid #1a6b6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-shrink: 0;
+}
+.cover-logo .logo-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 6.5pt;
+    letter-spacing: 3.5pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+.cover-logo .logo-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+}
+.cover-logo .logo-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+}
+.cover-logo .logo-line {
+    width: 28px;
+    height: 1.5px;
+    background: #d4922a;
+    margin: 4px 0;
+}
+.cover-logo .logo-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 5.5pt;
+    letter-spacing: 3.5pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+
+.cover-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 22pt;
+    color: #1a6b6a;
+    line-height: 1.25;
+    margin: 0 1.2in 10px 1.2in;
+    max-width: 5.5in;
+}
+.cover-bar {
+    width: 48px;
+    height: 2px;
+    background: #d4922a;
+    margin: 14px auto;
+}
+.cover-audience {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 2.5pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    margin-bottom: 18px;
+}
+.cover-type {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 8.5pt;
+    color: #999;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+}
+.cover-from {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: #999;
+    margin-top: 8px;
+}
+.cover-disclaimer {
+    font-family: 'Raleway', sans-serif;
+    font-size: 7pt;
+    color: #aaa;
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.cover {
+    position: relative;
+}
+
+/* ───────────── Content pages ───────────── */
+.content {
+    padding: 0.65in 0.75in;
+}
+
+.content h1 { display: none; }
+
+.content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    color: #1a6b6a;
+    margin: 20pt 0 6pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5px solid #d4922a;
+    line-height: 1.35;
+    page-break-after: avoid;
+}
+
+.content h2:first-child {
+    margin-top: 0;
+}
+
+.content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    color: #0f4e4d;
+    margin: 14pt 0 4pt 0;
+    page-break-after: avoid;
+}
+
+.content p  { margin: 0 0 8pt 0; }
+.content ol { margin: 0 0 10pt 22pt; }
+.content ul { margin: 0 0 10pt 22pt; }
+.content li { margin-bottom: 4pt; }
+.content strong { font-weight: 600; }
+.content em { font-style: italic; color: #555; }
+.content blockquote {
+    border-left: 3px solid #1a6b6a;
+    margin: 10pt 0;
+    padding: 8pt 14pt;
+    color: #555;
+    font-size: 9.5pt;
+    background: #f9f8f5;
+    border-radius: 0 4px 4px 0;
+}
+
+/* ── Worksheet sections inside guides ── */
+.worksheet-section {
+    background: #f4f1ec;
+    border-left: 3px solid #d4922a;
+    padding: 12pt 16pt 8pt 16pt;
+    margin: 18pt 0;
+    border-radius: 0 6px 6px 0;
+    page-break-before: always;
+    page-break-inside: avoid;
+}
+.worksheet-section h2 {
+    border-bottom: none;
+    margin-top: 0;
+    padding-bottom: 0;
+    color: #d4922a;
+    font-size: 12pt;
+}
+.worksheet-section .ws-goal {
+    font-style: italic;
+    color: #0f4e4d;
+    font-size: 10pt;
+    margin-bottom: 8pt;
+}
+.worksheet-section ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.worksheet-section li {
+    padding: 8pt 0 4pt 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+.worksheet-section li .writing-lines {
+    margin-top: 6pt;
+    border-bottom: 1px solid #ccc;
+    height: 24pt;
+}
+.worksheet-section li .writing-lines + .writing-lines {
+    border-bottom: 1px solid #ddd;
+}
+
+/* ── Standalone worksheet body ── */
+.worksheet-standalone .ws-goal {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: #1a6b6a;
+    margin-bottom: 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 1px solid #ddd;
+}
+.worksheet-standalone ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.worksheet-standalone li {
+    padding: 10pt 0 4pt 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+.worksheet-standalone li .writing-lines {
+    margin-top: 6pt;
+    border-bottom: 1px solid #d4d0ca;
+    height: 26pt;
+}
+.worksheet-standalone li .writing-lines:last-child {
+    margin-bottom: 8pt;
+}
+
+/* ── Crisis footer ── */
+.crisis-footer {
+    margin-top: 28pt;
+    padding-top: 12pt;
+    border-top: 1px solid #ddd;
+    page-break-inside: avoid;
+}
+.crisis-footer .note {
+    font-size: 8.5pt;
+    color: #888;
+    line-height: 1.55;
+    margin-bottom: 8pt;
+}
+.crisis-box {
+    background: #faf7f2;
+    border: 1px solid #1a6b6a;
+    border-radius: 5px;
+    padding: 10pt 12pt;
+}
+.crisis-box p {
+    font-size: 8.5pt;
+    color: #0f4e4d;
+    margin: 0 0 3pt 0;
+    line-height: 1.5;
+}
+.crisis-box p:last-child { margin-bottom: 0; }
+.crisis-box strong { color: #1a6b6a; font-weight: 600; }
+
+/* ───────────── Back page ───────────── */
+.back-page {
+    width: 8.5in;
+    height: 11in;
+    page-break-before: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.back-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid #1a6b6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+.back-logo .logo-the {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 6.5pt;
+    letter-spacing: 3.5pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+.back-logo .logo-ask {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+}
+.back-logo .logo-anyway {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: #d4922a;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+}
+.back-logo .logo-line {
+    width: 28px;
+    height: 1.5px;
+    background: #d4922a;
+    margin: 4px 0;
+}
+.back-logo .logo-campaign {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 5.5pt;
+    letter-spacing: 3.5pt;
+    text-transform: uppercase;
+    color: #1a6b6a;
+}
+
+.back-tagline {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
+    color: #999;
+    margin-bottom: 28px;
+    font-style: italic;
+}
+.back-crisis {
+    font-family: 'Raleway', sans-serif;
+    font-size: 8.5pt;
+    color: #1a6b6a;
+    line-height: 1.9;
+}
+.back-crisis strong { color: #1a6b6a; }
+
+.back-disclaimer {
+    position: absolute;
+    bottom: 28px;
+    left: 0.75in;
+    right: 0.75in;
+    text-align: center;
+}
+.back-disclaimer p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 6.5pt;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0 0 3pt 0;
+}
+.back-disclaimer p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="cover-logo"><div class="logo-the">THE</div>
+<div class="logo-ask">ASK</div>
+<div class="logo-anyway">ANYWAY</div>
+<div class="logo-line"></div>
+<div class="logo-campaign">CAMPAIGN</div></div>
+<div class="cover-title">Always On: Your High-Alert Brain</div>
+<div class="cover-bar"></div>
+
+<div class="cover-type">Chapter Guide</div>
+<div class="cover-disclaimer">For educational purposes only. Not a substitute for professional mental health support.</div>
+</div>
+<div class="content">
+<h2>What This Helps With</h2>
+<p>If your brain won't stop scanning for danger, even when you're safe on your own couch, this one's for you. Not theory. Just what to actually do about it.</p>
+<h2>What Is Happening</h2>
+<p>Your high-alert brain is scanning for threat constantly. Your threat system stays locked on even when you aren't in danger. This isn't paranoia, it's your nervous system doing what it learned to do. The problem is it doesn't turn off.</p>
+<h2>What To Do Now</h2>
+<ol>
+<li>Name three false alarms your brain has triggered this week.</li>
+<li>Practice one grounding action when you notice the scanning (5-4-3-2-1 senses, or feet-to-ground breathing).</li>
+<li>Set one anchor point in your day where you pause and check: am I actually in danger right now?</li>
+</ol>
+<h2>What To Say</h2>
+<ul>
+<li>My brain is in high-alert mode and I'm not in danger right now.</li>
+<li>I'm noticing I'm scanning and I'm going to pause and ground.</li>
+<li>This is an old pattern and I'm practicing a new response.</li>
+</ul>
+<h2>Common Mistakes To Avoid</h2>
+<ul>
+<li>Trying to logic yourself out of a body response. Your brain won't believe it's safe because you told it to.</li>
+<li>White-knuckling through situations that are flooding your system instead of leaving and resetting.</li>
+<li>Shaming yourself for scanning, it kept you alive. The goal is recalibration, not elimination.</li>
+</ul>
+<h2>24-Hour Action Plan</h2>
+<ul>
+<li>Right now: pick one grounding move (5-4-3-2-1, cold water on your wrists, feet flat on the floor) and do it once today. Just once.</li>
+<li>Before bed tonight: write down three moments your brain sounded the alarm and nothing was actually wrong.</li>
+<li>Tomorrow: set one anchor check-in during the day, pause, ask yourself "am I actually in danger right now?" and answer honestly.</li>
+</ul>
+<div class="worksheet-section">
+<h2>Worksheet 1: Pattern Finder</h2>
+<p class='ws-goal'>Spot the pattern, when it shows up, what triggers it, and what you notice first.</p>
+<ul>
+<li>What time of day does the scanning get loudest?<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>What's the last false alarm your brain triggered? What actually happened?<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>Where do you feel the hyperarousal first, head, chest, gut, hands?<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>What were you doing when you last felt genuinely safe?<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>What's one thing that helps your body believe the danger is over?<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+</ul>
+</div>
+<div class="worksheet-section">
+<h2>Worksheet 2: Action Builder</h2>
+<p class='ws-goal'>Turn what you noticed into one action and one commitment.</p>
+<ul>
+<li>The grounding move I'll use when I catch myself scanning:<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>The sentence I'll say to myself when my brain says I'm in danger and I'm not:<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>One daily anchor check-in I'll build into my routine:<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>The person I'll tell about this pattern:<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+<li>By tomorrow night, I'll know this worked if:<div class="writing-lines"></div><div class="writing-lines"></div><div class="writing-lines"></div></li>
+</ul>
+</div>
+
+</div>
+<div class="back-page">
+<div class="back-logo"><div class="logo-the">THE</div>
+<div class="logo-ask">ASK</div>
+<div class="logo-anyway">ANYWAY</div>
+<div class="logo-line"></div>
+<div class="logo-campaign">CAMPAIGN</div></div>
+<div class="back-tagline">You don&rsquo;t need the perfect words. You just need to ask.</div>
+<div class="back-crisis">
+<strong>988 Suicide &amp; Crisis Lifeline:</strong> call or text 988<br>
+<strong>Crisis Text Line:</strong> text HOME to 741741<br>
+<strong>Emergency:</strong> call 911
+</div>
+<div class="back-disclaimer">
+<p>This material is for educational purposes only. It is not therapy, not a clinical diagnosis, and does not replace professional mental health support.</p>
+<p>The author and publisher disclaim any liability for actions taken or not taken based on this content. Individual results may vary.</p>
+<p>&copy; The Ask Anyway Campaign. All rights reserved.</p>
+</div>
+</div>
+</body>
+</html>

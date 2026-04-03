@@ -1,0 +1,281 @@
+{
+  "number": 44,
+  "title": "Money, Chaos, and Avoidance at Home",
+  "domain": "Work, mission, identity, and transition",
+  "series_subtitle": "A Field Guide for Frontline Folks and Their Families",
+  "cover_tagline": "Field notes for financial avoidance, chaos spending, and money as a relationship flashpoint.",
+  "build_standard": true,
+  "build_clinical": true,
+  "sections": [
+    {
+      "number": 1,
+      "heading": "What Is Happening",
+      "content": [
+        {
+          "type": "para",
+          "text": "You know the bills are there. You know the account balance is probably low. You're not opening the statements. Maybe you're spending impulsively - a piece of gear, a night out, something that felt good for 10 minutes. Maybe your partner handles everything financial because you can't face it. Maybe you're fighting about money constantly because it's the proxy war for every other stress. Financial avoidance is one of the most common post-transition problems: dysregulation makes the future feel abstract, money requires attention to detail you don't have, and spending can be a regulation tool just like alcohol."
+        },
+        {
+          "type": "h3",
+          "text": "Common signs"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Statement avoidance: You're not opening mail, logging into accounts, or checking balances.",
+            "Impulsive spending: Gear, food, experiences - spending that regulates stress in the moment but creates problems later.",
+            "Financial delegating: Your partner handles everything because you can't face it. They resent it.",
+            "Money fights with partner: Every financial discussion escalates. It's never just about money.",
+            "No budget or plan: Income is coming in, but there's no plan for where it goes.",
+            "Debt accumulation: Credit card balances growing because you're spending in the gap between income and reality.",
+            "Shame spiral: You know you should look at finances. Not looking makes it worse. Shame prevents looking.",
+            "Financial anxiety dysregulating: Looking at accounts activates anxiety, which makes you avoid, which makes accounts worse."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "highlight",
+          "bold_first": true,
+          "lines": [
+            "This is dysregulation + avoidance, not irresponsibility:",
+            "Financial avoidance is often driven by anxiety and shame, not laziness. The avoidance makes it worse."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "heading": "Why It Escalates",
+      "content": [
+        {
+          "type": "para",
+          "text": "Your nervous system hates uncertainty and threat. Your bank account, when you're not managing it, becomes a source of unpredictable threat. So you avoid looking, because looking might confirm you're in trouble. The avoidance prevents you from fixing the problem, which makes the problem grow, which makes looking more threatening, which deepens the avoidance. Add impulsive spending as a regulation tool (the same mechanism as substance use - immediate relief, delayed cost), and you get a growing financial crisis that's harder and harder to address."
+        },
+        {
+          "type": "h3",
+          "text": "Common amplifiers"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Avoidance-shame spiral: Not looking → accounts worsen → looking feels more threatening → avoid more.",
+            "Regulation spending: Shopping/spending to feel better creates short-term relief and long-term debt.",
+            "Partner resentment: They're managing everything financial and feel unsupported and burdened.",
+            "Fight pattern: Money conversations always escalate because they carry all the other unresolved stress.",
+            "Debt acceleration: High-interest debt grows quickly when not managed. Every month of avoidance costs real money.",
+            "Financial crisis compounding: Once accounts go into trouble, the administrative burden of catching up feels overwhelming.",
+            "Income instability amplifying: Post-transition income is often lower or less stable, which makes financial stress even more acute."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "clinical",
+          "italic_first": true,
+          "clinical_only": true,
+          "lines": [
+            "Why this works: reducing total load and increasing predictability lowers baseline arousal and improves regulation."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "heading": "What To Do This Week",
+      "content": [
+        {
+          "type": "para",
+          "text": "You can address financial avoidance with small, specific steps that reduce the threat enough to look."
+        },
+        {
+          "type": "numbered",
+          "items": [
+            "Start with one account for 5 minutes: Just look at one account. Don't process all of it. Just look. You need to know the number.",
+            "One-page financial snapshot: Write down income, fixed expenses, and current debt. One page. No spreadsheet needed.",
+            "Separate regulation spending from needs: Identify what you're spending on regulation (food delivery, gear, small purchases) vs. actual needs. Know the difference.",
+            "Involve your partner but set ground rules: 'We're going to look at finances together. We need to agree this is problem-solving, not blame.'",
+            "Rule: no money conversations during arguments about other things: Money fights are often about other stressors. Separate financial planning from emotional activation.",
+            "Automate what you can: Auto-pay bills, auto-transfer to savings. Reduce the number of active decisions that enable avoidance.",
+            "Find one person to help: Financial counselor, trusted friend, or family member who handles money well. You don't have to do this alone.",
+            "Treat financial anxiety as anxiety: The avoidance is driven by fear. Treat the fear (grounding, breathing before opening accounts) as directly as the finances.",
+            "Set a weekly 15-minute financial check-in: One specific time, one specific review. Short enough that you can do it even when activated."
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "info",
+          "lines": [
+            "Field rule: set the bar low enough to do it even on your worst day."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "heading": "For Partners and Team",
+      "content": [
+        {
+          "type": "para",
+          "text": "Stress communication should be clear, brief, and repeatable. Predictable routines protect relationships."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use concrete language: 'I'm avoiding finances because looking activates too much anxiety. I need your help.'",
+            "Name what you need: 'I need us to look at this together, without it becoming a fight. Can we set ground rules?'",
+            "Acknowledge the burden: 'I know you've been handling this alone. I'm not okay with that. Let me get back in.'",
+            "Set boundaries with shame: 'I need you to help me without shaming me for where we are. We can fix it, but not if I feel blamed.'"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "heading": "When To Get More Help",
+      "content": [
+        {
+          "type": "para",
+          "text": "Self-guided tools are a start. Escalate care when symptoms persist, spread, or begin harming safety and function."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Financial avoidance has led to serious debt, missed payments, or legal consequences.",
+            "Money fights are happening weekly and escalating to relationship-threatening levels.",
+            "Impulsive spending is a primary regulation tool and it's creating financial crisis.",
+            "You're unable to look at accounts or discuss finances without severe anxiety or shutdown.",
+            "Financial counseling combined with therapy for anxiety and avoidance can address both the money and the behavior pattern driving it."
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "heading": "7-Day Field Drill",
+      "content": [
+        {
+          "type": "para",
+          "text": "Use the worksheet every day for one week. Track trigger, body signal, and reset action. Keep what works and remove what does not."
+        },
+        {
+          "type": "callout",
+          "style": "default",
+          "bold_first": true,
+          "lines": [
+            "Daily drill:",
+            "1) Name the trigger.",
+            "2) Name the first body signal.",
+            "3) Run one reset action.",
+            "4) Log response quality."
+          ]
+        }
+      ]
+    }
+  ],
+  "worksheets": [
+    {
+      "title": "Worksheet: Money, Chaos, and Avoidance at Home",
+      "intro": "Use this to track financial stress and avoidance and build a practical response you can repeat under load.",
+      "question_groups": [
+        {
+          "label": "Where did this pattern show up this week?",
+          "hint": "List specific moments at work, at home, and in transition.",
+          "field_count": 3,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What did it cost you when it took over?",
+          "hint": "Name impact on body, mood, decisions, and relationships.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        },
+        {
+          "label": "What two actions will you run for the next 7 days?",
+          "hint": "Choose actions small enough to use on hard days.",
+          "field_count": 2,
+          "field_height": 36,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Trigger:",
+          "hint": "What activated the pattern?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Early body signal:",
+          "hint": "What did your body do first?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Reset action used:",
+          "hint": "What fast action lowered intensity?",
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "step": "4. Better next response:",
+          "hint": "What exact behavior will you use next time?",
+          "field_height": 40,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Track this daily for one week, then tighten the plan around what actually worked."
+    },
+    {
+      "title": "Worksheet: Money, Chaos, and Avoidance at Home - Partner/Team Check-In",
+      "intro": "Use this page for one short practical check-in each week.",
+      "question_groups": [
+        {
+          "label": "What do others notice first when this pattern is active?",
+          "hint": "Capture observable behavior, not labels.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What support helps most and least?",
+          "hint": "List what helps and what escalates the issue.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        },
+        {
+          "label": "What agreement will you both practice this week?",
+          "hint": "One clear action from each side.",
+          "field_count": 2,
+          "field_height": 34,
+          "multiline": true
+        }
+      ],
+      "numbered_prompts": [
+        {
+          "step": "1. Signal phrase:",
+          "hint": "What phrase means pause and reset?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "2. Time-to-return commitment:",
+          "hint": "When will re-engagement happen?",
+          "field_height": 28,
+          "multiline": false
+        },
+        {
+          "step": "3. Repair step:",
+          "hint": "What specific repair happens after a rupture?",
+          "field_height": 38,
+          "multiline": true
+        }
+      ],
+      "closing_note": "Keep check-ins short, specific, and repeatable."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+BULK FIX REPORT: Add Exact Scripts Language
+Fixed: 75/75
+Failed: 0/75
+
+Replacement: '## What To Say' -> '## What To Say: Exact Scripts and Phrases'
+Added: 'Here are the exact words and phrases to use:'
