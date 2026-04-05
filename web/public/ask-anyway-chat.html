@@ -1,0 +1,2790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ask Anyway</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg: #000;
+    --text: #f0ece4;
+  }
+
+  html, body {
+    height: 100%; width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+
+  /* ─── Animations ─── */
+  @keyframes fadeIn  { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeOut { from { opacity:1; transform:translateY(0); }   to { opacity:0; transform:translateY(-10px); } }
+  @keyframes blink   { 50% { opacity:0; } }
+  @keyframes dotBounce {
+    0%,60%,100% { transform:translateY(0); opacity:.2; }
+    30%          { transform:translateY(-8px); opacity:1; }
+  }
+
+  /* ─── Page container ─── */
+  #page {
+    position: fixed; inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 28px 72px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* When content is tall (outcome pages), pin to top instead of centering */
+  #page.top-align {
+    justify-content: flex-start;
+  }
+
+  #page.out {
+    animation: fadeOut .34s ease forwards;
+    pointer-events: none;
+  }
+
+  /* ─── Brand ─── */
+  .brand {
+    position: fixed;
+    top: 28px; left: 50%; transform: translateX(-50%);
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #555;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  /* ─── Content wrapper ─── */
+  .page-content {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 72px;
+    padding-bottom: 40px;
+  }
+
+  .page-content.entering { animation: fadeIn .44s ease both; }
+
+  /* ─── AI prompt text ─── */
+  .ai-prompt {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -.03em;
+    margin-bottom: 48px;
+    white-space: pre-wrap;
+  }
+
+  /* words snap in during typewriter */
+  .ai-prompt .tw-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: wordIn .18s ease forwards;
+  }
+
+  @keyframes wordIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: .55em; height: .85em;
+    background: var(--text);
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    animation: blink .75s step-end infinite;
+    border-radius: 1px;
+  }
+
+  /* ─── Echo: muted repeat of user's last message ─── */
+  .echo {
+    font-size: .72rem;
+    color: #555;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  /* ─── Text input (page 2+) ─── */
+  .page-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #2a2a2a;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 10px 0;
+    outline: none;
+    caret-color: var(--text);
+    transition: border-color .2s;
+  }
+
+  .page-input:focus { border-color: #555; }
+  .page-input::placeholder { color: #444; }
+
+  .input-hint {
+    font-size: .6rem;
+    color: #333;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    transition: color .25s;
+  }
+
+  .input-hint.ready { color: #777; }
+
+  /* ─── Thinking dots ─── */
+  .thinking {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 36px;
+    height: 2rem;
+  }
+
+  .thinking-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #444;
+    animation: dotBounce .9s ease-in-out infinite;
+  }
+
+  .thinking-dot:nth-child(2) { animation-delay: .14s; }
+  .thinking-dot:nth-child(3) { animation-delay: .28s; }
+
+  /* ─── Recommendation cards ─── */
+  .rec-label {
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 16px;
+  }
+
+  .rec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .rec-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    background: #070707;
+    border: 1px solid #181818;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: border-color .18s, background .18s;
+    cursor: pointer;
+  }
+
+  .rec-item:hover { background: #0c0c0c; border-color: #1e1e1e; }
+  .rec-icon { font-size: 1.35rem; flex-shrink:0; width:28px; text-align:center; }
+  .rec-content { flex: 1; }
+  .rec-title { font-size: 1.05rem; font-weight: 600; color: #ddd9d2; line-height: 1.3; }
+  .rec-desc  { font-size: .88rem; color: #999; margin-top: 3px; line-height: 1.4; }
+
+  .rec-item.crisis  { border-color: #280d0d; background: #080404; }
+  .rec-item.crisis:hover { border-color: #3a1212; }
+  .rec-item.crisis .rec-title { color: #a02828; }
+
+  .rec-item.sms    { border-color: #0c1f14; background: #040908; }
+  .rec-item.sms:hover { border-color: #162e1e; }
+  .rec-item.sms .rec-title { color: #306845; }
+
+  .rec-item.pdf    { border-color: #0e1526; background: #040508; }
+  .rec-item.pdf:hover { border-color: #182438; }
+  .rec-item.pdf .rec-title { color: #4060c0; }
+
+  .rec-item.local  { border-color: #1e160a; background: #080603; }
+  .rec-item.local:hover { border-color: #2e2010; }
+  .rec-item.local .rec-title { color: #906828; }
+
+  /* ─── Therapist finder widget ─── */
+  .therapist-widget {
+    border: 1px solid #1e160a; background: #080603;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 8px;
+  }
+  .therapist-widget-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .therapist-widget-icon { font-size: 1.3rem; }
+  .therapist-widget-title {
+    font-size: .88rem; font-weight: 600; color: #906828; flex: 1;
+  }
+  .therapist-find-btn {
+    width: 100%; padding: 10px 0; border: 1px solid #2e2010;
+    border-radius: 8px; background: #0e0a04; color: #c08030;
+    font-size: .82rem; font-weight: 600; cursor: pointer;
+    transition: border-color .2s, background .2s; font-family: inherit;
+  }
+  .therapist-find-btn:hover { background: #14100a; border-color: #4a3010; }
+  .therapist-loading {
+    text-align: center; padding: 12px; color: #555; font-size: .8rem;
+  }
+  .therapist-zip-form { display: flex; gap: 8px; margin-top: 8px; }
+  .therapist-zip-input {
+    flex: 1; padding: 8px 12px; background: #080603; border: 1px solid #2e2010;
+    border-radius: 7px; color: #c08030; font-size: .85rem; outline: none;
+    font-family: inherit;
+  }
+  .therapist-zip-input::placeholder { color: #444; }
+  .therapist-zip-submit {
+    padding: 8px 14px; background: #1a1002; border: 1px solid #3a2010;
+    border-radius: 7px; color: #906828; font-size: .82rem; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .therapist-results { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .therapist-card {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: #04030a; border: 1px solid #1a1a2e; border-radius: 8px;
+    padding: 10px 12px; text-decoration: none; transition: border-color .2s;
+  }
+  .therapist-card:hover { border-color: #2a2a4e; }
+  .therapist-avatar {
+    width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+    background: #1a1a2e; flex-shrink: 0;
+  }
+  .therapist-avatar-placeholder {
+    width: 44px; height: 44px; border-radius: 50%; background: #1a1a2e;
+    display: flex; align-items: center; justify-content: center;
+    color: #444; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .therapist-info { flex: 1; min-width: 0; }
+  .therapist-name { font-size: .85rem; font-weight: 600; color: #ccc; }
+  .therapist-cred { font-size: .75rem; color: #555; margin-top: 1px; }
+  .therapist-bio {
+    font-size: .75rem; color: #555; margin-top: 4px; line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .therapist-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+  .therapist-tag {
+    font-size: .6rem; color: #3a7060; border: 1px solid #1a3028;
+    border-radius: 4px; padding: 1px 5px;
+  }
+  .therapist-more-link {
+    display: block; text-align: center; margin-top: 10px;
+    font-size: .75rem; color: #555; text-decoration: none;
+  }
+  .therapist-more-link:hover { color: #906828; }
+  .therapist-error { font-size: .78rem; color: #555; padding: 4px 0 6px; }
+
+  /* ─── Guide reader drawer ─── */
+  #guide-drawer {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 1000;
+    flex-direction: column;
+    background: #000;
+  }
+  #guide-drawer.open { display: flex; animation: guideSlideUp .32s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes guideSlideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  #guide-drawer-bar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px;
+    background: #000;
+    border-bottom: 1px solid #181818;
+    flex-shrink: 0;
+  }
+  #guide-drawer-back {
+    background: none; border: none; color: #888;
+    font-family: inherit; font-size: .82rem;
+    cursor: pointer; display: flex; align-items: center; gap: 5px;
+    padding: 4px 0; transition: color .18s;
+  }
+  #guide-drawer-back:hover { color: #f0ece4; }
+  #guide-drawer-title {
+    flex: 1; font-size: .78rem; font-weight: 600;
+    color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #guide-drawer-frame {
+    flex: 1; border: none; width: 100%; background: #000;
+  }
+
+  /* ─── Restart link ─── */
+  .restart-link {
+    font-size: .82rem;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: .06em;
+    margin-top: 14px;
+    cursor: pointer;
+    transition: color .2s;
+    display: inline-block;
+  }
+
+  .restart-link:hover { color: #aaa; }
+
+  /* ─── Email/SMS capture block ─── */
+  .capture-block {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  .capture-prompt {
+    font-size: .92rem;
+    color: #999;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .capture-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+  .capture-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #2a2a2a;
+    color: var(--text);
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 300;
+    padding: 8px 0;
+    outline: none;
+    caret-color: var(--text);
+    transition: border-color .2s;
+  }
+  .capture-input:focus { border-color: #555; }
+  .capture-input::placeholder { color: #444; }
+  .capture-submit {
+    background: none;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #888;
+    font-family: inherit;
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+    white-space: nowrap;
+  }
+  .capture-submit:hover { border-color: #666; color: #ccc; }
+  .capture-skip {
+    font-size: .7rem;
+    color: #444;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .capture-skip:hover { color: #888; }
+  .capture-done {
+    font-size: .82rem;
+    color: #666;
+    margin-top: 6px;
+  }
+
+  /* ─── CCE Choice buttons ─── */
+  .choice-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 540px;
+  }
+  .choice-btn {
+    background: transparent;
+    border: 1.5px solid #333;
+    border-radius: 8px;
+    color: #eee;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: background .18s, border-color .18s, color .18s;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+  }
+  .choice-btn:hover { background: #222; border-color: #eee; color: #fff; }
+  .choice-btn:active { background: #333; }
+
+  /* ─── Audience picker chips ─── */
+  .audience-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    width: 100%;
+    max-width: 540px;
+  }
+  .audience-chip {
+    background: transparent;
+    border: 1.5px solid #333;
+    border-radius: 20px;
+    color: #ddd;
+    font-family: inherit;
+    font-size: .88rem;
+    font-weight: 500;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: background .18s, border-color .18s, color .18s;
+    white-space: nowrap;
+    letter-spacing: -.01em;
+  }
+  .audience-chip:hover { background: #222; border-color: #eee; color: #fff; }
+  .audience-chip:active { background: #333; }
+  .audience-chip.general-chip {
+    border-style: dashed;
+    color: #888;
+    margin-top: 4px;
+  }
+  .audience-chip.general-chip:hover { color: #ccc; border-color: #aaa; }
+
+  /* ─── CCE Outcome band pill ─── */
+  .band-pill {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-bottom: 16px;
+    opacity: .7;
+  }
+  .cce-disclaimer {
+    font-size: .82rem;
+    color: #666;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+
+  /* ─── Tagline / safe-space note ─── */
+  .tagline {
+    font-size: .72rem;
+    color: #555;
+    letter-spacing: .04em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .tagline strong { color: #888; font-weight: 600; }
+
+  /* ─── Free badge ─── */
+  .free-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #22c55e;
+    border: 1px solid #22c55e44;
+    background: #22c55e0d;
+    border-radius: 99px;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+  }
+
+  /* ─── Progress dots ─── */
+  .progress-row {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .pd {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #222;
+    transition: background .35s, transform .35s;
+  }
+  .pd.active  { background: #f0ece4; transform: scale(1.25); }
+  .pd.done    { background: #444; }
+
+  /* ─── Stay talking prompt ─── */
+  .reply-prompt {
+    font-size: .72rem;
+    color: #555;
+    letter-spacing: .04em;
+    margin-top: 18px;
+    font-style: italic;
+  }
+
+  /* ─── Beta feedback ─── */
+  .beta-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid #181818;
+  }
+  .beta-label {
+    font-size: .6rem;
+    color: #444;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+  .beta-btn {
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #888;
+    font-family: inherit;
+    font-size: .7rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: border-color .18s, color .18s;
+    white-space: nowrap;
+  }
+  .beta-btn:hover { border-color: #555; color: #ccc; }
+
+  /* ─── Beta feedback modal ─── */
+  #beta-modal {
+    display: none;
+    position: fixed; inset: 0;
+    background: #000000cc;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  #beta-modal.open { display: flex; }
+  .beta-modal-box {
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn .3s ease both;
+  }
+  .beta-modal-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .beta-modal-sub {
+    font-size: .75rem;
+    color: #555;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .beta-stars {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .star-btn {
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: .3;
+    transition: opacity .15s, transform .15s;
+  }
+  .star-btn.lit, .star-btn:hover { opacity: 1; transform: scale(1.15); }
+  .beta-textarea {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 8px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: .85rem;
+    padding: 10px 12px;
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+    transition: border-color .2s;
+    margin-bottom: 14px;
+  }
+  .beta-textarea:focus { border-color: #444; }
+  .beta-textarea::placeholder { color: #333; }
+  .beta-submit-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .beta-cancel {
+    background: none;
+    border: none;
+    color: #444;
+    font-family: inherit;
+    font-size: .78rem;
+    cursor: pointer;
+    padding: 8px 14px;
+    transition: color .18s;
+  }
+  .beta-cancel:hover { color: #888; }
+  .beta-send {
+    background: #f0ece4;
+    color: #000;
+    border: none;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background .18s;
+  }
+  .beta-send:hover { background: #fff; }
+
+  /* ─── Persistent crisis safety bar ─── */
+  #crisis-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 900;
+    background: #0a0a0a;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 8px 14px;
+    font-size: .72rem;
+    color: #666;
+    letter-spacing: .04em;
+  }
+  #crisis-bar a {
+    color: #888;
+    text-decoration: none;
+    transition: color .2s;
+    white-space: nowrap;
+  }
+  #crisis-bar a:hover { color: #ccc; }
+  #crisis-bar .crisis-sep {
+    color: #2a2a2a;
+  }
+  #crisis-bar .bar-restart {
+    color: #555;
+    cursor: pointer;
+    font-size: .65rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  #crisis-bar .bar-restart:hover { color: #aaa; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 500px) {
+    .ai-prompt { font-size: 2.05rem; margin-bottom: 28px; letter-spacing: -.02em; }
+    #page { padding: 0 20px 64px; }
+    .tagline { font-size: .68rem; }
+    .choice-btn { font-size: .9rem; padding: 13px 16px; }
+    .audience-chip { font-size: .82rem; padding: 8px 13px; }
+    #crisis-bar { gap: 10px; padding: 7px 10px; font-size: .64rem; }
+  }
+
+  /* ─── Connection status banner ─── */
+  #conn-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 950;
+    text-align: center;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    padding: 6px 16px;
+    transition: transform .3s ease, opacity .3s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  #conn-banner.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #conn-banner.warn {
+    background: #1a1400;
+    color: #c9a20a;
+    border-bottom: 1px solid #2a2000;
+  }
+  #conn-banner.err {
+    background: #1a0404;
+    color: #c93030;
+    border-bottom: 1px solid #2a0808;
+  }
+  #conn-banner.ok {
+    background: #041a08;
+    color: #30c940;
+    border-bottom: 1px solid #082a10;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ SINGLE PAGE CONTAINER ═══ -->
+<div id="conn-banner"></div>
+<div id="page">
+  <div class="brand">Ask Anyway <span style="color:#444;font-size:.5rem;letter-spacing:.16em;border:1px solid #333;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle">BETA</span></div>
+  <div id="content" class="page-content">
+    <!-- rendered by JS -->
+  </div>
+</div>
+
+<!-- Always-visible crisis safety bar -->
+<div id="crisis-bar">
+  <a href="tel:988">988 Lifeline</a>
+  <span class="crisis-sep">|</span>
+  <a href="sms:741741&body=HOME">Text HOME to 741741</a>
+  <span class="crisis-sep">|</span>
+  <span class="bar-restart" onclick="restart()">start over</span>
+</div>
+
+<!-- Guide Reader Drawer -->
+<div id="guide-drawer">
+  <div id="guide-drawer-bar">
+    <button id="guide-drawer-back" onclick="closeGuide()">← Back</button>
+    <div id="guide-drawer-title"></div>
+  </div>
+  <iframe id="guide-drawer-frame" src="" title="Guide"></iframe>
+</div>
+
+<!-- Beta Feedback Modal -->
+<div id="beta-modal">
+  <div class="beta-modal-box">
+    <div class="beta-modal-title">How was this?</div>
+    <div class="beta-modal-sub">You're helping us shape something real. Takes 20 seconds.</div>
+    <div class="beta-stars" id="star-row">
+      <button class="star-btn" data-val="1" onclick="starClick(1)">⭐</button>
+      <button class="star-btn" data-val="2" onclick="starClick(2)">⭐</button>
+      <button class="star-btn" data-val="3" onclick="starClick(3)">⭐</button>
+      <button class="star-btn" data-val="4" onclick="starClick(4)">⭐</button>
+      <button class="star-btn" data-val="5" onclick="starClick(5)">⭐</button>
+    </div>
+    <textarea class="beta-textarea" id="beta-text" placeholder="What worked? What felt off? (optional)"></textarea>
+    <div class="beta-submit-row">
+      <button class="beta-cancel" onclick="closeBetaModal()">cancel</button>
+      <button class="beta-send" onclick="submitBetaFeedback()">Send feedback</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+//  CHATBASE CONFIG
+//  Paste your Chatbase bot ID to route through the real API.
+//  Leave empty to use the built-in Ask Anyway engine.
+// ─────────────────────────────────────────────────────────────
+const CHATBASE_BOT_ID = '';   // e.g. 'abc123xyz'
+const CHATBASE_API_URL = 'https://www.chatbase.co/api/v1/chat';
+
+// ─────────────────────────────────────────────────────────────
+//  CCE BACKEND INTEGRATION
+//  Uses same-origin Next.js API proxy at /api/cce.
+//  Falls back to the local Ask Anyway engine if server is unreachable.
+// ─────────────────────────────────────────────────────────────
+const CCE_BASE  = '/api/cce';
+const CCE_TREE  = 'main-flow';
+const REQUIRE_BACKEND = true;
+const REQUEST_TIMEOUT_MS = 12000;
+
+// ─── Retry & resilience settings ───
+const MAX_RETRIES     = 2;     // total attempts = 1 + MAX_RETRIES
+const RETRY_DELAY_MS  = 1500;  // base delay; doubled each retry
+const HEALTH_POLL_MS  = 15000; // interval between heartbeat checks
+const HEALTH_TIMEOUT  = 5000;  // timeout for health call itself
+
+// Guide base path — auto-detects local dev vs deployed
+const GUIDES_BASE = '/guides';
+let cceSessionId = null;
+let cceActive    = false;
+let lastRiskBand = 'moderate_risk';
+
+const TOPIC_TO_TM = {
+  relationship:   { tm_q1: 'improve_relationships', tm_q2: 'relationship_minefield' },
+  family:         { tm_q1: 'improve_relationships', tm_q2: 'relationship_minefield' },
+  work:           { tm_q1: 'rebuild_identity', tm_q2: 'isolated_purpose' },
+  loss:           { tm_q1: 'process_moral_pain', tm_q2: 'isolated_purpose' },
+  anxiety:        { tm_q1: 'calm_nervous_system', tm_q2: 'cant_sleep_overthink' },
+  loneliness:     { tm_q1: 'rebuild_identity', tm_q2: 'isolated_purpose' },
+  recovery:       { tm_q1: 'break_habit_loops', tm_q2: 'numbing_coping' },
+  burnout:        { tm_q1: 'calm_nervous_system', tm_q2: 'cant_sleep_overthink' },
+  eating:         { tm_q1: 'break_habit_loops', tm_q2: 'numbing_coping' },
+  faith:          { tm_q1: 'process_moral_pain', tm_q2: 'isolated_purpose' },
+  general:        { tm_q1: 'calm_nervous_system', tm_q2: 'short_fuse_numb' },
+};
+
+const AUDIENCE_BUCKET_MAP = {
+  veteran: 'military-veteran',
+  first_responder: 'first-responder',
+  healthcare: 'healthcare-workers',
+  educator: 'educators',
+  social_worker: 'social-workers-counselors',
+  lgbtq: 'lgbtq',
+  single_parent: 'single-parent',
+  bipoc: 'bipoc-racial-trauma',
+  neurodivergent: 'neurodivergent',
+  chronic_illness: 'chronic-illness-chronic-pain',
+  gen_z: 'young-adult-gen-z',
+  high_stress: 'high-stress-jobs',
+  faith_other: 'faith-beyond-christian',
+  grief_audience: 'grief-loss',
+  addiction_recovery: 'addiction-recovery',
+  christian: 'christian',
+};
+
+function buildQuizAnswersFromBand(riskBand) {
+  if (riskBand === 'critical') return { q1: 3, q2: 3, q3: 3, q4: 3, q5: 3, q6: 3, q7: 3, q8: 3, q9: 3, q10: 3 };
+  if (riskBand === 'high_risk') return { q1: 2, q2: 2, q3: 2, q4: 2, q5: 2, q6: 2, q7: 2, q8: 2, q9: 2, q10: 2 };
+  if (riskBand === 'moderate_risk') return { q1: 1, q2: 1, q3: 1, q4: 1, q5: 1, q6: 1, q7: 1, q8: 1, q9: 1, q10: 1 };
+  return { q1: 0, q2: 0, q3: 0, q4: 0, q5: 0, q6: 0, q7: 0, q8: 0, q9: 0, q10: 0 };
+}
+
+async function postJson(url, body) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+    signal: controller.signal,
+  });
+  clearTimeout(timeout);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const msg = data.error || `Request failed: ${res.status}`;
+    throw new Error(msg);
+  }
+  return data;
+}
+
+// ─── Retry-aware fetch wrapper ───
+async function fetchWithRetry(url, options = {}, retries = MAX_RETRIES) {
+  let lastError;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+      const res = await fetch(url, { ...options, signal: controller.signal });
+      clearTimeout(timeout);
+      // On 502/503/504 from proxy, retry if we have attempts left
+      if ((res.status === 502 || res.status === 503 || res.status === 504) && attempt < retries) {
+        console.warn(`[retry] ${url} returned ${res.status}, attempt ${attempt + 1}/${retries + 1}`);
+        await new Promise(r => setTimeout(r, RETRY_DELAY_MS * Math.pow(2, attempt)));
+        continue;
+      }
+      return res;
+    } catch (err) {
+      lastError = err;
+      if (attempt < retries) {
+        console.warn(`[retry] ${url} failed (${err.name}), attempt ${attempt + 1}/${retries + 1}`);
+        await new Promise(r => setTimeout(r, RETRY_DELAY_MS * Math.pow(2, attempt)));
+      }
+    }
+  }
+  throw lastError || new Error('Request failed after retries');
+}
+
+// ─── Connection status banner ───
+let _connState = 'unknown'; // unknown | ok | degraded | down
+let _healthTimer = null;
+
+function showConnBanner(state, msg) {
+  const banner = document.getElementById('conn-banner');
+  if (!banner) return;
+  _connState = state;
+  banner.className = '';
+  if (state === 'ok') {
+    banner.textContent = msg || 'Reconnected';
+    banner.classList.add('ok', 'show');
+    setTimeout(() => banner.classList.remove('show'), 2500);
+  } else if (state === 'degraded') {
+    banner.textContent = msg || 'Connection unstable. Retrying...';
+    banner.classList.add('warn', 'show');
+  } else if (state === 'down') {
+    banner.textContent = msg || 'Service unavailable. Reconnecting...';
+    banner.classList.add('err', 'show');
+  } else {
+    banner.classList.remove('show');
+  }
+}
+
+function hideConnBanner() {
+  const banner = document.getElementById('conn-banner');
+  if (banner) banner.classList.remove('show');
+}
+
+// ─── Health heartbeat ───
+async function checkHealth() {
+  try {
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), HEALTH_TIMEOUT);
+    const res = await fetch(`${CCE_BASE}/health`, { signal: controller.signal, cache: 'no-store' });
+    clearTimeout(t);
+    if (!res.ok) return { ready: false, status: 'down' };
+    return await res.json();
+  } catch {
+    return { ready: false, status: 'down' };
+  }
+}
+
+async function healthHeartbeat() {
+  const h = await checkHealth();
+  if (h.ready && _connState === 'down') {
+    // Backend came back - show recovery banner
+    showConnBanner('ok', 'Reconnected');
+    // If we lost our session, try re-starting it
+    if (!cceSessionId || !cceActive) {
+      const started = await cceStartWithRetry();
+      if (started) {
+        console.log('[health] Session restored after reconnect');
+      }
+    }
+  } else if (!h.ready && _connState !== 'down') {
+    showConnBanner('down');
+  }
+}
+
+function startHealthPolling() {
+  if (_healthTimer) clearInterval(_healthTimer);
+  _healthTimer = setInterval(healthHeartbeat, HEALTH_POLL_MS);
+}
+
+function stopHealthPolling() {
+  if (_healthTimer) { clearInterval(_healthTimer); _healthTimer = null; }
+}
+
+async function startCheckoutFlow(preferredProductId) {
+  try {
+    trackEvent('checkout_started', { preferredProductId });
+    const email = window.prompt('Enter your email to continue to checkout:');
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email to continue.');
+      return;
+    }
+
+    const answersByQuestion = buildQuizAnswersFromBand(lastRiskBand);
+    const score = await postJson('/api/quiz/score', {
+      lead: { email },
+      answersByQuestion,
+      quizVersion: 'conversation-bridge-v1',
+      landingPath: '/ask-anyway-chat.html',
+    });
+
+    const topicMap = TOPIC_TO_TM[ctx.topic || 'general'] || TOPIC_TO_TM.general;
+    const topicMatch = await postJson('/api/quiz/topic-match', {
+      quizSessionId: score.quizSessionId,
+      matcherVersion: 'conversation-bridge-v1',
+      answers: {
+        tm_q1: topicMap.tm_q1,
+        tm_q2: topicMap.tm_q2,
+        tm_q3: ['step_by_step_plan'],
+      },
+    });
+
+    const mappedBucket = AUDIENCE_BUCKET_MAP[ctx.audience || ''] || 'general-mental-health';
+    const audienceMatch = await postJson('/api/quiz/audience-match', {
+      quizSessionId: score.quizSessionId,
+      matcherVersion: 'conversation-bridge-v1',
+      identityBucketIds: mappedBucket === 'general-mental-health' ? [] : [mappedBucket],
+      contextBucketIds: [],
+      primaryBucketId: mappedBucket,
+    });
+
+    const recommendation = await postJson('/api/quiz/recommendation', {
+      quizSessionId: score.quizSessionId,
+      topicMatchSessionId: topicMatch.topicMatchSessionId,
+      audienceMatchSessionId: audienceMatch.audienceMatchSessionId,
+    });
+
+    const productId = preferredProductId || recommendation.primaryOfferId;
+    if (productId === 'free_crisis_resources') {
+      alert('This recommendation is a free crisis resources path and does not require checkout.');
+      return;
+    }
+
+    const checkout = await postJson('/api/checkout/session', {
+      leadId: score.leadId,
+      quizSessionId: score.quizSessionId,
+      guideRecommendationId: recommendation.guideRecommendationId,
+      productId,
+      guideId: recommendation.baseGuideId,
+      audienceBucketId: recommendation.audienceBucketId,
+      successUrl: `${window.location.origin}/ask-anyway-chat.html?checkout=success`,
+      cancelUrl: `${window.location.origin}/ask-anyway-chat.html?checkout=cancel`,
+    });
+
+    trackEvent('checkout_redirected', { productId, recommendationId: recommendation.guideRecommendationId });
+    if (checkout.stripeCheckoutUrl) {
+      window.location.href = checkout.stripeCheckoutUrl;
+      return;
+    }
+
+    alert('Checkout session created, but redirect URL was missing.');
+  } catch (err) {
+    console.error(err);
+    alert(`Could not start checkout: ${err.message}`);
+    trackEvent('checkout_failed', { error: String(err && err.message ? err.message : err) });
+  }
+}
+
+async function trackEvent(eventName, payload = {}) {
+  try {
+    await fetch('/api/analytics/event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId: cceSessionId || 'legacy-chat-session',
+        eventName,
+        payload,
+        timestamp: new Date().toISOString(),
+      }),
+    });
+  } catch (_) {
+    // Non-blocking analytics path
+  }
+}
+
+async function cceStart() {
+  try {
+    const res = await fetchWithRetry(`${CCE_BASE}/session/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tree_id: CCE_TREE }),
+    }, 1);  // 1 retry for start
+    if (!res.ok) throw new Error('not ok');
+    const data = await res.json();
+    cceSessionId = data.session_id;
+    cceActive    = true;
+    hideConnBanner();
+    trackEvent('conversation_started', { treeId: CCE_TREE, backend: 'cce' });
+    return data;
+  } catch (_) {
+    cceActive = false;
+    return null;
+  }
+}
+
+// Hardened session start: retry up to 3 times with health-gating
+async function cceStartWithRetry(maxAttempts = 3) {
+  for (let i = 0; i < maxAttempts; i++) {
+    const data = await cceStart();
+    if (data) return data;
+    // Before retrying, check health
+    const h = await checkHealth();
+    if (!h.ready) {
+      showConnBanner('down', 'Waiting for service...');
+      await new Promise(r => setTimeout(r, 2000 * (i + 1)));
+    } else {
+      await new Promise(r => setTimeout(r, 1000));
+    }
+  }
+  showConnBanner('down', 'Could not connect. Retrying in background...');
+  return null;
+}
+
+async function cceCall(optionId, message) {
+  if (!cceActive || !cceSessionId) return null;
+  try {
+    const body = {};
+    if (optionId) body.option_id = optionId;
+    if (message)  body.message   = message;
+    const res = await fetchWithRetry(`${CCE_BASE}/session/${cceSessionId}/respond`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }, MAX_RETRIES);
+    if (!res.ok) throw new Error('not ok');
+    hideConnBanner();
+    return await res.json();
+  } catch (err) {
+    console.warn('[cceCall] All retries failed', err);
+    cceActive = false;
+    showConnBanner('down');
+    trackEvent('conversation_backend_unavailable', { stage: 'respond', cceSessionId });
+    return null;
+  }
+}
+
+function backendUnavailableResponse() {
+  return {
+    text: `The conversation service is temporarily unavailable right now.\n\nPlease try again in a moment. If this feels urgent, call or text 988 now.`,
+    card: { type: 'crisis' },
+    _retryable: true,
+  };
+}
+
+function cceDataToResponse(data) {
+  if (!data) return null;
+  if (data.status === 'complete' && data.outcome)
+    return { cceOutcome: data.outcome };
+  if (data.status === 'in_progress' && data.next_prompt)
+    return { ccePrompt: data.next_prompt };
+  if (data.status === 'needs_clarification' && data.clarification)
+    return { ccePrompt: { question: data.clarification.text, type: 'choice', options: data.clarification.options } };
+  return null;
+}
+
+function cceOutcomeHTML(outcome) {
+  const bandColors = { low_risk:'#22c55e', moderate_risk:'#f59e0b', high_risk:'#ef4444', critical:'#dc2626' };
+  const bandLabels = { low_risk:'Low Risk', moderate_risk:'Moderate Risk', high_risk:'High Risk', critical:'Critical' };
+  const color = bandColors[outcome.band] || '#888';
+  const label = bandLabels[outcome.band] || outcome.band;
+  lastRiskBand = outcome.band || 'moderate_risk';
+
+  let crisisRows = '';
+  if (outcome.crisis_resources && outcome.crisis_resources.length) {
+    crisisRows = outcome.crisis_resources.map(r =>
+      `<a class="rec-item crisis" href="${safeHref(r.url || 'tel:988')}">
+        <div class="rec-icon">📞</div>
+        <div class="rec-content">
+          <div class="rec-title">${escHtml(r.name || '988 Lifeline')}</div>
+          <div class="rec-desc">${escHtml(r.description || '24/7 crisis support — free')}</div>
+        </div>
+      </a>`).join('');
+  }
+
+  // Use backend's matched guide data (audience-specific URL)
+  const backendGuide = outcome.free_resource || {};
+  const guideTitle = backendGuide.title || 'Your Matched Guide';
+  const guideUrl   = backendGuide.url || '/guides/new-10?audience=general-mental-health';
+  const dailyUrl   = GUIDES_BASE + '/daily-checklist.html';
+  const isCritical = outcome.band === 'critical';
+  const isHighRisk = outcome.band === 'high_risk';
+
+  // ── Warm conversational opener for every band ──
+  const openersByBand = {
+    critical: {
+      line1: 'Thank you for telling me that. I\'m here with you.',
+      line2: 'Let\'s do one immediate step right now.',
+      line3: 'If you can, call or text 988 now while this page stays open.',
+    },
+    high_risk: {
+      line1: 'I hear you. What you\'re carrying is heavy.',
+      line2: 'Here are some things that can actually help right now.',
+      line3: null,
+    },
+    moderate_risk: {
+      line1: 'Thanks for sharing that with me.',
+      line2: 'I put a few things together based on what you told me.',
+      line3: null,
+    },
+    low_risk: {
+      line1: 'I\'m glad you checked in.',
+      line2: 'Here are a couple things that might be worth a look.',
+      line3: null,
+    },
+  };
+  const opener = openersByBand[outcome.band] || openersByBand.moderate_risk;
+
+  const conversationBlock = `
+    <div class="ai-prompt" style="font-size:clamp(1.95rem,5.2vw,3rem);line-height:1.16;letter-spacing:-.02em;margin-bottom:18px;opacity:.99">${escHtml(opener.line1)}</div>
+    <div class="ai-prompt" style="font-size:clamp(1.35rem,3.4vw,1.9rem);line-height:1.24;letter-spacing:-.01em;margin-bottom:16px;opacity:.95">${escHtml(opener.line2)}</div>
+    ${opener.line3 ? `<div style="font-size:1.15rem;color:#c9c1b7;margin-bottom:20px;line-height:1.45">${escHtml(opener.line3)}</div>` : ''}`;
+
+  const summaryBlock = `<div style="font-size:1.15rem;color:#b8b0a6;line-height:1.5;margin-bottom:22px">${escHtml(outcome.summary)}</div>`;
+
+  const resourcesLabel = isCritical
+    ? 'Immediate support options'
+    : (isHighRisk ? 'Support available right now' : 'Picked for you');
+
+  const paidCtaBlock = isCritical
+    ? ''
+    : `<div class="rec-item sms" style="cursor:pointer;" onclick="startCheckoutFlow('guide')">
+        <div class="rec-icon">🛒</div>
+        <div class="rec-content">
+          <div class="rec-title">Get your matched guide</div>
+          <div class="rec-desc">Personalized next steps you can start today</div>
+        </div>
+      </div>`;
+
+  return `
+    <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
+    ${conversationBlock}
+    ${summaryBlock}
+    <div class="rec-label">${resourcesLabel}</div>
+    <div class="rec-list">
+      ${crisisRows}
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guideUrl}', '${escAttr(guideTitle)}')">
+        <div class="rec-icon">📖</div>
+        <div class="rec-content">
+          <div class="rec-title">${escHtml(guideTitle)}</div>
+          <div class="rec-desc">Free guide matched to what you shared</div>
+        </div>
+      </div>
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
+        <div class="rec-icon">✅</div>
+        <div class="rec-content">
+          <div class="rec-title">Daily Wellbeing Checklist</div>
+          <div class="rec-desc">A quick daily check-in with yourself</div>
+        </div>
+      </div>
+      ${paidCtaBlock}
+      ${therapistWidgetHTML(ctx.topic || 'general')}
+    </div>
+    ${captureBlockHTML(isCritical)}
+    <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
+}
+
+function cceChoiceHTML(options) {
+  return `<div class="choice-row">${options.map(o =>
+    `<button class="choice-btn" onclick="submitChoice('${o.id.replace(/'/g,"\\'")}','${o.text.replace(/'/g,"\\'")}')">${escHtml(o.text)}</button>`
+  ).join('')}</div>`;
+}
+
+function audiencePickerHTML(options) {
+  return `<div class="audience-grid">${options.map(o => {
+    const id = o.id.replace(/'/g, "\\'");
+    const txt = o.text.replace(/'/g, "\\'");
+    if (o.id === 'other') {
+      return `<button class="audience-chip" onclick="audienceOther()">${escHtml(o.text)}</button>`;
+    }
+    const cls = o.id === 'general' ? 'audience-chip general-chip' : 'audience-chip';
+    return `<button class="${cls}" onclick="submitChoice('${id}','${txt}')">${escHtml(o.text)}</button>`;
+  }).join('')}</div>`;
+}
+
+function audienceOther() {
+  const grid = document.querySelector('.audience-grid');
+  if (!grid) return;
+  grid.outerHTML = inputHTML();
+  const inp = document.querySelector('.page-input');
+  if (inp) { inp.placeholder = 'type what fits you...'; inp.focus(); wireInput(inp); }
+}
+
+// ─── Email/SMS capture ───
+
+function captureBlockHTML(isCritical) {
+  // Never show capture before crisis actions on critical
+  if (isCritical) return '';
+  return `
+    <div class="capture-block" id="capture-block">
+      <div class="capture-prompt">Want me to send your guide and a few follow-up resources to your email?</div>
+      <div class="capture-row">
+        <input class="capture-input" id="capture-email" type="email" placeholder="your email" autocomplete="email"/>
+        <button class="capture-submit" onclick="submitCapture()">send it</button>
+      </div>
+      <div class="capture-skip" onclick="skipCapture()">no thanks, I'm good</div>
+    </div>`;
+}
+
+async function submitCapture() {
+  const emailEl = document.getElementById('capture-email');
+  if (!emailEl) return;
+  const email = emailEl.value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailEl.style.borderColor = '#ef4444';
+    return;
+  }
+  trackEvent('lead_capture_email', { email, sessionId: cceSessionId, band: lastRiskBand });
+  // Store for Cody's lead creation endpoint
+  try {
+    await fetch('/api/cce/session/' + cceSessionId + '/respond', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lead_email: email }),
+    }).catch(() => {});
+  } catch (_) {}
+  const block = document.getElementById('capture-block');
+  if (block) block.innerHTML = '<div class="capture-done">Sent. Check your inbox.</div>';
+}
+
+function skipCapture() {
+  trackEvent('lead_capture_skipped', { sessionId: cceSessionId, band: lastRiskBand });
+  const block = document.getElementById('capture-block');
+  if (block) block.style.display = 'none';
+}
+
+// ─────────────────────────────────────────────────────────────
+//  FUNNEL — TWO TRACKS
+//
+//  GOOD TRACK:                     NOT GOOD TRACK:
+//  Turn 1 → Hear they're fine      Turn 1 → Hear them, one question
+//  Turn 2 → "What's your secret?"  Turn 2 → Recommendations immediately
+//  Turn 3 → Soft check                       (SMS / PDF / 988 / Local clinic)
+//  Turn 4 → Warm close, no push
+// ─────────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────
+//  STATE MACHINE
+// ─────────────────────────────────────────────────────────────
+
+const TRACK = { UNKNOWN: 'unknown', GOOD: 'good', NOT_GOOD: 'not_good', RISKY: 'risky', OTHER: 'other' };
+
+const Stage = {
+  // Shared
+  OPENING: 'opening',          // Stage 1 — first reply
+  // Good track
+  GOOD_S2: 'good_s2',          // Stage 2 — what's your secret
+  GOOD_S3: 'good_s3',          // Stage 3 — light soft check
+  GOOD_S4: 'good_s4',          // Stage 4 — warm close
+  // Not-good track — 3 turns before recs
+  NG_S2: 'ng_s2',              // Stage 2 — one probe question
+  NG_S3: 'ng_s3',              // Stage 3 — one more grounding question
+  NG_S4: 'ng_s4',              // Stage 4 — recommendations (earned)
+  // Risky behavior track
+  RISKY_PROBE: 'risky_probe',  // Probe further before routing
+  RISKY_END: 'risky_end',      // Route to recs after probing
+  // Special
+  BRANCH_SELECT: 'branch_select', // "What happened when you asked" branch buttons
+  OTHER_S1: 'other_s1',          // Checking on someone else — guide flow
+  OTHER_TEASE: 'other_tease',    // Show teaser starters
+  DONE: 'done',
+};
+
+let stage = Stage.OPENING;
+let track = TRACK.UNKNOWN;
+let ctx = {
+  turnCount: 0,
+  crisisLevel: 0,     // 0=none, 1=concern, 2=acute
+  topic: null,        // 'relationship','work','loss','anxiety','loneliness', etc.
+  audience: null,
+  askedAboutOthers: false,
+};
+let stepCount = 0;    // tracks which turn we're on (for progress dots)
+let betaRating = 0;   // star rating for feedback
+
+// ─── Progress dots ───
+function progressDotsHTML(current, total) {
+  let dots = '';
+  for (let i = 0; i < total; i++) {
+    if (i < current)  dots += '<div class="pd done"></div>';
+    else if (i === current) dots += '<div class="pd active"></div>';
+    else               dots += '<div class="pd"></div>';
+  }
+  return `<div class="progress-row">${dots}</div>`;
+}
+
+// ─── Beta feedback modal ───
+function openGuide(url, title) {
+  const drawer = document.getElementById('guide-drawer');
+  document.getElementById('guide-drawer-frame').src = url;
+  document.getElementById('guide-drawer-title').textContent = title || '';
+  drawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGuide() {
+  const drawer = document.getElementById('guide-drawer');
+  drawer.classList.remove('open');
+  document.getElementById('guide-drawer-frame').src = '';
+  document.body.style.overflow = '';
+}
+
+function openBetaModal() {
+  document.getElementById('beta-modal').classList.add('open');
+}
+function closeBetaModal() {
+  document.getElementById('beta-modal').classList.remove('open');
+}
+function starClick(val) {
+  betaRating = val;
+  document.querySelectorAll('.star-btn').forEach(b => {
+    b.classList.toggle('lit', parseInt(b.dataset.val) <= val);
+  });
+}
+function submitBetaFeedback() {
+  const txt = document.getElementById('beta-text').value.trim();
+  const payload = { rating: betaRating, comment: txt, path: track, turns: stepCount, ts: Date.now() };
+  console.log('[Ask Anyway Beta Feedback]', payload);
+  // TODO: POST to /api/feedback when backend ready
+  closeBetaModal();
+  const bar = document.getElementById('beta-bar');
+  if (bar) bar.innerHTML = '<span style="color:#555;font-size:.7rem">Thanks — you\'re helping build this. ✓</span>';
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SENTIMENT ENGINE
+//  Scores free text on a -1 (very negative) → +1 (very positive) scale.
+//  Uses weighted word pools + negation + intensifier handling.
+// ─────────────────────────────────────────────────────────────
+
+const SENTIMENT_VOCAB = {
+  // positive — weight 1
+  pos1: ['good','fine','okay','ok','well','calm','alright','stable','present','here','okay','coping','managing','surviving','content','safe','supported','connected','clear','grounded'],
+  // positive — weight 2
+  pos2: ['great','better','happy','glad','grateful','thankful','hopeful','motivated','energized','proud','excited','thriving','peaceful','blessed','loved','confident','optimistic','improving','positive','strong','healing','growing','refreshed','rested'],
+  // positive — weight 3
+  pos3: ['amazing','fantastic','excellent','wonderful','incredible','outstanding','joyful','elated','ecstatic','fulfilled','inspired','unstoppable'],
+
+  // negative — weight 1
+  neg1: ['meh','tired','stressed','worried','nervous','unsure','uncertain','off','blah','drained','flat','foggy','tense','restless','uneasy','sad','low','down','rough','hard','difficult','struggling','lost','stuck'],
+  // negative — weight 2
+  neg2: ['bad','depressed','anxious','overwhelmed','exhausted','hopeless','worthless','empty','numb','broken','scared','hurt','alone','angry','ashamed','guilty','useless','helpless','trapped','invisible','disconnected','isolated','failing','panicking','grieving','mourning','devastated'],
+  // negative — weight 3
+  neg3: ['terrible','horrible','awful','unbearable','miserable','desperate','suicidal','destroyed','shattered','collapsing','falling apart','falling apart','can\'t cope','can\'t go on','no point','no reason','ending'],
+};
+
+const INTENSIFIERS = new Set(['very','really','so','extremely','absolutely','completely','totally','deeply','incredibly','seriously','genuinely','honestly','truly','quite','super','way']);
+const NEGATORS     = new Set(['not','never','no','nor','don\'t','won\'t','can\'t','doesn\'t','didn\'t','isn\'t','wasn\'t','hardly','barely','nothing','neither','without','lack','lacking']);
+
+function scoreSentiment(text) {
+  const words = text.toLowerCase().replace(/['']/g, "'").split(/\s+/);
+  let score = 0;
+  let wordCount = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i].replace(/[^a-z']/g, '');
+    if (!w) continue;
+
+    // Determine base weight
+    let weight = 0;
+    if (SENTIMENT_VOCAB.pos1.includes(w)) weight =  1;
+    else if (SENTIMENT_VOCAB.pos2.includes(w)) weight =  2;
+    else if (SENTIMENT_VOCAB.pos3.includes(w)) weight =  3;
+    else if (SENTIMENT_VOCAB.neg1.includes(w)) weight = -1;
+    else if (SENTIMENT_VOCAB.neg2.includes(w)) weight = -2;
+    else if (SENTIMENT_VOCAB.neg3.includes(w)) weight = -3;
+
+    if (weight === 0) continue;
+    wordCount++;
+
+    // Intensifier: look back 1-2 words
+    const prev1 = (words[i - 1] || '').replace(/[^a-z']/g, '');
+    const prev2 = (words[i - 2] || '').replace(/[^a-z']/g, '');
+    if (INTENSIFIERS.has(prev1) || INTENSIFIERS.has(prev2)) {
+      weight = weight * 1.5;
+    }
+
+    // Negation: look back up to 3 words
+    let negated = false;
+    for (let j = Math.max(0, i - 3); j < i; j++) {
+      if (NEGATORS.has(words[j].replace(/[^a-z']/g, ''))) { negated = true; break; }
+    }
+    if (negated) weight = weight * -0.8; // flip + dampen (negation rarely fully inverts)
+
+    score += weight;
+  }
+
+  // Normalize to -1..+1
+  const maxPossible = Math.max(wordCount * 3, 1);
+  const normalized = Math.max(-1, Math.min(1, score / maxPossible));
+
+  return {
+    score: normalized,
+    label: normalized >  0.15 ? 'positive'
+         : normalized < -0.1  ? 'negative'
+         : 'neutral',
+    raw: score,
+  };
+}
+
+// Attach latest sentiment to ctx so responses can use it
+function analyze(t) {
+  const s = scoreSentiment(t);
+  ctx.sentiment = s;
+  return s;
+}
+
+// ─────────────────────────────────────────────────────────────
+//  DETECTION HELPERS  (keyword-first, sentiment fallback)
+// ─────────────────────────────────────────────────────────────
+
+function isHedging(t) {
+  // "Fine", "okay", "meh", "alright", "not bad", "surviving" etc.
+  // People use these to downplay. Treat as not-good with a gentle callout.
+  return /^(meh|okay|ok|fine|alright|not bad|i guess|surviving|managing|hanging in there|could be better|same old|same as always|i don't know|idk|not sure|so-so|just okay|just ok|just fine|just alright|kind of|kinda)([.!?,\s]|$)/.test(t)
+    || /\bi.?m (okay|ok|fine|alright|meh|surviving|managing|hanging in there|not bad|just|i guess)/.test(t)
+    || /things are (okay|fine|alright|the same|not great)/.test(t);
+}
+
+function isGood(t) {
+  const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
+  if (/^(yes|yeah|yep|yup|mostly|pretty much|i am|i'm okay|im okay|i'm good|im good)$/.test(compact)) return true;
+  // Only fire on clearly enthusiastic positivity — NOT hedging words like okay/fine/meh
+  if (/^(great|doing great|doing well|pretty good|doing really well|blessed|fantastic|amazing|wonderful|thriving|excellent|really good)([.!,\s]|$)/.test(t)
+    || /\bi.?m (great|doing great|doing well|doing really well|blessed|fantastic|amazing|wonderful|thriving|really good|feeling great|feeling good|feeling amazing)/.test(t)
+    || /things are (great|going well|really good|amazing|wonderful|fantastic)/.test(t)) return true;
+  // Sentiment fallback — must be strongly positive, not just neutral
+  return analyze(t).score > 0.4;
+}
+
+function isNotGood(t) {
+  const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
+  if (/^(no|nope|nah|naah|not really|not okay|not ok|not good|bad|rough|hard|idk|i don't know|i dont know|dont know|unsure)$/.test(compact)) return true;
+  // Keyword fast-path — explicit negative signals
+  if (/(not (okay|ok|doing well|good|great|feeling well)|struggling|overwhelmed|exhausted|burnt out|can.?t cope|falling apart|going through|dark place|depressed|anxious|panic|numb|lost|empty|alone|hopeless|worthless|tired of|can.?t sleep|can.?t eat|rough|hard time|difficult|bad day|bad week|stressed|broke up|breakup|lost my|fired|laid off|grief|grieving|mourning|worried|scared|not sure)/.test(t)
+    || /(my (girlfriend|boyfriend|partner|wife|husband|gf|bf|mom|dad|friend|job|dog|cat)|i got|i lost|we broke|she left|he left|they left)/.test(t)) return true;
+  // Hedging = assumed struggling — people downplay
+  if (isHedging(t)) return true;
+  // Sentiment fallback — anything not clearly positive gets treated as not-good
+  return analyze(t).score < 0;
+}
+
+function isCrisis(t) {
+  // Explicit ideation
+  if (/suicid|kill my ?self|end it all|don.?t want to (be here|live|exist|wake up)|not worth living|hurt my ?self|self.?harm|no reason to live|can.?t go on|want to die|wanna die|wanna (not exist|stop existing)|don.?t wanna exist|thinking about (ending|killing)|take my (life|own life)/.test(t)) return true;
+  // Passive ideation - people rarely say "suicidal" right away
+  if (/(better off without me|world would be better without me|everyone would be better off|they.?d be better off without me)/.test(t)) return true;
+  if (/(want to (just )?disappear|wish i could disappear|want to vanish forever)/.test(t)) return true;
+  if (/(tired of (being alive|living|existing|this life)|don.?t want to wake up|wish i wouldn.?t wake up|wish i didn.?t wake up)/.test(t)) return true;
+  if (/(no point (anymore|in anything|in living|to (this|it all))|what.?s the point (of living|of me|of anything|of going on)|no reason (anymore|to keep going|to be here))/.test(t)) return true;
+  if (/(can.?t see a (future|way out|reason to)|don.?t see a (future|point|way forward)|don.?t see the point (of|in) (this|living|going on))/.test(t)) return true;
+  if (/(just want it (to stop|all to stop|to end|to be over)|want everything to (stop|end|be over)|just want it all to end)/.test(t)) return true;
+  if (/(not sure (i want to be here|if i want to be here|i should (still )?be here)|sometimes i don.?t want to (be here|exist|live))/.test(t)) return true;
+  if (/(ready to (go|give up|be done)|done (fighting|trying|being here)|too (tired|exhausted) to (keep going|carry on|try))/.test(t)) return true;
+  return false;
+}
+
+function isRisky(t) {
+  if (/(drinking (to forget|every night|alone|a lot|more than usual|heavily)|drunk (every|most|all the)|blackout|blacking out|can.?t stop drinking|can.?t stop using|using (again|more|every day|to cope)|back on|relapsed|relapse|high (every|most|all the)|pills to sleep|taking (more|extra) pills|cutting (myself|again)|been cutting|punching (walls|things)|reckless|doing (stupid|dangerous|dumb) (stuff|things|shit)|driving (drunk|high)|hooking up (just to|so i don.?t|because i|to numb))/.test(t)) return true;
+  if (/(not eating (at all|for days|anything)|haven.?t eaten|stopped eating|can.?t eat|been skipping (meals|eating))/.test(t)) return true;
+  if (/(isolation|isolating|hiding|nobody knows|keeping it hidden|not telling anyone)/.test(t)) return true;
+  // Giving things away, saying goodbye signals
+  if (/(giving (my|stuff|things|away)|said (goodbye|my goodbyes)|wrote a (note|letter)|been writing (letters|notes)|putting (affairs|things) in order)/.test(t)) return true;
+  // Dark humor as shield
+  if (/(joking about (dying|death|killing myself|not being here)|people joke about (wanting to die|killing themselves) but)/.test(t)) return true;
+  return false;
+}
+
+function isConcernedAboutOther(t) {
+  // Someone checking on another person — NOT struggling themselves
+  if (/(i.?m (worried|concerned) about (my|a|someone)|i think (my|someone i))/.test(t)) return true;
+  if (/(how (do|can|should) i (talk to|help|approach|ask|reach out to) (my|someone))/.test(t)) return true;
+  if (/(my (girlfriend|boyfriend|partner|wife|husband|friend|sister|brother|son|daughter|coworker|colleague|roommate|mom|dad|kid) (seems|has been|is|looks|keeps|won.?t|told me))/.test(t)) return true;
+  if (/(someone (i|I) (love|care about|know|work with|am close to) (is|might be|seems|has been|told me))/.test(t)) return true;
+  if (/(asking (for|about) (my|a) (friend|partner|family|loved one|coworker))/.test(t)) return true;
+  if (/(checking in on|reaching out for|trying to (help|support|talk to) someone)/.test(t)) return true;
+  if (/(they (told me|said they|mentioned|seemed|looked|have been) (struggling|not okay|depressed|sad|different|withdrawn|distant|quiet|not themselves))/.test(t)) return true;
+  if (/i (don.?t|don't) know (how to|what to) (talk to|help|tell|approach|ask)/.test(t)) return true;
+  return false;
+}
+
+function detectTopic(t) {
+  if (/broke up|breakup|girlfriend|boyfriend|gf|bf|partner|relationship|dating|divorce|marriage|she left|he left/.test(t)) return 'relationship';
+  if (/fired|laid off|job|work|boss|career|unemployed|money|debt|bills|financial/.test(t)) return 'work';
+  if (/died|death|passed away|loss|grief|mourning|widow|funeral|gone|suicide loss|took (their|his|her) (life|own life)/.test(t)) return 'loss';
+  if (/anxious|anxiety|panic|attack|worry|overthinking|racing mind/.test(t)) return 'anxiety';
+  if (/alone|lonely|isolated|no friends|no one cares|nobody/.test(t)) return 'loneliness';
+  if (/family|parents|dad|mom|sibling|kids|children/.test(t)) return 'family';
+  if (/drink|alcohol|sober|relapse|drugs|substance/.test(t)) return 'recovery';
+  if (/faith|god|church|prayer|spiritual|belief|religion/.test(t)) return 'faith';
+  if (/adhd|autism|autistic|neurodivergent|executive function|sensory overload|stimming|masking/.test(t)) return 'neurodivergent';
+  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|disability|flare|lupus/.test(t)) return 'chronic_illness';
+  if (/racism|racial trauma|discrimination|microaggression|being (black|latino|hispanic|asian|indigenous)/.test(t)) return 'racial_trauma';
+  if (/burnout|burnt out|burned out|always (working|on call)|no days off|exhausted (at|by|from) work/.test(t)) return 'burnout';
+  if (/body image|eating disorder|anorexia|bulimia|binge|restrict|food|weight|calories/.test(t)) return 'eating';
+  return 'general';
+}
+
+function detectAudience(t) {
+  // Specific occupational beats broad
+  if (/veteran|military|deployed|combat|\bptsd\b|\barmy\b|marines|\bnavy\b|air force|service member/.test(t)) return 'veteran';
+  if (/first responder|firefighter|firefight|paramedic|\bemt\b|\bpolice\b|law enforcement|dispatch/.test(t)) return 'first_responder';
+  if (/nurse|doctor|hospital|healthcare|clinician|medical (worker|professional|staff)/.test(t)) return 'healthcare';
+  if (/teacher|educator|classroom|i teach|i.?m a teacher/.test(t)) return 'educator';
+  if (/social worker|i.?m a (counselor|therapist)|i work as a (counselor|therapist)|\bin social work\b/.test(t)) return 'social_worker';
+  if (/lgbtq|\bgay\b|\blesbian\b|\bbisexual\b|\btrans\b|\bqueer\b|non.?binary|same.?sex/.test(t)) return 'lgbtq';
+  if (/single (mom|dad|parent)|raising (my kids|them|him|her) alone|parenting alone/.test(t)) return 'single_parent';
+  // Identity/community buckets
+  if (/racial trauma|\bracism\b|discrimination|microaggression|being (black|latino|latina|hispanic|asian|indigenous)|\bpoc\b|\bbipoc\b|black (man|woman|person|community)|latinx|as a (black|latino|hispanic|asian|indigenous)/.test(t)) return 'bipoc';
+  if (/\badhd\b|\bautis[mt]\b|autistic|neurodivergent|sensory (issues|overload|processing)|executive function|stimming|hyperfocus|\bmasking\b|asperger/.test(t)) return 'neurodivergent';
+  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|\bdisabilit|\bdisabled\b|invisible illness|flare.?up|\blupus\b|\b(ms|multiple sclerosis)\b/.test(t)) return 'chronic_illness';
+  if (/\b(i.?m |i am )?(18|19|20|21|22|23)\b|gen z|\bin college\b|college (student|freshman|sophomore|junior|senior)|\bdorm\b|\bcampus\b|student (loan|debt)|post.?pandemic|zoom (school|class)/.test(t)) return 'gen_z';
+  if (/\b(ceo|lawyer|attorney|surgeon)\b|investment bank|hedge fund|\bexecutive\b|always (on|working)|80.?hour (week|weeks)|never (off|not working|stop working)/.test(t)) return 'high_stress';
+  if (/\bmuslim\b|\bislam\b|\bjewish\b|\bjew\b|\bhindu\b|\bbuddhist\b|\bsikh\b|\bmosque\b|\bsynagogue\b|spiritual but not religious|not religious but spiritual|\bramadan\b|\bshabbat\b/.test(t)) return 'faith_other';
+  if (/(lost (my|a) (mom|dad|brother|sister|friend|child|son|daughter|partner|wife|husband) to suicide|suicide loss|they (died|took their life) by suicide|lost someone to (suicide|overdose))/.test(t)) return 'grief_audience';
+  if (/\b(in recovery|i.?m (sober|clean)|sobriety date|\bAA\b|\bNA\b|narcotics anonymous|alcoholics anonymous|recovery community|12.?step|clean (date|and sober))/.test(t)) return 'addiction_recovery';
+  // Christian comes after faith-specific buckets
+  if (/christian|faith|god|church|prayer|bible|jesus|scripture/.test(t)) return 'christian';
+  return null;
+}
+
+function audienceLayer(base) {
+  const overlays = {
+    veteran:           '\n\nBeing strong doesn\'t mean not struggling. That doesn\'t go away with a discharge date.',
+    first_responder:   '\n\nYou spend your whole life showing up for others. This space is for you.',
+    healthcare:        '\n\nYou notice this in patients every day. It\'s harder to recognize in yourself.',
+    educator:          '\n\nYou carry so many kids. Let this space carry you a little.',
+    christian:         '\n\nFaith doesn\'t mean you have to hold it together. You don\'t have to carry this alone.',
+    lgbtq:             '\n\nYou are allowed to be exactly who you are in this conversation. No editing.',
+    single_parent:     '\n\nEven when you\'re the one holding everything together, you\'re allowed to need holding too.',
+    social_worker:     '\n\nYou hold space for everyone else. This is a space where someone holds it for you.',
+    bipoc:             '\n\nWhat you carry is real — including the weight others don\'t see. This space sees it.',
+    neurodivergent:    '\n\nYour brain works differently, and that\'s not a flaw. This conversation can be as nonlinear as you need.',
+    chronic_illness:   '\n\nLiving with a body that fights you is exhausting in a way most people don\'t understand. I hear you.',
+    gen_z:             '\n\nYou\'re not dramatic. You inherited a lot. What you\'re feeling is real.',
+    high_stress:       '\n\nSuccess can be its own kind of cage. What you\'re carrying matters even when you look like you have it together.',
+    faith_other:       '\n\nYour faith isn\'t an obstacle to getting support. It\'s part of who you are — this conversation holds that.',
+    grief_audience:    '\n\nLosing someone that way leaves a kind of weight that doesn\'t have a name. You don\'t have to explain it here.',
+    addiction_recovery:'\n\nRecovery is hard work. You deserve real support — not just slogans. You\'re allowed to not be okay.',
+  };
+  return ctx.audience ? base + (overlays[ctx.audience] || '') : base;
+}
+
+// ─────────────────────────────────────────────────────────────
+//  STAGE RESPONSES
+// ─────────────────────────────────────────────────────────────
+
+// ── GOOD TRACK ──────────────────────────────────────────────
+
+function goodS1(userText) {
+  // Stage 1 — validate their good and ask what's behind it
+  track = TRACK.GOOD;
+  stage = Stage.GOOD_S2;
+  return `That's really good to hear — and I mean that.\n\nWhat's been making things feel good lately?`;
+}
+
+function goodS2(userText) {
+  // Stage 2 — reflect what they said back, warm and specific, then close
+  const t = userText.toLowerCase();
+
+  // If their answer reads as negative, pivot gently to not-good track
+  if (ctx.sentiment && ctx.sentiment.score < -0.1) {
+    track = TRACK.NOT_GOOD;
+    ctx.topic = detectTopic(t);
+    stage = Stage.NG_S2;
+    return audienceLayer(`I hear something underneath that.\n\nWhat's actually been going on?`);
+  }
+
+  let validation = '';
+
+  if (/family|friends|people|community|connection|loved one/.test(t)) {
+    validation = `The people around you — that's everything. That's not small.`;
+  } else if (/work|job|career|purpose|project|goal|building|creating/.test(t)) {
+    validation = `Having something meaningful to pour into — that does something for the soul.`;
+  } else if (/exercise|workout|gym|running|health|sleep|outside|nature|walk/.test(t)) {
+    validation = `Taking care of your body like that — most people underestimate how much it carries everything else.`;
+  } else if (/faith|god|prayer|grateful|thankful|blessed|peace/.test(t)) {
+    validation = `That kind of grounding is real. It's a gift to have it.`;
+  } else if (/myself|alone|solo|quiet|rest|recharge/.test(t)) {
+    validation = `Knowing what you need and actually giving it to yourself — that's self-awareness people spend years trying to find.`;
+  } else {
+    validation = `That actually matters more than people realize.`;
+  }
+
+  stage = Stage.DONE;
+  return `${validation}\n\nHonestly — keep doing what you're doing. And if anything ever shifts, this place is here for that too.`;
+}
+
+function goodS3(userText) {
+  // Kept for router compatibility — shouldn't normally be reached on good track
+  stage = Stage.DONE;
+  return `Love that. Keep going.\n\nThis space is here whenever you need it.`;
+}
+
+// ── RISKY BEHAVIOR TRACK ─────────────────────────────────────
+
+function riskyProbe(userText) {
+  track = TRACK.RISKY;
+  const t = userText.toLowerCase();
+  ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
+
+  // First probe — non-judgmental, zero shame, just curious
+  if (stage !== Stage.RISKY_PROBE) {
+    stage = Stage.RISKY_PROBE;
+
+    if (/drink|alcohol|drunk|blackout/.test(t)) {
+      return `I hear you — and I'm not here to judge any of it.
+
+How long has drinking been the thing you're reaching for?`;
+    }
+    if (/using|high|pills|relapse|relapsed|back on/.test(t)) {
+      return `That took honesty to say — thank you for trusting this space with it.
+
+What's been going on underneath that's pushing you back toward it?`;
+    }
+    if (/cutting|punching|hurting/.test(t)) {
+      return `I'm glad you said that. That kind of pain deserves to be taken seriously.
+
+How often has that been happening?`;
+    }
+    if (/not eating|haven.?t eaten|stopped eating|skipping/.test(t)) {
+      return `That's your body telling you something's really off.
+
+How long have things been like this?`;
+    }
+    if (/hiding|nobody knows|not telling|isolating|isolation/.test(t)) {
+      return `Carrying something alone like that is exhausting.
+
+What's stopping you from letting someone in right now?`;
+    }
+    return `I want to make sure I understand what's going on for you.
+
+How long has this been happening, and is it getting worse?`;
+  }
+
+  // Second probe answered — route to recs
+  stage = Stage.RISKY_END;
+  return buildRecommendations();
+}
+
+// ── NOT GOOD TRACK ───────────────────────────────────────────
+
+function ngS1(userText) {
+  track = TRACK.NOT_GOOD;
+  stage = Stage.NG_S2;
+  ctx.topic = detectTopic(userText.toLowerCase());
+  ctx.audience = detectAudience(userText.toLowerCase()) || ctx.audience;
+
+  // If they hedged ("fine", "okay", "meh") — gently name it before opening up
+  const hedged = isHedging(userText.toLowerCase());
+  if (hedged) {
+    const hedgeWord = userText.trim().split(/[\s,.!?]/)[0].toLowerCase();
+    const callout = hedgeWord === 'meh'
+      ? `"Meh" is doing a lot of work right now.`
+      : `You said "${hedgeWord}" — and I'm going to sit with that for a second.`;
+    return audienceLayer(`${callout}\n\nThat word means a lot of different things to different people. What's actually going on underneath it?`);
+  }
+
+  // One empathetic line + one short question
+  const openers = {
+    relationship:   audienceLayer(`That's real, and it hurts.\n\nHow are you holding up right now?`),
+    work:           audienceLayer(`That kind of stress hits everything — sleep, focus, all of it.\n\nHow are you doing with it day to day?`),
+    loss:           audienceLayer(`I'm really sorry. There's no right way to move through that.\n\nHow are you holding up?`),
+    anxiety:        audienceLayer(`That constant pressure is exhausting. Your nervous system is working overtime.\n\nIs this something that just started, or has it been building for a while?`),
+    loneliness:     audienceLayer(`Feeling that alone is one of the heaviest things a person can carry.\n\nHow long has it felt this way?`),
+    recovery:       audienceLayer(`That's a lot to navigate, especially when you're already fighting hard.\n\nHow are you doing with it right now?`),
+    faith:          audienceLayer(`I hear you. When your faith feels shaky, everything else feels less solid.\n\nWhat's been the hardest part lately?`),
+    family:         audienceLayer(`Family gets complicated — and complicated often means painful.\n\nWhat's going on?`),
+    neurodivergent: audienceLayer(`That struggle is real — and often invisible to everyone around you.\n\nWhat's been hitting hardest lately?`),
+    chronic_illness:audienceLayer(`Managing symptoms on top of everything else is an invisible weight.\n\nHow are you doing emotionally through it?`),
+    racial_trauma:  audienceLayer(`What you're carrying is real. Not imagined, not dramatic — real.\n\nHow are you doing underneath it all?`),
+    burnout:        audienceLayer(`Running on empty for too long wears something down.\n\nWhen did you last feel like you weren\'t just surviving the week?`),
+    eating:         audienceLayer(`That relationship is hard. The body keeps the score on all of it.\n\nHow long has this been part of things for you?`),
+    general:        audienceLayer(`I hear you.\n\nWhat's been the hardest part of it?`),
+  };
+  return openers[ctx.topic] || openers.general;
+}
+
+function ngS2(userText) {
+  // Turn 2 — follow-up: go one level deeper
+  const t = userText.toLowerCase();
+  if (/alone|no one|nobody|no support/.test(t)) {
+    ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
+  }
+  stage = Stage.NG_S3;
+
+  // Topic-aware follow-up
+  const probes = {
+    relationship:   `Has this hit your sleep or your eating at all — or have you been able to hold that together?`,
+    work:           `Is there anyone around you who knows how bad it\'s gotten, or are you carrying this mostly on your own?`,
+    loss:           `Grief isn't linear — are there moments in the day when it\'s heavier than others?`,
+    anxiety:        `When the anxiety spikes, what does that look like for you — is it more physical, or more in your head?`,
+    loneliness:     `Is this something that just crept up, or has it been there for longer than you can remember?`,
+    recovery:       `When you picture getting through today — what does that look like?`,
+    family:         `Is there one person in your corner right now, or does it feel like you\'re navigating this alone?`,
+    neurodivergent: `When things get overwhelming, do you have anywhere to go that actually helps — or does it mostly just pile up?`,
+    chronic_illness:`On the harder days, is there someone who actually understands what you\'re living with, or does it feel like you explain it constantly?`,
+    racial_trauma:  `Do you have space in your life to actually process this — or do you mostly have to hold it and keep moving?`,
+    burnout:        `What\'s the part you\'re most afraid to stop doing — even though it\'s wearing you down?`,
+    eating:         `On the hardest days with food, what does your internal voice sound like?`,
+    general:        `Have you been able to talk to anyone about this, or has most of it stayed inside?`,
+  };
+  const q = probes[ctx.topic] || probes.general;
+  return audienceLayer(q);
+}
+
+function ngS3(userText) {
+  // Turn 3 — route to recs
+  const t = userText.toLowerCase();
+  if (/alone|no one|nobody|no support|can.?t tell|can.?t talk|no body knows/.test(t)) {
+    ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
+  }
+  stage = Stage.NG_S4;
+  return buildRecommendations();
+}
+
+// ── CRISIS ───────────────────────────────────────────────────
+
+function crisisResponse() {
+  // No screener follow-up prompts: route directly to immediate supports.
+  return {
+    text: `I'm really glad you said that out loud.\n\nIf this feels urgent, call or text 988 right now while this page stays open.\n\nYou don't have to carry this alone.`,
+    card: { type: 'crisis' },
+  };
+}
+
+// ── CHECKING ON SOMEONE ELSE ─────────────────────────────────
+
+function otherConcernS1() {
+  track = TRACK.OTHER;
+  stage = Stage.OTHER_S1;
+  ctx.askedAboutOthers = true;
+  return audienceLayer(
+    `It means a lot that you're paying attention.\n\nThe fact that you noticed and you're asking — that already matters.\n\nLet me help you have that conversation.`
+  );
+}
+
+function otherTeaseScreen() {
+  stage = Stage.OTHER_TEASE;
+  return {
+    text: `Here are two ways to open the door. Pick one that feels right for you — then use it.`,
+    card: { type: 'other_tease' },
+  };
+}
+
+function otherBranchRouter(branchId) {
+  // Branch selected from the "what happened when you asked?" screen
+  stage = Stage.DONE;
+  return {
+    text: null,
+    card: { type: 'branch_script', branchId },
+  };
+}
+
+// ── RECOMMENDATIONS ──────────────────────────────────────────
+
+function buildRecommendations() {
+  const topic = ctx.topic || 'general';
+  const topicLabels = {
+    relationship:   'going through a breakup',
+    work:           'navigating a work situation',
+    loss:           'dealing with loss',
+    anxiety:        'working through anxiety',
+    loneliness:     'feeling alone',
+    family:         'what\'s going on with your family',
+    recovery:       'what you\'re navigating with substances',
+    faith:          'what you\'re working through',
+    neurodivergent: 'what you\'re navigating as a neurodivergent person',
+    chronic_illness:'what living with chronic illness feels like right now',
+    racial_trauma:  'what you\'re carrying',
+    burnout:        'the burnout you\'re feeling',
+    eating:         'what you\'re going through with food and your body',
+    general:        'what you\'re going through',
+  };
+  const label = topicLabels[topic] || topicLabels.general;
+
+  return {
+    text: `Here's what I'd actually suggest for ${label}. Pick whichever feels right:`,
+    card: { type: 'recommendations', crisisLevel: ctx.crisisLevel },
+  };
+}
+
+// ─────────────────────────────────────────────────────────────
+//  MAIN ROUTER
+// ─────────────────────────────────────────────────────────────
+
+async function getResponse(userText, cceOptionId) {
+  // ── CCE API mode ──
+  if (cceActive && cceSessionId) {
+    const data = await cceCall(cceOptionId || null, cceOptionId ? null : userText);
+    const cceResp = cceDataToResponse(data);
+    if (cceResp) return cceResp;
+    if (REQUIRE_BACKEND) return backendUnavailableResponse();
+    // CCE failed or returned unexpected — optional local fallback
+  }
+
+  if (REQUIRE_BACKEND) {
+    return backendUnavailableResponse();
+  }
+
+  if (CHATBASE_BOT_ID) return await chatbaseCall(userText);
+
+  ctx.turnCount++;
+  const t = userText.toLowerCase().trim();
+  const sentiment = analyze(t); // always run — populates ctx.sentiment
+
+  // Crisis check at every stage — catches passive ideation too
+  if (isCrisis(t)) {
+    ctx.crisisLevel = 2;
+    return crisisResponse();
+  }
+
+  // Risky behavior check at every stage
+  if (isRisky(t)) return riskyProbe(userText);
+
+  // OPENING — Stage 1 — determine track
+  if (stage === Stage.OPENING) {
+    stepCount = 1;
+    ctx.audience = detectAudience(t) || ctx.audience;
+
+    // Check if they're worried about someone else
+    if (isConcernedAboutOther(t)) return otherConcernS1();
+
+    if (isGood(t)) return goodS1(userText);
+    if (isNotGood(t)) return ngS1(userText);
+    // Sentiment-informed ambiguous response
+    if (sentiment.score < -0.05) {
+      // Leaning negative but not caught by keywords — route to not-good
+      return ngS1(userText);
+    }
+    if (sentiment.score > 0.1) {
+      // Leaning positive — route to good
+      return goodS1(userText);
+    }
+    // Genuinely neutral — ask once more
+    stage = Stage.OPENING;
+    return `I want to make sure I'm with you.\n\nAre things feeling okay right now, or is there something underneath that you're carrying?`;
+  }
+
+  stepCount++;
+
+  // GOOD TRACK
+  if (stage === Stage.GOOD_S2) return goodS2(userText);
+  if (stage === Stage.GOOD_S3) return goodS3(userText);
+  if (stage === Stage.GOOD_S4 || stage === Stage.DONE) {
+    return `I'm here if anything changes.\n\nTake care.`;
+  }
+
+  // NOT GOOD TRACK — 3 turns before recs
+  if (stage === Stage.NG_S2) return ngS2(userText);
+  if (stage === Stage.NG_S3) return ngS3(userText);
+  if (stage === Stage.NG_S4) return buildRecommendations();
+
+  // RISKY TRACK
+  if (stage === Stage.RISKY_PROBE) return riskyProbe(userText);
+  if (stage === Stage.RISKY_END) return buildRecommendations();
+
+  // OTHER TRACK — checking on someone else
+  if (stage === Stage.OTHER_S1) return otherTeaseScreen();
+  if (stage === Stage.OTHER_TEASE || stage === Stage.BRANCH_SELECT) {
+    return `This is here whenever you need to come back.\n\nYou showed up for them — that matters.`;
+  }
+
+  // Fallback — keep them talking
+  ctx.audience = detectAudience(t) || ctx.audience;
+  return audienceLayer(`Say more — I'm listening.`);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  CHATBASE API CALL
+// ─────────────────────────────────────────────────────────────
+let chatHistory = [];
+
+async function chatbaseCall(userText) {
+  chatHistory.push({ role: 'user', content: userText });
+  try {
+    const res = await fetch(CHATBASE_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${CHATBASE_BOT_ID}`,
+      },
+      body: JSON.stringify({
+        messages: chatHistory,
+        chatbotId: CHATBASE_BOT_ID,
+        stream: false,
+        temperature: 0.7,
+      }),
+    });
+    const data = await res.json();
+    const reply = data?.text || data?.messages?.[0]?.content || 'I\'m here. Tell me more.';
+    chatHistory.push({ role: 'assistant', content: reply });
+    return reply;
+  } catch (e) {
+    return 'Something went quiet on my end. Stay with me — what were you saying?';
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  PAGE-BY-PAGE UI SYSTEM
+// ─────────────────────────────────────────────────────────────
+
+const history = [];       // conversation log (ready for backend wiring)
+let locked = false;
+let lastUserDisplay = ''; // echo shown above next AI prompt
+
+// ─── Utilities ───
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+function escAttr(str) {
+  return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'&#10;');
+}
+
+function safeHref(url) {
+  if (!url) return '#';
+  const s = String(url).trim();
+  if (/^(https?:|tel:|sms:|mailto:|\/)/i.test(s)) return s;
+  return '#';
+}
+
+function downloadGuide(e) {
+  e.preventDefault();
+  const topic = ctx.topic || 'general';
+  alert(`Guide download coming soon — topic: ${topic}\n\nReplace this with your actual PDF URL in downloadGuide()`);
+}
+
+function humanDelay(content) {
+  const words = (typeof content === 'string' ? content : (content.text || '')).split(' ').length;
+  return Math.min(Math.max(words * 55, 800), 2400);
+}
+
+// ─── Card HTML builders ───
+
+// Topic-specific guide mapping
+const TOPIC_GUIDES = {
+  relationship:   { title: 'Connection 101 — Relationships',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  loneliness:     { title: 'Connection 101 — Feeling Alone',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  anxiety:        { title: 'Connection 101 — Anxiety',                    url: () => `${GUIDES_BASE}/connection-101.html` },
+  work:           { title: 'Connection 101 — Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
+  loss:           { title: 'Connection 101 — Grief',                      url: () => `${GUIDES_BASE}/connection-101.html` },
+  family:         { title: 'Connection 101 — Family Stress',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  recovery:       { title: 'Connection 101 — Recovery',                   url: () => `${GUIDES_BASE}/connection-101.html` },
+  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds',       url: () => `${GUIDES_BASE}/connection-101.html` },
+  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain',     url: () => `${GUIDES_BASE}/connection-101.html` },
+  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: () => `${GUIDES_BASE}/connection-101.html` },
+  burnout:        { title: 'Connection 101 — Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
+  eating:         { title: 'Connection 101 — Body & Food Stress',         url: () => `${GUIDES_BASE}/connection-101.html` },
+  general:        { title: 'Connection 101 — Getting Started',            url: () => `${GUIDES_BASE}/connection-101.html` },
+};
+
+function recCardsHTML(crisisLevel) {
+  const crisisRow = crisisLevel > 0 ? `
+      <a class="rec-item crisis" href="tel:988">
+        <div class="rec-icon">📞</div>
+        <div class="rec-content">
+          <div class="rec-title">Call or Text 988</div>
+          <div class="rec-desc">Suicide &amp; Crisis Lifeline — 24/7, real people</div>
+        </div>
+      </a>` : '';
+
+  const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
+  const guideUrl  = guide.url();
+  const dailyUrl  = GUIDES_BASE + '/daily-checklist.html';
+
+  return `
+    <div class="rec-label">Here's what can actually help</div>
+    <div class="rec-list">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guideUrl}', '${guide.title.replace(/'/g, "\\'")}')">
+        <div class="rec-icon">📖</div>
+        <div class="rec-content">
+          <div class="rec-title">${guide.title}</div>
+          <div class="rec-desc">Read it now — tap to open</div>
+        </div>
+      </div>
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
+        <div class="rec-icon">✅</div>
+        <div class="rec-content">
+          <div class="rec-title">Daily Wellbeing Checklist</div>
+          <div class="rec-desc">A short daily check-in — tap to open</div>
+        </div>
+      </div>
+      ${therapistWidgetHTML(ctx.topic || 'general')}
+      ${crisisRow}
+    </div>
+    <div style="margin-top:2px;">
+      <div class="rec-item sms" style="cursor:pointer;" onclick="startCheckoutFlow('guide')">
+        <div class="rec-icon">🛒</div>
+        <div class="rec-content">
+          <div class="rec-title">Get your matched guide</div>
+          <div class="rec-desc">Launch backend recommendation and checkout flow</div>
+        </div>
+      </div>
+      <div class="rec-item local" style="cursor:pointer;" onclick="startOtherFlow()">
+        <div class="rec-icon">🗣️</div>
+        <div class="rec-content">
+          <div class="rec-title">Worried about someone? How to ask them directly</div>
+          <div class="rec-desc">Word-for-word scripts for a hard conversation — free</div>
+        </div>
+      </div>
+    </div>
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
+}
+
+// ─── Therapist Finder Widget ────────────────────────────────
+
+let _twSeq = 0;
+
+function therapistWidgetHTML(topic) {
+  const wid = `tw-${++_twSeq}`;
+  return `
+  <div class="therapist-widget" id="${wid}">
+    <div class="therapist-widget-header">
+      <span class="therapist-widget-icon">🧠</span>
+      <span class="therapist-widget-title">Find a Local Therapist</span>
+    </div>
+    <div id="${wid}-body">
+      <div class="therapist-zip-form">
+        <input class="therapist-zip-input" id="${wid}-zip" type="text"
+               inputmode="numeric" maxlength="5" placeholder="Enter zip code" />
+        <button class="therapist-zip-submit" onclick="_openPT('${wid}')">Search</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function _openPT(wid) {
+  const inp = document.getElementById(`${wid}-zip`);
+  if (!inp) return;
+  const zip = inp.value.trim();
+  if (!/^\d{5}$/.test(zip)) { inp.style.borderColor = '#c06060'; inp.focus(); return; }
+  inp.style.borderColor = '';
+  const url = `https://www.psychologytoday.com/us/therapists?zip=${zip}`;
+  window.open(url, '_blank', 'noopener');
+}
+
+function betaBarHTML() {
+  return `<div class="beta-bar" id="beta-bar">
+    <span class="beta-label">Beta — help us improve</span>
+    <button class="beta-btn" onclick="openBetaModal()">Give feedback</button>
+  </div>`;
+}
+
+// ─── Persistent mini crisis footer (always visible on crisis/branch screens) ───
+function crisisMiniFooterHTML() {
+  return `
+  <div style="margin-top:20px;padding:12px 14px;background:#08030a;border:1px solid #280d28;border-radius:10px;">
+    <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a02828;margin-bottom:8px;">Always available — no wait</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="tel:988" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">📞 Call 988</a>
+      <a href="sms:741741&amp;body=HOME" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">💬 Text HOME to 741741</a>
+      <a href="tel:911" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">🚑 Call 911</a>
+    </div>
+  </div>`;
+}
+
+// other_tease card — "Try one direct line" with Mike's teasers + 3 branch buttons
+function otherTeaseHTML() {
+  const starters = [
+    `"I care about you and I have noticed some changes. Can I ask you something direct?"`,
+    `"You matter to me. Are you thinking about suicide?"`,
+  ];
+  const starterHTML = starters.map(s =>
+    `<div style="padding:11px 14px;background:#080808;border:1px solid #1a1a1a;border-radius:8px;font-size:.85rem;color:#ccc;line-height:1.5;font-style:italic;">${escHtml(s)}</div>`
+  ).join('');
+
+  return `
+    <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:4px;">Try one of these</div>
+      ${starterHTML}
+    </div>
+    <div style="font-size:.8rem;color:#777;margin-bottom:14px;">What happened when you asked?</div>
+    <div class="choice-row">
+      <button class="choice-btn" onclick="selectBranch('affirmative')">They said yes</button>
+      <button class="choice-btn" onclick="selectBranch('denied_defensive')">They denied it or got defensive</button>
+      <button class="choice-btn" onclick="selectBranch('changed_subject')">They changed the subject or avoided</button>
+    </div>
+    ${crisisMiniFooterHTML()}`;
+}
+
+// branch_script card — the full conversation script for whatever branch was picked
+function branchScriptHTML(branchId) {
+  const BRANCHES = {
+    affirmative: {
+      title: 'If they said yes',
+      severity: 'high',
+      sections: [
+        { heading: 'Say this first', lines: [
+          'Thank you for telling me. I am really glad you said that out loud.',
+          'I am here with you. You do not have to carry this alone.',
+        ]},
+        { heading: 'Ask these next', lines: [
+          'Are you in immediate danger right now?',
+          'Have you thought about how you would do it?',
+          'Do you have access right now?',
+        ]},
+        { heading: 'Stabilize and connect', lines: [
+          'I want us to get support now, together.',
+          'Would you call 988 with me right now, or text HOME to 741741 while I stay with you?',
+        ]},
+        { heading: 'If they hesitate', lines: [
+          'I hear you. We can do one step at a time. I am not leaving you alone in this.',
+        ]},
+      ],
+      showCrisis: true,
+    },
+    denied_defensive: {
+      title: 'If they denied it or got defensive',
+      severity: 'moderate',
+      sections: [
+        { heading: 'De-escalate', lines: [
+          'I hear you. I am not trying to judge you or label you.',
+          'I asked because I care about you and I want you safe.',
+        ]},
+        { heading: 'Keep the door open', lines: [
+          'If today is not the day to talk, that is okay.',
+          'I am still here, and you can tell me anytime.',
+        ]},
+        { heading: 'Gentle re-check', lines: [
+          'Can I ask one better question: have things felt unbearable lately?',
+          'On a hard day, do you feel like you want to disappear?',
+        ]},
+        { heading: 'Close with connection', lines: [
+          'I care about you either way.',
+          'Can I check in again tomorrow?',
+        ]},
+      ],
+      showCrisis: false,
+    },
+    changed_subject: {
+      title: 'If they changed the subject or avoided',
+      severity: 'moderate',
+      sections: [
+        { heading: 'Return to topic', lines: [
+          'Before we move on, I want to come back to something important.',
+          'I asked because you matter to me.',
+        ]},
+        { heading: 'Direct and calm', lines: [
+          'I want to be clear: are you having thoughts about suicide?',
+        ]},
+        { heading: 'If they keep avoiding', lines: [
+          'You do not have to explain everything right now.',
+          'I just need to know if you are safe tonight.',
+        ]},
+        { heading: 'Bridge to support', lines: [
+          'If talking to me feels hard, we can contact someone neutral together right now.',
+          'We can call 988 and just start with: I am worried and not sure what to say.',
+        ]},
+      ],
+      showCrisis: false,
+    },
+  };
+
+  const branch = BRANCHES[branchId] || BRANCHES.affirmative;
+  const sectionsHTML = branch.sections.map(sec => `
+    <div style="margin-bottom:16px;">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:6px;">${escHtml(sec.heading)}</div>
+      ${sec.lines.map(l => `
+        <div style="padding:10px 13px;background:#060606;border:1px solid #141414;border-radius:7px;font-size:.88rem;color:#ccc;line-height:1.55;margin-bottom:5px;font-style:italic;">"${escHtml(l)}"</div>
+      `).join('')}
+    </div>`).join('');
+
+  return `
+    <div class="rec-label">${escHtml(branch.title)}</div>
+    ${sectionsHTML}
+    ${branch.showCrisis ? crisisCardsHTML() : crisisMiniFooterHTML()}
+    <button class="choice-btn" style="margin-top:14px;font-size:.8rem;padding:10px 14px;" onclick="goBackToBranches()">← Try a different script</button>
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
+}
+
+function crisisCardsHTML() {
+  return `
+    <div class="rec-label">🚨 Immediate support — always free</div>
+    <div class="rec-list">
+      <a class="rec-item crisis" href="tel:988">
+        <div class="rec-icon">📞</div>
+        <div class="rec-content">
+          <div class="rec-title">Call or Text 988</div>
+          <div class="rec-desc">Suicide &amp; Crisis Lifeline — available 24/7, real people</div>
+        </div>
+      </a>
+      <a class="rec-item crisis" href="sms:741741&body=HOME">
+        <div class="rec-icon">💬</div>
+        <div class="rec-content">
+          <div class="rec-title">Text HOME to 741741</div>
+          <div class="rec-desc">Crisis Text Line — text from anywhere, right now</div>
+        </div>
+      </a>
+      <a class="rec-item crisis" href="tel:911">
+        <div class="rec-icon">🚑</div>
+        <div class="rec-content">
+          <div class="rec-title">Call 911</div>
+          <div class="rec-desc">If you or someone else is in immediate danger</div>
+        </div>
+      </a>
+    </div>
+    <a class="restart-link" onclick="restart()">start over</a>
+    ${betaBarHTML()}`;
+}
+
+// ─── Show the "thinking" transition screen ───
+
+function showThinking(echoText) {
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    const inner = document.createElement('div');
+    inner.className = 'page-content entering';
+    inner.innerHTML = `
+      ${echoText ? `<div class="echo">"${escHtml(echoText)}"</div>` : ''}
+      <div class="thinking">
+        <div class="thinking-dot"></div>
+        <div class="thinking-dot"></div>
+        <div class="thinking-dot"></div>
+      </div>`;
+    content.appendChild(inner);
+  }, 360);
+}
+
+// ─── Reconnect attempt from UI ───
+async function attemptReconnect() {
+  if (locked) return;
+  locked = true;
+  showConnBanner('degraded', 'Reconnecting...');
+  const content = document.getElementById('content');
+  content.innerHTML = '<div class="page-content entering"><div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div></div>';
+  try {
+    const started = await cceStartWithRetry(3);
+    if (started) {
+      showConnBanner('ok', 'Reconnected');
+      content.innerHTML = '';
+      bootOpening();
+    } else {
+      content.innerHTML = '';
+      showResponse(backendUnavailableResponse(), null);
+    }
+  } catch {
+    content.innerHTML = '';
+    showResponse(backendUnavailableResponse(), null);
+  } finally {
+    locked = false;
+  }
+}
+
+// ─── Render an AI response as a full page ───
+
+function showResponse(response, echoText) {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  const inner = document.createElement('div');
+  inner.className = 'page-content entering';
+
+  // Progress dots — show on turns 1-3 (not on opening or final screens)
+  const showDots = stepCount > 0 && stage !== Stage.DONE && stage !== Stage.GOOD_S4
+    && stage !== Stage.NG_S4 && stage !== Stage.RISKY_END
+    && stage !== Stage.BRANCH_SELECT && stage !== Stage.OTHER_TEASE;
+  const totalDots = (track === TRACK.GOOD) ? 3 : 4;
+  const dotsHTML = showDots ? progressDotsHTML(Math.min(stepCount - 1, totalDots - 1), totalDots) : '';
+
+  let html = dotsHTML;
+  html += echoText ? `<div class="echo">"${escHtml(echoText)}"</div>` : '';
+
+  // ── CCE: complete outcome ──
+  if (response && response.cceOutcome) {
+    html += cceOutcomeHTML(response.cceOutcome);
+    inner.innerHTML = html;
+    content.appendChild(inner);
+    clearSession(); // conversation complete — don't resume on reload
+    // Pin to top so warm opener is visible, then allow scroll down
+    const page = document.getElementById('page');
+    page.classList.add('top-align');
+    page.scrollTo({ top: 0, behavior: 'auto' });
+    return;
+  }
+
+  // ── CCE: next prompt ──
+  if (response && response.ccePrompt) {
+    const p = response.ccePrompt;
+    html += `<div class="ai-prompt" data-tw="${escAttr(p.question)}"></div>`;
+    if (p.type === 'audience_picker' && p.options && p.options.length) {
+      html += audiencePickerHTML(p.options);
+    } else if (p.type === 'choice' && p.options && p.options.length) {
+      html += cceChoiceHTML(p.options);
+    } else {
+      html += inputHTML();
+    }
+    inner.innerHTML = html;
+    content.appendChild(inner);
+    animateTW(inner);
+    const inp = content.querySelector('.page-input');
+    if (inp) { inp.focus(); wireInput(inp); }
+    return;
+  }
+
+  // ── Local / Chatbase engine ──
+  if (typeof response === 'string') {
+    html += `<div class="ai-prompt" data-tw="${escAttr(response)}"></div>`;
+    if (stage === Stage.DONE || stage === Stage.GOOD_S4) {
+      html += `<a class="restart-link" onclick="restart()">start over</a>${betaBarHTML()}`;
+    } else {
+      html += inputHTML();
+    }
+  } else {
+    if (response.text) {
+      html += `<div class="ai-prompt" data-tw="${escAttr(response.text)}"></div>`;
+    }
+    if (response.card) {
+      if (response.card.type === 'crisis') {
+        html += crisisCardsHTML();
+        // Add reconnect button if this was a retryable failure
+        if (response._retryable) {
+          html += `<button class="choice-btn" style="margin-top:18px;border-color:#444;" onclick="attemptReconnect()">Try reconnecting</button>`;
+        }
+      } else if (response.card.type === 'other_tease') {
+        html += otherTeaseHTML();
+      } else if (response.card.type === 'branch_script') {
+        html += branchScriptHTML(response.card.branchId);
+      } else if (response.card.type === 'recommendations') {
+        html += recCardsHTML(response.card.crisisLevel || 0);
+      }
+    } else {
+      html += inputHTML();
+    }
+  }
+
+  inner.innerHTML = html;
+  content.appendChild(inner);
+  animateTW(inner);
+  const inp = content.querySelector('.page-input');
+  if (inp) { inp.focus(); wireInput(inp); }
+}
+
+// ─── Animate all [data-tw] elements inside a container ───
+function animateTW(container) {
+  const els = container.querySelectorAll('[data-tw]');
+  els.forEach(el => {
+    const text = el.dataset.tw;
+    el.removeAttribute('data-tw');
+    typeWriterInto(text, el, null, 85);
+  });
+}
+
+function keepLatestVisible() {
+  const page = document.getElementById('page');
+  if (page) {
+    page.scrollTo({ top: page.scrollHeight, behavior: 'auto' });
+  }
+}
+
+function inputHTML() {
+  return `<input class="page-input" id="page-input" type="text" placeholder="say whatever's on your mind..." autocomplete="off" spellcheck="false"/>
+    <div class="input-hint" id="input-hint">press enter to continue</div>`;
+}
+
+// ─── Wire keyboard events to any input on screen ───
+
+function wireInput(inp) {
+  const hint = document.getElementById('input-hint');
+  inp.addEventListener('input', () => {
+    if (hint) hint.classList.toggle('ready', inp.value.trim().length > 0);
+  });
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = inp.value.trim();
+      if (val && !locked) submitText(val);
+    }
+  });
+}
+
+// ─── User text submission ───
+
+async function submitText(text) {
+  if (!text.trim() || locked) return;
+  locked = true;
+  let watchdog = null;
+  try {
+    history.push({ role: 'user', content: text });
+    trackEvent('conversation_user_message', { type: 'text', length: text.length });
+    lastUserDisplay = text.length > 44 ? text.slice(0, 42) + '…' : text;
+
+    showThinking(lastUserDisplay);
+    watchdog = setTimeout(() => {
+      if (!locked) return;
+      console.warn('submitText watchdog fired; recovering from stalled state');
+      const page = document.getElementById('page');
+      const content = document.getElementById('content');
+      page.classList.remove('out');
+      content.innerHTML = '';
+      showResponse(backendUnavailableResponse(), lastUserDisplay || null);
+      locked = false;
+    }, REQUEST_TIMEOUT_MS + 4000);
+
+    const response = await getResponse(text);
+    await new Promise(r => setTimeout(r, humanDelay(response)));
+
+    history.push({ role: 'ai', content: typeof response === 'string' ? response : (response.text || '') });
+    saveSession(response, lastUserDisplay);
+
+    const page = document.getElementById('page');
+    const content = document.getElementById('content');
+    page.classList.add('out');
+    setTimeout(() => {
+      page.classList.remove('out');
+      content.innerHTML = '';
+      showResponse(response, lastUserDisplay);
+    }, 360);
+  } catch (e) {
+    console.error('submitText failed', e);
+    const page = document.getElementById('page');
+    const content = document.getElementById('content');
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(backendUnavailableResponse(), lastUserDisplay || null);
+  } finally {
+    if (watchdog) clearTimeout(watchdog);
+    locked = false;
+  }
+}
+
+// ─── CCE choice button click ───
+
+// ─── Conversation branch selection (other_tease → branch_script) ───
+
+function selectBranch(branchId) {
+  if (locked) return;
+  locked = true;
+  stage = Stage.BRANCH_SELECT;
+  trackEvent('conversation_branch_selected', { branchId });
+  const response = otherBranchRouter(branchId);
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(response, null);
+    locked = false;
+  }, 360);
+}
+
+function goBackToBranches() {
+  if (locked) return;
+  locked = true;
+  stage = Stage.OTHER_TEASE;
+  const response = otherTeaseScreen();
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(response, null);
+    locked = false;
+  }, 360);
+}
+
+function startOtherFlow() {
+  // Entry point from rec cards — user is worried about someone else
+  if (locked) return;
+  locked = true;
+  ctx.askedAboutOthers = true;
+  const response = otherTeaseScreen();
+  const page    = document.getElementById('page');
+  const content = document.getElementById('content');
+  page.classList.add('out');
+  setTimeout(() => {
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(response, null);
+    locked = false;
+  }, 360);
+}
+
+async function submitChoice(optionId, optionText) {
+  if (locked) return;
+  locked = true;
+  let watchdog = null;
+  try {
+    const display = optionText.length > 44 ? optionText.slice(0, 42) + '…' : optionText;
+    history.push({ role: 'user', content: optionText });
+    trackEvent('conversation_user_message', { type: 'choice', optionId, optionText });
+    lastUserDisplay = display;
+
+    showThinking(display);
+    watchdog = setTimeout(() => {
+      if (!locked) return;
+      console.warn('submitChoice watchdog fired; recovering from stalled state');
+      const page = document.getElementById('page');
+      const content = document.getElementById('content');
+      page.classList.remove('out');
+      content.innerHTML = '';
+      showResponse(backendUnavailableResponse(), lastUserDisplay || null);
+      locked = false;
+    }, REQUEST_TIMEOUT_MS + 4000);
+
+    const response = await getResponse(null, optionId);
+    await new Promise(r => setTimeout(r, humanDelay(response)));
+    saveSession(response, display);
+
+    const page = document.getElementById('page');
+    const content = document.getElementById('content');
+    page.classList.add('out');
+    setTimeout(() => {
+      page.classList.remove('out');
+      content.innerHTML = '';
+      showResponse(response, display);
+    }, 360);
+  } catch (e) {
+    console.error('submitChoice failed', e);
+    const page = document.getElementById('page');
+    const content = document.getElementById('content');
+    page.classList.remove('out');
+    content.innerHTML = '';
+    showResponse(backendUnavailableResponse(), lastUserDisplay || null);
+  } finally {
+    if (watchdog) clearTimeout(watchdog);
+    locked = false;
+  }
+}
+
+// ─── Session persistence (localStorage) ───
+
+const SESSION_KEY = 'askanyway_session';
+
+function saveSession(lastResponse, lastEcho) {
+  try {
+    const data = {
+      cceSessionId,
+      lastResponse,
+      lastEcho: lastEcho || '',
+      ts: Date.now(),
+    };
+    localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+  } catch (_) { /* quota or private browsing */ }
+}
+
+function clearSession() {
+  try { localStorage.removeItem(SESSION_KEY); } catch (_) {}
+}
+
+function tryResumeSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    // Expire after 30 minutes
+    if (!data.cceSessionId || !data.lastResponse || Date.now() - data.ts > 30 * 60 * 1000) {
+      clearSession();
+      return false;
+    }
+    // Restore CCE state
+    cceSessionId = data.cceSessionId;
+    cceActive = true;
+    // Render last response without animation
+    showResponse(data.lastResponse, data.lastEcho || null);
+    trackEvent('conversation_resumed', { sessionId: cceSessionId });
+    return true;
+  } catch (_) {
+    clearSession();
+    return false;
+  }
+}
+
+// ─── Restart conversation ───
+
+function restart() {
+  stage = Stage.OPENING;
+  track = TRACK.UNKNOWN;
+  ctx   = { turnCount: 0, crisisLevel: 0, topic: null, audience: null, askedAboutOthers: false };
+  history.length = 0;
+  lastUserDisplay = '';
+  locked = false;
+  stepCount = 0;
+  betaRating = 0;
+  // Reset CCE session
+  cceSessionId = null;
+  cceActive = false;
+  clearSession();
+  trackEvent('conversation_restarted');
+  // Reconnect to CCE backend before showing opening screen
+  cceStartWithRetry().then(() => bootOpening());
+}
+
+// ─── Typewriter helper — word-by-word with block cursor ───
+
+function typeWriterInto(text, el, cb, wordDelay = 110) {
+  const words = text.split(' ');
+  let i = 0;
+
+  // place block cursor immediately
+  el.innerHTML = '<span class="cursor"></span>';
+  keepLatestVisible();
+
+  function nextWord() {
+    if (i < words.length) {
+      // build revealed words as snapping spans
+      const revealed = words.slice(0, i + 1).map((w, idx) =>
+        idx === i
+          ? `<span class="tw-word">${escHtml(w)}</span>`
+          : escHtml(w)
+      ).join(' ');
+      el.innerHTML = revealed + ' <span class="cursor"></span>';
+      keepLatestVisible();
+      i++;
+      // slight variable pace — punctuation gets a longer beat
+      const lastChar = words[i - 1].slice(-1);
+      const pause = /[.?!,]/.test(lastChar) ? wordDelay * 2.4 : wordDelay + Math.random() * 40;
+      setTimeout(nextWord, pause);
+    } else {
+      // done — plain text, no cursor
+      el.innerHTML = escHtml(text);
+      keepLatestVisible();
+      if (cb) cb();
+    }
+  }
+
+  setTimeout(nextWord, 160);
+}
+
+// ─── Boot: render opening page ───
+
+const OPENING_TEXT = 'how are you doing today?';
+
+function bootOpening() {
+  const content = document.getElementById('content');
+  const page = document.getElementById('page');
+  page.classList.remove('top-align');
+  page.scrollTo({ top: 0, behavior: 'auto' });
+  content.innerHTML = '';
+  const inner = document.createElement('div');
+  inner.className = 'page-content entering';
+  inner.innerHTML = `
+    <div class="free-badge">✦ free &nbsp;·&nbsp; private &nbsp;·&nbsp; no judgment</div>
+    <div class="ai-prompt" id="opening-prompt"></div>
+    <div id="open-input-wrap" style="opacity:0;transition:opacity .6s ease;margin-top:32px;width:100%;max-width:520px">
+      <input class="page-input" id="open-input" type="text" placeholder="tell me in your own words..." autocomplete="off" spellcheck="false"/>
+      <div class="input-hint" id="open-hint">press enter to continue</div>
+    </div>`;
+  content.appendChild(inner);
+
+  setTimeout(() => {
+    const promptEl = document.getElementById('opening-prompt');
+    if (!promptEl) return;
+    typeWriterInto(OPENING_TEXT, promptEl, () => {
+      setTimeout(() => {
+        const wrap = document.getElementById('open-input-wrap');
+        if (wrap) wrap.style.opacity = '1';
+        // Wire open text input
+        const inp  = document.getElementById('open-input');
+        const hint = document.getElementById('open-hint');
+        if (inp) {
+          inp.focus();
+          inp.addEventListener('input', () => {
+            if (hint) hint.classList.toggle('ready', inp.value.trim().length > 0);
+          });
+          inp.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const val = inp.value.trim();
+              if (val && !locked) submitText(val);
+            }
+          });
+        }
+      }, 200);
+    });
+  }, 500);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────────────────────
+
+window.addEventListener('DOMContentLoaded', async () => {
+  // Try resuming a saved session first
+  if (tryResumeSession()) {
+    startHealthPolling();
+    return;
+  }
+  // Otherwise start fresh with retry
+  await cceStartWithRetry();
+  if (!cceActive && REQUIRE_BACKEND) {
+    trackEvent('conversation_backend_unavailable', { stage: 'start' });
+  }
+  startHealthPolling();
+  bootOpening();
+});
+</script>
+</body>
+</html>

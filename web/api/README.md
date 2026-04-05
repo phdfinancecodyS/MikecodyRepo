@@ -48,6 +48,18 @@ SUPABASE_SERVICE_KEY=service_role_key_here
 STRIPE_SECRET_KEY=sk_live_or_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 STRIPE_PRICE_IDS={"guide":"price_xxx","kit":"price_yyy","sms":"price_zzz","bundle":"price_aaa"}
+
+SENDGRID_API_KEY=SG.xxxxx
+SENDGRID_FROM_EMAIL=hello@askanyway.co
+SENDGRID_TEMPLATE_GUIDE_DELIVERY=d-xxxxxxxxxxxxxxxx
+SENDGRID_TEMPLATE_KIT_DELIVERY=d-yyyyyyyyyyyyyyyy
+SENDGRID_POST_PURCHASE_LIST_ID=optional_list_id
+
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_FROM_NUMBER=+1xxxxxxxxxx
+
+CCE_BACKEND_URL=http://localhost:8000
 ```
 
 ---

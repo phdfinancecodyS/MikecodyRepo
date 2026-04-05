@@ -14,6 +14,7 @@ stop_port() {
   fi
 }
 
+stop_port 3000
 stop_port 3131
 stop_port 8000
 stop_port 8787

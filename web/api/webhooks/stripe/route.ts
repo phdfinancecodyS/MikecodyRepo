@@ -105,10 +105,9 @@ async function sendTransactionalEmail(params: {
   }
 
   const sendgridFrom = process.env.SENDGRID_FROM_EMAIL ?? 'hello@askanyway.com';
-  const templateKey = params.action === 'guide_delivery'
-    ? 'SENDGRID_TEMPLATE_GUIDE_DELIVERY'
-    : 'SENDGRID_TEMPLATE_KIT_DELIVERY';
-  const templateId = process.env[templateKey];
+  const templateId = params.action === 'guide_delivery'
+    ? (process.env.SENDGRID_TEMPLATE_GUIDE_DELIVERY ?? process.env.SENDGRID_GUIDE_TEMPLATE_ID)
+    : (process.env.SENDGRID_TEMPLATE_KIT_DELIVERY ?? process.env.SENDGRID_KIT_TEMPLATE_ID);
 
   const body = templateId
     ? {

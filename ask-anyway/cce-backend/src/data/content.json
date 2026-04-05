@@ -139,7 +139,7 @@
     "low_risk": {
       "label": "Low Risk",
       "threshold": [0, 7],
-      "summary": "Your responses suggest you\u2019re managing reasonably well overall. There are some areas to keep an eye on, but nothing that seems urgent right now.",
+      "summary": "Your responses suggest you\u2019re doing fairly well overall. Nothing here looks urgent right now, and you\u2019ve got solid momentum to build on.",
       "next_step": "Continue the habits that are working. If anything shifts, come back and check in.",
       "disclaimer": "This is a psychoeducational tool, not a clinical assessment. It cannot diagnose any condition. Please speak with a licensed mental health professional if you have concerns about your mental health."
     },

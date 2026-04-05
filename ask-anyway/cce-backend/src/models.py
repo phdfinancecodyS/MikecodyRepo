@@ -92,6 +92,9 @@ class SessionState(BaseModel):
     clarification_options: Optional[List[PromptOption]] = None
     safety_screener_active: bool = False
     audience_bucket: Optional[str] = None
+    audience_overlay_buckets: List[str] = Field(default_factory=list)
+    audience_matching_active: bool = False
+    meds_redirect_active: bool = False
 
 
 # ─── API Responses ─────────────────────────────────────────────────
@@ -110,9 +113,15 @@ class RespondResponse(BaseModel):
     policy_notice: Optional[PolicyNotice] = None
 
 
+class HealthCheck(BaseModel):
+    name: str
+    status: str  # "ok" | "degraded" | "down"
+
 class HealthResponse(BaseModel):
     status: str = "ok"
     version: str = "1.0.0"
+    ready: bool = True
+    checks: List[HealthCheck] = []
 
 
 class TreeInfo(BaseModel):

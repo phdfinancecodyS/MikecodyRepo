@@ -193,17 +193,28 @@
       "checkin": {
         "id": "checkin",
         "prompt": "How are you doing today?",
-        "type": "choice",
-        "options": [
-          {"id": "good", "text": "\uD83D\uDE0A Good", "sentiment": "positive"},
-          {"id": "meh",  "text": "\uD83D\uDE10 Meh",  "sentiment": "neutral"},
-          {"id": "bad",  "text": "\uD83D\uDE1E Rough", "sentiment": "negative"}
-        ],
+        "type": "free_text",
         "routing": "sentiment_branch"
       },
       "good_what": {
         "id": "good_what",
         "prompt": "That\u2019s really good to hear. What\u2019s been making things feel good?",
+        "type": "free_text",
+        "routing": "topic_match",
+        "next": "gp_deepening",
+        "terminal": false
+      },
+      "gp_deepening": {
+        "id": "gp_deepening",
+        "prompt": "Love that. What do you think has helped this feel better lately?",
+        "type": "free_text",
+        "routing": "topic_match",
+        "next": "gp_goal_clarify",
+        "terminal": false
+      },
+      "gp_goal_clarify": {
+        "id": "gp_goal_clarify",
+        "prompt": "If you wanted to keep this momentum going this week, what would you keep doing?",
         "type": "free_text",
         "routing": "topic_match",
         "terminal": false
@@ -213,69 +224,22 @@
         "prompt": "I\u2019m sorry. Tell me a little about what\u2019s been going on.",
         "type": "free_text",
         "routing": "topic_match",
-        "next": "ng_impact",
+        "next": "ng_deepening",
         "terminal": false
       },
-      "ng_impact": {
-        "id": "ng_impact",
-        "prompt": "Thanks for sharing that. How much has this been affecting your day to day life?",
-        "type": "choice",
-        "score_key": "impact",
-        "options": [
-          {"id": "impact_light", "text": "A little - I can still function", "score": 1},
-          {"id": "impact_moderate", "text": "Noticeably - it is getting harder", "score": 2},
-          {"id": "impact_heavy", "text": "A lot - basic stuff feels heavy", "score": 3}
-        ],
-        "next": "ng_duration"
+      "ng_deepening": {
+        "id": "ng_deepening",
+        "prompt": "That makes sense. What part of this has been hitting you the hardest?",
+        "type": "free_text",
+        "routing": "topic_match",
+        "next": "ng_goal_clarify",
+        "terminal": false
       },
-      "ng_duration": {
-        "id": "ng_duration",
-        "prompt": "How long has this been weighing on you?",
-        "type": "choice",
-        "score_key": "duration",
-        "options": [
-          {"id": "duration_days", "text": "Just the past few days", "score": 0},
-          {"id": "duration_weeks", "text": "A few weeks", "score": 1},
-          {"id": "duration_month", "text": "A month or more", "score": 2},
-          {"id": "duration_long", "text": "A long time - it is ongoing", "score": 3}
-        ],
-        "next": "ng_support"
-      },
-      "ng_support": {
-        "id": "ng_support",
-        "prompt": "Who knows you are carrying this right now?",
-        "type": "choice",
-        "score_key": "support",
-        "options": [
-          {"id": "support_yes", "text": "At least one person knows", "score": 0},
-          {"id": "support_unsure", "text": "Kind of, but not the full picture", "score": 1},
-          {"id": "support_no", "text": "No one really knows", "score": 2}
-        ],
-        "next": "ng_function"
-      },
-      "ng_function": {
-        "id": "ng_function",
-        "prompt": "In the last week, how often did this make it hard to do what you needed to do?",
-        "type": "choice",
-        "score_key": "function",
-        "options": [
-          {"id": "function_rare", "text": "Rarely", "score": 0},
-          {"id": "function_some", "text": "Some days", "score": 1},
-          {"id": "function_often", "text": "Most days", "score": 2},
-          {"id": "function_daily", "text": "Every day", "score": 3}
-        ],
-        "next": "ng_checkin"
-      },
-      "ng_checkin": {
-        "id": "ng_checkin",
-        "prompt": "Thanks for being real with me. Before I pull resources, do you feel safe right now?",
-        "type": "choice",
-        "score_key": "safety_check",
-        "options": [
-          {"id": "safety_yes", "text": "Yes, I am safe right now", "score": 0},
-          {"id": "safety_unsure", "text": "I am not fully sure", "score": 2},
-          {"id": "safety_cannot_commit", "text": "No, I do not feel safe", "score": 4}
-        ],
+      "ng_goal_clarify": {
+        "id": "ng_goal_clarify",
+        "prompt": "If this felt even a little better this week, what would you notice first?",
+        "type": "free_text",
+        "routing": "topic_match",
         "terminal": true
       },
       "topic_depth": {

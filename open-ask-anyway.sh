@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FRONTEND_URL="${FRONTEND_URL:-http://127.0.0.1:3131/ask-anyway-deploy/index.html}"
-BACKEND_DOCS_URL="${BACKEND_DOCS_URL:-http://127.0.0.1:8000/docs}"
+FRONTEND_PORT="${FRONTEND_PORT:-3000}"
+CANONICAL_UI_URL="http://127.0.0.1:${FRONTEND_PORT}/ask-anyway-chat.html"
 
-echo "[open] Opening frontend: ${FRONTEND_URL}"
-open "${FRONTEND_URL}"
-
-echo "[open] Opening backend docs: ${BACKEND_DOCS_URL}"
-open "${BACKEND_DOCS_URL}"
+echo "[open] Opening canonical UI only: ${CANONICAL_UI_URL}"
+open "${CANONICAL_UI_URL}"

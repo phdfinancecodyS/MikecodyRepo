@@ -39,6 +39,7 @@ dist/
 
 # Session persistence
 ask-anyway/cce-backend/src/data/.sessions/
+ask-anyway/cce-backend/src/data/.metrics/
 
 # Large/binary
 Zoom/

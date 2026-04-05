@@ -1,5 +1,11 @@
 """FastAPI application for the Clinical Conversation Engine."""
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env from the cce-backend root (parent of src/)
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
+
 import re
 import json
 import time
@@ -23,12 +29,15 @@ from .engine import (
     process_response,
     _save_session,
 )
+from . import metrics
+from . import alerting
 from .config import (
     GUIDES_BY_ID, GUIDES_BY_DOMAIN, AUDIENCE_BUCKETS, AUDIENCE_QUESTIONS,
     PRODUCTS_BY_ID, PRICING_PROFILES, ACTIVE_PRICING, ETSY_LISTINGS,
     resolve_guide_path, get_guide_for_topic, get_offer_for_risk, get_offer_for_guide,
 )
 from .models import (
+    HealthCheck,
     HealthResponse,
     RespondRequest,
     RespondResponse,
@@ -53,6 +62,10 @@ ALLOWED_ORIGINS: List[str] = (
 )
 
 # ─── Rate limiter ──────────────────────────────────────────────────────────────
+
+_rl_session = os.environ.get("RL_SESSION", "30/minute")
+_rl_respond = os.environ.get("RL_RESPOND", "60/minute")
+_rl_recommend = os.environ.get("RL_RECOMMEND", "30/minute")
 
 limiter = Limiter(key_func=get_remote_address)
 
@@ -80,7 +93,34 @@ app.add_middleware(
 
 @app.get("/health", response_model=HealthResponse)
 async def health():
-    return HealthResponse(status="ok")
+    checks = []
+    all_ok = True
+
+    # Check 1: conversation trees loaded
+    tree_ok = len(TREES) > 0
+    checks.append(HealthCheck(name="trees", status="ok" if tree_ok else "down"))
+    if not tree_ok:
+        all_ok = False
+
+    # Check 2: LLM provider configured (if LLM mode enabled)
+    response_engine = os.environ.get("CCE_RESPONSE_ENGINE", "template")
+    if response_engine == "llm":
+        api_key = os.environ.get("CCE_LLM_API_KEY", "")
+        llm_ok = bool(api_key and len(api_key) > 8)
+        checks.append(HealthCheck(name="llm", status="ok" if llm_ok else "degraded"))
+        if not llm_ok:
+            all_ok = False
+    else:
+        checks.append(HealthCheck(name="llm", status="ok"))
+
+    # Check 3: config catalog loaded
+    config_ok = len(GUIDES_BY_ID) > 0
+    checks.append(HealthCheck(name="guides", status="ok" if config_ok else "degraded"))
+    if not config_ok:
+        all_ok = False
+
+    status = "ok" if all_ok else "degraded"
+    return HealthResponse(status=status, ready=all_ok, checks=checks)
 
 
 @app.get("/trees", response_model=TreesResponse)
@@ -93,7 +133,7 @@ async def trees():
 
 
 @app.post("/session/start", response_model=SessionStartResponse)
-@limiter.limit("30/minute")
+@limiter.limit(_rl_session)
 async def session_start(request: Request, body: StartRequest):
     try:
         session, prompt = create_session(body.tree_id)
@@ -107,7 +147,7 @@ async def session_start(request: Request, body: StartRequest):
 
 
 @app.post("/session/{session_id}/respond", response_model=RespondResponse)
-@limiter.limit("60/minute")
+@limiter.limit(_rl_respond)
 async def session_respond(request: Request, session_id: str, body: RespondRequest):
     session = get_session(session_id)
     if not session:
@@ -196,7 +236,7 @@ async def products():
 
 
 @app.post("/audience/resolve")
-@limiter.limit("60/minute")
+@limiter.limit(_rl_respond)
 async def resolve_audience(request: Request):
     """Set the audience bucket for a completed session and return updated outcome."""
     body = await request.json()
@@ -237,7 +277,7 @@ async def resolve_audience(request: Request):
 
 
 @app.post("/recommend")
-@limiter.limit("30/minute")
+@limiter.limit(_rl_recommend)
 async def recommend(request: Request):
     """Generate a config-driven recommendation from session outcome."""
     body = await request.json()
@@ -399,7 +439,7 @@ async def _scrape_pt(zip_code: str, category: str) -> list[dict]:
 
 
 @app.get("/therapists")
-@limiter.limit("20/minute")
+@limiter.limit(os.environ.get("RL_THERAPIST", "20/minute"))
 async def find_therapists(
     request: Request,
     zip: str = Query(..., min_length=5, max_length=5, pattern=r"^\d{5}$"),
@@ -436,3 +476,133 @@ async def session_outcome(session_id: str):
     if not outcome:
         raise HTTPException(status_code=500, detail="Outcome missing")
     return outcome
+
+
+@app.get("/session/{session_id}/recommendation")
+async def session_recommendation(session_id: str):
+    """Cody-compatible recommendation shape from a completed CCE session.
+
+    Returns the exact fields expected by POST /api/quiz/recommendation
+    so Cody's Stripe/fulfillment layer can consume it directly.
+    """
+    import uuid as _uuid
+
+    session = get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    if not session.is_complete or not session.outcome:
+        raise HTTPException(status_code=409, detail="Session not complete")
+
+    outcome = session.outcome
+    primary_topic = (outcome.matched_topics or ["general"])[0]
+    audience = outcome.audience_bucket or "general-mental-health"
+
+    guide = get_guide_for_topic(primary_topic)
+    guide_id = guide["guide_id"] if guide else None
+    guide_title = guide["title"] if guide else None
+
+    offer = get_offer_for_guide(guide_id, outcome.band) if guide_id else get_offer_for_risk(outcome.band)
+
+    variant_path = None
+    if guide_id:
+        resolved = resolve_guide_path(guide_id, audience)
+        variant_path = str(resolved) if resolved else None
+
+    return {
+        "guideRecommendationId": str(_uuid.uuid4()),
+        "baseGuideId": guide_id,
+        "baseGuideTitle": guide_title,
+        "audienceBucketId": audience,
+        "audienceVariantPath": variant_path,
+        "primaryOfferId": offer.get("product_id", "guide"),
+        "secondaryOfferId": offer.get("secondary_offer", "sms"),
+        "bundleRole": offer.get("bundle_role", "practical_support"),
+        "showCrisisResources": outcome.band in ("high_risk", "critical"),
+        "whyMatched": {
+            "riskLevel": outcome.band,
+            "topic": outcome.matched_topics or [],
+            "audience": [audience],
+            "offer": [offer.get("label", offer.get("product_id", "guide"))],
+        },
+    }
+
+
+# ─── Admin: Metrics ────────────────────────────────────────────────────────────
+
+_ADMIN_KEY = os.environ.get("CCE_ADMIN_KEY", "")
+
+
+@app.get("/admin/metrics")
+async def admin_metrics(request: Request):
+    """Return internal usage metrics. Protected by CCE_ADMIN_KEY when set."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+    return metrics.snapshot()
+
+
+@app.get("/admin/llm-usage")
+async def admin_llm_usage(request: Request):
+    """Return focused LLM token and cost telemetry."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+    return metrics.llm_usage_snapshot()
+
+
+@app.get("/admin/llm-headroom")
+async def admin_llm_headroom(request: Request):
+    """Return current LLM budget headroom and warning levels."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+    return metrics.llm_headroom_snapshot()
+
+
+@app.get("/admin/llm-alerts")
+async def admin_llm_alerts(request: Request, min_level: str = "warning"):
+    """Return actionable LLM budget alerts (warning/critical by default)."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+    return metrics.llm_alerts_snapshot(min_level=min_level)
+
+
+@app.post("/admin/llm-alerts/sms")
+async def admin_llm_alerts_sms(request: Request, min_level: str = "warning", force: bool = False):
+    """Send actionable LLM budget alerts by SMS through Twilio."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+
+    result = alerting.send_llm_alerts_sms(min_level=min_level, force=force)
+    if not result.get("ok", False):
+        raise HTTPException(status_code=502, detail=result)
+    return result
+
+
+# ─── Lifecycle ─────────────────────────────────────────────────────────────────
+
+@app.on_event("startup")
+async def _on_startup():
+    alerting.start_sms_alert_scheduler()
+
+@app.on_event("shutdown")
+async def _on_shutdown():
+    alerting.stop_sms_alert_scheduler()
+    metrics.flush_to_disk()
