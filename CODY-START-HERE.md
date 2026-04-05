@@ -1,7 +1,67 @@
 # CODY START HERE - Ask Anyway Status Update (April 2026)
 
 > This file is the first thing to read when you open this repo.
-> Last updated: 2026-04-03 by Mike
+> Last updated: 2026-04-04 by Mike
+
+---
+
+## Where we left off (April 4, 2026)
+
+The conversational UI (ask-anyway-chat.html) is running with full LLM mode enabled through Groq (llama-3.3-70b-versatile). We spent this session hardening it against production failures. Everything below is committed at `7b48ee7`.
+
+### What just shipped
+
+**Resilience layer (the big one):**
+- Backend `/health` is now a real readiness endpoint: checks trees, LLM config, guide catalog. Returns `{ ready: true/false, checks: [...] }`.
+- New `/api/cce/health` Next.js proxy route so the UI can poll backend status.
+- `fetchWithRetry()`: every API call auto-retries on 502/503/504 with exponential backoff.
+- `cceStartWithRetry()`: session creation retries 3x with health-gating between attempts.
+- `cceCall()` retries respond calls up to 2x before giving up.
+- Health heartbeat polls every 15s, detects backend recovery, auto-restores lost sessions.
+- Connection status banner at top of page: green "Reconnected", yellow "Retrying...", red "Service unavailable".
+- "Try reconnecting" button on unavailable screens so users aren't stuck.
+
+**Safety + quality (earlier this session):**
+- Parenting overload safety guard in engine.py: regex catches "hate my kids" type inputs, fires safety de-escalation before LLM.
+- Anti-profanity mirroring rule in LLM prompts: engine will never parrot user profanity back at them.
+- MI paraphrase-first guidance: LLM reflects meaning in fresh language instead of echoing user wording.
+- Groq provider support added to topic matcher and meds classifier (they only had OpenAI/Anthropic).
+- Fixed `.format()` crash in topic matcher where JSON braces collided with Python string formatting.
+
+### What to pick up next
+
+1. **Curveball testing**: only 2 scenarios tested so far ("positive path" and "i hate my kids"). Need to run the full sweep when Groq quota resets (free tier 100K TPD was exhausted).
+2. **OpenAI/Anthropic fallback keys**: add real API keys to `.env` so the provider chain actually falls back instead of just failing.
+3. **Deploy runbook**: document zero-downtime cutover process for production.
+4. **Session recovery UX**: when health heartbeat restores a lost session, the user currently gets a fresh opening. Consider resuming mid-conversation.
+5. **External provisioning**: Supabase, Stripe products, SendGrid, Twilio accounts still need setup (see provisioning table below).
+
+### How to run
+
+```bash
+# From this workspace root:
+./run-ask-anyway-shared.sh        # starts CCE backend (8000) + Next.js (3000)
+./stop-ask-anyway-shared.sh       # kills both
+./open-ask-anyway.sh              # opens browser to the chat UI
+
+# Direct URLs:
+# Chat UI:    http://127.0.0.1:3000/ask-anyway-chat.html
+# Health:     http://127.0.0.1:3000/api/cce/health
+# Backend:    http://127.0.0.1:8000/health
+```
+
+### LLM config (current .env state)
+
+| Setting | Value |
+|---------|-------|
+| Provider | Groq (llama-3.3-70b-versatile) |
+| Chain | groq -> openai -> anthropic |
+| Response engine | llm |
+| Topic engine | llm |
+| Meds engine | llm |
+| Sentiment engine | llm |
+| Monthly cost ceiling | ~$25 (at 50/50 token split) |
+| Free tier limit | 100K tokens/day (Groq) |
 
 ---
 
