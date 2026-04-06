@@ -64,22 +64,25 @@ def record(level, label, passed, detail=""):
 
 def get(path, **params):
     try:
-        r = SESSION.get(BASE + path, params=params, timeout=10)
+        r = SESSION.get(BASE + path, params=params, timeout=30)
         if r.status_code == 429:
             time.sleep(15)
-            r = SESSION.get(BASE + path, params=params, timeout=10)
+            r = SESSION.get(BASE + path, params=params, timeout=30)
         return r
     except Exception:
         return None
 
 def post(path, payload):
     try:
-        r = SESSION.post(BASE + path, json=payload, timeout=15)
+        r = SESSION.post(BASE + path, json=payload, timeout=30)
         if r.status_code == 429:
             # Rate limited: wait and retry once
-            time.sleep(15)
-            r = SESSION.post(BASE + path, json=payload, timeout=15)
+            time.sleep(20)
+            r = SESSION.post(BASE + path, json=payload, timeout=30)
+        time.sleep(0.3)  # pace all POSTs to avoid LLM rate-limit pile-ups
         return r
+    except requests.exceptions.Timeout:
+        return None
     except Exception:
         return None
 
@@ -172,9 +175,28 @@ def walk_triage_with_scores(scores_q1_to_q9, q10_option="topic_depression"):
         if not rd:
             return sid, None, None
         if rd.get("status") == "complete":
-            outcome = rd.get("outcome", {})
+            outcome = rd.get("outcome") or {}
             return sid, outcome, outcome.get("band")
         prompt = rd.get("next_prompt") or {}
+
+    # After Q9, the engine may inject LLM-powered free-text turns
+    # (negative probe, deepening, goal clarify) before presenting Q10.
+    # Walk through those by sending a generic message until we get options.
+    MAX_FREE_TEXT_TURNS = 6
+    for _ in range(MAX_FREE_TEXT_TURNS):
+        opts = prompt.get("options", [])
+        if opts:
+            break  # Got a choice-based prompt (Q10 topic selection)
+        if prompt.get("type") == "free_text":
+            rd = respond(sid, message="I've been feeling down about things lately")
+            if not rd:
+                return sid, None, None
+            if rd.get("status") == "complete":
+                outcome = rd.get("outcome") or {}
+                return sid, outcome, outcome.get("band")
+            prompt = rd.get("next_prompt") or {}
+        else:
+            break
 
     # Q10: topic selection
     opts = prompt.get("options", [])
@@ -186,11 +208,38 @@ def walk_triage_with_scores(scores_q1_to_q9, q10_option="topic_depression"):
     if not chosen_q10 and opts:
         chosen_q10 = opts[0]["id"]
 
+    if not chosen_q10:
+        # Session may have completed during free-text turns or has no Q10
+        return sid, None, None
+
     rd = respond(sid, option_id=chosen_q10)
     if not rd:
         return sid, None, None
-    outcome = rd.get("outcome", {})
-    return sid, outcome, outcome.get("band")
+    if rd.get("status") == "complete":
+        outcome = rd.get("outcome") or {}
+        return sid, outcome, outcome.get("band")
+
+    # May need more free-text turns after Q10 before completion
+    prompt = rd.get("next_prompt") or {}
+    for _ in range(MAX_FREE_TEXT_TURNS):
+        if rd and rd.get("status") == "complete":
+            outcome = rd.get("outcome") or {}
+            return sid, outcome, outcome.get("band")
+        opts = prompt.get("options", [])
+        if opts:
+            rd = respond(sid, option_id=opts[0]["id"])
+        elif prompt.get("type") == "free_text":
+            rd = respond(sid, message="I just want things to get a little better")
+        else:
+            break
+        if not rd:
+            return sid, None, None
+        prompt = rd.get("next_prompt") or {}
+
+    if rd and rd.get("status") == "complete":
+        outcome = rd.get("outcome") or {}
+        return sid, outcome, outcome.get("band")
+    return sid, None, None
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -297,6 +346,11 @@ def beta_2():
     subsection("Risk Band Boundaries (Q8=0, no override)")
     for label, scores, expected in boundary_tests:
         sid, outcome, band = walk_triage_with_scores(scores)
+        if outcome is None:
+            record(L, f"  {label} -> INCOMPLETE (triage did not finish)", False,
+                   "walk_triage_with_scores returned None outcome")
+            time.sleep(0.15)
+            continue
         actual = band or "?"
         actual_score = sum(scores) if band else "?"
         record(L, f"  {label} -> {actual} (sum={actual_score})", actual == expected,
@@ -309,24 +363,33 @@ def beta_2():
     # Q8=2 (q8_passing): safety >= 2 triggers minimumRiskLevel=high_risk
     q8_passing_low_total = [0, 0, 0, 0, 0, 0, 0, 2, 0]  # total=2, but Q8=2 -> min high_risk
     sid, outcome, band = walk_triage_with_scores(q8_passing_low_total)
-    record(L, f"Q8=2 (q8_passing), total=2: band={band} (override -> high_risk)",
-           band == "high_risk",
-           f"expected=high_risk got={band}")
+    if outcome is None:
+        record(L, "Q8=2 override: triage did not complete", False, "outcome is None")
+    else:
+        record(L, f"Q8=2 (q8_passing), total=2: band={band} (override -> high_risk)",
+               band == "high_risk",
+               f"expected=high_risk got={band}")
 
     # Q8=2 with a total already above high_risk: stays at higher band
     q8_passing_high_total = [3, 3, 3, 3, 3, 3, 3, 2, 3]  # total=26, Q8=2, override still applies
     sid, outcome, band = walk_triage_with_scores(q8_passing_high_total)
-    # total=26 -> critical from ranges. override: min high_risk -> no downgrade, stays critical
-    record(L, f"Q8=2 with total=26: band={band} (stays critical)",
-           band == "critical",
-           f"expected=critical got={band}")
+    if outcome is None:
+        record(L, "Q8=2 high total: triage did not complete", False, "outcome is None")
+    else:
+        # total=26 -> critical from ranges. override: min high_risk -> no downgrade, stays critical
+        record(L, f"Q8=2 with total=26: band={band} (stays critical)",
+               band == "critical",
+               f"expected=critical got={band}")
 
     # Q8=0 with moderate total: stays moderate (no override)
     q8_no_mod = [1, 1, 2, 2, 2, 1, 1, 0, 2]  # total=12, Q8=0 -> moderate_risk, no override
     sid, outcome, band = walk_triage_with_scores(q8_no_mod)
-    record(L, f"Q8=0 with total=12: band={band} (no override -> moderate_risk)",
-           band == "moderate_risk",
-           f"expected=moderate_risk got={band}")
+    if outcome is None:
+        record(L, "Q8=0 moderate: triage did not complete", False, "outcome is None")
+    else:
+        record(L, f"Q8=0 with total=12: band={band} (no override -> moderate_risk)",
+               band == "moderate_risk",
+               f"expected=moderate_risk got={band}")
 
     # Q8 crisis option tests
     subsection("Q8 Crisis Options")
@@ -377,6 +440,9 @@ def beta_2():
         ([0,0,0,0,0,0,0,0,0], "low_risk", False),       # total=0, no crisis resources
     ]:
         sid, outcome, band = walk_triage_with_scores(scores)
+        if outcome is None:
+            record(L, f"  {expected_band}: triage did not complete", False, "outcome is None")
+            continue
         has_crisis = bool(outcome.get("crisis_resources")) if isinstance(outcome, dict) else False
         record(L, f"  {expected_band}: crisis resources={'present' if has_crisis else 'absent'}",
                has_crisis == expect_crisis_res,
