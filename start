@@ -1,0 +1,41 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+WORKSPACE_ROOT="$(cd "$(dirname "$0")" && pwd)"
+
+if [[ -d "$WORKSPACE_ROOT/.venv" ]]; then
+  # shellcheck disable=SC1091
+  source "$WORKSPACE_ROOT/.venv/bin/activate"
+fi
+
+printf "\nWorkspace rehydrate\n"
+printf "Location: %s\n" "$WORKSPACE_ROOT"
+printf "Date: %s\n\n" "$(date +%Y-%m-%d)"
+
+if git -C "$WORKSPACE_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  branch="$(git -C "$WORKSPACE_ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || printf "unknown")"
+  changed_count="$(git -C "$WORKSPACE_ROOT" status --porcelain 2>/dev/null | wc -l | tr -d " ")"
+  printf "Git status\n"
+  printf "- Branch: %s\n" "$branch"
+  printf "- Changed files: %s\n\n" "$changed_count"
+fi
+
+if [[ -f "$WORKSPACE_ROOT/.rehydrate.md" ]]; then
+  printf "Rehydrate notes (.rehydrate.md)\n"
+  sed -n "1,120p" "$WORKSPACE_ROOT/.rehydrate.md"
+  printf "\n"
+fi
+
+printf "Quick context\n"
+if [[ -f "$WORKSPACE_ROOT/README.md" ]]; then
+  printf "- README: %s\n" "$WORKSPACE_ROOT/README.md"
+fi
+if [[ -d "$WORKSPACE_ROOT/.github" && -f "$WORKSPACE_ROOT/.github/copilot-instructions.md" ]]; then
+  printf "- Copilot instructions: %s\n" "$WORKSPACE_ROOT/.github/copilot-instructions.md"
+fi
+
+printf "\nTop-level items\n"
+ls -1 "$WORKSPACE_ROOT" | sed -n "1,30p" | sed "s/^/- /"
+
+printf "\nRehydrate complete.\n"
+
