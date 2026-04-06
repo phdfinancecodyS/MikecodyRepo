@@ -22,8 +22,6 @@ ask-anyway/beta_test_progressive.py
 ask-anyway/beta_test.py
 ask-anyway/make_guides_pdf.py
 *.pages
-*.html
-*.md
 *.csv
 *.bundle
 *.log

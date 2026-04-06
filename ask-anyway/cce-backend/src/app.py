@@ -627,7 +627,11 @@ if _DEPLOY_DIR and _DEPLOY_DIR.is_dir():
         index = _DEPLOY_DIR / "index.html"
         if index.exists():
             return FileResponse(str(index), media_type="text/html")
-        return HTMLResponse("<h1>Ask Anyway</h1><p>UI not found.</p>", status_code=404)
+        return JSONResponse({
+            "error": "index.html not found",
+            "deploy_dir": str(_DEPLOY_DIR),
+            "contents": os.listdir(str(_DEPLOY_DIR)) if _DEPLOY_DIR.is_dir() else "not a dir",
+        }, status_code=404)
 
     @app.get("/dashboard", response_class=HTMLResponse, include_in_schema=False)
     async def _serve_dashboard():
