@@ -25,6 +25,18 @@ fi
 echo "[cody] Ask Anyway plug-and-play bootstrap"
 echo "[cody] Workspace: ${ROOT_DIR}"
 
+# Bootstrap nvm so npm is available regardless of how cody was invoked
+if [[ -z "$(command -v npm 2>/dev/null)" ]]; then
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+  if [[ -s "${NVM_DIR}/nvm.sh" ]]; then
+    # shellcheck disable=SC1091
+    source "${NVM_DIR}/nvm.sh"
+  elif [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
+    # shellcheck disable=SC1091
+    source "/opt/homebrew/opt/nvm/nvm.sh"
+  fi
+fi
+
 require_cmd() {
   local cmd="$1"
   if ! command -v "$cmd" >/dev/null 2>&1; then
