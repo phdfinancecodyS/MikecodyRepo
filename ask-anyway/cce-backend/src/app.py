@@ -601,8 +601,22 @@ async def admin_llm_alerts_sms(request: Request, min_level: str = "warning", for
 
 # ─── Static UI (serves the chatbot at / ) ─────────────────────────────────────
 
-_DEPLOY_DIR = Path(__file__).resolve().parent.parent.parent / "ask-anyway-deploy"
-if _DEPLOY_DIR.is_dir():
+# Try multiple candidate paths for the deploy directory
+_APP_PY = Path(__file__).resolve()
+_DEPLOY_CANDIDATES = [
+    _APP_PY.parent.parent.parent / "ask-anyway-deploy",         # ask-anyway/ask-anyway-deploy/
+    _APP_PY.parent.parent.parent.parent / "ask-anyway-deploy",  # /app/ask-anyway-deploy/
+    _APP_PY.parent.parent.parent.parent / "ask-anyway" / "ask-anyway-deploy",  # /app/ask-anyway/ask-anyway-deploy/
+    Path("/app/ask-anyway/ask-anyway-deploy"),                   # absolute fallback
+    Path("/app/ask-anyway-deploy"),                              # flat fallback
+]
+_DEPLOY_DIR = None
+for _candidate in _DEPLOY_CANDIDATES:
+    if _candidate.is_dir():
+        _DEPLOY_DIR = _candidate
+        break
+
+if _DEPLOY_DIR and _DEPLOY_DIR.is_dir():
     # Serve /guides/* static files
     _guides_dir = _DEPLOY_DIR / "guides"
     if _guides_dir.is_dir():
@@ -621,6 +635,18 @@ if _DEPLOY_DIR.is_dir():
         if dash.exists():
             return FileResponse(str(dash), media_type="text/html")
         return HTMLResponse("<h1>Dashboard not found</h1>", status_code=404)
+
+else:
+    # Fallback: no deploy dir found — return debug info at /
+    @app.get("/", response_class=JSONResponse, include_in_schema=False)
+    async def _serve_ui_debug():
+        return {
+            "error": "deploy dir not found",
+            "app_py": str(_APP_PY),
+            "candidates": {str(c): c.is_dir() for c in _DEPLOY_CANDIDATES},
+            "cwd": os.getcwd(),
+            "app_ls": os.listdir("/app") if Path("/app").exists() else "no /app",
+        }
 
 
 # ─── Lifecycle ─────────────────────────────────────────────────────────────────
