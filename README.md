@@ -34,6 +34,18 @@ Then open these files in order. If anything conflicts with an older doc, these w
 Run everything from this workspace root:
 
 ```bash
+./install-cody-command.sh
+cody
+```
+
+Global command setup:
+- Run `./install-cody-command.sh` once to add `cody` to PATH.
+- After that, use `cody` from terminal.
+- `cody` auto-pulls latest from origin when the working tree is clean.
+
+Direct command from repo root:
+
+```bash
 ./cody
 ```
 

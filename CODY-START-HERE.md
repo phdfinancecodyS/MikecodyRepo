@@ -40,6 +40,8 @@ The conversational UI (ask-anyway-chat.html) is running with full LLM mode enabl
 
 ```bash
 # From this workspace root:
+./install-cody-command.sh          # one-time setup to enable global `cody` command
+cody                               # one-word rehydrate + install + auto-pull + start + open UI
 ./cody                             # one-word rehydrate + install + start + open UI
 ./run-ask-anyway-shared.sh        # starts CCE backend (8000) + Next.js (3000)
 ./stop-ask-anyway-shared.sh       # kills both
@@ -52,6 +54,8 @@ The conversational UI (ask-anyway-chat.html) is running with full LLM mode enabl
 ```
 
 Notes:
+- `cody` auto-pulls `origin/<current-branch>` when the working tree is clean.
+- Set `CODY_AUTO_PULL=0` to skip auto-pull.
 - Use `./cody --no-open` on headless or remote shells.
 - `./cody` validates health endpoints before reporting ready.
 
