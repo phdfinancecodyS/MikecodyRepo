@@ -663,10 +663,9 @@ const CHATBASE_API_URL = 'https://www.chatbase.co/api/v1/chat';
 
 // ─────────────────────────────────────────────────────────────
 //  CCE BACKEND INTEGRATION
-//  Auto-connects to http://localhost:8000 (started via start.sh).
-//  Falls back to the local Ask Anyway engine if server is unreachable.
+//  Auto-connects to the Railway-hosted backend.
 // ─────────────────────────────────────────────────────────────
-const CCE_BASE  = 'http://localhost:8000';
+const CCE_BASE  = 'https://mikecodyrepo-production.up.railway.app';
 const CCE_TREE  = 'main-flow';
 
 // Guide base path — auto-detects local dev vs deployed

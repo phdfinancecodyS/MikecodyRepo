@@ -60,6 +60,8 @@ ALLOWED_ORIGINS: List[str] = (
     [o.strip() for o in _env_origins.split(",") if o.strip()]
     or _default_origins
 )
+# Starlette disallows allow_credentials=True with wildcard origins
+_CORS_ALLOW_CREDENTIALS = "*" not in ALLOWED_ORIGINS
 
 # ─── Rate limiter ──────────────────────────────────────────────────────────────
 
@@ -82,7 +84,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=_CORS_ALLOW_CREDENTIALS,
     allow_methods=["*"],
     allow_headers=["*"],
 )

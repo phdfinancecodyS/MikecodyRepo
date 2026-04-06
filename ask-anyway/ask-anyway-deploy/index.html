@@ -663,10 +663,9 @@ const CHATBASE_API_URL = 'https://www.chatbase.co/api/v1/chat';
 
 // ─────────────────────────────────────────────────────────────
 //  CCE BACKEND INTEGRATION
-//  Auto-connects to http://localhost:8000 (started via start.sh).
-//  Falls back to the local Ask Anyway engine if server is unreachable.
+//  Auto-connects to the Railway-hosted backend.
 // ─────────────────────────────────────────────────────────────
-const CCE_BASE  = 'http://localhost:8000';
+const CCE_BASE  = 'https://mikecodyrepo-production.up.railway.app';
 const CCE_TREE  = 'main-flow';
 
 // Guide base path — auto-detects local dev vs deployed
@@ -679,15 +678,13 @@ const GUIDES_BASE = (() => {
 })();
 let cceSessionId = null;
 let cceActive    = false;
-let cceTreeId    = CCE_TREE;
 
-async function cceStart(treeId) {
-  cceTreeId = treeId || CCE_TREE;
+async function cceStart() {
   try {
     const res = await fetch(`${CCE_BASE}/session/start`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tree_id: cceTreeId }),
+      body: JSON.stringify({ tree_id: CCE_TREE }),
     });
     if (!res.ok) throw new Error('not ok');
     const data = await res.json();
@@ -738,70 +735,21 @@ function cceOutcomeHTML(outcome) {
 
   let crisisRows = '';
   if (outcome.crisis_resources && outcome.crisis_resources.length) {
-    const crisisHref = (r) => {
-      const name = (r.name || '').toLowerCase();
-      const contact = (r.contact || '').toLowerCase();
-      if (contact.includes('741741') || name.includes('text line')) return 'sms:741741&body=HOME';
-      if (contact.includes('911') || name.includes('emergency')) return 'tel:911';
-      if (contact.includes('988') || name.includes('lifeline')) return 'tel:988';
-      return '#';
-    };
-
     crisisRows = outcome.crisis_resources.map(r =>
-      `<a class="rec-item crisis" href="${crisisHref(r)}">
+      `<a class="rec-item crisis" href="${r.url || 'tel:988'}">
         <div class="rec-icon">📞</div>
         <div class="rec-content">
           <div class="rec-title">${escHtml(r.name || '988 Lifeline')}</div>
-          <div class="rec-desc">${escHtml(r.contact || r.description || '24/7 crisis support - free')}</div>
+          <div class="rec-desc">${escHtml(r.description || '24/7 crisis support — free')}</div>
         </div>
       </a>`).join('');
   }
 
-  // Use config-driven guide from outcome (falls back to TOPIC_GUIDES)
+  // Use topic-matched guide (or CCE-provided free_resource title if available)
   const guide = TOPIC_GUIDES[ctx.topic || 'general'] || TOPIC_GUIDES.general;
-  const guideTitle  = outcome.free_resource ? outcome.free_resource.title  : guide.title;
-  const guideId     = outcome.matched_guide_id || '';
-  const audience    = outcome.audience_bucket || 'general-mental-health';
-  const guideOnClick = guideId ? `onclick="downloadGuide(event)"` : '';
-  const guideDataAttrs = guideId ? `data-guide-id="${escAttr(guideId)}" data-audience="${escAttr(audience)}"` : '';
-
-  // Build upsell/offer row if available and not hidden
-  let offerRow = '';
-  if (outcome.offer && !outcome.offer.hide_paid_above_fold) {
-    const offerPrice = outcome.offer.etsy_price || outcome.offer.price;
-    const offerUrl = outcome.offer.etsy_url || '#';
-    const isEtsy = !!outcome.offer.etsy_url;
-    const offerTarget = isEtsy ? ' target="_blank" rel="noopener"' : '';
-    const offerClick = isEtsy ? '' : ' onclick="event.preventDefault()"';
-    offerRow = `
-      <a class="rec-item pdf" href="${escAttr(offerUrl)}"${offerTarget}${offerClick}>
-        <div class="rec-icon">💎</div>
-        <div class="rec-content">
-          <div class="rec-title">${escHtml(outcome.offer.label)} <span style="color:#059669;font-weight:600">${offerPrice ? '$' + offerPrice : ''}</span></div>
-          <div class="rec-desc">${escHtml(outcome.offer.description)}${isEtsy ? ' - Instant digital download on Etsy' : ''}</div>
-        </div>
-      </a>`;
-  }
-
-  // Email/SMS capture form (after crisis CTAs for critical, after resources for others)
-  const captureForm = `
-    <div class="capture-form" style="margin:24px 0;padding:20px;background:#111;border:1px solid #333;border-radius:12px">
-      <div style="font-size:.95rem;font-weight:600;color:#e5e7eb;margin-bottom:4px">Get your personalized guide + weekly check-ins</div>
-      <div style="font-size:.78rem;color:#9ca3af;margin-bottom:14px">Free guide delivered to your inbox. Optional weekly SMS check-in ($4.99/mo, cancel anytime).</div>
-      <input type="email" id="capture-email" placeholder="your email" autocomplete="email"
-        style="width:100%;padding:10px 14px;border:1px solid #444;border-radius:8px;background:#1a1a1a;color:#fff;font-size:.9rem;margin-bottom:8px"/>
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
-        <input type="tel" id="capture-phone" placeholder="phone for weekly check-in (optional)" autocomplete="tel"
-          style="flex:1;padding:10px 14px;border:1px solid #444;border-radius:8px;background:#1a1a1a;color:#fff;font-size:.9rem"/>
-      </div>
-      <button onclick="submitCapture()" style="width:100%;padding:11px;background:#22c55e;color:#fff;border:none;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer">
-        Send My Free Guide
-      </button>
-      <div style="font-size:.7rem;color:#6b7280;margin-top:8px;line-height:1.4">
-        We'll email your guide instantly. SMS is optional, TCPA compliant, reply STOP anytime. We never share your info.
-      </div>
-      <div id="capture-status" style="display:none;margin-top:8px;font-size:.85rem"></div>
-    </div>`;
+  const guideTitle = outcome.free_resource ? outcome.free_resource.title : guide.title;
+  const guideUrl   = guide.url();
+  const dailyUrl   = GUIDES_BASE + '/daily-checklist.html';
 
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
@@ -809,17 +757,22 @@ function cceOutcomeHTML(outcome) {
     <div class="rec-label">All free — open right now</div>
     <div class="rec-list">
       ${crisisRows}
-      <a class="rec-item pdf" href="#" ${guideOnClick} ${guideDataAttrs} target="_blank" rel="noopener">
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guideUrl}', '${escAttr(guideTitle)}')">
         <div class="rec-icon">📖</div>
         <div class="rec-content">
           <div class="rec-title">${escHtml(guideTitle)}</div>
           <div class="rec-desc">Read it now — tap to open</div>
         </div>
-      </a>
-      ${offerRow}
+      </div>
+      <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
+        <div class="rec-icon">OK</div>
+        <div class="rec-content">
+          <div class="rec-title">Daily Wellbeing Checklist</div>
+          <div class="rec-desc">A short daily check-in — tap to open</div>
+        </div>
+      </div>
       ${therapistWidgetHTML(ctx.topic || 'general')}
     </div>
-    ${captureForm}
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
     <a class="restart-link" onclick="restart()">start over</a>
     ${betaBarHTML()}`;
@@ -829,12 +782,6 @@ function cceChoiceHTML(options) {
   return `<div class="choice-row">${options.map(o =>
     `<button class="choice-btn" onclick="submitChoice('${o.id.replace(/'/g,"\\'")}','${o.text.replace(/'/g,"\\'")}')">${escHtml(o.text)}</button>`
   ).join('')}</div>`;
-}
-
-function inlineSupportStripHTML() {
-  return `<div style="margin:14px 0 4px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px;background:#fafafa;font-size:.78rem;line-height:1.4;color:#374151">
-    Need immediate support now? <a href="tel:988">Call or text 988</a> or <a href="sms:741741&body=HOME">text HOME to 741741</a>.
-  </div>`;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1560,76 +1507,8 @@ function escAttr(str) {
 
 function downloadGuide(e) {
   e.preventDefault();
-  const guideId = e.target.closest('[data-guide-id]')?.dataset?.guideId;
-  const audience = e.target.closest('[data-audience]')?.dataset?.audience || 'general-mental-health';
-  if (!guideId) {
-    alert('Guide ID not available. Please try again.');
-    return;
-  }
-  const url = `${CCE_BASE}/guides/${guideId}?audience=${encodeURIComponent(audience)}`;
-  fetch(url)
-    .then(r => r.json())
-    .then(data => {
-      const win = window.open('', '_blank');
-      if (win) {
-        // Simple markdown-to-HTML (headers, bold, lists, paragraphs)
-        const html = data.content
-          .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-          .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-          .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/^- (.+)$/gm, '<li>$1</li>')
-          .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
-          .replace(/\n{2,}/g, '</p><p>')
-          .replace(/\n/g, '<br>');
-        win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-          <title>${data.title} - Ask Anyway</title>
-          <style>
-            *{box-sizing:border-box}
-            body{max-width:680px;margin:40px auto;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;color:#1f2937;background:#fafaf9}
-            h1{font-size:1.75rem;color:#111827;margin:1.5em 0 .5em;border-bottom:2px solid #e5e7eb;padding-bottom:.3em}
-            h2{font-size:1.35rem;color:#1e3a5f;margin:1.3em 0 .4em}
-            h3{font-size:1.1rem;color:#374151;margin:1.1em 0 .3em}
-            ul{padding-left:1.5em;margin:.5em 0}
-            li{margin:.3em 0}
-            strong{color:#111827}
-            .guide-header{background:#111827;color:#fff;padding:20px 24px;border-radius:12px;margin-bottom:24px}
-            .guide-header h1{color:#fff;border:none;margin:0;font-size:1.5rem;padding:0}
-            .guide-header .meta{font-size:.8rem;color:#9ca3af;margin-top:6px}
-            .crisis-box{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px 20px;margin:28px 0;font-size:.9rem;line-height:1.5}
-            .crisis-box strong{color:#dc2626}
-            .crisis-box a{color:#dc2626;font-weight:600}
-            .disclaimer{font-size:.82rem;color:#6b7280;border-top:1px solid #e5e7eb;padding-top:16px;margin-top:32px}
-            .back-link{display:inline-block;margin-top:16px;color:#2563eb;text-decoration:none;font-size:.9rem}
-            @media(prefers-color-scheme:dark){
-              body{background:#111;color:#e5e7eb}
-              h1{color:#f9fafb;border-color:#374151}
-              h2{color:#93c5fd}
-              h3{color:#d1d5db}
-              strong{color:#f9fafb}
-              .crisis-box{background:#1c1917;border-color:#7f1d1d}
-              .disclaimer{color:#9ca3af;border-color:#374151}
-            }
-          </style></head><body>
-          <div class="guide-header">
-            <h1>${data.title}</h1>
-            <div class="meta">Ask Anyway Campaign &middot; ${data.domain.replace(/_/g, ' ')} &middot; ${data.audience.replace(/-/g, ' ')}</div>
-          </div>
-          <p>${html}</p>
-          <div class="crisis-box">
-            <strong>Need support right now?</strong><br>
-            <a href="tel:988">Call or text 988</a> (Suicide &amp; Crisis Lifeline, 24/7)<br>
-            <a href="sms:741741&body=HOME">Text HOME to 741741</a> (Crisis Text Line)<br>
-            <a href="tel:911">Call 911</a> for emergencies
-          </div>
-          <div class="disclaimer">
-            This guide is for educational purposes only. It is not therapy, not a clinical diagnosis, and not a replacement for professional mental health support. Created by a licensed clinical social worker (LCSW) and loss survivor.
-          </div>
-          </body></html>`);
-        win.document.close();
-      }
-    })
-    .catch(() => alert('Could not load guide. Please check your connection.'));
+  const topic = ctx.topic || 'general';
+  alert(`Guide download coming soon — topic: ${topic}\n\nReplace this with your actual PDF URL in downloadGuide()`);
 }
 
 function humanDelay(content) {
@@ -1966,35 +1845,9 @@ function showResponse(response, echoText) {
 
   // ── CCE: complete outcome ──
   if (response && response.cceOutcome) {
-    const outcome = response.cceOutcome;
-    // Critical: skip audience matching, show outcome immediately
-    if (outcome.band === 'critical') {
-      html += cceOutcomeHTML(outcome);
-      inner.innerHTML = html;
-      content.appendChild(inner);
-      return;
-    }
-    // Non-critical: show audience selector first
-    html += `<div class="ai-prompt" data-tw="One last question so I can personalize this for you."></div>`;
-    html += `<div class="audience-selector" style="margin:16px 0">
-      <div style="font-size:.85rem;color:#9ca3af;margin-bottom:10px">Which best describes you? (Pick one or skip)</div>
-      <div class="choice-row">
-        <button class="choice-btn" onclick="selectAudience('military-veteran')">Military / Veteran</button>
-        <button class="choice-btn" onclick="selectAudience('first-responder')">First Responder</button>
-        <button class="choice-btn" onclick="selectAudience('healthcare-workers')">Healthcare Worker</button>
-        <button class="choice-btn" onclick="selectAudience('lgbtq')">LGBTQ+</button>
-        <button class="choice-btn" onclick="selectAudience('christian')">Faith-Based</button>
-        <button class="choice-btn" onclick="selectAudience('young-adult-gen-z')">Young Adult</button>
-        <button class="choice-btn" onclick="selectAudience('single-parent')">Single Parent</button>
-        <button class="choice-btn" onclick="selectAudience('neurodivergent')">Neurodivergent</button>
-        <button class="choice-btn" onclick="selectAudience('educators')">Educator</button>
-        <button class="choice-btn" onclick="selectAudience('general-mental-health')" style="opacity:.7">Skip / General</button>
-      </div>
-    </div>`;
+    html += cceOutcomeHTML(response.cceOutcome);
     inner.innerHTML = html;
-    inner.dataset.pendingOutcome = JSON.stringify(outcome);
     content.appendChild(inner);
-    animateTW(inner);
     return;
   }
 
@@ -2002,9 +1855,6 @@ function showResponse(response, echoText) {
   if (response && response.ccePrompt) {
     const p = response.ccePrompt;
     html += `<div class="ai-prompt" data-tw="${escAttr(p.question)}"></div>`;
-    if ((p.question || '').toLowerCase() !== 'how are you doing today?') {
-      html += inlineSupportStripHTML();
-    }
     if (p.type === 'choice' && p.options && p.options.length) {
       html += cceChoiceHTML(p.options);
     } else {
@@ -2193,32 +2043,6 @@ async function submitChoice(optionId, optionText) {
 
 // ─── Emoji click handler (page 1) ───
 
-async function startTriageQuiz() {
-  if (locked) return;
-  locked = true;
-  // Start the mental-health-triage tree
-  const startData = await cceStart('mental-health-triage');
-  if (!startData || !startData.next_prompt) {
-    locked = false;
-    alert('Could not start quiz. Please try again.');
-    return;
-  }
-  stepCount = 1;
-  const response = { ccePrompt: startData.next_prompt };
-  showThinking('');
-  setTimeout(() => {
-    const page = document.getElementById('page');
-    const content = document.getElementById('content');
-    page.classList.add('out');
-    setTimeout(() => {
-      page.classList.remove('out');
-      content.innerHTML = '';
-      showResponse(response, '');
-      locked = false;
-    }, 360);
-  }, 600);
-}
-
 function emojiSelect(which) {
   if (locked) return;
   let userText, display, optionId;
@@ -2247,68 +2071,7 @@ function emojiSelect(which) {
     });
 }
 
-async function submitCapture() {
-  const email = document.getElementById('capture-email')?.value?.trim();
-  const phone = document.getElementById('capture-phone')?.value?.trim();
-  const status = document.getElementById('capture-status');
-  if (!email || !email.includes('@')) {
-    if (status) { status.style.display = 'block'; status.style.color = '#ef4444'; status.textContent = 'Please enter a valid email.'; }
-    return;
-  }
-  try {
-    const res = await fetch(`${CCE_BASE}/leads/capture`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        session_id: cceSessionId,
-        email: email,
-        phone: phone || null,
-        sms_opt_in: !!phone,
-      }),
-    });
-    if (res.ok) {
-      if (status) { status.style.display = 'block'; status.style.color = '#22c55e'; status.textContent = 'Sent! Check your inbox.'; }
-      document.querySelector('.capture-form button').disabled = true;
-      document.querySelector('.capture-form button').textContent = 'Guide Sent!';
-    } else {
-      if (status) { status.style.display = 'block'; status.style.color = '#ef4444'; status.textContent = 'Something went wrong. Try again.'; }
-    }
-  } catch (_) {
-    if (status) { status.style.display = 'block'; status.style.color = '#ef4444'; status.textContent = 'Connection error. Try again.'; }
-  }
-}
-
 // ─── Restart conversation ───
-
-async function selectAudience(bucket) {
-  const pending = document.querySelector('[data-pending-outcome]');
-  if (!pending) return;
-  const outcome = JSON.parse(pending.dataset.pendingOutcome);
-  outcome.audience_bucket = bucket;
-
-  // Update guide and offer data-attributes for the selected audience
-  if (cceSessionId) {
-    try {
-      const res = await fetch(`${CCE_BASE}/audience/resolve`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: cceSessionId, audience_bucket: bucket }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data.offer) outcome.offer = data.offer;
-      }
-    } catch (_) { /* use existing outcome data */ }
-  }
-
-  // Replace selector with outcome
-  const content = document.getElementById('content');
-  content.innerHTML = '';
-  const inner = document.createElement('div');
-  inner.className = 'page-content entering';
-  inner.innerHTML = cceOutcomeHTML(outcome);
-  content.appendChild(inner);
-}
 
 function restart() {
   stage = Stage.OPENING;
@@ -2390,11 +2153,6 @@ function bootOpening() {
     <div id="open-input-wrap" style="opacity:0;transition:opacity .6s ease;margin-top:24px;width:100%;max-width:520px">
       <input class="page-input" id="open-input" type="text" placeholder="or tell me in your own words..." autocomplete="off" spellcheck="false"/>
       <div class="input-hint" id="open-hint">press enter to continue</div>
-    </div>
-    <div id="triage-link-wrap" style="opacity:0;transition:opacity .8s ease;margin-top:18px">
-      <a onclick="startTriageQuiz()" style="color:#9ca3af;font-size:.78rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px">
-        Or take the 10-question screening quiz instead
-      </a>
     </div>`;
   content.appendChild(inner);
 
@@ -2408,11 +2166,7 @@ function bootOpening() {
         const wrap    = document.getElementById('open-input-wrap');
         if (tagline) tagline.style.opacity = '1';
         if (row)     row.style.opacity     = '1';
-        setTimeout(() => {
-          if (wrap) wrap.style.opacity = '1';
-          const triageWrap = document.getElementById('triage-link-wrap');
-          if (triageWrap) setTimeout(() => { triageWrap.style.opacity = '1'; }, 400);
-        }, 200);
+        setTimeout(() => { if (wrap) wrap.style.opacity = '1'; }, 200);
         // Wire open text input
         const inp  = document.getElementById('open-input');
         const hint = document.getElementById('open-hint');
