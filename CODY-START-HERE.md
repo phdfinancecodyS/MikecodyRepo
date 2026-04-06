@@ -147,9 +147,15 @@ Run `bash scripts/check-infra.sh` after filling in values to verify everything c
 **CCE Backend (FastAPI):**
 ```bash
 cd ask-anyway/cce-backend
+python3 -m venv .venv  # first run only, if needed
 source .venv/bin/activate
+pip install -r requirements.txt
 PYTHONPATH="$PWD" python -m uvicorn src.app:app --host 0.0.0.0 --port 8000
 ```
+
+Python env rule:
+- Use `ask-anyway/cce-backend/.venv` as the only Python runtime for the live app.
+- Do not use a repo-root `.venv` for Ask Anyway startup.
 
 **Next.js Frontend:**
 ```bash

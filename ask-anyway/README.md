@@ -160,6 +160,7 @@ If you need to add a new Python package to the backend:
 
 ```bash
 cd cce-backend
+python3 -m venv .venv  # first run only, if needed
 source .venv/bin/activate
 pip install <package-name>
 pip freeze > requirements.txt
@@ -169,6 +170,10 @@ git push
 ```
 
 The other person just runs `./start.sh` and it will install automatically.
+
+Rule:
+- Treat `ask-anyway/cce-backend/.venv` as the only backend Python environment.
+- Do not use a repo-root `.venv` for the live Ask Anyway app.
 
 ---
 
