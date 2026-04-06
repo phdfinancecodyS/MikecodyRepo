@@ -16,7 +16,8 @@ import httpx
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, HTTPException, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -596,6 +597,30 @@ async def admin_llm_alerts_sms(request: Request, min_level: str = "warning", for
     if not result.get("ok", False):
         raise HTTPException(status_code=502, detail=result)
     return result
+
+
+# ─── Static UI (serves the chatbot at / ) ─────────────────────────────────────
+
+_DEPLOY_DIR = Path(__file__).resolve().parent.parent.parent / "ask-anyway-deploy"
+if _DEPLOY_DIR.is_dir():
+    # Serve /guides/* static files
+    _guides_dir = _DEPLOY_DIR / "guides"
+    if _guides_dir.is_dir():
+        app.mount("/guides", StaticFiles(directory=str(_guides_dir)), name="guides")
+
+    @app.get("/", response_class=HTMLResponse, include_in_schema=False)
+    async def _serve_ui():
+        index = _DEPLOY_DIR / "index.html"
+        if index.exists():
+            return FileResponse(str(index), media_type="text/html")
+        return HTMLResponse("<h1>Ask Anyway</h1><p>UI not found.</p>", status_code=404)
+
+    @app.get("/dashboard", response_class=HTMLResponse, include_in_schema=False)
+    async def _serve_dashboard():
+        dash = _DEPLOY_DIR / "dashboard.html"
+        if dash.exists():
+            return FileResponse(str(dash), media_type="text/html")
+        return HTMLResponse("<h1>Dashboard not found</h1>", status_code=404)
 
 
 # ─── Lifecycle ─────────────────────────────────────────────────────────────────
