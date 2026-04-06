@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+WEB_DIR="${ROOT_DIR}/web"
+BACKEND_DIR="${ROOT_DIR}/ask-anyway/cce-backend"
+NO_OPEN="${NO_OPEN:-0}"
+
+if [[ "${1:-}" == "--no-open" ]]; then
+  NO_OPEN=1
+fi
+
+echo "[cody] Ask Anyway plug-and-play bootstrap"
+echo "[cody] Workspace: ${ROOT_DIR}"
+
+require_cmd() {
+  local cmd="$1"
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "[cody] Missing required command: ${cmd}"
+    exit 1
+  fi
+}
+
+require_cmd python3
+require_cmd npm
+require_cmd curl
+require_cmd lsof
+
+if [[ ! -d "${WEB_DIR}" ]]; then
+  echo "[cody] Missing web directory: ${WEB_DIR}"
+  exit 1
+fi
+
+if [[ ! -x "${ROOT_DIR}/run-ask-anyway-shared.sh" ]]; then
+  echo "[cody] Missing launcher: ${ROOT_DIR}/run-ask-anyway-shared.sh"
+  exit 1
+fi
+
+if [[ ! -d "${BACKEND_DIR}" ]]; then
+  echo "[cody] Missing backend directory: ${BACKEND_DIR}"
+  exit 1
+fi
+
+echo "[cody] Preparing backend virtual environment..."
+if [[ ! -d "${BACKEND_DIR}/.venv" ]]; then
+  python3 -m venv "${BACKEND_DIR}/.venv"
+fi
+
+# shellcheck disable=SC1091
+source "${BACKEND_DIR}/.venv/bin/activate"
+python3 -m pip install --upgrade pip >/dev/null
+python3 -m pip install -r "${BACKEND_DIR}/requirements.txt" >/dev/null
+
+echo "[cody] Installing web dependencies..."
+if [[ -f "${WEB_DIR}/package-lock.json" ]]; then
+  npm --prefix "${WEB_DIR}" ci --silent --no-audit --no-fund
+else
+  npm --prefix "${WEB_DIR}" install --silent --no-audit --no-fund
+fi
+
+echo "[cody] Starting backend + frontend..."
+"${ROOT_DIR}/run-ask-anyway-shared.sh"
+
+echo "[cody] Verifying health endpoints..."
+if ! curl -fsS "http://127.0.0.1:8000/health" >/dev/null; then
+  echo "[cody] Backend health check failed on :8000"
+  exit 1
+fi
+
+if ! curl -fsS "http://127.0.0.1:3000/api/cce/health" >/dev/null; then
+  echo "[cody] Frontend proxy health check failed on :3000/api/cce/health"
+  exit 1
+fi
+
+if [[ "${NO_OPEN}" != "1" ]]; then
+  "${ROOT_DIR}/open-ask-anyway.sh"
+fi
+
+echo "[cody] Ready. Canonical UI: http://127.0.0.1:3000/ask-anyway-chat.html"
+echo "[cody] Stop services anytime with: ./stop-ask-anyway-shared.sh"

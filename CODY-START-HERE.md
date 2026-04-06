@@ -40,6 +40,7 @@ The conversational UI (ask-anyway-chat.html) is running with full LLM mode enabl
 
 ```bash
 # From this workspace root:
+./cody                             # one-word rehydrate + install + start + open UI
 ./run-ask-anyway-shared.sh        # starts CCE backend (8000) + Next.js (3000)
 ./stop-ask-anyway-shared.sh       # kills both
 ./open-ask-anyway.sh              # opens browser to the chat UI
@@ -49,6 +50,10 @@ The conversational UI (ask-anyway-chat.html) is running with full LLM mode enabl
 # Health:     http://127.0.0.1:3000/api/cce/health
 # Backend:    http://127.0.0.1:8000/health
 ```
+
+Notes:
+- Use `./cody --no-open` on headless or remote shells.
+- `./cody` validates health endpoints before reporting ready.
 
 ### LLM config (current .env state)
 

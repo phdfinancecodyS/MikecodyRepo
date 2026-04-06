@@ -34,6 +34,25 @@ Then open these files in order. If anything conflicts with an older doc, these w
 Run everything from this workspace root:
 
 ```bash
+./cody
+```
+
+One-word command details:
+- Rehydrates backend Python environment
+- Installs frontend dependencies
+- Starts backend and frontend
+- Validates health endpoints
+- Opens canonical UI automatically
+
+If you want no browser launch:
+
+```bash
+./cody --no-open
+```
+
+Manual launcher:
+
+```bash
 ./run-ask-anyway-shared.sh
 ```
 
