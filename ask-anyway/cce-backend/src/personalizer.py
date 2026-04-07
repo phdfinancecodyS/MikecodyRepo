@@ -14,14 +14,14 @@ from typing import Optional
 
 # Strip filler/hedge words to find the core of what they said
 _FILLER = re.compile(
-    r"^(i(?:'m| am|'ve been| have been| guess i(?:'m| am))\s+|"
+    r"^(i(?:'?m| am|'ve been| have been| guess i(?:'?m| am))\s+|"
     r"(?:well|so|um|uh|like|honestly|basically|just|really|i think|i feel like|i don't know)\s*,?\s*)+",
     re.I
 )
 
 # Common opening phrases to strip
 _OPENERS = re.compile(
-    r"^(i(?:'m| am| feel| have been| keep) (?:feeling |having |dealing with |going through |struggling with )?)",
+    r"^(i(?:'?m| am| feel| have been| keep)\s+(?:feeling |having |dealing with |going through |struggling with |like )?)",
     re.I
 )
 
@@ -38,7 +38,7 @@ _EMOTION_PHRASES = [
      lambda m: f"what's going on with your {m.group(1).lower()}"),
     (re.compile(r"\b(my\s+(?:kid|child|son|daughter|mom|dad|parent|brother|sister|friend|boss))\b.*?(?:is|has been|keeps?|won'?t)\s+(.+?)(?:\.|$)", re.I),
      lambda m: f"what's happening with your {m.group(1).replace('my ', '')}"),
-    (re.compile(r"\b(lonely|alone|isolated|empty|numb|exhausted|burned?\s*out|overwhelmed|anxious|depressed|stressed|angry|frustrated|hopeless|stuck|lost)\b", re.I),
+    (re.compile(r"\b(lonely|alone|isolated|empty|numb|exhausted|burned?\s*out|overwhelmed|anxious|depressed|stressed|angry|frustrated|hopeless|stuck|lost|sad|down|bad|hurt|broken|tired|drained|scared|miserable|defeated|worthless|helpless|confused|disconnected|flat|nothing|dead\s*inside)\b", re.I),
      lambda m: f"feeling {m.group(1).lower()}"),
     (re.compile(r"\b(work|job|school|money|finances?|debt|bills?)\b.*(?:stress|hard|difficult|killing|draining|toxic)", re.I),
      lambda m: f"the {m.group(1).lower()} stress"),
@@ -90,10 +90,10 @@ def extract_key_phrase(user_text: str) -> Optional[str]:
 # Templates with {phrase} slots. Multiple variants per category for variety.
 _NEGATIVE_TEMPLATES = [
     "That sounds really heavy, especially {phrase}.\n\nTell me a little more about what's been going on.",
-    "I hear you on {phrase}.\n\nCan you tell me a bit more about what that's been like?",
+    "{phrase_cap} takes a toll.\n\nWhat's been the hardest part of that for you?",
     "Thank you for being honest about {phrase}.\n\nWhat's been the hardest part?",
     "{phrase_cap} is a lot to carry.\n\nTell me more about what's been happening.",
-    "I'm glad you said something about {phrase}.\n\nWhat's that been like for you?",
+    "Glad you said something about {phrase}.\n\nWhat's that been like for you?",
 ]
 
 _POSITIVE_TEMPLATES = [
@@ -103,21 +103,21 @@ _POSITIVE_TEMPLATES = [
 ]
 
 _CLARIFICATION_TEMPLATES = [
-    "I want to make sure I point you to the right thing.\n\nWhen you say {phrase}, what's been weighing on you most?",
+    "Want to make sure I point you to the right thing.\n\nWhen you say {phrase}, what's been weighing on you most?",
     "Got it. Can you tell me a little more about {phrase}? That'll help me find the right fit.",
-    "I hear you. What part of {phrase} has been the hardest to deal with?",
+    "Makes sense. What part of {phrase} has been the hardest to deal with?",
 ]
 
 # Fallback (no phrase extracted) -- still warmer than the static templates
 _NEGATIVE_FALLBACKS = [
-    "I'm sorry you're going through that.\n\nCan you tell me a little more about what's been happening?",
-    "That sounds really tough.\n\nTell me a bit more about what's been going on.",
-    "I hear you.\n\nWhat's been the hardest part of all this?",
+    "That takes guts to say out loud.\n\nTell me a little more about what's been happening.",
+    "That sounds really tough.\n\nWhat part of it has been weighing on you most?",
+    "Glad you're talking about it.\n\nWhat's been the hardest part of all this?",
 ]
 
 _CLARIFICATION_FALLBACKS = [
-    "I want to make sure I get this right.\n\nCan you tell me a little more about what's been on your mind?",
-    "I hear you. What part of this has been weighing on you most?",
+    "Want to make sure I get this right.\n\nCan you tell me a little more about what's been on your mind?",
+    "Makes sense. What part of this has been weighing on you most?",
 ]
 
 # Rotating index per session to avoid repeating the same variant
@@ -164,7 +164,7 @@ def personalize_clarification(user_text: str) -> str:
 # No predetermined pathway. Just curiosity about their experience.
 _DEEPENING_TEMPLATES = [
     "That makes sense. What part of {phrase} has been hitting you the hardest?",
-    "I hear you. How has {phrase} been showing up for you day to day?",
+    "That lands different when you say it out loud. How has {phrase} been showing up day to day?",
     "Thank you for sharing that. What would make the biggest difference for you right now when it comes to {phrase}?",
     "That's real. What does support around {phrase} look like for you right now?",
     "Got it. If you could change one thing about {phrase}, what would it be?",
@@ -172,7 +172,7 @@ _DEEPENING_TEMPLATES = [
 
 _DEEPENING_FALLBACKS = [
     "That makes sense. What part of this has been hitting you the hardest?",
-    "I hear you. What would make the biggest difference for you right now?",
+    "That's a lot to sit with. What would make the biggest difference for you right now?",
     "Thank you for sharing that. What does support look like for you right now?",
     "That's real. If you could change one thing about this, what would it be?",
     "Got it. How has this been showing up in your day to day?",

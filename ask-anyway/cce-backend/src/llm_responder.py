@@ -34,6 +34,25 @@ def _strip_emoji(text: str) -> str:
         r'\U00002700-\U000027BF'     # dingbats
         r']+', '', text).strip()
 
+
+def _strip_stale_openers(text: str) -> str:
+    """Remove cliched counselor openers that the LLM falls back to despite prompting."""
+    # Patterns: "I hear you.", "I hear you on X.", "It sounds like...",
+    # "That sounds like..." (when followed by a near-parrot of user input)
+    text = re.sub(
+        r'^(?:I hear you(?:\s+on\s+[^.]*)?[.,]\s*)',
+        '', text, count=1, flags=re.I
+    ).strip()
+    text = re.sub(
+        r'^(?:It sounds like\s+[^.]*[.,]\s*)',
+        '', text, count=1, flags=re.I
+    ).strip()
+    # Capitalize the first letter after stripping
+    if text and text[0].islower():
+        text = text[0].upper() + text[1:]
+    return text
+
+
 logger = logging.getLogger("cce.llm_responder")
 
 _PROVIDER = os.environ.get("CCE_LLM_PROVIDER", "openai")
@@ -491,6 +510,8 @@ def _call_llm(system_prompt: str, user_prompt: str) -> Optional[str]:
 
             # Strip any emoji the LLM sneaks in despite instructions
             text = _strip_emoji(text)
+            # Strip stale openers the LLM falls back to despite instructions
+            text = _strip_stale_openers(text)
             if len(_RESPONSE_CACHE) >= _CACHE_MAX:
                 _RESPONSE_CACHE.pop(next(iter(_RESPONSE_CACHE)))
             _RESPONSE_CACHE[cache_key] = (text, now + _CACHE_TTL_S)
