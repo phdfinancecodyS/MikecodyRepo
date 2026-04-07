@@ -30,6 +30,37 @@ _MEDS_GUARD_RE = re.compile(
     r")\b", re.IGNORECASE,
 )
 
+# ── Identity guard (never pathologize identity in templates) ──────────────────
+
+_IDENTITY_GUARD_RE = re.compile(
+    r"\b(?:i(?:'?m| am)\s+(?:an?\s+)?)"
+    r"("
+    # LGBTQ+
+    r"gay|lesbian|bisexual|bi|trans|transgender|nonbinary|non[\-\s]?binary|"
+    r"queer|lgbtq\+?|lgbtqia\+?|pansexual|asexual|ace|aromantic|aro|"
+    r"two[\-\s]?spirit|intersex|genderqueer|genderfluid|gender[\-\s]?fluid|"
+    # Race / ethnicity
+    r"black|african[\-\s]?american|latino|latina|latinx|hispanic|"
+    r"asian|indigenous|native|biracial|mixed[\-\s]?race|"
+    r"pacific[\-\s]?islander|middle[\-\s]?eastern|south[\-\s]?asian|"
+    # Religion / faith
+    r"muslim|christian|jewish|hindu|buddhist|sikh|atheist|agnostic|"
+    r"catholic|protestant|evangelical|mormon|lds|"
+    # Neurodivergence
+    r"autistic|neurodivergent|adhd|dyslexic|on the spectrum|"
+    # Disability
+    r"disabled|deaf|blind|wheelchair[\-\s]?user|chronically[\-\s]?ill|"
+    # Professional identity
+    r"veteran|nurse|teacher|cop|officer|firefighter|paramedic|emt|"
+    r"social[\-\s]?worker|therapist|counselor|doctor|"
+    # Family / life context
+    r"single[\-\s]?(?:mom|dad|parent)|foster[\-\s]?(?:kid|child|parent)|"
+    r"adopted|immigrant|refugee|undocumented|"
+    # Recovery (identity, not crisis)
+    r"in[\-\s]?recovery|sober|clean"
+    r")\b", re.IGNORECASE,
+)
+
 # ── Phrase extraction ──────────────────────────────────────────────────────────
 
 # ── 1. Normalize: fix common misspellings, contractions, text-speak ──────────
@@ -417,6 +448,11 @@ def extract_key_phrase(user_text: str) -> Optional[str]:
     # Guard: if the message is primarily a medication question, return None
     # so we get a warm fallback instead of parroting drug names back.
     if _MEDS_GUARD_RE.search(text):
+        return None
+
+    # Guard: if the message is an identity statement, return None
+    # so templates never pathologize who someone is.
+    if _IDENTITY_GUARD_RE.search(text):
         return None
 
     # Normalize misspellings and text-speak before extraction

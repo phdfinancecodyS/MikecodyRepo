@@ -861,6 +861,56 @@ def _handle_meds_question(text: str) -> Optional[str]:
     return None
 
 
+# ─── Identity statement detection (never pathologize) ──────────────────────────
+
+_IDENTITY_RE = re.compile(
+    r"\b(?:i(?:'?m| am)\s+(?:an?\s+)?)"
+    r"("
+    # LGBTQ+
+    r"gay|lesbian|bisexual|bi|trans|transgender|nonbinary|non[\-\s]?binary|"
+    r"queer|lgbtq\+?|lgbtqia\+?|pansexual|asexual|ace|aromantic|aro|"
+    r"two[\-\s]?spirit|intersex|genderqueer|genderfluid|gender[\-\s]?fluid|"
+    # Race / ethnicity
+    r"black|african[\-\s]?american|latino|latina|latinx|hispanic|"
+    r"asian|indigenous|native|biracial|mixed[\-\s]?race|"
+    r"pacific[\-\s]?islander|middle[\-\s]?eastern|south[\-\s]?asian|"
+    # Religion / faith
+    r"muslim|christian|jewish|hindu|buddhist|sikh|atheist|agnostic|"
+    r"catholic|protestant|evangelical|mormon|lds|"
+    # Neurodivergence
+    r"autistic|neurodivergent|adhd|dyslexic|on the spectrum|"
+    # Disability
+    r"disabled|deaf|blind|wheelchair[\-\s]?user|chronically[\-\s]?ill|"
+    # Professional identity
+    r"veteran|nurse|teacher|cop|officer|firefighter|paramedic|emt|"
+    r"social[\-\s]?worker|therapist|counselor|doctor|"
+    # Family / life context
+    r"single[\-\s]?(?:mom|dad|parent)|foster[\-\s]?(?:kid|child|parent)|"
+    r"adopted|immigrant|refugee|undocumented|"
+    # Recovery (identity, not crisis)
+    r"in[\-\s]?recovery|sober|clean"
+    r")\b", re.IGNORECASE,
+)
+
+_IDENTITY_AFFIRM_RESPONSES = [
+    "Thanks for sharing that with me. What's been going on for you lately?",
+    "Glad you told me. How have things been going for you?",
+    "Appreciate you sharing that. What's been on your mind?",
+    "Got it. What's been weighing on you most these days?",
+    "Thanks for letting me know. How are things going for you right now?",
+]
+
+
+def _is_identity_statement(text: str) -> bool:
+    """Detect 'I'm [identity]' statements that should never be pathologized."""
+    return bool(_IDENTITY_RE.search(text))
+
+
+def _affirm_identity() -> str:
+    """Return a warm, neutral response that doesn't pathologize identity."""
+    return _random.choice(_IDENTITY_AFFIRM_RESPONSES)
+
+
 # ─── Tree helpers ──────────────────────────────────────────────────────────────
 
 def _get_tree(tree_id: str) -> Dict[str, Any]:
@@ -1403,6 +1453,25 @@ def process_response(
                 ),
                 "policy_notice": policy_notice,
             }
+
+    # ── Identity statement guard (never pathologize) ───────────────
+    # "im gay", "im trans", "im a veteran" etc. get a warm, neutral
+    # response that acknowledges without treating identity as a problem.
+    if message and _is_identity_statement(message):
+        metrics.inc("identity_affirm")
+        # Don't override sentiment to negative for identity statements
+        if session.sentiment == "negative":
+            session.sentiment = "neutral"
+        _save_session(session)
+        return {
+            "status": "in_progress",
+            "next_prompt": Prompt(
+                question=_affirm_identity(),
+                type="free_text",
+                options=None,
+            ),
+            "policy_notice": policy_notice,
+        }
 
     # ── Adaptive screener flow control ─────────────────────────────
     if current_step["id"].startswith("suicide_screener_") and option_id:
