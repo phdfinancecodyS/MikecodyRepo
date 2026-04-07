@@ -41,6 +41,7 @@ from .config import (
 from .models import (
     HealthCheck,
     HealthResponse,
+    LeadCaptureRequest,
     RespondRequest,
     RespondResponse,
     SessionStartResponse,
@@ -78,7 +79,7 @@ limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="Clinical Conversation Engine",
     description="Session-based conversation engine for mental health triage and psychoeducation.",
-    version="1.2.0",
+    version="1.3.0",
 )
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -142,7 +143,7 @@ async def health():
         all_ok = False
 
     status = "ok" if all_ok else "degraded"
-    return HealthResponse(status=status, version="1.2.0", ready=all_ok, checks=checks)
+    return HealthResponse(status=status, version="1.3.0", ready=all_ok, checks=checks)
 
 
 @app.get("/trees", response_model=TreesResponse)
@@ -183,6 +184,125 @@ async def session_respond(request: Request, session_id: str, body: RespondReques
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
     return RespondResponse(**result)
+
+
+# ─── Lead Capture (SQLite-backed) ──────────────────────────────────────────────
+
+from . import leads_db
+
+_EMAIL_RE = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
+_PHONE_RE = re.compile(r'^\+?[\d\s\-().]{7,20}$')
+
+
+@app.post("/session/{session_id}/lead")
+@limiter.limit("10/minute")
+async def capture_lead(request: Request, session_id: str, body: LeadCaptureRequest):
+    """Capture email/phone/opt-in for a session. Progressive: email first, phone second."""
+    session = get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    if not body.email and not body.phone:
+        raise HTTPException(status_code=422, detail="Provide email or phone")
+
+    if body.email and not _EMAIL_RE.match(body.email):
+        raise HTTPException(status_code=422, detail="Invalid email format")
+
+    if body.phone:
+        clean_phone = re.sub(r'[\s\-().]+', '', body.phone)
+        if not _PHONE_RE.match(body.phone) or len(clean_phone) < 7:
+            raise HTTPException(status_code=422, detail="Invalid phone format")
+
+    from datetime import datetime, timezone
+    now = datetime.now(timezone.utc).isoformat()
+
+    # Update session with lead data
+    if body.email:
+        session.lead_email = body.email
+        session.email_opted_in = body.email_opted_in
+    if body.phone:
+        session.lead_phone = body.phone
+        session.sms_opted_in = body.sms_opted_in
+    if body.first_name:
+        session.lead_first_name = body.first_name
+    session.lead_captured_at = now
+    _save_session(session)
+
+    # Persist to SQLite leads database
+    result = leads_db.upsert_lead(
+        session_id=session_id,
+        email=body.email,
+        phone=body.phone,
+        first_name=body.first_name,
+        email_opted_in=body.email_opted_in,
+        sms_opted_in=body.sms_opted_in,
+        risk_band=session.outcome.band if session.outcome else None,
+        topics=session.detected_topics,
+        audience_bucket=session.audience_bucket,
+        conversation_turns=len(session.history),
+        moderation_warnings=session.moderation_warnings,
+        sentiment=session.sentiment,
+    )
+
+    return {"ok": True, "captured": now}
+
+
+# ─── Admin: Leads Dashboard ───────────────────────────────────────────────────
+
+
+@app.get("/admin/leads")
+async def admin_leads(request: Request, limit: int = Query(100, le=10000), offset: int = Query(0, ge=0),
+                      sms_only: bool = False, email_only: bool = False, since: Optional[str] = None):
+    """Export captured leads. Protected by CCE_ADMIN_KEY when set."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+
+    leads = leads_db.export_leads(limit=limit, offset=offset, sms_only=sms_only,
+                                   email_only=email_only, since=since)
+    stats = leads_db.count_leads()
+
+    return {
+        "stats": stats,
+        "count": len(leads),
+        "leads": leads,
+    }
+
+
+@app.get("/admin/leads/csv")
+async def admin_leads_csv(request: Request, sms_only: bool = False,
+                          email_only: bool = False, since: Optional[str] = None):
+    """Export leads as CSV for bulk upload to SendGrid/Twilio/ConvertKit."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+
+    from fastapi.responses import Response
+    csv_data = leads_db.export_csv(sms_only=sms_only, email_only=email_only, since=since)
+    return Response(
+        content=csv_data,
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=leads.csv"},
+    )
+
+
+@app.get("/admin/leads/stats")
+async def admin_leads_stats(request: Request):
+    """Quick lead stats for admin dashboard. Protected by CCE_ADMIN_KEY."""
+    if _ADMIN_KEY:
+        import hmac
+        auth = request.headers.get("Authorization", "")
+        token = auth.removeprefix("Bearer ").strip()
+        if not hmac.compare_digest(token, _ADMIN_KEY):
+            raise HTTPException(status_code=401, detail="Unauthorized")
+
+    return leads_db.count_leads()
 
 
 # ─── Guide Catalog & Delivery ─────────────────────────────────────────────────

@@ -411,6 +411,36 @@
     color: #666;
     margin-top: 6px;
   }
+  .capture-price {
+    font-size: .72rem;
+    color: #555;
+    margin-top: 6px;
+  }
+  .check-on-me-cta {
+    margin-top: 8px;
+    padding: 14px;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color .2s;
+  }
+  .check-on-me-cta:hover { border-color: #555; }
+  .check-on-me-title {
+    font-size: .92rem;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .check-on-me-desc {
+    font-size: .78rem;
+    color: #777;
+    line-height: 1.45;
+  }
+  .check-on-me-price {
+    font-size: .72rem;
+    color: #555;
+    margin-top: 6px;
+  }
 
   /* ─── CCE Choice buttons ─── */
   .choice-row {
@@ -1228,6 +1258,14 @@ function cceOutcomeHTML(outcome) {
         </div>
       </div>`;
 
+  const checkOnMeBlock = isCritical
+    ? ''
+    : `<div class="check-on-me-cta" onclick="trackEvent('check_on_me_click', { band: lastRiskBand, sessionId: cceSessionId })">
+        <div class="check-on-me-title">Check On Me</div>
+        <div class="check-on-me-desc">A weekly text that actually checks in. Not a bot, not a reminder app. Just someone making sure you're still good.</div>
+        <div class="check-on-me-price">$4.99/mo. Cancel anytime. Add your phone below to start.</div>
+      </div>`;
+
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
     ${conversationBlock}
@@ -1252,6 +1290,7 @@ function cceOutcomeHTML(outcome) {
       ${paidCtaBlock}
       ${therapistWidgetHTML(ctx.topic || 'general')}
     </div>
+    ${checkOnMeBlock}
     ${captureBlockHTML(isCritical)}
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
     <a class="restart-link" onclick="restart()">start over</a>
@@ -1291,16 +1330,27 @@ function captureBlockHTML(isCritical) {
   if (isCritical) return '';
   return `
     <div class="capture-block" id="capture-block">
-      <div class="capture-prompt">Want me to send your guide and a few follow-up resources to your email?</div>
-      <div class="capture-row">
-        <input class="capture-input" id="capture-email" type="email" placeholder="your email" autocomplete="email"/>
-        <button class="capture-submit" onclick="submitCapture()">send it</button>
+      <div id="capture-step-email">
+        <div class="capture-prompt">Want your guide plus a few follow-up resources?</div>
+        <div class="capture-row">
+          <input class="capture-input" id="capture-email" type="email" placeholder="your email" autocomplete="email"/>
+          <button class="capture-submit" onclick="submitEmail()">send it</button>
+        </div>
+        <div class="capture-skip" onclick="skipCapture()">no thanks, I'm good</div>
       </div>
-      <div class="capture-skip" onclick="skipCapture()">no thanks, I'm good</div>
+      <div id="capture-step-phone" style="display:none;">
+        <div class="capture-prompt">One more thing. Want a weekly check-in text? Not a bot. Just someone making sure you're still good.</div>
+        <div class="capture-row">
+          <input class="capture-input" id="capture-phone" type="tel" placeholder="your phone number" autocomplete="tel"/>
+          <button class="capture-submit" onclick="submitPhone()">I'm in</button>
+        </div>
+        <div class="capture-price">$4.99/mo. Cancel anytime by texting STOP.</div>
+        <div class="capture-skip" onclick="skipPhone()">I'll pass for now</div>
+      </div>
     </div>`;
 }
 
-async function submitCapture() {
+async function submitEmail() {
   const emailEl = document.getElementById('capture-email');
   if (!emailEl) return;
   const email = emailEl.value.trim();
@@ -1309,16 +1359,48 @@ async function submitCapture() {
     return;
   }
   trackEvent('lead_capture_email', { email, sessionId: cceSessionId, band: lastRiskBand });
-  // Store for Cody's lead creation endpoint
   try {
-    await fetch('/api/cce/session/' + cceSessionId + '/respond', {
+    await fetch(CCE_BASE + '/session/' + cceSessionId + '/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lead_email: email }),
-    }).catch(() => {});
+      body: JSON.stringify({ email: email, email_opted_in: true }),
+    });
+  } catch (_) {}
+  // Email captured. Now show phone step.
+  const step1 = document.getElementById('capture-step-email');
+  const step2 = document.getElementById('capture-step-phone');
+  if (step1) step1.style.display = 'none';
+  if (step2) {
+    step2.style.display = 'block';
+    const phoneEl = document.getElementById('capture-phone');
+    if (phoneEl) setTimeout(() => phoneEl.focus(), 200);
+  }
+}
+
+async function submitPhone() {
+  const phoneEl = document.getElementById('capture-phone');
+  if (!phoneEl) return;
+  const phone = phoneEl.value.trim();
+  if (!phone || phone.replace(/[\s\-().+]/g, '').length < 7) {
+    phoneEl.style.borderColor = '#ef4444';
+    return;
+  }
+  trackEvent('lead_capture_phone', { phone: true, smsOptIn: true, sessionId: cceSessionId, band: lastRiskBand });
+  try {
+    await fetch(CCE_BASE + '/session/' + cceSessionId + '/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone, sms_opted_in: true }),
+    });
   } catch (_) {}
   const block = document.getElementById('capture-block');
-  if (block) block.innerHTML = '<div class="capture-done">Sent. Check your inbox.</div>';
+  if (block) block.innerHTML = '<div class="capture-done">You\'re in. First text comes this week.</div>';
+}
+
+function skipPhone() {
+  trackEvent('lead_capture_phone_skipped', { sessionId: cceSessionId, band: lastRiskBand });
+  const block = document.getElementById('capture-block');
+  if (block) block.innerHTML = '<div class="capture-done">Got it. Your guide is on the way.</div>';
 }
 
 function skipCapture() {
@@ -1514,46 +1596,56 @@ function analyze(t) {
 function isHedging(t) {
   // "Fine", "okay", "meh", "alright", "not bad", "surviving" etc.
   // People use these to downplay. Treat as not-good with a gentle callout.
-  return /^(meh|okay|ok|fine|alright|not bad|i guess|surviving|managing|hanging in there|could be better|same old|same as always|i don't know|idk|not sure|so-so|just okay|just ok|just fine|just alright|kind of|kinda)([.!?,\s]|$)/.test(t)
-    || /\bi.?m (okay|ok|fine|alright|meh|surviving|managing|hanging in there|not bad|just|i guess)/.test(t)
-    || /things are (okay|fine|alright|the same|not great)/.test(t);
+  return /^(meh|okay|ok|fine|alright|not bad|i guess|surviving|managing|hanging in there|could be better|same old|same as always|i don't know|idk|not sure|so-so|just okay|just ok|just fine|just alright|kind of|kinda|whatever|eh|blah|aight|ight|ion know|idrk)([.!?,\s]|$)/.test(t)
+    || /\bi.?m (okay|ok|fine|alright|meh|surviving|managing|hanging in there|not bad|just|i guess|coping|functioning|existing|getting by)/.test(t)
+    || /things are (okay|fine|alright|the same|not great|whatever)/.test(t);
 }
 
 function isGood(t) {
   const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
   if (/^(yes|yeah|yep|yup|mostly|pretty much|i am|i'm okay|im okay|i'm good|im good)$/.test(compact)) return true;
-  // Only fire on clearly enthusiastic positivity  - NOT hedging words like okay/fine/meh
-  if (/^(great|doing great|doing well|pretty good|doing really well|blessed|fantastic|amazing|wonderful|thriving|excellent|really good)([.!,\s]|$)/.test(t)
-    || /\bi.?m (great|doing great|doing well|doing really well|blessed|fantastic|amazing|wonderful|thriving|really good|feeling great|feeling good|feeling amazing)/.test(t)
-    || /things are (great|going well|really good|amazing|wonderful|fantastic)/.test(t)) return true;
-  // Sentiment fallback  - must be strongly positive, not just neutral
+  // Only fire on clearly enthusiastic positivity
+  if (/^(great|doing great|doing well|pretty good|doing really well|blessed|fantastic|amazing|wonderful|thriving|excellent|really good|solid|vibing|chillin|good actually|genuinely good)([.!,\s]|$)/.test(t)
+    || /\bi.?m (great|doing great|doing well|doing really well|blessed|fantastic|amazing|wonderful|thriving|really good|feeling great|feeling good|feeling amazing|actually good|genuinely doing well|in a good place|solid|vibing|chillin|stoked|pumped|hyped|grateful|healing|growing|at peace)/.test(t)
+    || /things are (great|going well|really good|amazing|wonderful|fantastic|looking up|improving|getting better|actually good)/.test(t)) return true;
+  // Sentiment fallback
   return analyze(t).score > 0.4;
 }
 
 function isNotGood(t) {
   const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
-  if (/^(no|nope|nah|naah|not really|not okay|not ok|not good|bad|rough|hard|idk|i don't know|i dont know|dont know|unsure)$/.test(compact)) return true;
-  // Keyword fast-path  - explicit negative signals
-  if (/(not (okay|ok|doing well|good|great|feeling well)|struggling|overwhelmed|exhausted|burnt out|can.?t cope|falling apart|going through|dark place|depressed|anxious|panic|numb|lost|empty|alone|hopeless|worthless|tired of|can.?t sleep|can.?t eat|rough|hard time|difficult|bad day|bad week|stressed|broke up|breakup|lost my|fired|laid off|grief|grieving|mourning|worried|scared|not sure)/.test(t)
-    || /(my (girlfriend|boyfriend|partner|wife|husband|gf|bf|mom|dad|friend|job|dog|cat)|i got|i lost|we broke|she left|he left|they left)/.test(t)) return true;
-  // Hedging = assumed struggling  - people downplay
+  if (/^(no|nope|nah|naah|not really|not okay|not ok|not good|bad|rough|hard|idk|i don't know|i dont know|dont know|unsure|terrible|awful|horrible|struggling|sad|meh|blah|not great|trash|shitty|crappy)$/.test(compact)) return true;
+  // Keyword fast-path -- explicit negative signals (synced with backend NEG_WORDS)
+  if (/(not (okay|ok|doing well|good|great|feeling well)|struggling|overwhelmed|exhausted|burnt out|burned out|can.?t cope|falling apart|going through|dark place|depressed|depressing|anxious|panic|numb|numbed|lost|empty|alone|hopeless|helpless|worthless|tired of|can.?t sleep|can.?t eat|rough|hard time|difficult|bad day|bad week|stressed|stressing|broke up|breakup|lost my|fired|laid off|grief|grieving|mourning|worried|scared|not sure|lonely|isolated|abandoned|rejected|betrayed|ashamed|guilty|trapped|stuck|defeated|shattered|drained|heartbroken|miserable|furious|livid|bitter|resentful|terrified|agitated|confused|spiraling|unraveling|suffocating|drowning|apathetic|irritated|disgusted|frustrated|hurt|hurting|ruined|wrecked|destroyed|crushed|devastated|gutted|toxic|abused|neglected|fatigue|fatigued|insomnia|nightmares|dissociating|relapsing|relapsed|sick|nauseous|trembling|shaking|flashbacks?|panicking|hyperventilating)/.test(t)
+    || /(my (girlfriend|boyfriend|partner|wife|husband|gf|bf|mom|dad|friend|job|dog|cat|kid|kids|boss|ex|family|marriage|relationship)|i got|i lost|we broke|she left|he left|they left)/.test(t)
+    // Text-speak / Gen Z / TikTok negative
+    || /\b(fml|smh|ngl|tbh|lowkey|highkey|deadass|fr)\b.*(not ok|struggling|sad|depressed|anxious|tired|done|over it|bad|rough|stressed|hurting|falling apart|losing it|breaking)/.test(t)
+    || /\b(down bad|cooked|over it|so done|in my .* era)\b/.test(t)
+    || /\b(giving|very|its giving)\s+(sad|depressed|anxiety|trauma|pain|depression|hopeless|dark|heavy|bleak|exhausting)\b/.test(t)) return true;
+  // Hedging = assumed struggling
   if (isHedging(t)) return true;
-  // Sentiment fallback  - anything not clearly positive gets treated as not-good
+  // Sentiment fallback
   return analyze(t).score < 0;
 }
 
 function isCrisis(t) {
   // Explicit ideation
   if (/suicid|kill my ?self|end it all|don.?t want to (be here|live|exist|wake up)|not worth living|hurt my ?self|self.?harm|no reason to live|can.?t go on|want to die|wanna die|wanna (not exist|stop existing)|don.?t wanna exist|thinking about (ending|killing)|take my (life|own life)/.test(t)) return true;
-  // Passive ideation - people rarely say "suicidal" right away
-  if (/(better off without me|world would be better without me|everyone would be better off|they.?d be better off without me)/.test(t)) return true;
-  if (/(want to (just )?disappear|wish i could disappear|want to vanish forever)/.test(t)) return true;
+  // Passive ideation
+  if (/(better off without me|world would be better without me|everyone would be better off|they.?d be better off without me|no ?one would (care|notice|miss))/.test(t)) return true;
+  if (/(want to (just )?disappear|wish i could disappear|want to vanish forever|wish i was(n.?t| never) (here|alive|born)|wish i were dead)/.test(t)) return true;
   if (/(tired of (being alive|living|existing|this life)|don.?t want to wake up|wish i wouldn.?t wake up|wish i didn.?t wake up)/.test(t)) return true;
-  if (/(no point (anymore|in anything|in living|to (this|it all))|what.?s the point (of living|of me|of anything|of going on)|no reason (anymore|to keep going|to be here))/.test(t)) return true;
+  if (/(no point (anymore|in anything|in living|to (this|it all))|what.?s the point (of living|of me|of anything|of going on|$)|no reason (anymore|to keep going|to be here))/.test(t)) return true;
   if (/(can.?t see a (future|way out|reason to)|don.?t see a (future|point|way forward)|don.?t see the point (of|in) (this|living|going on))/.test(t)) return true;
   if (/(just want it (to stop|all to stop|to end|to be over)|want everything to (stop|end|be over)|just want it all to end)/.test(t)) return true;
   if (/(not sure (i want to be here|if i want to be here|i should (still )?be here)|sometimes i don.?t want to (be here|exist|live))/.test(t)) return true;
   if (/(ready to (go|give up|be done)|done (fighting|trying|being here)|too (tired|exhausted) to (keep going|carry on|try))/.test(t)) return true;
+  // TikTok coded language / censorship workarounds
+  if (/\b(kms|kmy ?self|unalive|un ?alive|sewerslide|sewer ?slide|alt.?f4 my ?self|su[i1]c[i1]de)\b/.test(t)) return true;
+  if (/(final|forever|last|eternal|permanent) (nap|sleep|rest|goodbye|peace)/.test(t)) return true;
+  if (/\bi.?m (done|finished|over) (with )?(everything|it all|life|living|this)\b/.test(t)) return true;
+  // Preparation / giving away
+  if (/(gave away (all )?(my |)(stuff|things|belongings)|wrote a (note|letter|goodbye)|saying (my )?goodbye)/.test(t)) return true;
   return false;
 }
 
@@ -1565,6 +1657,8 @@ function isRisky(t) {
   if (/(giving (my|stuff|things|away)|said (goodbye|my goodbyes)|wrote a (note|letter)|been writing (letters|notes)|putting (affairs|things) in order)/.test(t)) return true;
   // Dark humor as shield
   if (/(joking about (dying|death|killing myself|not being here)|people joke about (wanting to die|killing themselves) but)/.test(t)) return true;
+  // TikTok coded risky behavior
+  if (/(been (off my|skipping) meds|stopped (taking|my) (meds|medication)|flushed my (meds|pills))/.test(t)) return true;
   return false;
 }
 
@@ -1582,42 +1676,46 @@ function isConcernedAboutOther(t) {
 }
 
 function detectTopic(t) {
-  if (/broke up|breakup|girlfriend|boyfriend|gf|bf|partner|relationship|dating|divorce|marriage|she left|he left/.test(t)) return 'relationship';
-  if (/fired|laid off|job|work|boss|career|unemployed|money|debt|bills|financial/.test(t)) return 'work';
-  if (/died|death|passed away|loss|grief|mourning|widow|funeral|gone|suicide loss|took (their|his|her) (life|own life)/.test(t)) return 'loss';
-  if (/anxious|anxiety|panic|attack|worry|overthinking|racing mind/.test(t)) return 'anxiety';
-  if (/alone|lonely|isolated|no friends|no one cares|nobody/.test(t)) return 'loneliness';
-  if (/family|parents|dad|mom|sibling|kids|children/.test(t)) return 'family';
-  if (/drink|alcohol|sober|relapse|drugs|substance/.test(t)) return 'recovery';
-  if (/faith|god|church|prayer|spiritual|belief|religion/.test(t)) return 'faith';
-  if (/adhd|autism|autistic|neurodivergent|executive function|sensory overload|stimming|masking/.test(t)) return 'neurodivergent';
-  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|disability|flare|lupus/.test(t)) return 'chronic_illness';
-  if (/racism|racial trauma|discrimination|microaggression|being (black|latino|hispanic|asian|indigenous)/.test(t)) return 'racial_trauma';
-  if (/burnout|burnt out|burned out|always (working|on call)|no days off|exhausted (at|by|from) work/.test(t)) return 'burnout';
-  if (/body image|eating disorder|anorexia|bulimia|binge|restrict|food|weight|calories/.test(t)) return 'eating';
+  if (/broke up|breakup|girlfriend|boyfriend|gf|bf|partner|relationship|dating|divorce|marriage|she left|he left|situationship|talking stage|toxic relationship|cheated|unfaithful/.test(t)) return 'relationship';
+  if (/fired|laid off|job|work|boss|career|unemployed|money|debt|bills|financial|rent|mortgage|paycheck|can.?t afford|living paycheck/.test(t)) return 'work';
+  if (/died|death|passed away|loss|grief|mourning|widow|funeral|gone|suicide loss|took (their|his|her) (life|own life)|bereaved|stillborn|miscarriage/.test(t)) return 'loss';
+  if (/anxious|anxiety|panic|attack|worry|overthinking|racing mind|can.?t breathe|chest tight|heart racing|on edge|nervous|dread|intrusive thoughts/.test(t)) return 'anxiety';
+  if (/alone|lonely|isolated|no friends|no one cares|nobody|left out|invisible|disconnected|withdrawn|lonesome/.test(t)) return 'loneliness';
+  if (/family|parents|dad|mom|sibling|kids|children|brother|sister|son|daughter|in-law|step.?(mom|dad|parent)|custody/.test(t)) return 'family';
+  if (/drink|alcohol|sober|relapse|drugs|substance|clean|recovery|\baa\b|\bna\b|12.?step|using again|tempted to use|craving/.test(t)) return 'recovery';
+  if (/faith|god|church|prayer|spiritual|belief|religion|bible|jesus|scripture|pastor|meditation|mosque|synagogue|temple/.test(t)) return 'faith';
+  if (/adhd|autism|autistic|neurodivergent|executive function|sensory overload|stimming|masking|processing|hyperfocus|spectrum/.test(t)) return 'neurodivergent';
+  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|disability|flare|lupus|endometriosis|crohn|multiple sclerosis|\bms\b|spoon theory/.test(t)) return 'chronic_illness';
+  if (/racism|racial trauma|discrimination|microaggression|being (black|latino|hispanic|asian|indigenous)|systemic|generational trauma|\bbipoc\b|\bpoc\b/.test(t)) return 'racial_trauma';
+  if (/burnout|burnt out|burned out|always (working|on call)|no days off|exhausted (at|by|from) work|overworked|hustle culture|spread thin/.test(t)) return 'burnout';
+  if (/body image|eating disorder|anorexia|bulimia|binge|restrict|food|weight|calories|body dysmorphia|purging/.test(t)) return 'eating';
+  // Trauma / PTSD (new)
+  if (/\bptsd\b|trauma|flashback|triggered|hypervigilant|assault|abuse|domestic violence|sexual assault|survivor/.test(t)) return 'trauma';
+  // Sleep (new)
+  if (/can.?t sleep|insomnia|nightmares|sleep deprived|haven.?t slept|up all night|restless|no sleep/.test(t)) return 'sleep';
   return 'general';
 }
 
 function detectAudience(t) {
   // Specific occupational beats broad
-  if (/veteran|military|deployed|combat|\bptsd\b|\barmy\b|marines|\bnavy\b|air force|service member/.test(t)) return 'veteran';
-  if (/first responder|firefighter|firefight|paramedic|\bemt\b|\bpolice\b|law enforcement|dispatch/.test(t)) return 'first_responder';
-  if (/nurse|doctor|hospital|healthcare|clinician|medical (worker|professional|staff)/.test(t)) return 'healthcare';
-  if (/teacher|educator|classroom|i teach|i.?m a teacher/.test(t)) return 'educator';
-  if (/social worker|i.?m a (counselor|therapist)|i work as a (counselor|therapist)|\bin social work\b/.test(t)) return 'social_worker';
-  if (/lgbtq|\bgay\b|\blesbian\b|\bbisexual\b|\btrans\b|\bqueer\b|non.?binary|same.?sex/.test(t)) return 'lgbtq';
-  if (/single (mom|dad|parent)|raising (my kids|them|him|her) alone|parenting alone/.test(t)) return 'single_parent';
+  if (/veteran|military|deployed|combat|\bptsd\b|\barmy\b|marines|\bnavy\b|air force|space force|coast guard|national guard|service member|active duty|reserve|gi bill|\bva\b (hospital|clinic|benefits)/.test(t)) return 'veteran';
+  if (/first responder|firefighter|firefight|paramedic|\bemt\b|\bpolice\b|law enforcement|dispatch|911|corrections officer|\bcop\b|state trooper|search and rescue/.test(t)) return 'first_responder';
+  if (/nurse|\brn\b|\blpn\b|doctor|\bmd\b|hospital|healthcare|clinician|medical (worker|professional|staff)|nursing (student|school)|residency|attending|surgical tech|cna/.test(t)) return 'healthcare';
+  if (/teacher|educator|classroom|i teach|i.?m a teacher|principal|school (counselor|psychologist)|substitute|para.?pro|teaching assistant|\bta\b/.test(t)) return 'educator';
+  if (/social worker|\blcsw\b|\bmsw\b|i.?m a (counselor|therapist)|i work as a (counselor|therapist)|\bin social work\b|case manager|case.?load|compassion fatigue/.test(t)) return 'social_worker';
+  if (/lgbtq|\bgay\b|\blesbian\b|\bbisexual\b|\btrans\b|\bqueer\b|non.?binary|same.?sex|coming out|closeted|deadname|they.?them|gender.?(fluid|non.?conform)|pan.?sexual|asexual|\bace\b spec/.test(t)) return 'lgbtq';
+  if (/single (mom|dad|parent)|raising (my kids|them|him|her) alone|parenting alone|solo parent|co.?parenting|custody battle|full.?time (mom|dad|parent)/.test(t)) return 'single_parent';
   // Identity/community buckets
-  if (/racial trauma|\bracism\b|discrimination|microaggression|being (black|latino|latina|hispanic|asian|indigenous)|\bpoc\b|\bbipoc\b|black (man|woman|person|community)|latinx|as a (black|latino|hispanic|asian|indigenous)/.test(t)) return 'bipoc';
-  if (/\badhd\b|\bautis[mt]\b|autistic|neurodivergent|sensory (issues|overload|processing)|executive function|stimming|hyperfocus|\bmasking\b|asperger/.test(t)) return 'neurodivergent';
-  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|\bdisabilit|\bdisabled\b|invisible illness|flare.?up|\blupus\b|\b(ms|multiple sclerosis)\b/.test(t)) return 'chronic_illness';
-  if (/\b(i.?m |i am )?(18|19|20|21|22|23)\b|gen z|\bin college\b|college (student|freshman|sophomore|junior|senior)|\bdorm\b|\bcampus\b|student (loan|debt)|post.?pandemic|zoom (school|class)/.test(t)) return 'gen_z';
-  if (/\b(ceo|lawyer|attorney|surgeon)\b|investment bank|hedge fund|\bexecutive\b|always (on|working)|80.?hour (week|weeks)|never (off|not working|stop working)/.test(t)) return 'high_stress';
-  if (/\bmuslim\b|\bislam\b|\bjewish\b|\bjew\b|\bhindu\b|\bbuddhist\b|\bsikh\b|\bmosque\b|\bsynagogue\b|spiritual but not religious|not religious but spiritual|\bramadan\b|\bshabbat\b/.test(t)) return 'faith_other';
-  if (/(lost (my|a) (mom|dad|brother|sister|friend|child|son|daughter|partner|wife|husband) to suicide|suicide loss|they (died|took their life) by suicide|lost someone to (suicide|overdose))/.test(t)) return 'grief_audience';
-  if (/\b(in recovery|i.?m (sober|clean)|sobriety date|\bAA\b|\bNA\b|narcotics anonymous|alcoholics anonymous|recovery community|12.?step|clean (date|and sober))/.test(t)) return 'addiction_recovery';
+  if (/racial trauma|\bracism\b|discrimination|microaggression|being (black|latino|latina|hispanic|asian|indigenous)|\bpoc\b|\bbipoc\b|black (man|woman|person|community)|latinx|as a (black|latino|hispanic|asian|indigenous)|code.?switch|generational trauma/.test(t)) return 'bipoc';
+  if (/\badhd\b|\bautis[mt]\b|autistic|neurodivergent|sensory (issues|overload|processing)|executive function|stimming|hyperfocus|\bmasking\b|asperger|spicy brain|neurospicy|executive dysfunction|dopamine/.test(t)) return 'neurodivergent';
+  if (/chronic (pain|illness|condition|fatigue)|fibromyalgia|autoimmune|\bdisabilit|\bdisabled\b|invisible illness|flare.?up|\blupus\b|\b(ms|multiple sclerosis)\b|spoon theory|spoonie|brain fog|endo|crohn|pots|ehlers/.test(t)) return 'chronic_illness';
+  if (/\b(i.?m |i am )?(18|19|20|21|22|23)\b|gen z|\bin college\b|college (student|freshman|sophomore|junior|senior)|\bdorm\b|\bcampus\b|student (loan|debt)|post.?pandemic|zoom (school|class)|adulting|moved back (home|in with)|gap year/.test(t)) return 'gen_z';
+  if (/\b(ceo|lawyer|attorney|surgeon)\b|investment bank|hedge fund|\bexecutive\b|always (on|working)|80.?hour (week|weeks)|never (off|not working|stop working)|type.?a|grind culture|can.?t (turn off|unplug|disconnect)/.test(t)) return 'high_stress';
+  if (/\bmuslim\b|\bislam\b|\bjewish\b|\bjew\b|\bhindu\b|\bbuddhist\b|\bsikh\b|\bmosque\b|\bsynagogue\b|spiritual but not religious|not religious but spiritual|\bramadan\b|\bshabbat\b|meditation practice|mindfulness|pagan|wiccan/.test(t)) return 'faith_other';
+  if (/(lost (my|a) (mom|dad|brother|sister|friend|child|son|daughter|partner|wife|husband) to suicide|suicide loss|they (died|took their life) by suicide|lost someone to (suicide|overdose)|grief|grieving|someone (i|I) (love|loved) died|after (the|their) (funeral|death|passing))/.test(t)) return 'grief_audience';
+  if (/\b(in recovery|i.?m (sober|clean)|sobriety date|\bAA\b|\bNA\b|narcotics anonymous|alcoholics anonymous|recovery community|12.?step|clean (date|and sober)|sober curious|day[s]? (sober|clean)|california sober)/.test(t)) return 'addiction_recovery';
   // Christian comes after faith-specific buckets
-  if (/christian|faith|god|church|prayer|bible|jesus|scripture/.test(t)) return 'christian';
+  if (/christian|faith|god|church|prayer|bible|jesus|scripture|pastor|ministry|worship/.test(t)) return 'christian';
   return null;
 }
 

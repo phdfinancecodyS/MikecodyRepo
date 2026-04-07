@@ -63,6 +63,10 @@ _SESSION_DIR.mkdir(parents=True, exist_ok=True)
 
 def _save_session(session: SessionState) -> None:
     """Write session to in-memory cache and persist to disk."""
+    # Stamp completion time on first save after completion
+    if session.is_complete and not session.completed_at:
+        from datetime import datetime, timezone
+        session.completed_at = datetime.now(timezone.utc).isoformat()
     _SESSIONS[session.session_id] = session
     path = _SESSION_DIR / f"{session.session_id}.json"
     path.write_text(session.model_dump_json(), encoding="utf-8")
@@ -1310,6 +1314,7 @@ def _complete_or_ask_audience(
 # ─── Public API ────────────────────────────────────────────────────────────────
 
 def create_session(tree_id: str) -> Tuple[SessionState, Prompt]:
+    from datetime import datetime, timezone
     tree = _get_tree(tree_id)
     entry_id = tree["entry"]
     entry_step = tree["steps"][entry_id]
@@ -1318,6 +1323,7 @@ def create_session(tree_id: str) -> Tuple[SessionState, Prompt]:
         session_id=str(uuid.uuid4()),
         tree_id=tree_id,
         current_step=entry_id,
+        started_at=datetime.now(timezone.utc).isoformat(),
     )
     _save_session(session)
     metrics.inc("session_start")

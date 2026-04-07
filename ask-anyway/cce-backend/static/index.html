@@ -411,6 +411,36 @@
     color: #666;
     margin-top: 6px;
   }
+  .capture-price {
+    font-size: .72rem;
+    color: #555;
+    margin-top: 6px;
+  }
+  .check-on-me-cta {
+    margin-top: 8px;
+    padding: 14px;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color .2s;
+  }
+  .check-on-me-cta:hover { border-color: #555; }
+  .check-on-me-title {
+    font-size: .92rem;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .check-on-me-desc {
+    font-size: .78rem;
+    color: #777;
+    line-height: 1.45;
+  }
+  .check-on-me-price {
+    font-size: .72rem;
+    color: #555;
+    margin-top: 6px;
+  }
 
   /* ─── CCE Choice buttons ─── */
   .choice-row {
@@ -1228,6 +1258,14 @@ function cceOutcomeHTML(outcome) {
         </div>
       </div>`;
 
+  const checkOnMeBlock = isCritical
+    ? ''
+    : `<div class="check-on-me-cta" onclick="trackEvent('check_on_me_click', { band: lastRiskBand, sessionId: cceSessionId })">
+        <div class="check-on-me-title">Check On Me</div>
+        <div class="check-on-me-desc">A weekly text that actually checks in. Not a bot, not a reminder app. Just someone making sure you're still good.</div>
+        <div class="check-on-me-price">$4.99/mo. Cancel anytime. Add your phone below to start.</div>
+      </div>`;
+
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
     ${conversationBlock}
@@ -1252,6 +1290,7 @@ function cceOutcomeHTML(outcome) {
       ${paidCtaBlock}
       ${therapistWidgetHTML(ctx.topic || 'general')}
     </div>
+    ${checkOnMeBlock}
     ${captureBlockHTML(isCritical)}
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
     <a class="restart-link" onclick="restart()">start over</a>
@@ -1291,16 +1330,27 @@ function captureBlockHTML(isCritical) {
   if (isCritical) return '';
   return `
     <div class="capture-block" id="capture-block">
-      <div class="capture-prompt">Want me to send your guide and a few follow-up resources to your email?</div>
-      <div class="capture-row">
-        <input class="capture-input" id="capture-email" type="email" placeholder="your email" autocomplete="email"/>
-        <button class="capture-submit" onclick="submitCapture()">send it</button>
+      <div id="capture-step-email">
+        <div class="capture-prompt">Want your guide plus a few follow-up resources?</div>
+        <div class="capture-row">
+          <input class="capture-input" id="capture-email" type="email" placeholder="your email" autocomplete="email"/>
+          <button class="capture-submit" onclick="submitEmail()">send it</button>
+        </div>
+        <div class="capture-skip" onclick="skipCapture()">no thanks, I'm good</div>
       </div>
-      <div class="capture-skip" onclick="skipCapture()">no thanks, I'm good</div>
+      <div id="capture-step-phone" style="display:none;">
+        <div class="capture-prompt">One more thing. Want a weekly check-in text? Not a bot. Just someone making sure you're still good.</div>
+        <div class="capture-row">
+          <input class="capture-input" id="capture-phone" type="tel" placeholder="your phone number" autocomplete="tel"/>
+          <button class="capture-submit" onclick="submitPhone()">I'm in</button>
+        </div>
+        <div class="capture-price">$4.99/mo. Cancel anytime by texting STOP.</div>
+        <div class="capture-skip" onclick="skipPhone()">I'll pass for now</div>
+      </div>
     </div>`;
 }
 
-async function submitCapture() {
+async function submitEmail() {
   const emailEl = document.getElementById('capture-email');
   if (!emailEl) return;
   const email = emailEl.value.trim();
@@ -1309,16 +1359,48 @@ async function submitCapture() {
     return;
   }
   trackEvent('lead_capture_email', { email, sessionId: cceSessionId, band: lastRiskBand });
-  // Store for Cody's lead creation endpoint
   try {
-    await fetch('/api/cce/session/' + cceSessionId + '/respond', {
+    await fetch(CCE_BASE + '/session/' + cceSessionId + '/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lead_email: email }),
-    }).catch(() => {});
+      body: JSON.stringify({ email: email, email_opted_in: true }),
+    });
+  } catch (_) {}
+  // Email captured. Now show phone step.
+  const step1 = document.getElementById('capture-step-email');
+  const step2 = document.getElementById('capture-step-phone');
+  if (step1) step1.style.display = 'none';
+  if (step2) {
+    step2.style.display = 'block';
+    const phoneEl = document.getElementById('capture-phone');
+    if (phoneEl) setTimeout(() => phoneEl.focus(), 200);
+  }
+}
+
+async function submitPhone() {
+  const phoneEl = document.getElementById('capture-phone');
+  if (!phoneEl) return;
+  const phone = phoneEl.value.trim();
+  if (!phone || phone.replace(/[\s\-().+]/g, '').length < 7) {
+    phoneEl.style.borderColor = '#ef4444';
+    return;
+  }
+  trackEvent('lead_capture_phone', { phone: true, smsOptIn: true, sessionId: cceSessionId, band: lastRiskBand });
+  try {
+    await fetch(CCE_BASE + '/session/' + cceSessionId + '/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone, sms_opted_in: true }),
+    });
   } catch (_) {}
   const block = document.getElementById('capture-block');
-  if (block) block.innerHTML = '<div class="capture-done">Sent. Check your inbox.</div>';
+  if (block) block.innerHTML = '<div class="capture-done">You\'re in. First text comes this week.</div>';
+}
+
+function skipPhone() {
+  trackEvent('lead_capture_phone_skipped', { sessionId: cceSessionId, band: lastRiskBand });
+  const block = document.getElementById('capture-block');
+  if (block) block.innerHTML = '<div class="capture-done">Got it. Your guide is on the way.</div>';
 }
 
 function skipCapture() {

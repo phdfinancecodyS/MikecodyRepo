@@ -14,6 +14,14 @@ class RespondRequest(BaseModel):
     message: Optional[str] = None
 
 
+class LeadCaptureRequest(BaseModel):
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    first_name: Optional[str] = None
+    email_opted_in: bool = False
+    sms_opted_in: bool = False
+
+
 # ─── Prompt / Response Pieces ──────────────────────────────────────
 
 class PromptOption(BaseModel):
@@ -97,6 +105,16 @@ class SessionState(BaseModel):
     context_probe_asked: bool = False
     meds_redirect_active: bool = False
     moderation_warnings: int = 0
+    # Lead capture
+    lead_email: Optional[str] = None
+    lead_phone: Optional[str] = None
+    lead_first_name: Optional[str] = None
+    email_opted_in: bool = False
+    sms_opted_in: bool = False
+    lead_captured_at: Optional[str] = None
+    # Timestamps
+    started_at: Optional[str] = None
+    completed_at: Optional[str] = None
 
 
 # ─── API Responses ─────────────────────────────────────────────────
