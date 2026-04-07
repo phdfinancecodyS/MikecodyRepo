@@ -38,15 +38,19 @@ def _strip_emoji(text: str) -> str:
 def _strip_stale_openers(text: str) -> str:
     """Remove cliched counselor openers that the LLM falls back to despite prompting."""
     # Patterns: "I hear you.", "I hear you on X.", "It sounds like...",
-    # "That sounds like..." (when followed by a near-parrot of user input)
-    text = re.sub(
+    # "That sounds like...", "That must be really...", "I can only imagine...",
+    # "I understand...", "I can see that..." (when followed by near-parrot of input)
+    patterns = [
         r'^(?:I hear you(?:\s+on\s+[^.]*)?[.,]\s*)',
-        '', text, count=1, flags=re.I
-    ).strip()
-    text = re.sub(
         r'^(?:It sounds like\s+[^.]*[.,]\s*)',
-        '', text, count=1, flags=re.I
-    ).strip()
+        r'^(?:That (?:sounds|must be)\s+(?:really\s+)?[^.]*[.,]\s*)',
+        r'^(?:I (?:can\s+(?:only\s+)?imagine|understand|can\s+see\s+(?:that|how))\s+[^.]*[.,]\s*)',
+        r'^(?:I[\'m\s]+so sorry\s+(?:to hear|you[\'re\s]+going through)\s+[^.]*[.,]\s*)',
+        r'^(?:(?:First off|First of all),?\s+(?:thank you|I appreciate)\s+[^.]*[.,]\s*)',
+        r'^(?:It takes (?:a lot of\s+)?(?:courage|guts|strength)\s+[^.]*[.,]\s*)',
+    ]
+    for pat in patterns:
+        text = re.sub(pat, '', text, count=1, flags=re.I).strip()
     # Capitalize the first letter after stripping
     if text and text[0].islower():
         text = text[0].upper() + text[1:]

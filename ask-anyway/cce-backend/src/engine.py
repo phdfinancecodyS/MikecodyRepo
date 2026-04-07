@@ -147,6 +147,34 @@ NEG_WORDS = {
     "crappy","shitty","trash","garbage","hellish","brutal",
     "heinous","godawful","horrendous","atrocious","pathetic",
     "wack","whack",
+    # Expanded: anxiety / fear / panic
+    "anxiety","nervous","uneasy","unsettled","dread","dreading","fearful",
+    "terrified","petrified","panicked","hypervigilant","shaky","agitated",
+    # Expanded: anger / frustration
+    "mad","furious","livid","enraged","irritated","annoyed","bitter",
+    "resentful","rageful","pissed",
+    # Expanded: shame / guilt / worthlessness
+    "ashamed","shameful","guilty","inadequate","powerless","helpless",
+    # Expanded: sadness / grief / loss
+    "unhappy","tearful","weepy","heartbroken","brokenhearted","grieving",
+    "mourning","bereaved","melancholy","bummed","depressing",
+    "sadder","saddest","cried","disappointed",
+    # Expanded: overwhelm / burnout / fatigue
+    "overloaded","swamped","buried","burnout","depleted",
+    "fatigued","lethargic","sluggish","demotivated","unmotivated",
+    # Expanded: loneliness / isolation / dismissal
+    "alone","lonesome","excluded","disconnected","forgotten","invisible",
+    "dismissed","invalidated","unseen","unheard","misunderstood",
+    # Expanded: relational pain
+    "manipulated","gaslighted","gaslit","backstabbed","unwanted",
+    "unlovable","unworthy","used",
+    # Expanded: trapped / stuck / cornered
+    "trapped","cornered","pressured","uptight","stressing","stressful",
+    # Expanded: functional / body
+    "hurting","imploding","unraveling","slipping","numbed",
+    "indifferent","apathetic","lifeless","confused",
+    "nauseous","dizzy","headache","sick","freaking","worse",
+    "loser","rundown",
 }
 
 NEGATORS = {"not","no","never","don't","doesn't","can't","cannot","nor","ain't",
