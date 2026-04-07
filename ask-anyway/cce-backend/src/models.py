@@ -113,6 +113,7 @@ class RespondResponse(BaseModel):
     clarification: Optional[Clarification] = None
     outcome: Optional[Outcome] = None
     policy_notice: Optional[PolicyNotice] = None
+    moderation_notice: Optional[str] = None
 
 
 class HealthCheck(BaseModel):
