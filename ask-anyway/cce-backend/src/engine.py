@@ -750,11 +750,48 @@ def _parenting_overload_prompt() -> str:
 # ─── Medication question detection ─────────────────────────────────────────────
 
 MEDS_RE = re.compile(
-    r"\b(meds?|medication|medications|medicated|prescri\w+|pill|pills|dosage|"
-    r"antidepress\w+|ssris?|snris?|benzo\w*|xanax|zoloft|lexapro|prozac|"
-    r"wellbutrin|buspar|ativan|klonopin|seroquel|abilify|celexa|paxil|"
-    r"effexor|cymbalta|trazodone|hydroxyzine|gabapentin|lithium|lamictal|"
-    r"vyvanse|adderall|ritalin|concerta|strattera|stimulant|mood\s*stabiliz\w+)\b",
+    r"\b("
+    # Generic terms
+    r"meds?|medication|medications|medicated|prescri\w+|pill|pills|dosage|"
+    r"antidepress\w+|anti[\-\s]?depress\w+|"
+    # Drug classes (+ common misspellings)
+    r"ssris?|snris?|benzo\w*|benzos|"
+    r"mood\s*stabiliz\w+|stimulant|"
+    # Benzodiazepines + misspellings
+    r"xanax|xanex|xanx|zanax|zanex|"
+    r"ativan|ativn|"
+    r"klonopin|klonipin|clonazepam|clonopin|"
+    r"valium|diazepam|"
+    # SSRIs/SNRIs + misspellings
+    r"zoloft|zolft|sertraline|"
+    r"lexapro|lexipro|escitalopram|"
+    r"prozac|prozak|fluoxetine|"
+    r"celexa|celxa|citalopram|"
+    r"paxil|paroxetine|"
+    r"effexor|efexor|venlafaxine|"
+    r"cymbalta|cymbalata|duloxetine|"
+    # Other antidepressants + misspellings
+    r"wellbutrin|welbutrin|bupropion|"
+    r"buspar|buspirone|"
+    r"trazodone|trazadone|trazodon|"
+    # Antipsychotics + misspellings
+    r"seroquel|seraquil|seroquil|quetiapine|"
+    r"abilify|aripiprazole|"
+    r"risperdal|risperidone|"
+    r"zyprexa|olanzapine|"
+    # Mood stabilizers + misspellings
+    r"lithium|lamictal|lamictel|lamotrigine|"
+    r"depakote|depakot|valproate|"
+    # ADHD meds + misspellings
+    r"adderall|adderal|adderol|amphetamine|"
+    r"vyvanse|vyvans|lisdexamfetamine|"
+    r"ritalin|ritilin|methylphenidate|"
+    r"concerta|strattera|atomoxetine|"
+    # Sleep/anxiety aids + misspellings
+    r"hydroxyzine|hydroxyze|"
+    r"gabapentin|gabapenton|neurontin|"
+    r"ambien|zolpidem|trazadone"
+    r")\b",
     re.IGNORECASE,
 )
 

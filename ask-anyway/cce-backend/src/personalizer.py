@@ -10,6 +10,26 @@ import re
 from typing import Optional
 
 
+# ── Medication-question guard (prevent echoing drug names in templates) ────────
+
+_MEDS_GUARD_RE = re.compile(
+    r"\b("
+    r"meds?|medication|medicated|prescri\w+|pill|pills|dosage|"
+    r"antidepress\w+|ssris?|snris?|benzo\w*|"
+    r"xanax|xanex|xanx|zanax|zanex|"
+    r"zoloft|zolft|sertraline|lexapro|lexipro|prozac|prozak|"
+    r"wellbutrin|welbutrin|buspar|ativan|ativn|"
+    r"klonopin|klonipin|clonopin|clonazepam|valium|diazepam|"
+    r"celexa|celxa|paxil|effexor|efexor|cymbalta|cymbalata|"
+    r"trazodone|trazadone|seroquel|seraquil|seroquil|"
+    r"abilify|risperdal|zyprexa|"
+    r"lithium|lamictal|lamictel|depakote|"
+    r"adderall|adderal|adderol|vyvanse|vyvans|"
+    r"ritalin|ritilin|concerta|strattera|"
+    r"hydroxyzine|gabapentin|gabapenton|ambien|neurontin"
+    r")\b", re.IGNORECASE,
+)
+
 # ── Phrase extraction ──────────────────────────────────────────────────────────
 
 # ── 1. Normalize: fix common misspellings, contractions, text-speak ──────────
@@ -393,6 +413,11 @@ def extract_key_phrase(user_text: str) -> Optional[str]:
         return None
 
     text = user_text.strip()
+
+    # Guard: if the message is primarily a medication question, return None
+    # so we get a warm fallback instead of parroting drug names back.
+    if _MEDS_GUARD_RE.search(text):
+        return None
 
     # Normalize misspellings and text-speak before extraction
     text = _normalize_text(text)
