@@ -663,15 +663,18 @@ const CHATBASE_API_URL = 'https://www.chatbase.co/api/v1/chat';
 
 // ─────────────────────────────────────────────────────────────
 //  CCE BACKEND INTEGRATION
-//  Auto-connects to http://localhost:8000 (started via start.sh).
-//  Falls back to the local Ask Anyway engine if server is unreachable.
+//  Same-origin when served from Railway, falls back to Railway URL otherwise.
 // ─────────────────────────────────────────────────────────────
-const CCE_BASE  = 'http://localhost:8000';
+const CCE_BASE  = window.location.origin.includes('railway.app')
+                  ? window.location.origin
+                  : 'https://mikecodyrepo-production.up.railway.app';
 const CCE_TREE  = 'main-flow';
 
 // Guide base path — auto-detects local dev vs deployed
 const GUIDES_BASE = (() => {
   const p = window.location.pathname;
+  // Railway: served at root, guides at /guides/
+  if (window.location.origin.includes('railway.app')) return '/guides';
   // Local dev: served as /ask-anyway-chat.html from Documents root
   if (p === '/ask-anyway-chat.html' || p.endsWith('/ask-anyway-chat.html')) return 'ask-anyway-deploy/guides';
   // Deployed: index.html lives inside ask-anyway-deploy/ so guides are at /guides/
