@@ -96,6 +96,7 @@ class SessionState(BaseModel):
     audience_matching_active: bool = False
     context_probe_asked: bool = False
     meds_redirect_active: bool = False
+    moderation_warnings: int = 0
 
 
 # ─── API Responses ─────────────────────────────────────────────────

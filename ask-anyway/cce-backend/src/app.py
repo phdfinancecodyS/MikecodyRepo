@@ -78,7 +78,7 @@ limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="Clinical Conversation Engine",
     description="Session-based conversation engine for mental health triage and psychoeducation.",
-    version="1.1.0",
+    version="1.2.0",
 )
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -142,7 +142,7 @@ async def health():
         all_ok = False
 
     status = "ok" if all_ok else "degraded"
-    return HealthResponse(status=status, version="1.1.0", ready=all_ok, checks=checks)
+    return HealthResponse(status=status, version="1.2.0", ready=all_ok, checks=checks)
 
 
 @app.get("/trees", response_model=TreesResponse)

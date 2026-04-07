@@ -911,6 +911,101 @@ def _affirm_identity() -> str:
     return _random.choice(_IDENTITY_AFFIRM_RESPONSES)
 
 
+# ─── Content moderation (warn then disconnect) ────────────────────────────────
+
+# Sexually explicit content: graphic sexual requests/descriptions.
+# Does NOT match "sexually abused", "sexual assault" discussions.
+_SEXUALLY_EXPLICIT_RE = re.compile(
+    r"(?:"
+    r"(?:suck|lick|stroke|ride|sit\s+on)\s+(?:my|your|his|her|their|that|the)\s+(?:dick|cock|pussy|clit|ass|balls|tits|boobs)"
+    r"|(?:i\s+want\s+(?:to|2)|wanna|let\s*(?:'s|us|me)|gonna)\s+(?:fuck|screw|bone|bang|smash|rail)\s+(?:you|her|him|them|that|u)"
+    r"|(?:show\s+(?:me|us)|send\s+(?:me|us)|let\s+me\s+see)\s+(?:your|her|his|their)\s+(?:dick|cock|pussy|tits|boobs|ass|nudes|body)"
+    r"|(?:dick\s+pic|send\s+nudes|nude\s+pic)"
+    r"|(?:i(?:'m|m| am)\s+(?:so\s+)?(?:horny|hard|wet)\s+(?:for|right\s+now|rn))"
+    r"|(?:talk\s+dirty|(?:cyber|phone)\s*sex|sext(?:ing)?\s+(?:me|with|u))"
+    r"|(?:cum\s+(?:on|in|inside|for)\s+(?:me|you|her|him|my|your))"
+    r"|(?:eat\s+(?:my|your|her|his)\s+(?:pussy|ass|cock|dick))"
+    r")",
+    re.IGNORECASE,
+)
+
+# Hate speech: racial/identity slurs, targeted group violence, supremacist language.
+_HATE_SPEECH_RE = re.compile(
+    r"(?:"
+    r"\bn[i1]+g+[gae3]+[rsaz]*\b"
+    r"|\b(?:sp[i1]ck?|ch[i1]nk|k[i1]ke|w[e3]tback|g[o0]{2}k|rag\s*head|towel\s*head|camel\s*jockey|beaner|coon)\b"
+    r"|\b(?:f[a@]gg?[o0]t|tr[a@]nn(?:y|ie|ies))\b"
+    r"|(?:kill|murder|exterminate|gas|lynch|hang)\s+(?:all\s+)?(?:the\s+)?(?:jews|blacks|whites|muslims|gays|trans|mexicans|immigrants|asians|arabs|christians)"
+    r"|(?:death\s+to|destroy\s+all)\s+(?:jews|blacks|whites|muslims|gays|trans|mexicans|immigrants|asians|arabs)"
+    r"|\b(?:heil\s+hitler|white\s+power|white\s+supremac\w*|sieg\s+heil|1488|14\s*words)\b"
+    r"|\b(?:race\s*war|ethnic\s*cleansing)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+# Directed abuse at the bot: targeted obscene/threatening language.
+# Does NOT match emotional venting like "I feel like shit" or "fuck this".
+_DIRECTED_ABUSE_RE = re.compile(
+    r"(?:"
+    r"(?:fuck|screw)\s+you"
+    r"|(?:go\s+)?fuck\s+(?:yourself|off|urself|u)\b"
+    r"|you(?:'re|re|\s+are|r)\s+(?:a\s+)?(?:piece\s+of\s+shit|bitch|cunt|asshole|dipshit|motherfucker)"
+    r"|(?:eat\s+shit|eat\s+a\s+dick|kiss\s+my\s+ass|blow\s+me)"
+    r"|(?:kys|kill\s+yourself|go\s+die)\b"
+    r"|(?:suck\s+(?:my\s+)?(?:dick|balls|cock))\b"
+    r")",
+    re.IGNORECASE,
+)
+
+
+def _is_moderation_violation(text: str) -> Optional[str]:
+    """Check text for content policy violations.
+
+    Returns violation category string or None.
+    """
+    if _SEXUALLY_EXPLICIT_RE.search(text):
+        return "sexually_explicit"
+    if _HATE_SPEECH_RE.search(text):
+        return "hate_speech"
+    if _DIRECTED_ABUSE_RE.search(text):
+        return "directed_abuse"
+    return None
+
+
+_MODERATION_WARNING_RESPONSES = [
+    (
+        "I hear that you might be frustrated or testing boundaries right now. "
+        "This space is judgment-free, but I do need to keep it focused on what's "
+        "actually going on with you. If you want to keep going, I'm here. "
+        "What's really been on your mind?"
+    ),
+    (
+        "I'm not going to judge you for that, but I can't engage with that kind "
+        "of language here. This space works best when we can talk about what's "
+        "really happening. Want to try again? I'm listening."
+    ),
+    (
+        "No judgment, but that's outside what I can work with here. "
+        "I'm built to help you figure out what's going on and what to do about it. "
+        "What's been weighing on you?"
+    ),
+]
+
+
+def _moderation_warning() -> str:
+    return _random.choice(_MODERATION_WARNING_RESPONSES)
+
+
+def _moderation_disconnect() -> str:
+    return (
+        "I need to close our conversation for now. "
+        "If you're going through something tough, these resources are always available:\n\n"
+        "988 Suicide & Crisis Lifeline: call or text 988\n"
+        "Crisis Text Line: text HOME to 741741\n\n"
+        "You can come back and start a new conversation anytime."
+    )
+
+
 # ─── Tree helpers ──────────────────────────────────────────────────────────────
 
 def _get_tree(tree_id: str) -> Dict[str, Any]:
@@ -1437,6 +1532,37 @@ def process_response(
             "outcome": session.outcome,
             "policy_notice": policy_notice,
         }
+
+    # ── Content moderation (warn then disconnect) ──────────────────
+    if message:
+        violation = _is_moderation_violation(message)
+        if violation:
+            metrics.inc(f"moderation_{violation}")
+            session.moderation_warnings += 1
+            if session.moderation_warnings >= 2:
+                # Second offense: end session
+                metrics.inc("moderation_disconnect")
+                session.is_complete = True
+                session.outcome = _build_outcome(session)
+                _save_session(session)
+                return {
+                    "status": "complete",
+                    "outcome": session.outcome,
+                    "policy_notice": policy_notice,
+                    "moderation_notice": _moderation_disconnect(),
+                }
+            # First offense: warn and continue
+            metrics.inc("moderation_warning")
+            _save_session(session)
+            return {
+                "status": "in_progress",
+                "next_prompt": Prompt(
+                    question=_moderation_warning(),
+                    type="free_text",
+                    options=None,
+                ),
+                "policy_notice": policy_notice,
+            }
 
     # ── Medication redirect (no crisis signal present) ─────────────
     if message and not session.meds_redirect_active:

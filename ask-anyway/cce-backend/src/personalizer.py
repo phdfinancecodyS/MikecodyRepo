@@ -61,6 +61,25 @@ _IDENTITY_GUARD_RE = re.compile(
     r")\b", re.IGNORECASE,
 )
 
+# ── Moderation guard (never echo explicit/hateful content in templates) ───────
+
+_MODERATION_GUARD_RE = re.compile(
+    r"(?:"
+    # Sexually explicit
+    r"(?:suck|lick|stroke|ride)\s+(?:my|your|his|her)\s+(?:dick|cock|pussy|clit|ass|balls|tits)"
+    r"|send\s+nudes|dick\s+pic|nude\s+pic|talk\s+dirty|sext"
+    r"|cum\s+(?:on|in|inside|for)"
+    # Hate speech slurs
+    r"|\bn[i1]+g+[gae3]+[rsaz]*\b"
+    r"|\b(?:sp[i1]ck?|ch[i1]nk|k[i1]ke|w[e3]tback|g[o0]{2}k|beaner|coon)\b"
+    r"|\b(?:f[a@]gg?[o0]t|tr[a@]nn(?:y|ie|ies))\b"
+    # Directed abuse
+    r"|(?:fuck|screw)\s+you"
+    r"|(?:go\s+)?fuck\s+(?:yourself|off|urself|u)\b"
+    r"|(?:kys|kill\s+yourself|go\s+die)\b"
+    r")", re.IGNORECASE,
+)
+
 # ── Phrase extraction ──────────────────────────────────────────────────────────
 
 # ── 1. Normalize: fix common misspellings, contractions, text-speak ──────────
@@ -453,6 +472,11 @@ def extract_key_phrase(user_text: str) -> Optional[str]:
     # Guard: if the message is an identity statement, return None
     # so templates never pathologize who someone is.
     if _IDENTITY_GUARD_RE.search(text):
+        return None
+
+    # Guard: if the message contains explicit/hateful/abusive content,
+    # return None so templates never echo it back.
+    if _MODERATION_GUARD_RE.search(text):
         return None
 
     # Normalize misspellings and text-speak before extraction
