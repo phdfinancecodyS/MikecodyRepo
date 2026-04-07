@@ -135,7 +135,7 @@ def _startup_diagnostics() -> None:
                         "Set CCE_LLM_API_KEY_GROQ, CCE_LLM_API_KEY_OPENAI, "
                         "or CCE_LLM_API_KEY_ANTHROPIC to enable LLM responses.")
 
-_startup_diagnostics()
+# Deferred: called after _api_key_for and _model_for are defined (see below).
 
 
 def llm_status_check() -> dict:
@@ -387,6 +387,10 @@ def _model_for(provider: str) -> str:
     if provider == "anthropic":
         return os.environ.get("CCE_LLM_MODEL_ANTHROPIC", "") or (_MODEL if _PROVIDER == "anthropic" else "") or "claude-3-haiku-20240307"
     return _MODEL or "gpt-4o-mini"
+
+
+# Run startup diagnostics now that _api_key_for and _model_for are defined.
+_startup_diagnostics()
 
 
 def _get_client(provider: str):
