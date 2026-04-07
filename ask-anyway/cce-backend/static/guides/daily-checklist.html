@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daily Wellbeing Checklist — Ask Anyway</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg: #000;
+    --surface: #080808;
+    --border: #181818;
+    --text: #f0ece4;
+    --muted: #888;
+    --dim: #555;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ─── Header ─── */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: #000000ee;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .header-brand {
+    font-size: .58rem; font-weight: 700; letter-spacing: .28em;
+    text-transform: uppercase; color: var(--dim); white-space: nowrap;
+  }
+
+  .header-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: .95rem; font-weight: 700; color: var(--text);
+  }
+
+  .free-pill {
+    font-size: .52rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: #22c55e;
+    border: 1px solid #22c55e44; background: #22c55e0d;
+    border-radius: 99px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* ─── Wrapper ─── */
+  .wrapper { max-width: 600px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* ─── Hero ─── */
+  .hero { margin-bottom: 44px; }
+
+  .hero-eyebrow {
+    font-size: .62rem; font-weight: 600; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700;
+    color: var(--text); line-height: 1.1; letter-spacing: -.03em;
+    margin-bottom: 16px;
+  }
+
+  .hero-sub { font-size: .92rem; color: var(--muted); line-height: 1.7; }
+
+  /* ─── Date ─── */
+  .date-row {
+    font-size: .72rem; color: #333; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 36px;
+  }
+
+  /* ─── Section heading ─── */
+  .section-head {
+    font-size: .6rem; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--dim); margin: 32px 0 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .section-head::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ─── Checklist items ─── */
+  .check-list {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+    cursor: pointer; transition: border-color .2s, background .2s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .check-item:hover { background: #0d0d0d; border-color: #282828; }
+
+  .check-item.checked {
+    border-color: #22c55e44;
+    background: #22c55e08;
+  }
+
+  .check-item.checked .check-box { background: #22c55e; border-color: #22c55e; }
+  .check-item.checked .check-box::after { opacity: 1; }
+  .check-item.checked .check-label { color: #8eb898; }
+
+  .check-box {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 1.5px solid #333; border-radius: 5px;
+    background: transparent; margin-top: 1px;
+    position: relative; transition: background .18s, border-color .18s;
+  }
+
+  .check-box::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 6px;
+    width: 5px; height: 9px;
+    border: 2px solid #000;
+    border-top: none; border-left: none;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity .15s;
+  }
+
+  .check-label {
+    font-size: .9rem; color: #b0aca5; line-height: 1.45; flex: 1;
+    transition: color .18s;
+  }
+
+  /* ─── Score bar ─── */
+  #score-section {
+    margin-top: 36px;
+    display: none;
+  }
+
+  .score-section-visible { display: block !important; }
+
+  .score-bar-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    height: 8px; overflow: hidden;
+    margin: 16px 0 8px;
+  }
+
+  .score-bar-fill {
+    height: 100%; border-radius: 99px;
+    background: #22c55e;
+    transition: width .5s ease, background .5s ease;
+    width: 0%;
+  }
+
+  .score-label {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .score-count {
+    font-size: .75rem; color: var(--dim); letter-spacing: .04em;
+  }
+
+  /* ─── Reflection zone ─── */
+  .reflection-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 28px;
+  }
+
+  .reflection-prompt {
+    font-size: .8rem; font-weight: 600; color: var(--muted);
+    letter-spacing: .04em; margin-bottom: 10px;
+  }
+
+  .reflection-text {
+    font-size: .88rem; color: #b0aca5; line-height: 1.7;
+  }
+
+  .reflection-text strong { color: var(--text); font-weight: 600; }
+
+  /* ─── One thing ─── */
+  .one-thing {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .one-thing-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--dim); margin-bottom: 10px;
+  }
+
+  .one-thing-input {
+    width: 100%; background: transparent; border: none;
+    border-bottom: 1px solid #2a2a2a; color: var(--text);
+    font-family: inherit; font-size: .95rem; font-weight: 300;
+    padding: 8px 0; outline: none; caret-color: var(--text);
+    transition: border-color .2s;
+  }
+
+  .one-thing-input:focus { border-color: #555; }
+  .one-thing-input::placeholder { color: #333; }
+
+  /* ─── Reset + share ─── */
+  .action-row {
+    display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap;
+  }
+
+  .action-btn {
+    background: transparent; border: 1px solid #2a2a2a;
+    border-radius: 8px; color: var(--muted); font-family: inherit;
+    font-size: .78rem; padding: 9px 16px; cursor: pointer;
+    transition: border-color .18s, color .18s;
+  }
+
+  .action-btn:hover { border-color: #555; color: #ccc; }
+
+  .action-btn.primary {
+    background: var(--text); color: #000;
+    border-color: var(--text); font-weight: 600;
+  }
+
+  .action-btn.primary:hover { background: #fff; border-color: #fff; }
+
+  /* ─── Bottom nav ─── */
+  .bottom-nav {
+    border-top: 1px solid var(--border);
+    padding-top: 32px; margin-top: 48px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .guide-cta {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px;
+    text-decoration: none; transition: border-color .18s, background .18s;
+  }
+
+  .guide-cta:hover { background: #0d0d0d; border-color: #333; }
+  .guide-cta-text { flex: 1; }
+  .guide-cta-title { font-size: .9rem; font-weight: 600; color: #ccc; }
+  .guide-cta-sub   { font-size: .72rem; color: var(--dim); margin-top: 2px; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .78rem; color: var(--dim); text-decoration: none;
+    letter-spacing: .04em; transition: color .18s;
+  }
+
+  .back-link:hover { color: var(--muted); }
+
+  /* ─── Footer ─── */
+  footer {
+    margin-top: 48px; border-top: 1px solid var(--border);
+    padding-top: 24px; font-size: .7rem; color: #333; line-height: 1.7;
+  }
+
+  footer a { color: #444; text-decoration: none; }
+  footer strong { color: #444; }
+
+  @media (max-width: 500px) {
+    .wrapper { padding: 32px 20px 64px; }
+    .hero-title { font-size: 1.7rem; }
+    header { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-brand">Ask Anyway</div>
+    <div class="header-title">Daily Wellbeing Checklist</div>
+  </div>
+  <div class="free-pill">✦ Free</div>
+</header>
+
+<div class="wrapper">
+
+  <!-- ─── Hero ─── -->
+  <div class="hero">
+    <div class="hero-eyebrow">2-Minute Daily Check-In</div>
+    <h1 class="hero-title">How are you actually doing today?</h1>
+    <p class="hero-sub">No sign-up. No tracking. Just a honest check-in with yourself. Check off what's true right now — take the full 2 minutes.</p>
+  </div>
+
+  <div class="date-row" id="date-label"></div>
+
+  <!-- ─── Body ─── -->
+  <div class="section-head">Body</div>
+  <div class="check-list" id="checks">
+
+    <div class="check-item" onclick="toggle(this)" data-cat="body">
+      <div class="check-box"></div>
+      <div class="check-label">I slept at least 5 hours last night</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="body">
+      <div class="check-box"></div>
+      <div class="check-label">I've eaten something today (a real meal, not just coffee)</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="body">
+      <div class="check-box"></div>
+      <div class="check-label">I've had water today</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="body">
+      <div class="check-box"></div>
+      <div class="check-label">I've moved my body — even a short walk counts</div>
+    </div>
+
+  </div>
+
+  <div class="section-head">Mind</div>
+  <div class="check-list">
+
+    <div class="check-item" onclick="toggle(this)" data-cat="mind">
+      <div class="check-box"></div>
+      <div class="check-label">I'm not carrying something I haven't named yet</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="mind">
+      <div class="check-box"></div>
+      <div class="check-label">My stress level feels manageable today (7 or below)</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="mind">
+      <div class="check-box"></div>
+      <div class="check-label">I've been able to focus — not stuck in loops or spiraling</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="mind">
+      <div class="check-box"></div>
+      <div class="check-label">I'm not numbing out — scrolling, drinking, avoiding</div>
+    </div>
+
+  </div>
+
+  <div class="section-head">Connection</div>
+  <div class="check-list">
+
+    <div class="check-item" onclick="toggle(this)" data-cat="connection">
+      <div class="check-box"></div>
+      <div class="check-label">I've talked to at least one person today — really talked</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="connection">
+      <div class="check-box"></div>
+      <div class="check-label">I don't feel alone in what I'm carrying right now</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="connection">
+      <div class="check-box"></div>
+      <div class="check-label">There's at least one person I could call right now if I needed to</div>
+    </div>
+
+  </div>
+
+  <div class="section-head">Mood</div>
+  <div class="check-list">
+
+    <div class="check-item" onclick="toggle(this)" data-cat="mood">
+      <div class="check-box"></div>
+      <div class="check-label">I feel like I belong somewhere or to someone today</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="mood">
+      <div class="check-box"></div>
+      <div class="check-label">I have at least one thing I'm looking forward to — even small</div>
+    </div>
+    <div class="check-item" onclick="toggle(this)" data-cat="mood">
+      <div class="check-box"></div>
+      <div class="check-label">I feel like I'm more than just surviving today</div>
+    </div>
+
+  </div>
+
+  <!-- ─── Score section ─── -->
+  <div id="score-section">
+    <div class="section-head">Your Check-In</div>
+    <div class="reflection-box">
+      <div class="score-label" id="score-label">—</div>
+      <div class="score-count" id="score-count"></div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-fill" id="score-bar"></div>
+      </div>
+      <div class="reflection-prompt" style="margin-top:16px">What this tells you</div>
+      <div class="reflection-text" id="reflection-text"></div>
+
+      <div class="one-thing">
+        <div class="one-thing-label">One thing I can do today</div>
+        <input class="one-thing-input" type="text" placeholder="Even something small..." autocomplete="off" spellcheck="false"/>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="action-btn" onclick="resetAll()">Start over</button>
+      <a class="action-btn primary" href="../index.html">Talk to Ask Anyway</a>
+    </div>
+  </div>
+
+  <!-- ─── Bottom nav ─── -->
+  <div class="bottom-nav" style="margin-top:48px">
+    <a class="guide-cta" href="./connection-101.html">
+      <span style="font-size:1.3rem">📖</span>
+      <div class="guide-cta-text">
+        <div class="guide-cta-title">Connection 101</div>
+        <div class="guide-cta-sub">What to say when you're worried about someone — free guide</div>
+      </div>
+      <span style="color:#444;font-size:.9rem">→</span>
+    </a>
+    <a class="back-link" href="../index.html">← Back to Ask Anyway</a>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <p><strong>988 Suicide &amp; Crisis Lifeline</strong> — Available 24/7 — Call or Text <a href="tel:988">988</a></p>
+    <p style="margin-top:8px">This checklist is for personal reflection — not therapy, not a diagnosis. If you're in crisis, contact 988 or text HOME to 741741.</p>
+  </footer>
+
+</div>
+
+<script>
+  // ─── Date label ───
+  const d = new Date();
+  document.getElementById('date-label').textContent = d.toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const TOTAL = 15;
+  let checked = 0;
+
+  // ─── Reflection copy by score ───
+  const REFLECTIONS = [
+    // 0-3
+    { label: 'Rough day', color: '#ef4444', bar: '#ef4444',
+      text: `You're not checking many boxes right now — and that's important data, not a character flaw. <strong>Start with one:</strong> drink some water, text one person, or step outside for 5 minutes. You don't have to fix everything today.` },
+    // 4-6
+    { label: 'Getting by', color: '#f59e0b', bar: '#f59e0b',
+      text: `You're holding some things together and some things are slipping. That's honest. <strong>Pick the one box you most want to check tomorrow</strong> and make a tiny plan for it. Progress doesn't have to be massive to be real.` },
+    // 7-10
+    { label: 'Doing okay', color: '#84cc16', bar: '#84cc16',
+      text: `More is working than not. You might be in a maintenance mode day — and that's fine. <strong>Notice what you've kept up</strong> even when it's been hard. That's not nothing. Keep going.` },
+    // 11-13
+    { label: 'Solid day', color: '#22c55e', bar: '#22c55e',
+      text: `Most things are landing right now. <strong>This is worth anchoring.</strong> What made today feel this way? Whatever it is — try to protect that thing. It's working.` },
+    // 14-15
+    { label: 'Strong day', color: '#22c55e', bar: '#22c55e',
+      text: `Almost everything is checking out today. <strong>That's real — and it's not luck.</strong> You've put something in place that's working. Take a second to actually notice that before moving on.` },
+  ];
+
+  function getReflection(n) {
+    if (n <= 3)  return REFLECTIONS[0];
+    if (n <= 6)  return REFLECTIONS[1];
+    if (n <= 10) return REFLECTIONS[2];
+    if (n <= 13) return REFLECTIONS[3];
+    return REFLECTIONS[4];
+  }
+
+  function toggle(el) {
+    const wasChecked = el.classList.contains('checked');
+    el.classList.toggle('checked');
+    checked = wasChecked ? checked - 1 : checked + 1;
+    updateScore();
+  }
+
+  function updateScore() {
+    const section = document.getElementById('score-section');
+    section.classList.add('score-section-visible');
+
+    const r   = getReflection(checked);
+    const pct = Math.round((checked / TOTAL) * 100);
+
+    document.getElementById('score-label').textContent  = r.label;
+    document.getElementById('score-label').style.color  = r.color;
+    document.getElementById('score-count').textContent  = `${checked} of ${TOTAL} checked`;
+    document.getElementById('score-bar').style.width    = pct + '%';
+    document.getElementById('score-bar').style.background = r.bar;
+    document.getElementById('reflection-text').innerHTML = r.text;
+  }
+
+  function resetAll() {
+    document.querySelectorAll('.check-item').forEach(el => el.classList.remove('checked'));
+    checked = 0;
+    document.getElementById('score-section').classList.remove('score-section-visible');
+    document.querySelector('.one-thing-input').value = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

@@ -16,7 +16,8 @@ import httpx
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, HTTPException, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -86,6 +87,22 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ─── Static assets ─────────────────────────────────────────────────────────────
+
+_STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
+_INDEX_HTML = _STATIC_DIR / "index.html"
+
+if (_STATIC_DIR / "guides").is_dir():
+    app.mount("/guides", StaticFiles(directory=str(_STATIC_DIR / "guides")), name="guides")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    if _INDEX_HTML.exists():
+        return HTMLResponse(_INDEX_HTML.read_text(encoding="utf-8"))
+    return HTMLResponse("<h1>Ask Anyway</h1><p>Backend is running.</p>")
 
 
 # ─── Routes ────────────────────────────────────────────────────────────────────
