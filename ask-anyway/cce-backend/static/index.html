@@ -38,16 +38,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 0 28px 72px;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* When content is tall (outcome pages), pin to top instead of centering */
-  #page.top-align {
-    justify-content: flex-start;
+  /* Centre content via auto-margins (safe for overflow, unlike justify-content:center) */
+  #page > :first-child {
+    margin-top: auto;
+  }
+  #page > :last-child {
+    margin-bottom: auto;
+  }
+
+  /* When content is tall, pin to top so user can scroll naturally */
+  #page.top-align > :first-child {
+    margin-top: 0;
   }
 
   #page.out {
@@ -2347,10 +2354,15 @@ async function attemptReconnect() {
 // ─── Render an AI response as a full page ───
 
 function showResponse(response, echoText) {
+  const page    = document.getElementById('page');
   const content = document.getElementById('content');
   content.innerHTML = '';
   const inner = document.createElement('div');
   inner.className = 'page-content entering';
+
+  // Pin to top so long responses scroll naturally
+  page.classList.add('top-align');
+  page.scrollTo({ top: 0, behavior: 'auto' });
 
   // Progress dots — show on turns 1-3 (not on opening or final screens)
   const showDots = stepCount > 0 && stage !== Stage.DONE && stage !== Stage.GOOD_S4
