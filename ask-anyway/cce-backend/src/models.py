@@ -94,6 +94,7 @@ class SessionState(BaseModel):
     audience_bucket: Optional[str] = None
     audience_overlay_buckets: List[str] = Field(default_factory=list)
     audience_matching_active: bool = False
+    context_probe_asked: bool = False
     meds_redirect_active: bool = False
 
 

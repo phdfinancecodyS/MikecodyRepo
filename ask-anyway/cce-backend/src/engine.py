@@ -995,7 +995,15 @@ def _build_outcome(session: SessionState) -> Outcome:
     )
 
 
-# ─── Audience bridge ───────────────────────────────────────────────────────────
+# ─── Audience inference ────────────────────────────────────────────────────────
+
+_CONTEXT_PROBES = [
+    "Before I point you to something, tell me a little about your world. What does your day-to-day look like?",
+    "I want to make sure what I share actually fits your life. What does a normal day look like for you right now?",
+    "One more thing so I can get this right. What's your situation like day to day?",
+    "I've got something for you. But first, paint me a quick picture. What does your life look like right now?",
+    "Almost there. Help me get this right for you. What's your day-to-day like?",
+]
 
 _AUDIENCE_BRIDGES = [
     "Thanks for sharing all of that. I have something that might help.\n\n",
@@ -1006,6 +1014,10 @@ _AUDIENCE_BRIDGES = [
 ]
 
 import random as _random
+
+def _context_probe_question() -> str:
+    """Return a natural question that draws out audience identity."""
+    return _random.choice(_CONTEXT_PROBES)
 
 def _bridge_for_audience_question() -> str:
     """Return a warm transitional sentence before the audience picker."""
@@ -1070,7 +1082,23 @@ def _complete_or_ask_audience(
                 "policy_notice": policy_notice,
             }
 
-    # No audience signal found: ask with a warm bridge
+    # No audience signal found: try conversational context probe first
+    if not getattr(session, 'context_probe_asked', False):
+        # First pass: ask a natural question that draws out identity
+        session.context_probe_asked = True
+        _save_session(session)
+        return {
+            "status": "in_progress",
+            "next_prompt": Prompt(
+                question=_context_probe_question(),
+                type="free_text",
+                options=None,
+            ),
+            "policy_notice": policy_notice,
+        }
+
+    # Context probe was already asked but didn't yield a match.
+    # Fall back to direct audience picker.
     session.audience_matching_active = True
     _save_session(session)
     audience_opts = [
@@ -1174,6 +1202,30 @@ def process_response(
                 if t not in session.detected_topics:
                     session.detected_topics.append(t)
         # Go to audience question or outcome with matched guide
+        return _complete_or_ask_audience(session, policy_notice)
+
+    # ── Context probe follow-up (conversational audience inference) ──
+    if getattr(session, 'context_probe_asked', False) and not session.audience_bucket and not getattr(session, 'audience_matching_active', False):
+        # User just answered the context probe. Try to infer audience.
+        if message:
+            detection = detect_audience_buckets(message)
+            if detection.get("primary"):
+                primary_topic = (session.detected_topics or ["general"])[0]
+                session.audience_bucket = resolve_bucket(detection, primary_topic)
+                session.audience_overlay_buckets = detection.get("overlays", [])
+                metrics.inc(f"audience_{session.audience_bucket}")
+                metrics.inc("audience_inferred_from_probe")
+                session.is_complete = True
+                session.outcome = _build_outcome(session)
+                _save_session(session)
+                metrics.inc("session_complete")
+                return {
+                    "status": "complete",
+                    "outcome": session.outcome,
+                    "policy_notice": policy_notice,
+                }
+        # Inference failed. Fall through to _complete_or_ask_audience
+        # which will now show the direct picker (since context_probe_asked=True).
         return _complete_or_ask_audience(session, policy_notice)
 
     # ── Audience matching follow-up ────────────────────────────────
