@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-When a grocery store feels like a combat zone and normal noise hits like an assault — that's your nervous system, not weakness. Here's how to get through it.
+When a grocery store feels like a combat zone and normal noise hits like an assault  - that's your nervous system, not weakness. Here's how to get through it.
 
 ## What Is Happening
 
@@ -37,18 +37,18 @@ Crowds and public spaces trigger your nervous system because you can't predict t
 
 - Right now: identify one sensory tool that helps (earplugs, sunglasses, a grounding object in your pocket).
 - Before bed tonight: plan one outing for tomorrow with a time limit and an exit plan.
-- Tomorrow: go, use the tool, leave when you hit your limit — no guilt. Endurance comes later.
+- Tomorrow: go, use the tool, leave when you hit your limit  - no guilt. Endurance comes later.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Noise, Crowds, Public Spaces" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

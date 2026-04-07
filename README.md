@@ -175,7 +175,7 @@ Export your local changes back to GitHub with one command:
 
 ---
 
-### Planning & Strategy — 24 docs
+### Planning & Strategy  - 24 docs
 
 | Category | Key files |
 |----------|-----------|
@@ -189,7 +189,7 @@ Export your local changes back to GitHub with one command:
 
 ---
 
-### Marketing & Outreach — 8 files
+### Marketing & Outreach  - 8 files
 
 | File | Purpose |
 |------|---------|
@@ -213,11 +213,11 @@ Export your local changes back to GitHub with one command:
 
 ---
 
-### Build & QA Scripts — 20 scripts
+### Build & QA Scripts  - 20 scripts
 
 | Script | Purpose |
 |--------|---------|
-| `scripts/full_workspace_audit.py` | **9-category integrity audit** — file counts, voice sampling, quiz references, audience coverage, scoring/safety, product alignment, manifest sync, known gaps, placeholder/secret scan |
+| `scripts/full_workspace_audit.py` | **9-category integrity audit**  - file counts, voice sampling, quiz references, audience coverage, scoring/safety, product alignment, manifest sync, known gaps, placeholder/secret scan |
 | `scripts/extract_worksheets.py` | Extract standalone worksheets from all guides |
 | `scripts/generate_audience_slants.py` | Generate 1,343 audience-specific guide variants |
 | `scripts/voice_contractions_pass.py` | Automated voice pass for contractions |
@@ -265,12 +265,12 @@ code .
 
 ### 2. Read orientation files (in order)
 
-Open and read these files first — they are your source of truth:
+Open and read these files first  - they are your source of truth:
 
-1. `planning/CODY-VSCODE-IMPORT-RUNBOOK.md` — start here
-2. `planning/TECH-HANDOFF-FOR-CODY.md` — full implementation spec
-3. `planning/QUIZ-IMPLEMENTATION-CONTRACT.md` — scoring/routing rules
-4. `web/api/README.md` — API scaffold guide
+1. `planning/CODY-VSCODE-IMPORT-RUNBOOK.md`  - start here
+2. `planning/TECH-HANDOFF-FOR-CODY.md`  - full implementation spec
+3. `planning/QUIZ-IMPLEMENTATION-CONTRACT.md`  - scoring/routing rules
+4. `web/api/README.md`  - API scaffold guide
 
 ### 3. Install frontend dependencies
 
@@ -310,7 +310,7 @@ supabase db push
 python3 scripts/full_workspace_audit.py
 ```
 
-Expected result: **0 CRITICAL, 0 WARNING, 2 INFO** (stale handoff doc references — cosmetic only).
+Expected result: **0 CRITICAL, 0 WARNING, 2 INFO** (stale handoff doc references  - cosmetic only).
 
 ### 7. Verify Stripe test mode
 
@@ -331,13 +331,13 @@ npm run dev
 ```
 
 Test each route in order:
-1. `POST /api/quiz/score` — verify scoring and risk bands
-2. `POST /api/quiz/topic-match` — verify topic resolution
-3. `POST /api/quiz/audience-match` — verify audience bucket assignment
-4. `POST /api/quiz/recommendation` — verify full recommendation stack
-5. `POST /api/checkout/session` — verify Stripe session creation
-6. `POST /api/webhooks/stripe` — verify with `stripe trigger checkout.session.completed`
-7. `POST /api/analytics/event` — verify event logging
+1. `POST /api/quiz/score`  - verify scoring and risk bands
+2. `POST /api/quiz/topic-match`  - verify topic resolution
+3. `POST /api/quiz/audience-match`  - verify audience bucket assignment
+4. `POST /api/quiz/recommendation`  - verify full recommendation stack
+5. `POST /api/checkout/session`  - verify Stripe session creation
+6. `POST /api/webhooks/stripe`  - verify with `stripe trigger checkout.session.completed`
+7. `POST /api/analytics/event`  - verify event logging
 
 ---
 
@@ -377,24 +377,24 @@ All content follows safe messaging guidelines from AFSP, SAMHSA, JED Foundation,
 
 ## Content Production Status
 
-- [x] 79 base topic guides — written, voice-passed, disclaimed
-- [x] 1,343 audience variants — generated across 17 buckets
-- [x] 2,686 standalone worksheets — extracted, audience-matched
-- [x] Module 1: Why You Don't Ask — written
-- [x] Module 2: Seeing the Opening — written
-- [x] Module 3: The Words — written
-- [x] Lead magnet content — written
-- [x] Quiz questions + scoring — complete (10 JSON configs)
-- [x] API route scaffolds — 7 endpoints, TypeScript, App Router
-- [x] Supabase migrations — schema + RLS policies
-- [x] Landing page copy — written
-- [x] Email/SMS automations — 5 sequences + 4-week SMS content
-- [x] TikTok launch calendar — 28-day Month 1 + Month 2
-- [x] Influencer outreach pack — strategy, DMs, pitches, one-pager, compensation
-- [x] Full workspace audit — passing clean (0 critical, 0 warnings)
-- [x] Root web app shell — Next.js app scaffolded in `web/` with route wrappers and quiz page
-- [ ] Stripe product setup — needs live price IDs
-- [ ] Email/SMS provider verification — SendGrid/Twilio credentials and live webhook replay still needed
-- [ ] Frontend refinement — quiz wizard works end-to-end but still needs visual/product polish
+- [x] 79 base topic guides  - written, voice-passed, disclaimed
+- [x] 1,343 audience variants  - generated across 17 buckets
+- [x] 2,686 standalone worksheets  - extracted, audience-matched
+- [x] Module 1: Why You Don't Ask  - written
+- [x] Module 2: Seeing the Opening  - written
+- [x] Module 3: The Words  - written
+- [x] Lead magnet content  - written
+- [x] Quiz questions + scoring  - complete (10 JSON configs)
+- [x] API route scaffolds  - 7 endpoints, TypeScript, App Router
+- [x] Supabase migrations  - schema + RLS policies
+- [x] Landing page copy  - written
+- [x] Email/SMS automations  - 5 sequences + 4-week SMS content
+- [x] TikTok launch calendar  - 28-day Month 1 + Month 2
+- [x] Influencer outreach pack  - strategy, DMs, pitches, one-pager, compensation
+- [x] Full workspace audit  - passing clean (0 critical, 0 warnings)
+- [x] Root web app shell  - Next.js app scaffolded in `web/` with route wrappers and quiz page
+- [ ] Stripe product setup  - needs live price IDs
+- [ ] Email/SMS provider verification  - SendGrid/Twilio credentials and live webhook replay still needed
+- [ ] Frontend refinement  - quiz wizard works end-to-end but still needs visual/product polish
 - [ ] Platform selected (Teachable / Kajabi / Gumroad / Stan Store)
 - [ ] Launch

@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-When you're asking 'where was God in that?' or your faith doesn't hold what it used to — this guide sits with those questions instead of rushing past them.
+When you're asking 'where was God in that?' or your faith doesn't hold what it used to  - this guide sits with those questions instead of rushing past them.
 
 ## What Is Happening
 
@@ -37,18 +37,18 @@ Faith, God, and big questions become huge when you've seen things that violate y
 
 - Right now: say the question you've been afraid to ask out loud. Even if it's angry. Especially if it's angry.
 - Before bed tonight: sit with the question for five minutes without trying to answer it.
-- Tomorrow: find one person — a friend, a spiritual leader, a counselor — and tell them where your faith is right now.
+- Tomorrow: find one person  - a friend, a spiritual leader, a counselor  - and tell them where your faith is right now.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Faith, God, Big Questions" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

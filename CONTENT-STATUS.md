@@ -3,7 +3,7 @@
 ## Lead Magnet ✅
 
 **Status:** Content written, ready for design
-- [ask-anyway-content.md](../content/lead-magnet/ask-anyway-content.md) — Full 7-page content ready for Canva/PDF design
+- [ask-anyway-content.md](../content/lead-magnet/ask-anyway-content.md)  - Full 7-page content ready for Canva/PDF design
 - Design needed: Modern, warm, accessible (not clinical)
 - Platforms: Gumroad, Stan Store, or ConvertKit landing page
 
@@ -11,7 +11,7 @@
 
 ---
 
-## PART 1 — START IT (3 Modules)
+## PART 1  - START IT (3 Modules)
 
 ### Module 1: Why You Don't Ask ✅
 - [module-1-why-you-dont-ask.md](../content/modules/module-1-why-you-dont-ask.md)
@@ -34,7 +34,7 @@
 
 ---
 
-## PART 2 — STAY IN IT (3 Modules)
+## PART 2  - STAY IN IT (3 Modules)
 
 ### Module 4: When They Say Yes 🚧
 **Status:** Blueprint only (in program-outline.md)
@@ -53,7 +53,7 @@
 
 ---
 
-## PART 3 — WHAT NOW (3 Modules)
+## PART 3  - WHAT NOW (3 Modules)
 
 ### Module 7: Understanding the Risk 🚧
 **Status:** Blueprint only

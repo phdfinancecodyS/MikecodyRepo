@@ -1,7 +1,7 @@
-# Ask Anyway — Influencer Targeting Strategy
+# Ask Anyway  - Influencer Targeting Strategy
 
 Date: 2026-03-20
-Status: Active — use this before outreach
+Status: Active  - use this before outreach
 
 ---
 
@@ -12,7 +12,7 @@ Ignore follower count as a primary filter. What you want is a creator whose audi
 The question to ask about any creator before you reach out:
 **Does their audience already have hard conversations with them in the comments?**
 
-If yes, they convert. If no, they don't — regardless of size.
+If yes, they convert. If no, they don't  - regardless of size.
 
 ---
 
@@ -20,7 +20,7 @@ If yes, they convert. If no, they don't — regardless of size.
 
 These map directly to the audience buckets the product is built around.
 
-### Tier 1: Start here — highest trust, highest need, most underserved
+### Tier 1: Start here  - highest trust, highest need, most underserved
 
 | Niche | Why It Converts | What They Post |
 |---|---|---|
@@ -29,7 +29,7 @@ These map directly to the audience buckets the product is built around.
 | Military and veterans | Peer credibility is everything, VA resources are inadequate | Service stories, transition, mental health stigma |
 | Mental health educators (therapists, counselors, social workers on TikTok) | Built-in credibility, audiences already primed, high conversion | Explaining disorders, destigmatizing therapy, client stories |
 
-### Tier 2: Strong secondary — larger pool, slightly lower conversion
+### Tier 2: Strong secondary  - larger pool, slightly lower conversion
 
 | Niche | Why It Converts | What They Post |
 |---|---|---|
@@ -38,7 +38,7 @@ These map directly to the audience buckets the product is built around.
 | Single parents | High stress, limited support network, looking for practical tools | Survival mode content, loneliness, daily overwhelm |
 | Addiction and recovery | Program directly addresses co-occurring patterns | Sobriety milestones, recovery identity, relapse support |
 
-### Tier 3: Reach — broader mental health audience, lower specificity
+### Tier 3: Reach  - broader mental health audience, lower specificity
 
 | Niche | Notes |
 |---|---|
@@ -49,7 +49,7 @@ These map directly to the audience buckets the product is built around.
 
 ---
 
-## Account Size — What to Target
+## Account Size  - What to Target
 
 ### Phase 1 (launch, first 60 days): Nano and micro only
 
@@ -86,12 +86,12 @@ Search these hashtags and scroll the top and recent tabs. Look for creators who 
 - Have they made any video that flops on views but still has deep comment engagement? (That's your person.)
 - Do they respond to comments and engage in real conversation?
 
-### Red Flags — Pass on These
+### Red Flags  - Pass on These
 - Only posts about wellness products or affiliate links (transactional audience)
-- Uses "committed suicide" language (not safe messaging compliant — training required)
+- Uses "committed suicide" language (not safe messaging compliant  - training required)
 - Positions mental health as something you fix with habits, routines, or products
 - Has sponsored content on every other post (audience is numb to CTAs)
-- Engagement is all from giveaways or trends — no real niche
+- Engagement is all from giveaways or trends  - no real niche
 
 ---
 
@@ -111,7 +111,7 @@ Run through this before you send the first DM:
 
 ## Realistic Conversion Expectations
 
-These are conservative — use them to set expectations with Cody.
+These are conservative  - use them to set expectations with Cody.
 
 | Creator Tier | Avg Audience See Post | Realistic Click Rate | Realistic Quiz Completion | Realistic Purchase Rate | Est. Sales per Post |
 |---|---|---|---|---|---|

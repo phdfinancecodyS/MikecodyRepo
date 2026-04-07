@@ -37,18 +37,18 @@ Lone wolf to team member is learning to trust a team when your self-reliance has
 
 - Right now: think about the last time someone offered help and you said no. What would've happened if you'd said yes?
 - Before bed tonight: name one thing you're carrying alone that you don't actually have to.
-- Tomorrow: ask one person for one specific thing. "Can you handle this today?" — and let them.
+- Tomorrow: ask one person for one specific thing. "Can you handle this today?"  - and let them.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Lone Wolf to Healthy Team Member" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

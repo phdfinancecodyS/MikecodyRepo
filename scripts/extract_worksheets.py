@@ -12,7 +12,7 @@ DEST = "content/worksheets"
 DISCLAIMER = """
 ---
 
-**A quick note:** This worksheet is educational — it's not therapy, it's not a diagnosis, and using it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This worksheet is educational  - it's not therapy, it's not a diagnosis, and using it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 """
 
 stats = {"created": 0, "skipped": 0, "generic_w1": 0, "generic_w2": 0, "errors": []}
@@ -81,7 +81,7 @@ def check_generic(body, title):
 
 def build_worksheet_file(title, audience, ws_num, ws_name, body):
     """Build a standalone worksheet markdown file."""
-    out = f"# {title} — {ws_name}\n\n"
+    out = f"# {title}  - {ws_name}\n\n"
     out += f"**Audience:** {audience}\n\n"
     out += f"**From guide:** {title}\n\n"
     out += "---\n\n"

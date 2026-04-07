@@ -107,6 +107,13 @@ POS_WORDS = {
     "awesome","excellent","thriving","content","peaceful","strong",
     "proud","joyful","motivated","energized","optimistic","stoked",
     "pumped","hyped","confident","secure","supported","valued",
+    # Informal / slang positives
+    "chillin","vibing","solid","dope","fire","lit","bussin","slaying",
+    "winning","blessed","clutch","goated","elite","slay",
+    # Progress / therapy-context positives
+    "healing","growing","progressing","recovering","coping","moving",
+    "lighter","freer","calmer","clearer","brighter","steadier",
+    "grounded","centered","present","connected","balanced","whole",
 }
 
 # Context-dependent positives: only score +1 when preceded by an amplifier.

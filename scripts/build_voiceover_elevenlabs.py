@@ -34,7 +34,7 @@ VOICE_CANDIDATES = {
 # Default production voice (set after audition)
 DEFAULT_VOICE = "jessica"
 
-# VO script — 3 slides for stick figure animation
+# VO script  - 3 slides for stick figure animation
 SLIDES = [
     {
         "num": 1,

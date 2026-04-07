@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-You lost the mission. The structure. The purpose. Now what? This guide is about finding something worth getting up for — without pretending the old thing didn't matter.
+You lost the mission. The structure. The purpose. Now what? This guide is about finding something worth getting up for  - without pretending the old thing didn't matter.
 
 ## What Is Happening
 
@@ -35,20 +35,20 @@ Rebuilding mission and meaning is reactivating your sense of purpose when your o
 
 ## 24-Hour Action Plan
 
-- Right now: write down what used to give you purpose. Don't edit it — just get it on paper.
+- Right now: write down what used to give you purpose. Don't edit it  - just get it on paper.
 - Before bed tonight: ask yourself: "what would make tomorrow worth getting through?" Write whatever comes.
-- Tomorrow: do one thing — even a small one — that moves toward something that matters to you now.
+- Tomorrow: do one thing  - even a small one  - that moves toward something that matters to you now.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Rebuilding Mission and Meaning" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

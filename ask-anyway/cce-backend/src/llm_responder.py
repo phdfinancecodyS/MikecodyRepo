@@ -117,6 +117,47 @@ _CLIENT_CACHE = {}
 _TOKEN_EVENTS = []
 _BUDGET_BLOCK_UNTIL = 0.0
 
+# ── Startup diagnostics ────────────────────────────────────────────────────────
+
+def _startup_diagnostics() -> None:
+    """Log LLM configuration state at startup for debugging."""
+    logger.info("LLM provider chain: %s", _PROVIDER_CHAIN)
+    logger.info("LLM enabled steps: %s", _ENABLED_STEPS)
+    logger.info("LLM traffic tier: %s", _TRAFFIC_TIER)
+    for p in _PROVIDER_CHAIN:
+        key = _api_key_for(p)
+        has_key = bool(key and len(key) > 4)
+        logger.info("LLM provider %s: key=%s, model=%s",
+                     p, "set" if has_key else "MISSING", _model_for(p))
+    if not any(_api_key_for(p) for p in _PROVIDER_CHAIN):
+        logger.warning("No API keys configured for any LLM provider. "
+                        "All LLM calls will fall back to templates. "
+                        "Set CCE_LLM_API_KEY_GROQ, CCE_LLM_API_KEY_OPENAI, "
+                        "or CCE_LLM_API_KEY_ANTHROPIC to enable LLM responses.")
+
+_startup_diagnostics()
+
+
+def llm_status_check() -> dict:
+    """Return LLM configuration status for the health endpoint."""
+    providers = {}
+    for p in _PROVIDER_CHAIN:
+        key = _api_key_for(p)
+        providers[p] = {
+            "key_configured": bool(key and len(key) > 4),
+            "model": _model_for(p),
+        }
+    any_key = any(v["key_configured"] for v in providers.values())
+    return {
+        "provider_chain": _PROVIDER_CHAIN,
+        "enabled_steps": sorted(_ENABLED_STEPS),
+        "traffic_tier": _TRAFFIC_TIER,
+        "any_key_configured": any_key,
+        "providers": providers,
+        "status": "ok" if any_key else "no_keys",
+    }
+
+
 # ── System prompt: blended MI + SFBT + coaching ────────────────────────────────
 
 _SYSTEM_PROMPT_FULL = """\

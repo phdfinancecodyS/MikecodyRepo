@@ -1,4 +1,4 @@
-"""Entry point — start the CCE API server via uvicorn."""
+"""Entry point  - start the CCE API server via uvicorn."""
 import os
 import uvicorn
 

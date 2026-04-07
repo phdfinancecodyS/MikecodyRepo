@@ -1,4 +1,4 @@
-# CREATOR PITCH DECK — PLANNING DOCUMENT
+# CREATOR PITCH DECK  - PLANNING DOCUMENT
 **Purpose:** Customizable pitches for affiliate creators + brand ambassadors  
 **Status:** To be written after Month 1 launch  
 **Owner:** You (content) + Cody (business structure)  
@@ -34,7 +34,7 @@ Instead of one generic pitch, we'll have multiple "Why partner with us?" narrati
 - **Parents/Educators:** Talking to kids about mental health, recognizing adolescent warning signs
 - **LGBTQ+ Creators:** Intersectionality, community safety, affirming support
 
-### 4. **Audience Size Versions** (Optional — basic variant of each demographic)
+### 4. **Audience Size Versions** (Optional  - basic variant of each demographic)
 - **Nano creators** (1k-10k): "Your community trusts you. You matter."
 - **Micro creators** (10k-100k): "Scale your impact with a proven program."
 - **Mid-tier** (100k-500k): "Partner with a mission-driven platform."
@@ -72,7 +72,7 @@ Instead of one generic pitch, we'll have multiple "Why partner with us?" narrati
 **What it wants:** Clear, low-friction call-to-action
 - "Record one video. Here's what works. We handle the conversions."
 - Payment terms (when they get paid)
-- Exclusivity (or not) — can they promote competitors?
+- Exclusivity (or not)  - can they promote competitors?
 
 ### Section 6: NEXT STEPS
 **What it offers:** Immediate support
@@ -190,7 +190,7 @@ By end of Month 3:
 - **Don't oversell:** Let the program speak. "Your audience trusts you. Here's something to share."
 - **Commission is secondary:** Lead with impact (helping their community), commission is the thank-you.
 - **One pager best:** Keep the outreach email to ~3 paragraphs. Save the deck for calls/follow-up.
-- **Personalization wins:** If you can mention their specific audience or recent video, do it. "I saw your video about X — this is perfect for that community."
+- **Personalization wins:** If you can mention their specific audience or recent video, do it. "I saw your video about X  - this is perfect for that community."
 
 ---
 
@@ -205,4 +205,4 @@ By end of Month 3:
 
 ---
 
-This will be your **affiliate recruitment engine** — personalized, authentic, and scalable.
+This will be your **affiliate recruitment engine**  - personalized, authentic, and scalable.

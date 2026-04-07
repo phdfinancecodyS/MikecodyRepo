@@ -42,7 +42,7 @@ MARGIN_H = "0.75in"
 FONTS_URL = "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
 
 # ---------------------------------------------------------------------------
-# CSS — all layout controlled here; Playwright margins are set to 0
+# CSS  - all layout controlled here; Playwright margins are set to 0
 # ---------------------------------------------------------------------------
 CSS = f"""
 @page {{ size: letter; margin: 0; }}
@@ -521,9 +521,9 @@ def _fix_md_lists(text: str) -> str:
 
 def _strip_em_dashes(text: str) -> str:
     """Remove all em dashes (Unicode and HTML entity), replacing with commas."""
-    # Spaced em dash (" — ") → comma
+    # Spaced em dash ("  - ") → comma
     text = text.replace(" \u2014 ", ", ")
-    # No-space em dash ("word—word") → comma+space
+    # No-space em dash ("word -word") → comma+space
     text = text.replace("\u2014", ", ")
     # HTML entity variants
     text = text.replace(" &mdash; ", ", ")

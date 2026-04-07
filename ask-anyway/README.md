@@ -1,6 +1,6 @@
 # MikecodyRepo
 
-Shared workspace for Cody & Mike — Ask Anyway platform, CCE backend, creator tools, and planning docs.
+Shared workspace for Cody & Mike  - Ask Anyway platform, CCE backend, creator tools, and planning docs.
 
 ---
 
@@ -8,9 +8,9 @@ Shared workspace for Cody & Mike — Ask Anyway platform, CCE backend, creator t
 
 | Folder / File | What it is |
 |---|---|
-| `ask-anyway-chat.html` | Main Ask Anyway chatbot UI — runs in the browser |
-| `cce-backend/` | FastAPI conversation engine (CCE) — powers the chatbot |
-| `ask-anyway-workspace/` | Full platform — content, guides, quiz, marketing, API routes |
+| `ask-anyway-chat.html` | Main Ask Anyway chatbot UI  - runs in the browser |
+| `cce-backend/` | FastAPI conversation engine (CCE)  - powers the chatbot |
+| `ask-anyway-workspace/` | Full platform  - content, guides, quiz, marketing, API routes |
 | `ask-anyway-cody-handoff-2026-03-20-final/` | Handoff archive with brand, content, and planning docs |
 | `ask-anyway-deploy/` | Static deploy files (landing page, dashboard) |
 | `CreatorScraper/` | Instagram + TikTok scraper scripts |
@@ -56,7 +56,7 @@ Run the API smoke test any time:
 ./cce-backend/smoke-test.sh
 ```
 
-**Step 1 — Start the file server** (serves the HTML tools at localhost:3131)
+**Step 1  - Start the file server** (serves the HTML tools at localhost:3131)
 
 ```bash
 python3 -m http.server 3131 &
@@ -66,7 +66,7 @@ Then open your browser to: `http://localhost:3131/ask-anyway-chat.html`
 
 ---
 
-**Step 2 — Start the CCE backend** (powers the chatbot API)
+**Step 2  - Start the CCE backend** (powers the chatbot API)
 
 ```bash
 cd cce-backend
@@ -102,7 +102,7 @@ git pull
 
 ### While you work
 
-Edit any files normally — VS Code, Cursor, whatever you use.
+Edit any files normally  - VS Code, Cursor, whatever you use.
 
 ---
 
@@ -134,7 +134,7 @@ git push
 
 ---
 
-## CCE Backend — quick reference
+## CCE Backend  - quick reference
 
 The backend lives at `http://localhost:8000` when running.
 
@@ -145,12 +145,12 @@ The backend lives at `http://localhost:8000` when running.
 | `/session/start` | POST | Start a new chat session |
 | `/session/{id}/respond` | POST | Send a user message or option choice |
 | `/session/{id}/outcome` | GET | Get the final outcome/recommendations |
-| `/docs` | GET | Swagger UI — interactive API docs |
+| `/docs` | GET | Swagger UI  - interactive API docs |
 
 **Conversation trees available:**
-- `main-flow` — emoji check-in → topic matching (default)
-- `mental-health-triage` — 10-question scored assessment
-- `psychoeducational-flow` — open-ended exploration
+- `main-flow`  - emoji check-in → topic matching (default)
+- `mental-health-triage`  - 10-question scored assessment
+- `psychoeducational-flow`  - open-ended exploration
 
 ---
 
@@ -181,12 +181,12 @@ Rule:
 
 These are excluded via `.gitignore` and will never be committed:
 
-- `.venv/` — Python virtual environment (rebuilt locally by `start.sh`)
-- `__pycache__/` — Python bytecode
-- `.DS_Store` — Mac system files
-- `Zoom/` — Zoom recordings
-- `*.zip` — Archive files
-- `.env` files — Secrets and API keys
+- `.venv/`  - Python virtual environment (rebuilt locally by `start.sh`)
+- `__pycache__/`  - Python bytecode
+- `.DS_Store`  - Mac system files
+- `Zoom/`  - Zoom recordings
+- `*.zip`  - Archive files
+- `.env` files  - Secrets and API keys
 
 ---
 

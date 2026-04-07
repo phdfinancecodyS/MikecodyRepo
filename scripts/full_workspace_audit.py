@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Full integrity audit of the Ask Anyway workspace.
-Reports findings only — does not fix anything.
+Reports findings only  - does not fix anything.
 """
 import json, os, glob, csv, re, random, io
 
@@ -71,7 +71,7 @@ EXPECTED_VARIANTS = EXPECTED_AUDIENCES * EXPECTED_BASE_GUIDES  # 1343
 EXPECTED_WORKSHEETS = EXPECTED_VARIANTS * 2  # 2686
 
 print("=" * 70)
-print("ASK ANYWAY WORKSPACE — FULL INTEGRITY AUDIT")
+print("ASK ANYWAY WORKSPACE  - FULL INTEGRITY AUDIT")
 print("=" * 70)
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -226,7 +226,7 @@ else:
     print(f"  {voice_issues} issues found across 10 samples")
 
 # ═══════════════════════════════════════════════════════════════════════
-# 3. QUIZ JSON REFERENCE CHAIN — FULL TRACE
+# 3. QUIZ JSON REFERENCE CHAIN  - FULL TRACE
 # ═══════════════════════════════════════════════════════════════════════
 print("\n[3] QUIZ JSON REFERENCE CHAIN")
 
@@ -711,6 +711,6 @@ if findings:
         for sev, cat, msg in info:
             print(f"  [{cat}] {msg}")
 else:
-    print("\n  ✅ ZERO FINDINGS — workspace is clean.")
+    print("\n  ✅ ZERO FINDINGS  - workspace is clean.")
 
 print()

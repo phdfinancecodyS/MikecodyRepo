@@ -1,4 +1,4 @@
-# Ask Anyway — Affiliate Compensation Structure
+# Ask Anyway  - Affiliate Compensation Structure
 
 Date: 2026-03-20
 Status: Active
@@ -7,7 +7,7 @@ Status: Active
 
 ## Why Pure Commission (Not Flat Fee) at Launch
 
-At launch you have no verified conversion data. Paying a flat fee per post before you know what a post actually converts is throwing money at unknowns. Pure commission aligns incentives — creators only earn when you earn — and it protects you while the funnel is still being validated.
+At launch you have no verified conversion data. Paying a flat fee per post before you know what a post actually converts is throwing money at unknowns. Pure commission aligns incentives  - creators only earn when you earn  - and it protects you while the funnel is still being validated.
 
 Once you have 30 days of conversion data showing average earnings per post by niche, you can introduce flat-fee deals for high-performing creators as a retention tool.
 
@@ -19,7 +19,7 @@ Once you have 30 days of conversion data showing average earnings per post by ni
 |---|---|---|---|
 | **Standard** | Any approved affiliate | 30% | Default rate for all new creators |
 | **Launch Affiliate** | First 30 affiliates to sign up | 40% for first 90 days, then 30% | Incentivizes early adoption |
-| **Mental Health Pro** | Licensed therapists, counselors, social workers, NPs, psychologists | 40% ongoing | Trust signal — their audience converts higher |
+| **Mental Health Pro** | Licensed therapists, counselors, social workers, NPs, psychologists | 40% ongoing | Trust signal  - their audience converts higher |
 | **Top Performer** | Any affiliate with 50+ sales in a calendar month | 50% that month | Resets monthly, keeps top earners motivated |
 
 ---
@@ -33,7 +33,7 @@ Once you have 30 days of conversion data showing average earnings per post by ni
 | Bundle (3 guides + kit) | $34 | $10.20 | $13.60 |
 | SMS (monthly) | $4.99/mo | $1.50/mo | $2.00/mo recurring |
 
-SMS commission pays every month the subscriber stays active — this is the sleeper value for creators who build an engaged audience.
+SMS commission pays every month the subscriber stays active  - this is the sleeper value for creators who build an engaged audience.
 
 ---
 
@@ -73,7 +73,7 @@ Every affiliate gets free access to the quiz and one complete guide kit before p
 All affiliates must agree to these before they receive their link. Anyone who violates is removed immediately.
 
 **Safe messaging (non-negotiable):**
-- Never say "committed suicide" — use "died by suicide"
+- Never say "committed suicide"  - use "died by suicide"
 - Never describe or reference methods
 - Always include 988 or a crisis resource in any post that references suicidal crisis
 - Do not imply the product prevents suicide or guarantees outcomes

@@ -9,11 +9,11 @@ Priority: high
 
 ## What This Helps With
 
-If your brain won't stop scanning for danger — even when you're safe on your own couch — this one's for you. Not theory. Just what to actually do about it.
+If your brain won't stop scanning for danger  - even when you're safe on your own couch  - this one's for you. Not theory. Just what to actually do about it.
 
 ## What Is Happening
 
-Your high-alert brain is scanning for threat constantly. Your threat system stays locked on even when you aren't in danger. This isn't paranoia—it's your nervous system doing what it learned to do. The problem is it doesn't turn off.
+Your high-alert brain is scanning for threat constantly. Your threat system stays locked on even when you aren't in danger. This isn't paranoia -it's your nervous system doing what it learned to do. The problem is it doesn't turn off.
 
 ## What To Do Now
 
@@ -37,16 +37,16 @@ Your high-alert brain is scanning for threat constantly. Your threat system stay
 
 - Right now: pick one grounding move (5-4-3-2-1, cold water on your wrists, feet flat on the floor) and do it once today. Just once.
 - Before bed tonight: write down three moments your brain sounded the alarm and nothing was actually wrong.
-- Tomorrow: set one anchor check-in during the day — pause, ask yourself "am I actually in danger right now?" and answer honestly.
+- Tomorrow: set one anchor check-in during the day  - pause, ask yourself "am I actually in danger right now?" and answer honestly.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - What time of day does the scanning get loudest?
 - What's the last false alarm your brain triggered? What actually happened?
-- Where do you feel the hyperarousal first — head, chest, gut, hands?
+- Where do you feel the hyperarousal first  - head, chest, gut, hands?
 - What were you doing when you last felt genuinely safe?
 - What's one thing that helps your body believe the danger is over?
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

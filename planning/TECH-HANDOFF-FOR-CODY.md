@@ -46,7 +46,7 @@
   - `supabase/migrations/20260320153000_backend_architecture.sql`
   - `supabase/migrations/20260320160000_rls_policies.sql`
   - `quiz/fulfillment-config.json`
-  - `web/api/` (API handler scaffold — Next.js App Router)
+  - `web/api/` (API handler scaffold  - Next.js App Router)
   - `web/api/README.md` (integration guide for the scaffold)
   - `quiz/audience-bucket-flow.json`
   - `quiz/base-guide-catalog.json`

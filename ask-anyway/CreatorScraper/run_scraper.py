@@ -1,7 +1,7 @@
 """
 run_scraper.py
 ──────────────
-Master runner — scrapes TikTok + Instagram, deduplicates,
+Master runner  - scrapes TikTok + Instagram, deduplicates,
 merges into one master CSV, and generates an outreach tracker.
 
 Usage:
@@ -32,7 +32,7 @@ OUTREACH_TRACKER = os.getenv("OUTREACH_TRACKER", "outreach_tracker.csv")
 
 def print_banner():
     console.print(Panel.fit(
-        "[bold cyan]Mental Health Platform — Creator Scraper[/bold cyan]\n"
+        "[bold cyan]Mental Health Platform  - Creator Scraper[/bold cyan]\n"
         "[dim]TikTok + Instagram affiliate recruitment tool[/dim]",
         border_style="cyan"
     ))
@@ -121,7 +121,7 @@ def print_summary(df: pd.DataFrame):
     }
     for tier in tier_order:
         if tier in tier_counts:
-            cost, views = tier_info.get(tier, ("—", "—"))
+            cost, views = tier_info.get(tier, (" -", " -"))
             table.add_row(tier, str(tier_counts[tier]), cost, views)
     console.print(table)
 
@@ -138,7 +138,7 @@ def print_summary(df: pd.DataFrame):
     # Creators with emails (easiest to contact directly)
     with_email = df[df["email"] != ""]
     console.print(f"\n[green]✉️  {len(with_email)} creators have email addresses in their bio[/green]")
-    console.print(f"[dim]These are your easiest direct contacts — no DM needed[/dim]\n")
+    console.print(f"[dim]These are your easiest direct contacts  - no DM needed[/dim]\n")
 
 
 def main():
@@ -194,8 +194,8 @@ def main():
 
     console.print(Panel.fit(
         f"[bold green]✅ Done![/bold green]\n\n"
-        f"[cyan]{COMBINED_OUTPUT}[/cyan] — full creator list\n"
-        f"[cyan]{OUTREACH_TRACKER}[/cyan] — your recruitment CRM\n\n"
+        f"[cyan]{COMBINED_OUTPUT}[/cyan]  - full creator list\n"
+        f"[cyan]{OUTREACH_TRACKER}[/cyan]  - your recruitment CRM\n\n"
         "[dim]Open the outreach tracker in Excel or Google Sheets.\n"
         "Fill in contact_method, date_contacted, response as you work.[/dim]",
         border_style="green"

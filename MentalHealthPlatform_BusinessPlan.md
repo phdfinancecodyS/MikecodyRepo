@@ -1,13 +1,13 @@
-# Mental Health Platform — Full Business Plan
+# Mental Health Platform  - Full Business Plan
 **Date:** March 20, 2026  
 **Partners:** Cody Sullivan (Business Strategy & Plan) + [Partner] (Content & Mental Health)  
-**Status:** Pre-Build — Ready to Launch
+**Status:** Pre-Build  - Ready to Launch
 
 ---
 
 ## 1. WHAT WE ARE BUILDING
 
-A mental health platform driven by TikTok/Instagram affiliate traffic that converts users through a free quiz into paid products and recurring revenue — with zero gatekeeping on crisis resources.
+A mental health platform driven by TikTok/Instagram affiliate traffic that converts users through a free quiz into paid products and recurring revenue  - with zero gatekeeping on crisis resources.
 
 ### The 5 Core Products
 
@@ -35,7 +35,7 @@ Gets scored result (Low / Moderate / High / Critical)
         ├── HIGH/CRITICAL RISK
         │     → Free crisis resources shown immediately (988, Crisis Text Line)
         │     → "Talk to someone now" option
-        │     → Crisis Kit offered ($5) — coping tools, emergency contacts, safety plan template
+        │     → Crisis Kit offered ($5)  - coping tools, emergency contacts, safety plan template
         │     → Matched therapist from directory (free referral)
         │
         └── LOW/MODERATE RISK
@@ -47,7 +47,7 @@ Gets scored result (Low / Moderate / High / Critical)
 
 ---
 
-## 3. TECH STACK (Built in VS Code — Near Zero Cost)
+## 3. TECH STACK (Built in VS Code  - Near Zero Cost)
 
 ### What We Build Ourselves
 
@@ -77,17 +77,17 @@ Gets scored result (Low / Moderate / High / Critical)
 ## 4. BUILD PLAN (18 Hours Total, Live in 3 Days)
 
 ### Day 1 (5 hours)
-- [ ] Mental health quiz — 10 scored questions, results page
+- [ ] Mental health quiz  - 10 scored questions, results page
 - [ ] Stripe payment integration ($5 crisis kit, $10 guide)
 - [ ] Auto email delivery of Crisis Kit PDF on purchase
 
 ### Day 2 (7 hours)
-- [ ] How to Help Guide — PDF content + auto delivery
-- [ ] Check On Me SMS — Twilio signup flow + weekly automated texts
+- [ ] How to Help Guide  - PDF content + auto delivery
+- [ ] Check On Me SMS  - Twilio signup flow + weekly automated texts
 - [ ] BetterHelp affiliate link integration on results page
 
 ### Day 3 (6 hours)
-- [ ] Therapist directory — scrape Yelp/Google/Psychology Today → searchable DB
+- [ ] Therapist directory  - scrape Yelp/Google/Psychology Today → searchable DB
 - [ ] TikTok bio landing page (fast, mobile-first)
 - [ ] Deploy to Vercel (live URL)
 - [ ] Stripe webhooks tested end-to-end
@@ -95,10 +95,10 @@ Gets scored result (Low / Moderate / High / Critical)
 ### Partner Responsibilities Split
 
 > **Cody owns everything business.** Partner owns everything content.
-> If it involves money, structure, growth, tech, or strategy — Cody.
-> If it involves words, mental health accuracy, scripts, or guides — Partner.
+> If it involves money, structure, growth, tech, or strategy  - Cody.
+> If it involves words, mental health accuracy, scripts, or guides  - Partner.
 
-| Cody — Business Strategy & Plan | Partner — Content & Mental Health |
+| Cody  - Business Strategy & Plan | Partner  - Content & Mental Health |
 |---|---|
 | Business structure + LLC | Quiz questions (clinically grounded) |
 | Stripe + payment setup | Crisis Kit content writing |
@@ -112,19 +112,19 @@ Gets scored result (Low / Moderate / High / Critical)
 
 ---
 
-## 5. PRODUCT CONTENT SPECS (Partner Owns All of This — Cody Does Not Write This)
+## 5. PRODUCT CONTENT SPECS (Partner Owns All of This  - Cody Does Not Write This)
 
-### Mental Health Quiz — 10 Questions
+### Mental Health Quiz  - 10 Questions
 Scored 0-3 per answer. Total score determines risk level.
 - Topics to cover: mood, sleep, stress, relationships, self-harm ideation, substance use, work functioning, social withdrawal, hopelessness, energy levels
 - Score 0-10: Low risk
 - Score 11-20: Moderate risk  
 - Score 21-25: High risk
-- Score 26-30: Critical — crisis resources shown immediately
+- Score 26-30: Critical  - crisis resources shown immediately
 
 **Note:** Quiz should NOT diagnose. It screens and refers. Use language like "based on your responses" not "you have."
 
-### Crisis Kit ($5) — Contents
+### Crisis Kit ($5)  - Contents
 - Personal safety plan template (fillable)
 - 988 + Crisis Text Line + local crisis center directory
 - Grounding techniques (5-4-3-2-1, box breathing)
@@ -132,8 +132,8 @@ Scored 0-3 per answer. Total score determines risk level.
 - Emergency contact card template
 - 7 coping strategies for acute distress
 
-### How to Help Guide ($10) — Contents
-- "Someone I love is struggling — what do I do?"
+### How to Help Guide ($10)  - Contents
+- "Someone I love is struggling  - what do I do?"
 - Warning signs to watch for
 - What to say / what NOT to say
 - How to start the conversation
@@ -141,7 +141,7 @@ Scored 0-3 per answer. Total score determines risk level.
 - Resources to share with them
 - Taking care of yourself as a supporter
 
-### Check On Me SMS ($4.99/mo) — Weekly Text Content
+### Check On Me SMS ($4.99/mo)  - Weekly Text Content
 - Week 1: Gentle mood check-in + one grounding tip
 - Week 2: "How are you sleeping?" + sleep hygiene tip
 - Week 3: Connection check + social support resource
@@ -150,7 +150,7 @@ Scored 0-3 per answer. Total score determines risk level.
 
 ---
 
-## 6. GROWTH MODEL — 1 MILLION USERS IN 12 MONTHS
+## 6. GROWTH MODEL  - 1 MILLION USERS IN 12 MONTHS
 
 ### Traffic Strategy: Paid TikTok Affiliates + Organic
 
@@ -182,7 +182,7 @@ Scored 0-3 per answer. Total score determines risk level.
 
 ---
 
-## 7. FINANCIAL MODEL — MONTHLY REVENUE
+## 7. FINANCIAL MODEL  - MONTHLY REVENUE
 
 ### Conversion Rates Applied
 | Product | Conversion | Price |
@@ -236,7 +236,7 @@ NET YEAR 1 PROFIT:      $127,848,130
 | 18 | ~380,000 | **$1,896,200/mo** |
 | 24 | ~500,000 | **$2,495,000/mo** |
 
-> At Month 24 — $2.5M/mo in pure passive recurring revenue with zero new users needed.
+> At Month 24  - $2.5M/mo in pure passive recurring revenue with zero new users needed.
 
 ---
 
@@ -244,11 +244,11 @@ NET YEAR 1 PROFIT:      $127,848,130
 
 | Milestone | What Happens |
 |---|---|
-| Month 3 (21k users) | Standard affiliate — $150/signup |
+| Month 3 (21k users) | Standard affiliate  - $150/signup |
 | Month 6 (153k users) | Upgraded to priority affiliate tier |
 | Month 9 (563k users) | Direct outreach from BetterHelp partnerships |
-| Month 12 (1M users) | Direct deal offer — $75k-200k/mo retainer + $175-200/signup |
-| Year 2 | Renegotiate — annual contract $900k-$2.4M guaranteed |
+| Month 12 (1M users) | Direct deal offer  - $75k-200k/mo retainer + $175-200/signup |
+| Year 2 | Renegotiate  - annual contract $900k-$2.4M guaranteed |
 
 ---
 
@@ -266,7 +266,7 @@ SaaS Multiple (10x MRR):           $133M on recurring alone
 
 ---
 
-## 11. VIRAL SCENARIO — 1M USERS IN 60 DAYS
+## 11. VIRAL SCENARIO  - 1M USERS IN 60 DAYS
 
 If one video hits 1M+ views and two hit 500k:
 
@@ -293,7 +293,7 @@ ROI on $340k spend:         14.5x in 60 days
 
 - Crisis resources (988, Crisis Text Line) shown FREE to ALL users regardless of payment
 - No paywall between high-risk users and safety information
-- Quiz explicitly states it does not diagnose — it screens and refers
+- Quiz explicitly states it does not diagnose  - it screens and refers
 - All content reviewed for clinical accuracy by partner
 - SAMHSA guidelines followed for suicide prevention messaging
 - Safe messaging guidelines (no method details, no sensationalism) in all TikTok content
@@ -306,8 +306,8 @@ ROI on $340k spend:         14.5x in 60 days
 |---|---|
 | LLC Formation | Register in Delaware or Wyoming (lowest cost/tax) |
 | EIN | Apply free at IRS.gov |
-| Terms of Service | Custom — must disclaim diagnostic use |
-| Privacy Policy | HIPAA-adjacent — data handling must be clear |
+| Terms of Service | Custom  - must disclaim diagnostic use |
+| Privacy Policy | HIPAA-adjacent  - data handling must be clear |
 | Stripe account | Business account under LLC |
 | BetterHelp affiliate | Apply at betterhelp.com/affiliate |
 | SAM.gov registration | For future grant applications |
@@ -318,7 +318,7 @@ ROI on $340k spend:         14.5x in 60 days
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CODY — BUSINESS STRATEGY & PLAN (Owns All of This)
+CODY  - BUSINESS STRATEGY & PLAN (Owns All of This)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [ ] Form LLC (Delaware or Wyoming)
   [ ] Obtain EIN from IRS.gov
@@ -334,11 +334,11 @@ CODY — BUSINESS STRATEGY & PLAN (Owns All of This)
   [ ] Recruit affiliate TikTok creators
   [ ] Manage affiliate contracts + payouts
   [ ] Financial tracking + projections
-  [ ] Legal — Terms of Service, Privacy Policy
+  [ ] Legal  - Terms of Service, Privacy Policy
   [ ] Register on SAM.gov (future grants)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PARTNER — CONTENT & MENTAL HEALTH (Owns All of This)
+PARTNER  - CONTENT & MENTAL HEALTH (Owns All of This)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [ ] Write 10 quiz questions with scoring rubric
   [ ] Define risk level thresholds (Low/Mod/High/Critical)
@@ -375,7 +375,7 @@ PARTNER — CONTENT & MENTAL HEALTH (Owns All of This)
 
 ---
 
-*Document prepared by GitHub Copilot in VS Code — Business strategy by Cody Sullivan*
+*Document prepared by GitHub Copilot in VS Code  - Business strategy by Cody Sullivan*
 
 ---
 
@@ -385,4 +385,4 @@ PARTNER — CONTENT & MENTAL HEALTH (Owns All of This)
 > Cody handles every piece of business, tech, money, legal, growth, and strategy.
 > Your job is to make the content so good that people trust it, share it, and come back.
 > Without your content this platform is nothing. Without Cody's structure your content goes nowhere.
-> This document exists so you understand the full picture — but your action items are in Section 14 under PARTNER.
+> This document exists so you understand the full picture  - but your action items are in Section 14 under PARTNER.

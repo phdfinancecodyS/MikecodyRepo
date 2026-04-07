@@ -9,11 +9,11 @@ Priority: medium
 
 ## What This Helps With
 
-When you can't feel anything — not sad, not happy, just flat — that's not strength. It's shutdown. Here's what's actually happening and one way back.
+When you can't feel anything  - not sad, not happy, just flat  - that's not strength. It's shutdown. Here's what's actually happening and one way back.
 
 ## What Is Happening
 
-Emotional numbness is disconnection from feeling. Nothing moves you. Good news, bad news, beautiful moments—all registered the same. You know you should feel something and you don't. This isn't depression (though it can coexist). This is dissociation or emotional numbing as a protection.
+Emotional numbness is disconnection from feeling. Nothing moves you. Good news, bad news, beautiful moments -all registered the same. You know you should feel something and you don't. This isn't depression (though it can coexist). This is dissociation or emotional numbing as a protection.
 
 ## What To Do Now
 
@@ -37,18 +37,18 @@ Emotional numbness is disconnection from feeling. Nothing moves you. Good news, 
 
 - Right now: put on a song that used to make you feel something. Listen to the whole thing.
 - Before bed tonight: write down five things you used to enjoy and circle the one that feels least impossible.
-- Tomorrow: do that one thing for 10 minutes. Not because you want to — because you're testing whether the wiring is still there.
+- Tomorrow: do that one thing for 10 minutes. Not because you want to  - because you're testing whether the wiring is still there.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Emotional Numbness" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

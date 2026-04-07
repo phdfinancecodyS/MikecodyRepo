@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Style Sampler v2 — "Fuller body + stick limbs" variations.
+Style Sampler v2  - "Fuller body + stick limbs" variations.
 All options have a rounded/filled torso with stick arms, legs, and round head.
 
 Output: /tmp/stick-figure-styles-v2.png
@@ -105,7 +105,7 @@ def expressive_eyes(draw, cx, cy, r, color=(45, 40, 35)):
 def draw_stick_limbs(draw, cx, body_top, body_bottom, body_half_w,
                      counter_y, lw, color, line_fn=None, with_hands=True):
     """Draw stick arms + legs attached to a filled body.
-    Returns nothing — draws directly."""
+    Returns nothing  - draws directly."""
     if line_fn is None:
         line_fn = lambda p1, p2, c, w: draw.line([p1, p2], fill=c, width=w)
 
@@ -174,7 +174,7 @@ def render_pill_body(cell):
     skin = (250, 245, 235)
     lw = 3
 
-    # Body — pill / rounded rect
+    # Body  - pill / rounded rect
     draw.rounded_rectangle([cx - body_w//2, body_top, cx + body_w//2, body_bottom],
                            radius=22, fill=color, outline=outline, width=3)
 
@@ -197,7 +197,7 @@ def render_pill_body(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE B: Bean / pear body — wider hips, narrower shoulders
+# STYLE B: Bean / pear body  - wider hips, narrower shoulders
 # ═══════════════════════════════════════════════════════════════
 def render_bean_body(cell):
     draw = ImageDraw.Draw(cell)
@@ -217,7 +217,7 @@ def render_bean_body(cell):
     skin = (250, 245, 235)
     lw = 3
 
-    # Bean body — trapezoid with rounded corners
+    # Bean body  - trapezoid with rounded corners
     body_pts = [
         (cx - body_top_w, body_top + 10),
         (cx + body_top_w, body_top + 10),
@@ -247,7 +247,7 @@ def render_bean_body(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE C: Oval / egg body — simple and clean
+# STYLE C: Oval / egg body  - simple and clean
 # ═══════════════════════════════════════════════════════════════
 def render_oval_body(cell):
     draw = ImageDraw.Draw(cell)
@@ -285,7 +285,7 @@ def render_oval_body(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE D: T-shirt body — rectangular with shirt/clothing hint
+# STYLE D: T-shirt body  - rectangular with shirt/clothing hint
 # ═══════════════════════════════════════════════════════════════
 def render_tshirt_body(cell):
     draw = ImageDraw.Draw(cell)
@@ -303,7 +303,7 @@ def render_tshirt_body(cell):
     shirt_color = (26, 107, 106)  # brand teal!
     lw = 3
 
-    # T-shirt body — rectangle with sleeves
+    # T-shirt body  - rectangle with sleeves
     # Main body
     draw.rounded_rectangle([cx - body_w//2, body_top, cx + body_w//2, body_bottom],
                            radius=8, fill=shirt_color, outline=outline, width=2)
@@ -357,7 +357,7 @@ def render_chibi_body(cell):
     draw.rounded_rectangle([cx - body_w//2, body_top, cx + body_w//2, body_bottom],
                            radius=18, fill=color, outline=outline, width=3)
 
-    # No visible neck — head sits right on body
+    # No visible neck  - head sits right on body
     draw.ellipse([cx - head_r, head_cy - head_r, cx + head_r, head_cy + head_r],
                  fill=skin, outline=outline, width=3)
     expressive_eyes(draw, cx, head_cy, head_r, outline)
@@ -371,7 +371,7 @@ def render_chibi_body(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE F: Wobble/hand-drawn pill body — same as A but sketchy lines
+# STYLE F: Wobble/hand-drawn pill body  - same as A but sketchy lines
 # ═══════════════════════════════════════════════════════════════
 def render_sketchy_pill(cell):
     draw = ImageDraw.Draw(cell)
@@ -403,7 +403,7 @@ def render_sketchy_pill(cell):
 
     wobble_line(draw, (cx, body_top), (cx, head_cy + head_r), outline, lw)
 
-    # Sketchy head — double outline
+    # Sketchy head  - double outline
     for offset in range(2):
         ox = np.random.randint(-1, 2)
         oy = np.random.randint(-1, 2)
@@ -426,7 +426,7 @@ def render_sketchy_pill(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE G: Apron body — pill with an apron for the cooking context
+# STYLE G: Apron body  - pill with an apron for the cooking context
 # ═══════════════════════════════════════════════════════════════
 def render_apron_body(cell):
     draw = ImageDraw.Draw(cell)
@@ -479,7 +479,7 @@ def render_apron_body(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE H: Soft/rounded — thicker limbs, rounder everything, gentle
+# STYLE H: Soft/rounded  - thicker limbs, rounder everything, gentle
 # ═══════════════════════════════════════════════════════════════
 def render_soft_rounded(cell):
     draw = ImageDraw.Draw(cell)
@@ -507,7 +507,7 @@ def render_soft_rounded(cell):
                   cx + body_rx, body_cy + body_ry],
                  fill=body_fill, outline=outline, width=3)
 
-    # No neck — head overlaps body slightly
+    # No neck  - head overlaps body slightly
     draw.ellipse([cx - head_r, head_cy_pos - head_r,
                   cx + head_r, head_cy_pos + head_r],
                  fill=skin, outline=outline, width=3)
@@ -564,7 +564,7 @@ def build_sampler():
 
     title_font = load_font(FONTS_DIR / "Montserrat-Black.ttf", 34)
     sheet_draw.text((SHEET_W // 2 - 380, 20),
-                    'FULLER BODY + STICK LIMBS — STYLE OPTIONS',
+                    'FULLER BODY + STICK LIMBS  - STYLE OPTIONS',
                     fill=(30,30,30), font=title_font)
 
     for idx, (name, desc, render_fn) in enumerate(STYLES):

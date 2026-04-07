@@ -9,11 +9,11 @@ Priority: medium
 
 ## What This Helps With
 
-You had your people. Now you don't. If you're surrounded by others but feel completely alone — that's not dramatic. That's real. Here's what helps.
+You had your people. Now you don't. If you're surrounded by others but feel completely alone  - that's not dramatic. That's real. Here's what helps.
 
 ## What Is Happening
 
-Loneliness and loss of tribe happens when the community that held you is gone. The team you deployed with, the unit, the shift crew—you were bonded by shared knowing. Civilians don't get it. Family wants you to move on. You don't fit anywhere now and isolation cuts deep.
+Loneliness and loss of tribe happens when the community that held you is gone. The team you deployed with, the unit, the shift crew -you were bonded by shared knowing. Civilians don't get it. Family wants you to move on. You don't fit anywhere now and isolation cuts deep.
 
 ## What To Do Now
 
@@ -36,19 +36,19 @@ Loneliness and loss of tribe happens when the community that held you is gone. T
 ## 24-Hour Action Plan
 
 - Right now: text one person you haven't talked to in a while. Keep it short. "Thinking about you."
-- Before bed tonight: write down three people who feel safe — not who should feel safe, who actually does.
+- Before bed tonight: write down three people who feel safe  - not who should feel safe, who actually does.
 - Tomorrow: reach out to one of them. Not to catch up. Just to make contact.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Loneliness and Loss of Tribe" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

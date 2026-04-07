@@ -130,7 +130,7 @@ for i, listing in enumerate(listings, 1):
             errors.append(f"#{i:02d} tag too long ({len(t)}): '{t}'")
 
     if len(tags) != 13:
-        errors.append(f"#{i:02d} has {len(tags)} tags (expected 13) — topic: {listing['title'].split(' - ')[0]}")
+        errors.append(f"#{i:02d} has {len(tags)} tags (expected 13)  - topic: {listing['title'].split(' - ')[0]}")
 
     listing["tags"] = tags
 

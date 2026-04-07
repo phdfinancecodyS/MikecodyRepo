@@ -1,4 +1,4 @@
-# Creator Scraper — TikTok & Instagram Affiliate Finder
+# Creator Scraper  - TikTok & Instagram Affiliate Finder
 
 Finds mental health creators on TikTok and Instagram, scores them by
 followers/engagement, tags their niche, and exports a full outreach tracker.
@@ -22,10 +22,10 @@ pip install -r requirements.txt
 
 ### 3. Configure Your Search (optional)
 Edit `.env` to change:
-- `TIKTOK_HASHTAGS` — which hashtags to search
-- `INSTAGRAM_HASHTAGS` — which hashtags to search
-- `MIN_FOLLOWERS` / `MAX_FOLLOWERS` — size filter
-- `RESULTS_PER_HASHTAG` — how many creators per hashtag
+- `TIKTOK_HASHTAGS`  - which hashtags to search
+- `INSTAGRAM_HASHTAGS`  - which hashtags to search
+- `MIN_FOLLOWERS` / `MAX_FOLLOWERS`  - size filter
+- `RESULTS_PER_HASHTAG`  - how many creators per hashtag
 
 ---
 
@@ -54,7 +54,7 @@ python run_scraper.py --tracker
 | `tiktok_creators.csv` | All TikTok creators found |
 | `instagram_creators.csv` | All Instagram creators found |
 | `all_creators.csv` | Combined, deduplicated, sorted by followers |
-| `outreach_tracker.csv` | Your recruitment CRM — fill this in as you work |
+| `outreach_tracker.csv` | Your recruitment CRM  - fill this in as you work |
 
 ---
 
@@ -99,32 +99,32 @@ python run_scraper.py --tracker
 
 ---
 
-## ⏸ WHERE WE STOPPED — March 20, 2026
+## ⏸ WHERE WE STOPPED  - March 20, 2026
 
-### Status: Ready to Run — Waiting on Apify Token
+### Status: Ready to Run  - Waiting on Apify Token
 
 Everything is built. The only thing blocking the first run is the Apify API token.
 
 ### To Pick Up Next Session:
 
-**Step 1 — Get Apify token (5 min)**
+**Step 1  - Get Apify token (5 min)**
 - Go to apify.com → sign up free
 - Settings → Integrations → copy Personal API Token
 
-**Step 2 — Paste token into .env**
+**Step 2  - Paste token into .env**
 ```
 APIFY_API_TOKEN=paste_your_token_here
 ```
 
-**Step 3 — Run the scraper**
+**Step 3  - Run the scraper**
 ```bash
 cd /Users/codysullivan/Documents/CreatorScraper
 /usr/bin/python3 run_scraper.py
 ```
 
-**Step 4 — Review output files**
-- `all_creators.csv` — full creator list
-- `outreach_tracker.csv` — open in Google Sheets, start DM outreach
+**Step 4  - Review output files**
+- `all_creators.csv`  - full creator list
+- `outreach_tracker.csv`  - open in Google Sheets, start DM outreach
 
 ---
 
@@ -141,7 +141,7 @@ cd /Users/codysullivan/Documents/CreatorScraper
 
 ---
 
-### Bigger Picture — What This Is Part Of
+### Bigger Picture  - What This Is Part Of
 
 This scraper is Step 1 of the Mental Health Platform affiliate program.
 
@@ -150,10 +150,10 @@ Full business plan is at:
 
 **Platform products:**
 - Free Mental Health Quiz (traffic engine)
-- Crisis Kit — $5
-- How to Help Guide — $10
-- Check On Me SMS — $4.99/mo
-- Therapist Directory — affiliate revenue
+- Crisis Kit  - $5
+- How to Help Guide  - $10
+- Check On Me SMS  - $4.99/mo
+- Therapist Directory  - affiliate revenue
 
 **Next build tasks after scraper runs:**
 1. Build the quiz (Next.js + Supabase)
@@ -163,5 +163,5 @@ Full business plan is at:
 5. Deploy to Vercel
 
 **Partner responsibilities:**
-- Cody — business strategy, tech, payments, affiliates (this file)
-- Partner — all content, quiz questions, guides, scripts, clinical accuracy
+- Cody  - business strategy, tech, payments, affiliates (this file)
+- Partner  - all content, quiz questions, guides, scripts, clinical accuracy

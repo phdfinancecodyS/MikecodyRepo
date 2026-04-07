@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Style Sampler — renders the same stick figure pose in 8 different visual styles
+Style Sampler  - renders the same stick figure pose in 8 different visual styles
 on a single comparison sheet so the user can pick what feels right.
 
 Output: /tmp/stick-figure-styles.png (4x2 grid, each cell labeled)
@@ -204,7 +204,7 @@ def heavy_wobble_line(draw, p1, p2, color, width, segments=8):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 1: Current style — warm figure on photo, skin fill, detailed face
+# STYLE 1: Current style  - warm figure on photo, skin fill, detailed face
 # ═══════════════════════════════════════════════════════════════
 def render_style_current(cell):
     draw = ImageDraw.Draw(cell)
@@ -229,7 +229,7 @@ def render_style_current(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 2: Classic minimal — thin black on white, XKCD-like
+# STYLE 2: Classic minimal  - thin black on white, XKCD-like
 # ═══════════════════════════════════════════════════════════════
 def render_style_minimal(cell):
     draw = ImageDraw.Draw(cell)
@@ -245,7 +245,7 @@ def render_style_minimal(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 3: Whiteboard / chalkboard — white on dark, sketchy lines
+# STYLE 3: Whiteboard / chalkboard  - white on dark, sketchy lines
 # ═══════════════════════════════════════════════════════════════
 def render_style_whiteboard(cell):
     draw = ImageDraw.Draw(cell)
@@ -276,7 +276,7 @@ def render_style_whiteboard(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 4: Bold cartoon — thick outlines, color fills, TheOdd1sOut-like
+# STYLE 4: Bold cartoon  - thick outlines, color fills, TheOdd1sOut-like
 # ═══════════════════════════════════════════════════════════════
 def render_style_bold_cartoon(cell):
     draw = ImageDraw.Draw(cell)
@@ -319,7 +319,7 @@ def render_style_bold_cartoon(cell):
                start=5, end=175, fill=col, width=3)
 
     def line_fn(p1, p2, c, w):
-        # Draw thick stroked line — body fill + outline
+        # Draw thick stroked line  - body fill + outline
         draw.line([p1, p2], fill=c, width=w + 4)
         draw.line([p1, p2], fill=body_fill, width=max(1, w - 2))
 
@@ -333,7 +333,7 @@ def render_style_bold_cartoon(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 5: Pencil sketch — textured gray lines, notebook paper bg
+# STYLE 5: Pencil sketch  - textured gray lines, notebook paper bg
 # ═══════════════════════════════════════════════════════════════
 def render_style_pencil(cell):
     draw = ImageDraw.Draw(cell)
@@ -367,7 +367,7 @@ def render_style_pencil(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 6: Neon glow — glowing lines on dark background
+# STYLE 6: Neon glow  - glowing lines on dark background
 # ═══════════════════════════════════════════════════════════════
 def render_style_neon(cell):
     draw = ImageDraw.Draw(cell)
@@ -409,7 +409,7 @@ def render_style_neon(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 7: Watercolor / soft pastel — soft edges, color washes
+# STYLE 7: Watercolor / soft pastel  - soft edges, color washes
 # ═══════════════════════════════════════════════════════════════
 def render_style_watercolor(cell):
     draw = ImageDraw.Draw(cell)
@@ -466,7 +466,7 @@ def render_style_watercolor(cell):
 
 
 # ═══════════════════════════════════════════════════════════════
-# STYLE 8: Geometric / modern flat — clean shapes, flat colors, no outlines
+# STYLE 8: Geometric / modern flat  - clean shapes, flat colors, no outlines
 # ═══════════════════════════════════════════════════════════════
 def render_style_geometric(cell):
     draw = ImageDraw.Draw(cell)
@@ -479,7 +479,7 @@ def render_style_geometric(cell):
     body_color = (250, 247, 242)  # warm white
     accent = (212, 146, 42)  # amber
 
-    # Head — clean circle
+    # Head  - clean circle
     head_cy = cy - d["torso"] - d["head_r"] - 8
     draw.ellipse([cx - d["head_r"], head_cy - d["head_r"],
                   cx + d["head_r"], head_cy + d["head_r"]],

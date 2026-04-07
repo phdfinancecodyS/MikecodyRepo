@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-When even small choices feel impossible and your brain just wants someone else to decide — that's decision fatigue. Here's how to get through the day without burning out on breakfast.
+When even small choices feel impossible and your brain just wants someone else to decide  - that's decision fatigue. Here's how to get through the day without burning out on breakfast.
 
 ## What Is Happening
 
@@ -41,10 +41,10 @@ Decision fatigue hits after you've made too many choices and your brain's decisi
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
-- What type of decisions drain you most — big ones, small ones, or all of them?
+- What type of decisions drain you most  - big ones, small ones, or all of them?
 - What do you do when you can't decide? Freeze, avoid, or let someone else choose?
 - How many decisions do you estimate you make before noon?
 - What's one decision you've been avoiding that's taking up mental space?
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

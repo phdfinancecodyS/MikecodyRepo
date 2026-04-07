@@ -1,4 +1,4 @@
-# Revenue Channels — All 500 Niches
+# Revenue Channels  - All 500 Niches
 **Last updated:** March 20, 2026
 **Model:** Every spoke runs the same core stack + niche-specific channels layered on top
 
@@ -11,9 +11,9 @@
 | 1 | PDF Guide | $10 | 97% | One-time, instant delivery via email |
 | 2 | Crisis/Resource Kit | $5 | 97% | One-time, instant delivery |
 | 3 | Check On Me SMS Service | $4.99/mo | 85% | Recurring, Twilio-powered |
-| 4 | Email newsletter | Free → upsell | — | List building → product upsells |
-| 5 | Quiz lead capture | Free | — | Top of funnel, feeds all other channels |
-| 6 | TikTok/IG affiliate traffic | Commission to creators | — | Drives all purchases |
+| 4 | Email newsletter | Free → upsell |  - | List building → product upsells |
+| 5 | Quiz lead capture | Free |  - | Top of funnel, feeds all other channels |
+| 6 | TikTok/IG affiliate traffic | Commission to creators |  - | Drives all purchases |
 
 ---
 
@@ -40,7 +40,7 @@
 | Clinical trial matching referral | TrialSpark, Antidote | $20–$50/signup | Rare disease, autoimmune, cancer |
 | Caregiver marketplace referral | Care.com, Honor, Carelinx | $25–$60/signup | Elderly, TBI, ALS, Parkinson's |
 | Medical cannabis referral (legal states) | Leafly, Weedmaps affiliates | $10–$30/signup | Chronic pain, PTSD, MS, fibromyalgia |
-| Paid guide bundle upsell | Internal | $25–$50 | "Complete Condition Kit" — 3 guides bundled |
+| Paid guide bundle upsell | Internal | $25–$50 | "Complete Condition Kit"  - 3 guides bundled |
 | Condition-specific journal/planner (print-on-demand) | Printify, Lulu | $12–$25/sale | Symptom tracker, pain diary, food diary |
 | Online course upsell | Internal (Teachable/Kajabi) | $47–$197 | "Managing [Condition] in 30 Days" course |
 
@@ -58,7 +58,7 @@
 | Mental health app referral | Woebot, Wysa, Youper | $10–$30/signup | Anxiety, depression, OCD |
 | Sober app referral | Sober Grid, I Am Sober, Monument | $15–$40/signup | Addiction niches |
 | Peer support platform referral | Wisdo, TalkLife | $10–$20/signup | All mental health niches |
-| Book referral (Amazon affiliate) | Amazon Associates | 4–8% | "Book list for [condition]" — easy content |
+| Book referral (Amazon affiliate) | Amazon Associates | 4–8% | "Book list for [condition]"  - easy content |
 | Workbook/planner (print-on-demand) | Printify, Lulu | $12–$30/sale | DBT workbook, CBT planner, grief journal |
 | Online therapy course upsell | Internal | $47–$197 | "Anxiety Relief in 30 Days" type content |
 | Group coaching / support circles | Internal (Circle.so) | $19–$49/mo | Live group for each niche community |
@@ -78,11 +78,11 @@
 | Family law attorney referral | Avvo, FindLaw | $50–$200/lead | Child support, custody, DV |
 | Mediation service referral | Virtual mediation platforms | $30–$100/referral | Co-parenting, divorce niches |
 | Online legal document service | LegalZoom, Rocket Lawyer | $20–$50/signup | Prenup, custody agreement, estate docs |
-| DV shelter & legal aid donation drive | NNEDV partners | Revenue share | DV niche — ethical monetization |
+| DV shelter & legal aid donation drive | NNEDV partners | Revenue share | DV niche  - ethical monetization |
 | Childcare marketplace referral | Care.com, Sittercity | $20–$50/signup | Single parent, foster care, NICU niches |
 | Foster care/adoption agency referral | Agency partner agreements | $100–$500/lead | Foster, adoption niches |
 | Parenting app referral | Cozi, OurFamilyWizard | $15–$35/signup | Co-parenting, single parent |
-| Online support group / community | Internal (Circle.so) | $19–$49/mo | All family niches — peer community |
+| Online support group / community | Internal (Circle.so) | $19–$49/mo | All family niches  - peer community |
 | Parenting course upsell | Internal | $47–$197 | "Co-Parenting That Works" type course |
 | Book/resource Amazon affiliate | Amazon Associates | 4–8% | Curated reading lists per niche |
 | Grief support group | Internal | $19/mo | Infant loss, estrangement, divorce grief |
@@ -122,13 +122,13 @@
 | VSO / veteran legal referral | DAV, VFW partnership | Revenue share | Veteran niches |
 | Reentry employment platform referral | 70 Million Jobs, Dave's Killer Bread Foundation | $25–$75/signup | Reentry niches |
 | LGBTQ+ affirming therapist directory | Internal | $29–$99/mo per listing | LGBTQ+ niches |
-| LGBTQ+ legal aid referral | Lambda Legal, ACLU partners | Partnership | LGBTQ+ niches — ethical |
+| LGBTQ+ legal aid referral | Lambda Legal, ACLU partners | Partnership | LGBTQ+ niches  - ethical |
 | Scholarship database referral | Bold.org, Going Merry, Scholly | $10–$30/signup | First-gen, HBCU, college access niches |
 | College access nonprofit partnership | QuestBridge, Posse | Revenue share | First-gen, low-income college niches |
 | Re-entry housing platform referral | Honest Jobs, Reentry.com | $20–$50/signup | Prison reentry, gang exit niches |
 | Food bank / 211 integration | 211.org API | Partnership | Food insecurity, disaster, homeless niches |
 | FEMA application assistance tool | Internal subscription | $9.99 flat fee | Disaster recovery niche |
-| Legal rights card (print-on-demand physical) | Printify | $5–$10/sale | Know Your Rights niches — wallet cards |
+| Legal rights card (print-on-demand physical) | Printify | $5–$10/sale | Know Your Rights niches  - wallet cards |
 | Mutual aid network directory listings | Internal | $0 (community) / donate | Solidarity model for systemic niches |
 | Advocacy organization co-marketing | ACLU, HRC, NAACP | Revenue share / co-brand | Social justice niches |
 | Government program navigation subscription | Internal | $9.99/mo | Helps users track + apply for benefits |
@@ -201,7 +201,7 @@
 
 | Channel | Partner/Platform | Payout | Notes |
 |---|---|---|---|
-| Medicare plan comparison referral | GoHealth, eHealth, SelectQuote | $100–$300/enrollment | All senior niches — highest payout in market |
+| Medicare plan comparison referral | GoHealth, eHealth, SelectQuote | $100–$300/enrollment | All senior niches  - highest payout in market |
 | Medicare supplement referral | Same platforms | $100–$400/enrollment | Medicare supplement niche |
 | Life insurance referral | Mutual of Omaha, AARP partners | $50–$150/signup | Senior financial, estate planning niches |
 | Final expense insurance referral | Globe Life, Foresters | $50–$150/signup | End-of-life, estate planning niches |
@@ -234,7 +234,7 @@
 | Recovery workbook (print-on-demand) | Printify, Lulu | $12–$25/sale | AA/NA step work, CBT for addiction |
 | Employment for people in recovery referral | 70 Million Jobs | $25–$75/signup | Recovery + employment niche |
 | Family therapy referral | BetterHelp, Regain | $65–$150/signup | Codependency, family recovery niches |
-| Health insurance for treatment referral | GoHealth — MHPAEA explained | $50–$200/signup | All addiction niches |
+| Health insurance for treatment referral | GoHealth  - MHPAEA explained | $50–$200/signup | All addiction niches |
 
 ---
 

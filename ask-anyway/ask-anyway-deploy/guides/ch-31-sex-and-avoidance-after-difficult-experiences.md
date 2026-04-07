@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-If intimacy triggers something you can't fully name — if you avoid it or just disconnect during it — this guide is written for that exact experience.
+If intimacy triggers something you can't fully name  - if you avoid it or just disconnect during it  - this guide is written for that exact experience.
 
 ## What Is Happening
 
@@ -36,19 +36,19 @@ Sex becomes avoidant when past experiences created fear-association with sex and
 ## 24-Hour Action Plan
 
 - Right now: without forcing anything, notice what you feel in your body right now. Just notice.
-- Before bed tonight: write down what avoidance looks like for you — the signals, the excuses, the shutdowns.
-- Tomorrow: if you're ready, tell one safe person one honest thing about this. If you're not, that's okay — write it instead.
+- Before bed tonight: write down what avoidance looks like for you  - the signals, the excuses, the shutdowns.
+- Tomorrow: if you're ready, tell one safe person one honest thing about this. If you're not, that's okay  - write it instead.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Sex and Avoidance After Difficult Experiences" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

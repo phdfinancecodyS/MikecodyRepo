@@ -248,7 +248,7 @@ def resource_row(icon, title, url_text, styles):
 
 def build_connection101():
     path = os.path.join(OUT_DIR, "connection-101.pdf")
-    doc  = make_doc(path, "Connection 101 — Ask Anyway")
+    doc  = make_doc(path, "Connection 101  - Ask Anyway")
     s    = make_styles()
     story = []
 
@@ -264,7 +264,7 @@ def build_connection101():
         Spacer(1, 6),
         Paragraph(
             "You've noticed something's off. This guide walks you through exactly "
-            "what to say — and what not to say. Written by a Licensed Clinical Social "
+            "what to say  - and what not to say. Written by a Licensed Clinical Social "
             "Worker and someone who lost a best friend to suicide.",
             s["body"],
         ),
@@ -316,7 +316,7 @@ def build_connection101():
     # Step 3
     story += [
         Paragraph("STEP 3", s["section_label"]),
-        Paragraph("The Words — Ready to Use", s["h2"]),
+        Paragraph("The Words  - Ready to Use", s["h2"]),
 
         Paragraph("OPENING THE DOOR", s["section_label"]),
     ]
@@ -350,7 +350,7 @@ def build_connection101():
         section_divider(),
         Paragraph("STEP 4", s["section_label"]),
         Paragraph("What Kills the Conversation", s["h2"]),
-        Paragraph("Here's what NOT to say — and why it backfires.", s["body"]),
+        Paragraph("Here's what NOT to say  - and why it backfires.", s["body"]),
         Spacer(1, 8),
     ]
 
@@ -400,9 +400,9 @@ def build_connection101():
     story += [
         section_divider(),
         Paragraph("STEP 5", s["section_label"]),
-        Paragraph("If They Confirm — Your Next 3 Steps", s["h2"]),
+        Paragraph("If They Confirm  - Your Next 3 Steps", s["h2"]),
         Spacer(1, 6),
-        step_row("1", "Stay and listen — don't transfer responsibility",
+        step_row("1", "Stay and listen  - don't transfer responsibility",
             "Your job is NOT to be their therapist. Your job is to not end the conversation and help "
             "them connect to professional support. Ask: \"How long have you been feeling this way? "
             "What's been happening?\" Let them talk.", s),
@@ -411,7 +411,7 @@ def build_connection101():
             "Ask: \"Do you have a plan for how you would do it?\" and \"Are you planning to act on "
             "this soon?\" Their answers tell you whether this is today-level or this-week-level urgency.", s),
         Spacer(1, 8),
-        step_row("3", "Connect them to help — together",
+        step_row("3", "Connect them to help  - together",
             "Don't just say \"call this number.\" If it's active crisis, call 988 together from your "
             "phone, or go to the nearest ER together. Don't leave them alone. If it's ongoing struggle, "
             "help them make the call or appointment. Check in tomorrow. Check in next week.", s),
@@ -422,9 +422,9 @@ def build_connection101():
     crisis_bg = HexColor("#0a0000")
     crisis_border = HexColor("#2a0a0a")
     crisis_data = [
-        [Paragraph("IMMEDIATE SUPPORT — 24/7, ALWAYS FREE", s["section_label"])],
-        [Paragraph("📞  Call or text 988 — Suicide & Crisis Lifeline, real people", s["crisis"])],
-        [Paragraph("💬  Text HOME to 741741 — Crisis Text Line, from anywhere", s["crisis"])],
+        [Paragraph("IMMEDIATE SUPPORT  - 24/7, ALWAYS FREE", s["section_label"])],
+        [Paragraph("📞  Call or text 988  - Suicide & Crisis Lifeline, real people", s["crisis"])],
+        [Paragraph("💬  Text HOME to 741741  - Crisis Text Line, from anywhere", s["crisis"])],
         [Paragraph("🚑  Call 911 if someone is in immediate danger", s["crisis"])],
     ]
     ct = Table(crisis_data, colWidths=[PAGE_W - 2*MARGIN])
@@ -464,22 +464,22 @@ def build_connection101():
         Paragraph("FREE RESOURCES", s["section_label"]),
         Paragraph("Always Available", s["h2"]),
         Spacer(1, 6),
-        resource_row("📞", "988 Suicide & Crisis Lifeline", "Call or text 988 — 24/7, English and Spanish", s),
+        resource_row("📞", "988 Suicide & Crisis Lifeline", "Call or text 988  - 24/7, English and Spanish", s),
         Spacer(1, 6),
-        resource_row("💬", "Crisis Text Line", "Text HOME to 741741 — 24/7, from anywhere", s),
+        resource_row("💬", "Crisis Text Line", "Text HOME to 741741  - 24/7, from anywhere", s),
         Spacer(1, 6),
-        resource_row("🧠", "Psychology Today Therapist Finder", "psychologytoday.com — filter by insurance, specialty, distance", s),
+        resource_row("🧠", "Psychology Today Therapist Finder", "psychologytoday.com  - filter by insurance, specialty, distance", s),
         Spacer(1, 6),
-        resource_row("💛", "Open Path Collective", "openpathcollective.org — low-cost therapy sessions", s),
+        resource_row("💛", "Open Path Collective", "openpathcollective.org  - low-cost therapy sessions", s),
         Spacer(1, 6),
-        resource_row("🤝", "NAMI Helpline", "1-800-950-6264 — free support and referrals", s),
+        resource_row("🤝", "NAMI Helpline", "1-800-950-6264  - free support and referrals", s),
         Spacer(1, 24),
     ]
 
     # Disclaimer
     story.append(divider())
     story.append(Paragraph(
-        "This guide is educational — not therapy, not a diagnosis, and reading it doesn't create a clinical relationship. "
+        "This guide is educational  - not therapy, not a diagnosis, and reading it doesn't create a clinical relationship. "
         "If you're in crisis, contact 988 (Suicide & Crisis Lifeline) by calling or texting 988, "
         "or text HOME to 741741 (Crisis Text Line), or call 911. | askaanyway.com",
         s["disclaimer"],
@@ -498,7 +498,7 @@ def build_connection101():
 
 def build_checklist():
     path = os.path.join(OUT_DIR, "daily-checklist.pdf")
-    doc  = make_doc(path, "Daily Wellbeing Checklist — Ask Anyway")
+    doc  = make_doc(path, "Daily Wellbeing Checklist  - Ask Anyway")
     s    = make_styles()
     story = []
 
@@ -544,25 +544,25 @@ def build_checklist():
         "I slept at least 5 hours last night",
         "I've eaten something today (a real meal, not just coffee)",
         "I've had water today",
-        "I've moved my body — even a short walk counts",
+        "I've moved my body  - even a short walk counts",
     ])
 
     story += check_section("MIND", [
         "I'm not carrying something I haven't named yet",
         "My stress level feels manageable today (7 or below out of 10)",
-        "I've been able to focus — not stuck in loops or spiraling",
-        "I'm not numbing out — scrolling, drinking, or avoiding",
+        "I've been able to focus  - not stuck in loops or spiraling",
+        "I'm not numbing out  - scrolling, drinking, or avoiding",
     ])
 
     story += check_section("CONNECTION", [
-        "I've talked to at least one person today — really talked",
+        "I've talked to at least one person today  - really talked",
         "I don't feel alone in what I'm carrying right now",
         "There's at least one person I could call right now if I needed to",
     ])
 
     story += check_section("MOOD", [
         "I feel like I belong somewhere or to someone today",
-        "I have at least one thing I'm looking forward to — even small",
+        "I have at least one thing I'm looking forward to  - even small",
         "I feel like I'm more than just surviving today",
     ])
 
@@ -589,7 +589,7 @@ def build_checklist():
             "That's not nothing.", s["body"])],
         [Paragraph("11 – 13 checked", s["h3"]),
          Paragraph(
-            "<b>Solid day.</b> What made today feel this way? Whatever it is — try to protect that thing.", s["body"])],
+            "<b>Solid day.</b> What made today feel this way? Whatever it is  - try to protect that thing.", s["body"])],
         [Paragraph("14 – 15 checked", s["h3"]),
          Paragraph(
             "<b>Strong day.</b> You've put something in place that's working. Take a second to actually "
@@ -645,8 +645,8 @@ def build_checklist():
     ct_data = [
         [Paragraph("IF YOU'RE STRUGGLING RIGHT NOW", s["section_label"])],
         [Paragraph(
-            "Call or text 988 — Suicide & Crisis Lifeline — 24/7, free, real people.\n"
-            "Text HOME to 741741 — Crisis Text Line — text from anywhere, right now.\n"
+            "Call or text 988  - Suicide & Crisis Lifeline  - 24/7, free, real people.\n"
+            "Text HOME to 741741  - Crisis Text Line  - text from anywhere, right now.\n"
             "Call 911 if you or someone else is in immediate danger.",
             s["crisis"]
         )],
@@ -665,7 +665,7 @@ def build_checklist():
 
     story.append(divider())
     story.append(Paragraph(
-        "This checklist is for personal reflection — not therapy, not a diagnosis. "
+        "This checklist is for personal reflection  - not therapy, not a diagnosis. "
         "If you're in crisis, contact 988 or text HOME to 741741. | askanyway.com",
         s["disclaimer"],
     ))

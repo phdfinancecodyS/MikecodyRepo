@@ -32,6 +32,7 @@ from .engine import (
 )
 from . import metrics
 from . import alerting
+from .llm_responder import llm_status_check
 from .config import (
     GUIDES_BY_ID, GUIDES_BY_DOMAIN, AUDIENCE_BUCKETS, AUDIENCE_QUESTIONS,
     PRODUCTS_BY_ID, PRICING_PROFILES, ACTIVE_PRICING, ETSY_LISTINGS,
@@ -123,14 +124,16 @@ async def health():
 
     # Check 2: LLM provider configured (if LLM mode enabled)
     response_engine = os.environ.get("CCE_RESPONSE_ENGINE", "template")
+    llm_info = llm_status_check()
     if response_engine == "llm":
-        api_key = os.environ.get("CCE_LLM_API_KEY", "")
-        llm_ok = bool(api_key and len(api_key) > 8)
+        llm_ok = llm_info["any_key_configured"]
         checks.append(HealthCheck(name="llm", status="ok" if llm_ok else "degraded"))
         if not llm_ok:
             all_ok = False
     else:
-        checks.append(HealthCheck(name="llm", status="ok"))
+        # Even in template mode, report whether LLM keys are available
+        llm_ok = llm_info["any_key_configured"]
+        checks.append(HealthCheck(name="llm", status="ok" if llm_ok else "no_keys"))
 
     # Check 3: config catalog loaded
     config_ok = len(GUIDES_BY_ID) > 0

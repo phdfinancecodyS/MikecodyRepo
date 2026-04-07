@@ -1,10 +1,10 @@
-# Program Outline: Say Something — The Conversation That Saves Lives
+# Program Outline: Say Something  - The Conversation That Saves Lives
 
 ## Core Thesis
 
-The #1 reason people don't ask about suicide is not lack of caring — it's lack of skill. They don't know the words. They're afraid they'll make it worse. They don't know what to do if the answer is "yes." This program solves all three.
+The #1 reason people don't ask about suicide is not lack of caring  - it's lack of skill. They don't know the words. They're afraid they'll make it worse. They don't know what to do if the answer is "yes." This program solves all three.
 
-**The gap in existing programs:** QPR, AFSP training, NAMI guides — all excellent, all still leave people saying "but what do I *actually say*?" This program starts there.
+**The gap in existing programs:** QPR, AFSP training, NAMI guides  - all excellent, all still leave people saying "but what do I *actually say*?" This program starts there.
 
 ---
 
@@ -19,38 +19,38 @@ The #1 reason people don't ask about suicide is not lack of caring — it's lack
 
 ---
 
-## PART 1 — START IT (Modules 1–3)
+## PART 1  - START IT (Modules 1–3)
 
 ---
 
-### MODULE 1 — Why You Don't Ask (And Why That Has to Change)
+### MODULE 1  - Why You Don't Ask (And Why That Has to Change)
 **Core Outcome:** Learner identifies the exact fears and beliefs that have kept them silent, and understands why those beliefs are wrong.
 
 **The Real Problem This Solves:**
-Most people have had a moment — a friend who seemed "off," a family member who pulled away, a coworker who made a comment — and they didn't say anything. This module is about that moment. Understanding it is the first step to acting differently next time.
+Most people have had a moment  - a friend who seemed "off," a family member who pulled away, a coworker who made a comment  - and they didn't say anything. This module is about that moment. Understanding it is the first step to acting differently next time.
 
 **Key Concepts:**
-- The silence myth: "If I bring it up, I'll plant the idea" — demolished with research
-- The discomfort myth: "It'll make things weird" — what actually happens when you ask
-- The competence myth: "I'm not trained for this" — why you don't need to be a therapist
-- The "they'll be fine" myth — and the cost of assuming
+- The silence myth: "If I bring it up, I'll plant the idea"  - demolished with research
+- The discomfort myth: "It'll make things weird"  - what actually happens when you ask
+- The competence myth: "I'm not trained for this"  - why you don't need to be a therapist
+- The "they'll be fine" myth  - and the cost of assuming
 - The neuroscience of avoidance: why our brains steer us away from hard conversations
 - What the research actually says about asking (it reduces risk, not increases it)
 
-**Worksheet 1:** *What Stops Me* — Personal fear audit; learner writes out their specific barriers and works through each one with guided prompts
+**Worksheet 1:** *What Stops Me*  - Personal fear audit; learner writes out their specific barriers and works through each one with guided prompts
 
 ---
 
-### MODULE 2 — Seeing the Opening: When and How to Initiate
+### MODULE 2  - Seeing the Opening: When and How to Initiate
 **Core Outcome:** Learner can recognize verbal and behavioral cues that signal someone needs to be asked, and can create a safe conversational context to do it.
 
 **Key Concepts:**
-- Warning signs as "invitations" — reframing what they're really communicating
+- Warning signs as "invitations"  - reframing what they're really communicating
 - The difference between warning signs and risk factors (practical, not clinical)
 - Three types of openings: direct verbal cues, behavioral changes, situational context
 - Setting and timing: where/when to have this conversation (private, unhurried, no audience)
 - The body language of the asker: how your energy either opens or closes the door
-- What to do when you're not sure — the "I've been thinking about you" bridge
+- What to do when you're not sure  - the "I've been thinking about you" bridge
 
 **Real-world scenarios covered:**
 - The friend who posts something concerning at midnight
@@ -58,35 +58,35 @@ Most people have had a moment — a friend who seemed "off," a family member who
 - The coworker who made a dark joke and laughed it off
 - The teenager who seems unreachable
 
-**Worksheet 2:** *My Scenario Map* — Learner identifies 1–2 real people in their life who may need this conversation and thinks through the who/when/where/how for each
+**Worksheet 2:** *My Scenario Map*  - Learner identifies 1–2 real people in their life who may need this conversation and thinks through the who/when/where/how for each
 
 ---
 
-### MODULE 3 — The Words: How to Ask the Question Directly
+### MODULE 3  - The Words: How to Ask the Question Directly
 **Core Outcome:** Learner can ask about suicide directly, in plain language, without flinching.
 
 **This is the module most programs skip.** QPR teaches you to ask but doesn't spend enough time on the actual language and what happens in your body when you say the words.
 
 **Key Concepts:**
 - Why indirect questions fail ("Are you okay?" gives people an easy out)
-- The direct ask: "Are you thinking about suicide?" — exactly this, explained word-by-word
+- The direct ask: "Are you thinking about suicide?"  - exactly this, explained word-by-word
 - Why "killing yourself" or "ending your life" are acceptable alternatives
-- What NOT to say: "You're not going to do anything stupid, are you?" — and why these close doors
-- What happens after you ask — the three responses you'll get and how to handle each:
+- What NOT to say: "You're not going to do anything stupid, are you?"  - and why these close doors
+- What happens after you ask  - the three responses you'll get and how to handle each:
   1. "No, I'm fine" (with body language that says otherwise)
   2. "I don't know" / "Maybe" / deflection
-  3. "Yes" — this is where Part 2 begins
+  3. "Yes"  - this is where Part 2 begins
 - Practicing the words: why rehearsal matters and how to do it
 
-**Worksheet 3:** *Say It Out Loud* — Scripted practice scenarios; learner writes and reviews their own version of the ask for three different people in their life
+**Worksheet 3:** *Say It Out Loud*  - Scripted practice scenarios; learner writes and reviews their own version of the ask for three different people in their life
 
 ---
 
-## PART 2 — STAY IN IT (Modules 4–6)
+## PART 2  - STAY IN IT (Modules 4–6)
 
 ---
 
-### MODULE 4 — When They Say Yes: Don't Panic, Don't Leave
+### MODULE 4  - When They Say Yes: Don't Panic, Don't Leave
 **Core Outcome:** Learner knows what to do in the first 60 seconds after someone confirms they are thinking about suicide.
 
 **This is the moment most people haven't prepared for.** The conversation either continues or collapses based on what happens right here.
@@ -96,32 +96,32 @@ Most people have had a moment — a friend who seemed "off," a family member who
 - What's happening in your nervous system (and theirs) in this moment
 - The three things NOT to do: minimize, catastrophize, or immediately transfer responsibility
 - The response that keeps them talking: "Thank you for telling me. I want to understand."
-- Containment vs. escalation: reading the room — is this a crisis right now or a disclosure?
+- Containment vs. escalation: reading the room  - is this a crisis right now or a disclosure?
 - The difference between acute risk (immediate danger) and chronic ideation (ongoing struggle)
 - When you call 911 vs. when you stay in the conversation (practical guidelines, not clinical protocol)
 
-**Worksheet 4:** *My Crisis Response Plan* — What will I say in the first 60 seconds? Learner writes and commits to their specific response before they ever need it
+**Worksheet 4:** *My Crisis Response Plan*  - What will I say in the first 60 seconds? Learner writes and commits to their specific response before they ever need it
 
 ---
 
-### MODULE 5 — Listening That Holds People
+### MODULE 5  - Listening That Holds People
 **Core Outcome:** Learner can use specific listening skills that keep a person at risk engaged and talking.
 
 **Key Concepts:**
 - Why "I know how you feel" is the most dangerous phrase in this conversation
 - Validation vs. agreement: "I hear how much pain you're in" does not mean "I agree you should die"
 - Reflective listening: how to mirror back without parroting
-- The power of silence — when to let the pause breathe
+- The power of silence  - when to let the pause breathe
 - Open-ended questions that deepen the conversation ("What's been making it feel impossible lately?")
 - Following their lead vs. directing the conversation
-- Recognizing ambivalence — the part of them that reached out is the part you're talking to
+- Recognizing ambivalence  - the part of them that reached out is the part you're talking to
 - How long should this conversation be? (practical guidance)
 
-**Worksheet 5:** *Listening Skills Practice Sheet* — Scenarios with "wrong" responses and blank space for learner to write better alternatives; builds muscle memory
+**Worksheet 5:** *Listening Skills Practice Sheet*  - Scenarios with "wrong" responses and blank space for learner to write better alternatives; builds muscle memory
 
 ---
 
-### MODULE 6 — What NOT to Say (And What to Say Instead)
+### MODULE 6  - What NOT to Say (And What to Say Instead)
 **Core Outcome:** Learner can recognize and correct the instinctual responses that close down the conversation or increase shame.
 
 **This module is one of the highest-value for TikTok content.** Every "don't say this, say this instead" video performs well.
@@ -136,15 +136,15 @@ Most people have had a moment — a friend who seemed "off," a family member who
 | "You just need to think positive" | Toxic positivity | Simply stay present and listen |
 | "Other people have it worse" | Invalidation | Nothing. Never say this. |
 
-**Worksheet 6:** *My Script Corrections* — Learner reflects on things they have said (or would say) and rewrites them using the frameworks from Modules 5 and 6
+**Worksheet 6:** *My Script Corrections*  - Learner reflects on things they have said (or would say) and rewrites them using the frameworks from Modules 5 and 6
 
 ---
 
-## PART 3 — WHAT NOW (Modules 7–9)
+## PART 3  - WHAT NOW (Modules 7–9)
 
 ---
 
-### MODULE 7 — Understanding What You're Dealing With (Without Being a Clinician)
+### MODULE 7  - Understanding What You're Dealing With (Without Being a Clinician)
 **Core Outcome:** Learner can have a plain-language "risk conversation" to understand the seriousness of the situation and what level of response is needed.
 
 **Key Concepts:**
@@ -152,25 +152,25 @@ Most people have had a moment — a friend who seemed "off," a family member who
   1. **Plan:** "Do you have a plan for how you would do it?"
   2. **Access:** "Do you have access to the means?"
   3. **Intent:** "Are you planning to act on this?"
-- What the answers mean — a practical (not clinical) guide to what level of response each answer warrants
+- What the answers mean  - a practical (not clinical) guide to what level of response each answer warrants
 - Means restriction: how to have the access conversation without judgement (firearms, medications, etc.)
-- Timeframe: "Have you thought about when?" — why this matters
+- Timeframe: "Have you thought about when?"  - why this matters
 - What changes "concerning but not immediate" to "we need to act right now"
 - You are not diagnosing. You are gathering information to help.
 
-**Worksheet 7:** *My Risk Conversation Guide* — A reference card with the three questions, follow-up prompts, and response guidelines
+**Worksheet 7:** *My Risk Conversation Guide*  - A reference card with the three questions, follow-up prompts, and response guidelines
 
 ---
 
-### MODULE 8 — Safety Planning Together
-**Core Outcome:** Learner can walk someone through building a basic safety plan collaboratively — not just hand them a form.
+### MODULE 8  - Safety Planning Together
+**Core Outcome:** Learner can walk someone through building a basic safety plan collaboratively  - not just hand them a form.
 
 **This is where clinical expertise translates most powerfully.** A safety plan as a conversation, not a checklist.
 
 **Key Concepts:**
 - What a safety plan is and why it's different from a "no-harm contract" (which doesn't work)
-- The Stanley-Brown Safety Planning Intervention — adapted for lay helpers
-- How to build it *with* them, not *for* them — collaboration is what makes it stick
+- The Stanley-Brown Safety Planning Intervention  - adapted for lay helpers
+- How to build it *with* them, not *for* them  - collaboration is what makes it stick
 - The 6 components walked through conversationally:
   1. Recognizing personal warning signs ("When do you notice it getting worse?")
   2. Internal coping strategies ("What can you do by yourself to get through a rough moment?")
@@ -181,28 +181,28 @@ Most people have had a moment — a friend who seemed "off," a family member who
 - Where the plan lives and how to make sure they can access it in a crisis
 - The follow-up: "Can I check in with you tomorrow?"
 
-**Worksheet 8:** *Safety Planning Conversation Guide* — Side-by-side format: what you say as the helper, space for them to fill in their answers. Designed to be done together, not alone.
+**Worksheet 8:** *Safety Planning Conversation Guide*  - Side-by-side format: what you say as the helper, space for them to fill in their answers. Designed to be done together, not alone.
 
 ---
 
-### MODULE 9 — Getting Them Connected and Taking Care of Yourself
+### MODULE 9  - Getting Them Connected and Taking Care of Yourself
 **Core Outcome:** Learner can bridge the person to professional help without dropping the relationship, and can manage their own emotional aftermath.
 
 **Connecting to Help:**
-- The "warm handoff" — how to not just give them a number but help them take the next step
+- The "warm handoff"  - how to not just give them a number but help them take the next step
 - Levels of care in plain language: calling 988 vs. going to an ER vs. making an outpatient appointment
-- What to do if they refuse help — and how to hold the line on safety without ultimatums
+- What to do if they refuse help  - and how to hold the line on safety without ultimatums
 - Involuntary hospitalization: what it is, when it's appropriate, how to initiate it (and the real costs/benefits)
 - Following up after the conversation: the check-in, the text, showing you meant "I'm here"
 
 **Caring for Yourself After:**
-- Secondary traumatic stress — what it looks like after a hard conversation
+- Secondary traumatic stress  - what it looks like after a hard conversation
 - You are not their therapist. You are not responsible for their survival.
 - Debriefing with someone you trust (without breaking confidentiality)
 - When to get your own support
-- What carrying this looks like over time — the long game of being someone safe
+- What carrying this looks like over time  - the long game of being someone safe
 
-**Worksheet 9:** *My After-Conversation Plan* — What will I do for myself after a conversation like this? Learner identifies 3 self-care actions, 1 person to debrief with, and their own "when to get help" threshold
+**Worksheet 9:** *My After-Conversation Plan*  - What will I do for myself after a conversation like this? Learner identifies 3 self-care actions, 1 person to debrief with, and their own "when to get help" threshold
 
 ---
 
@@ -230,7 +230,7 @@ Most people have had a moment — a friend who seemed "off," a family member who
 | AFSP "More Than Sad" | Recognition + general guidance | Practical conversation scripts |
 | safeTALK | Signs + basic referral | Depth of the conversation itself |
 | Crisis Text Line training | Text-based response | In-person conversation mechanics |
-| **This Program** | All of the above as a practical, scripted, rehearsable guide | — |
+| **This Program** | All of the above as a practical, scripted, rehearsable guide |  - |
 
 ---
 

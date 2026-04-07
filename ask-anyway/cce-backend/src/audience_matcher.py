@@ -28,31 +28,35 @@ _BUCKET_PATTERNS: List[Tuple[str, re.Pattern]] = [
         r"\b(nurse|nursing|rn\b|lpn\b|cna\b|doctor|physician|surgeon|"
         r"healthcare\s*worker|hospital|icu\b|er\b|emergency\s*room|"
         r"medical\s*(?:field|profession)|pharmacist|radiolog\w*|"
-        r"dental\s*hygien\w*|pa\-c|np\b|therapist)\b", re.I)),
+        r"dental\s*hygien\w*|pa\-c|np\b|therapist|"
+        r"surgical\s*tech|residency|attending|nursing\s*(?:student|school))\b", re.I)),
     ("educators", re.compile(
         r"\b(teacher|teaching|educator|professor|school\s*counselor|"
         r"principal|classroom|students?\b.*(?:teach|school)|"
         r"special\s*ed\w*|paraprofessional|tutor(?:ing)?)\b", re.I)),
     ("social-workers-counselors", re.compile(
-        r"\b(social\s*worker|counselor|lcsw|lmsw|lpc|lmft|"
-        r"case\s*manager|mental\s*health\s*professional|"
-        r"clinical\s*(?:work|practice)|therapist.*(?:myself|burnout))\b", re.I)),
+        r"\b(social\s*worker|counselor|lcsw|lmsw|msw|lpc|lmft|"
+        r"case\s*manager|case\s*load|mental\s*health\s*professional|"
+        r"clinical\s*(?:work|practice)|therapist.*(?:myself|burnout)|"
+        r"compassion\s*fatigue)\b", re.I)),
     ("christian", re.compile(
         r"\b(christian|church|pray\w*|god\b|jesus|faith.*(?:important|part)|"
         r"bible|scripture|pastor|minister|worship|believer)\b", re.I)),
     ("faith-beyond-christian", re.compile(
         r"\b(muslim|jewish|hindu|buddhist|sikh|spiritual|mosque|synagogue|"
         r"temple|meditation.*(?:practice|spiritual)|yoga.*spiritual|"
-        r"faith\b(?!.*christian))\b", re.I)),
+        r"faith\b(?!.*christian)|mindfulness|pagan|wiccan)\b", re.I)),
     ("lgbtq", re.compile(
         r"\b(lgbtq?\+?|gay|lesbian|bisexual|transgender|trans\b|"
-        r"nonbinary|non[\-\s]binary|queer|coming\s*out|"
-        r"gender\s*identity|sexual\s*orientation|same[\-\s]sex|"
-        r"partner.*(?:he|she|they)|pansexual|asexual)\b", re.I)),
+        r"nonbinary|non[\-\s]binary|queer|coming\s*out|closeted|"
+        r"gender\s*(?:identity|fluid|non\s*conform)|sexual\s*orientation|same[\-\s]sex|"
+        r"partner.*(?:he|she|they)|pansexual|asexual|ace\s*spec|"
+        r"deadname|they[/\-\s]them)\b", re.I)),
     ("neurodivergent", re.compile(
         r"\b(neurodivergent|adhd|autism|autistic|on\s*the\s*spectrum|"
-        r"sensory\s*(?:overload|issues)|executive\s*function|"
-        r"dyslexia|dyslexic|processing\s*(?:disorder|speed))\b", re.I)),
+        r"sensory\s*(?:overload|issues)|executive\s*(?:function|dysfunction)|"
+        r"dyslexia|dyslexic|processing\s*(?:disorder|speed)|"
+        r"neurospicy|spicy\s*brain|dopamine|hyperfocus|stimming)\b", re.I)),
     ("bipoc-racial-trauma", re.compile(
         r"\b(bipoc|racial\s*trauma|racism|microaggression|"
         r"black\s*(?:man|woman|person|community)|"
@@ -60,10 +64,11 @@ _BUCKET_PATTERNS: List[Tuple[str, re.Pattern]] = [
         r"asian\s*(?:american|hate)|indigenous|native\s*american|"
         r"generational\s*trauma|systemic\s*racism)\b", re.I)),
     ("young-adult-gen-z", re.compile(
-        r"\b(gen[\-\s]?z|college\s*student|university|dorm|"
+        r"\b(gen[\-\s]?z|college\s*student|university|dorm|campus|"
         r"just\s*graduated|twenties|early\s*20s|"
         r"high\s*school(?:er)?|freshman|sophomore|junior\s*year|senior\s*year|"
-        r"i(?:'m|\s+am)\s*(?:18|19|2[0-5])|young\s*adult)\b", re.I)),
+        r"i(?:'m|\s+am)\s*(?:18|19|2[0-5])|young\s*adult|"
+        r"adulting|moved\s*back\s*(?:home|in\s*with)|gap\s*year)\b", re.I)),
     ("single-parent", re.compile(
         r"\b(single\s*(?:mom|dad|parent|mother|father)|"
         r"solo\s*parent|only\s*parent|co[\-\s]?parent|"
@@ -73,7 +78,8 @@ _BUCKET_PATTERNS: List[Tuple[str, re.Pattern]] = [
         r"\b(recovery|sober|sobriety|clean\b.*(?:month|year|day)|"
         r"aa\b|na\b|12[\-\s]?step|relaps\w*|addict\w*|"
         r"substance\s*(?:use|abuse)|alcoholi\w*|"
-        r"drinking\s*(?:problem|too\s*much))\b", re.I)),
+        r"drinking\s*(?:problem|too\s*much)|"
+        r"sober\s*curious|california\s*sober)\b", re.I)),
     ("grief-loss", re.compile(
         r"\b(grief|griev\w*|lost\s*(?:my|a)\s*(?:mom|dad|parent|child|son|daughter|"
         r"wife|husband|partner|friend|brother|sister|sibling|baby)|"
@@ -82,14 +88,16 @@ _BUCKET_PATTERNS: List[Tuple[str, re.Pattern]] = [
     ("chronic-illness-chronic-pain", re.compile(
         r"\b(chronic\s*(?:pain|illness|disease|fatigue|condition)|"
         r"fibromyalgia|autoimmune|lupus|crohn|ms\b|"
-        r"multiple\s*sclerosis|endometriosis|disabled|disability|"
+        r"multiple\s*sclerosis|endometriosis|endo\b|disabled|disability|"
         r"pain\s*(?:every\s*day|all\s*the\s*time|constant)|"
-        r"spoon\s*theory|flair[\-\s]?up|flare[\-\s]?up)\b", re.I)),
+        r"spoon\s*theory|spoonie|flair[\-\s]?up|flare[\-\s]?up|"
+        r"brain\s*fog|pots\b|ehlers|eds\b)\b", re.I)),
     ("high-stress-jobs", re.compile(
         r"\b(high[\-\s]?stress\s*(?:job|work|career)|corporate\s*burnout|"
         r"wall\s*street|finance\s*(?:job|work)|lawyer|attorney|"
         r"executive|ceo|startup|entrepreneur|"
-        r"working\s*(?:80|60|70)\s*hours|burnout.*(?:work|job|career))\b", re.I)),
+        r"working\s*(?:80|60|70)\s*hours|burnout.*(?:work|job|career)|"
+        r"type[\-\s]?a|grind\s*culture)\b", re.I)),
 ]
 
 # Opt-out patterns: user explicitly wants general content

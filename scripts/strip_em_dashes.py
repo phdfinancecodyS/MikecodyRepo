@@ -2,8 +2,8 @@
 """
 Strip em dashes from all markdown content files.
 Replaces:
-  - " — " (space-em-space) with ": "
-  - "—" (bare em dash) with ": "
+  - "  - " (space-em-space) with ": "
+  - " -" (bare em dash) with ": "
   - HTML entity "&mdash;" with ": "
 """
 import os
@@ -16,7 +16,7 @@ CONTENT_DIR = Path(__file__).resolve().parent.parent / "content"
 def fix_file(path: Path) -> int:
     text = path.read_text(encoding="utf-8")
     # Replace space-padded em dash first, then bare em dash, then HTML entity
-    new_text = re.sub(r'\s*—\s*', ': ', text)
+    new_text = re.sub(r'\s* -\s*', ': ', text)
     new_text = re.sub(r'&mdash;', ': ', new_text)
     if new_text == text:
         return 0

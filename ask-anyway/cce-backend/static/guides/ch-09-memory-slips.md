@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-Forgetting things you just heard, losing track mid-sentence, walking into a room with no idea why — that's not you losing it. It's stress doing what stress does to memory.
+Forgetting things you just heard, losing track mid-sentence, walking into a room with no idea why  - that's not you losing it. It's stress doing what stress does to memory.
 
 ## What Is Happening
 
@@ -37,15 +37,15 @@ Memory slips happen because your working memory is fried. Your brain is stressed
 
 - Right now: set one external reminder for the most important thing you need to do today. Don't trust your brain on this one.
 - Before bed tonight: write tomorrow's top three priorities on paper, not your phone.
-- Tomorrow: when you forget something mid-task, pause and ask "am I overloaded or distracted?" — the answer changes the fix.
+- Tomorrow: when you forget something mid-task, pause and ask "am I overloaded or distracted?"  - the answer changes the fix.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
-- What kind of memory is failing — short-term, names, tasks, conversations?
-- When do the slips get worse — stress, fatigue, overwhelm, or all of those?
+- What kind of memory is failing  - short-term, names, tasks, conversations?
+- When do the slips get worse  - stress, fatigue, overwhelm, or all of those?
 - How does it make you feel when you forget something important?
 - What workaround have you tried that actually helps?
 - Is there a medical component here (TBI, medication, sleep) worth checking?
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

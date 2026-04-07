@@ -73,7 +73,7 @@
       "note": "sms_enrollment only fires if lead opted in."
     },
     "free_crisis_resources": {
-      "description": "Crisis support resources — no payment, no delivery action.",
+      "description": "Crisis support resources  - no payment, no delivery action.",
       "actions": [],
       "note": "free_crisis_resources never enters the Stripe checkout flow."
     }

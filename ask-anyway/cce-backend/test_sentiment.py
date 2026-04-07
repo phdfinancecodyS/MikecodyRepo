@@ -111,7 +111,7 @@ tests = [
     ("im thriving", "positive"),
     ("feeling hopeful", "positive"),
 
-    # === SOFT POSITIVES (should be neutral — routes to check-in) ===
+    # === SOFT POSITIVES (should be neutral  - routes to check-in) ===
     ("im fine", "neutral"),
     ("im okay", "neutral"),
     ("alright", "neutral"),

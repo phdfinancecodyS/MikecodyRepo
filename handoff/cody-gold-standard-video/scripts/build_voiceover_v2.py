@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate v2 voiceover clips — punchy, short, TikTok-paced.
+Generate v2 voiceover clips  - punchy, short, TikTok-paced.
 """
 import asyncio
 import json

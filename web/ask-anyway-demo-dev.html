@@ -2,14 +2,14 @@
 <html lang="en">
 <!--
   ╔══════════════════════════════════════════════════════════════════╗
-  ║  ASK ANYWAY — INTERACTIVE DEMO (Developer Edition)              ║
+  ║  ASK ANYWAY  - INTERACTIVE DEMO (Developer Edition)              ║
   ║  Last updated: March 2026                                       ║
   ╚══════════════════════════════════════════════════════════════════╝
 
-  FOR THE DEVELOPER — READ THIS FIRST
+  FOR THE DEVELOPER  - READ THIS FIRST
   ─────────────────────────────────────
   This single HTML file is a fully working prototype of the Ask Anyway
-  quiz funnel + resource catalog. It runs with ZERO dependencies —
+  quiz funnel + resource catalog. It runs with ZERO dependencies  -
   no build step, no server, no npm. Just open in a browser.
 
   WHAT THIS FILE DOES:
@@ -71,7 +71,7 @@
   - Button behavior → `onclick` handlers in the HTML
 
   PRODUCTION NOTES:
-  - This prototype uses onclick handlers and inline JS — production
+  - This prototype uses onclick handlers and inline JS  - production
     should use the Next.js App Router endpoints defined in web/api/
   - Stripe checkout, email capture, SMS enrollment are visual-only here
   - The 17 audience editions exist as real markdown files in content/
@@ -90,7 +90,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ask Anyway — Mental Health Check-In</title>
+<title>Ask Anyway  - Mental Health Check-In</title>
 <style>
   /*
    * ══════════════════════════════════════════════════════
@@ -137,7 +137,7 @@
   /*
    * VIEW SWITCHING
    * ─────────────
-   * The app has two "views" — quiz and catalog.
+   * The app has two "views"  - quiz and catalog.
    * Only one is visible at a time via the .active class.
    * switchView() in JS toggles between them.
    */
@@ -190,7 +190,7 @@
    * BUTTONS
    * ───────
    * .btn-primary = green (main CTA)
-   * .btn-crisis = red (crisis CTA — call 988, etc.)
+   * .btn-crisis = red (crisis CTA  - call 988, etc.)
    * .btn-yellow / .btn-orange = risk-band colored CTAs
    * .btn-block = full width
    * .btn-text = link-style button (skip/dismiss)
@@ -229,14 +229,14 @@
   .track-heading { text-align: center; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; padding-top: 32px; }
   .track-subhead { text-align: center; font-size: 1rem; color: var(--muted); margin-bottom: 28px; }
 
-  /* Progress bar — fills as user advances through questions */
+  /* Progress bar  - fills as user advances through questions */
   .progress-bar {
     background: var(--border); height: 6px; border-radius: 3px; margin-bottom: 32px; overflow: hidden;
   }
   .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.4s ease; }
   .question-count { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
 
-  /* Question card — contains prompt + options */
+  /* Question card  - contains prompt + options */
   .question-card {
     background: var(--card); border-radius: var(--radius); padding: 32px 28px;
     box-shadow: var(--shadow); margin-bottom: 24px;
@@ -275,7 +275,7 @@
 
   /*
    * RESULT CARD
-   * The final result — color-coded by risk band.
+   * The final result  - color-coded by risk band.
    * Contains headline, body text, support note.
    */
   .result-card {
@@ -325,7 +325,7 @@
   /*
    * CRISIS FOOTER
    * 988 + Crisis Text Line links. Present on EVERY screen.
-   * This is a non-negotiable safety requirement — never remove these.
+   * This is a non-negotiable safety requirement  - never remove these.
    */
   .crisis-footer {
     background: #f5f5f5; border-radius: var(--radius); padding: 20px 24px;
@@ -335,7 +335,7 @@
   .crisis-footer a { color: var(--red); font-weight: 600; text-decoration: none; margin: 0 8px; }
   .crisis-footer a:hover { text-decoration: underline; }
 
-  /* Score badge — colored pill showing risk band label */
+  /* Score badge  - colored pill showing risk band label */
   .score-badge {
     display: inline-block; padding: 4px 12px; border-radius: 20px;
     font-size: 0.8rem; font-weight: 600; margin-bottom: 16px;
@@ -345,7 +345,7 @@
   .badge-high { background: var(--orange); color: #fff; }
   .badge-critical { background: var(--red); color: #fff; }
 
-  /* Product card — shown in "More tools" section of results */
+  /* Product card  - shown in "More tools" section of results */
   .product-card {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 20px; background: var(--bg); border: 1px solid var(--border);
@@ -355,7 +355,7 @@
   .product-card .product-name { font-weight: 600; font-size: 1rem; }
   .product-card .product-price { color: var(--muted); font-size: 0.9rem; }
 
-  /* Matched guide card — the primary recommendation */
+  /* Matched guide card  - the primary recommendation */
   .matched-guide-card {
     background: var(--card); border: 2px solid var(--accent); border-radius: var(--radius);
     padding: 28px; margin-bottom: 20px; text-align: center;
@@ -372,7 +372,7 @@
     font-size: 1.3rem; font-weight: 700; color: var(--accent); margin-bottom: 16px;
   }
 
-  /* Crisis button stack — large tap targets for phone */
+  /* Crisis button stack  - large tap targets for phone */
   .crisis-btn-stack { margin: 20px 0; }
   .crisis-btn-stack a {
     display: block; text-align: center; padding: 20px; margin-bottom: 12px;
@@ -486,7 +486,7 @@
 
   /*
    * GUIDE GRID
-   * Responsive CSS Grid — 2 columns on desktop, 1 on mobile.
+   * Responsive CSS Grid  - 2 columns on desktop, 1 on mobile.
    * Each card is built dynamically by renderGuideCard().
    */
   .guide-grid {
@@ -515,7 +515,7 @@
   }
 
   /*
-   * DOMAIN TAGS — Color-coded labels for each topic area.
+   * DOMAIN TAGS  - Color-coded labels for each topic area.
    * 8 domains map to 8 colors. Add new domains here.
    */
   .guide-domain-tag {
@@ -671,14 +671,14 @@
   <div id="screen-landing" class="screen active">
     <div class="landing-hero">
       <h1>How Are You Really Doing?</h1>
-      <p>A free, private mental health check-in. Takes about 2 minutes. No diagnosis — just a real snapshot, the right next step, and a resource matched to your situation.</p>
+      <p>A free, private mental health check-in. Takes about 2 minutes. No diagnosis  - just a real snapshot, the right next step, and a resource matched to your situation.</p>
     </div>
     <div class="clinically-informed">
       <strong>Clinically informed, not clinical advice.</strong><br>
       This check-in was built with licensed clinical expertise (LCSW). It is not a diagnosis, not therapy, and not a substitute for professional treatment.
     </div>
     <ul class="landing-features">
-      <li>Completely free — no account needed</li>
+      <li>Completely free  - no account needed</li>
       <li>Results shown immediately</li>
       <li>Matched to a resource built for your situation</li>
       <li>Crisis resources available no matter your result</li>
@@ -690,8 +690,8 @@
     </div>
     <div class="crisis-footer">
       <p>If you or someone you know is in crisis right now, skip the check-in:</p>
-      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+      <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
     </div>
   </div>
 
@@ -718,8 +718,8 @@
 
     <div class="crisis-footer">
       <p>Crisis resources are always free and available:</p>
-      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+      <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
     </div>
   </div>
 
@@ -742,8 +742,8 @@
     </div>
     <div class="crisis-footer" style="margin-top:32px;">
       <p>Need help right now?</p>
-      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+      <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
     </div>
   </div>
 
@@ -761,23 +761,23 @@
       <p id="transition-body"></p>
     </div>
 
-    <!-- Crisis resources for high risk — displayed on transition -->
+    <!-- Crisis resources for high risk  - displayed on transition -->
     <div id="transition-crisis" class="cta-section" style="display:none;">
-      <h3>Free crisis support — always available</h3>
+      <h3>Free crisis support  - always available</h3>
       <div class="crisis-btn-stack">
-        <a href="tel:988" style="background:var(--orange);">📞 Call 988 — Suicide &amp; Crisis Lifeline</a>
-        <a href="sms:741741&body=HOME" style="background:var(--orange);">💬 Text HOME to 741741 — Crisis Text Line</a>
+        <a href="tel:988" style="background:var(--orange);">📞 Call 988  - Suicide &amp; Crisis Lifeline</a>
+        <a href="sms:741741&body=HOME" style="background:var(--orange);">💬 Text HOME to 741741  - Crisis Text Line</a>
       </div>
     </div>
 
     <div style="text-align:center; margin-top: 24px;">
-      <button class="btn btn-primary btn-block" onclick="startMatching()">Continue — Find My Resource →</button>
+      <button class="btn btn-primary btn-block" onclick="startMatching()">Continue  - Find My Resource →</button>
     </div>
 
     <div class="crisis-footer">
       <p>Crisis resources are always free and available:</p>
-      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+      <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
     </div>
   </div>
 
@@ -803,15 +803,15 @@
     </div>
     <div class="crisis-footer" style="margin-top:32px;">
       <p>Need help right now?</p>
-      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+      <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════
        SCREEN 6: RESULT
        ═══════════════════════════════════════════
-       Final screen — dynamically assembled based on risk band.
+       Final screen  - dynamically assembled based on risk band.
 
        LAYOUT ORDER BY RISK LEVEL:
        ┌──────────────┬────────────────────────────────────────┐
@@ -841,8 +841,8 @@
     <div id="crisis-cta-section" class="cta-section" style="display:none;">
       <h3 id="crisis-cta-heading"></h3>
       <div class="crisis-btn-stack">
-        <a href="tel:988" id="crisis-btn-988">📞 Call 988 — Suicide &amp; Crisis Lifeline</a>
-        <a href="sms:741741&body=HOME" id="crisis-btn-text">💬 Text HOME to 741741 — Crisis Text Line</a>
+        <a href="tel:988" id="crisis-btn-988">📞 Call 988  - Suicide &amp; Crisis Lifeline</a>
+        <a href="sms:741741&body=HOME" id="crisis-btn-text">💬 Text HOME to 741741  - Crisis Text Line</a>
         <a href="tel:911" id="crisis-btn-911" style="display:none;">🚨 Call 911</a>
       </div>
     </div>
@@ -859,7 +859,7 @@
       <h3 id="matched-guide-title"></h3>
       <div class="match-audience" id="matched-guide-audience"></div>
       <div class="match-price" id="matched-guide-price"></div>
-      <button class="btn btn-primary btn-block" id="matched-guide-cta">Get My Guide — $9</button>
+      <button class="btn btn-primary btn-block" id="matched-guide-cta">Get My Guide  - $9</button>
     </div>
 
     <!-- Email / Text capture (optional lead capture) -->
@@ -894,8 +894,8 @@
 
     <div class="crisis-footer" id="result-crisis-footer">
       <p>Crisis resources are always free and available:</p>
-      <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-      <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+      <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+      <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
     </div>
     <div class="disclaimer">This check-in is clinically informed but is not clinical advice, a diagnosis, or a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988, or text HOME to 741741 to reach the Crisis Text Line.</div>
   </div>
@@ -916,12 +916,12 @@
 
   <div class="catalog-header">
     <h1>All Resources</h1>
-    <p>Browse all 79 guides — each available in 17 audience-specific editions. Search by keyword, filter by topic or type.</p>
+    <p>Browse all 79 guides  - each available in 17 audience-specific editions. Search by keyword, filter by topic or type.</p>
     <!-- switchView('quiz') → back to quiz -->
     <a class="quiz-link" onclick="switchView('quiz')">← Not sure where to start? Take the quiz</a>
   </div>
 
-  <!-- FILTERS — oninput/onchange triggers applyFilters() to re-render grid -->
+  <!-- FILTERS  - oninput/onchange triggers applyFilters() to re-render grid -->
   <div class="filter-bar">
     <input type="text" class="search-input" id="search" placeholder="Search guides..." oninput="applyFilters()">
     <div class="filter-row">
@@ -943,9 +943,9 @@
         <label>Product Type</label>
         <select class="filter-select" id="filter-offer" onchange="applyFilters()">
           <option value="all">All types</option>
-          <option value="guide">Guide — $9</option>
-          <option value="kit">Kit — $19</option>
-          <option value="bundle">Bundle — $34</option>
+          <option value="guide">Guide  - $9</option>
+          <option value="kit">Kit  - $19</option>
+          <option value="bundle">Bundle  - $34</option>
         </select>
       </div>
       <div class="filter-group">
@@ -984,8 +984,8 @@
 
   <div class="crisis-footer">
     <p>Crisis resources are always free and available:</p>
-    <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-    <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+    <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
   </div>
   <div class="disclaimer">This content is clinically informed but is not clinical advice, a diagnosis, or a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988, or text HOME to 741741 to reach the Crisis Text Line.</div>
 
@@ -994,7 +994,7 @@
 
 <script>
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  JAVASCRIPT — All quiz + catalog logic                          ║
+   ║  JAVASCRIPT  - All quiz + catalog logic                          ║
    ╚══════════════════════════════════════════════════════════════════╝
 
    ORGANIZATION:
@@ -1037,7 +1037,7 @@ function switchView(target) {
 }
 
 /* ════════════════════════════════════════════════════════════
-   2. SHARED GUIDE CATALOG — 79 guides
+   2. SHARED GUIDE CATALOG  - 79 guides
    ════════════════════════════════════════════════════════════
    This array is the source of truth for guide data in the demo.
    In production, this comes from quiz/base-guide-catalog.json.
@@ -1048,7 +1048,7 @@ function switchView(target) {
    - domain: one of 8 topic domains (used for filtering + matching)
    - hints: chapter codes for quiz matching (e.g., ["ch05"] means
      this guide matches when Q4 answer references ch05)
-   - offer: product tier — "guide" ($9), "kit" ($19), or "bundle" ($34)
+   - offer: product tier  - "guide" ($9), "kit" ($19), or "bundle" ($34)
    - price: dollar amount
 
    TO ADD A NEW GUIDE:
@@ -1155,7 +1155,7 @@ const guideCatalog = [
 ];
 
 /* ════════════════════════════════════════════════════════════
-   3. RISK QUIZ QUESTIONS — Two per track
+   3. RISK QUIZ QUESTIONS  - Two per track
    ════════════════════════════════════════════════════════════
    Two tracks: "self" (checking in on yourself) and "someone"
    (worried about someone else).
@@ -1172,7 +1172,7 @@ const guideCatalog = [
    TO MODIFY QUESTIONS:
    - Edit the prompt text and option labels/scores below
    - Keep exactly 4 options per question scored 0–3
-   - Q2 position matters for override logic — don't reorder
+   - Q2 position matters for override logic  - don't reorder
 */
 const tracks = {
   self: [
@@ -1180,10 +1180,10 @@ const tracks = {
       id: "self-q1", category: "State",
       prompt: "How are you really doing right now?",
       options: [
-        { label: "I'm doing okay — some stress, but I'm managing", score: 0 },
-        { label: "I'm struggling more than usual — low energy, poor sleep, feeling disconnected", score: 1 },
-        { label: "I'm in real pain — overwhelmed, hopeless, or barely getting through the day", score: 2 },
-        { label: "I feel like I'm in crisis — I can't function and I need help now", score: 3 }
+        { label: "I'm doing okay  - some stress, but I'm managing", score: 0 },
+        { label: "I'm struggling more than usual  - low energy, poor sleep, feeling disconnected", score: 1 },
+        { label: "I'm in real pain  - overwhelmed, hopeless, or barely getting through the day", score: 2 },
+        { label: "I feel like I'm in crisis  - I can't function and I need help now", score: 3 }
       ]
     },
     {
@@ -1204,7 +1204,7 @@ const tracks = {
       options: [
         { label: "They seem a little off, but mostly themselves", score: 0 },
         { label: "They've been more withdrawn, moody, or not acting like themselves", score: 1 },
-        { label: "They've changed a lot — isolating, sleeping differently, losing interest in everything", score: 2 },
+        { label: "They've changed a lot  - isolating, sleeping differently, losing interest in everything", score: 2 },
         { label: "They've given things away, said goodbye, talked about being a burden, or mentioned not wanting to be here", score: 3 }
       ]
     },
@@ -1222,18 +1222,18 @@ const tracks = {
 };
 
 /* ════════════════════════════════════════════════════════════
-   4. MATCHING QUESTIONS — 3 questions to find the right guide
+   4. MATCHING QUESTIONS  - 3 questions to find the right guide
    ════════════════════════════════════════════════════════════
    These only appear for non-critical results (low, moderate, high).
    Critical results skip straight to crisis result.
 
-   Q3 (topic-need): Provides `weights` — a map of domain → score.
+   Q3 (topic-need): Provides `weights`  - a map of domain → score.
      Used in resolveGuide() to score guides by domain match.
 
-   Q4 (situation): Provides `hints` — an array of chapter codes.
+   Q4 (situation): Provides `hints`  - an array of chapter codes.
      Used in resolveGuide() to boost guides whose hints[] overlap.
 
-   Q5 (audience): Provides `bucket` — one of 17 audience slugs.
+   Q5 (audience): Provides `bucket`  - one of 17 audience slugs.
      Used to label the edition (e.g., "First Responder edition").
      In production, this determines which audience-slant markdown
      file to deliver.
@@ -1254,7 +1254,7 @@ const matchQuestions = [
     subtext: "",
     type: "single",
     options: [
-      { label: "Calm my mind and body — stop spiraling", weights: { nervous_system_mood_cognition: 3, sleep_body_pain_substances: 2 } },
+      { label: "Calm my mind and body  - stop spiraling", weights: { nervous_system_mood_cognition: 3, sleep_body_pain_substances: 2 } },
       { label: "Handle conflict at home and communicate better", weights: { relationships_family_parenting: 3, intimacy_sex_connection: 2 } },
       { label: "Work through guilt, shame, or moral injury", weights: { moral_injury_guilt_shame_spirituality: 3 } },
       { label: "Rebuild purpose, identity, and connection", weights: { work_identity_transition: 3 } },
@@ -1268,7 +1268,7 @@ const matchQuestions = [
     type: "single",
     options: [
       { label: "Short fuse, then shut down, then regret", hints: ["ch02","ch04","ch23"] },
-      { label: "Can't switch off — bad sleep, wired and tired", hints: ["ch05","ch13","ch15"] },
+      { label: "Can't switch off  - bad sleep, wired and tired", hints: ["ch05","ch13","ch15"] },
       { label: "Home feels tense and conversations go sideways", hints: ["ch21","ch22","ch23"] },
       { label: "I feel alone and disconnected from purpose", hints: ["ch41","ch42","ch45"] },
       { label: "I keep numbing out with habits or substances", hints: ["ch18","ch32","ch47"] }
@@ -1301,7 +1301,7 @@ const matchQuestions = [
   }
 ];
 
-/* "Someone" track matching questions — same structure, different phrasing */
+/* "Someone" track matching questions  - same structure, different phrasing */
 const matchQuestionsSomeone = [
   {
     id: "topic-need",
@@ -1309,10 +1309,10 @@ const matchQuestionsSomeone = [
     subtext: "",
     type: "single",
     options: [
-      { label: "Help calming down — they seem wired, on edge, or spiraling", weights: { nervous_system_mood_cognition: 3, sleep_body_pain_substances: 2 } },
-      { label: "Help with relationships — home tension or conflict", weights: { relationships_family_parenting: 3, intimacy_sex_connection: 2 } },
+      { label: "Help calming down  - they seem wired, on edge, or spiraling", weights: { nervous_system_mood_cognition: 3, sleep_body_pain_substances: 2 } },
+      { label: "Help with relationships  - home tension or conflict", weights: { relationships_family_parenting: 3, intimacy_sex_connection: 2 } },
       { label: "They're carrying guilt, shame, or moral pain", weights: { moral_injury_guilt_shame_spirituality: 3 } },
-      { label: "They seem lost — disconnected from purpose or identity", weights: { work_identity_transition: 3 } },
+      { label: "They seem lost  - disconnected from purpose or identity", weights: { work_identity_transition: 3 } },
       { label: "They're stuck in habits or numbing out", weights: { dopamine_habits_addictions: 3, sleep_body_pain_substances: 1 } }
     ]
   },
@@ -1324,9 +1324,9 @@ const matchQuestionsSomeone = [
     options: [
       { label: "They blow up, then shut down, then seem to regret it", hints: ["ch02","ch04","ch23"] },
       { label: "They're exhausted but can't switch off or sleep", hints: ["ch05","ch13","ch15"] },
-      { label: "They're tense at home — conversations keep going wrong", hints: ["ch21","ch22","ch23"] },
+      { label: "They're tense at home  - conversations keep going wrong", hints: ["ch21","ch22","ch23"] },
       { label: "They seem isolated and disconnected from everything", hints: ["ch41","ch42","ch45"] },
-      { label: "They're numbing out — drinking, scrolling, checking out", hints: ["ch18","ch32","ch47"] }
+      { label: "They're numbing out  - drinking, scrolling, checking out", hints: ["ch18","ch32","ch47"] }
     ]
   },
   {
@@ -1339,7 +1339,7 @@ const matchQuestionsSomeone = [
 ];
 
 /* ════════════════════════════════════════════════════════════
-   5. RESULT COPY — varies by track × risk band
+   5. RESULT COPY  - varies by track × risk band
    ════════════════════════════════════════════════════════════
    This object holds all the text displayed on the result screen.
    Keyed by: resultCopy[track][riskLevel]
@@ -1362,37 +1362,37 @@ const resultCopy = {
     low_risk: {
       badge: "Low Risk", badgeClass: "badge-low", cardClass: "result-low",
       headline: "You're in a good place right now.",
-      body: "Based on your answers, you're managing well. That's great — and it tells us a lot about your resilience. We matched you with a resource for where you are right now.",
+      body: "Based on your answers, you're managing well. That's great  - and it tells us a lot about your resilience. We matched you with a resource for where you are right now.",
       supportNote: "This is not a diagnosis. Just a quick snapshot of where things are right now.",
       captureHeading: "Want a copy of your results?",
       captureBody: "We can send your result and your matched resource. Optional.",
       captureBtn: "Send Me My Results", captureBtnClass: "btn-primary",
       productsHeading: "More tools that match where you are",
       products: [
-        { icon: "💬", name: "Check On Me", price: "Weekly check-in texts — $4.99/mo" },
+        { icon: "💬", name: "Check On Me", price: "Weekly check-in texts  - $4.99/mo" },
         { icon: "🗂", name: "Find a Therapist", price: "Free therapist directory" }
       ]
     },
     moderate_risk: {
       badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "result-moderate",
       headline: "You're carrying more than you should have to carry alone.",
-      body: "Your answers tell us you're dealing with some real weight right now. That's not weakness — it's a signal. We matched you with a resource built for exactly this.",
+      body: "Your answers tell us you're dealing with some real weight right now. That's not weakness  - it's a signal. We matched you with a resource built for exactly this.",
       supportNote: "You don't have to wait until things get worse to get support.",
       captureHeading: "Want these next steps sent to you?",
       captureBody: "We can send your result and your matched resource. Optional.",
       captureBtn: "Send Me My Next Steps", captureBtnClass: "btn-yellow",
       productsHeading: "Additional support",
       products: [
-        { icon: "💬", name: "Check On Me", price: "Weekly support texts — $4.99/mo" },
+        { icon: "💬", name: "Check On Me", price: "Weekly support texts  - $4.99/mo" },
         { icon: "🗂", name: "Find a Therapist", price: "Free therapist directory" }
       ]
     },
     high_risk: {
       badge: "High Risk", badgeClass: "badge-high", cardClass: "result-high",
       headline: "You matter. Support is available right now.",
-      body: "Your answers tell us you're in real pain. That's not your fault, and you don't have to white-knuckle this alone. Please start with the crisis resources below — then check out the resource we matched for you.",
+      body: "Your answers tell us you're in real pain. That's not your fault, and you don't have to white-knuckle this alone. Please start with the crisis resources below  - then check out the resource we matched for you.",
       supportNote: "Please use the free crisis support options first if you need help right now.",
-      crisisHeading: "Free crisis support — use these first",
+      crisisHeading: "Free crisis support  - use these first",
       captureHeading: "Want these resources in one place?",
       captureBody: "We can send you everything on this page. Use the crisis options above first if you need help right now.",
       captureBtn: "Send Me These Resources", captureBtnClass: "btn-orange",
@@ -1417,7 +1417,7 @@ const resultCopy = {
   someone: {
     low_risk: {
       badge: "Low Risk", badgeClass: "badge-low", cardClass: "result-low",
-      headline: "It sounds like they're okay — but you're smart to check.",
+      headline: "It sounds like they're okay  - but you're smart to check.",
       body: "Based on what you've shared, the person you're thinking about doesn't seem to be in immediate danger. We matched you with a resource to help you start or continue that conversation.",
       supportNote: "Trust your instincts. If things change, come back.",
       captureHeading: "Want a copy of these resources?",
@@ -1425,28 +1425,28 @@ const resultCopy = {
       captureBtn: "Send Me These Resources", captureBtnClass: "btn-primary",
       productsHeading: "More tools for the conversation",
       products: [
-        { icon: "💬", name: "Check On Me", price: "Weekly nudges to keep checking in — $4.99/mo" },
+        { icon: "💬", name: "Check On Me", price: "Weekly nudges to keep checking in  - $4.99/mo" },
         { icon: "🗂", name: "Find a Therapist", price: "Free directory for them (or you)" }
       ]
     },
     moderate_risk: {
       badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "result-moderate",
       headline: "What you're noticing matters. Here's how to help.",
-      body: "The person you're concerned about is showing signs that something is off. You don't need a perfect script or a clinical degree to help — we matched you with a resource built for exactly this situation.",
+      body: "The person you're concerned about is showing signs that something is off. You don't need a perfect script or a clinical degree to help  - we matched you with a resource built for exactly this situation.",
       supportNote: "You don't have to have all the answers. You just have to ask the question.",
       captureHeading: "Want these next steps sent to you?",
       captureBody: "We'll send you your result and the matched resource. Optional.",
       captureBtn: "Send Me My Next Steps", captureBtnClass: "btn-yellow",
       productsHeading: "More tools for this situation",
       products: [
-        { icon: "💬", name: "Check On Me", price: "Weekly nudges to keep checking in — $4.99/mo" },
+        { icon: "💬", name: "Check On Me", price: "Weekly nudges to keep checking in  - $4.99/mo" },
         { icon: "🗂", name: "Find a Therapist", price: "Free directory for them (or you)" }
       ]
     },
     high_risk: {
       badge: "High Risk", badgeClass: "badge-high", cardClass: "result-high",
       headline: "Trust your gut. This person may need help now.",
-      body: "What you're describing is serious. Start with the crisis resources below — then check the resource we matched for you.",
+      body: "What you're describing is serious. Start with the crisis resources below  - then check the resource we matched for you.",
       supportNote: "You are not responsible for fixing this. But you can be the person who doesn't look away.",
       crisisHeading: "Help them get support right now",
       captureHeading: "Want these steps sent to you?",
@@ -1458,11 +1458,11 @@ const resultCopy = {
     critical: {
       badge: "Crisis", badgeClass: "badge-critical", cardClass: "result-critical",
       headline: "This is a crisis. Act now.",
-      body: "Based on what you've shared, this person is in serious danger. You don't need to be a professional to act. What matters most right now is that you don't leave them alone — and that you get them connected to help immediately.",
+      body: "Based on what you've shared, this person is in serious danger. You don't need to be a professional to act. What matters most right now is that you don't leave them alone  - and that you get them connected to help immediately.",
       crisisHeading: "",
       cantCallItems: [
         "Stay with them or keep them on the phone",
-        "Call 988 together — or call for them",
+        "Call 988 together  - or call for them",
         "Take them to the nearest emergency room",
         "Remove access to anything they could use to hurt themselves if you safely can"
       ],
@@ -1484,7 +1484,7 @@ const transitionCopy = {
     low_risk: {
       badge: "Low Risk", badgeClass: "badge-low", cardClass: "transition-low",
       headline: "You're in a good place. Let's find a resource that keeps you there.",
-      body: "You're managing well — and that's worth protecting. Three quick questions and we'll match you with a resource built for your situation."
+      body: "You're managing well  - and that's worth protecting. Three quick questions and we'll match you with a resource built for your situation."
     },
     moderate_risk: {
       badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "transition-moderate",
@@ -1494,19 +1494,19 @@ const transitionCopy = {
     high_risk: {
       badge: "High Risk", badgeClass: "badge-high", cardClass: "transition-high",
       headline: "You matter. And there's a resource built for this.",
-      body: "Before we match you, remember — 988 and Crisis Text Line are always here for you. When you're ready, three quick questions and we'll find the right resource."
+      body: "Before we match you, remember  - 988 and Crisis Text Line are always here for you. When you're ready, three quick questions and we'll find the right resource."
     }
   },
   someone: {
     low_risk: {
       badge: "Low Risk", badgeClass: "badge-low", cardClass: "transition-low",
-      headline: "They seem okay — but you're smart to be ready.",
+      headline: "They seem okay  - but you're smart to be ready.",
       body: "Three quick questions and we'll match you with a resource for how to start or continue the conversation."
     },
     moderate_risk: {
       badge: "Moderate Risk", badgeClass: "badge-moderate", cardClass: "transition-moderate",
       headline: "What you're noticing matters. Let's find the right tool.",
-      body: "Three quick questions and we'll match you with a resource built for exactly this situation — so you know what to say and how to help."
+      body: "Three quick questions and we'll match you with a resource built for exactly this situation  - so you know what to say and how to help."
     },
     high_risk: {
       badge: "High Risk", badgeClass: "badge-high", cardClass: "transition-high",
@@ -1546,7 +1546,7 @@ function showScreen(id) {
 }
 
 /**
- * selectTrack() — Called when user picks "This is for me" or "about someone"
+ * selectTrack()  - Called when user picks "This is for me" or "about someone"
  * Resets quiz state and loads the first risk question for that track.
  */
 function selectTrack(track) {
@@ -1559,12 +1559,12 @@ function selectTrack(track) {
 }
 
 /* ════════════════════════════════════════════════════════════
-   9. RISK QUIZ — Rendering + Scoring
+   9. RISK QUIZ  - Rendering + Scoring
    ════════════════════════════════════════════════════════════
 */
 
 /**
- * renderQuestion() — Renders the current risk question (Q1 or Q2).
+ * renderQuestion()  - Renders the current risk question (Q1 or Q2).
  * Reads from tracks[currentTrack][currentQuestion].
  * Progress bar shows step / 5 (2 risk Qs + 3 match Qs = 5 total).
  */
@@ -1594,7 +1594,7 @@ function renderQuestion() {
 }
 
 /**
- * selectRiskOption() — Called when user clicks an answer option.
+ * selectRiskOption()  - Called when user clicks an answer option.
  * Stores the selected index and highlights the option.
  */
 function selectRiskOption(index) {
@@ -1615,7 +1615,7 @@ function prevQuestion() {
 }
 
 /**
- * nextQuestion() — Advances to next risk question, or runs scoring.
+ * nextQuestion()  - Advances to next risk question, or runs scoring.
  * After Q2 (the last risk Q), calls calculateScore() and routes:
  * - Critical → showCriticalResult() (skips matching entirely)
  * - Otherwise → showTransition() → matching questions
@@ -1833,7 +1833,7 @@ function resolveGuide() {
     };
   });
 
-  // Sort descending by score — top result wins
+  // Sort descending by score  - top result wins
   scored.sort(function(a, b) { return b.matchScore - a.matchScore; });
   matchedGuide = scored[0];
 }
@@ -1847,7 +1847,7 @@ function resolveGuide() {
 */
 
 /**
- * showCriticalResult() — Called when scoring returns 'critical'.
+ * showCriticalResult()  - Called when scoring returns 'critical'.
  * Shows crisis CTAs FIRST (988, Crisis Text Line, 911).
  * Shows "if you can't call" alternatives.
  * Does NOT show guide recommendation or products.
@@ -1859,7 +1859,7 @@ function showCriticalResult() {
 
   renderResultCard(copy);
 
-  // Crisis CTAs — red, prominent, with 911
+  // Crisis CTAs  - red, prominent, with 911
   var crisisCta = document.getElementById('crisis-cta-section');
   crisisCta.style.display = '';
   crisisCta.style.border = '2px solid var(--red)';
@@ -1874,9 +1874,9 @@ function showCriticalResult() {
 
   // "Someone" track adjusts 988 label
   if (isSomeone) {
-    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 together — Suicide & Crisis Lifeline';
+    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 together  - Suicide & Crisis Lifeline';
   } else {
-    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 — Suicide & Crisis Lifeline';
+    document.getElementById('crisis-btn-988').textContent = '📞 Call 988  - Suicide & Crisis Lifeline';
   }
 
   // "Can't call" alternatives
@@ -1901,7 +1901,7 @@ function showCriticalResult() {
 }
 
 /**
- * showMatchedResult() — Called for low, moderate, and high risk.
+ * showMatchedResult()  - Called for low, moderate, and high risk.
  * Shows the matched guide recommendation.
  * High risk also shows crisis CTAs ABOVE the guide.
  */
@@ -1921,7 +1921,7 @@ function showMatchedResult() {
     heading.style.display = copy.crisisHeading ? '' : 'none';
 
     document.getElementById('crisis-btn-988').style.background = 'var(--orange)';
-    document.getElementById('crisis-btn-988').textContent = '📞 Call 988 — Suicide & Crisis Lifeline';
+    document.getElementById('crisis-btn-988').textContent = '📞 Call 988  - Suicide & Crisis Lifeline';
     document.getElementById('crisis-btn-text').style.background = 'var(--orange)';
     document.getElementById('crisis-btn-911').style.display = 'none';
   } else {
@@ -1947,7 +1947,7 @@ function showMatchedResult() {
   // CTA button text varies by offer tier
   var offerLabelsMap = { guide: 'Get My Guide', kit: 'Get My Kit', bundle: 'Get My Bundle' };
   var cta = document.getElementById('matched-guide-cta');
-  cta.textContent = (offerLabelsMap[matchedGuide.offer] || 'Get My Guide') + ' — $' + matchedGuide.price;
+  cta.textContent = (offerLabelsMap[matchedGuide.offer] || 'Get My Guide') + '  - $' + matchedGuide.price;
   cta.className = 'btn btn-primary btn-block';
 
   renderCapture(copy);
@@ -2021,7 +2021,7 @@ function toggleCapture(mode) {
 }
 
 /* ════════════════════════════════════════════════════════════
-   14. CATALOG LOGIC — Rendering + Filtering
+   14. CATALOG LOGIC  - Rendering + Filtering
    ════════════════════════════════════════════════════════════
    The catalog shows all 79 guides in a searchable, filterable grid.
    applyFilters() re-renders the grid whenever search/filter changes.
@@ -2055,7 +2055,7 @@ const catOfferLabels = { guide: "Guide", kit: "Kit", bundle: "Bundle" };
 const catOfferClasses = { guide: "offer-guide", kit: "offer-kit", bundle: "offer-bundle" };
 const catOfferCTA = { guide: "Get Guide", kit: "Get Kit", bundle: "Get Bundle" };
 
-/* 17 audience buckets — used for edition chips on each card */
+/* 17 audience buckets  - used for edition chips on each card */
 const audiences = [
   { bucket: "military-veteran", label: "Military / Veteran" },
   { bucket: "first-responder", label: "First Responder" },
@@ -2092,7 +2092,7 @@ function renderGuideCard(guide, selectedAudience) {
       '<span class="guide-offer"><span class="offer-badge ' + catOfferClasses[guide.offer] + '">' + catOfferLabels[guide.offer] + '</span></span>' +
       '<span class="guide-price">$' + guide.price + '</span>' +
     '</div>' +
-    '<button class="guide-cta">' + catOfferCTA[guide.offer] + ' — $' + guide.price + '</button>' +
+    '<button class="guide-cta">' + catOfferCTA[guide.offer] + '  - $' + guide.price + '</button>' +
     '<div class="audience-editions">' +
       '<button class="audience-toggle" onclick="toggleAudiences(this)">17 audience editions available ▾</button>' +
       '<div class="audience-list">' +
@@ -2120,7 +2120,7 @@ function toggleAudiences(btn) {
 }
 
 /**
- * applyFilters() — Main catalog render function.
+ * applyFilters()  - Main catalog render function.
  * Called on page load, search input, and filter changes.
  * Reads search text + 3 dropdown filters, filters the guideCatalog,
  * and rebuilds the grid with renderGuideCard().
@@ -2153,7 +2153,7 @@ function applyFilters() {
     emptyState.style.display = 'none';
     var totalEditions = audience !== 'all' ? filtered.length : filtered.length * 17;
     countEl.innerHTML = 'Showing <strong>' + filtered.length + '</strong> guide' + (filtered.length === 1 ? '' : 's') +
-      (audience !== 'all' ? ' — ' + audiences.find(function(a) { return a.bucket === audience; }).label + ' edition' : ' — ' + totalEditions.toLocaleString() + ' total editions across 17 audiences');
+      (audience !== 'all' ? '  - ' + audiences.find(function(a) { return a.bucket === audience; }).label + ' edition' : '  - ' + totalEditions.toLocaleString() + ' total editions across 17 audiences');
 
     filtered.forEach(function(g) {
       grid.appendChild(renderGuideCard(g, audience));

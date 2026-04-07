@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-When you've lost interest in things that used to matter — including the person next to you — that's worth paying attention to. No pressure, just honesty.
+When you've lost interest in things that used to matter  - including the person next to you  - that's worth paying attention to. No pressure, just honesty.
 
 ## What Is Happening
 
@@ -37,18 +37,18 @@ Low desire and low drive often trace back to nervous system depletion and fear. 
 
 - Right now: name one thing that used to interest you and notice what comes up when you think about it.
 - Before bed tonight: be honest with yourself about whether this is stress, disconnection, or something medical. Write it down.
-- Tomorrow: take one small step toward connection — doesn't have to be physical. A conversation, a shared meal, a walk together.
+- Tomorrow: take one small step toward connection  - doesn't have to be physical. A conversation, a shared meal, a walk together.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Low Desire and Low Drive" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

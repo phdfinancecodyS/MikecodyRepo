@@ -25,7 +25,7 @@ An affiliate program lets other TikTok creators, mental health advocates, therap
 - Instagram Reels + link in bio
 - YouTube Shorts
 - Email list (therapists/coaches with newsletters)
-- Pinterest (underrated for mental health content — evergreen)
+- Pinterest (underrated for mental health content  - evergreen)
 
 ---
 
@@ -33,12 +33,12 @@ An affiliate program lets other TikTok creators, mental health advocates, therap
 
 The `/marketing/affiliate/` folder will contain:
 
-1. **Welcome Letter** — What the program is, why it matters, how to earn
-2. **Swipe Copy** — Pre-written captions for TikTok, Instagram, email
-3. **Approved Talking Points** — What affiliates CAN and CANNOT say (crucial for mental health content)
-4. **Safe Messaging One-Pager** — Non-negotiable guidelines for all affiliates
-5. **Graphics Pack** — Canva templates for promo posts
-6. **FAQ for Affiliates** — Payout schedule, cookie duration, support contact
+1. **Welcome Letter**  - What the program is, why it matters, how to earn
+2. **Swipe Copy**  - Pre-written captions for TikTok, Instagram, email
+3. **Approved Talking Points**  - What affiliates CAN and CANNOT say (crucial for mental health content)
+4. **Safe Messaging One-Pager**  - Non-negotiable guidelines for all affiliates
+5. **Graphics Pack**  - Canva templates for promo posts
+6. **FAQ for Affiliates**  - Payout schedule, cookie duration, support contact
 
 ---
 
@@ -73,7 +73,7 @@ The `/marketing/affiliate/` folder will contain:
 ## Recruitment Strategy
 
 ### Phase 1: Seed Affiliates (Before Launch)
-- Identify 10–20 TikTok creators in mental health, therapy, wellness space (5K–100K followers range performs best — higher engagement than mega-influencers)
+- Identify 10–20 TikTok creators in mental health, therapy, wellness space (5K–100K followers range performs best  - higher engagement than mega-influencers)
 - Offer VIP 50% commission for first 90 days
 - Give free access to the program to review/promote authentically
 - Focus on therapists and counselors who already have trust audiences
@@ -104,7 +104,7 @@ Track affiliate performance in the sales platform dashboard:
 
 ---
 
-## Affiliate Agreement — Key Clauses
+## Affiliate Agreement  - Key Clauses
 
 *(To be drafted into a proper legal document before launch)*
 

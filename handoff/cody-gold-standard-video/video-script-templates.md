@@ -20,13 +20,13 @@
 "That's not what the research shows. And I've seen it firsthand in my work."
 
 **[TEXT OVERLAY]**
-"Studies consistently show: asking about suicide does NOT increase risk — it decreases it"
+"Studies consistently show: asking about suicide does NOT increase risk  - it decreases it"
 
 **[BACK TO YOU]**
 "In fact, people who survive suicide attempts say the same thing: being asked made me feel *less* alone, not more at risk."
 
 **[CLOSE-UP TEXT]**
-"If you're not asking because you're scared you'll make it worse — you're already making it worse."
+"If you're not asking because you're scared you'll make it worse  - you're already making it worse."
 
 **[END TEXT]**
 "Learn what to actually ask [LINK IN BIO]"
@@ -77,7 +77,7 @@
 
 ### SCRIPT 2A: "Are You Okay?"
 
-**[SPLIT SCREEN LEFT SIDE — "WRONG"]**
+**[SPLIT SCREEN LEFT SIDE  - "WRONG"]**
 You: "Hey, are you okay?"
 Them: "Yeah, I'm fine."
 [END SCENE]
@@ -85,7 +85,7 @@ Them: "Yeah, I'm fine."
 **[TEXT OVERLAY]**
 "Conversation over. No help given."
 
-**[SPLIT SCREEN RIGHT SIDE — "RIGHT"]**
+**[SPLIT SCREEN RIGHT SIDE  - "RIGHT"]**
 You: "I've noticed you seem [different]. I care about you. Can I ask you something real?"
 
 Them: *nods*
@@ -207,7 +207,7 @@ You: "Are you thinking about suicide?"
 "@username: What if I ask someone if they're thinking about suicide and they get angry?"
 
 **[YOU, DIRECT TO CAMERA]**
-"That's actually super common. And it's usually not anger — it's shame."
+"That's actually super common. And it's usually not anger  - it's shame."
 
 "They're embarrassed you noticed. Scared you'll judge them. So they lash out."
 
@@ -246,7 +246,7 @@ You: "Are you thinking about suicide?"
 
 ---
 
-## TEMPLATE 6: Educational Series Hook — "This Changed Everything I Knew"
+## TEMPLATE 6: Educational Series Hook  - "This Changed Everything I Knew"
 
 **Purpose:** Position yourself as an educator with something systematic to teach (not just advice).
 
@@ -318,13 +318,13 @@ You: "Are you thinking about suicide?"
 
 "That 'what if' becomes permanent background noise."
 
-"But here's what happens when you do ask — when someone is actually struggling — they feel less alone."
+"But here's what happens when you do ask  - when someone is actually struggling  - they feel less alone."
 
 **[DIRECT EYE CONTACT]**
 
 "That changes things."
 
-"So yes. Ask. You have permission. Actually, you don't need mine — you already have it from the people who care about you."
+"So yes. Ask. You have permission. Actually, you don't need mine  - you already have it from the people who care about you."
 
 **[END]**
 
@@ -362,7 +362,7 @@ You: "Are you thinking about suicide?"
 
 **[TEXT]**
 
-"When asked directly, people in crisis are MORE likely to seek help — not less"
+"When asked directly, people in crisis are MORE likely to seek help  - not less"
 
 **[FINAL TEXT]**
 
@@ -408,7 +408,7 @@ Make captions **action-oriented** and **vulnerable:**
 
 ## One Final Note
 
-**These templates are starting points.** You'll find your own rhythm, your own way of saying things. The scripts above give you the structure — but your authenticity is what makes them work.
+**These templates are starting points.** You'll find your own rhythm, your own way of saying things. The scripts above give you the structure  - but your authenticity is what makes them work.
 
 The combination of clinical credibility + personal story + genuine warmth = the formula that works on TikTok for this content.
 

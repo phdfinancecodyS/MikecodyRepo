@@ -32,7 +32,7 @@ Candid shot of someone looking thoughtful + calm (not distressed). Could be co-a
 **Trust badges (below button, small):**
 ```
 ✓ Free forever
-✓ No diagnosis — just clarity
+✓ No diagnosis  - just clarity
 ✓ Results shown immediately
 ✓ Your data is private (no spam)
 ```
@@ -109,7 +109,7 @@ If you want, you can also have your results and next steps sent to you.
 and using alcohol more. The quiz helped me see the pattern.
 Now I'm doing Check On Me check-ins and it's actually helping."
 
-— Jordan, 28
+ - Jordan, 28
 ```
 
 **Card 2: "I knew something was wrong..."**
@@ -118,7 +118,7 @@ Now I'm doing Check On Me check-ins and it's actually helping."
 the directory. First time I have actual support. Wish I'd 
 done this earlier."
 
-— Casey, 32
+ - Casey, 32
 ```
 
 **Card 3: "I was worried about a friend..."**
@@ -126,7 +126,7 @@ done this earlier."
 "My friend sent me this quiz. Got the How to Help Guide 
 and finally feel like I know what to say. Changed everything."
 
-— Morgan, 26
+ - Morgan, 26
 ```
 
 ---
@@ -241,7 +241,7 @@ No tricks. No locked result screen.
 ### FINAL CTA (Large button)
 
 ```
-▶️  TAKE THE QUIZ — 2 MINUTES
+▶️  TAKE THE QUIZ  - 2 MINUTES
 ```
 
 **Sub-text:**

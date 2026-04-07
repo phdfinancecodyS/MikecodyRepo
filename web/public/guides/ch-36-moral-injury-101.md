@@ -9,7 +9,7 @@ Priority: high
 
 ## What This Helps With
 
-When you did something — or saw something — that violated your own moral code, and it won't stop replaying. That's moral injury. Here's what it is and what helps.
+When you did something  - or saw something  - that violated your own moral code, and it won't stop replaying. That's moral injury. Here's what it is and what helps.
 
 ## What Is Happening
 
@@ -35,20 +35,20 @@ Moral injury is the wound that comes from doing or witnessing something that vio
 
 ## 24-Hour Action Plan
 
-- Right now: name the event that violated your moral code. You don't have to explain it — just name it.
+- Right now: name the event that violated your moral code. You don't have to explain it  - just name it.
 - Before bed tonight: write down what you believed before it happened and what you believe now.
-- Tomorrow: talk to one person who was there or who understands the context. Not for advice — for witness.
+- Tomorrow: talk to one person who was there or who understands the context. Not for advice  - for witness.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Moral Injury 101" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

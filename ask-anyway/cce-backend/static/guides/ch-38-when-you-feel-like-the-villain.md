@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-You keep replaying what you did and you can't shake the feeling that you're the bad guy. This guide doesn't let you off the hook — it helps you carry it honestly.
+You keep replaying what you did and you can't shake the feeling that you're the bad guy. This guide doesn't let you off the hook  - it helps you carry it honestly.
 
 ## What Is Happening
 
@@ -36,19 +36,19 @@ Feeling like the villain comes from internalizing blame that should have been sh
 ## 24-Hour Action Plan
 
 - Right now: write down the worst version of the story your brain keeps telling you. Get it all out.
-- Before bed tonight: write down what actually happened — not the shame version, the factual version.
+- Before bed tonight: write down what actually happened  - not the shame version, the factual version.
 - Tomorrow: tell one trusted person both versions. Let them help you hold the difference.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "When You Feel Like the Villain" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

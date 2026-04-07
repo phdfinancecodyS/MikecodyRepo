@@ -2,10 +2,10 @@
 """
 Generate 4 Etsy listing images per guide (2000×2000 px each).
 
-Image 1 — Thumbnail    : Teal colour block + logo badge + guide title (unique)
-Image 2 — Inside Look  : PDF page-1 screenshot inset on warm-white card (unique)
-Image 3 — What's Inside: Fixed "5 sections every guide has" template (shared)
-Image 4 — Who It's For : Audience bullets grouped by guide category (semi-unique)
+Image 1  - Thumbnail    : Teal colour block + logo badge + guide title (unique)
+Image 2  - Inside Look  : PDF page-1 screenshot inset on warm-white card (unique)
+Image 3  - What's Inside: Fixed "5 sections every guide has" template (shared)
+Image 4  - Who It's For : Audience bullets grouped by guide category (semi-unique)
 
 Output: output/etsy/listing-images/<guide_id>/image-{1..4}.png
 
@@ -214,11 +214,11 @@ h1 {{ font-family:'Montserrat',sans-serif; font-weight:900; font-size:96px; colo
 def html_image3() -> str:
     """Shared 'What's Inside' template."""
     sections = [
-        ("01", "What's Actually Happening", "Plain-language breakdown of what this looks and feels like — no diagnoses, no jargon."),
-        ("02", "Exact Scripts and Phrases", "Word-for-word lines you can say out loud — to start, stay in, and follow through on the conversation."),
+        ("01", "What's Actually Happening", "Plain-language breakdown of what this looks and feels like  - no diagnoses, no jargon."),
+        ("02", "Exact Scripts and Phrases", "Word-for-word lines you can say out loud  - to start, stay in, and follow through on the conversation."),
         ("03", "What NOT to Say", "The well-meaning things that close the conversation, and what to say instead."),
         ("04", "24-Hour Action Plan", "Three concrete steps you can take today, before you lose the moment."),
-        ("05", "Crisis Resources", "988 Lifeline, Crisis Text Line, and guidance on when to escalate — always included, never skipped."),
+        ("05", "Crisis Resources", "988 Lifeline, Crisis Text Line, and guidance on when to escalate  - always included, never skipped."),
     ]
     items_html = ""
     for num, title, desc in sections:
@@ -387,12 +387,12 @@ def process_listing(listing: dict, images: set[int], pw_page, pw_page2=None):
 
     print(f"  [{guide_id}] {title[:60]}...")
 
-    # Image 1 — Thumbnail
+    # Image 1  - Thumbnail
     if 1 in images:
         p = out_dir / "image-1.png"
         render_html_to_png(html_image1(title), p, pw_page)
 
-    # Image 2 — Inside Look (PDF page 1 screenshot)
+    # Image 2  - Inside Look (PDF page 1 screenshot)
     if 2 in images:
         p = out_dir / "image-2.png"
         raw_shot = out_dir / "page1-raw.png"
@@ -406,7 +406,7 @@ def process_listing(listing: dict, images: set[int], pw_page, pw_page2=None):
             print(f"    Falling back to title card for image-2")
             render_html_to_png(html_image1(title), p, pw_page)
 
-    # Image 3 — What's Inside (shared, but copy per listing for upload convenience)
+    # Image 3  - What's Inside (shared, but copy per listing for upload convenience)
     if 3 in images:
         p = out_dir / "image-3.png"
         shared = OUT_BASE / "_shared" / "image-3.png"
@@ -416,7 +416,7 @@ def process_listing(listing: dict, images: set[int], pw_page, pw_page2=None):
         else:
             render_html_to_png(html_image3(), p, pw_page)
 
-    # Image 4 — Who It's For
+    # Image 4  - Who It's For
     if 4 in images:
         p = out_dir / "image-4.png"
         bullets = WHO_MAP.get(guide_id, [

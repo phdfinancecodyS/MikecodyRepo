@@ -9,7 +9,7 @@ Priority: high
 
 ## What This Helps With
 
-You said something. You did something. Now there's damage. This isn't about being perfect — it's about what to do after you weren't.
+You said something. You did something. Now there's damage. This isn't about being perfect  - it's about what to do after you weren't.
 
 ## What Is Happening
 
@@ -35,20 +35,20 @@ Repair is the skill of reconnecting after damage. You said something hurtful, yo
 
 ## 24-Hour Action Plan
 
-- Right now: name the impact of what happened — not your intent, the actual impact on the other person.
+- Right now: name the impact of what happened  - not your intent, the actual impact on the other person.
 - Before bed tonight: write one honest sentence you could say to them that takes ownership without defending.
 - Tomorrow: say it. Not perfectly, not in a speech. Just the sentence.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Repair After Damage" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

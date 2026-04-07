@@ -36,19 +36,19 @@ Touch without pressure means physical closeness without the demand for arousal o
 ## 24-Hour Action Plan
 
 - Right now: put your own hand on your chest or arm and notice what it feels like. Safe? Neutral? Uncomfortable?
-- Before bed tonight: think about the kind of touch that feels okay right now — and the kind that doesn't. Write both down.
-- Tomorrow: communicate one boundary about touch to someone you trust. Not a big talk — one sentence.
+- Before bed tonight: think about the kind of touch that feels okay right now  - and the kind that doesn't. Write both down.
+- Tomorrow: communicate one boundary about touch to someone you trust. Not a big talk  - one sentence.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Touch Without Pressure" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

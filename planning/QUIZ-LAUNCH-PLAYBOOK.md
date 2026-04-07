@@ -3,7 +3,7 @@
 
 ---
 
-## PHASE 1: CONTENT (Your Work — Days 1-3)
+## PHASE 1: CONTENT (Your Work  - Days 1-3)
 
 ### 1A. Write 10 Quiz Questions ⏱️ 2 hours
 **Output:** `quiz/quiz-questions.md`
@@ -32,9 +32,9 @@ Score 21-25 → High risk
   FREE resources emphasized (988, Crisis Text Line, BetterHelp)
 
 Score 26-30 → Critical
-  Result page: RED ALERT layout — "You're in crisis. Get help right now."
+  Result page: RED ALERT layout  - "You're in crisis. Get help right now."
   CTA: "CALL 988" + Crisis Text Line + local crisis center
-  Products hidden — SAFETY FIRST
+  Products hidden  - SAFETY FIRST
   All resources FREE, no paywall
 ```
 
@@ -57,7 +57,7 @@ Score 26-30 → Critical
 
 ---
 
-## PHASE 2: TECH (Cody's Work — Days 4-6)
+## PHASE 2: TECH (Cody's Work  - Days 4-6)
 *Assuming Cody has Supabase + Stripe ready:*
 - Build quiz form (10 questions, validate responses)
 - Create scoring algorithm (0-30 range)
@@ -113,21 +113,21 @@ Revenue Target: $15-25k gross (first 2 weeks)
 
 ## LAUNCH CHECKLIST
 
-**Content (YOU) — Due Day 3:**
+**Content (YOU)  - Due Day 3:**
 - [ ] Quiz questions written + scored (10 questions, 0-30 scale)
 - [ ] Results pages copy + routing (4 risk levels)
 - [ ] Landing page copy finalized
 - [ ] Email/SMS automation sequences drafted
 - [ ] Safety messaging compliance reviewed (AFSP-compliant)
 
-**Tech (CODY) — Due Day 6:**
+**Tech (CODY)  - Due Day 6:**
 - [ ] Quiz interface live + scoring works
 - [ ] Results routing to 4 pages confirmed
 - [ ] Email capture + SMS integration tested
 - [ ] Stripe buttons on results pages working
 - [ ] User data flowing to Supabase correctly
 
-**Marketing (YOU + CODY) — Days 7-14:**
+**Marketing (YOU + CODY)  - Days 7-14:**
 - [ ] 4 TikTok videos filmed + queued
 - [ ] Landing page live with UTM tracking
 - [ ] Email warm-up sent (Day 7)

@@ -126,14 +126,14 @@
 
 ## PRIORITY TIERS FOR LAUNCH
 
-### Tier 1 — Launch First (highest TikTok virality + proven demand)
+### Tier 1  - Launch First (highest TikTok virality + proven demand)
 1, 21, 30, 41, 42, 44, 61, 81, 84, 87
 
-### Tier 2 — Launch Next (strong niche communities already exist)
+### Tier 2  - Launch Next (strong niche communities already exist)
 2, 3, 4, 5, 22, 23, 24, 25, 35, 45, 46, 62, 63, 82, 85
 
-### Tier 3 — Long Tail (lower volume, higher conversion intent)
-Everything else — build as spokes mature
+### Tier 3  - Long Tail (lower volume, higher conversion intent)
+Everything else  - build as spokes mature
 
 ---
 

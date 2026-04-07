@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-When your own home doesn't feel safe — when you're walking on eggshells or the tension never lifts — here's what to do. Not everything. Just the next thing.
+When your own home doesn't feel safe  - when you're walking on eggshells or the tension never lifts  - here's what to do. Not everything. Just the next thing.
 
 ## What Is Happening
 
@@ -37,18 +37,18 @@ Your home is a minefield because you're hypervigilant about everyone's emotional
 
 - Right now: identify one room or corner that feels safest and spend 10 minutes there doing nothing.
 - Before bed tonight: write down the three biggest tension points in the house right now. Just name them.
-- Tomorrow: pick one tension point and address it — not all of it, just the first sentence of the conversation.
+- Tomorrow: pick one tension point and address it  - not all of it, just the first sentence of the conversation.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Home Feels Like a Minefield" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

@@ -141,11 +141,11 @@ def main():
 
     print(f"\n{'='*60}")
     if total_critical == 0 and total_warning == 0:
-        print("RESULT: ALL CLEAR — 0 critical, 0 warnings")
+        print("RESULT: ALL CLEAR  - 0 critical, 0 warnings")
     elif total_critical == 0:
-        print(f"RESULT: PASS WITH WARNINGS — 0 critical, {total_warning} warnings")
+        print(f"RESULT: PASS WITH WARNINGS  - 0 critical, {total_warning} warnings")
     else:
-        print(f"RESULT: ISSUES FOUND — {total_critical} critical, {total_warning} warnings")
+        print(f"RESULT: ISSUES FOUND  - {total_critical} critical, {total_warning} warnings")
     print(f"{'='*60}")
     sys.exit(1 if total_critical > 0 else 0)
 

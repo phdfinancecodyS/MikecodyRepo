@@ -9,11 +9,11 @@ Priority: medium
 
 ## What This Helps With
 
-If your body doesn't look or feel the way it used to — scars, weight, injury — and that's affecting how you show up in intimacy, this is for you.
+If your body doesn't look or feel the way it used to  - scars, weight, injury  - and that's affecting how you show up in intimacy, this is for you.
 
 ## What Is Happening
 
-Body image issues after trauma often trace to how your body was treated or how you survived. Scars, weight changes, asymmetry—your body carries the story. Sexual confidence gets tangled in appearance anxiety and safety fears mixed together.
+Body image issues after trauma often trace to how your body was treated or how you survived. Scars, weight changes, asymmetry -your body carries the story. Sexual confidence gets tangled in appearance anxiety and safety fears mixed together.
 
 ## What To Do Now
 
@@ -37,18 +37,18 @@ Body image issues after trauma often trace to how your body was treated or how y
 
 - Right now: look at yourself in a mirror for 30 seconds without narrating what's wrong. Just look.
 - Before bed tonight: write down one thing your body has done for you that has nothing to do with how it looks.
-- Tomorrow: wear something that makes you feel like you — not someone else's version of okay.
+- Tomorrow: wear something that makes you feel like you  - not someone else's version of okay.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Body Image, Scars, Sexual Confidence" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

@@ -9,7 +9,7 @@ Priority: high
 
 ## What This Helps With
 
-When your fuse is short and everything sets you off — that's not a character flaw. It's your nervous system running hot. Here's how to catch it before it catches you.
+When your fuse is short and everything sets you off  - that's not a character flaw. It's your nervous system running hot. Here's how to catch it before it catches you.
 
 ## What Is Happening
 
@@ -41,7 +41,7 @@ Your anger comes fast because your fuse is short. Small frustrations that others
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - What was the last thing that set you off? What was actually underneath it?
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

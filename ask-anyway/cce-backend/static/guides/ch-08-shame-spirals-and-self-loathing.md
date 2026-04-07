@@ -9,7 +9,7 @@ Priority: high
 
 ## What This Helps With
 
-If your brain is running the same three worst moments on loop and telling you that you're the problem — read this. Shame lies, and it's loud. Here's how to turn the volume down.
+If your brain is running the same three worst moments on loop and telling you that you're the problem  - read this. Shame lies, and it's loud. Here's how to turn the volume down.
 
 ## What Is Happening
 
@@ -41,7 +41,7 @@ Shame doesn't feel like emotion. It feels like fact. You're the problem. You're 
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - What are the three memories your brain loops most when shame takes over?
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

@@ -13,7 +13,7 @@ You made it home, but your body didn't get the memo. If you're still on high ale
 
 ## What Is Happening
 
-Your home should be your safest place but your nervous system has learned it isn't. You read threats in normal moments. Your partner breathing wrong, traffic outside, the phone ringing—all trigger threat response. Your job is to rebuild home as genuinely safer, not just believed-safe.
+Your home should be your safest place but your nervous system has learned it isn't. You read threats in normal moments. Your partner breathing wrong, traffic outside, the phone ringing -all trigger threat response. Your job is to rebuild home as genuinely safer, not just believed-safe.
 
 ## What To Do Now
 
@@ -37,11 +37,11 @@ Your home should be your safest place but your nervous system has learned it isn
 
 - Right now: walk through your home and notice one thing that's safe. Say it out loud.
 - Before bed tonight: pick one room and intentionally relax your shoulders while standing in it for 60 seconds.
-- Tomorrow: when you catch yourself scanning at home, name it — "that's my work brain, not my home brain" — and redirect.
+- Tomorrow: when you catch yourself scanning at home, name it  - "that's my work brain, not my home brain"  - and redirect.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - Which room at home feels safest? Which feels most activating?
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

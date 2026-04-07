@@ -9,11 +9,11 @@ Priority: medium
 
 ## What This Helps With
 
-You did the right thing and the system let you down. If you're carrying anger, disillusionment, or a sense that none of it mattered — this is for that.
+You did the right thing and the system let you down. If you're carrying anger, disillusionment, or a sense that none of it mattered  - this is for that.
 
 ## What Is Happening
 
-Betrayed by the system means institutions or people you trusted to protect or help you failed you. The military, the family, the government, the church—they were supposed to have your back and instead they hurt you. This isn't personal betrayal; this is structural. But it feels personal.
+Betrayed by the system means institutions or people you trusted to protect or help you failed you. The military, the family, the government, the church -they were supposed to have your back and instead they hurt you. This isn't personal betrayal; this is structural. But it feels personal.
 
 ## What To Do Now
 
@@ -41,14 +41,14 @@ Betrayed by the system means institutions or people you trusted to protect or he
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Betrayed by the System" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

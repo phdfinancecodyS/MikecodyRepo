@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ask Anyway — Resource Catalog</title>
+<title>Ask Anyway  - Resource Catalog</title>
 <style>
   :root {
     --bg: #faf9f7;
@@ -303,7 +303,7 @@
   <!-- HEADER -->
   <div class="catalog-header">
     <h1>All Resources</h1>
-    <p>Browse all 79 guides — each available in 17 audience-specific editions. Search by keyword, filter by topic or type.</p>
+    <p>Browse all 79 guides  - each available in 17 audience-specific editions. Search by keyword, filter by topic or type.</p>
     <a class="quiz-link" href="quiz-prototype-v3.html">← Not sure where to start? Take the quiz</a>
   </div>
 
@@ -329,9 +329,9 @@
         <label>Product Type</label>
         <select class="filter-select" id="filter-offer" onchange="applyFilters()">
           <option value="all">All types</option>
-          <option value="guide">Guide — $9</option>
-          <option value="kit">Kit — $19</option>
-          <option value="bundle">Bundle — $34</option>
+          <option value="guide">Guide  - $9</option>
+          <option value="kit">Kit  - $19</option>
+          <option value="bundle">Bundle  - $34</option>
         </select>
       </div>
       <div class="filter-group">
@@ -375,8 +375,8 @@
   <!-- CRISIS FOOTER -->
   <div class="crisis-footer">
     <p>Crisis resources are always free and available:</p>
-    <a href="tel:988">Call 988 — Suicide &amp; Crisis Lifeline</a><br>
-    <a href="sms:741741&body=HOME">Text HOME to 741741 — Crisis Text Line</a>
+    <a href="tel:988">Call 988  - Suicide &amp; Crisis Lifeline</a><br>
+    <a href="sms:741741&body=HOME">Text HOME to 741741  - Crisis Text Line</a>
   </div>
   <div class="disclaimer">This content is clinically informed but is not clinical advice, a diagnosis, or a substitute for professional mental health treatment. If you or someone you know is in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988, or text HOME to 741741 to reach the Crisis Text Line.</div>
 
@@ -533,7 +533,7 @@ function renderGuideCard(guide, selectedAudience) {
       <span class="guide-offer"><span class="offer-badge ${offerClasses[guide.offer]}">${offerLabels[guide.offer]}</span></span>
       <span class="guide-price">$${guide.price}</span>
     </div>
-    <button class="guide-cta">${offerCTA[guide.offer]} — $${guide.price}</button>
+    <button class="guide-cta">${offerCTA[guide.offer]}  - $${guide.price}</button>
     <div class="audience-editions">
       <button class="audience-toggle" onclick="toggleAudiences(this)">17 audience editions available ▾</button>
       <div class="audience-list">
@@ -585,7 +585,7 @@ function applyFilters() {
     emptyState.style.display = 'none';
     const totalEditions = audience !== 'all' ? filtered.length : filtered.length * 17;
     countEl.innerHTML = `Showing <strong>${filtered.length}</strong> guide${filtered.length === 1 ? '' : 's'}` +
-      (audience !== 'all' ? ` — ${audiences.find(a => a.bucket === audience)?.label} edition` : ` — ${totalEditions.toLocaleString()} total editions across 17 audiences`);
+      (audience !== 'all' ? `  - ${audiences.find(a => a.bucket === audience)?.label} edition` : `  - ${totalEditions.toLocaleString()} total editions across 17 audiences`);
 
     filtered.forEach(g => {
       grid.appendChild(renderGuideCard(g, audience));

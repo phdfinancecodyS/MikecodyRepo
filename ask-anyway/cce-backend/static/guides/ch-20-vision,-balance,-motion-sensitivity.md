@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-When your eyes, your balance, or movement itself feels off — and nobody can find a reason — this guide is for that exact frustration.
+When your eyes, your balance, or movement itself feels off  - and nobody can find a reason  - this guide is for that exact frustration.
 
 ## What Is Happening
 
@@ -36,19 +36,19 @@ Vision sensitivity, balance issues, and motion sensitivity all trace back to ves
 ## 24-Hour Action Plan
 
 - Right now: limit one visual trigger today (dim a screen, reduce scrolling, take off fluorescent lighting).
-- Before bed tonight: do 60 seconds of fixed-point focus — stare at one still object and breathe.
-- Tomorrow: track when the symptoms spike and what you were doing — start building the pattern.
+- Before bed tonight: do 60 seconds of fixed-point focus  - stare at one still object and breathe.
+- Tomorrow: track when the symptoms spike and what you were doing  - start building the pattern.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Vision, Balance, Motion Sensitivity" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

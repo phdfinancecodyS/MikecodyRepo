@@ -109,7 +109,7 @@
 98. Emotional Dysregulation Daily Kit
 99. Self-Esteem Rebuilding Guide
 100. Mindfulness for Mental Health Starter Kit
-101. Therapy 101 — Getting Started with Mental Healthcare
+101. Therapy 101  - Getting Started with Mental Healthcare
 102. Psychiatric Medication Guide (what to ask your doctor)
 103. Mental Health in the Workplace Guide
 104. First Responder Mental Health Guide
@@ -155,7 +155,7 @@
 140. Postpartum Relationship Repair Guide
 141. Estrangement Recovery Guide (adult children / parents)
 142. Sibling Conflict Resolution Guide
-143. Divorce with Children — Co-Parenting Blueprint
+143. Divorce with Children  - Co-Parenting Blueprint
 144. International Adoption Navigator
 145. Embryo Adoption Guide
 146. Surrogacy Navigator
@@ -343,7 +343,7 @@
 316. Returning to Work After Incarceration Guide
 317. Workplace Harassment Reporting Guide
 318. Workplace Discrimination Legal Guide
-319. Fired vs Laid Off — Your Rights Guide
+319. Fired vs Laid Off  - Your Rights Guide
 320. Severance Negotiation Guide
 321. Non-Compete Agreement Guide
 322. Whistleblower Rights Guide
@@ -411,7 +411,7 @@
 380. Returning Adult Learner Guide
 381. Online Degree Credibility Guide
 382. Trade School vs College Decision Guide
-383. HBCUs — Why, How, Financial Guide
+383. HBCUs  - Why, How, Financial Guide
 384. Hispanic-Serving Institutions (HSIs) Guide
 385. Community College Financial Aid Guide
 386. College Housing & Food Insecurity Guide
@@ -546,14 +546,14 @@
 
 ## PRIORITY LAUNCH TIERS
 
-### Tier 1 — Launch First (highest TikTok virality + proven demand)
+### Tier 1  - Launch First (highest TikTok virality + proven demand)
 1, 3, 4, 61, 63, 64, 65, 69, 82, 121, 122, 124, 181, 251, 254, 311, 471, 472
 
-### Tier 2 — Launch Within 90 Days
+### Tier 2  - Launch Within 90 Days
 2, 5, 6, 62, 70, 71, 75, 123, 125, 126, 182, 183, 186, 189, 255, 257, 471–480
 
-### Tier 3 — Long Tail (build as spokes grow)
-Everything else — steady one per week cadence
+### Tier 3  - Long Tail (build as spokes grow)
+Everything else  - steady one per week cadence
 
 ---
 

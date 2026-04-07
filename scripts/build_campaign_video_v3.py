@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Ask Anyway Campaign Video v3 — frame-by-frame renderer.
+Ask Anyway Campaign Video v3  - frame-by-frame renderer.
 
 Renders every frame with PIL, pipes raw RGB to ffmpeg.
 No MoviePy composition = no broken audio or missing animations.
@@ -213,7 +213,7 @@ def render_logo_watermark(opacity=0.15):
     radius = 140
     alpha_byte = int(opacity * 255)
 
-    # Circle ring — thicker line
+    # Circle ring  - thicker line
     ring_color = (*TEAL, alpha_byte)
     for i in range(3):
         draw.ellipse(
@@ -221,7 +221,7 @@ def render_logo_watermark(opacity=0.15):
             outline=ring_color, width=2,
         )
 
-    # Text inside — 2x font sizes
+    # Text inside  - 2x font sizes
     font_the = load_font(FONT_REG, 20)
     font_ask = load_font(FONT_BLACK, 46)
     font_anyway = load_font(FONT_BLACK, 46)
@@ -328,7 +328,7 @@ def apply_zoom(img_arr, progress, max_zoom=0.04):
 # ── Stick-figure animation for slides 1-3 ──────────────────────────
 # Real kitchen photo background + LARGE fluid stick figure
 # Natural joint mechanics using inverse kinematics
-# Knife contacts cutting board — gravity-physics chop arc
+# Knife contacts cutting board  - gravity-physics chop arc
 
 # ── Chibi style: big head, pill body, stick limbs ──
 OUTLINE_COLOR = (55, 48, 42)     # warm dark brown outline
@@ -338,14 +338,14 @@ OUTLINE_W = 4
 
 # ── Figure scale ── change this ONE number to resize everything ──
 S = 3.0
-HEAD_R = int(65 * S)             # 195 — big chibi head
+HEAD_R = int(65 * S)             # 195  - big chibi head
 BODY_RX = int(32 * S)           # pill body half-width = 96
 BODY_RY = int(40 * S)           # pill body half-height = 120
 UPPER_ARM_LEN = int(70 * S)     # 210
 FOREARM_LEN = int(60 * S)       # 180
 UPPER_LEG_LEN = int(55 * S)     # 165
 LOWER_LEG_LEN = int(50 * S)     # 150
-LW = max(4, int(4 * S * 0.7))   # ~8 — thinner stick limbs
+LW = max(4, int(4 * S * 0.7))   # ~8  - thinner stick limbs
 SHADOW_OFF = max(3, int(4 * S * 0.6))   # 7
 
 # Kitchen layout
@@ -419,7 +419,7 @@ def get_kitchen_bg():
     img = Image.new("RGB", (W, H), (245, 240, 232))
     draw = ImageDraw.Draw(img)
 
-    # ── Wall — warm gradient ──
+    # ── Wall  - warm gradient ──
     wall_bottom = COUNTER_Y
     for y in range(wall_bottom):
         t = y / wall_bottom
@@ -482,7 +482,7 @@ def get_kitchen_bg():
         draw.line([(W//2 - hood_w//3, vy), (W//2 + hood_w//3, vy)],
                   fill=(180, 172, 158), width=1)
 
-    # ── Floor — below counter ──
+    # ── Floor  - below counter ──
     floor_top = COUNTER_Y + COUNTER_HEIGHT
     floor_color_a = (215, 200, 175)
     floor_color_b = (205, 190, 165)
@@ -518,7 +518,7 @@ def get_kitchen_bg():
 
 
 def ease_in_out(t):
-    """Smooth easing — slow start, fast middle, slow end."""
+    """Smooth easing  - slow start, fast middle, slow end."""
     return t * t * (3 - 2 * t)
 
 
@@ -561,7 +561,7 @@ def _wobble_point(p, amount=2.5):
 
 
 def _hand_drawn_line(draw, p1, p2, fill, width, segments=5, wobble=True):
-    """Draw a line with subtle hand-drawn wobble — multiple sub-segments
+    """Draw a line with subtle hand-drawn wobble  - multiple sub-segments
     with slight random displacement at each control point."""
     pts = []
     for i in range(segments + 1):
@@ -668,7 +668,7 @@ def draw_fluid_figure(draw, cx, pose, t, counter_y):
                             body_cx + BODY_RX, body_bottom],
                            radius=BODY_RX, fill=BODY_FILL,
                            outline=outline, width=max(3, int(3 * S * 0.5)))
-    # ─── Apron — simple triangular bib + tied strings ───
+    # ─── Apron  - simple triangular bib + tied strings ───
     apron_color = (245, 245, 240)
     apron_outline = (200, 190, 175)
     apron_top = body_top + int(8 * S)
@@ -687,7 +687,7 @@ def draw_fluid_figure(draw, cx, pose, t, counter_y):
     draw.line([(body_cx + apron_hw - int(3 * S), apron_top),
                (body_cx + int(6 * S), body_top - int(4 * S))],
               fill=apron_outline, width=strap_w)
-    # Waist bow — small horizontal detail
+    # Waist bow  - small horizontal detail
     bow_y = body_cy + int(4 * S)
     bow_r = int(5 * S)
     for bside in [-1, 1]:
@@ -701,7 +701,7 @@ def draw_fluid_figure(draw, cx, pose, t, counter_y):
                   body_cx + int(3 * S), bow_y + int(2 * S)],
                  fill=apron_outline)
 
-    # ═══════ LEGS — stick limbs from bottom of pill ═══════
+    # ═══════ LEGS  - stick limbs from bottom of pill ═══════
     hip_y = body_bottom - int(5 * S)
     leg_spread = int(12 * S)
     l_hip = (body_cx - leg_spread, hip_y)
@@ -717,7 +717,7 @@ def draw_fluid_figure(draw, cx, pose, t, counter_y):
     draw_limb_seg(draw, l_knee, l_foot, outline, LW, True, shadow_c)
     draw_limb_seg(draw, r_hip, r_knee, outline, LW, True, shadow_c)
     draw_limb_seg(draw, r_knee, r_foot, outline, LW, True, shadow_c)
-    # Feet — small ovals
+    # Feet  - small ovals
     foot_rx, foot_ry = int(6 * S), int(3 * S)
     for f in [l_foot, r_foot]:
         draw.ellipse([f[0] - foot_rx, f[1] - foot_ry,
@@ -850,7 +850,7 @@ def draw_fluid_figure(draw, cx, pose, t, counter_y):
                       head_cx + bsx + blush_r, by + blush_r // 2],
                      fill=(255, 220, 210))
 
-    # ═══════ ARMS — IK driven, stick limbs ═══════
+    # ═══════ ARMS  - IK driven, stick limbs ═══════
     hand_r = int(5 * S)
 
     if pose == "chop":
@@ -1019,7 +1019,7 @@ def draw_counter_props(draw, cx, counter_y, prop_type, t):
         pot_y = counter_y
         pw, ph = int(60 * S), int(40 * S)
 
-        # Pot body — rounded cartoon shape
+        # Pot body  - rounded cartoon shape
         draw.rounded_rectangle([pot_cx - pw // 2, pot_y - ph,
                                 pot_cx + pw // 2, pot_y + 2],
                                radius=int(8 * S),
@@ -1034,7 +1034,7 @@ def draw_counter_props(draw, cx, counter_y, prop_type, t):
                                radius=int(3 * S),
                                fill=(200, 205, 215),
                                outline=outline, width=ol_w)
-        # Handles — simple rounded stubs
+        # Handles  - simple rounded stubs
         handle_w = int(12 * S)
         for side in [-1, 1]:
             hx = pot_cx + side * (pw // 2 + int(2 * S))
@@ -1073,7 +1073,7 @@ def draw_counter_props(draw, cx, counter_y, prop_type, t):
         board_top = counter_y - int(10 * S)
         bw, bh = int(90 * S), int(14 * S)
 
-        # Cutting board — cartoon rounded rectangle
+        # Cutting board  - cartoon rounded rectangle
         draw.rounded_rectangle([board_cx - bw // 2, board_top,
                                 board_cx + bw // 2, board_top + bh],
                                radius=int(5 * S),
@@ -1129,7 +1129,7 @@ def draw_counter_props(draw, cx, counter_y, prop_type, t):
 
 
 def draw_top_captions(img, lines, highlight_word=None, fade_alpha=1.0):
-    """Draw clean captions at the top of the screen — no box.
+    """Draw clean captions at the top of the screen  - no box.
     Text with a subtle dark shadow for readability on the kitchen photo.
     Returns modified PIL Image.
     """
@@ -1185,7 +1185,7 @@ def draw_counter_surface(draw, counter_y):
     """Draw a cartoon-style counter surface matching the chibi kitchen."""
     outline = OUTLINE_COLOR
     ol_w = max(2, int(2.5 * S * 0.4))
-    # Counter top surface — warm wood color with rounded edge feel
+    # Counter top surface  - warm wood color with rounded edge feel
     draw.rectangle([(0, counter_y), (W, counter_y + 6)],
                    fill=(175, 145, 110))
     # Counter front face
@@ -1235,7 +1235,7 @@ def render_stick_frame(slide_idx, t, caption_lines=None, highlight_word=None):
     elif slide_idx == 2:
         draw_fluid_figure(draw, cx + int(30 * S), "mug", t, COUNTER_Y)
 
-    # Draw counter ON TOP of figure — hides legs/hips
+    # Draw counter ON TOP of figure  - hides legs/hips
     draw_counter_surface(draw, COUNTER_Y)
 
     # Props sit ON the counter (drawn after counter surface)
@@ -1244,7 +1244,7 @@ def render_stick_frame(slide_idx, t, caption_lines=None, highlight_word=None):
     elif slide_idx == 1:
         draw_counter_props(draw, cx, COUNTER_Y, "board", t)
 
-    # Captions at the top — no box, just clean text with shadow
+    # Captions at the top  - no box, just clean text with shadow
     if caption_lines:
         fade = min(1.0, t / 0.18) if t < 0.18 else 1.0
         img = draw_top_captions(img, caption_lines, highlight_word, fade_alpha=fade)
@@ -1256,7 +1256,7 @@ def render_stick_frame(slide_idx, t, caption_lines=None, highlight_word=None):
     return arr
 
 
-# Captions for the three stick-figure slides — matches VO script
+# Captions for the three stick-figure slides  - matches VO script
 STICK_CAPTIONS = [
     {
         "lines": [
@@ -1306,7 +1306,7 @@ def build_v3():
     # Load VO manifest
     manifest = json.loads((VO_DIR / "manifest.json").read_text())
 
-    # Slide definitions — each slide gets a warm gradient background
+    # Slide definitions  - each slide gets a warm gradient background
     pads = [0.5, 0.3, 0.3, 0.3, 0.5, 1.0]
     slide_defs = [
         {
@@ -1550,7 +1550,7 @@ def build_v3():
         f"[1]atrim=0:{total_dur + 1},asetpts=PTS-STARTPTS,volume=1.5[amb]"
     )
 
-    # Add VO inputs — only slides 1-3 have voiceover (stick figure slides)
+    # Add VO inputs  - only slides 1-3 have voiceover (stick figure slides)
     vo_count = len(manifest)
     for i in range(1, vo_count + 1):
         vo_file = str(VO_DIR / f"slide-{i:02d}.mp3")
@@ -1568,7 +1568,7 @@ def build_v3():
         f"{vo_labels}amix=inputs={vo_count}:duration=first:dropout_transition=0:normalize=0[vo_mix]"
     )
 
-    # Overlay VO mix on ambient — no normalization so volumes stay as set
+    # Overlay VO mix on ambient  - no normalization so volumes stay as set
     filter_parts.append(
         "[amb][vo_mix]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[aout]"
     )

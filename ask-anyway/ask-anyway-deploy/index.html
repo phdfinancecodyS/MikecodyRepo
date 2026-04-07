@@ -670,7 +670,7 @@ const CCE_BASE  = window.location.origin.includes('railway.app')
                   : 'https://mikecodyrepo-production.up.railway.app';
 const CCE_TREE  = 'main-flow';
 
-// Guide base path — auto-detects local dev vs deployed
+// Guide base path  - auto-detects local dev vs deployed
 const GUIDES_BASE = (() => {
   const p = window.location.pathname;
   // Railway: served at root, guides at /guides/
@@ -744,7 +744,7 @@ function cceOutcomeHTML(outcome) {
         <div class="rec-icon">📞</div>
         <div class="rec-content">
           <div class="rec-title">${escHtml(r.name || '988 Lifeline')}</div>
-          <div class="rec-desc">${escHtml(r.description || '24/7 crisis support — free')}</div>
+          <div class="rec-desc">${escHtml(r.description || '24/7 crisis support  - free')}</div>
         </div>
       </a>`).join('');
   }
@@ -758,21 +758,21 @@ function cceOutcomeHTML(outcome) {
   return `
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
     <div class="ai-prompt" style="font-size:1.05rem;margin-bottom:18px;opacity:.9">${escHtml(outcome.summary)}</div>
-    <div class="rec-label">All free — open right now</div>
+    <div class="rec-label">All free  - open right now</div>
     <div class="rec-list">
       ${crisisRows}
       <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${guideUrl}', '${escAttr(guideTitle)}')">
         <div class="rec-icon">📖</div>
         <div class="rec-content">
           <div class="rec-title">${escHtml(guideTitle)}</div>
-          <div class="rec-desc">Read it now — tap to open</div>
+          <div class="rec-desc">Read it now  - tap to open</div>
         </div>
       </div>
       <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
         <div class="rec-icon">OK</div>
         <div class="rec-content">
           <div class="rec-title">Daily Wellbeing Checklist</div>
-          <div class="rec-desc">A short daily check-in — tap to open</div>
+          <div class="rec-desc">A short daily check-in  - tap to open</div>
         </div>
       </div>
       ${therapistWidgetHTML(ctx.topic || 'general')}
@@ -789,7 +789,7 @@ function cceChoiceHTML(options) {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  FUNNEL — TWO TRACKS
+//  FUNNEL  - TWO TRACKS
 //
 //  GOOD TRACK:                     NOT GOOD TRACK:
 //  Turn 1 → Hear they're fine      Turn 1 → Hear them, one question
@@ -806,15 +806,15 @@ const TRACK = { UNKNOWN: 'unknown', GOOD: 'good', NOT_GOOD: 'not_good', RISKY: '
 
 const Stage = {
   // Shared
-  OPENING: 'opening',          // Stage 1 — first reply
+  OPENING: 'opening',          // Stage 1  - first reply
   // Good track
-  GOOD_S2: 'good_s2',          // Stage 2 — what's your secret
-  GOOD_S3: 'good_s3',          // Stage 3 — light soft check
-  GOOD_S4: 'good_s4',          // Stage 4 — warm close
-  // Not-good track — 3 turns before recs
-  NG_S2: 'ng_s2',              // Stage 2 — one probe question
-  NG_S3: 'ng_s3',              // Stage 3 — one more grounding question
-  NG_S4: 'ng_s4',              // Stage 4 — recommendations (earned)
+  GOOD_S2: 'good_s2',          // Stage 2  - what's your secret
+  GOOD_S3: 'good_s3',          // Stage 3  - light soft check
+  GOOD_S4: 'good_s4',          // Stage 4  - warm close
+  // Not-good track  - 3 turns before recs
+  NG_S2: 'ng_s2',              // Stage 2  - one probe question
+  NG_S3: 'ng_s3',              // Stage 3  - one more grounding question
+  NG_S4: 'ng_s4',              // Stage 4  - recommendations (earned)
   // Risky behavior track
   RISKY_PROBE: 'risky_probe',  // Probe further before routing
   RISKY_END: 'risky_end',      // Route to recs after probing
@@ -822,7 +822,7 @@ const Stage = {
   CRISIS: 'crisis',
   CRISIS_S2: 'crisis_s2',        // Follow-up after initial crisis response
   BRANCH_SELECT: 'branch_select', // "What happened when you asked" branch buttons
-  OTHER_S1: 'other_s1',          // Checking on someone else — guide flow
+  OTHER_S1: 'other_s1',          // Checking on someone else  - guide flow
   OTHER_TEASE: 'other_tease',    // Show teaser starters
   DONE: 'done',
 };
@@ -884,7 +884,7 @@ function submitBetaFeedback() {
   // TODO: POST to /api/feedback when backend ready
   closeBetaModal();
   const bar = document.getElementById('beta-bar');
-  if (bar) bar.innerHTML = '<span style="color:#555;font-size:.7rem">Thanks — you\'re helping build this. ✓</span>';
+  if (bar) bar.innerHTML = '<span style="color:#555;font-size:.7rem">Thanks  - you\'re helping build this. ✓</span>';
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -894,18 +894,18 @@ function submitBetaFeedback() {
 // ─────────────────────────────────────────────────────────────
 
 const SENTIMENT_VOCAB = {
-  // positive — weight 1
+  // positive  - weight 1
   pos1: ['good','fine','okay','ok','well','calm','alright','stable','present','here','okay','coping','managing','surviving','content','safe','supported','connected','clear','grounded'],
-  // positive — weight 2
+  // positive  - weight 2
   pos2: ['great','better','happy','glad','grateful','thankful','hopeful','motivated','energized','proud','excited','thriving','peaceful','blessed','loved','confident','optimistic','improving','positive','strong','healing','growing','refreshed','rested'],
-  // positive — weight 3
+  // positive  - weight 3
   pos3: ['amazing','fantastic','excellent','wonderful','incredible','outstanding','joyful','elated','ecstatic','fulfilled','inspired','unstoppable'],
 
-  // negative — weight 1
+  // negative  - weight 1
   neg1: ['meh','tired','stressed','worried','nervous','unsure','uncertain','off','blah','drained','flat','foggy','tense','restless','uneasy','sad','low','down','rough','hard','difficult','struggling','lost','stuck'],
-  // negative — weight 2
+  // negative  - weight 2
   neg2: ['bad','depressed','anxious','overwhelmed','exhausted','hopeless','worthless','empty','numb','broken','scared','hurt','alone','angry','ashamed','guilty','useless','helpless','trapped','invisible','disconnected','isolated','failing','panicking','grieving','mourning','devastated'],
-  // negative — weight 3
+  // negative  - weight 3
   neg3: ['terrible','horrible','awful','unbearable','miserable','desperate','suicidal','destroyed','shattered','collapsing','falling apart','falling apart','can\'t cope','can\'t go on','no point','no reason','ending'],
 };
 
@@ -985,23 +985,23 @@ function isHedging(t) {
 function isGood(t) {
   const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
   if (/^(yes|yeah|yep|yup|mostly|pretty much|i am|i'm okay|im okay|i'm good|im good)$/.test(compact)) return true;
-  // Only fire on clearly enthusiastic positivity — NOT hedging words like okay/fine/meh
+  // Only fire on clearly enthusiastic positivity  - NOT hedging words like okay/fine/meh
   if (/^(great|doing great|doing well|pretty good|doing really well|blessed|fantastic|amazing|wonderful|thriving|excellent|really good)([.!,\s]|$)/.test(t)
     || /\bi.?m (great|doing great|doing well|doing really well|blessed|fantastic|amazing|wonderful|thriving|really good|feeling great|feeling good|feeling amazing)/.test(t)
     || /things are (great|going well|really good|amazing|wonderful|fantastic)/.test(t)) return true;
-  // Sentiment fallback — must be strongly positive, not just neutral
+  // Sentiment fallback  - must be strongly positive, not just neutral
   return analyze(t).score > 0.4;
 }
 
 function isNotGood(t) {
   const compact = t.toLowerCase().replace(/[^a-z\s']/g, '').trim();
   if (/^(no|nope|nah|naah|not really|not okay|not ok|not good|bad|rough|hard|idk|i don't know|i dont know|dont know|unsure)$/.test(compact)) return true;
-  // Keyword fast-path — explicit negative signals
+  // Keyword fast-path  - explicit negative signals
   if (/(not (okay|ok|doing well|good|great|feeling well)|struggling|overwhelmed|exhausted|burnt out|can.?t cope|falling apart|going through|dark place|depressed|anxious|panic|numb|lost|empty|alone|hopeless|worthless|tired of|can.?t sleep|can.?t eat|rough|hard time|difficult|bad day|bad week|stressed|broke up|breakup|lost my|fired|laid off|grief|grieving|mourning|worried|scared|not sure)/.test(t)
     || /(my (girlfriend|boyfriend|partner|wife|husband|gf|bf|mom|dad|friend|job|dog|cat)|i got|i lost|we broke|she left|he left|they left)/.test(t)) return true;
-  // Hedging = assumed struggling — people downplay
+  // Hedging = assumed struggling  - people downplay
   if (isHedging(t)) return true;
-  // Sentiment fallback — anything not clearly positive gets treated as not-good
+  // Sentiment fallback  - anything not clearly positive gets treated as not-good
   return analyze(t).score < 0;
 }
 
@@ -1032,7 +1032,7 @@ function isRisky(t) {
 }
 
 function isConcernedAboutOther(t) {
-  // Someone checking on another person — NOT struggling themselves
+  // Someone checking on another person  - NOT struggling themselves
   if (/(i.?m (worried|concerned) about (my|a|someone)|i think (my|someone i))/.test(t)) return true;
   if (/(how (do|can|should) i (talk to|help|approach|ask|reach out to) (my|someone))/.test(t)) return true;
   if (/(my (girlfriend|boyfriend|partner|wife|husband|friend|sister|brother|son|daughter|coworker|colleague|roommate|mom|dad|kid) (seems|has been|is|looks|keeps|won.?t|told me))/.test(t)) return true;
@@ -1094,14 +1094,14 @@ function audienceLayer(base) {
     lgbtq:             '\n\nYou are allowed to be exactly who you are in this conversation. No editing.',
     single_parent:     '\n\nEven when you\'re the one holding everything together, you\'re allowed to need holding too.',
     social_worker:     '\n\nYou hold space for everyone else. This is a space where someone holds it for you.',
-    bipoc:             '\n\nWhat you carry is real — including the weight others don\'t see. This space sees it.',
+    bipoc:             '\n\nWhat you carry is real  - including the weight others don\'t see. This space sees it.',
     neurodivergent:    '\n\nYour brain works differently, and that\'s not a flaw. This conversation can be as nonlinear as you need.',
     chronic_illness:   '\n\nLiving with a body that fights you is exhausting in a way most people don\'t understand. I hear you.',
     gen_z:             '\n\nYou\'re not dramatic. You inherited a lot. What you\'re feeling is real.',
     high_stress:       '\n\nSuccess can be its own kind of cage. What you\'re carrying matters even when you look like you have it together.',
-    faith_other:       '\n\nYour faith isn\'t an obstacle to getting support. It\'s part of who you are — this conversation holds that.',
+    faith_other:       '\n\nYour faith isn\'t an obstacle to getting support. It\'s part of who you are  - this conversation holds that.',
     grief_audience:    '\n\nLosing someone that way leaves a kind of weight that doesn\'t have a name. You don\'t have to explain it here.',
-    addiction_recovery:'\n\nRecovery is hard work. You deserve real support — not just slogans. You\'re allowed to not be okay.',
+    addiction_recovery:'\n\nRecovery is hard work. You deserve real support  - not just slogans. You\'re allowed to not be okay.',
   };
   return ctx.audience ? base + (overlays[ctx.audience] || '') : base;
 }
@@ -1113,14 +1113,14 @@ function audienceLayer(base) {
 // ── GOOD TRACK ──────────────────────────────────────────────
 
 function goodS1(userText) {
-  // Stage 1 — validate their good and ask what's behind it
+  // Stage 1  - validate their good and ask what's behind it
   track = TRACK.GOOD;
   stage = Stage.GOOD_S2;
-  return `That's really good to hear — and I mean that.\n\nWhat's been making things feel good lately?`;
+  return `That's really good to hear  - and I mean that.\n\nWhat's been making things feel good lately?`;
 }
 
 function goodS2(userText) {
-  // Stage 2 — reflect what they said back, warm and specific, then close
+  // Stage 2  - reflect what they said back, warm and specific, then close
   const t = userText.toLowerCase();
 
   // If their answer reads as negative, pivot gently to not-good track
@@ -1134,25 +1134,25 @@ function goodS2(userText) {
   let validation = '';
 
   if (/family|friends|people|community|connection|loved one/.test(t)) {
-    validation = `The people around you — that's everything. That's not small.`;
+    validation = `The people around you  - that's everything. That's not small.`;
   } else if (/work|job|career|purpose|project|goal|building|creating/.test(t)) {
-    validation = `Having something meaningful to pour into — that does something for the soul.`;
+    validation = `Having something meaningful to pour into  - that does something for the soul.`;
   } else if (/exercise|workout|gym|running|health|sleep|outside|nature|walk/.test(t)) {
-    validation = `Taking care of your body like that — most people underestimate how much it carries everything else.`;
+    validation = `Taking care of your body like that  - most people underestimate how much it carries everything else.`;
   } else if (/faith|god|prayer|grateful|thankful|blessed|peace/.test(t)) {
     validation = `That kind of grounding is real. It's a gift to have it.`;
   } else if (/myself|alone|solo|quiet|rest|recharge/.test(t)) {
-    validation = `Knowing what you need and actually giving it to yourself — that's self-awareness people spend years trying to find.`;
+    validation = `Knowing what you need and actually giving it to yourself  - that's self-awareness people spend years trying to find.`;
   } else {
     validation = `That actually matters more than people realize.`;
   }
 
   stage = Stage.DONE;
-  return `${validation}\n\nHonestly — keep doing what you're doing. And if anything ever shifts, this place is here for that too.`;
+  return `${validation}\n\nHonestly  - keep doing what you're doing. And if anything ever shifts, this place is here for that too.`;
 }
 
 function goodS3(userText) {
-  // Kept for router compatibility — shouldn't normally be reached on good track
+  // Kept for router compatibility  - shouldn't normally be reached on good track
   stage = Stage.DONE;
   return `Love that. Keep going.\n\nThis space is here whenever you need it.`;
 }
@@ -1164,17 +1164,17 @@ function riskyProbe(userText) {
   const t = userText.toLowerCase();
   ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
 
-  // First probe — non-judgmental, zero shame, just curious
+  // First probe  - non-judgmental, zero shame, just curious
   if (stage !== Stage.RISKY_PROBE) {
     stage = Stage.RISKY_PROBE;
 
     if (/drink|alcohol|drunk|blackout/.test(t)) {
-      return `I hear you — and I'm not here to judge any of it.
+      return `I hear you  - and I'm not here to judge any of it.
 
 How long has drinking been the thing you're reaching for?`;
     }
     if (/using|high|pills|relapse|relapsed|back on/.test(t)) {
-      return `That took honesty to say — thank you for trusting this space with it.
+      return `That took honesty to say  - thank you for trusting this space with it.
 
 What's been going on underneath that's pushing you back toward it?`;
     }
@@ -1198,7 +1198,7 @@ What's stopping you from letting someone in right now?`;
 How long has this been happening, and is it getting worse?`;
   }
 
-  // Second probe answered — route to recs
+  // Second probe answered  - route to recs
   stage = Stage.RISKY_END;
   return buildRecommendations();
 }
@@ -1211,29 +1211,29 @@ function ngS1(userText) {
   ctx.topic = detectTopic(userText.toLowerCase());
   ctx.audience = detectAudience(userText.toLowerCase()) || ctx.audience;
 
-  // If they hedged ("fine", "okay", "meh") — gently name it before opening up
+  // If they hedged ("fine", "okay", "meh")  - gently name it before opening up
   const hedged = isHedging(userText.toLowerCase());
   if (hedged) {
     const hedgeWord = userText.trim().split(/[\s,.!?]/)[0].toLowerCase();
     const callout = hedgeWord === 'meh'
       ? `"Meh" is doing a lot of work right now.`
-      : `You said "${hedgeWord}" — and I'm going to sit with that for a second.`;
+      : `You said "${hedgeWord}"  - and I'm going to sit with that for a second.`;
     return audienceLayer(`${callout}\n\nThat word means a lot of different things to different people. What's actually going on underneath it?`);
   }
 
   // One empathetic line + one short question
   const openers = {
     relationship:   audienceLayer(`That's real, and it hurts.\n\nHow are you holding up right now?`),
-    work:           audienceLayer(`That kind of stress hits everything — sleep, focus, all of it.\n\nHow are you doing with it day to day?`),
+    work:           audienceLayer(`That kind of stress hits everything  - sleep, focus, all of it.\n\nHow are you doing with it day to day?`),
     loss:           audienceLayer(`I'm really sorry. There's no right way to move through that.\n\nHow are you holding up?`),
     anxiety:        audienceLayer(`That constant pressure is exhausting. Your nervous system is working overtime.\n\nIs this something that just started, or has it been building for a while?`),
     loneliness:     audienceLayer(`Feeling that alone is one of the heaviest things a person can carry.\n\nHow long has it felt this way?`),
     recovery:       audienceLayer(`That's a lot to navigate, especially when you're already fighting hard.\n\nHow are you doing with it right now?`),
     faith:          audienceLayer(`I hear you. When your faith feels shaky, everything else feels less solid.\n\nWhat's been the hardest part lately?`),
-    family:         audienceLayer(`Family gets complicated — and complicated often means painful.\n\nWhat's going on?`),
-    neurodivergent: audienceLayer(`That struggle is real — and often invisible to everyone around you.\n\nWhat's been hitting hardest lately?`),
+    family:         audienceLayer(`Family gets complicated  - and complicated often means painful.\n\nWhat's going on?`),
+    neurodivergent: audienceLayer(`That struggle is real  - and often invisible to everyone around you.\n\nWhat's been hitting hardest lately?`),
     chronic_illness:audienceLayer(`Managing symptoms on top of everything else is an invisible weight.\n\nHow are you doing emotionally through it?`),
-    racial_trauma:  audienceLayer(`What you're carrying is real. Not imagined, not dramatic — real.\n\nHow are you doing underneath it all?`),
+    racial_trauma:  audienceLayer(`What you're carrying is real. Not imagined, not dramatic  - real.\n\nHow are you doing underneath it all?`),
     burnout:        audienceLayer(`Running on empty for too long wears something down.\n\nWhen did you last feel like you weren\'t just surviving the week?`),
     eating:         audienceLayer(`That relationship is hard. The body keeps the score on all of it.\n\nHow long has this been part of things for you?`),
     general:        audienceLayer(`I hear you.\n\nWhat's been the hardest part of it?`),
@@ -1242,7 +1242,7 @@ function ngS1(userText) {
 }
 
 function ngS2(userText) {
-  // Turn 2 — follow-up: go one level deeper
+  // Turn 2  - follow-up: go one level deeper
   const t = userText.toLowerCase();
   if (/alone|no one|nobody|no support/.test(t)) {
     ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
@@ -1251,17 +1251,17 @@ function ngS2(userText) {
 
   // Topic-aware follow-up
   const probes = {
-    relationship:   `Has this hit your sleep or your eating at all — or have you been able to hold that together?`,
+    relationship:   `Has this hit your sleep or your eating at all  - or have you been able to hold that together?`,
     work:           `Is there anyone around you who knows how bad it\'s gotten, or are you carrying this mostly on your own?`,
-    loss:           `Grief isn't linear — are there moments in the day when it\'s heavier than others?`,
-    anxiety:        `When the anxiety spikes, what does that look like for you — is it more physical, or more in your head?`,
+    loss:           `Grief isn't linear  - are there moments in the day when it\'s heavier than others?`,
+    anxiety:        `When the anxiety spikes, what does that look like for you  - is it more physical, or more in your head?`,
     loneliness:     `Is this something that just crept up, or has it been there for longer than you can remember?`,
-    recovery:       `When you picture getting through today — what does that look like?`,
+    recovery:       `When you picture getting through today  - what does that look like?`,
     family:         `Is there one person in your corner right now, or does it feel like you\'re navigating this alone?`,
-    neurodivergent: `When things get overwhelming, do you have anywhere to go that actually helps — or does it mostly just pile up?`,
+    neurodivergent: `When things get overwhelming, do you have anywhere to go that actually helps  - or does it mostly just pile up?`,
     chronic_illness:`On the harder days, is there someone who actually understands what you\'re living with, or does it feel like you explain it constantly?`,
-    racial_trauma:  `Do you have space in your life to actually process this — or do you mostly have to hold it and keep moving?`,
-    burnout:        `What\'s the part you\'re most afraid to stop doing — even though it\'s wearing you down?`,
+    racial_trauma:  `Do you have space in your life to actually process this  - or do you mostly have to hold it and keep moving?`,
+    burnout:        `What\'s the part you\'re most afraid to stop doing  - even though it\'s wearing you down?`,
     eating:         `On the hardest days with food, what does your internal voice sound like?`,
     general:        `Have you been able to talk to anyone about this, or has most of it stayed inside?`,
   };
@@ -1270,7 +1270,7 @@ function ngS2(userText) {
 }
 
 function ngS3(userText) {
-  // Turn 3 — route to recs
+  // Turn 3  - route to recs
   const t = userText.toLowerCase();
   if (/alone|no one|nobody|no support|can.?t tell|can.?t talk|no body knows/.test(t)) {
     ctx.crisisLevel = Math.max(ctx.crisisLevel, 1);
@@ -1290,7 +1290,7 @@ function crisisResponse() {
 }
 
 function crisisS2(userText) {
-  // Second crisis turn — probe with Mike's exact questions, then show resources
+  // Second crisis turn  - probe with Mike's exact questions, then show resources
   stage = Stage.CRISIS_S2;
   const t = userText.toLowerCase();
 
@@ -1299,7 +1299,7 @@ function crisisS2(userText) {
   const deniedDanger    = /(no|not right now|i'm okay|i'm safe|just thoughts|just thinking|not going to|i wouldn't|not today)/.test(t);
 
   if (confirmedDanger && !deniedDanger) {
-    // Affirmative — Mike's exact stabilize script
+    // Affirmative  - Mike's exact stabilize script
     return {
       text: `Thank you for being honest with me. That took courage.\n\nI want us to get support now, together.\n\nWould you call 988 with me right now, or text HOME to 741741 while I stay with you?`,
       card: { type: 'crisis' },
@@ -1307,14 +1307,14 @@ function crisisS2(userText) {
   }
 
   if (deniedDanger) {
-    // They say they're safe — hold the space, go one level deeper gently
+    // They say they're safe  - hold the space, go one level deeper gently
     return {
-      text: `Okay. I believe you.\n\nI still want to ask — have things felt unbearable lately?\n\nNot just hard. Unbearable.`,
+      text: `Okay. I believe you.\n\nI still want to ask  - have things felt unbearable lately?\n\nNot just hard. Unbearable.`,
       card: { type: 'crisis_soft' },
     };
   }
 
-  // Unclear — continue probing with Mike's safety protocol questions
+  // Unclear  - continue probing with Mike's safety protocol questions
   return {
     text: `Are you in immediate danger right now?\n\nHave you thought about how you would do it?\n\nDo you have access right now?`,
     card: { type: 'crisis_probe_2' },
@@ -1328,14 +1328,14 @@ function otherConcernS1() {
   stage = Stage.OTHER_S1;
   ctx.askedAboutOthers = true;
   return audienceLayer(
-    `It means a lot that you're paying attention.\n\nThe fact that you noticed and you're asking — that already matters.\n\nLet me help you have that conversation.`
+    `It means a lot that you're paying attention.\n\nThe fact that you noticed and you're asking  - that already matters.\n\nLet me help you have that conversation.`
   );
 }
 
 function otherTeaseScreen() {
   stage = Stage.OTHER_TEASE;
   return {
-    text: `Here are two ways to open the door. Pick one that feels right for you — then use it.`,
+    text: `Here are two ways to open the door. Pick one that feels right for you  - then use it.`,
     card: { type: 'other_tease' },
   };
 }
@@ -1387,28 +1387,28 @@ async function getResponse(userText, cceOptionId) {
     const data = await cceCall(cceOptionId || null, cceOptionId ? null : userText);
     const cceResp = cceDataToResponse(data);
     if (cceResp) return cceResp;
-    // CCE failed or returned unexpected — fall through to local engine
+    // CCE failed or returned unexpected  - fall through to local engine
   }
 
   if (CHATBASE_BOT_ID) return await chatbaseCall(userText);
 
   ctx.turnCount++;
   const t = userText.toLowerCase().trim();
-  const sentiment = analyze(t); // always run — populates ctx.sentiment
+  const sentiment = analyze(t); // always run  - populates ctx.sentiment
 
-  // Crisis check at every stage — catches passive ideation too
+  // Crisis check at every stage  - catches passive ideation too
   if (isCrisis(t)) {
     ctx.crisisLevel = 2;
     return crisisResponse();
   }
 
-  // Crisis second turn — they responded to "are you safe?"
+  // Crisis second turn  - they responded to "are you safe?"
   if (stage === Stage.CRISIS || stage === Stage.CRISIS_S2) return crisisS2(userText);
 
   // Risky behavior check at every stage
   if (isRisky(t)) return riskyProbe(userText);
 
-  // OPENING — Stage 1 — determine track
+  // OPENING  - Stage 1  - determine track
   if (stage === Stage.OPENING) {
     stepCount = 1;
     ctx.audience = detectAudience(t) || ctx.audience;
@@ -1420,14 +1420,14 @@ async function getResponse(userText, cceOptionId) {
     if (isNotGood(t)) return ngS1(userText);
     // Sentiment-informed ambiguous response
     if (sentiment.score < -0.05) {
-      // Leaning negative but not caught by keywords — route to not-good
+      // Leaning negative but not caught by keywords  - route to not-good
       return ngS1(userText);
     }
     if (sentiment.score > 0.1) {
-      // Leaning positive — route to good
+      // Leaning positive  - route to good
       return goodS1(userText);
     }
-    // Genuinely neutral — ask once more
+    // Genuinely neutral  - ask once more
     stage = Stage.OPENING;
     return `I want to make sure I'm with you.\n\nAre things feeling okay right now, or is there something underneath that you're carrying?`;
   }
@@ -1441,7 +1441,7 @@ async function getResponse(userText, cceOptionId) {
     return `I'm here if anything changes.\n\nTake care.`;
   }
 
-  // NOT GOOD TRACK — 3 turns before recs
+  // NOT GOOD TRACK  - 3 turns before recs
   if (stage === Stage.NG_S2) return ngS2(userText);
   if (stage === Stage.NG_S3) return ngS3(userText);
   if (stage === Stage.NG_S4) return buildRecommendations();
@@ -1450,15 +1450,15 @@ async function getResponse(userText, cceOptionId) {
   if (stage === Stage.RISKY_PROBE) return riskyProbe(userText);
   if (stage === Stage.RISKY_END) return buildRecommendations();
 
-  // OTHER TRACK — checking on someone else
+  // OTHER TRACK  - checking on someone else
   if (stage === Stage.OTHER_S1) return otherTeaseScreen();
   if (stage === Stage.OTHER_TEASE || stage === Stage.BRANCH_SELECT) {
-    return `This is here whenever you need to come back.\n\nYou showed up for them — that matters.`;
+    return `This is here whenever you need to come back.\n\nYou showed up for them  - that matters.`;
   }
 
-  // Fallback — keep them talking
+  // Fallback  - keep them talking
   ctx.audience = detectAudience(t) || ctx.audience;
-  return audienceLayer(`Say more — I'm listening.`);
+  return audienceLayer(`Say more  - I'm listening.`);
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -1487,7 +1487,7 @@ async function chatbaseCall(userText) {
     chatHistory.push({ role: 'assistant', content: reply });
     return reply;
   } catch (e) {
-    return 'Something went quiet on my end. Stay with me — what were you saying?';
+    return 'Something went quiet on my end. Stay with me  - what were you saying?';
   }
 }
 
@@ -1512,7 +1512,7 @@ function escAttr(str) {
 function downloadGuide(e) {
   e.preventDefault();
   const topic = ctx.topic || 'general';
-  alert(`Guide download coming soon — topic: ${topic}\n\nReplace this with your actual PDF URL in downloadGuide()`);
+  alert(`Guide download coming soon  - topic: ${topic}\n\nReplace this with your actual PDF URL in downloadGuide()`);
 }
 
 function humanDelay(content) {
@@ -1524,19 +1524,19 @@ function humanDelay(content) {
 
 // Topic-specific guide mapping
 const TOPIC_GUIDES = {
-  relationship:   { title: 'Connection 101 — Relationships',              url: () => `${GUIDES_BASE}/connection-101.html` },
-  loneliness:     { title: 'Connection 101 — Feeling Alone',              url: () => `${GUIDES_BASE}/connection-101.html` },
-  anxiety:        { title: 'Connection 101 — Anxiety',                    url: () => `${GUIDES_BASE}/connection-101.html` },
-  work:           { title: 'Connection 101 — Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
-  loss:           { title: 'Connection 101 — Grief',                      url: () => `${GUIDES_BASE}/connection-101.html` },
-  family:         { title: 'Connection 101 — Family Stress',              url: () => `${GUIDES_BASE}/connection-101.html` },
-  recovery:       { title: 'Connection 101 — Recovery',                   url: () => `${GUIDES_BASE}/connection-101.html` },
-  neurodivergent: { title: 'Connection 101 — Neurodivergent Minds',       url: () => `${GUIDES_BASE}/connection-101.html` },
-  chronic_illness:{ title: 'Connection 101 — Chronic Illness & Pain',     url: () => `${GUIDES_BASE}/connection-101.html` },
-  racial_trauma:  { title: 'Connection 101 — Carrying What Others Don\'t See', url: () => `${GUIDES_BASE}/connection-101.html` },
-  burnout:        { title: 'Connection 101 — Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
-  eating:         { title: 'Connection 101 — Body & Food Stress',         url: () => `${GUIDES_BASE}/connection-101.html` },
-  general:        { title: 'Connection 101 — Getting Started',            url: () => `${GUIDES_BASE}/connection-101.html` },
+  relationship:   { title: 'Connection 101  - Relationships',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  loneliness:     { title: 'Connection 101  - Feeling Alone',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  anxiety:        { title: 'Connection 101  - Anxiety',                    url: () => `${GUIDES_BASE}/connection-101.html` },
+  work:           { title: 'Connection 101  - Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
+  loss:           { title: 'Connection 101  - Grief',                      url: () => `${GUIDES_BASE}/connection-101.html` },
+  family:         { title: 'Connection 101  - Family Stress',              url: () => `${GUIDES_BASE}/connection-101.html` },
+  recovery:       { title: 'Connection 101  - Recovery',                   url: () => `${GUIDES_BASE}/connection-101.html` },
+  neurodivergent: { title: 'Connection 101  - Neurodivergent Minds',       url: () => `${GUIDES_BASE}/connection-101.html` },
+  chronic_illness:{ title: 'Connection 101  - Chronic Illness & Pain',     url: () => `${GUIDES_BASE}/connection-101.html` },
+  racial_trauma:  { title: 'Connection 101  - Carrying What Others Don\'t See', url: () => `${GUIDES_BASE}/connection-101.html` },
+  burnout:        { title: 'Connection 101  - Burnout & Work',             url: () => `${GUIDES_BASE}/connection-101.html` },
+  eating:         { title: 'Connection 101  - Body & Food Stress',         url: () => `${GUIDES_BASE}/connection-101.html` },
+  general:        { title: 'Connection 101  - Getting Started',            url: () => `${GUIDES_BASE}/connection-101.html` },
 };
 
 function recCardsHTML(crisisLevel) {
@@ -1545,7 +1545,7 @@ function recCardsHTML(crisisLevel) {
         <div class="rec-icon">📞</div>
         <div class="rec-content">
           <div class="rec-title">Call or Text 988</div>
-          <div class="rec-desc">Suicide &amp; Crisis Lifeline — 24/7, real people</div>
+          <div class="rec-desc">Suicide &amp; Crisis Lifeline  - 24/7, real people</div>
         </div>
       </a>` : '';
 
@@ -1560,14 +1560,14 @@ function recCardsHTML(crisisLevel) {
         <div class="rec-icon">📖</div>
         <div class="rec-content">
           <div class="rec-title">${guide.title}</div>
-          <div class="rec-desc">Read it now — tap to open</div>
+          <div class="rec-desc">Read it now  - tap to open</div>
         </div>
       </div>
       <div class="rec-item pdf" style="cursor:pointer;" onclick="openGuide('${dailyUrl}', 'Daily Wellbeing Checklist')">
         <div class="rec-icon">OK</div>
         <div class="rec-content">
           <div class="rec-title">Daily Wellbeing Checklist</div>
-          <div class="rec-desc">A short daily check-in — tap to open</div>
+          <div class="rec-desc">A short daily check-in  - tap to open</div>
         </div>
       </div>
       ${therapistWidgetHTML(ctx.topic || 'general')}
@@ -1578,7 +1578,7 @@ function recCardsHTML(crisisLevel) {
         <div class="rec-icon">🗣️</div>
         <div class="rec-content">
           <div class="rec-title">Worried about someone? How to ask them directly</div>
-          <div class="rec-desc">Word-for-word scripts for a hard conversation — free</div>
+          <div class="rec-desc">Word-for-word scripts for a hard conversation  - free</div>
         </div>
       </div>
     </div>
@@ -1620,7 +1620,7 @@ function _openPT(wid) {
 
 function betaBarHTML() {
   return `<div class="beta-bar" id="beta-bar">
-    <span class="beta-label">Beta — help us improve</span>
+    <span class="beta-label">Beta  - help us improve</span>
     <button class="beta-btn" onclick="openBetaModal()">Give feedback</button>
   </div>`;
 }
@@ -1629,7 +1629,7 @@ function betaBarHTML() {
 function crisisMiniFooterHTML() {
   return `
   <div style="margin-top:20px;padding:12px 14px;background:#08030a;border:1px solid #280d28;border-radius:10px;">
-    <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a02828;margin-bottom:8px;">Always available — no wait</div>
+    <div style="font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a02828;margin-bottom:8px;">Always available  - no wait</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
       <a href="tel:988" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">📞 Call 988</a>
       <a href="sms:741741&amp;body=HOME" style="flex:1;min-width:100px;text-align:center;padding:9px 10px;background:#0d0306;border:1px solid #3a1212;border-radius:8px;color:#c03030;font-size:.8rem;font-weight:700;text-decoration:none;">Text HOME to 741741</a>
@@ -1638,31 +1638,31 @@ function crisisMiniFooterHTML() {
   </div>`;
 }
 
-// crisis_probe card — "Are you safe right now?" + mini crisis footer + input
+// crisis_probe card  - "Are you safe right now?" + mini crisis footer + input
 function crisisProbeHTML() {
   return `
     ${crisisMiniFooterHTML()}
     ${inputHTML()}`;
 }
 
-// crisis_probe_2 card — follow-up probing questions + crisis footer + input
+// crisis_probe_2 card  - follow-up probing questions + crisis footer + input
 function crisisProbe2HTML() {
   return `
     ${crisisMiniFooterHTML()}
     ${inputHTML()}`;
 }
 
-// crisis_soft card — "I heard you're safe" + gentle 988 nudge + input
+// crisis_soft card  - "I heard you're safe" + gentle 988 nudge + input
 function crisisSoftHTML() {
   return `
     <div style="margin-top:16px;padding:12px 14px;background:#020a04;border:1px solid #0a2010;border-radius:10px;font-size:.8rem;color:#555;line-height:1.6;">
-      If that ever changes — even a little — please reach out.<br>
+      If that ever changes  - even a little  - please reach out.<br>
       <a href="tel:988" style="color:#22c55e;text-decoration:none;font-weight:600;">988</a> is there 24/7.\u2003<a href="sms:741741&amp;body=HOME" style="color:#22c55e;text-decoration:none;font-weight:600;">Text HOME to 741741</a>
     </div>
     ${inputHTML()}`;
 }
 
-// other_tease card — "Try one direct line" with Mike's teasers + 3 branch buttons
+// other_tease card  - "Try one direct line" with Mike's teasers + 3 branch buttons
 function otherTeaseHTML() {
   const starters = [
     `"I care about you and I have noticed some changes. Can I ask you something direct?"`,
@@ -1686,7 +1686,7 @@ function otherTeaseHTML() {
     ${crisisMiniFooterHTML()}`;
 }
 
-// branch_script card — the full conversation script for whatever branch was picked
+// branch_script card  - the full conversation script for whatever branch was picked
 function branchScriptHTML(branchId) {
   const BRANCHES = {
     affirmative: {
@@ -1785,14 +1785,14 @@ function crisisCardsHTML() {
         <div class="rec-icon">📞</div>
         <div class="rec-content">
           <div class="rec-title">Call or Text 988</div>
-          <div class="rec-desc">Suicide &amp; Crisis Lifeline — available 24/7, real people</div>
+          <div class="rec-desc">Suicide &amp; Crisis Lifeline  - available 24/7, real people</div>
         </div>
       </a>
       <a class="rec-item crisis" href="sms:741741&body=HOME">
         <div class="rec-icon">TXT</div>
         <div class="rec-content">
           <div class="rec-title">Text HOME to 741741</div>
-          <div class="rec-desc">Crisis Text Line — text from anywhere, right now</div>
+          <div class="rec-desc">Crisis Text Line  - text from anywhere, right now</div>
         </div>
       </a>
       <a class="rec-item crisis" href="tel:911">
@@ -1837,7 +1837,7 @@ function showResponse(response, echoText) {
   const inner = document.createElement('div');
   inner.className = 'page-content entering';
 
-  // Progress dots — show on turns 1-3 (not on opening or final screens)
+  // Progress dots  - show on turns 1-3 (not on opening or final screens)
   const showDots = stepCount > 0 && stage !== Stage.DONE && stage !== Stage.GOOD_S4
     && stage !== Stage.NG_S4 && stage !== Stage.RISKY_END && stage !== Stage.CRISIS
     && stage !== Stage.CRISIS_S2 && stage !== Stage.BRANCH_SELECT && stage !== Stage.OTHER_TEASE;
@@ -2006,7 +2006,7 @@ function goBackToBranches() {
 }
 
 function startOtherFlow() {
-  // Entry point from rec cards — user is worried about someone else
+  // Entry point from rec cards  - user is worried about someone else
   if (locked) return;
   locked = true;
   ctx.askedAboutOthers = true;
@@ -2092,7 +2092,7 @@ function restart() {
   bootOpening();
 }
 
-// ─── Typewriter helper — word-by-word with block cursor ───
+// ─── Typewriter helper  - word-by-word with block cursor ───
 
 function typeWriterInto(text, el, cb, wordDelay = 110) {
   const words = text.split(' ');
@@ -2111,12 +2111,12 @@ function typeWriterInto(text, el, cb, wordDelay = 110) {
       ).join(' ');
       el.innerHTML = revealed + ' <span class="cursor"></span>';
       i++;
-      // slight variable pace — punctuation gets a longer beat
+      // slight variable pace  - punctuation gets a longer beat
       const lastChar = words[i - 1].slice(-1);
       const pause = /[.?!,]/.test(lastChar) ? wordDelay * 2.4 : wordDelay + Math.random() * 40;
       setTimeout(nextWord, pause);
     } else {
-      // done — plain text, no cursor
+      // done  - plain text, no cursor
       el.innerHTML = escHtml(text);
       if (cb) cb();
     }
@@ -2138,7 +2138,7 @@ function bootOpening() {
     <div class="free-badge">✦ free &nbsp;·&nbsp; private &nbsp;·&nbsp; no judgment</div>
     <div class="ai-prompt" id="opening-prompt"></div>
     <div class="tagline" id="tagline" style="opacity:0;transition:opacity .5s ease">
-      Pick one — or just type below.
+      Pick one  - or just type below.
     </div>
     <div class="emoji-row" id="emoji-row" style="opacity:0;transition:opacity .6s ease">
       <button class="emoji-btn" onclick="emojiSelect('good')" title="doing good">

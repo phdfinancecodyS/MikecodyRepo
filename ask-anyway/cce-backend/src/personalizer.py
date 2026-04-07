@@ -80,10 +80,10 @@ _NORMALIZE_MAP = {
     r"\bidek\b": "i don't even know",
     r"\bidc\b": "i don't care",
     r"\bsmh\b": "shaking my head",
-    r"\bfml\b": "fuck my life",
+    r"\bfml\b": "frustrated",
     r"\bomg\b": "oh my god",
-    r"\bwtf\b": "what the fuck",
-    r"\baf\b": "as fuck",
+    r"\bwtf\b": "frustrated",
+    r"\baf\b": "very",
     r"\blowkey\b": "lowkey",
     r"\bhighkey\b": "highkey",
     r"\bwanna\b": "want to",
@@ -292,6 +292,10 @@ _REPHRASE = {
     "like shit": "feeling like shit",
     "like crap": "feeling like crap",
     "like hell": "feeling like hell",
+    "worse": "things getting worse",
+    "worst": "how hard things have been",
+    "falling apart": "falling apart",
+    "coming undone": "coming undone",
 }
 
 
@@ -361,6 +365,10 @@ _EMOTION_PHRASES = [
     # "close to / about to [verb]ing" (relapse, breaking, etc.)
     (re.compile(r"\b(?:close to|about to|on the verge of|ready to|almost)\s+(\w+ing\b(?:\s+\w+)?)", re.I),
      lambda m: f"being close to {m.group(1).strip().lower()}"),
+
+    # "don't want to [do anything/get up/move/etc.]" (functional impairment)
+    (re.compile(r"\bdon't\s+want\s+to\s+(do\s+anything|get\s+(?:up|out\s+of\s+bed)|move|eat|go\s+(?:anywhere|outside|to\s+\w+)|talk\s+to\s+anyone|see\s+anyone|leave|be\s+around\s+(?:people|anyone))", re.I),
+     lambda m: f"not wanting to {m.group(1).lower()}"),
 
     # Emotion word catch-all (the big vocabulary list)
     (_EMOTION_RE,

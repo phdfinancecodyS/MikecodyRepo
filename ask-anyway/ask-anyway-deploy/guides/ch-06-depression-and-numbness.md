@@ -9,7 +9,7 @@ Priority: high
 
 ## What This Helps With
 
-When everything feels gray and flat and you can't remember the last time something actually mattered — that's what this is for. Small moves, not big speeches.
+When everything feels gray and flat and you can't remember the last time something actually mattered  - that's what this is for. Small moves, not big speeches.
 
 ## What Is Happening
 
@@ -35,17 +35,17 @@ Depression shows up as numbness more than sadness. Nothing feels important. Your
 
 ## 24-Hour Action Plan
 
-- Right now: do one thing that moves your body — a walk around the block, ten pushups, stretching for two minutes. Don't think about it, just move.
+- Right now: do one thing that moves your body  - a walk around the block, ten pushups, stretching for two minutes. Don't think about it, just move.
 - Before bed tonight: eat one real meal, even if you're not hungry.
 - Tomorrow: text one person you trust and say "I'm in a low place today." That's it. You don't have to explain.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did the flatness start? Was it gradual or sudden?
-- What's the last thing that made you feel something — anything?
+- What's the last thing that made you feel something  - anything?
 - What does your body feel like right now? Heavy? Empty? Both?
 - Who have you been pushing away or hiding from?
 - What would you do today if motivation wasn't part of the equation?
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

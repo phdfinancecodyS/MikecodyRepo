@@ -148,7 +148,7 @@ def scrape_instagram_creators() -> pd.DataFrame:
     if not df.empty:
         df = df.sort_values("followers", ascending=False)
 
-    console.print(f"\n[green]✅ Instagram scrape complete — {len(df)} unique creators found[/green]\n")
+    console.print(f"\n[green]✅ Instagram scrape complete  - {len(df)} unique creators found[/green]\n")
     return df
 
 
@@ -176,7 +176,7 @@ def save_and_display(df: pd.DataFrame):
             f"{row['followers']:,}",
             f"{row['avg_engagement']}%",
             row["niche"],
-            row["email"] or "—",
+            row["email"] or " -",
             row["flat_fee_est"],
         )
 

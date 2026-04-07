@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Ask Anyway Campaign Video v2 — TikTok-optimized.
+Ask Anyway Campaign Video v2  - TikTok-optimized.
 
 Changes from v1:
 - 6 slides instead of 8, ~22s total

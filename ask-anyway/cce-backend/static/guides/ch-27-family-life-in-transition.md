@@ -9,7 +9,7 @@ Priority: medium
 
 ## What This Helps With
 
-Everything's shifting — schedules, roles, expectations — and nobody handed you a playbook. Here's how to keep your family intact while the ground moves.
+Everything's shifting  - schedules, roles, expectations  - and nobody handed you a playbook. Here's how to keep your family intact while the ground moves.
 
 ## What Is Happening
 
@@ -35,20 +35,20 @@ Family life in transition is the shock of changing your family structure (separa
 
 ## 24-Hour Action Plan
 
-- Right now: name the one thing that changed most recently and how it's affecting the family — be specific.
+- Right now: name the one thing that changed most recently and how it's affecting the family  - be specific.
 - Before bed tonight: talk to one family member about the transition. Not to fix it, just to name it together.
 - Tomorrow: pick one new routine or anchor point that gives the family something predictable to land on.
 
 ## Worksheet 1: Pattern Finder
 
-Goal: Spot the pattern — when it shows up, what triggers it, and what you notice first.
+Goal: Spot the pattern  - when it shows up, what triggers it, and what you notice first.
 
 Prompts:
 - When did "Family Life in Transition" last show up for you? What was the situation?
-- What did you notice first — in your body, your thoughts, or your behavior?
+- What did you notice first  - in your body, your thoughts, or your behavior?
 - What makes this pattern worse? What conditions or stressors fuel it?
 - What have you tried before, and what actually helped (even a little)?
-- Who in your life knows about this? Who doesn't — and why?
+- Who in your life knows about this? Who doesn't  - and why?
 
 ## Worksheet 2: Action Builder
 
@@ -63,7 +63,7 @@ Prompts:
 
 ---
 
-**A quick note:** This guide is educational — it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
+**A quick note:** This guide is educational  - it's not therapy, it's not a diagnosis, and reading it doesn't create a clinical relationship between us. It's built to help you take the next step, not replace professional support. If you're in crisis, contact 988 (Suicide & Crisis Lifeline), text HOME to 741741 (Crisis Text Line), or call 911.
 
 ---
 

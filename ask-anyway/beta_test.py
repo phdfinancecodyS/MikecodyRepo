@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Ask Anyway — Beta Test Suite
+Ask Anyway  - Beta Test Suite
 Exercises all backend endpoints + simulates all chatbot conversation paths.
 Run with: /Users/codysullivan/Documents/cce-backend/.venv/bin/python3 beta_test.py
 """
@@ -143,7 +143,7 @@ for tree in trees:
             record(f"[{tid}] outcome fetch", False, getattr(r3, "text", "none"))
     else:
         record(f"[{tid}] session completed within 20 turns", False,
-               f"stuck after {turns} turns — last status: {rd.get('status','?')}")
+               f"stuck after {turns} turns  - last status: {rd.get('status','?')}")
 
     time.sleep(0.2)
 
@@ -175,14 +175,14 @@ for topic, zip_code in TOPICS_ZIPS:
     count = len(therapists)
     passed = count > 0
     first = therapists[0] if therapists else {}
-    sample = f"{first.get('name','?')} | {first.get('credentials','?')} | {first.get('city','?')}, {first.get('state','?')}" if first else "—"
+    sample = f"{first.get('name','?')} | {first.get('credentials','?')} | {first.get('city','?')}, {first.get('state','?')}" if first else " -"
     record(f"topic={topic:12s} zip={zip_code}  → {count:2d} results", passed, f"sample: {sample}")
     time.sleep(0.5)   # polite delay between PT scrapes
 
 
 # ─── 5. State Machine Path Simulation (local engine) ──────────────────────────
 
-section("5 · Chatbot State Machine — Path Walkthrough")
+section("5 · Chatbot State Machine  - Path Walkthrough")
 
 print("""
   The chatbot state machine is client-side JavaScript. The paths below
@@ -228,7 +228,7 @@ def is_not_good(t):
 
 PATHS = [
     {
-        "name": "GOOD track — 2-turn close",
+        "name": "GOOD track  - 2-turn close",
         "turns": [
             "I'm doing great honestly",
             "Spending more time with family and getting outside",
@@ -238,7 +238,7 @@ PATHS = [
         "classify_first": is_good,
     },
     {
-        "name": "NOT-GOOD track — relationship topic",
+        "name": "NOT-GOOD track  - relationship topic",
         "turns": [
             "My girlfriend and I just broke up and I'm not doing well",
             "I can barely sleep. Everything feels empty.",
@@ -249,10 +249,10 @@ PATHS = [
         "classify_first": is_not_good,
     },
     {
-        "name": "NOT-GOOD track — anxiety topic",
+        "name": "NOT-GOOD track  - anxiety topic",
         "turns": [
             "I've been having really bad anxiety attacks, I'm overwhelmed",
-            "It's more physical — heart racing, can't breathe.",
+            "It's more physical  - heart racing, can't breathe.",
             "No, I've been carrying it alone mostly.",
         ],
         "expected_track": "NOT_GOOD",
@@ -260,7 +260,7 @@ PATHS = [
         "classify_first": is_not_good,
     },
     {
-        "name": "NOT-GOOD track — work/job topic",
+        "name": "NOT-GOOD track  - work/job topic",
         "turns": [
             "I got laid off last week and I'm stressed beyond belief",
             "I'm basically carrying it all alone, my family doesn't know.",
@@ -270,7 +270,7 @@ PATHS = [
         "classify_first": is_not_good,
     },
     {
-        "name": "NOT-GOOD track — loss/grief topic",
+        "name": "NOT-GOOD track  - loss/grief topic",
         "turns": [
             "My mom passed away last month. I'm really not okay.",
             "Mornings are the hardest. I forget for a second and then it hits again.",
@@ -280,7 +280,7 @@ PATHS = [
         "classify_first": is_not_good,
     },
     {
-        "name": "RISKY track — alcohol",
+        "name": "RISKY track  - alcohol",
         "turns": [
             "I've been drinking every night alone just to get through it",
             "About three months. It's getting worse.",
@@ -290,7 +290,7 @@ PATHS = [
         "classify_first": is_risky,
     },
     {
-        "name": "RISKY track — isolation/hiding",
+        "name": "RISKY track  - isolation/hiding",
         "turns": [
             "I've been isolating completely, nobody knows how bad it is",
             "I just can't explain it to anyone.",

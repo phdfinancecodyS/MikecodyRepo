@@ -20,14 +20,14 @@ python3 scripts/etsy_upload.py
 
 ## Prerequisites
 
-1. **Etsy Developer Account** — Register at https://www.etsy.com/developers/your-apps
-2. **Create an App** — Set callback URL to `http://localhost:5555/callback`
+1. **Etsy Developer Account**  - Register at https://www.etsy.com/developers/your-apps
+2. **Create an App**  - Set callback URL to `http://localhost:5555/callback`
 3. **Copy your API Key** (the keystring) into `.env`:
    ```
    ETSY_API_KEY=your_keystring_here
    ```
-4. **Active Etsy Shop** — The upload script auto-detects your shop ID
-5. **PDFs generated** — Run `python3 scripts/build_pdf.py --base-guides` first
+4. **Active Etsy Shop**  - The upload script auto-detects your shop ID
+5. **PDFs generated**  - Run `python3 scripts/build_pdf.py --base-guides` first
 
 ## Files
 
@@ -51,16 +51,16 @@ Each listing includes:
 ## Upload Modes
 
 ```bash
-# Dry run — validate without API calls
+# Dry run  - validate without API calls
 python3 scripts/etsy_upload.py --dry-run
 
-# Auth only — authenticate and detect shop ID
+# Auth only  - authenticate and detect shop ID
 python3 scripts/etsy_upload.py --auth-only
 
-# Full upload — create draft listings + upload PDFs
+# Full upload  - create draft listings + upload PDFs
 python3 scripts/etsy_upload.py
 
-# Resume interrupted upload — skip already-completed listings
+# Resume interrupted upload  - skip already-completed listings
 python3 scripts/etsy_upload.py --resume
 
 # Custom taxonomy ID (default: 2078)

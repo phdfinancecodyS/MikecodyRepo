@@ -661,7 +661,7 @@ check("Positive → low_risk band", band == "low_risk", f"Got: {band}")
 # Test 2: Multiple positive openers all walk to gp_deepening, not straight to completion
 # Note: hedged/idiomatic phrases ("I'm feeling great honestly", "Things are really looking up",
 # "Much better than last week") are intentionally routed to the negative-empathy path by the
-# sentiment detector — that's by design. These tests use unambiguously positive openers.
+# sentiment detector  - that's by design. These tests use unambiguously positive openers.
 print("  -- Multiple positive openers → gp_deepening (not premature complete) --")
 for opener in [
     "I'm doing amazing today",

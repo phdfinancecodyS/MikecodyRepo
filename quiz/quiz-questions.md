@@ -1,4 +1,4 @@
-# MENTAL HEALTH QUIZ — 10 Questions + Scoring
+# MENTAL HEALTH QUIZ  - 10 Questions + Scoring
 **Purpose:** Screen for emotional distress and route users to appropriate support resources  
 **Scoring:** Each question = 0-3 points. Total range: 0-30.  
 **Tone:** Hopeful, non-clinical, non-diagnostic ("based on your answers" language throughout)  
@@ -8,10 +8,10 @@
 
 ## SCORING GUIDE
 ```
-0 = Not at all / Rarely — 0 points
-1 = A little / Sometimes — 1 point  
-2 = Quite a bit / Often — 2 points
-3 = Very much / Always — 3 points
+0 = Not at all / Rarely  - 0 points
+1 = A little / Sometimes  - 1 point  
+2 = Quite a bit / Often  - 2 points
+3 = Very much / Always  - 3 points
 ```
 
 ---
@@ -36,7 +36,7 @@
 - ✅ I sleep pretty well and wake up rested (0 points)
 - ✓ I have some nights of bad sleep, but it evens out (1 point)
 - ✗ I'm sleeping way less than usual OR oversleeping most days (2 points)
-- ✗✗ My sleep is completely disrupted — I'm barely sleeping or sleeping all the time (3 points)
+- ✗✗ My sleep is completely disrupted  - I'm barely sleeping or sleeping all the time (3 points)
 
 *Why this order:* Sleep is a biological marker of distress. Ranges from stable → occasional disruption → chronic disruption → severe disruption.
 
@@ -60,7 +60,7 @@
 - ✅ I have people I can talk to and I feel supported (0 points)
 - ✓ I have some close people, but sometimes feel lonely (1 point)
 - ✗ I feel pretty isolated and disconnected from others (2 points)
-- ✗✗ I feel completely alone — no one really knows or understands me (3 points)
+- ✗✗ I feel completely alone  - no one really knows or understands me (3 points)
 
 *Why this order:* Social isolation is a major risk factor. Ranges from secure connection → occasional loneliness → chronic isolation → profound disconnection.
 
@@ -109,7 +109,7 @@
 - ✅ I'm doing things I enjoy and seeing people (0 points)
 - ✓ I'm doing less than usual, but still getting out sometimes (1 point)
 - ✗ I've withdrawn quite a bit from activities and people (2 points)
-- ✗✗ I don't want to see anyone or do anything — I'm isolating (3 points)
+- ✗✗ I don't want to see anyone or do anything  - I'm isolating (3 points)
 
 *Why this order:* Anhedonia (loss of pleasure) + withdrawal is a key depression marker. Ranges from engagement → reduced engagement → significant withdrawal → severe isolation.
 
@@ -120,8 +120,8 @@
 
 - ✅ I have decent energy and feel motivated most days (0 points)
 - ✓ Some days I'm tired, but I push through okay (1 point)
-- ✗ I feel exhausted a lot, even after rest — nothing feels worth it (2 points)
-- ✗✗ I have no energy or motivation — everything feels pointless (3 points)
+- ✗ I feel exhausted a lot, even after rest  - nothing feels worth it (2 points)
+- ✗✗ I have no energy or motivation  - everything feels pointless (3 points)
 
 *Why this order:* Fatigue + anhedonia are core depression/burnout markers + suicide risk indicators. Ranges from intact → situational fatigue → persistent exhaustion → profound anhedonia.
 
@@ -133,7 +133,7 @@
 - ✅ I feel hopeful or at least accepting about what's ahead (0 points)
 - ✓ I have some worry about the future, but mostly feel okay (1 point)
 - ✗ I feel uncertain or pessimistic about the future (2 points)
-- ✗✗ I feel hopeless — I don't believe things will get better (3 points)
+- ✗✗ I feel hopeless  - I don't believe things will get better (3 points)
 
 *Why this order:* Hopelessness is one of THE strongest suicide risk predictors. Ranges from hopeful → cautious → pessimistic → hopeless.
 
@@ -155,7 +155,7 @@ Total all 10 responses (0-30 range)
 **If Question 5 (Self-Harm) scored 3:** Jump directly to CRITICAL results page, regardless of total score.  
 **If Question 5 scored 2:** Jump to HIGH RISK results page at minimum.
 
-*Rationale:* Suicidal ideation with plan is not a spectrum issue — it requires immediate crisis intervention regardless of overall functioning.
+*Rationale:* Suicidal ideation with plan is not a spectrum issue  - it requires immediate crisis intervention regardless of overall functioning.
 
 ---
 
@@ -182,12 +182,12 @@ Total all 10 responses (0-30 range)
 
 ### Results Page Language (Post-Quiz)
 
-**LOW RISK (0-10) — Green page**
+**LOW RISK (0-10)  - Green page**
 ```
 Headline: "You're in a good place right now."
 
 Body: "Based on your answers, you're managing well. That's awesome. 
-Keep doing what you're doing — and remember, if things change, 
+Keep doing what you're doing  - and remember, if things change, 
 these resources are always here for you."
 
 Support note: "This is not a diagnosis. Just a quick snapshot of where things seem to be right now."
@@ -198,14 +198,14 @@ Body: "We can send you this result and a few support tools to keep on hand. Opti
 Primary button: "Send me my results"
 Secondary button: "No thanks"
 
-CTA 1: "Join Check On Me" — SMS sign-up ($4.99/mo)
-CTA 2: "Get the How to Help Guide" — Link to $10 product
-CTA 3: "Browse our Therapist Directory" — Free resource
+CTA 1: "Join Check On Me"  - SMS sign-up ($4.99/mo)
+CTA 2: "Get the How to Help Guide"  - Link to $10 product
+CTA 3: "Browse our Therapist Directory"  - Free resource
 
 Footer: 988 Suicide & Crisis Lifeline | Crisis Text Line | Local crisis center
 ```
 
-**MODERATE RISK (11-20) — Yellow page**
+**MODERATE RISK (11-20)  - Yellow page**
 ```
 Headline: "You're managing, but let's support you better."
 
@@ -221,15 +221,15 @@ Body: "If it helps, we can send you your result, a few practical next steps, and
 Primary button: "Send me my next steps"
 Secondary button: "No thanks"
 
-CTA 1: "Get my Crisis Kit" — $5 safety plan + coping strategies
-CTA 2: "Start Check On Me check-ins" — $4.99/mo weekly support
-CTA 3: "Find a therapist" — Directory + affiliate link
-CTA 4: "Get the How to Help Guide" — $10 product
+CTA 1: "Get my Crisis Kit"  - $5 safety plan + coping strategies
+CTA 2: "Start Check On Me check-ins"  - $4.99/mo weekly support
+CTA 3: "Find a therapist"  - Directory + affiliate link
+CTA 4: "Get the How to Help Guide"  - $10 product
 
 Footer: 988 Suicide & Crisis Lifeline | Crisis Text Line | Local crisis center
 ```
 
-**HIGH RISK (21-25) — Orange page**
+**HIGH RISK (21-25)  - Orange page**
 ```
 Headline: "You matter. Crisis support is available right now."
 
@@ -238,9 +238,9 @@ and you're not alone. Here's what you can do right now:"
 
 Support note: "Use the free support options first if you need help right now."
 
-Primary CTA: "CALL 988" — External link, large button
-Secondary CTA: "Text HOME to 741741" — External link
-CTA 3: "Find crisis support in my area" — Directory + local resources
+Primary CTA: "CALL 988"  - External link, large button
+Secondary CTA: "Text HOME to 741741"  - External link
+CTA 3: "Find crisis support in my area"  - Directory + local resources
 
 Post-result capture:
 Headline: "Want these resources in one place?"
@@ -248,30 +248,30 @@ Body: "We can send you the steps on this page so you do not have to remember the
 Primary button: "Send me these resources"
 Secondary button: "Continue without sending"
 
-CTA 4: "Get my Crisis Kit" — $5 immediate + follow-up strategies
+CTA 4: "Get my Crisis Kit"  - $5 immediate + follow-up strategies
 
 Email follow-up: "We're so glad you reached out. Here's what to do in the next 24 hours..."
 
 Footer: 988 | Crisis Text Line | Local emergency contact info
 ```
 
-**CRITICAL / CRISIS (26-30 OR Q5=3) — Red page**
+**CRITICAL / CRISIS (26-30 OR Q5=3)  - Red page**
 ```
 Headline (Large, clear): "You're in crisis. Get help right now."
 
 Body: "Based on your answers, you're experiencing a mental health crisis. 
 This is serious, and help is available immediately. You don't have to do this alone."
 
-LARGE RED BUTTON: "CALL 988 NOW" — Phone link
-LARGE RED BUTTON: "TEXT HOME to 741741" — SMS link  
-LARGE BUTTON: "Emergency Services (911)" — Phone link
+LARGE RED BUTTON: "CALL 988 NOW"  - Phone link
+LARGE RED BUTTON: "TEXT HOME to 741741"  - SMS link  
+LARGE BUTTON: "Emergency Services (911)"  - Phone link
 
 Additional section: "If you can't call right now:"
 - Go to your nearest emergency room
 - Tell someone you trust what you're experiencing
 - Send this to a friend: [link to share crisis contact info]
 
-NO PRODUCT BUTTONS — Safety first, always.
+NO PRODUCT BUTTONS  - Safety first, always.
 All crisis resources FREE and immediately accessible.
 
 Post-result capture:

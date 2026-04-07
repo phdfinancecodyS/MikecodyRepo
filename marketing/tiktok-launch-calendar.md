@@ -10,14 +10,14 @@
 
 From your existing templates, prioritized for launch:
 
-1. **Myth-Busting Hook** (15-30 sec) — "Asking plants the idea" myth debunked
-2. **Credibility Story** (60-90 sec) — Co-author intro + loss story
-3. **Wrong vs Right** (30-45 sec) — Ineffective vs effective approach to conversations
-4. **Permission Video** (60 sec) — Emotional, giving viewers permission to ask/reach out
-5. **Quick Tips** (15-20 sec) — Saveable, punchy pieces
-6. **Question Teasers** (30-45 sec) — "What would YOU answer to this?" with quiz preview
-7. **Statistics/Research** (20-30 sec) — Credibility-building, data-driven
-8. **Series Intro** (60 sec) — Positioning as systematic educator with 3-part framework
+1. **Myth-Busting Hook** (15-30 sec)  - "Asking plants the idea" myth debunked
+2. **Credibility Story** (60-90 sec)  - Co-author intro + loss story
+3. **Wrong vs Right** (30-45 sec)  - Ineffective vs effective approach to conversations
+4. **Permission Video** (60 sec)  - Emotional, giving viewers permission to ask/reach out
+5. **Quick Tips** (15-20 sec)  - Saveable, punchy pieces
+6. **Question Teasers** (30-45 sec)  - "What would YOU answer to this?" with quiz preview
+7. **Statistics/Research** (20-30 sec)  - Credibility-building, data-driven
+8. **Series Intro** (60 sec)  - Positioning as systematic educator with 3-part framework
 
 ---
 
@@ -64,7 +64,7 @@ Rule of thumb:
 | Day 4 | 9 AM | Permission Emotion | "If you're worried about someone: YES, say something." | Quiz link | Encouragement |
 | Day 4 | 6 PM | Statistics | "1 in X young people struggle with this." | Quiz link | Credibility + connection |
 | Day 5 | 9 AM | Quick Tip | "The 3 words that matter most" | Quiz link | Punchy, memorable |
-| Day 5 | 6 PM | Myth-Busting | "'You don't have training to help someone' — False." | Quiz link | Empowerment angle |
+| Day 5 | 6 PM | Myth-Busting | "'You don't have training to help someone'  - False." | Quiz link | Empowerment angle |
 | Day 6 | 9 AM | Series Intro | "I'm teaching you how to actually help someone." | Quiz link | Framework reveal |
 | Day 6 | 6 PM | Question Teaser | "Take this 2-min quiz to see where you actually stand." | Quiz link | Direct product pitch |
 | Day 7 | 9 AM | Credibility | "Here's what I've learned" (personal story clip) | Quiz link | Authority |
@@ -83,10 +83,10 @@ Rule of thumb:
 | Day | Time | Video Type | Hook | CTA | Notes |
 |---|---|---|---|---|---|
 | Day 8 | 9 AM | Myth-Busting | "Suicidal people don't want to die. They want the pain to stop." | Quiz link | Nuance angle |
-| Day 8 | 6 PM | Quick Tip | "If someone says yes — here's what to do next." | Quiz link | Progressive learning |
+| Day 8 | 6 PM | Quick Tip | "If someone says yes  - here's what to do next." | Quiz link | Progressive learning |
 | Day 9 | 9 AM | Statistics | "Crisis calls spike on Sundays. Here's why..." | Quiz link | Interesting fact hook |
 | Day 9 | 6 PM | Question Teasers | "How would YOU answer this question from my quiz?" | Quiz link | Engagement + promo |
-| Day 10 | 9 AM | Wrong vs Right | "Don't say 'just think positive' — say this instead" | Quiz link | Common mistake angle |
+| Day 10 | 9 AM | Wrong vs Right | "Don't say 'just think positive'  - say this instead" | Quiz link | Common mistake angle |
 | Day 10 | 6 PM | Permission | "Reaching out is brave. Full stop." | Quiz link | Encouragement for SMS signup |
 | Day 11 | 9 AM | Credibility | "LCSW + Someone who lost friends = This program" | Quiz link | Co-author branding |
 | Day 11 | 6 PM | Quick Tip | "One text that could save a life" | Quiz link | Actionable, shareable |
@@ -223,9 +223,9 @@ Keep the same video types, but now:
 ## POSTING TIMES
 
 **Optimal for TikTok audience interested in mental health:**
-- **9 AM EST** — Peak morning scroll (before work/school)
-- **6 PM EST** — Evening wind-down scroll
-- **10 PM EST** — Late-night scroll (optional 3rd post)
+- **9 AM EST**  - Peak morning scroll (before work/school)
+- **6 PM EST**  - Evening wind-down scroll
+- **10 PM EST**  - Late-night scroll (optional 3rd post)
 
 **Note:** Test on your account; TikTok algorithm prioritizes consistency over perfect timing.
 
