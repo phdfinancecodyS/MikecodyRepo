@@ -995,6 +995,23 @@ def _build_outcome(session: SessionState) -> Outcome:
     )
 
 
+# ─── Audience bridge ───────────────────────────────────────────────────────────
+
+_AUDIENCE_BRIDGES = [
+    "Thanks for sharing all of that. I have something that might help.\n\n",
+    "I hear you. Let me point you to the right resource.\n\n",
+    "That took guts to say. I want to match you with the right version of this.\n\n",
+    "Got it. Before I send you to something helpful, one quick thing.\n\n",
+    "Alright. I want to make sure what I share actually fits your world.\n\n",
+]
+
+import random as _random
+
+def _bridge_for_audience_question() -> str:
+    """Return a warm transitional sentence before the audience picker."""
+    return _random.choice(_AUDIENCE_BRIDGES)
+
+
 # ─── Audience-aware completion helper ──────────────────────────────────────────
 
 def _complete_or_ask_audience(
@@ -1053,16 +1070,17 @@ def _complete_or_ask_audience(
                 "policy_notice": policy_notice,
             }
 
-    # No audience signal found: ask
+    # No audience signal found: ask with a warm bridge
     session.audience_matching_active = True
     _save_session(session)
     audience_opts = [
         PromptOption(id=o["id"], text=o["text"]) for o in get_audience_options()
     ]
+    bridge = _bridge_for_audience_question()
     return {
         "status": "in_progress",
         "next_prompt": Prompt(
-            question=get_audience_question(),
+            question=bridge + get_audience_question(),
             type="audience_picker",
             options=audience_opts,
         ),
