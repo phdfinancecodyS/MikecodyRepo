@@ -352,15 +352,20 @@
 
   /* ─── Email/SMS capture block ─── */
   .capture-block {
-    margin-top: 20px;
-    margin-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 12px;
     width: 100%;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 20px 16px;
+    background: #0d0d0d;
   }
   .capture-prompt {
-    font-size: .92rem;
-    color: #999;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #bbb;
+    line-height: 1.55;
+    margin-bottom: 14px;
+    font-weight: 400;
   }
   .capture-row {
     display: flex;
@@ -389,15 +394,21 @@
     border-radius: 6px;
     color: #888;
     font-family: inherit;
-    font-size: .75rem;
+    font-size: .78rem;
     font-weight: 500;
     letter-spacing: .06em;
-    padding: 6px 14px;
+    padding: 8px 16px;
     cursor: pointer;
     transition: border-color .2s, color .2s;
     white-space: nowrap;
   }
   .capture-submit:hover { border-color: #666; color: #ccc; }
+  .capture-privacy {
+    font-size: .68rem;
+    color: #444;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
   .capture-skip {
     font-size: .7rem;
     color: #444;
@@ -407,8 +418,8 @@
   }
   .capture-skip:hover { color: #888; }
   .capture-done {
-    font-size: .82rem;
-    color: #666;
+    font-size: .92rem;
+    color: #777;
     margin-top: 6px;
   }
   .capture-price {
@@ -1270,6 +1281,7 @@ function cceOutcomeHTML(outcome) {
     <span class="band-pill" style="background:${color}20;color:${color};border:1px solid ${color}40">${escHtml(label)}</span>
     ${conversationBlock}
     ${summaryBlock}
+    ${captureBlockHTML(isCritical)}
     <div class="rec-label">${resourcesLabel}</div>
     <div class="rec-list">
       ${crisisRows}
@@ -1291,7 +1303,6 @@ function cceOutcomeHTML(outcome) {
       ${therapistWidgetHTML(ctx.topic || 'general')}
     </div>
     ${checkOnMeBlock}
-    ${captureBlockHTML(isCritical)}
     <p class="cce-disclaimer">${escHtml(outcome.disclaimer)}</p>
     <a class="restart-link" onclick="restart()">start over</a>
     ${betaBarHTML()}`;
@@ -1325,18 +1336,33 @@ function audienceOther() {
 
 // ─── Email/SMS capture ───
 
+const CAPTURE_PROMPTS = [
+  "Did this help? We're building more free tools like this. Want in?",
+  "If this felt useful, want us to send you more like it?",
+  "We put out new resources every week. Want to be the first to know?",
+  "Found something here that clicked? We'll send you the next one when it's ready.",
+  "Want to keep going? We'll send resources matched to what you shared.",
+  "We make free stuff like this all the time. Want us to keep you posted?",
+  "This is just the beginning. Want updates as we build more?",
+  "Would a weekly resource drop be helpful? Matched to what you told us.",
+  "Real talk: did any of this land? If so, we've got more coming.",
+  "We're not done building. Drop your email if you want what's next.",
+];
+
 function captureBlockHTML(isCritical) {
   // Never show capture before crisis actions on critical
   if (isCritical) return '';
+  const prompt = CAPTURE_PROMPTS[Math.floor(Math.random() * CAPTURE_PROMPTS.length)];
   return `
     <div class="capture-block" id="capture-block">
       <div id="capture-step-email">
-        <div class="capture-prompt">Want your guide plus a few follow-up resources?</div>
+        <div class="capture-prompt">${prompt}</div>
         <div class="capture-row">
           <input class="capture-input" id="capture-email" type="email" placeholder="your email" autocomplete="email"/>
-          <button class="capture-submit" onclick="submitEmail()">send it</button>
+          <button class="capture-submit" onclick="submitEmail()">I'm in</button>
         </div>
-        <div class="capture-skip" onclick="skipCapture()">no thanks, I'm good</div>
+        <div class="capture-privacy">Your email stays with us. We will never sell it or share it with third parties. Unsubscribe anytime.</div>
+        <div class="capture-skip" onclick="skipCapture()">not right now</div>
       </div>
       <div id="capture-step-phone" style="display:none;">
         <div class="capture-prompt">One more thing. Want a weekly check-in text? Not a bot. Just someone making sure you're still good.</div>
@@ -1400,7 +1426,7 @@ async function submitPhone() {
 function skipPhone() {
   trackEvent('lead_capture_phone_skipped', { sessionId: cceSessionId, band: lastRiskBand });
   const block = document.getElementById('capture-block');
-  if (block) block.innerHTML = '<div class="capture-done">Got it. Your guide is on the way.</div>';
+  if (block) block.innerHTML = '<div class="capture-done">No worries. Your resources are right below.</div>';
 }
 
 function skipCapture() {
