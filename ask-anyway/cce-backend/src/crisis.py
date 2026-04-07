@@ -21,7 +21,7 @@ CRISIS_PATTERNS = [
     r"\bplan(ning)?\s+to\s+(die|end|hurt)\b",
     r"\bgoodbye\s+(forever|note|letter)\b",
     r"\b(giving|gave)\s+away\s+(?:(?:all|my|all\s+my)\s+)?(?:stuff|things|belongings)\b",
-    r"\bsaying\s+(?:my\s+)?goodbye\b",
+    r"\bsaying\s+(?:my\s+)?goodbye(?:s)?\s+(?:to\s+)?(?:everyone|the\s+world|forever|for\s+the\s+last\s+time)\b",
     r"\b(giving\s+up|given\s+up)\s+on\s+(life|living|everything)\b",
     r"\bcan['\u2019]?t\s+(go\s+on|take\s+it\s+anymore)\b",
     r"\b988\b",
@@ -34,10 +34,10 @@ CRISIS_PATTERNS = [
     r"\b(?:world|everyone|they|family)\s+(?:would\s+be\s+)?better\s+off\b",
     r"\bno\s*one\s+(?:would\s+)?(?:even\s+)?(?:care|notice|miss)\b",
     # "wish I was dead/gone/never born"
-    r"\bwish(?:ed)?\s+(?:i\s+)?(?:was(?:n['\u2019]?t\s+(?:here|alive|born))|was\s+never\s+born|were\s+dead)\b",
-    r"\bwish(?:ed)?\s+(?:i\s+)?could\s+(?:disappear|vanish|just\s+not\s+exist)\b",
+    r"\bwish(?:ed)?\s+(?:i\s+)?(?:was(?:n['\u2019]?t\s+(?:here|alive|born))|was\s+(?:never\s+born|dead|gone)|were\s+(?:dead|gone|never\s+born))\b",
+    r"\bwish(?:ed)?\s+(?:i\s+)?could\s+(?:(?:just\s+)?disappear|(?:just\s+)?vanish|just\s+not\s+exist)\b",
     # TikTok censorship workarounds / coded crisis
-    r"\bkm+s\b",
+    r"\bkm+s+\b",
     r"\bkmy?\s*self\b",
     r"\bun\s*alive\b",
     r"\bsewerslide\b",
@@ -51,7 +51,8 @@ CRISIS_PATTERNS = [
     r"\bi(?:['\u2019]?m)?\s+(?:done|finished|over)\s+(?:with\s+)?(?:everything|it\s+all|life|living)\b",
     # Plans / preparation
     r"\b(?:have|got|made)\s+a\s+plan\b",
-    r"\bwrote\s+(?:a\s+)?(?:note|letter|goodbye)\b",
+    r"\bwrote\s+(?:a\s+)?(?:(?:suicide|goodbye|farewell)\s+)?(?:note|letter)\b(?!.*\b(?:teacher|professor|landlord|boss|school|work|class)\b)",
+    r"\bwrote\s+(?:a\s+)?goodbye\b",
 ]
 
 CRISIS_RE = re.compile("|".join(CRISIS_PATTERNS), re.IGNORECASE)

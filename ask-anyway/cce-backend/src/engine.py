@@ -725,7 +725,7 @@ def _is_policy_trigger(text: str) -> bool:
 PARENTING_OVERLOAD_RE = re.compile(
     r"(?:"
     r"(?:i\s+)?(?:fucking\s+)?hate\s+my\s+(?:kid|kids|child|children)"
-    r"|i\s+can(?:not|'t)?\s+stand\s+my\s+(?:kid|kids|child|children)"
+    r"|i\s+can(?:not|'?t)\s+stand\s+my\s+(?:kid|kids|child|children)"
     r"|my\s+(?:kid|kids|child|children)\s+(?:are|is)\s+driving\s+me\s+(?:insane|crazy)"
     r"|i\s+(?:might|am\s+about\s+to|feel\s+like\s+i\s+might)\s+(?:snap|lose\s+it)\s+(?:at|on)\s+my\s+(?:kid|kids|child|children)"
     r"|i\s+want\s+to\s+(?:scream\s+at|yell\s+at)\s+my\s+(?:kid|kids|child|children)"
@@ -816,7 +816,16 @@ _MEDS_REDIRECT_TEXT = (
 )
 
 
+# Idioms containing "pill" that are NOT medication questions
+_MEDS_IDIOM_RE = re.compile(
+    r"(?:bitter|hard|tough)\s+pill\s+to\s+swallow",
+    re.IGNORECASE,
+)
+
+
 def _is_meds_question(text: str) -> bool:
+    if _MEDS_IDIOM_RE.search(text):
+        return False
     return bool(MEDS_RE.search(text))
 
 
@@ -949,7 +958,7 @@ _DIRECTED_ABUSE_RE = re.compile(
     r"(?:"
     r"(?:fuck|screw)\s+you"
     r"|(?:go\s+)?fuck\s+(?:yourself|off|urself|u)\b"
-    r"|you(?:'re|re|\s+are|r)\s+(?:a\s+)?(?:piece\s+of\s+shit|bitch|cunt|asshole|dipshit|motherfucker)"
+    r"|you(?:'re|re|\s+are|r)\s+(?:a\s+|an\s+)?(?:piece\s+of\s+shit|bitch|cunt|asshole|dipshit|motherfucker|idiot|moron)"
     r"|(?:eat\s+shit|eat\s+a\s+dick|kiss\s+my\s+ass|blow\s+me)"
     r"|(?:kys|kill\s+yourself|go\s+die)\b"
     r"|(?:suck\s+(?:my\s+)?(?:dick|balls|cock))\b"
